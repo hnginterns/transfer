@@ -14,10 +14,9 @@
 Route::get('/', function () {
     return view('home-page');
 });
-Route::get('/balance', function (){
-    return view('get-wallet');
-});
-//Auth::routes();
+Route::view('/balance', 'get-wallet');
+
+Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
