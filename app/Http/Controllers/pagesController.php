@@ -11,12 +11,12 @@ class pagesController extends Controller
     }
 
     public function balance () {
-      //balance logic should go here
+      return view ('balance');
     }
 
     public function transfer () {
-      //transfer logic should go here
+      return view ('transfer');
     }
 
-    //all other page functions can be added 
+    //all other page functions can be added
 }

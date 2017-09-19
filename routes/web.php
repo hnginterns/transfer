@@ -11,12 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home-page');
-});
+Route::get('/', 'pagesController@home');
+
 Route::view('/balance', 'get-wallet');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
