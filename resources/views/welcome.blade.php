@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Transfer Rules
                 </div>
 
                 <div class="links">
