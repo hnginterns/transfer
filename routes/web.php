@@ -12,9 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home-page');
 });
+Route::view('/balance', 'get-wallet');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
