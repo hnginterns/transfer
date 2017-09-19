@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-use Mashape/Unirest;
 
 class GetWalletController extends Controller
 {
