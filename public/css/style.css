@@ -8,7 +8,7 @@ body {
     width: 100%;
     height: 650px;
     /* background: linear-gradient(180deg, #358CAA 1.49%, #F87373 98.73%); */
-    background: #283240;
+    background: #333333;
 }
 
 #logo {
@@ -232,7 +232,7 @@ body {
 }
 
  .testimony {
-    background: #283240;
+    background: #333333;
     color: white;
     padding: 20px;
     margin-left: 30px;
@@ -256,7 +256,7 @@ body {
     width: 100%;
     height: 300px;
     padding: 70px 170px;
-    background: #283240;
+    background: #333333;
 }
 
 #divider-content {
