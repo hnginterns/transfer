@@ -74,11 +74,11 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Transfer Rules
+                    Transfer Rules<
                 </div>
 
                 <div class="links">
-                    
+                    By HNG Interns.
                 </div>
             </div>
         </div>
