@@ -7,11 +7,13 @@
     <title>Homepage</title>
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/../../public/css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <!-- HEADER BEGINS -->
-    <div id="header">
+    <div id="header"> 
+    <p id="background-text">FUNDS</p>
+        
         <nav class="navbar navbar-default">
         <div class="container-fluid">
           <div class="navbar-header">
@@ -21,7 +23,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#"><img id="logo" src="../../public/img/logo.png" alt="Company logo" style="display: inline;"> Transfer Rules</a>
+            <a class="navbar-brand" href="#"><img id="logo" src="img/logo.png" alt="Company logo" style="display: inline;"> TransferFunds</a>
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
@@ -36,7 +38,7 @@
       </nav>
 
       <div id="header-content">
-          <img src="../../public/img/phone.png" alt="Transfer rules mobile app screenshot" id="mobile-app">
+          <img src="img/phone.png" alt="Transfer rules mobile app screenshot" id="mobile-app">
           <div id="content-text" class="clearfix">
                 <span id="heading-hd">
                     Create an account for your company with PaysFund
@@ -50,6 +52,7 @@
           </div>
       </div>
     </div>
+
     <!--HEADER ENDS -->
 
     <!-- SECTION ONE - (AMAZING FEATURES) --> 
@@ -62,7 +65,7 @@
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim             
         </p>
         <div id="features">
-            <img src="../../public/img/screenshots.png" alt="site screenshot" id="screenshots">
+            <img src="img/screenshots.png" alt="site screenshot" id="screenshots">
             <div id="features-list">
                 <div class="feature">
                     <span class="feature-img"></span>
