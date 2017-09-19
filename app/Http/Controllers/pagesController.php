@@ -19,4 +19,9 @@ class pagesController extends Controller
     }
 
     //all other page functions can be added
+    /*
+    pubic function <function name> {
+      {all the logic}
+      return view('<blade name>');
+    }
 }
