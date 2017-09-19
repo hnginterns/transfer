@@ -23,9 +23,5 @@ class pagesController extends Controller
     pubic function <function name> {
       {all the logic}
       return view('<blade name>');
-<<<<<<< HEAD
     }*/
-=======
-    }
->>>>>>> d38dd4d542712feb6530f2d0cdaee50c1044f02c
 }
