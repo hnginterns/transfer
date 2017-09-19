@@ -13,8 +13,12 @@
 
 Route::get('/', 'pagesController@home');
 
-Route::view('/balance', 'get-wallet');
+//Route::view('/balance', 'get-wallet');
+
+Route::get('/transfer', 'pagesController@transfer');
+
+Route::get('/balance', 'pagesController@balance');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');

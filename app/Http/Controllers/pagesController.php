@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class pagesController extends Controller
 {
     public function home () {
-      retun view('home-page');
+      return view('home-page');
     }
 
     public function balance () {
