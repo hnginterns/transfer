@@ -1,4 +1,4 @@
-# Laravel applications with Docker
+# Setting up with Docker
 This repo contains a Laravel Application setup to use Docker to create a development environment.
 
 This setup contains;
