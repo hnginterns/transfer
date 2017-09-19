@@ -12,6 +12,8 @@
 <body>
     <!-- HEADER BEGINS -->
     <div id="header"> 
+    <p id="background-text">FUNDS</p>
+        
         <nav class="navbar navbar-default">
         <div class="container-fluid">
           <div class="navbar-header">
@@ -51,7 +53,6 @@
       </div>
     </div>
 
-    <p id="background-text">FUNDS</p>
     <!--HEADER ENDS -->
 
     <!-- SECTION ONE - (AMAZING FEATURES) --> 
