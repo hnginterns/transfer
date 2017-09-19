@@ -18,4 +18,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/balance', 'GetWalletController@getWalletBalance')->name('balance');
+$router->get('/balance', function () use ($router) {
+    return view('get-wallet');
+});
