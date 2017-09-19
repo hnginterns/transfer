@@ -11,7 +11,9 @@
 </head>
 <body>
     <!-- HEADER BEGINS -->
-    <div id="header">
+    <div id="header"> 
+    <p id="background-text">FUNDS</p>
+        
         <nav class="navbar navbar-default">
         <div class="container-fluid">
           <div class="navbar-header">
@@ -21,7 +23,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#"><img id="logo" src="../../public/img/logo.png" alt="Company logo" style="display: inline;"> Transfer Rules</a>
+            <a class="navbar-brand" href="#"><img id="logo" src="../../public/img/logo.png" alt="Company logo" style="display: inline;"> TransferFunds</a>
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
@@ -50,6 +52,7 @@
           </div>
       </div>
     </div>
+
     <!--HEADER ENDS -->
 
     <!-- SECTION ONE - (AMAZING FEATURES) --> 

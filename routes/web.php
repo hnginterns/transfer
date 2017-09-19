@@ -11,15 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home-page');
-});
-Route::view('/balance', 'get-wallet');
+Route::get('/', 'pagesController@home');
+
+//Route::view('/balance', 'get-wallet');
+
+Route::get('/transfer', 'pagesController@transfer');
+
+Route::get('/balance', 'pagesController@balance');
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
 
 Route::group(['middleware' => 'auth'], function() {
 	// Handles Transfers
@@ -49,3 +49,4 @@ Route::group(['middleware' => ['auth', 'admin']], function() {
 	// Edit Company Details
 	Route::get('/manager/setting', 'AdminController@settings');
 });
+//Route::get('/home', 'HomeController@index')->name('home');
