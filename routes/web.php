@@ -14,10 +14,10 @@
 Route::get('/', function () {
     return view('home-page');
 });
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/balance', function (){
     return view('get-wallet');
 });
+//Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
