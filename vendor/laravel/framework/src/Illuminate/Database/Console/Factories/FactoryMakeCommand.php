@@ -78,7 +78,7 @@ class FactoryMakeCommand extends GeneratorCommand
     protected function getOptions()
     {
         return [
-            ['model', 'm', InputOption::VALUE_OPTIONAL, 'The name of the model'],
+            ['model', null, InputOption::VALUE_OPTIONAL, 'The name of the model'],
         ];
     }
 }
