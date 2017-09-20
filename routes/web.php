@@ -13,6 +13,12 @@
 
 Route::get('/', 'pagesController@home');
 
+Route::get('/signin', 'pagesController@signin');
+
+Route::get('/404', function(){
+	return view('404');
+});
+
 //Route::view('/balance', 'get-wallet');
 
 Route::get('/transfer', 'pagesController@transfer');
@@ -34,6 +40,10 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::get('/dashboard/fundwallet', 'UsersController@fundWallet')->name('fundwallet');
 });
 
+//admin dashboard
+Route::get('/admin', function () {
+		return view('/admin/home');
+});
 
 Route::group(['middleware' => ['auth', 'admin']], function() {
 	Route::get('/manager', 'AdminController@index');
@@ -50,4 +60,4 @@ Route::group(['middleware' => ['auth', 'admin']], function() {
 	Route::get('/manager/setting', 'AdminController@settings');
 });
 //Route::get('/home', 'HomeController@index')->name('home');
-
+Route::get('/banks', 'BanksController@banks');

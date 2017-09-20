@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+
 class BanksController extends Controller
 {
 
     
     public function banks()
     {
+        
         \Unirest\Request::verifyPeer(false); 
 
         $headers = array('content-type' => 'application/json');
