@@ -15,7 +15,7 @@ class CreateWalletsTable extends Migration
     {
         Schema::create('wallets', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
+            $table->integer('user_id')->unsigned();
             $table->string('wallet_code',100)->unique();
             $table->boolean('archived')->default(false);
             $table->integer('created_by')->unique();

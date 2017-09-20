@@ -19,7 +19,7 @@ class CreateRestrictionsTable extends Migration
             $table->boolean('can_transfer_external')->default(false);
             $table->decimal('max_amount', 12, 2);
             $table->decimal('min_amount', 12, 2);
-            $table->string('wallet_id', 100)->unique();
+            $table->integer('wallet_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->timestamps();
 
