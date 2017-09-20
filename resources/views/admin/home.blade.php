@@ -60,9 +60,9 @@ desired effect
     <!-- Logo -->
     <a href="index2.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b>LT</span>
+      <span class="logo-mini"><b>T</b>R</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Admin</b>LTE</span>
+      <span class="logo-lg"><b>Admin</b>TR</span>
     </a>
 
     <!-- Header Navbar -->
@@ -184,7 +184,7 @@ desired effect
                 <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  Alexander Pierce - Web Developer
+                  Admin - Tranfer Rules
                   <small>Member since Nov. 2012</small>
                 </p>
               </li>
@@ -234,7 +234,7 @@ desired effect
           <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Alexander Pierce</p>
+          <p>Admin TR</p>
           <!-- Status -->
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
@@ -256,19 +256,8 @@ desired effect
       <ul class="sidebar-menu">
         <li class="header">HEADER</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>
-        <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
-        <li class="treeview">
-          <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="#">Link in level 2</a></li>
-            <li><a href="#">Link in level 2</a></li>
-          </ul>
-        </li>
+        <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Manage Users</span></a></li>
+        <li><a href="#"><i class="fa fa-link"></i> <span>Manage wallets</span></a></li>
       </ul>
       <!-- /.sidebar-menu -->
     </section>
@@ -280,8 +269,8 @@ desired effect
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Page Header
-        <small>Optional description</small>
+        Manage Users
+        <small></small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
@@ -291,7 +280,27 @@ desired effect
 
     <!-- Main content -->
     <section class="content">
-
+      <div class="box">
+        <div class="box-header with-border">
+          <h3 class="box-title">Default Box Example</h3>
+          <div class="box-tools pull-right">
+            <!-- Buttons, labels, and many other things can be placed here! -->
+            <!-- Here is a label for example -->
+            <span class="label label-primary">Label</span>
+          </div>
+          <!-- /.box-tools -->
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          The body of the box
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer">
+          The footer of the box
+        </div>
+        <!-- box-footer -->
+      </div>
+      <!-- /.box -->
       <!-- Your Page Content Here -->
 
     </section>
