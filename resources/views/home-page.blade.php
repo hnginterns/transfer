@@ -38,7 +38,7 @@
       </nav>
 
       <div id="header-content">
-          <img src="img/phone.png" alt="Transfer rules mobile app screenshot" id="mobile-app">
+          <img src="../img/phone.png" alt="Transfer rules mobile app screenshot" id="mobile-app">
           <div id="content-text" class="clearfix">
                 <span id="heading-hd">
                     Create an account for your company with PaysFund
