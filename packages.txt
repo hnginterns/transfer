@@ -1,0 +1,25 @@
+ii  libapache2-mod-php7.0            7.0.22-0ubuntu0.16.04.1                    amd64        server-side, HTML-embedded scripting language (Apache 2 module)
+ii  php                              1:7.0+35ubuntu6                            all          server-side, HTML-embedded scripting language (default)
+ii  php-cli-prompt                   1.0.1+dfsg-1build1                         all          tiny helper prompting for user input
+ii  php-common                       1:35ubuntu6                                all          Common files for PHP packages
+ii  php-composer-semver              1.2.0-1build1                              all          Semver library that offers utilities, version constraint parsing and
+ii  php-composer-spdx-licenses       1.1.2-1build1                              all          SPDX licenses list and validation library
+ii  php-gettext                      1.0.11-2build1                             all          read gettext MO files directly, without requiring anything other than PHP
+ii  php-json-schema                  1.6.1-1build1                              all          implementation of JSON schema
+ii  php-mbstring                     1:7.0+35ubuntu6                            all          MBSTRING module for PHP [default]
+ii  php-pear                         1:1.10.1+submodules+notgz-6                all          PEAR Base System
+ii  php-symfony-console              2.7.10-0ubuntu2                            all          run tasks from the command line
+ii  php-symfony-filesystem           2.7.10-0ubuntu2                            all          basic filesystem utilities
+ii  php-symfony-finder               2.7.10-0ubuntu2                            all          find files and directories
+ii  php-symfony-process              2.7.10-0ubuntu2                            all          execute commands in sub-processes
+ii  php-xml                          1:7.0+35ubuntu6                            all          DOM, SimpleXML, WDDX, XML, and XSL module for PHP [default]
+ii  php7.0                           7.0.22-0ubuntu0.16.04.1                    all          server-side, HTML-embedded scripting language (metapackage)
+ii  php7.0-cli                       7.0.22-0ubuntu0.16.04.1                    amd64        command-line interpreter for the PHP scripting language
+ii  php7.0-common                    7.0.22-0ubuntu0.16.04.1                    amd64        documentation, examples and common module for PHP
+ii  php7.0-fpm                       7.0.22-0ubuntu0.16.04.1                    amd64        server-side, HTML-embedded scripting language (FPM-CGI binary)
+ii  php7.0-json                      7.0.22-0ubuntu0.16.04.1                    amd64        JSON module for PHP
+ii  php7.0-mbstring                  7.0.22-0ubuntu0.16.04.1                    amd64        MBSTRING module for PHP
+ii  php7.0-opcache                   7.0.22-0ubuntu0.16.04.1                    amd64        Zend OpCache module for PHP
+ii  php7.0-readline                  7.0.22-0ubuntu0.16.04.1                    amd64        readline module for PHP
+ii  php7.0-xml                       7.0.22-0ubuntu0.16.04.1                    amd64        DOM, SimpleXML, WDDX, XML, and XSL module for PHP
+ii  php7.0-zip                       7.0.22-0ubuntu0.16.04.1                    amd64        Zip module for PHP
