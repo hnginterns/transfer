@@ -53,3 +53,5 @@ Route::group(['middleware' => ['auth', 'admin']], function() {
 Route::get('/ball', function() {
 
 });
+
+Route::get('banks', 'BanksController@banks');
