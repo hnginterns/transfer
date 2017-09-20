@@ -10,6 +10,11 @@ class pagesController extends Controller
       return view('home-page');
     }
 
+    public function signin() 
+    {
+      return view ('sign-in');
+    }
+
     public function balance () {
       return view ('balance');
     }
