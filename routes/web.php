@@ -34,6 +34,9 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::get('/dashboard/fundwallet', 'UsersController@fundWallet')->name('fundwallet');
 });
 
+Route::get('/admin', function () {
+    return view('/admin/home');
+});
 
 Route::group(['middleware' => ['auth', 'admin']], function() {
 	Route::get('/manager', 'AdminController@index');
@@ -50,3 +53,8 @@ Route::group(['middleware' => ['auth', 'admin']], function() {
 	Route::get('/manager/setting', 'AdminController@settings');
 });
 //Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/ball', function() {
+
+});
+
+Route::get('banks', 'BanksController@banks');
