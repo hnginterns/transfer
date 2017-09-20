@@ -280,7 +280,7 @@ desired effect
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Page Headeroooo
+        Page Header
         <small>Optional description</small>
       </h1>
       <ol class="breadcrumb">
