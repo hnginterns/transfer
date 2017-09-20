@@ -12,7 +12,7 @@ class RestrictionTableSeeder extends Seeder
     public function run()
     {
         DB::statement('SET FOREIGN_KEY_CHECKS=0');
-        DB::table('users')->delete();
+        DB::table('restrictions')->delete();
 
         factory(App\Restriction::class, 50)->create();
         

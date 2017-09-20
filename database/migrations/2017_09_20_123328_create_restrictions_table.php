@@ -21,6 +21,8 @@ class CreateRestrictionsTable extends Migration
             $table->decimal('min_amount', 12, 2);
             $table->integer('wallet_id')->unsigned();
             $table->integer('user_id')->unsigned();
+            $table->string('created_by');
+            $table->string('updated_by');
             $table->timestamps();
 
             $table->foreign('wallet_id')->references('id')->on('wallets')
