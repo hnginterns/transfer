@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 class BanksController extends Controller
 {
 

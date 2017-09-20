@@ -13,6 +13,8 @@
 
 Route::get('/', 'pagesController@home');
 
+Route::get('/signin', 'pagesController@signin');
+
 //Route::view('/balance', 'get-wallet');
 
 Route::get('/transfer', 'pagesController@transfer');
