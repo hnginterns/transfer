@@ -54,4 +54,4 @@ Route::get('/ball', function() {
 
 });
 
-Route::get('banks', 'BanksController@banks');
+Route::get('/banks', 'BanksController@banks');
