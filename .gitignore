@@ -1,5 +1,4 @@
 .phpintel
-vendor
 /.idea
 /.vagrant
 Homestead.json
