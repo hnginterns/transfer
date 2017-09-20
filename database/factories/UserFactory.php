@@ -31,6 +31,7 @@ $factory->define(App\Wallet::class, function (Faker $faker) {
 
     return [
         'user_id' => App\User::all()->random()->id,
+        'balance' => $faker->numberBetween(10000, 1900000),
         'wallet_code' => str_random(20),
         'created_by' => rand(1, 80),
         'updated_by' => rand(1, 80),
