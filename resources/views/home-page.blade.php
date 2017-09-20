@@ -23,7 +23,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#"><img id="logo" src="img/logo.png" alt="Company logo" style="display: inline;"> TransferFunds</a>
+            <a class="navbar-brand" href="#"><img id="logo" src="img/logo.png" alt="Company logo" style="display: inline;"> TransferRules</a>
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
@@ -41,7 +41,7 @@
           <img src="../img/phone.png" alt="Transfer rules mobile app screenshot" id="mobile-app">
           <div id="content-text" class="clearfix">
                 <span id="heading-hd">
-                    Create an account for your company with PaysFund
+                    Create an account for your company with TransferRules
                 </span>
                 <span id="text-hd">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim 
