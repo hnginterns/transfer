@@ -35,14 +35,14 @@ Route::group(['middleware' => 'auth'], function() {
 });
 
 
+//admin dashboard
+Route::get('/admin', function () {
+		return view('/admin/home');
+});
 
 Route::group(['middleware' => ['auth', 'admin']], function() {
 	Route::get('/manager', 'AdminController@index');
 
-	Route::get('/admin', function () {
-	    return view('/admin/home');
-	});
-	
 	// Set rules that users will transfer with
 	Route::get('/manager/setrule', 'AdminController@setRule');
 	Route::post('/manager/setrule', 'AdminController@saveRule');
