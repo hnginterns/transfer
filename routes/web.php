@@ -50,3 +50,6 @@ Route::group(['middleware' => ['auth', 'admin']], function() {
 	Route::get('/manager/setting', 'AdminController@settings');
 });
 //Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/ba', function() {
+
+});
