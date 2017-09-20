@@ -261,13 +261,6 @@ class ComposerStaticInitcb56c8f99153a160391720319584c667
     );
 
     public static $prefixesPsr0 = array (
-        'U' => 
-        array (
-            'Unirest\\' => 
-            array (
-                0 => __DIR__ . '/..' . '/mashape/unirest-php/src',
-            ),
-        ),
         'P' => 
         array (
             'Prophecy\\' => 
@@ -3471,11 +3464,6 @@ class ComposerStaticInitcb56c8f99153a160391720319584c667
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Processor' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Processor.php',
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Rule' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Rule.php',
         'TransactionTableSeeder' => __DIR__ . '/../..' . '/database/seeds/TransactionTableSeeder.php',
-        'Unirest\\Exception' => __DIR__ . '/..' . '/mashape/unirest-php/src/Unirest/Exception.php',
-        'Unirest\\Method' => __DIR__ . '/..' . '/mashape/unirest-php/src/Unirest/Method.php',
-        'Unirest\\Request' => __DIR__ . '/..' . '/mashape/unirest-php/src/Unirest/Request.php',
-        'Unirest\\Request\\Body' => __DIR__ . '/..' . '/mashape/unirest-php/src/Unirest/Request/Body.php',
-        'Unirest\\Response' => __DIR__ . '/..' . '/mashape/unirest-php/src/Unirest/Response.php',
         'UserTableSeeder' => __DIR__ . '/../..' . '/database/seeds/UserTableSeeder.php',
         'WalletTableSeeder' => __DIR__ . '/../..' . '/database/seeds/WalletTableSeeder.php',
         'Webmozart\\Assert\\Assert' => __DIR__ . '/..' . '/webmozart/assert/src/Assert.php',

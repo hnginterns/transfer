@@ -15,6 +15,10 @@ Route::get('/', 'pagesController@home');
 
 Route::get('/signin', 'pagesController@signin');
 
+Route::get('/404', function(){
+	return view('404');
+});
+
 //Route::view('/balance', 'get-wallet');
 
 Route::get('/transfer', 'pagesController@transfer');
