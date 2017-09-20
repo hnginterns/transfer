@@ -214,7 +214,7 @@ class ArtisanServiceProvider extends ServiceProvider
     protected function registerCacheClearCommand()
     {
         $this->app->singleton('command.cache.clear', function ($app) {
-            return new CacheClearCommand($app['cache'], $app['files']);
+            return new CacheClearCommand($app['cache']);
         });
     }
 
