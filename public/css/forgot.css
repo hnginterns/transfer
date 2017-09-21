@@ -15,6 +15,7 @@ body {
     background-color: #333333 !important;
 }
 
+
 .navbar-dark .navbar-nav .active>.nav-link {
     color: white;
     background: #FD8032;
@@ -90,14 +91,17 @@ li.nav-item {
     background: #FF6404;
     padding: 5px 80px;
     border-radius: 63px;
-    border-color: #FD8032;
+    border-color: #FF6404;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     cursor: pointer;
 }
 .admin-login>button:hover{
-    background: rgb(252, 251, 250);
-    color: black;
+    background: #FFFFFF;
+    border-color: #FF6404;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    color: #FF6404;
 }
+
 .forgot-holder{
     margin-top: 15px;
 }
@@ -106,6 +110,34 @@ li.nav-item {
     opacity: 0;
 }
 
+.footer {
+
+    position: absolute;
+
+    bottom: 0;
+
+    width: 100%;
+
+    border-top: 2px solid grey;
+
+    /* Set the fixed height of the footer here */
+
+    height: 60px;
+
+    line-height: 60px;
+
+    /* Vertically center the text there */
+
+    background-color: white;
+
+}
+
+
+
+.company{
+    font-weight: bold;
+    font-size: 17px;
+}
 .forgot-password{
     color: white !important;
     font-size: 12px;

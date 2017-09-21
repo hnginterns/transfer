@@ -14,16 +14,31 @@
 Route::get('/', 'pagesController@home');
 Route::get('/signin', 'pagesController@signin');
 
+Route::get('/forgot', function () {
+		return view('forgot');
+});
+
+Route::get('/addaccount', function () {
+		return view('addaccount');
+});
+
 //admin dashboard
 Route::get('/admin', function () {
 		return view('/admin/home');
-})/*->middleware('admin')*/; //Enable Admin middleware by removing comment around "->middleware('admin')"
+})->middleware('admin'); //Enable Admin middleware by removing comment around "->middleware('admin')"
 
 // return error 404 page
 Route::get('/404', function(){
 	return view('404');
 });
 
+Route::get('/about', function(){
+	return view('about');
+});
+
+Route::get('/banks', 'BanksController@banks');
+
+//Route::view('/balance', 'get-wallet');
 
 //Route::view('/balance', 'get-wallet');
 Route::get('/transfer', 'pagesController@transfer');
@@ -43,6 +58,10 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::get('/dashboard/fundwallet', 'UsersController@fundWallet')->name('fundwallet');
 });
 
+//admin dashboard
+Route::get('/admin', function () {
+		return view('/admin/home');
+});
 Route::group(['middleware' => ['auth', 'admin']], function() {
 	Route::get('/manager', 'AdminController@index');
 
@@ -59,8 +78,9 @@ Route::group(['middleware' => ['auth', 'admin']], function() {
 });
 
 //Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/banks', 'BanksController@banks');
+
 Route::get('/ball', function() {
 
 });
-
-Route::get('/banks', 'BanksController@banks');
