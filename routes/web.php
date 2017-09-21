@@ -17,13 +17,20 @@ Route::get('/signin', 'pagesController@signin');
 //admin dashboard
 Route::get('/admin', function () {
 		return view('/admin/home');
-});
+})->middleware('admin'); //Enable Admin middleware by removing comment around "->middleware('admin')"
 
 // return error 404 page
 Route::get('/404', function(){
 	return view('404');
 });
 
+Route::get('/about', function(){
+	return view('about');
+});
+
+Route::get('/banks', 'BanksController@banks');
+
+//Route::view('/balance', 'get-wallet');
 
 //Route::view('/balance', 'get-wallet');
 Route::get('/transfer', 'pagesController@transfer');
@@ -64,4 +71,9 @@ Route::group(['middleware' => ['auth', 'admin']], function() {
 	Route::get('/manager/setting', 'AdminController@settings');
 });
 //Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/banks', 'BanksController@banks');
+
+Route::get('/ball', function() {
+
+});

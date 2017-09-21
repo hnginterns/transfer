@@ -1,250 +1,183 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Wallet Dashboard</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-    crossorigin="anonymous">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-    crossorigin="anonymous"></script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Transfer Rule | Admin</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.6 -->
+  <link rel="stylesheet" href="{{ asset("/bower_components/AdminLTE/bootstrap/css/bootstrap.min.css") }}">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{{ asset("/bower_components/AdminLTE/dist/css/AdminLTE.min.css") }}">
+  <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+        page. However, you can choose any other skin. Make sure you
+        apply the skin class to the body tag so the changes take effect.
+  -->
+  <link rel="stylesheet" href="{{ asset("/bower_components/AdminLTE/dist/css/skins/skin-blue.min.css") }}">
 
-  <style>
-    @import url('https://fonts.googleapis.com/css?family=Nunito+Sans');
-    body {
-      font-family: Nunito Sans;
-    }
-
-    nav {
-      border-radius: 0 !important;
-    }
-
-    .menu {
-      padding-top: 22px;
-    }
-
-    .menu-item {
-      color: white;
-      text-decoration: none !important;
-    }
-
-    .menu ul {
-      display: flex;
-      list-style: none;
-    }
-
-    .menu li {
-      margin: 0 10px;
-      width: 141px;
-      height: 52px;
-      padding: 10px 10px;
-      background-color: #FD8032;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 4px;
-    }
-
-    .wallet-container {
-      display: flex;
-      flex-wrap: wrap;
-      padding-top: 35px;
-      justify-content: center;
-    }
-
-    .wallet {
-      position: relative;
-      width: 324px;
-      height: 150px;
-      background: #333333;
-      margin: 15px;
-    }
-
-    .wallet .currency {
-      position: absolute;
-      width: 41px;
-      height: 21px;
-      left: 280px;
-      top: 2px;
-
-
-      font-style: normal;
-      font-weight: bold;
-      line-height: normal;
-      font-size: 17px;
-      letter-spacing: 0.68px;
-
-      color: #FFFFFF;
-    }
-
-    .wallet-img {
-      position: absolute;
-      width: 63px;
-      height: 77px;
-      left: 130px;
-      top: 33px;
-    }
-
-    .wallet .id {
-      position: absolute;
-      height: 14px;
-      left: 5px;
-      top: 130px;
-      color: white;
-    }
-
-    .wallet .num {
-      position: absolute;
-      left: 7px;
-      top: 5px;
-      color: white;
-    }
-
-    .wallet .balance {
-      position: absolute;
-      width: 115px;
-      left: 225px;
-      top: 125px;
-      color: white;
-    }
-
-    .profile {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: gray;
-      margin-top: 4px;
-    }
-
-    .profile-info{
-      color: white;
-      padding: 5px;
-      line-height: 5.5px;
-      margin-top: 10px;
-    }
-  </style>
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
 </head>
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
 
-<body>
-  <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#">TransferFunds</a>
-      </div>
-      <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Page 1</a></li>
-        <li><a href="#">Page 2</a></li>
-        <li><a href="#">Page 3</a></li>
-        <li>
-          <div class="profile"></div>
-        </li>
-        <li>
-          <div class="profile-info">
-            <p>Mr John Doe</p>
-            <p>Log Out</p>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </nav>
+  <!--
+  BODY TAG OPTIONS:
+  =================
+  Apply one or more of the following classes to get the
+  desired effect
+  |---------------------------------------------------------|
+  | SKINS         | skin-blue                               |
+  |               | skin-black                              |
+  |               | skin-purple                             |
+  |               | skin-yellow                             |
+  |               | skin-red                                |
+  |               | skin-green                              |
+  |---------------------------------------------------------|
+  |LAYOUT OPTIONS | fixed                                   |
+  |               | layout-boxed                            |
+  |               | layout-top-nav                          |
+  |               | sidebar-collapse                        |
+  |               | sidebar-mini                            |
+  |---------------------------------------------------------|
+  -->
+  <!-- Header -->
+  @include('/admin/header')
 
-  <div class="container">
-    <div class="menu">
-      <ul>
-        <li>
-          <a href="" class="menu-item">Wallets</a>
-        </li>
-        <li>
-          <a href="" class="menu-item">Transactions</a>
-        </li>
-        <li>
-          <a href="" class="menu-item">Pay Bills</a>
-        </li>
-        <li>
-          <a href="" class="menu-item">Lorem</a>
-        </li>
-        <li>
-          <a href="" class="menu-item">Lorem</a>
-        </li>
-        <li>
-          <a href="" class="menu-item">Accounts</a>
-        </li>
-        <li>
-          <a href="" class="menu-item">Lorem</a>
-        </li>
-      </ul>
-    </div>
-    <div class="wallet-container">
-      <div class="wallet">
-        <p class="num">001</p>
-        <p class="currency">NGN</p>
-        <img src="assets/img/wallet-i.svg" alt="" class="wallet-img">
-        <p class="id">ID: 0125665</p>
-        <div class="balance">₦5,263,200.00</div>
-      </div>
+  <!-- Sidebar -->
+  @include('/admin/sidebar')
 
-      <div class="wallet">
-        <p class="num">001</p>
-        <p class="currency">NGN</p>
-        <img src="assets/img/wallet-i.svg" alt="" class="wallet-img">
-        <p class="id">ID: 0125665</p>
-        <div class="balance">₦5,263,200.00</div>
-      </div>
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Page Header
+        <small>Optional description</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+        <li class="active">Here</li>
+      </ol>
+    </section>
 
-      <div class="wallet">
-        <p class="num">001</p>
-        <p class="currency">NGN</p>
-        <img src="assets/img/wallet-i.svg" alt="" class="wallet-img">
-        <p class="id">ID: 0125665</p>
-        <div class="balance">₦5,263,200.00</div>
-      </div>
+    <!-- Main content -->
+    <section class="content">
 
-      <div class="wallet">
-        <p class="num">001</p>
-        <p class="currency">NGN</p>
-        <img src="assets/img/wallet-i.svg" alt="" class="wallet-img">
-        <p class="id">ID: 0125665</p>
-        <div class="balance">₦5,263,200.00</div>
-      </div>
+      <!-- Your Page Content Here -->
 
-      <div class="wallet">
-        <p class="num">001</p>
-        <p class="currency">NGN</p>
-        <img src="assets/img/wallet-i.svg" alt="" class="wallet-img">
-        <p class="id">ID: 0125665</p>
-        <div class="balance">₦5,263,200.00</div>
-      </div>
-
-      <div class="wallet">
-        <p class="num">001</p>
-        <p class="currency">NGN</p>
-        <img src="assets/img/wallet-i.svg" alt="" class="wallet-img">
-        <p class="id">ID: 0125665</p>
-        <div class="balance">₦5,263,200.00</div>
-      </div>
-
-      <div class="wallet">
-        <p class="num">001</p>
-        <p class="currency">NGN</p>
-        <img src="assets/img/wallet-i.svg" alt="" class="wallet-img">
-        <p class="id">ID: 0125665</p>
-        <div class="balance">₦5,263,200.00</div>
-      </div>
-
-      <div class="wallet">
-        <p class="num">001</p>
-        <p class="currency">NGN</p>
-        <img src="assets/img/wallet-i.svg" alt="" class="wallet-img">
-        <p class="id">ID: 0125665</p>
-        <div class="balance">₦5,263,200.00</div>
-      </div>
-    </div>
+    </section>
+    <!-- /.content -->
   </div>
-</body>
+  <!-- /.content-wrapper -->
 
+  <!-- Main Footer -->
+   @include('/admin/footer')
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Create the tabs -->
+    <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+      <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+      <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+    </ul>
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <!-- Home tab content -->
+      <div class="tab-pane active" id="control-sidebar-home-tab">
+        <h3 class="control-sidebar-heading">Recent Activity</h3>
+        <ul class="control-sidebar-menu">
+          <li>
+            <a href="javascript:;">
+              <i class="menu-icon fa fa-birthday-cake bg-red"></i>
+
+              <div class="menu-info">
+                <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
+
+                <p>Will be 23 on April 24th</p>
+              </div>
+            </a>
+          </li>
+        </ul>
+        <!-- /.control-sidebar-menu -->
+
+        <h3 class="control-sidebar-heading">Tasks Progress</h3>
+        <ul class="control-sidebar-menu">
+          <li>
+            <a href="javascript:;">
+              <h4 class="control-sidebar-subheading">
+                Custom Template Design
+                <span class="pull-right-container">
+                  <span class="label label-danger pull-right">70%</span>
+                </span>
+              </h4>
+
+              <div class="progress progress-xxs">
+                <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
+              </div>
+            </a>
+          </li>
+        </ul>
+        <!-- /.control-sidebar-menu -->
+
+      </div>
+      <!-- /.tab-pane -->
+      <!-- Stats tab content -->
+      <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
+      <!-- /.tab-pane -->
+      <!-- Settings tab content -->
+      <div class="tab-pane" id="control-sidebar-settings-tab">
+        <form method="post">
+          <h3 class="control-sidebar-heading">General Settings</h3>
+
+          <div class="form-group">
+            <label class="control-sidebar-subheading">
+              Report panel usage
+              <input type="checkbox" class="pull-right" checked>
+            </label>
+
+            <p>
+              Some information about this general settings option
+            </p>
+          </div>
+          <!-- /.form-group -->
+        </form>
+      </div>
+      <!-- /.tab-pane -->
+    </div>
+  </aside>
+  <!-- /.control-sidebar -->
+  <!-- Add the sidebar's background. This div must be placed
+       immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED JS SCRIPTS -->
+
+<!-- jQuery 2.2.3 -->
+<script src="{{ asset("/bower_components/AdminLTE/plugins/jQuery/jquery-2.2.3.min.js") }}"></script>
+<!-- Bootstrap 3.3.6 -->
+<script src="{{ asset("/bower_components/AdminLTE/bootstrap/js/bootstrap.min.js") }}"></script>
+<!-- AdminLTE App -->
+<script src="{{ asset("/bower_components/AdminLTE/dist/js/app.min.js") }}"></script>
+
+<!-- Optionally, you can add Slimscroll and FastClick plugins.
+     Both of these plugins are recommended to enhance the
+     user experience. Slimscroll is required when using the
+     fixed layout. -->
+</body>
 </html>
