@@ -57,11 +57,11 @@
                 @else
                     <h4 class="intro">User Login </h4>
                 @endif 
-                <form action="{{ route('login') }}" method="POST" class="admin-login">
+                <form action="" method="POST" class="admin-login">
                     {{ csrf_field() }}
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
-                        <input value="{{ old('email') }}" name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                        <input value="" name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
 
                         
                     </div>
@@ -75,7 +75,7 @@
                     <button type="submit" class="btn btn-primary">Submit</button>
 
                     <div style="color: black;">
-                        <a href="{{ route('password.request') }}" class="forgot-password">Forgot Password?</a>
+                        <a href="" class="forgot-password">Forgot Password?</a>
                     </div>
                 </form>
             </div>
@@ -92,11 +92,11 @@
                     </div>
                     <div class="modal-body">
                         <h4 class="intro">Admin Login oooos </h4>
-                        <form method="POST" action="{{ route('login') }}" class="admin-login">
+                        <form method="POST" action="" class="admin-login">
                             {{ csrf_field() }}
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Email address</label>
-                                <input value="{{ old('email') }}" name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                                <input value="" name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
 
                                 
                             </div>
@@ -108,7 +108,7 @@
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                             <div>
-                                <a href="{{ route('password.request') }}" class="forgot-password">Forgot Password?</a>
+                                <a href="" class="forgot-password">Forgot Password?</a>
                             </div>
                         </form>
                     </div>
