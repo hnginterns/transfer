@@ -51,7 +51,12 @@
     <main>
         <div class="container">
             <div class="login-box">
-                
+
+                @if ($ref == $host.'/admin')
+                    <h4 class="intro">Admin Login </h4>
+                @else
+                    <h4 class="intro">User Login </h4>
+                @endif 
                 <form action="{{ route('login') }}" method="POST" class="admin-login">
                     {{ csrf_field() }}
                     <div class="form-group">
