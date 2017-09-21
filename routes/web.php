@@ -17,7 +17,7 @@ Route::get('/signin', 'pagesController@signin');
 //admin dashboard
 Route::get('/admin', function () {
 		return view('/admin/home');
-});
+})/*->middleware('admin')*/; //Enable Admin middleware by removing comment around "->middleware('admin')"
 
 // return error 404 page
 Route::get('/404', function(){
