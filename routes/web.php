@@ -24,12 +24,9 @@ Route::get('/404', function(){
 	return view('404');
 });
 
-<<<<<<< HEAD
 Route::get('/banks', 'BanksController@banks');
 
 //Route::view('/balance', 'get-wallet');
-=======
->>>>>>> de341ff27aee53b0afa107bc69f134b92b212cef
 
 //Route::view('/balance', 'get-wallet');
 Route::get('/transfer', 'pagesController@transfer');
