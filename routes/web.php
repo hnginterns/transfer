@@ -14,6 +14,7 @@
 Route::get('/', 'pagesController@home');
 Route::get('/signin', 'pagesController@signin');
 
+<<<<<<< HEAD
 
 //admin dashboard
 Route::get('/admin', function () {
@@ -21,6 +22,12 @@ Route::get('/admin', function () {
 });
 
 
+=======
+Route::get('/404', function(){
+	return view('404');
+});
+
+>>>>>>> 1f387c8cd073e79bdaed0c5942191ac64fad4d7d
 //Route::view('/balance', 'get-wallet');
 
 Route::get('/transfer', 'pagesController@transfer');
