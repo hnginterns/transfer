@@ -15,17 +15,20 @@ class CreateRestrictionsTable extends Migration
     {
         Schema::create('restrictions', function (Blueprint $table) {
             $table->increments('id');
-            $table->boolean('can_transfer')->default(true);
-            $table->boolean('can_transfer_external')->default(false);
-            $table->decimal('max_amount', 12, 2);
-            $table->decimal('min_amount', 12, 2);
             $table->integer('wallet_id')->unsigned();
             $table->integer('user_id')->unsigned();
-            $table->string('created_by');
-            $table->string('updated_by');
+            $table->integer('rule_id')->unsigned();
             $table->timestamps();
 
             $table->foreign('wallet_id')->references('id')->on('wallets')
+                    ->onDelete('cascade')
+                    ->onUpdate('cascade');
+
+            $table->foreign('user_id')->references('id')->on('users')
+                    ->onDelete('cascade')
+                    ->onUpdate('cascade');
+
+            $table->foreign('rule_id')->references('id')->on('rules')
                     ->onDelete('cascade')
                     ->onUpdate('cascade');
         });
