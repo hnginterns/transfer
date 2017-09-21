@@ -20,15 +20,17 @@
         </thead>
         <tbody>
             <tr>
-                @foreach($banks as $bankCode => $bankName)
                 <td>
+                @foreach($banks as $bankCode => $bankName)
                 {{$bankCode}}<br>
+                @endforeach
                 </td>
 
                 <td>
+                @foreach($banks as $bankCode => $bankName)
                 {{$bankName}}<br>
-                </td>
                 @endforeach
+                </td>
             </tr>
         </tbody>
     </table>
