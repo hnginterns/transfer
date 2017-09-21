@@ -20,6 +20,8 @@ Route::get('/forgot', function () {
 	return view('forgot');
 });
 
+Route::get('/confirmation', 'ValidateAccountController@confirm');
+
 // get dashboard
 Route::get('/userdashboard', 'pagesController@userdashboard');
 
