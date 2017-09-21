@@ -7,6 +7,7 @@
     <title>@yield('title')</title>
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ URL::asset('css/style.css')}}">
 </head>
 <body>
@@ -25,21 +26,20 @@
             </button>
             <a class="navbar-brand" href="#"><img id="logo" src="img/logo.png" alt="Company logo" style="display: inline;"> TransferRules</a>
           </div>
-          @yield('header')
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
               <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
               <li><a href="#">FAQs</a></li>
               <li><a href="#">Features</a></li>
               <li><a href="#">Demo</a></li>
-              <li id="sign-in"><a href="/signin">SIGN IN</a></li>              
+              <li id="sign-in"><a href="#">SIGN IN</a></li>              
             </ul>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
       </nav>
 
       <div id="header-content">
-          <img src="../img/phone.png" alt="Transfer rules mobile app screenshot" id="mobile-app">
+          <img src="img/phone.png" alt="Transfer rules mobile app screenshot" id="mobile-app">
           <div id="content-text" class="clearfix">
                 <span id="heading-hd">
                     Create an account for your company with TransferRules
@@ -54,7 +54,7 @@
       </div>
     </div>
 
-    <!--HEADER ENDS -->
+    <!--HEADER ENDS --> 
 
     <!-- SECTION ONE - (AMAZING FEATURES) --> 
     <div id="section1">
@@ -67,26 +67,25 @@
         </p>
         <div id="features">
             <img src="img/screenshots.png" alt="site screenshot" id="screenshots">
-            @yield('contents')
             <div id="features-list">
                 <div class="feature">
                     <span class="feature-img"></span>
-                    <span id="feature-heading">Get Payment</span>
+                    <span id="feature-heading">Get Payment <span class="fa fa-money features-icons"></span></span>
                     <span class="feature-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
                 </div>
                 <div class="feature">
                     <span class="feature-img"></span>
-                    <span id="feature-heading">Manage Funds</span>
+                    <span id="feature-heading">Manage Funds <span class="fa fa-money features-icons"></span></span>
                     <span class="feature-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
                 </div>
                 <div class="feature">
                     <span class="feature-img"></span>
-                    <span id="feature-heading">Access Wallet</span>
+                    <span id="feature-heading">Access Wallet <span class="fa fa-shopping-bag features-icons"></span></span>
                     <span class="feature-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
                 </div>
                 <div class="feature">
                     <span class="feature-img"></span>
-                    <span id="feature-heading">Multiple User Access</span>
+                    <span id="feature-heading">Multiple User Access <span class="fa fa-users features-icons"></span></span>
                     <span class="feature-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
                 </div>
             </div>
@@ -135,7 +134,7 @@
         <div id="divider">
             <div id="divider-content">
                 <div id="divider-text">
-                    <p id="divider-title">Imagine your companies future</p>
+                    <p id="divider-title">Imagine your companie's future</p>
                     <p id="">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, Lorem ipsum dolor sit amet, consectetur adipiscing elit 
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, Lorem ipsum dolor sit amet, consectetur adipiscing
@@ -149,7 +148,6 @@
     <!-- FOOTER -->
 
     <div id="footer">
-        @yield('footer')
         <div id="footer-heading">
             <li><a href="#">Lorem ipsum dolor</a></li>        
             <li><a href="#">Lorem ipsum dolor</a></li>
@@ -176,13 +174,43 @@
         </div>
     </div>
 
+    <div id="mobile-footer">
+      <table>
+        <tr>
+          <td style="font-size: 17px; font-weight: bold;">Heading</td>
+          <td style="font-size: 17px; font-weight: bold;">Heading</td>
+          <td style="font-size: 17px; font-weight: bold;">Heading</td>          
+        </tr>
+        <tr>
+          <td>Link</td>
+          <td>Link</td>
+          <td>Link</td>          
+        </tr>
+        <tr>
+          <td>Link</td>
+          <td>Link</td>
+          <td>Link</td>          
+        </tr>
+        <tr>
+          <td>Link</td>
+          <td>Link</td>
+          <td>Link</td>          
+        </tr>
+      </table>
+      <p id="line"> </p>
+      <div id="lower-footer">
+          <p>&#169; 2017 Transferrules.com. All rights reserved</p>
+      </div>
+    </div>
+
     <!-- FOOTER BEGINS -->
-    <script
+    <!--<script
         src="https://code.jquery.com/jquery-3.2.1.min.js"
         integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
         crossorigin="anonymous">
-    </script>
+    </script> -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="js/script.js"></script>
+    <script src="{{ URL::asset('js/script.css')}}"></script>
 </body>
 </html>

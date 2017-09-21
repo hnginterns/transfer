@@ -12,17 +12,26 @@
 */
 
 Route::get('/', 'pagesController@home');
-
 Route::get('/signin', 'pagesController@signin');
 
+//admin dashboard
+Route::get('/admin', function () {
+		return view('/admin/home');
+})/*->middleware('admin')*/; //Enable Admin middleware by removing comment around "->middleware('admin')"
+
+// return error 404 page
 Route::get('/404', function(){
 	return view('404');
 });
 
+<<<<<<< HEAD
 Route::get('/banks', 'BanksController@banks');
 
 //Route::view('/balance', 'get-wallet');
+=======
+>>>>>>> de341ff27aee53b0afa107bc69f134b92b212cef
 
+//Route::view('/balance', 'get-wallet');
 Route::get('/transfer', 'pagesController@transfer');
 
 Route::get('/balance', 'pagesController@balance');
@@ -40,12 +49,6 @@ Route::group(['middleware' => 'auth'], function() {
 	// Wallet Funding
 	Route::post('/dashboard/fundwallet', 'UsersController@processFundWallet');
 	Route::get('/dashboard/fundwallet', 'UsersController@fundWallet')->name('fundwallet');
-});
-
-
-//admin dashboard
-Route::get('/admin', function () {
-		return view('/admin/home');
 });
 
 Route::group(['middleware' => ['auth', 'admin']], function() {
