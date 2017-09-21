@@ -27,7 +27,9 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav navbar-left" style="margin-left:10px;">
+                  <button class="sidebar-toggle" type="button">
                       <span class="navbar-toggler-icon"></span>
+                  </button>
             </ul>
             <ul class="navbar-nav navbar-right">
                 <li class="nav-item search">
