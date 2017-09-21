@@ -20,17 +20,15 @@
         </thead>
         <tbody>
             <tr>
+                @foreach($banks as $bankCode => $bankName)
                 <td>
-                @foreach($banks as $key => $value)
-                {{$key}}<br>
-                @endforeach
+                {{$bankCode}}<br>
                 </td>
 
                 <td>
-                @foreach($banks as $key => $value)
-                {{$value}}<br>
-                @endforeach
+                {{$bankName}}<br>
                 </td>
+                @endforeach
             </tr>
         </tbody>
     </table>
