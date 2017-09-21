@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -68,6 +69,21 @@
     .coral{
       color: #ff6200;
     }
+  .main h2{
+    margin-top: 0;
+  }
+	  h2, h4, .blue{
+		  color: #222c37;
+		  }
+	  p{
+		  color: #686969:
+			  }
+    .bg-coral{
+      background-color: #ff6200;
+    }
+	 .bg-blue{
+      background-color: #222c37;
+    }	 
     a{ 
       text-decoration: none;
     }
@@ -82,7 +98,6 @@
       font-size: 18px;
       text-decoration: none;
       color: #fff;
-      background-color: #ff6200;
       padding: 5px 20px;
       margin: 5px 9%;
       box-shadow: 0 5px 5px 2px rgba(0,0,0,0.14);
@@ -115,18 +130,19 @@
 	<div class="main">
     <h2>WHOOPS!</h2>
     
-    <div class="error">4 <span class="ghost"> </span>4</div>
-    
+    <img src="4040.png" height="150px">
+    <!--<div class="error">4 <span class="ghost"> </span>4</div>
+    -->
     <h2>ERROR</h2>
 
 		<p> Sorry the page you are looking for cannot be accessed.
     <br> Check the options below or feel free to</p>
     
-    <h4><a class="coral" href="#">REPORT THIS ISSUE</a></h4>
+    <h4><a class="blue" href="#">REPORT THIS ISSUE</a></h4>
     
     <div class="navigate">
-      <a href="#">GO TO DASHBOARD</a>
-      <a href="#">GO TO HOMEPAGE</a>
+      <a class="bg-coral" href="/dashboard">GO TO DASHBOARD</a>
+      <a class="bg-blue" href="./home">GO TO HOMEPAGE</a>
     </div>
 	</div>
 </body>
