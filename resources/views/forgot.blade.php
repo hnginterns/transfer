@@ -1,12 +1,12 @@
 @extends('layouts.head')
 
     @section('title')
-        Sign in
+        Forgot Password
     @endsection
 
     @section('head')
         <!-- external scripts and meta tags goes here-->
-        <link rel="stylesheet" type="text/css" href="/css/sigin.css">
+        <link rel="stylesheet" type="text/css" href="/css/forgot.css">
     @endsection
 
 
@@ -65,4 +65,11 @@
             </div>
         </div>
     </main>
+
+    <footer class="footer">
+        <div class="container" style="text-align:center">
+            <span class="text-muted company">2017 TransferFunds - All Rights Reserved</span>
+        </div>
+    </footer>
+
 @endsection
