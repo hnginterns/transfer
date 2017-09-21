@@ -1,0 +1,110 @@
+body {
+    font-family: 'Nunito Sans', sans-serif;
+    padding: 0px;
+    margin: 0px;
+}
+
+.row{
+    margin-top: -20px;
+}
+
+select, input:not(#search){
+    width: 100%;
+    padding: 10px;
+    background-color: rgba(253, 128, 50, 0.3);
+    border: 0;
+
+}
+.navbar-expand-lg{
+  border-radius: 0px;
+}
+
+#search{
+    border: 0;
+    padding: 10px;
+    text-align: center;
+}
+
+label{
+    margin-top: 20px;
+}
+
+button{
+    margin-top: 20px;
+    background-color: #FD8032;
+    border: 0;
+    padding: 10px;
+    border-radius: 5px;
+    color: #fff;
+
+}
+.sidebar-line{
+  border-left: 1px solid #E0E0E0;
+}
+
+.abba{
+    margin-top: 20px;
+}
+
+.sidebar-toggle{
+  margin-top: 0px;
+    border: 1px solid white;
+    border-radius: 2px;
+    background: transparent;
+}
+
+.sidebar-toggle > span{
+    height: 1.7em;
+    width: 1.7em;
+}
+
+.navbar-toggler-icon{
+  color: white;
+}
+.col-sm-2>nav>a{
+    display: block;
+    font-weight: 600;
+    padding: 10px;
+    color: #25313E;
+}
+.remove-padding{
+  padding: 0;
+}
+#indent{
+    padding-left: 40px;
+    color: #828282;
+}
+
+#selected{
+    background-color: #C1D6DD;
+}
+
+
+#header-content {
+    color: white;
+    position: absolute;
+    left: 40%;
+    top: 40%;
+}
+
+#main-text {
+    font-size: 26px;
+    font-weight: bold;
+}
+
+#sub-text {
+    font-size: 18px;
+}
+
+
+/* RESPONSIVE STYLES */
+@media (max-width: 1250px) {}
+
+@media (max-width: 900px) {
+
+
+}
+
+@media (max-width: 650px){
+
+}

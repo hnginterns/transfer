@@ -18,6 +18,10 @@ Route::get('/forgot', function () {
 		return view('forgot');
 });
 
+Route::get('/addaccount', function () {
+		return view('addaccount');
+});
+
 //admin dashboard
 Route::get('/admin', function () {
 		return view('/admin/home');
