@@ -14,6 +14,10 @@
 Route::get('/', 'pagesController@home');
 Route::get('/signin', 'pagesController@signin');
 
+Route::get('/forgot', function () {
+		return view('forgot');
+});
+
 //admin dashboard
 Route::get('/admin', function () {
 		return view('/admin/home');
@@ -70,4 +74,3 @@ Route::group(['middleware' => ['auth', 'admin']], function() {
 Route::get('/ball', function() {
 
 });
-
