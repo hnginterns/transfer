@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit53c27d7eab2cb22a788925f875d4bd5e
+class ComposerStaticInitcb56c8f99153a160391720319584c667
 {
     public static $files = array (
         '1d1b89d124cc9cb8219922c9d5569199' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest.php',
@@ -320,6 +320,7 @@ class ComposerStaticInit53c27d7eab2cb22a788925f875d4bd5e
         'App\\Http\\Controllers\\UsersController' => __DIR__ . '/../..' . '/app/Http/Controllers/UsersController.php',
         'App\\Http\\Controllers\\pagesController' => __DIR__ . '/../..' . '/app/Http/Controllers/pagesController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
+        'App\\Http\\Middleware\\Admin' => __DIR__ . '/../..' . '/app/Http/Middleware/Admin.php',
         'App\\Http\\Middleware\\AdminMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/AdminMiddleware.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
         'App\\Http\\Middleware\\RedirectIfAuthenticated' => __DIR__ . '/../..' . '/app/Http/Middleware/RedirectIfAuthenticated.php',
@@ -331,7 +332,11 @@ class ComposerStaticInit53c27d7eab2cb22a788925f875d4bd5e
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
+        'App\\Restriction' => __DIR__ . '/../..' . '/app/Restriction.php',
+        'App\\Rule' => __DIR__ . '/../..' . '/app/Rule.php',
+        'App\\Transaction' => __DIR__ . '/../..' . '/app/Transaction.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
+        'App\\Wallet' => __DIR__ . '/../..' . '/app/Wallet.php',
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
         'Carbon\\CarbonInterval' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
         'Carbon\\Exceptions\\InvalidDateException' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Exceptions/InvalidDateException.php',
@@ -2829,6 +2834,8 @@ class ComposerStaticInit53c27d7eab2cb22a788925f875d4bd5e
         'Ramsey\\Uuid\\UuidFactory' => __DIR__ . '/..' . '/ramsey/uuid/src/UuidFactory.php',
         'Ramsey\\Uuid\\UuidFactoryInterface' => __DIR__ . '/..' . '/ramsey/uuid/src/UuidFactoryInterface.php',
         'Ramsey\\Uuid\\UuidInterface' => __DIR__ . '/..' . '/ramsey/uuid/src/UuidInterface.php',
+        'RestrictionTableSeeder' => __DIR__ . '/../..' . '/database/seeds/RestrictionTableSeeder.php',
+        'RuleTableSeeder' => __DIR__ . '/../..' . '/database/seeds/RuleTableSeeder.php',
         'SebastianBergmann\\CodeCoverage\\CodeCoverage' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/CodeCoverage.php',
         'SebastianBergmann\\CodeCoverage\\CoveredCodeNotExecutedException' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/Exception/CoveredCodeNotExecutedException.php',
         'SebastianBergmann\\CodeCoverage\\Driver\\Driver' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/Driver/Driver.php',
@@ -3464,11 +3471,14 @@ class ComposerStaticInit53c27d7eab2cb22a788925f875d4bd5e
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Property\\Property' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Property/Property.php',
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Processor' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Processor.php',
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Rule' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Rule.php',
+        'TransactionTableSeeder' => __DIR__ . '/../..' . '/database/seeds/TransactionTableSeeder.php',
         'Unirest\\Exception' => __DIR__ . '/..' . '/mashape/unirest-php/src/Unirest/Exception.php',
         'Unirest\\Method' => __DIR__ . '/..' . '/mashape/unirest-php/src/Unirest/Method.php',
         'Unirest\\Request' => __DIR__ . '/..' . '/mashape/unirest-php/src/Unirest/Request.php',
         'Unirest\\Request\\Body' => __DIR__ . '/..' . '/mashape/unirest-php/src/Unirest/Request/Body.php',
         'Unirest\\Response' => __DIR__ . '/..' . '/mashape/unirest-php/src/Unirest/Response.php',
+        'UserTableSeeder' => __DIR__ . '/../..' . '/database/seeds/UserTableSeeder.php',
+        'WalletTableSeeder' => __DIR__ . '/../..' . '/database/seeds/WalletTableSeeder.php',
         'Webmozart\\Assert\\Assert' => __DIR__ . '/..' . '/webmozart/assert/src/Assert.php',
         'Whoops\\Exception\\ErrorException' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Exception/ErrorException.php',
         'Whoops\\Exception\\Formatter' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Exception/Formatter.php',
@@ -3562,10 +3572,10 @@ class ComposerStaticInit53c27d7eab2cb22a788925f875d4bd5e
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit53c27d7eab2cb22a788925f875d4bd5e::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit53c27d7eab2cb22a788925f875d4bd5e::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit53c27d7eab2cb22a788925f875d4bd5e::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit53c27d7eab2cb22a788925f875d4bd5e::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitcb56c8f99153a160391720319584c667::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitcb56c8f99153a160391720319584c667::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitcb56c8f99153a160391720319584c667::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInitcb56c8f99153a160391720319584c667::$classMap;
 
         }, null, ClassLoader::class);
     }

@@ -1,0 +1,131 @@
+html,
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+.navbar {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.sign-up{
+
+}
+
+.bg-dark {
+    background-color: #333333 !important;
+}
+
+.navbar-dark .navbar-nav .active>.nav-link {
+    color: white;
+    background: #FD8032;
+    border: 2px solid #FD8032;
+    border-radius: 15px;
+    padding: 3px 20px;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    padding: 5px 10px;
+}
+
+li.nav-item {
+    margin: 5px 10px;
+}
+
+.login-box {
+    margin: auto;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 6%;
+    padding: 60px 0 80px;
+    border-radius: 10px;
+    background:none;
+}
+
+.admin-login>.form-group>.form-control {
+    border-radius: 0px;
+    border: 0;
+    border-bottom: 1px solid #FF6404;
+    border-color: #FF6404;
+}
+
+
+.intro-sub{
+  Font Family: Nunito Sans;
+  Font Style: Bold;
+  Font Size: 32px;
+  Line Height: 44px;
+  Align: Left;
+  color:  #FF6404;
+}
+
+.writeup{
+  Font Family: Lato;
+  Font Style: Medium;
+  Font Size: 20px;
+  Line Height: 24px;
+  Align: Left;
+  color: #5E5E5E;
+}
+
+.admin-login>.form-group>label {
+    color: white;
+}
+
+.admin-login>.form-group {
+    text-align: left;
+}
+.form-group{
+    margin-bottom: 2.8rem;
+}
+
+.admin-login {
+    text-align: center;
+    width: 50%;
+}
+
+.admin-login>button {
+    background: #FF6404;
+    padding: 5px 80px;
+    border-radius: 63px;
+    border-color: #FD8032;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
+.admin-login>button:hover{
+    background: rgb(252, 251, 250);
+    color: black;
+}
+.forgot-holder{
+    margin-top: 15px;
+}
+
+#emailHelp{
+    opacity: 0;
+}
+
+.forgot-password{
+    color: white !important;
+    font-size: 12px;
+    margin-top: 20px;
+    margin-bottom: 0;
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 750px) {
+    .login-box{
+        width: 100%;
+        margin-top: 10%;
+        padding: 40px 0 60px;
+    }
+    .admin-login{
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: ){
+
+}
