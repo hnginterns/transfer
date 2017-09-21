@@ -24,6 +24,13 @@ Route::get('/404', function(){
 	return view('404');
 });
 
+Route::get('/about', function(){
+	return view('about');
+});
+
+Route::get('/banks', 'BanksController@banks');
+
+//Route::view('/balance', 'get-wallet');
 
 //Route::view('/balance', 'get-wallet');
 Route::get('/transfer', 'pagesController@transfer');
@@ -64,4 +71,3 @@ Route::get('/ball', function() {
 
 });
 
-Route::get('/banks', 'BanksController@banks');
