@@ -15,7 +15,7 @@ class BanksController extends Controller
     return function_exists('curl_version');
 }
 
-        var_dump(_isCurl());
+        var_dump('Current PHP version: ' . phpversion());
         die();
         $headers = array('content-type' => 'application/json');
         $response = \Unirest\Request::post('https://moneywave.herokuapp.com/banks', $headers);
