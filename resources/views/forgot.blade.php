@@ -15,7 +15,7 @@
         <div class="container-fluid">
 
             <a class="navbar-brand" href="#">
-                <img src="logo.png" width="30" height="30" class="d-inline-block align-top" alt=""> TransferRules
+                <img src="img/logo.png" width="30" height="30" class="d-inline-block align-top" alt=""> TransferRules
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                 aria-expanded="false" aria-label="Toggle navigation">
