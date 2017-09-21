@@ -58,21 +58,13 @@
                         <label for="exampleInputEmail1">Email address</label>
                         <input value="{{ old('email') }}" name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
 
-                        @if ($errors->has('email'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('email') }}</strong>
-                            </span>
-                        @endif
+                        
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Password</label>
                         <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
 
-                        @if ($errors->has('password'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('password') }}</strong>
-                            </span>
-                        @endif
+                        
                     </div>
 
                     <button type="submit" class="btn btn-primary">Submit</button>
@@ -101,21 +93,13 @@
                                 <label for="exampleInputEmail1">Email address</label>
                                 <input value="{{ old('email') }}" name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
 
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
+                                
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Password</label>
                                 <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
 
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
+                               
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                             <div>
