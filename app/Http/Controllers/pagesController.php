@@ -3,16 +3,28 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class pagesController extends Controller
 {
+    use AuthenticatesUsers;
+
+    protected $redirectTo = '/dashboard';
+
+
+
     public function home () {
       return view('home-page');
     }
 
-    public function signin() 
+    public function signin(Request $request) 
     {
-      return view ('sign-in');
+      $data['ref'] = str_replace('http://', '', str_replace('https://', '', URL::previous()));
+      $data['host'] = str_replace('http://', '', str_replace('https://', '', $request->server('HTTP_HOST')));
+
+      return $this->showLoginForm($data);
+      //return view ('sign-in', $data);
     }
 
     public function balance () {
