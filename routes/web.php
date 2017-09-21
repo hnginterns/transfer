@@ -12,8 +12,14 @@
 */
 
 Route::get('/', 'pagesController@home');
-
 Route::get('/signin', 'pagesController@signin');
+
+
+//admin dashboard
+Route::get('/admin', function () {
+		return view('/admin/home');
+});
+
 
 //Route::view('/balance', 'get-wallet');
 
@@ -34,12 +40,6 @@ Route::group(['middleware' => 'auth'], function() {
 	// Wallet Funding
 	Route::post('/dashboard/fundwallet', 'UsersController@processFundWallet');
 	Route::get('/dashboard/fundwallet', 'UsersController@fundWallet')->name('fundwallet');
-});
-
-
-//admin dashboard
-Route::get('/admin', function () {
-		return view('/admin/home');
 });
 
 Route::group(['middleware' => ['auth', 'admin']], function() {
