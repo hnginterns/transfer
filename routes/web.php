@@ -95,4 +95,7 @@ Route::group(['middleware' => ['auth', 'admin']], function() {
 	//Route::get('/manager/setting', 'AdminController@settings');
 });
 
-?>
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
