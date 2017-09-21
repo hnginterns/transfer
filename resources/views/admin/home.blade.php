@@ -183,7 +183,7 @@
       <div class="wallet">
         <p class="num">001</p>
         <p class="currency">NGN</p>
-        <img src="img/wallet-i.svg" alt="" class="wallet-img">
+        <img src="assets/img/wallet-i.svg" alt="" class="wallet-img">
         <p class="id">ID: 0125665</p>
         <div class="balance">₦5,263,200.00</div>
       </div>
@@ -191,7 +191,7 @@
       <div class="wallet">
         <p class="num">001</p>
         <p class="currency">NGN</p>
-        <img src="img/wallet-i.svg" alt="" class="wallet-img">
+        <img src="assets/img/wallet-i.svg" alt="" class="wallet-img">
         <p class="id">ID: 0125665</p>
         <div class="balance">₦5,263,200.00</div>
       </div>
@@ -199,7 +199,7 @@
       <div class="wallet">
         <p class="num">001</p>
         <p class="currency">NGN</p>
-        <img src="img/wallet-i.svg" alt="" class="wallet-img">
+        <img src="assets/img/wallet-i.svg" alt="" class="wallet-img">
         <p class="id">ID: 0125665</p>
         <div class="balance">₦5,263,200.00</div>
       </div>
@@ -207,7 +207,7 @@
       <div class="wallet">
         <p class="num">001</p>
         <p class="currency">NGN</p>
-        <img src="img/wallet-i.svg" alt="" class="wallet-img">
+        <img src="assets/img/wallet-i.svg" alt="" class="wallet-img">
         <p class="id">ID: 0125665</p>
         <div class="balance">₦5,263,200.00</div>
       </div>
@@ -215,7 +215,7 @@
       <div class="wallet">
         <p class="num">001</p>
         <p class="currency">NGN</p>
-        <img src="img/wallet-i.svg" alt="" class="wallet-img">
+        <img src="assets/img/wallet-i.svg" alt="" class="wallet-img">
         <p class="id">ID: 0125665</p>
         <div class="balance">₦5,263,200.00</div>
       </div>
@@ -223,7 +223,7 @@
       <div class="wallet">
         <p class="num">001</p>
         <p class="currency">NGN</p>
-        <img src="img/wallet-i.svg" alt="" class="wallet-img">
+        <img src="assets/img/wallet-i.svg" alt="" class="wallet-img">
         <p class="id">ID: 0125665</p>
         <div class="balance">₦5,263,200.00</div>
       </div>
@@ -231,7 +231,7 @@
       <div class="wallet">
         <p class="num">001</p>
         <p class="currency">NGN</p>
-        <img src="img/wallet-i.svg" alt="" class="wallet-img">
+        <img src="assets/img/wallet-i.svg" alt="" class="wallet-img">
         <p class="id">ID: 0125665</p>
         <div class="balance">₦5,263,200.00</div>
       </div>
@@ -239,7 +239,7 @@
       <div class="wallet">
         <p class="num">001</p>
         <p class="currency">NGN</p>
-        <img src="img/wallet-i.svg" alt="" class="wallet-img">
+        <img src="assets/img/wallet-i.svg" alt="" class="wallet-img">
         <p class="id">ID: 0125665</p>
         <div class="balance">₦5,263,200.00</div>
       </div>
