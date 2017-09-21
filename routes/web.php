@@ -27,11 +27,9 @@ Route::get('/404', function(){
 
 //Route::view('/balance', 'get-wallet');
 Route::get('/transfer', 'pagesController@transfer');
-
 Route::get('/balance', 'pagesController@balance');
 
 Auth::routes();
-
 Route::group(['middleware' => 'auth'], function() {
 	// Handles Transfers
 	Route::get('/dashboard/transfer', 'UsersController@transfer')->name('transfer');
@@ -59,6 +57,7 @@ Route::group(['middleware' => ['auth', 'admin']], function() {
 	// Edit Company Details
 	Route::get('/manager/setting', 'AdminController@settings');
 });
+
 //Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/ball', function() {
 
