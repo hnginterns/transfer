@@ -44,7 +44,7 @@ return array(
     'Cron\\MinutesField' => $vendorDir . '/mtdowling/cron-expression/src/Cron/MinutesField.php',
     'Cron\\MonthField' => $vendorDir . '/mtdowling/cron-expression/src/Cron/MonthField.php',
     'Cron\\YearField' => $vendorDir . '/mtdowling/cron-expression/src/Cron/YearField.php',
-    'DatabaseSeeder' => $baseDir . '/../../../documents/github/transfer/database/seeds/DatabaseSeeder.php',
+    'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'DeepCopy\\DeepCopy' => $vendorDir . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
     'DeepCopy\\Exception\\CloneException' => $vendorDir . '/myclabs/deep-copy/src/DeepCopy/Exception/CloneException.php',
     'DeepCopy\\Filter\\Doctrine\\DoctrineCollectionFilter' => $vendorDir . '/myclabs/deep-copy/src/DeepCopy/Filter/Doctrine/DoctrineCollectionFilter.php',
