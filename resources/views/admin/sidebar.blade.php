@@ -20,9 +20,9 @@
       <!-- Sidebar Menu -->
       <ul class="sidebar-menu">
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Wallets</span></a></li>
-        <li><a href="#"><i class="fa fa-link"></i> <span></span>Accounts</a></li>
-        <li><a href="#"><i class="fa fa-link"></i> <span></span>Transactions</a></li>
+        <li class="active"><a href="#"><i class="fa fa-credit-card"></i> <span>Wallets</span></a></li>
+        <li><a href="#"><i class="fa fa-user"></i> <span></span>Accounts</a></li>
+        <li><a href="#"><i class="fa fa-file"></i> <span></span>Transactions</a></li>
 
       </ul>
       <!-- /.sidebar-menu -->
