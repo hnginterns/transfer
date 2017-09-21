@@ -96,10 +96,10 @@ li.nav-item {
     cursor: pointer;
 }
 .admin-login>button:hover{
-    background: #FD8032;
-    background: #FF6404;
+    background: #FFFFFF;
     border-color: #FF6404;
-    color: white;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    color: #FF6404;
 }
 
 .forgot-holder{
