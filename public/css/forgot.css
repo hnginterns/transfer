@@ -91,14 +91,17 @@ li.nav-item {
     background: #FF6404;
     padding: 5px 80px;
     border-radius: 63px;
-    border-color: #FD8032;
+    border-color: #FF6404;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     cursor: pointer;
 }
 .admin-login>button:hover{
-    background: rgb(252, 251, 250);
-    color: black;
+    background: #FD8032;
+    background: #FF6404;
+    border-color: #FF6404;
+    color: white;
 }
+
 .forgot-holder{
     margin-top: 15px;
 }
