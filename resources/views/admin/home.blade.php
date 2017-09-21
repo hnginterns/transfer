@@ -55,10 +55,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
   |---------------------------------------------------------|
   -->
   <!-- Header -->
-  @include('/admin/header')
+  @include('admin/header')
 
   <!-- Sidebar -->
-  @include('/admin/sidebar')
+  @include('admin/sidebar')
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
