@@ -1,0 +1,111 @@
+html,
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+.navbar {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.bg-dark {
+    background-color: #333333 !important;
+}
+
+.navbar-dark .navbar-nav .active>.nav-link {
+    color: white;
+    border: 2px solid #FD8032;
+    border-radius: 10px;
+    padding: 5px 10px;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    padding: 5px 10px;
+}
+
+li.nav-item {
+    margin: 5px 10px;
+}
+
+.login-box {
+    margin: auto;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 6%;
+    padding: 60px 0 80px;
+    border: 2px solid #777373;
+    border-radius: 10px;
+    background: #333333;
+}
+
+.admin-login>.form-group>.form-control {
+    border-radius: 10px;
+    border-color: #333333;
+}
+
+.intro{
+    color: white;
+    margin-bottom: 20px;
+}
+
+.admin-login>.form-group>label {
+    color: white;
+}
+
+.admin-login>.form-group {
+    text-align: left;
+}
+.form-group{
+    margin-bottom: 1.2rem;
+}
+
+.admin-login {
+    text-align: center;
+    width: 50%;
+}
+
+.admin-login>button {
+    background: #FD8032;
+    padding: 10px 60px;
+    border-radius: 63px;
+    border-color: #FD8032;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
+.admin-login>button:hover{
+    background: rgb(252, 251, 250);
+    color: black;
+}
+.forgot-holder{
+    margin-top: 15px;
+}
+
+#emailHelp{
+    opacity: 0;
+}
+
+.forgot-password{
+    color: white !important;
+    font-size: 12px;
+    margin-top: 20px;
+    margin-bottom: 0;
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 750px) {
+    .login-box{
+        width: 100%;
+        margin-top: 10%;
+        padding: 40px 0 60px;
+    }
+    .admin-login{
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: ){
+    
+}

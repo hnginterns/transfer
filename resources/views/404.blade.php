@@ -18,30 +18,30 @@
 			text-align: center;
 			margin: auto;
 		}
-    .error{
+    .main .error{
       opacity: 79%;
       color: #4f4f4f;
       font-weight: bolder;
       font-size: 150px;
-    }
-    .error span.ghost{
+    }    
+    .main .error span.ghost{
       color: #000;
       letter-spacing: 10px;
       text-align: center;
       font-size: 30px;
       height: 70px;
 }
-    .ghost:before{
+    .main .error span.ghost:before{
         content: "\f111   \f111";
         color: #fff;
-        font-size: 25px;
+        font-size: 23px;
         font-family: FontAwesome;
-        /*background-color: #fff;*/
         margin-top: 30px;
-        z-index: 3;
+        margin-left: 5px;
+        z-index: 30;
         position: absolute;
     }
-    .ghost:after{
+    .main .error span.ghost:after{
 		background: 
 					linear-gradient(-45deg, transparent 16px, #4f4f4f 0), 
 					linear-gradient(45deg, transparent 16px, #4f4f4f  0);
@@ -56,42 +56,78 @@
         border-top-right-radius: 50px;
         position: relative;
         margin-left: -18px;
-        margin-right: 15px;
+        margin-top: 10px;
+        margin-left: -16px;
+        margin-right: 16px;
         margin-bottom: 35px;
 		
 	}
+  .main h2{
+    margin-top: 0;
+  }
     .coral{
       color: #ff6200;
     }
     a{ 
       text-decoration: none;
     }
-    .navigate{
+    .main .navigate{  
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center; 
+    }
+    .main .navigate a{
       border-radius: 25px;
       font-size: 18px;
       text-decoration: none;
       color: #fff;
       background-color: #ff6200;
       padding: 5px 20px;
-      margin: 0 9%;
-      box-shadow: 0 16px 24px 2px rgba(0,0,0,0.14),0 6px 30px 5px rgba(0,0,0,0.12),0 8px 10px -5px rgba(0,0,0,0.3);	
+      margin: 5px 9%;
+      box-shadow: 0 5px 5px 2px rgba(0,0,0,0.14);
     }
-    .navigate:hover{
+    .main .navigate a:hover{
       opacity: 0.9;
     }
+    @media (max-width: 500px){
+      .main .error{
+        font-size: 80px;
+      }
+      .main .error span.ghost:before{
+        font-size: 12px;
+        margin-left: 0px;
+      }
+      .main .error span.ghost:after{
+        margin-left: -10px;
+        margin-right: 10px;
+        width: 65px;
+        height: 75px;
+        margin-bottom: 15px;
+      }
+      .main .navigate a{
+        font-size: 14px;
+      }
+    } 
 	</style>
 </head>
 <body>
 	<div class="main">
     <h2>WHOOPS!</h2>
+    
     <div class="error">4 <span class="ghost"> </span>4</div>
+    
     <h2>ERROR</h2>
 
 		<p> Sorry the page you are looking for cannot be accessed.
-      <br> Check the options below or feel free to</p>
-    <h4 ><a class="coral" href="#">REPORT THIS ISSUE</a></h4>
-    <a class="navigate" href="#">GO TO DASHBOARD</a>
-    <a class="navigate" href="#">GO TO HOMEPAGE</a>
+    <br> Check the options below or feel free to</p>
+    
+    <h4><a class="coral" href="#">REPORT THIS ISSUE</a></h4>
+    
+    <div class="navigate">
+      <a href="#">GO TO DASHBOARD</a>
+      <a href="#">GO TO HOMEPAGE</a>
+    </div>
 	</div>
 </body>
 </html>
