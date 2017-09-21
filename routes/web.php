@@ -18,6 +18,10 @@ Route::get('/forgot', function () {
 		return view('forgot');
 });
 
+Route::get('/addaccount', function () {
+		return view('addaccount');
+});
+
 //admin dashboard
 Route::get('/admin', function () {
 		return view('/admin/home');
@@ -38,11 +42,9 @@ Route::get('/banks', 'BanksController@banks');
 
 //Route::view('/balance', 'get-wallet');
 Route::get('/transfer', 'pagesController@transfer');
-
 Route::get('/balance', 'pagesController@balance');
 
 Auth::routes();
-
 Route::group(['middleware' => 'auth'], function() {
 	// Handles Transfers
 	Route::get('/dashboard', 'UsersController@index')->name('dashboard');
@@ -74,6 +76,7 @@ Route::group(['middleware' => ['auth', 'admin']], function() {
 	// Edit Company Details
 	Route::get('/admin/setting', 'AdminController@settings');
 });
+
 
 
 //Route::group(['middleware' => ['auth']])
