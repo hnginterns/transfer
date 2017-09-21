@@ -393,7 +393,7 @@ class Request
      */
     public static function send($method, $url, $body = null, $headers = array(), $username = null, $password = null)
     {
-        self::$handle = curl_init();
+        //self::$handle = curl_init();
 
         if ($method !== Method::GET) {
 			if ($method === Method::POST) {
