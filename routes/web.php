@@ -48,8 +48,8 @@ Route::get('/404', function(){
 	return view('404');
 });
 //return walletView
-Route::get('/walletView', function(){
-	return view('walletView');
+Route::get('/walletview', function(){
+	return view('walletview');
 });
 // get information about site
 Route::get('/about', function(){
