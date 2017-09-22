@@ -220,7 +220,7 @@
         <ul class="nav nav-stacked">
           <li class="active-sidebar"><a href="/userdashboard">Dashboard</a></li>
           <li class="side-items">
-              <a href="/view-wallet" class="side-item active">Wallet View</a>
+              <a href="/wallet-view" class="side-item active">Wallet View</a>
           </li>
           <li class="side-items">
               <a href="/" class="side-item">Accounts</a>
