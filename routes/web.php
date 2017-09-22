@@ -49,7 +49,7 @@ Route::get('/404', function(){
 });
 //return walletView
 Route::get('/walletview', function(){
-	return view('walletview');
+	return 'walletview';
 });
 // get information about site
 Route::get('/about', function(){
