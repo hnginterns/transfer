@@ -6,12 +6,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
-class PagesController extends Controller
+class pagesController extends Controller
 {
   use AuthenticatesUsers;
 
   protected $redirectTo = '/dashboard';
   
+  public function __contruct(){
+    $this->middleware('auth')->except('signin');
+    
+  }
+
   public function home () {
     return view('home-page');
   }

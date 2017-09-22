@@ -12,9 +12,9 @@
 */
 Auth::routes();
 // get default home pages
-Route::get('/', 'PagesController@home');
+Route::get('/', 'pagesController@home');
 // get signin page
-Route::get('/signin', 'PagesController@signin');
+Route::get('/signin', 'pagesController@signin');
 // get password forget pages
 Route::get('/forgot', function () {
 	return view('forgot');
@@ -23,16 +23,16 @@ Route::get('/forgot', function () {
 Route::get('/confirmation', 'ValidateAccountController@confirm');
 
 // get dashboard
-Route::get('/userdashboard', 'PagesController@userdashboard');
+Route::get('/userdashboard', 'pagesController@userdashboard');
 
 //View accounts page
-Route::get('/view-accounts', 'PagesController@viewAccounts');
+Route::get('/view-accounts', 'pagesController@viewAccounts');
 
 // tansfer to bank
-Route::get('/transfer-to-bank', 'PagesController@bank_transfer');
+Route::get('/transfer-to-bank', 'pagesController@bank_transfer');
 
 // tansfer to bank
-Route::get('/transfer-to-wallet', 'PagesController@wallet_transfer');
+Route::get('/transfer-to-wallet', 'pagesController@wallet_transfer');
 
 // get add account page (this page will be move to the admin middleware)
 Route::get('/addaccount', function () {
@@ -55,7 +55,7 @@ Route::get('/404', function(){
 });
 
 //return wallet-view
-Route::get('/wallet-view', 'PagesController@viewWallet')->name('wallet');
+Route::get('/wallet-view', 'pagesController@viewWallet')->name('wallet');
 
 //return web-analytics
 Route::get('/web-analytics', 'PagesController@webAnalytics');
@@ -67,6 +67,9 @@ Route::get('/manage-users', 'PagesController@manageUsers');
 Route::get('/create-user', 'PagesController@createUser');
 //return create-wallet
 Route::get('/wallet-archive', 'PagesController@walletArchive');
+
+Route::get('/web-analytics', 'pagesController@webAnalytics');
+
 // get information about site
 Route::get('/about', function(){
 	return view('about');
@@ -74,15 +77,15 @@ Route::get('/about', function(){
 // get bank route
 Route::get('/banks', 'BanksController@banks');
 
-Route::get('/success', 'PagesController@success');
+Route::get('/success', 'pagesController@success');
 
-Route::get('/failed', 'PagesController@failed');
+Route::get('/failed', 'pagesController@failed');
 
 // get transfer 
-Route::get('/transfer', 'PagesController@transfer');
+Route::get('/transfer', 'pagesController@transfer');
 
 // get bank balance
-Route::get('/balance', 'PagesController@balance');
+Route::get('/balance', 'pagesController@balance');
 
 // authentications
 Auth::routes();
