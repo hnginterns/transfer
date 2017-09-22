@@ -10,7 +10,7 @@ class pagesController extends Controller
 {
   use AuthenticatesUsers;
 
-  protected $redirectTo = '/dashboard';
+  protected $redirectTo = '/userdashboard';
 
   public function __contruct(){
     $this->middleware('auth')->except('signin');
