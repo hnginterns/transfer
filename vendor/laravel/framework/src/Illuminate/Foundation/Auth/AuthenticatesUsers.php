@@ -15,10 +15,9 @@ trait AuthenticatesUsers
      *
      * @return \Illuminate\Http\Response
      */
-    public function showLoginForm($data = [])
+    public function showLoginForm()
     {
-        return view('sign-in', $data);
-        //return view('auth.login');
+        return view('auth.login');
     }
 
     /**
@@ -115,8 +114,7 @@ trait AuthenticatesUsers
      */
     protected function authenticated(Request $request, $user)
     {
-        //dd($user);
-        $this->redirectTo = $user->is_admin == 1 ? '/admin' : $this->redirectPath();
+        //
     }
 
     /**
