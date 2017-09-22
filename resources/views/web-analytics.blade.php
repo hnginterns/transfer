@@ -12,8 +12,8 @@
 <body>
     <div class="wrapper">
         <div class="head">
-            <div class="main-head"><a href='http://transfer.hng.fun/'>PaysFund</a></div> <i class="menu fa fa-bars"></i>
-           <a href='/web-analytics'> <div class="sup-heads">Transactions Analytics</div></a>
+            <div class="main-head"><a href='http://transfer.hng.fun/' style="color:#FFF;">PaysFund</a></div> <i class="menu fa fa-bars"></i>
+           <a href='/web-analytics'> <div class="sup-heads" style="color:#FFF;">Transactions Analytics</div></a>
             <form class="form"><input type="search" placeholder="Search" name="search" class="search"></form>
             <div class="prof_left"></div>
         </div>
