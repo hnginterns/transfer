@@ -75,19 +75,22 @@ Route::get('/admin', function () {
 // auth admin
 Route::group(['middleware' => ['auth', 'admin']], function() {
 
-// get manager
-Route::get('/manager', 'AdminController@index');
+	// get manager
+	Route::get('/manager', 'AdminController@index');
 
-Route::group(['middleware' => ['auth', 'admin']], function() {
+	Route::group(['middleware' => ['auth', 'admin']], function() {
 
-Route::get('/admin', 'AdminController@index');
+	Route::get('/admin', 'AdminController@index');
 
-// Set rules that users will transfer with
-Route::get('/admin/setrule', 'AdminController@setRule');
-Route::post('/admin/setrule', 'AdminController@saveRule');
+	// Set rules that users will transfer with
+	Route::get('/admin/setrule', 'AdminController@setRule');
+	Route::post('/admin/setrule', 'AdminController@saveRule');
 
-// New Rule Creation
-Route::get('/admin/createrule', 'AdminController@createRule');
-Route::post('/admin/createrule', 'AdminController@saveNewRule');
+	// New Rule Creation
+	Route::get('/admin/createrule', 'AdminController@createRule');
+	Route::post('/admin/createrule', 'AdminController@saveNewRule');
 
-//Route::get('/manager/setting', 'AdminController@settings');
+	//Route::get('/manager/setting', 'AdminController@settings');
+}
+
+?>
