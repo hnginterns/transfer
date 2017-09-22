@@ -12,6 +12,11 @@ class pagesController extends Controller
 
   protected $redirectTo = '/dashboard';
   
+  public function __contruct(){
+    $this->middleware('auth')->except('signin');
+    
+  }
+
   public function home () {
     return view('home-page');
   }
