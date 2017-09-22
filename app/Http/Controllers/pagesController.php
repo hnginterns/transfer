@@ -49,6 +49,10 @@ class pagesController extends Controller
     return view ('transfer-to-bank');
   }
 
+  public function wallet_transfer(){
+    return view ('transfer-to-wallet');
+  }
+
   public function viewAccounts(){
       return view('view-accounts');
   }

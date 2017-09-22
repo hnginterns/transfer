@@ -7,8 +7,7 @@
     @section('head')
         <!-- external scripts and meta tags goes here-->
         <link rel="stylesheet" type="text/css" href="/css/sigin.css">
-        
-         <style type="text/css">
+        <style type="text/css">
             html {
                 font-family: 'Nunito Sans', sans-serif;
                 position: relative;
@@ -263,7 +262,7 @@
                     display: none;
                 }
             }
-    </style>
+        </style>
     @endsection
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -323,22 +322,22 @@
                 <div class="col col-lg-10 main-content">
                     <div class="login-box" style="margin-top: 20px; padding-top: 30px;">
                         <img src="/svg/naira.svg" alt="no preview" class="transfer-icon">
-                        <h4 class="intro" style="font-size: 20px;">Transfer to bank account </h4>
+                        <h4 class="intro" style="font-size: 20px;">Transfer to Wallet account </h4>
                         <form class="admin-login">
                             <div class="form-group" style="margin: 30px 0;">
-                                <input type="text" class="form-control cus-input" id="benName" placeholder="Beneficiary Name">
+                                <input type="text" class="form-control cus-input" id="benName" placeholder="Wallet ID">
                             </div>
                             <div class="row">
                                 <div class="col col-lg-6 form-holder">
                                     <div class="form-group">
                                         <select class="form-control cus-input">
-                                            <option>Beneficiary Bank</option>
+                                            <option>Wallet Type</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col col-lg-6 form-holder">
                                     <div class="form-group">
-                                        <input type="text" class="form-control cus-input" id="benAcc" placeholder="Beneficiary Account No">
+                                        <input type="text" class="form-control cus-input" id="benAcc" placeholder="Wallet Name">
                                     </div>
                                 </div>
                             </div>

@@ -31,6 +31,9 @@ Route::get('/view-accounts', 'pagesController@viewAccounts');
 // tansfer to bank
 Route::get('/transfer-to-bank', 'pagesController@bank_transfer');
 
+// tansfer to bank
+Route::get('/transfer-to-wallet', 'pagesController@wallet_transfer');
+
 // get add account page (this page will be move to the admin middleware)
 Route::get('/addaccount', function () {
 	return view('/admin/addaccount');
