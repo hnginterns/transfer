@@ -91,6 +91,6 @@ Route::group(['middleware' => ['auth', 'admin']], function() {
 	Route::post('/admin/createrule', 'AdminController@saveNewRule');
 
 	//Route::get('/manager/setting', 'AdminController@settings');
-}
+});
 
 ?>
