@@ -53,6 +53,10 @@ class pagesController extends Controller
       return view('view-accounts');
   }
 
+  public function webAnalytics() {
+    return view ('web-analytics');
+  }
+
   public function viewWallet() {
     return view ('wallet-view');
   }

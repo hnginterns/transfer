@@ -54,6 +54,9 @@ Route::get('/404', function(){
 //return wallet-view
 Route::get('/wallet-view', 'pagesController@viewWallet')->name('wallet');
 
+//return web-analytics
+Route::get('/web-analytics', 'pagesController@webAnalytics');
+
 // get information about site
 Route::get('/about', function(){
 	return view('about');
