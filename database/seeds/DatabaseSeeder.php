@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
 	$dt = Carbon::now();
         $dateNow = $dt->toDateTimeString();
 	    
-        User::insert([
+        User::create([
             'username' => 'johnobi',
             'email' => 'johnobi@gmail.com',
             'password' => Hash::make('transfer'),
@@ -40,7 +40,7 @@ class DatabaseSeeder extends Seeder
 	    'created_at' => $dateNow
         ]);
 
-        User::insert([
+        User::create([
             'username' => 'emeka56',
             'email' => 'emekus@gmail.com',
             'password' => Hash::make('transfer'),
@@ -51,7 +51,7 @@ class DatabaseSeeder extends Seeder
 	    'created_at' => $dateNow
         ]);
 
-        User::insert([
+        User::create([
             'username' => 'prisca',
             'email' => 'prisca@gmail.com',
             'password' => Hash::make('transfer'),
