@@ -1,183 +1,117 @@
-<!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Transfer Rule | Admin</title>
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <!-- Bootstrap 3.3.6 -->
-  <link rel="stylesheet" href="{{ asset("/bower_components/AdminLTE/bootstrap/css/bootstrap.min.css") }}">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="{{ asset("/bower_components/AdminLTE/dist/css/AdminLTE.min.css") }}">
-  <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
-        page. However, you can choose any other skin. Make sure you
-        apply the skin class to the body tag so the changes take effect.
-  -->
-  <link rel="stylesheet" href="{{ asset("/bower_components/AdminLTE/dist/css/skins/skin-blue.min.css") }}">
+@extends('layouts.admin')
 
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
-</head>
-<body class="hold-transition skin-blue sidebar-mini">
-<div class="wrapper">
+@section('content')
 
-  <!--
-  BODY TAG OPTIONS:
-  =================
-  Apply one or more of the following classes to get the
-  desired effect
-  |---------------------------------------------------------|
-  | SKINS         | skin-blue                               |
-  |               | skin-black                              |
-  |               | skin-purple                             |
-  |               | skin-yellow                             |
-  |               | skin-red                                |
-  |               | skin-green                              |
-  |---------------------------------------------------------|
-  |LAYOUT OPTIONS | fixed                                   |
-  |               | layout-boxed                            |
-  |               | layout-top-nav                          |
-  |               | sidebar-collapse                        |
-  |               | sidebar-mini                            |
-  |---------------------------------------------------------|
-  -->
-  <!-- Header -->
-  @include('/admin/header')
-
-  <!-- Sidebar -->
-  @include('/admin/sidebar')
-
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-        Page Header
-        <small>Optional description</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-        <li class="active">Here</li>
-      </ol>
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
-
-      <!-- Your Page Content Here -->
-
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-
-  <!-- Main Footer -->
-   @include('/admin/footer')
-
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Create the tabs -->
-    <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-      <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
-      <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
-    </ul>
-    <!-- Tab panes -->
-    <div class="tab-content">
-      <!-- Home tab content -->
-      <div class="tab-pane active" id="control-sidebar-home-tab">
-        <h3 class="control-sidebar-heading">Recent Activity</h3>
-        <ul class="control-sidebar-menu">
-          <li>
-            <a href="javascript:;">
-              <i class="menu-icon fa fa-birthday-cake bg-red"></i>
-
-              <div class="menu-info">
-                <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
-
-                <p>Will be 23 on April 24th</p>
-              </div>
-            </a>
-          </li>
-        </ul>
-        <!-- /.control-sidebar-menu -->
-
-        <h3 class="control-sidebar-heading">Tasks Progress</h3>
-        <ul class="control-sidebar-menu">
-          <li>
-            <a href="javascript:;">
-              <h4 class="control-sidebar-subheading">
-                Custom Template Design
-                <span class="pull-right-container">
-                  <span class="label label-danger pull-right">70%</span>
-                </span>
-              </h4>
-
-              <div class="progress progress-xxs">
-                <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
-              </div>
-            </a>
-          </li>
-        </ul>
-        <!-- /.control-sidebar-menu -->
-
-      </div>
-      <!-- /.tab-pane -->
-      <!-- Stats tab content -->
-      <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
-      <!-- /.tab-pane -->
-      <!-- Settings tab content -->
-      <div class="tab-pane" id="control-sidebar-settings-tab">
-        <form method="post">
-          <h3 class="control-sidebar-heading">General Settings</h3>
-
-          <div class="form-group">
-            <label class="control-sidebar-subheading">
-              Report panel usage
-              <input type="checkbox" class="pull-right" checked>
-            </label>
-
-            <p>
-              Some information about this general settings option
-            </p>
-          </div>
-          <!-- /.form-group -->
-        </form>
-      </div>
-      <!-- /.tab-pane -->
-    </div>
-  </aside>
-  <!-- /.control-sidebar -->
-  <!-- Add the sidebar's background. This div must be placed
-       immediately after the control sidebar -->
-  <div class="control-sidebar-bg"></div>
-</div>
-<!-- ./wrapper -->
-
-<!-- REQUIRED JS SCRIPTS -->
-
-<!-- jQuery 2.2.3 -->
-<script src="{{ asset("/bower_components/AdminLTE/plugins/jQuery/jquery-2.2.3.min.js") }}"></script>
-<!-- Bootstrap 3.3.6 -->
-<script src="{{ asset("/bower_components/AdminLTE/bootstrap/js/bootstrap.min.js") }}"></script>
-<!-- AdminLTE App -->
-<script src="{{ asset("/bower_components/AdminLTE/dist/js/app.min.js") }}"></script>
-
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. Slimscroll is required when using the
-     fixed layout. -->
-</body>
-</html>
+<!-- Main Container -->
+            <main id="main-container">
+                <!-- Page Content -->
+                <div class="content">
+                    <div class="row gutters-tiny invisible" data-toggle="appear">
+                        <!-- Row #1 -->
+                        <div class="col-6 col-xl-3">
+                            <a class="block block-link-shadow text-right" href="javascript:void(0)">
+                                <div class="block-content block-content-full clearfix">
+                                    <div class="float-left mt-10 d-none d-sm-block">
+                                        <i class="si si-bag fa-3x text-body-bg-dark"></i>
+                                    </div>
+                                    <div class="font-size-h3 font-w600" data-toggle="countTo" data-speed="1000" data-to="1500">0</div>
+                                    <div class="font-size-sm font-w600 text-uppercase text-muted">Total Wallets</div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-6 col-xl-3">
+                            <a class="block block-link-shadow text-right" href="javascript:void(0)">
+                                <div class="block-content block-content-full clearfix">
+                                    <div class="float-left mt-10 d-none d-sm-block">
+                                        <i class="si si-wallet fa-3x text-body-bg-dark"></i>
+                                    </div>
+                                    <div class="font-size-h3 font-w600">$<span data-toggle="countTo" data-speed="1000" data-to="780">0</span></div>
+                                    <div class="font-size-sm font-w600 text-uppercase text-muted">Total Balance</div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-6 col-xl-3">
+                            <a class="block block-link-shadow text-right" href="javascript:void(0)">
+                                <div class="block-content block-content-full clearfix">
+                                    <div class="float-left mt-10 d-none d-sm-block">
+                                        <i class="si si-envelope-open fa-3x text-body-bg-dark"></i>
+                                    </div>
+                                    <div class="font-size-h3 font-w600" data-toggle="countTo" data-speed="1000" data-to="15">0</div>
+                                    <div class="font-size-sm font-w600 text-uppercase text-muted">Total Transfers</div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-6 col-xl-3">
+                            <a class="block block-link-shadow text-right" href="javascript:void(0)">
+                                <div class="block-content block-content-full clearfix">
+                                    <div class="float-left mt-10 d-none d-sm-block">
+                                        <i class="si si-users fa-3x text-body-bg-dark"></i>
+                                    </div>
+                                    <div class="font-size-h3 font-w600" data-toggle="countTo" data-speed="1000" data-to="4252">0</div>
+                                    <div class="font-size-sm font-w600 text-uppercase text-muted">Total Users</div>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- END Row #1 -->
+                    </div>
+                   
+                    <div class="row gutters-tiny invisible" data-toggle="appear">
+                        <!-- Row #3 -->
+                        <div class="col-md-4">
+                            <div class="block">
+                                <div class="block-content block-content-full">
+                                    <div class="py-20 text-center">
+                                        <div class="mb-20">
+                                            <i class="si si-wallet fa-4x text-primary"></i>
+                                        </div>
+                                        <div class="pt-20">
+                                            <a class="btn btn-rounded btn-alt-primary" href="javascript:void(0)">
+                                                <i class="fa fa-cog mr-5"></i> Manage Wallets
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="block">
+                                <div class="block-content block-content-full">
+                                    <div class="py-20 text-center">
+                                        <div class="mb-20">
+                                            <i class="fa fa-users fa-4x text-info"></i>
+                                        </div>
+                                        
+                                        <div class="pt-20">
+                                            <a class="btn btn-rounded btn-alt-info" href="javascript:void(0)">
+                                                <i class="fa fa-users mr-5"></i> Manage Beneficiaries
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="block">
+                                <div class="block-content block-content-full">
+                                    <div class="py-20 text-center">
+                                        <div class="mb-20">
+                                            <i class="fa fa-check fa-4x text-success"></i>
+                                        </div>
+                                        <div class="pt-20">
+                                            <a class="btn btn-rounded btn-alt-success" href="javascript:void(0)">
+                                                <i class="fa fa-arrow-up mr-5"></i> Manage Rules
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END Row #3 -->
+                    </div>
+                    
+                    
+                </div>
+                <!-- END Page Content -->
+            </main>
+            <!-- END Main Container -->
+@endsection

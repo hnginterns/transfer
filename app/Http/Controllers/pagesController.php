@@ -12,6 +12,11 @@ class pagesController extends Controller
 
   protected $redirectTo = '/dashboard';
   
+  public function __contruct(){
+    $this->middleware('auth')->except('signin');
+    
+  }
+
   public function home () {
     return view('home-page');
   }
@@ -21,8 +26,8 @@ class pagesController extends Controller
     $data['ref'] = str_replace('http://', '', str_replace('https://', '', URL::previous()));
     $data['host'] = str_replace('http://', '', str_replace('https://', '', $request->server('HTTP_HOST')));
 
-    return $this->showLoginForm($data); // Does the same thing as above
-    //return view ('sign-in');
+    return $this->showLoginForm(); // Does the same thing as above
+    // return view ('sign-in');
   }
 
   public function userdashboard(){
@@ -47,6 +52,10 @@ class pagesController extends Controller
 
   public function bank_transfer (){
     return view ('transfer-to-bank');
+  }
+
+  public function wallet_transfer(){
+    return view ('transfer-to-wallet');
   }
 
   public function viewAccounts(){

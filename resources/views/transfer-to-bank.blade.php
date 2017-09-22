@@ -1,278 +1,276 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sign Up</title>
-    <link href="bootstrap.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
-    <link href="/css/style.css" rel="stylesheet">
+@extends('layouts.head')
 
-    <style type="text/css">
-        html {
-    font-family: 'Nunito Sans', sans-serif;
-    position: relative;
-    min-height: 100%;
-}
+    @section('title')
+        Sign in 
+    @endsection
 
-:root {
-    --hue-color: #fd8032;
-}
+    @section('head')
+        <!-- external scripts and meta tags goes here-->
+        <link rel="stylesheet" type="text/css" href="/css/sigin.css">
+        
+         <style type="text/css">
+            html {
+                font-family: 'Nunito Sans', sans-serif;
+                position: relative;
+                min-height: 100%;
+            }
 
-body {
-    margin-bottom: 60px;
-    font-family: 'Nunito Sans', sans-serif;
-}
+            :root {
+                --hue-color: #fd8032;
+            }
 
-.navbar {
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
+            body {
+                margin-bottom: 60px;
+                font-family: 'Nunito Sans', sans-serif;
+            }
 
-.bg-dark {
-    background-color: #333333 !important;
-}
+            .navbar {
+                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            }
 
-.navbar-dark .navbar-nav .active>.nav-link {
-    color: white;
-    border: 2px solid #FD8032;
-    border-radius: 64px;
-    padding: 2px 25px;
-    background: #fd8032;
-}
+            .bg-dark {
+                background-color: #333333 !important;
+            }
 
-.user-img {
-    border-radius: 25px;
-}
+            .navbar-dark .navbar-nav .active>.nav-link {
+                color: white;
+                border: 2px solid #FD8032;
+                border-radius: 64px;
+                padding: 2px 25px;
+                background: #fd8032;
+            }
 
-.nav-link.active {
-    color: white;
-}
+            .user-img {
+                border-radius: 25px;
+            }
 
-.sidebar-toggle {
-    border: 1px solid white;
-    border-radius: 2px;
-    background: transparent;
-}
+            .nav-link.active {
+                color: white;
+            }
 
-.sidebar-toggle>span {
-    height: 1.7em;
-    width: 1.7em;
-}
+            .sidebar-toggle {
+                border: 1px solid white;
+                border-radius: 2px;
+                background: transparent;
+            }
 
-.search {
-    margin-right: 50px !important;
-}
+            .sidebar-toggle>span {
+                height: 1.7em;
+                width: 1.7em;
+            }
 
-.side-bar {
-    border-right: 1px solid rgb(192, 190, 190);
-}
+            .search {
+                margin-right: 50px !important;
+            }
 
-.main-content {}
+            .side-bar {
+                border-right: 1px solid rgb(192, 190, 190);
+            }
 
-.transfer-icon {
-    height: 100px;
-}
+            .main-content {}
 
-.sidy {
-    padding: 50px 15px;
-}
+            .transfer-icon {
+                height: 100px;
+            }
 
-.nav-list {
-    list-style: none;
-}
+            .sidy {
+                padding: 50px 15px;
+            }
 
-.side-items {
-    margin-bottom: 20px;
-}
+            .nav-list {
+                list-style: none;
+            }
 
-.side-item {
-    color: rgb(56, 53, 53);
-    font-weight: bold;
-    font-size: 16px;
-    opacity: 0.6;
-}
+            .side-items {
+                margin-bottom: 20px;
+            }
 
-.side-item:hover {
-    color: var(--hue-color);
-    text-decoration: none;
-}
+            .side-item {
+                color: rgb(56, 53, 53);
+                font-weight: bold;
+                font-size: 16px;
+                opacity: 0.6;
+            }
 
-.upper {
-    text-transform: uppercase;
-}
+            .side-item:hover {
+                color: var(--hue-color);
+                text-decoration: none;
+            }
 
-.side-item.active {
-    color: var(--hue-color);
-}
+            .upper {
+                text-transform: uppercase;
+            }
 
-.footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    border-top: 2px solid rgb(197, 195, 195);
-    /* Set the fixed height of the footer here */
-    height: 60px;
-    line-height: 60px;
-    /* Vertically center the text there */
-    background-color: white;
-}
+            .side-item.active {
+                color: var(--hue-color);
+            }
 
-.company {
-    font-weight: bold;
-    font-size: 17px;
-}
+            .footer {
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                border-top: 2px solid rgb(197, 195, 195);
+                /* Set the fixed height of the footer here */
+                height: 60px;
+                line-height: 60px;
+                /* Vertically center the text there */
+                background-color: white;
+            }
 
-.navbar-dark .navbar-nav .nav-link {
-    padding: 5px 10px;
-}
+            .company {
+                font-weight: bold;
+                font-size: 17px;
+            }
 
-li.nav-item {
-    margin: 5px 10px;
-}
+            .navbar-dark .navbar-nav .nav-link {
+                padding: 5px 10px;
+            }
 
-.login-box {
-    margin: auto;
-    width: 60%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 1%;
-    padding: 60px 0 80px;
-}
+            li.nav-item {
+                margin: 5px 10px;
+            }
 
-.admin-login>.form-group>.form-control:focus,
-.cus-input:focus {
-    border-color: #fd8032;
-}
+            .login-box {
+                margin: auto;
+                width: 60%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                margin-top: 1%;
+                padding: 60px 0 80px;
+            }
 
-.admin-login>.form-group>.form-control,
-.cus-input {
-    border-radius: 0;
-    border: none;
-    border-bottom: 2px solid grey;
-}
+            .admin-login>.form-group>.form-control:focus,
+            .cus-input:focus {
+                border-color: #fd8032;
+            }
 
-.form-holder {
-    margin-top: 20px;
-}
+            .admin-login>.form-group>.form-control,
+            .cus-input {
+                border-radius: 0;
+                border: none;
+                border-bottom: 2px solid grey;
+            }
 
-.sign-in {
-    color: #fd8032;
-    font-weight: bold;
-    font-size: 32px;
-    margin-bottom: 15px;
-}
+            .form-holder {
+                margin-top: 20px;
+            }
 
-.promise {
-    font-size: 15px;
-    font-weight: 500;
-    opacity: 0.8;
-    letter-spacing: 0.02rem;
-    text-align: center;    
-}
+            .sign-in {
+                color: #fd8032;
+                font-weight: bold;
+                font-size: 32px;
+                margin-bottom: 15px;
+            }
 
-.intro {
-    color: black;
-    margin-bottom: 25px;
-    font-weight: bold;
-    font-size: 30px;
-}
+            .promise {
+                font-size: 15px;
+                font-weight: 500;
+                opacity: 0.8;
+                letter-spacing: 0.02rem;
+                text-align: center;    
+            }
 
-.admin-login>.form-group>label {
-    color: white;
-}
+            .intro {
+                color: black;
+                margin-bottom: 25px;
+                font-weight: bold;
+                font-size: 30px;
+            }
 
-.admin-login>.form-group {
-    text-align: left;
-    margin-bottom: 30px;
-}
+            .admin-login>.form-group>label {
+                color: white;
+            }
 
-.form-group {
-    margin-bottom: 1.2rem;
-}
+            .admin-login>.form-group {
+                text-align: left;
+                margin-bottom: 30px;
+            }
 
-.admin-login {
-    text-align: center;
-    width: 70%;
-    margin-top: 20px;
-}
+            .form-group {
+                margin-bottom: 1.2rem;
+            }
 
-.admin-login>button {
-    background: #FD8032;
-    padding: 10px 80px;
-    border-radius: 63px;
-    border-color: #FD8032;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    cursor: pointer;
-}
+            .admin-login {
+                text-align: center;
+                width: 70%;
+                margin-top: 20px;
+            }
 
-.admin-login>button:hover,
-.admin-login>button:focus {
-    background: rgb(252, 251, 250);
-    color: #FD8032;
-    border-color: #FD8032;
-    border-width: 2px;
-}
+            .admin-login>button {
+                background: #FD8032;
+                padding: 10px 80px;
+                border-radius: 63px;
+                border-color: #FD8032;
+                box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+                cursor: pointer;
+            }
 
-.forgot-holder {
-    margin-top: 15px;
-}
+            .admin-login>button:hover,
+            .admin-login>button:focus {
+                background: rgb(252, 251, 250);
+                color: #FD8032;
+                border-color: #FD8032;
+                border-width: 2px;
+            }
 
-#emailHelp {
-    opacity: 0;
-}
+            .forgot-holder {
+                margin-top: 15px;
+            }
 
-.forgot-holder {
-    margin-top: 15px;
-}
+            #emailHelp {
+                opacity: 0;
+            }
 
-.forgot-password {
-    color: black !important;
-    font-size: 12px;
-    margin-bottom: 0;
-    opacity: 0.7;
-    cursor: pointer;
-}
+            .forgot-holder {
+                margin-top: 15px;
+            }
 
-@media screen and (max-width: 750px) {
-    .login-box {
-        width: 100%;
-        margin-top: 10%;
-        padding: 40px 0 60px;
-    }
-    .admin-login {
-        width: 80%;
-    }
-    .intro{
-        margin-bottom: 20px;
-    }
-    .sign-in {
-        font-size: 18px;
-    }
-    .company {
-        font-size: 14px
-    }
-    .promise {
-        font-size: 12px;
-    }
-}
+            .forgot-password {
+                color: black !important;
+                font-size: 12px;
+                margin-bottom: 0;
+                opacity: 0.7;
+                cursor: pointer;
+            }
 
-@media screen and (max-width:768px) {
-    .hidden-sm {
-        display: none;
-    }
-}
+            @media screen and (max-width: 750px) {
+                .login-box {
+                    width: 100%;
+                    margin-top: 10%;
+                    padding: 40px 0 60px;
+                }
+                .admin-login {
+                    width: 80%;
+                }
+                .intro{
+                    margin-bottom: 20px;
+                }
+                .sign-in {
+                    font-size: 18px;
+                }
+                .company {
+                    font-size: 14px
+                }
+                .promise {
+                    font-size: 12px;
+                }
+            }
+
+            @media screen and (max-width:768px) {
+                .hidden-sm {
+                    display: none;
+                }
+            }
     </style>
-</head>
+    @endsection
 
-<body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
 
             <a class="navbar-brand" href="#">
-                <img src="logo.png" width="30" height="30" class="d-inline-block align-top" alt=""> PaysFund
+                <img src="img/logo.png" width="30" height="30" class="d-inline-block align-top" alt=""> PaysFund
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                 aria-expanded="false" aria-label="Toggle navigation">
@@ -297,7 +295,7 @@ li.nav-item {
                         </form>
                     </li>
                     <li class="nav-item">
-                        <img width="40" height="40" class="user-img" src="daniel.jpg">
+                        <img width="40" height="40" class="user-img" src="http://static2.uk.businessinsider.com/image/551d3821dd0895ef498b4580-480/man-in-a-suit.jpg">
                     </li>
                 </ul>
             </div>
@@ -324,7 +322,7 @@ li.nav-item {
                 </div>
                 <div class="col col-lg-10 main-content">
                     <div class="login-box" style="margin-top: 20px; padding-top: 30px;">
-                        <img src="transfer.svg" alt="" class="transfer-icon">
+                        <img src="/svg/naira.svg" alt="no preview" class="transfer-icon">
                         <h4 class="intro" style="font-size: 20px;">Transfer to bank account </h4>
                         <form class="admin-login">
                             <div class="form-group" style="margin: 30px 0;">

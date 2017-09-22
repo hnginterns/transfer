@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Auth::routes();
 // get default home pages
 Route::get('/', 'pagesController@home');
 // get signin page
@@ -30,6 +30,9 @@ Route::get('/view-accounts', 'pagesController@viewAccounts');
 
 // tansfer to bank
 Route::get('/transfer-to-bank', 'pagesController@bank_transfer');
+
+// tansfer to bank
+Route::get('/transfer-to-wallet', 'pagesController@wallet_transfer');
 
 // get add account page (this page will be move to the admin middleware)
 Route::get('/addaccount', function () {
@@ -91,10 +94,10 @@ Route::group(['middleware' => 'auth'], function() {
 });
 
 
-// admin dashboard
-Route::get('/admin', function () {
-		return view('/admin/home');
-});
+// // admin dashboard
+// Route::get('/admin', function () {
+// 		return view('/admin/home');
+// });
 
 // auth admin
 Route::group(['middleware' => ['auth', 'admin']], function() {
@@ -107,12 +110,14 @@ Route::group(['middleware' => ['auth', 'admin']], function() {
 		Route::get('/admin', 'AdminController@index');
 
 		// Set rules that users will transfer with
-		Route::get('/admin/setrule', 'AdminController@setRule');
-		Route::post('/admin/setrule', 'AdminController@saveRule');
+		Route::get('/admin/setrule', 'AdminController@setRule')->name('admin.setrule');
+		Route::post('/admin/setrule', 'AdminController@saveRule')->name('admin.setrule.submit');
 
 		// New Rule Creation
-		Route::get('/admin/createrule', 'AdminController@createRule');
-		Route::post('/admin/createrule', 'AdminController@saveNewRule');
+		Route::get('/admin/createrule', 'AdminController@createRule')->name('admin.createrule');
+		Route::post('/admin/createrule', 'AdminController@saveNewRule')->name('admin.setrule.submit');
+
+		Route::get('/admin/dashboard', 'AdminController@viewDashboard');
 
 	});
 
@@ -120,6 +125,6 @@ Route::group(['middleware' => ['auth', 'admin']], function() {
 });
 
 
-Auth::routes();
+
 
 Route::get('/home', 'HomeController@index')->name('home');

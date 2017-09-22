@@ -21,6 +21,7 @@ return array(
     'App\\Http\\Controllers\\UsersController' => $baseDir . '/app/Http/Controllers/UsersController.php',
     'App\\Http\\Controllers\\ValidateAccountController' => $baseDir . '/app/Http/Controllers/ValidateAccountController.php',
     'App\\Http\\Controllers\\pagesController' => $baseDir . '/app/Http/Controllers/pagesController.php',
+    'App\\Http\\Controllers\\paymentController' => $baseDir . '/app/Http/Controllers/paymentController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Admin' => $baseDir . '/app/Http/Middleware/Admin.php',
     'App\\Http\\Middleware\\AdminMiddleware' => $baseDir . '/app/Http/Middleware/AdminMiddleware.php',
