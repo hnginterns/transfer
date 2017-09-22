@@ -26,6 +26,7 @@ Route::get('/confirmation', 'ValidateAccountController@confirm');
 
 Route::get('/404', 'pagesController@pagenotfound');
 
+
 // admin routes
 Route::get('/manager', 'AdminController@index');
 Route::get('/view-accounts', 'pagesController@viewAccounts');
