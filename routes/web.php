@@ -26,41 +26,42 @@ Route::get('/confirmation', 'ValidateAccountController@confirm');
 
 Route::get('/404', 'pagesController@pagenotfound');
 
-// get dashboard
+// admin routes
+Route::get('/manager', 'AdminController@index');
+Route::get('/view-accounts', 'pagesController@viewAccounts');
+Route::get('/addaccount', 'adminController@addaccount');
+Route::get('/usermanagement', 'adminController@usermanagement');
+Route::get('/web-analytics', 'pagesController@webAnalytics');
+Route::get('/banks', 'BanksController@banks');
+Route::get('/success', 'pagesController@success');
+Route::get('/failed', 'pagesController@failed');
+Route::get('/transfer', 'pagesController@transfer');
+Route::get('/balance', 'pagesController@balance');
 
-//View accounts page
 
-// tansfer to bank
+//User routes
+Route::get('/userdashboard', 'pagesController@userdashboard');
+Route::get('/transfer-to-bank', 'pagesController@bank_transfer');
+Route::get('/transfer-to-wallet', 'pagesController@wallet_transfer');
+Route::get('/wallet-view', 'pagesController@viewWallet')->name('wallet');
+Route::get('/banks', 'BanksController@banks');
+Route::get('/success', 'pagesController@success');
+Route::get('/failed', 'pagesController@failed');
+Route::get('/transfer', 'pagesController@transfer');
+Route::get('/balance', 'pagesController@balance');
+
 
 
 // authentications
 Auth::routes();
 Route::group(['middleware' => 'auth'], function() {
-	Route::get('/userdashboard', 'pagesController@userdashboard');
-	Route::get('/transfer-to-bank', 'pagesController@bank_transfer');
-	Route::get('/transfer-to-wallet', 'pagesController@wallet_transfer');
-	Route::get('/wallet-view', 'pagesController@viewWallet')->name('wallet');
-	Route::get('/banks', 'BanksController@banks');
-	Route::get('/success', 'pagesController@success');
-	Route::get('/failed', 'pagesController@failed');
-	Route::get('/transfer', 'pagesController@transfer');
-	Route::get('/balance', 'pagesController@balance');
 
 });
 
 // auth admin
 Route::group(['middleware' => ['auth', 'admin']], function() {
 		// get manager
-		Route::get('/manager', 'AdminController@index');
-		Route::get('/view-accounts', 'pagesController@viewAccounts');
-		Route::get('/addaccount', 'adminController@addaccount');
-		Route::get('/usermanagement', 'adminController@usermanagement');
-		Route::get('/web-analytics', 'pagesController@webAnalytics');
-		Route::get('/banks', 'BanksController@banks');
-		Route::get('/success', 'pagesController@success');
-		Route::get('/failed', 'pagesController@failed');
-		Route::get('/transfer', 'pagesController@transfer');
-		Route::get('/balance', 'pagesController@balance');
+
 
 		// Set rules that users will transfer with
 		Route::get('/admin/setrule', 'AdminController@setRule')->name('admin.setrule');
