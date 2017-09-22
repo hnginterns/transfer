@@ -89,5 +89,5 @@ Route::post('/admin/setrule', 'AdminController@saveRule');
 // New Rule Creation
 Route::get('/admin/createrule', 'AdminController@createRule');
 Route::post('/admin/createrule', 'AdminController@saveNewRule');
-Route::get('/manager/setting', 'AdminController@settings');
-?>
+
+//Route::get('/manager/setting', 'AdminController@settings');
