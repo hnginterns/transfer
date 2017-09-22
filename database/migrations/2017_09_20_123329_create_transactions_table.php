@@ -18,11 +18,11 @@ class CreateTransactionsTable extends Migration
             $table->string('wallet_code');
             $table->decimal('amount_transfered', 12,2);
             $table->boolean('transaction_status')->default(false);
-            $table->string('payer_name');
-            $table->string('payee_account_number');
-            $table->string('payee_bank');
+            $table->integer('payer_uuid')->unsigned();
+            $table->integer('payee_uuid')->unsigned();
+            $table->string('payee_account_number', 10);
+            $table->integer('bank_id')->unsigned();
             $table->string('payee_wallet_code');
-            $table->string('payee_name');
             $table->string('transaction_reference', 100)->unique();
             $table->timestamps();
             $table->foreign('wallet_code')->references('wallet_code')->on('wallets')

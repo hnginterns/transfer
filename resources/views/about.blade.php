@@ -1,398 +1,614 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>About Us</title>
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
+    <style>
+        body {
+            font-family: 'Nunito Sans', sans-serif;
+            padding: 0px;
+            margin: 0px;
+        }
 
-  <head>
+        #section-1,
+        #section-2,
+        #spacer,
+        #footer {
+            margin-top: 90px;
+        }
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>About</title>
+        #header {
+            width: 100%;
+            height: 650px;
+            /* background-image: url("http://preview.ibb.co/iqedKQ/37158e6ed6bb6bbfb6a114f2810c6361_houston_usa_bank_of_america.jpg");   */
+            background-image: url("https://preview.ibb.co/n9dyok/Group.png");
+            /* background: #333333;    */
+            background-size: 100% 650px;
+            background-repeat: no-repeat;
+            /* background-size: 650px;  */
+        }
 
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+        #logo {
+            width: 40px;
+            height: 40px;
+            margin-right: 15px;
+            margin-left: 50px;
+        }
 
-    <!-- Fonts style -->
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-<style>
-     
-      body {
-  font-size: 20px;
-  color: #333333;
-  font-family: 'Lora', 'Times New Roman', serif; }
+        .navbar {
+            margin: 0px;
+            padding-top: 0px !important;
+            padding: 0px;
+            background: transparent;
+            width: 100%;
+            border-radius: 0px;
+            border: none;
+            color: white;
+        }
 
-#image{
-    width:70%;
-    height:90%;
-    margin-left: 50px;
-    margin-top: 40px;
-}
+        .navbar-brand,
+        .navbar-nav a {
+            color: white !important;
+            font-size: 17px;
+            margin-right: 15px;
+        }
 
-p {
-  line-height: 1.5;
-  margin: 30px 0; }
-  p a {
-    text-decoration: underline; }
+        .navbar-brand {
+            margin-top: -13px;
+            font-size: 19px;
+            font-weight: bold;
+            letter-spacing: 0.04em;
+        }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: 800;
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+        .navbar-nav {
+            margin-right: 20px;
+        }
 
-a {
-  color: #333333;
-  -webkit-transition: all 0.2s;
-  -moz-transition: all 0.2s;
-  transition: all 0.2s; }
-  a:focus, a:hover {
-    color: #0085A1; }
+        .navbar-nav .active > a {
+            background: transparent !important;
+            border: 2px solid white;
+            border-radius: 10px;
+            padding: 5px 10px;
+            margin-top: 9px;
+            margin-right: 19px;
+        }
 
-a img:focus, a img:hover {
-  cursor: zoom-in; }
+        #sign-in {
+            margin-top: 9px;
+            /* background: #E57679; */
+            background: #FF6200;
+            border-radius: 63px;
+            padding-left: 12px;
+            padding-right: 12px;
+        }
 
+        #sign-in a  {
+            padding: 7px 14px;
+        }
 
-.sponsor{
-  padding-bottom: 70px;
-}
-.sponsor> h1{
-    text-align: center;
-    text-transform: none;
-    padding-top: 90px;
-}
+        #header-content {
+            color: white;
+            position: absolute;
+            left: 40%;
+            top: 40%;
+        }
 
-.sponsor > p{
-  text-align: center;
-}
+        #main-text {
+            font-size: 26px;
+            font-weight: bold;
+        }
 
-.sponsor > img{
-  width:22%;
-  height:22%%;
-  margin-left: 20px;
-  margin-right: 20px;
-  display: center;
-}
-.transfer {
-  text-align: center;
-  padding-top: 60px;
-  color:#5E5E5E;
-}
-.fine-girl {
-  margin-left:-80px;
-  padding-left:0px;
-  padding-top: 70px;
-}
+        #sub-text {
+            font-size: 18px;
+        }
 
-
-::-moz-selection {
-  color: white;
-  background: #0085A1;
-  text-shadow: none; }
-
-::selection {
-  color: white;
-  background: #0085A1;
-  text-shadow: none; }
-
-img::selection {
-  color: white;
-  background: transparent; }
-
-img::-moz-selection {
-  color: white;
-  background: transparent; }
-
-body {
-  -webkit-tap-highlight-color: #0085A1; }
-
-#mainNav {
-  position: absolute;
-  border-bottom: 1px solid #eeeeee;
-  background-color: white;
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
-  #mainNav .navbar-brand {
-    font-weight: 800;
-    color: #777777; }
-  #mainNav .navbar-toggler {
-    font-size: 12px;
-    font-weight: 800;
-    padding: 13px;
-    text-transform: uppercase;
-    color: #777777; }
-  #mainNav .navbar-nav > li.nav-item > a {
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 1px;
-    text-transform: uppercase; }
-  @media only screen and (min-width: 992px) {
-    #mainNav {
-      border-bottom: 1px solid transparent;
-      background: transparent; }
-      #mainNav .navbar-brand {
-        padding: 15px 20px;
-        color: white; }
-        #mainNav .navbar-brand:focus, #mainNav .navbar-brand:hover {
-          color: rgba(255, 255, 255, 0.8); }
-      #mainNav .navbar-nav > li.nav-item > a {
-        padding: 15px 20px;
-        color: white; }
-        #mainNav .navbar-nav > li.nav-item > a:focus, #mainNav .navbar-nav > li.nav-item > a:hover {
-          color: rgba(255, 255, 255, 0.8); } }
-  @media only screen and (min-width: 1170px) {
-    #mainNav {
-      -webkit-transition: background-color 0.2s;
-      -moz-transition: background-color 0.2s;
-      transition: background-color 0.2s;
-      /* Force Hardware Acceleration in WebKit */
-      -webkit-transform: translate3d(0, 0, 0);
-      -moz-transform: translate3d(0, 0, 0);
-      -ms-transform: translate3d(0, 0, 0);
-      -o-transform: translate3d(0, 0, 0);
-      transform: translate3d(0, 0, 0);
-      -webkit-backface-visibility: hidden; }
-      #mainNav.is-fixed {
-        /* when the user scrolls down, we hide the header right above the viewport */
-        position: fixed;
-        top: -77px;
-        -webkit-transition: -webkit-transform 0.2s;
-        -moz-transition: -moz-transform 0.2s;
-        transition: transform 0.2s;
-        border-bottom: 1px solid white;
-        background-color: rgba(255, 255, 255, 0.9); }
-        #mainNav.is-fixed .navbar-brand {
-          color: #333333; }
-          #mainNav.is-fixed .navbar-brand:focus, #mainNav.is-fixed .navbar-brand:hover {
-            color: #0085A1; }
-        #mainNav.is-fixed .navbar-nav > li.nav-item > a {
-          color: #333333; }
-          #mainNav.is-fixed .navbar-nav > li.nav-item > a:focus, #mainNav.is-fixed .navbar-nav > li.nav-item > a:hover {
-            color: #0085A1; }
-      #mainNav.is-visible {
-        /* if the user changes the scrolling direction, we show the header */
-        -webkit-transform: translate3d(0, 100%, 0);
-        -moz-transform: translate3d(0, 100%, 0);
-        -ms-transform: translate3d(0, 100%, 0);
-        -o-transform: translate3d(0, 100%, 0);
-        transform: translate3d(0, 100%, 0); } }
+        /* SECTION 1 STYLES */
 
 
-header.masthead {
-  margin-bottom: 50px;
-  background: linear-gradient(rgba(0, 0, 0, 0.57), rgba(0, 0, 0, 0.57)),
-                rgba(0,0,0,0.57) url('https://i.imgur.com/Tjf1cYO.jpg') no-repeat center;
-  background-size: cover;
-  background-color: #777777;
-  background-attachment: scroll;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover; }
-  header.masthead .page-heading,
-  header.masthead .post-heading,
-  header.masthead .site-heading {
-    padding: 200px 0 150px;
-    color: white; }
-    @media only screen and (min-width: 768px) {
-      header.masthead .page-heading,
-      header.masthead .post-heading,
-      header.masthead .site-heading {
-        padding: 200px 0; } }
-  header.masthead .page-heading,
-  header.masthead .site-heading {
-    text-align: center; }
-    header.masthead .page-heading h1,
-    header.masthead .site-heading h1 {
-      font-size: 50px;
-      margin-top: 0; }
-    header.masthead .page-heading .subheading,
-    header.masthead .site-heading .subheading {
-      font-size: 24px;
-      font-weight: 300;
-      line-height: 1.1;
-      display: block;
-      margin: 10px 0 0;
-      font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
-    @media only screen and (min-width: 768px) {
-      header.masthead .page-heading h1,
-      header.masthead .site-heading h1 {
-        font-size: 80px; } }
-  header.masthead .post-heading h1 {
-    font-size: 35px; }
-  header.masthead .post-heading .meta,
-  header.masthead .post-heading .subheading {
-    line-height: 1.1;
-    display: block; }
-  header.masthead .post-heading .subheading {
-    font-size: 24px;
-    font-weight: 600;
-    margin: 10px 0 30px;
-    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
-  header.masthead .post-heading .meta {
-    font-size: 20px;
-    font-weight: 300;
-    font-style: italic;
-    font-family: 'Lora', 'Times New Roman', serif; }
-    header.masthead .post-heading .meta a {
-      color: white; }
-  @media only screen and (min-width: 768px) {
-    header.masthead .post-heading h1 {
-      font-size: 55px; }
-    header.masthead .post-heading .subheading {
-      font-size: 30px; } }
+        #about {
+            display: flex;
+            flex-direction: row;
+            padding: 0px 180px;
+        }
 
-footer {
-  padding: 50px 0 65px; }
-  footer .list-inline {
-    margin: 0;
-    padding: 0; }
-  footer .copyright {
-    font-size: 14px;
-    margin-bottom: 0;
-    text-align: center; }
+        #about p {
+            font-size: 16px;
+        }
+
+        #about img {
+            width: 250px;
+            height: 250px;
+            margin-right: 90px;
+        }
+
+        #about #heading {
+            font-size: 26px !important;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #FF6200;
+        }
+
+        #about-text {
+            padding-right: 300px;
+            align-self: flex-start;
+        }
+
+        /* SPACER STYLES */
+        #spacer {
+            text-align: center;
+            color: white;
+            background: #333333;
+            padding: 60px 30px;
+        }
+
+        #spacer #heading {
+            font-size: 26px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        #spacer #sub-heading {
+            font-size: 16px;
+        }
+
+        #sponsors img {
+            width: 300px;
+            height: 80px;
+            margin: 50px 30px;
+        }
+
+        /* SECTION 2 STYLES */
+        #section-2 {
+            text-align: center;
+            display: flex;
+            flex-direction: row;
+            padding: 0px 200px 0px 400px;
+            margin-bottom: 140px;
+        }
+
+        #section-2 #heading {
+            font-size: 22px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        #section-2 #sub-heading {
+            font-size: 17px;
+
+        }
+
+        #get-started {
+            transition: color 2s, background 1s;
+            box-shadow: 0px 2px 2px #333300;
+            border: none;
+            padding: 12px 20px;
+            margin-top: 70px;
+            font-weight: bold;
+            background: #FF6200;
+            color: white;
+        }
+
+        #get-started:hover {
+            background: white;
+            color: #FF6200;
+        }
+
+        #section-2 img {
+            width: 200px;
+            height: 300px;
+            /* position: absolute;
+            right: 20%; */
+        }
+
+        #section-2 p {
+            margin-bottom: 0px !important;
+        }
+
+        /* FOOTER STYLE */
+        #mobile-footer {
+            display: none;
+        }
+
+        #footer {
+            text-align: center;
+        }
+
+        #footer-links,
+        #footer-heading {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
+
+        #footer-links {
+            grid-row-gap: 10px;
+        }
+
+        #footer-heading {
+            margin-bottom: 20px;
+        }
+
+        #footer-heading a {
+            text-transform: uppercase;
+            font-weight: bold;
+            color: #333333;
+        }
+
+        #footer-links a {
+            color: #4F4F4F;
+        }
+
+        #footer li {
+            list-style: none;
+        }
+
+        #line {
+            height: 1px;
+            width: 100%;
+            padding: 0px 200px;
+            background:  #BDBDBD ;
+            margin: 30px 0px;
+        }
+
+        /* FOOTER STYLE ENDS */
 
 
-  </style>
 
-  </head>
+        /* RESPONSIVE STYLES */
+        @media (max-width: 1250px) {
 
-  <body>
+            #about {
+                display: flex;
+                flex-direction: row;
+                padding: 0px 80px;
+            }
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-      <div class="container">
-        <a class="navbar-brand" href="index.html">Transfer Rules</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          Menu
-          <i class="fa fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="">FAQs</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="post.html">Features</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contact.html">Demo</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contact.html">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contact.html">Signin</a>
-            </li>
-          </ul>
-        </div>
-      </div>
+            #about p {
+                font-size: 16px;
+            }
+
+            #about img {
+                width: 250px;
+                height: 250px;
+                margin-right: 90px;
+            }
+
+            #about #heading {
+                font-size: 26px !important;
+                font-weight: bold;
+                text-transform: uppercase;
+            }
+
+            #about-text {
+                padding-right: 200px;
+                align-self: flex-start;
+            }
+        }
+
+        @media (max-width: 900px) {
+
+            #about {
+                display: flex;
+                flex-direction: row;
+                padding: 0px 50px;
+            }
+
+            #about p {
+                font-size: 16px;
+            }
+
+            #about img {
+                width: 250px;
+                height: 250px;
+                margin-right: 90px;
+            }
+
+            #about #heading {
+                font-size: 26px !important;
+                font-weight: bold;
+                text-transform: uppercase;
+            }
+
+            #about-text {
+                padding-right: 50px;
+                align-self: flex-start;
+            }
+        }
+
+        @media (max-width: 650px){
+            #header-content {
+                color: white;
+                position: static;
+                margin-top: 150px;
+                padding: 0px 20px;
+                text-align: center;
+
+            }
+
+            #about {
+                display: flex;
+                flex-direction: row;
+                padding: 0px 10px;
+            }
+
+            #about p {
+                font-size: 16px;
+            }
+
+            #about img {
+                display: none;
+                width: 150px;
+                height: 150px;
+                margin-right: 90px;
+                margin-top: 50px;
+            }
+
+            #about #heading {
+                font-size: 26px !important;
+                font-weight: bold;
+                text-transform: uppercase;
+            }
+
+            #about-text {
+                padding-right: 20px;
+                align-self: flex-start;
+                text-align: center;
+            }
+
+            #sponsors img {
+                width: 200px;
+                height: 60px;
+                margin: 20px 20px;
+            }
+
+            /* SECTION 2 STYLES */
+            #section-2 {
+                text-align: center;
+                display: block;
+                flex-direction: column;
+                padding: 0px 10px 0px 10px;
+                margin-bottom: 240px;
+            }
+
+            #section-2 #heading {
+                font-size: 16px;
+                font-weight: bold;
+                text-transform: uppercase;
+            }
+
+            #section-2 #sub-heading {
+                font-size: 17px;
+                margin-bottom: 100px;
+
+            }
+
+            #get-started {
+                transition: color 2s, background 1s;
+                box-shadow: 0px 2px 2px #333300;
+                border: none;
+                padding: 12px 20px;
+                margin-top: 70px;
+                font-weight: bold;
+                background: #FF6200;
+                color: white;
+                display: block;
+                float: left;
+                /* position: absolute;
+                left: 10%; */
+            }
+
+            #get-started:hover {
+                background: white;
+                color: #FF6200;
+            }
+
+            #section-2 img {
+                display: block;
+                width: 150px;
+                height: 150px;
+                /* position: absolute; */
+                /* right: 10%; */
+                float: right;
+                /* position: absolute;
+                right: 10%;  */
+                margin-top: 35px;
+                margin-bottom: 100px;
+            }
+
+            #section-2 p {
+                margin-bottom: 0px !important;
+            }
+
+            #footer {
+                display: none;
+            }
+
+            #mobile-footer {
+                display: block;
+                margin-top: 100px;
+                text-align: center;
+                width: 100%;
+            }
+
+            #mobile-footer td {
+                padding: 0px 20px !important;
+            }
+
+            #mobile-footer tr {
+                width: 100%;
+            }
+
+            #footer-links,
+            #footer-heading {
+                display: flex;
+                flex-direction: row;
+                flex-grow: 4;
+            }
+
+            /* #footer-links,
+            #footer-heading {
+                width: calc(100% * (1/4) - 10px - 1px);
+            } */
+
+        }
+    </style>
+</head>
+<body>
+<!-- HEADER BEGINS -->
+<div id="header">
+    <p id="background-text">FUNDS</p>
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><img id="logo" src="img/logo.png" alt="Company logo" style="display: inline;"> TransferRules</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Demo</a></li>
+                    <li class="active"><a href="#">About<span class="sr-only">(current)</span></a></li>
+                    <li id="sign-in"><a href="#">SIGN IN</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
     </nav>
 
-    <!-- Page Header -->
-    <header class="masthead">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 col-md-10 mx-auto">
-            <div class="site-heading">
-              <h4>Make money transfers sweet as pie</h4>
-              <span class="subheading">TransferRules lets you receive payments locally and globally with no hassles and zero set up fees</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
-
-    <!-- Main Content -->
-    <div class="container" style="margin-left: 150px; margin-bottom:40px">
-      <div class="row">
-        <div class="col-md-7 ">
-            <h1>ABOUT US</h1>
-                <p style="text-align:justify">Our mission is to get people who are ready to work in an environment where they have to tackle real work issues. With minimal guidance, instinct kicks and the best ones come out of the lot and start the second phase of the internship where the tasks get increasingly harder.</p>
-        </div>
-        <div class="col-md-5">
-            <img src="https://i.imgur.com/A2nEtO0.png" href="cards" id="image">
-        </div>
-        </div>
+    <div id="header-content">
+        <p id="main-text">Make money transfers sweet as pie</p>
+        <p id="sub-text">
+            TransferRules lets you receive payments locally and globally <br>with no hassles and zero set up fees
+        </p>
     </div>
+</div>
 
-    <div class="container-fluid" style="background-color: #777; color: white;">
-        <div class="row">
-            <div class="col-lg-12 col-md-12">
-                <div class="sponsor">
-                    <h1>Our Sponsors</h1>
-                    <p> We are not alone. Transfer rules is funded and adviced by top venture
-                    capital firms and investors</p>   
-                    <img class="imgbox" src="https://i.imgur.com/Jw9vrsR.png" alt="Flutter Wave's logo" style="margin-left:150px">   
-                    <img class="imgbox" src="https://i.imgur.com/dtu4Xzy.png" alt="Hotels.ng Logo" style="width:15%; height: 15%">              
-                    <img class="imgbox" src="https://i.imgur.com/gf2kaW1.png" alt="Rave Wave's logo">
-                </div>
-            </div>
+<!--HEADER ENDS -->
+
+
+<!-- SECTION ONE BEGINS -->
+
+<div id="section-1">
+    <div id="about">
+        <div id="about-text">
+            <p id="heading">about</p>
+            <p>
+                Our mission is to get people who are ready to work in an environment where they have to tackle real work issues. With minimal guidance, instinct kicks and the best ones come out of the lot and start the second phase of the internship where the tasks get increasingly harder.
+            </p>
         </div>
+        <img id="about-img" src="img/wallet.png">
     </div>
+</div>
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-3"></div>
+<!-- SECTION ONE ENDS -->
 
-            <div class="col-md-7" style="margin-top: 0px;">
-                    <div class="transfer">
-                        <h3> Get started on transferRules today</h3>
-                        <p style="text-align:center; margin-top: 0px;">its simple, no stress, no fuss</p> 
-                         <input type="button" value="Get Started" style="display: block; margin: 0 auto; background-color: #FB853B;padding-left:20px; padding-right:20px; padding-top:5px;padding-bottom:5px; color:#ffffff">
-                    </div>        
-            </div>
-            <div class="col-md-2">
-                <div class="fine-girl">
-                    <img src="https://i.imgur.com/RWtLKvP.jpg" alt="Lady with phone" width="183px" height="275px"> 
-              
-           </div>
-               
-            </div>
-        </div> <hr/>
-                    
+<!-- SPACER -->
+
+<div id="spacer">
+    <p id="heading">Our Sponsors</p>
+    <p id="sub-heading">
+        We're not in this alone. Transfer Rules is funded and advised by top venture capital firms and investors
+    </p>
+
+    <div id="sponsors">
+        <img src="img/sponsor1.png" alt="sponsor - hotelsng">
+        <img src="img/sponsor2.png" alt="sponsor - flutterwave">
+        <img src="img/sponsor3.png" alt="sponsor - rave">
     </div>
-           
-          
+</div>
 
-    <!-- Footer -->
-    <footer>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 col-md-10 mx-auto">
-            <ul class="list-inline text-center">
-              <li class="list-inline-item">
-                <a href="#">
-                  <span class="fa-stack fa-lg">
-                    <i class="fa fa-circle fa-stack-2x"></i>
-                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                  </span>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  <span class="fa-stack fa-lg">
-                    <i class="fa fa-circle fa-stack-2x"></i>
-                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                  </span>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  <span class="fa-stack fa-lg">
-                    <i class="fa fa-circle fa-stack-2x"></i>
-                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                  </span>
-                </a>
-              </li>
-            </ul>
-            <p class="copyright text-muted">Copyright &copy; Your Website 2017</p>
-          </div>
-        </div>
-      </div>
-    </footer>
+<!-- SPACER ENDS-->
 
+<!-- SECTION 2 -->
 
-  </body>
+<div id="section-2">
+    <div>
+        <p id="heading">
+            Get started on TransferRules today
+        </p>
+        <p id="sub-heading">
+            It’s simple, no stress, no fuss.
+        </p>
+        <button id="get-started">GET STARTED</button>
+    </div>
+    <img src="img/get-started.png" alt="get started image">
+</div>
+
+<!-- SECTION 2 ENDS -->
+
+<!-- FOOTER -->
+
+<div id="footer">
+    <div id="footer-heading">
+        <li><a href="#">Lorem ipsum dolor</a></li>
+        <li><a href="#">Lorem ipsum dolor</a></li>
+        <li><a href="#">Lorem ipsum dolor</a></li>
+        <li><a href="#">Lorem ipsum dolor</a></li>
+    </div>
+    <div id="footer-links">
+        <li><a href="#">Lorem ipsum dolor</a></li>
+        <li><a href="#">Lorem ipsum dolor</a></li>
+        <li><a href="#">Lorem ipsum dolor</a></li>
+        <li><a href="#">Lorem ipsum dolor</a></li>
+        <li><a href="#">Lorem ipsum dolor</a></li>
+        <li><a href="#">Lorem ipsum dolor</a></li>
+        <li><a href="#">Lorem ipsum dolor</a></li>
+        <li><a href="#">Lorem ipsum dolor</a></li>
+        <li><a href="#">Lorem ipsum dolor</a></li>
+        <li><a href="#">Lorem ipsum dolor</a></li>
+        <li><a href="#">Lorem ipsum dolor</a></li>
+        <li><a href="#">Lorem ipsum dolor</a></li>
+    </div>
+    <p id="line"> </p>
+    <div id="lower-footer">
+        <p>&#169; 2017 Transferrules.com. All rights reserved</p>
+    </div>
+</div>
+
+<div id="mobile-footer">
+    <table>
+        <tr>
+            <td style="font-size: 17px; font-weight: bold;">Heading</td>
+            <td style="font-size: 17px; font-weight: bold;">Heading</td>
+            <td style="font-size: 17px; font-weight: bold;">Heading</td>
+        </tr>
+        <tr>
+            <td>Link</td>
+            <td>Link</td>
+            <td>Link</td>
+        </tr>
+        <tr>
+            <td>Link</td>
+            <td>Link</td>
+            <td>Link</td>
+        </tr>
+        <tr>
+            <td>Link</td>
+            <td>Link</td>
+            <td>Link</td>
+        </tr>
+    </table>
+    <p id="line"> </p>
+    <div id="lower-footer">
+        <p>&#169; 2017 Transferrules.com. All rights reserved</p>
+    </div>
+</div>
+
+<!-- FOOTER ENDS -->
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
