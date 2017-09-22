@@ -51,26 +51,38 @@
     <main>
         <div class="container">
             <div class="login-box">
-                <h2>Login</h2> 
-                <form action="" method="POST" class="admin-login">
+                @if ($ref == $host.'/admin')
+                    <h4 class="intro">Admin Login </h4>
+                @else
+                    <h4 class="intro">User Login </h4>
+                @endif
+                <form action="{{ route('login') }}" method="POST" class="admin-login">
                     {{ csrf_field() }}
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
-                        <input value="" name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                        <input value="{{ old('email') }}" name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
 
-                        
+                        @if ($errors->has('email'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('email') }}</strong>
+                            </span>
+                        @endif
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Password</label>
                         <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
 
-                        
+                        @if ($errors->has('password'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('password') }}</strong>
+                            </span>
+                        @endif
                     </div>
 
                     <button type="submit" class="btn btn-primary">Submit</button>
 
                     <div style="color: black;">
-                        <a href="" class="forgot-password">Forgot Password?</a>
+                        <a href="{{ route('password.request') }}" class="forgot-password">Forgot Password?</a>
                     </div>
                 </form>
             </div>
@@ -87,23 +99,31 @@
                     </div>
                     <div class="modal-body">
                         <h4 class="intro">Admin Login oooos </h4>
-                        <form method="POST" action="" class="admin-login">
+                        <form method="POST" action="{{ route('login') }}" class="admin-login">
                             {{ csrf_field() }}
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Email address</label>
-                                <input value="" name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                                <input value="{{ old('email') }}" name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
 
-                                
+                                @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Password</label>
                                 <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
 
-                               
+                                @if ($errors->has('password'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                             <div>
-                                <a href="" class="forgot-password">Forgot Password?</a>
+                                <a href="{{ route('password.request') }}" class="forgot-password">Forgot Password?</a>
                             </div>
                         </form>
                     </div>
