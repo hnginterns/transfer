@@ -91,13 +91,3 @@ Route::get('/admin/createrule', 'AdminController@createRule');
 Route::post('/admin/createrule', 'AdminController@saveNewRule');
 Route::get('/manager/setting', 'AdminController@settings');
 Route::get('/admin/setting', 'AdminController@settings');
-
-
-//Route::group(['middleware' => ['auth']])
-//Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/banks', 'BanksController@banks');
-Route::get('/ball', function() {
-
-});
-
-Auth::routes();
