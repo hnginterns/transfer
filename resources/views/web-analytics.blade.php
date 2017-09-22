@@ -12,15 +12,15 @@
 <body>
     <div class="wrapper">
         <div class="head">
-            <div class="main-head">PaysFund</div> <i class="menu fa fa-bars"></i>
-            <div class="sup-heads">Transactions Analytics</div>
+            <div class="main-head"><a href='http://transfer.hng.fun/'>PaysFund</a></div> <i class="menu fa fa-bars"></i>
+           <a href='/web-analytics'> <div class="sup-heads">Transactions Analytics</div></a>
             <form class="form"><input type="search" placeholder="Search" name="search" class="search"></form>
             <div class="prof_left"></div>
         </div>
         <ul class="side-nav">
-            <li><a href="#">Dashboard</a></li>
+            <li><a href="/dashboard">Dashboard</a></li>
             <li><a href="#">campaigns</a></li>
-            <li><a class="active" href="#">Transactions Analytics</a></li>
+            <li><a class="active" href="/web-analytics">Transactions Analytics</a></li>
         </ul>
         <div class="body">
             <div class="labels label1"><i class="fa fa fa-bar-chart bck fa-2x"></i> <span class="con_text">Transactions<br>Welcome to Analytics Dashboard</span></div>
