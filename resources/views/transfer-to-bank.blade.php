@@ -7,7 +7,7 @@
     <title>Sign Up</title>
     <link href="bootstrap.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
-    <link href="style.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
 
     <style type="text/css">
         html {
@@ -361,8 +361,8 @@ li.nav-item {
             <span class="text-muted company">2017 TransferFunds - All Rights Reserved</span>
         </div>
     </footer>
-    <script src="jquery.js"></script>
-    <script src="bootstrap.js"></script>
+    <script src="/css/jquery.js"></script>
+    <script src="/css/bootstrap.js"></script>
 </body>
 
 </html>
