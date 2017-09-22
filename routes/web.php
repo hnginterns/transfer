@@ -33,6 +33,11 @@ Route::get('/addaccount', function () {
 	return view('/admin/addaccount');
 });
 
+//user management page
+Route::get('/usermanagement', function(){
+	return view('usermanagement');
+});
+
 //admin dashboard
 Route::get('/admin', function () {
 		return view('/admin/home');
