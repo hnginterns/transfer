@@ -20,12 +20,22 @@ Route::get('/forgot', function () {
 	return view('forgot');
 });
 
+Route::get('/confirmation', 'ValidateAccountController@confirm');
+
 // get dashboard
 Route::get('/userdashboard', 'pagesController@userdashboard');
+
+//View accounts page
+Route::get('/view-accounts', 'pagesController@viewAccounts');
 
 // get add account page (this page will be move to the admin middleware)
 Route::get('/addaccount', function () {
 	return view('/admin/addaccount');
+});
+
+//user management page
+Route::get('/usermanagement', function(){
+	return view('usermanagement');
 });
 
 //admin dashboard
@@ -37,12 +47,20 @@ Route::get('/admin', function () {
 Route::get('/404', function(){
 	return view('404');
 });
+
+//return wallet-view
+Route::get('/wallet-view', 'pagesController@viewWallet')->name('wallet');
+
 // get information about site
 Route::get('/about', function(){
 	return view('about');
 });
 // get bank route
 Route::get('/banks', 'BanksController@banks');
+
+Route::get('/success', 'pagesController@success');
+
+Route::get('/failed', 'pagesController@failed');
 
 // get transfer 
 Route::get('/transfer', 'pagesController@transfer');
@@ -75,26 +93,27 @@ Route::get('/admin', function () {
 // auth admin
 Route::group(['middleware' => ['auth', 'admin']], function() {
 
-// get manager
-Route::get('/manager', 'AdminController@index');
+	// get manager
+	Route::get('/manager', 'AdminController@index');
 
-Route::group(['middleware' => ['auth', 'admin']], function() {
+	Route::group(['middleware' => ['auth', 'admin']], function() {
 
-Route::get('/admin', 'AdminController@index');
+		Route::get('/admin', 'AdminController@index');
 
-// Set rules that users will transfer with
-Route::get('/admin/setrule', 'AdminController@setRule');
-Route::post('/admin/setrule', 'AdminController@saveRule');
+		// Set rules that users will transfer with
+		Route::get('/admin/setrule', 'AdminController@setRule');
+		Route::post('/admin/setrule', 'AdminController@saveRule');
 
-// New Rule Creation
-Route::get('/admin/createrule', 'AdminController@createRule');
-Route::post('/admin/createrule', 'AdminController@saveNewRule');
-Route::get('/manager/setting', 'AdminController@settings');
+		// New Rule Creation
+		Route::get('/admin/createrule', 'AdminController@createRule');
+		Route::post('/admin/createrule', 'AdminController@saveNewRule');
 
-/*
-* NOTE: FOR ROUTE ERROR NO
-* FIX BUGS 
-* ALL CODERS SHOULD COMMENT ON THEIR CODE AND TEAM NAME ***
-* TEAM SHOULD SPECIFY
-* THANKS
-*/
+	});
+
+	//Route::get('/manager/setting', 'AdminController@settings');
+});
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

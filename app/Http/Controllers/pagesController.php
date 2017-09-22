@@ -8,18 +8,33 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class pagesController extends Controller
 {
+  use AuthenticatesUsers;
 
+  protected $redirectTo = '/dashboard';
+  
   public function home () {
     return view('home-page');
   }
 
-  public function signin() 
+  public function signin(Request $request) 
   {
-    return view ('sign-in');
+    $data['ref'] = str_replace('http://', '', str_replace('https://', '', URL::previous()));
+    $data['host'] = str_replace('http://', '', str_replace('https://', '', $request->server('HTTP_HOST')));
+
+    return $this->showLoginForm($data); // Does the same thing as above
+    //return view ('sign-in');
   }
 
   public function userdashboard(){
     return view('dashboard');
+  }
+
+  public function success(){
+    return view('success');
+  }
+
+  public function failed(){
+    return view('failed');
   }
 
   public function balance () {
@@ -30,6 +45,13 @@ class pagesController extends Controller
     return view ('transfer');
   }
 
+  public function viewAccounts(){
+      return view('view-accounts');
+  }
+
+  public function viewWallet() {
+    return view ('wallet-view');
+  }
   //all other page functions can be added
   /*
   pubic function <function name> {
