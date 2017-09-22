@@ -24,11 +24,16 @@ class DatabaseSeeder extends Seeder
 	            'bank_code' => $faker->creditCardNumber,
 	        ]);
         }
-	    
+
 	$dt = Carbon::now();
         $dateNow = $dt->toDateTimeString();
-	    
+<<<<<<< HEAD
+
         User::insert([
+=======
+	    
+        User::create([
+>>>>>>> 18b4a526ec449dda3382d4ab438fbf2520c7dd73
             'username' => 'johnobi',
             'email' => 'johnobi@gmail.com',
             'password' => Hash::make('transfer'),
@@ -40,7 +45,7 @@ class DatabaseSeeder extends Seeder
 	    'created_at' => $dateNow
         ]);
 
-        User::insert([
+        User::create([
             'username' => 'emeka56',
             'email' => 'emekus@gmail.com',
             'password' => Hash::make('transfer'),
@@ -51,7 +56,7 @@ class DatabaseSeeder extends Seeder
 	    'created_at' => $dateNow
         ]);
 
-        User::insert([
+        User::create([
             'username' => 'prisca',
             'email' => 'prisca@gmail.com',
             'password' => Hash::make('transfer'),
