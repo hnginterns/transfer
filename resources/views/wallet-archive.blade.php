@@ -212,6 +212,7 @@ margin-right: 30px;
 		color: #25313F;
 		width:60%;
 		margin-left:20%;
+		font-weight:700;
 	}
 	.body-head
 	{

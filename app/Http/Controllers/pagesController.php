@@ -79,7 +79,7 @@ class pagesController extends Controller
     return view ('create-user');
   }
   public function walletArchive() {
-    return view ('create-user');
+    return view ('wallet-archive');
   }
 
   //all other page functions can be added

@@ -207,7 +207,10 @@ body
 	.sub-head
 	{
 		background: #F76126;
-		color: #fff;
+		color: #25313F;
+		width:60%;
+		margin-left:20%;
+		font-weight:700;
 	}
 	.body-head
 	{
@@ -637,7 +640,7 @@ body
 <div class="dashboard">
 <div class="dashGrey"><a href='/dashboard' style="color:#828282;">Dashboard</a></div>
 <br />
-<div class="dashBlue HighLighted"><a href='/#' style="color:#25313E;">Manage Users</a></div>
+<div class="dashBlue HighLighted"><a href='/manage-users' style="color:#25313E;">Manage Users</a></div>
 <br />
 </div>
 </div>
