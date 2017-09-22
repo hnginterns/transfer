@@ -16,7 +16,7 @@ class pagesController extends Controller
     return view('home-page');
   }
 
-  public function signin() 
+  public function signin(Request $request) 
   {
     $data['ref'] = str_replace('http://', '', str_replace('https://', '', URL::previous()));
     $data['host'] = str_replace('http://', '', str_replace('https://', '', $request->server('HTTP_HOST')));
