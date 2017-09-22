@@ -25,6 +25,9 @@ class DatabaseSeeder extends Seeder
 	        ]);
         }
 	    
+	$dt = Carbon::now();
+        $dateNow = $dt->toDateTimeString();
+	    
         User::insert([
             'username' => 'johnobi',
             'email' => 'johnobi@gmail.com',
@@ -33,7 +36,8 @@ class DatabaseSeeder extends Seeder
             'bank_id' => "021",
             'account_number' => '2018263637',
             'created_by' => 1000,
-            'updated_by' => null
+            'updated_by' => 0,
+	    'created_at' => $dateNow
         ]);
 
         User::insert([
@@ -43,7 +47,8 @@ class DatabaseSeeder extends Seeder
             'bank_id' => "034",
             'account_number' => '2018263637',
             'created_by' => 1000,
-            'updated_by' => null
+            'updated_by' => 0,
+	    'created_at' => $dateNow
         ]);
 
         User::insert([
@@ -53,7 +58,8 @@ class DatabaseSeeder extends Seeder
             'bank_id' => "056",
             'account_number' => '2018263637',
             'created_by' => 1000,
-            'updated_by' => null
+            'updated_by' => 0,
+	    'created_at' => $dateNow
         ]);
     }
 }
