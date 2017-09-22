@@ -142,7 +142,11 @@
 
     <div class="navigate">
       <a class="bg-coral" href="/dashboard">GO TO DASHBOARD</a>
+<<<<<<< HEAD
       <a class="bg-blue" href="/home">GO TO HOMEPAGE</a>
+=======
+      <a class="bg-blue" href="/">GO TO HOMEPAGE</a>
+>>>>>>> 48215a154d692a1ea04a37e1e7819227fbad1e5d
     </div>
 	</div>
 </body>

@@ -757,11 +757,19 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
+<<<<<<< HEAD
                     <li><a href="/home">FAQs</a></li>
                     <li><a href="/home">Features</a></li>
                     <li><a href="/home">Demo</a></li>
                     <li><a href="/about">About</a></li>
                     <li id="sign-in"><a href="/signin">SIGN IN</a></li>
+=======
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Demo</a></li>
+                    <li><a href="#">About</a></li>
+                    <li id="sign-in"><a href="/login">SIGN IN</a></li>
+>>>>>>> 48215a154d692a1ea04a37e1e7819227fbad1e5d
                 </ul>
             </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->

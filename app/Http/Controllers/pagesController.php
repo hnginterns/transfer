@@ -10,8 +10,13 @@ class pagesController extends Controller
 {
   use AuthenticatesUsers;
 
+<<<<<<< HEAD
   protected $redirectTo = '/dashboard';
 
+=======
+  protected $redirectTo = '/usermanagement';
+  
+>>>>>>> 48215a154d692a1ea04a37e1e7819227fbad1e5d
   public function __contruct(){
     $this->middleware('auth')->except('signin');
 
@@ -81,6 +86,18 @@ class pagesController extends Controller
 
   public function viewWallet() {
     return view ('wallet-view');
+  }
+  public function createWallet() {
+    return view ('create-wallet');
+  }
+  public function manageUsers() {
+    return view ('manage-users');
+  }
+  public function createUser() {
+    return view ('create-user');
+  }
+  public function walletArchive() {
+    return view ('wallet-archive');
   }
 
   //all other page functions can be added

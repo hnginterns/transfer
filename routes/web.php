@@ -32,6 +32,56 @@ Route::get('/404', 'pagesController@pagenotfound');
 
 // tansfer to bank
 
+<<<<<<< HEAD
+=======
+//user management page
+Route::get('/usermanagement', function(){
+	return view('usermanagement');
+});
+
+//admin dashboard
+Route::get('/admin', function () {
+		return view('/admin/home');
+})->middleware('admin'); //Enable Admin middleware by removing comment around "->middleware('admin')"
+
+// return error 404 page
+Route::get('/404', function(){
+	return view('404');
+});
+
+//return wallet-view
+Route::get('/wallet-view', 'pagesController@viewWallet')->name('wallet');
+
+//return web-analytics
+Route::get('/web-analytics', 'PagesController@webAnalytics');
+//return create-wallet
+Route::get('/create-wallet', 'pagesController@createWallet');
+//return manage-users
+Route::get('/manage-users', 'pagesController@manageUsers');
+//return create-user
+Route::get('/create-user', 'pagesController@createUser');
+//return create-wallet
+Route::get('/wallet-archive', 'pagesController@walletArchive');
+
+Route::get('/web-analytics', 'pagesController@webAnalytics');
+
+// get information about site
+Route::get('/about', function(){
+	return view('about');
+});
+// get bank route
+Route::get('/banks', 'BanksController@banks');
+
+Route::get('/success', 'pagesController@success');
+
+Route::get('/failed', 'pagesController@failed');
+
+// get transfer 
+Route::get('/transfer', 'pagesController@transfer');
+
+// get bank balance
+Route::get('/balance', 'pagesController@balance');
+>>>>>>> 48215a154d692a1ea04a37e1e7819227fbad1e5d
 
 // authentications
 Auth::routes();
