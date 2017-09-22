@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
-class pagesController extends Controller
+class PagesController extends Controller
 {
   use AuthenticatesUsers;
 
@@ -21,8 +21,8 @@ class pagesController extends Controller
     $data['ref'] = str_replace('http://', '', str_replace('https://', '', URL::previous()));
     $data['host'] = str_replace('http://', '', str_replace('https://', '', $request->server('HTTP_HOST')));
 
-    return $this->showLoginForm($data); // Does the same thing as above
-    //return view ('sign-in');
+    return $this->showLoginForm(); // Does the same thing as above
+    // return view ('sign-in');
   }
 
   public function userdashboard(){

@@ -10,11 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Auth::routes();
 // get default home pages
-Route::get('/', 'pagesController@home');
+Route::get('/', 'PagesController@home');
 // get signin page
-Route::get('/signin', 'pagesController@signin');
+Route::get('/signin', 'PagesController@signin');
 // get password forget pages
 Route::get('/forgot', function () {
 	return view('forgot');
@@ -23,16 +23,16 @@ Route::get('/forgot', function () {
 Route::get('/confirmation', 'ValidateAccountController@confirm');
 
 // get dashboard
-Route::get('/userdashboard', 'pagesController@userdashboard');
+Route::get('/userdashboard', 'PagesController@userdashboard');
 
 //View accounts page
-Route::get('/view-accounts', 'pagesController@viewAccounts');
+Route::get('/view-accounts', 'PagesController@viewAccounts');
 
 // tansfer to bank
-Route::get('/transfer-to-bank', 'pagesController@bank_transfer');
+Route::get('/transfer-to-bank', 'PagesController@bank_transfer');
 
 // tansfer to bank
-Route::get('/transfer-to-wallet', 'pagesController@wallet_transfer');
+Route::get('/transfer-to-wallet', 'PagesController@wallet_transfer');
 
 // get add account page (this page will be move to the admin middleware)
 Route::get('/addaccount', function () {
@@ -55,10 +55,10 @@ Route::get('/404', function(){
 });
 
 //return wallet-view
-Route::get('/wallet-view', 'pagesController@viewWallet')->name('wallet');
+Route::get('/wallet-view', 'PagesController@viewWallet')->name('wallet');
 
 //return web-analytics
-Route::get('/web-analytics', 'pagesController@webAnalytics');
+Route::get('/web-analytics', 'PagesController@webAnalytics');
 
 // get information about site
 Route::get('/about', function(){
@@ -67,15 +67,15 @@ Route::get('/about', function(){
 // get bank route
 Route::get('/banks', 'BanksController@banks');
 
-Route::get('/success', 'pagesController@success');
+Route::get('/success', 'PagesController@success');
 
-Route::get('/failed', 'pagesController@failed');
+Route::get('/failed', 'PagesController@failed');
 
 // get transfer 
-Route::get('/transfer', 'pagesController@transfer');
+Route::get('/transfer', 'PagesController@transfer');
 
 // get bank balance
-Route::get('/balance', 'pagesController@balance');
+Route::get('/balance', 'PagesController@balance');
 
 // authentications
 Auth::routes();
@@ -94,10 +94,10 @@ Route::group(['middleware' => 'auth'], function() {
 });
 
 
-// admin dashboard
-Route::get('/admin', function () {
-		return view('/admin/home');
-});
+// // admin dashboard
+// Route::get('/admin', function () {
+// 		return view('/admin/home');
+// });
 
 // auth admin
 Route::group(['middleware' => ['auth', 'admin']], function() {
@@ -125,6 +125,6 @@ Route::group(['middleware' => ['auth', 'admin']], function() {
 });
 
 
-Auth::routes();
+
 
 Route::get('/home', 'HomeController@index')->name('home');
