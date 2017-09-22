@@ -7,15 +7,12 @@ use Illuminate\Http\Request;
 class UsersController extends Controller
 {
 
-    
+
 
 	public function index(Request $request) {
 		return view('dashboard');
 	}
 
-    public function transfer() {
-    	return view('dashboard.transfer');
-    }
 
     public function processTransfer(Request $request) {
 	// Logic to process Transfer

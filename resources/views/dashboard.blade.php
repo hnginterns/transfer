@@ -218,7 +218,13 @@
     <div class="row">
       <div class="col-sm-2" id="sidebar">
         <ul class="nav nav-stacked">
-          <li class="active-sidebar"><a href="#">DASHBOARD</a></li>
+          <li class="active-sidebar"><a href="/userdashboard">Dashboard</a></li>
+          <li class="side-items">
+              <a href="/wallet-view" class="side-item active">Wallet View</a>
+          </li>
+          <li class="side-items">
+              <a href="/" class="side-item">Accounts</a>
+          </li>
           <li>
           <a href="{{ route('logout') }}"
               onclick="event.preventDefault();

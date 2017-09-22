@@ -13,7 +13,7 @@ class AdminController extends Controller
     public  function __construct(){
 
         $this->middleware('admin')->except('logout');
-        
+
     }
 
 	public function index() {
@@ -44,13 +44,16 @@ class AdminController extends Controller
     	return view('admin.setting');
     }
 
-    public function saveSettings() 
-    {
+    public function saveSettings(){
 
     }
 
-    public function viewDashbard(){
-        return view('admin.admindashboard');
+    public function addaccount(){
+      return view('addaccount');
+    }
+
+    public function usermanagement(){
+      return view('usermanagement');
     }
 
     public function banUser(Request $request, User $user){
@@ -73,7 +76,6 @@ class AdminController extends Controller
         }else{
             return back()->with(["alert" => "user with id $user could not be restored"]);
         }
-
 
     }
 

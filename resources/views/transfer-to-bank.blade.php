@@ -1,13 +1,13 @@
 @extends('layouts.head')
 
     @section('title')
-        Sign in 
+        Sign in
     @endsection
 
     @section('head')
         <!-- external scripts and meta tags goes here-->
         <link rel="stylesheet" type="text/css" href="/css/sigin.css">
-        
+
          <style type="text/css">
             html {
                 font-family: 'Nunito Sans', sans-serif;
@@ -169,7 +169,7 @@
                 font-weight: 500;
                 opacity: 0.8;
                 letter-spacing: 0.02rem;
-                text-align: center;    
+                text-align: center;
             }
 
             .intro {
@@ -269,7 +269,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
 
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/userdashboard">
                 <img src="img/logo.png" width="30" height="30" class="d-inline-block align-top" alt=""> PaysFund
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -285,7 +285,7 @@
                         </button>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Wallet View</a>
+                        <a class="nav-link active" href="/wallet-view">Wallet View</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav">
@@ -309,13 +309,13 @@
                     <div class="sidy">
                         <ul class="nav-list">
                             <li class="side-items upper">
-                                <a href="" class="side-item">Dashboard</a>
+                                <a href="/dashboard" class="side-item">Dashboard</a>
                             </li>
                             <li class="side-items">
-                                <a href="" class="side-item active">Wallet View</a>
+                                <a href="/wallet-view" class="side-item active">Wallet View</a>
                             </li>
                             <li class="side-items">
-                                <a href="" class="side-item">Accounts</a>
+                                <a href="/" class="side-item">Accounts</a>
                             </li>
                         </ul>
                     </div>

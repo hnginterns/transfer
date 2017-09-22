@@ -1,12 +1,10 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
-<html>
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">   
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<title>404</title>
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-  
+
   <style>
     body{
       font-family: lato;
@@ -24,7 +22,7 @@
       color: #4f4f4f;
       font-weight: bolder;
       font-size: 150px;
-    }    
+    }
     .main .error span.ghost{
       color: #000;
       letter-spacing: 10px;
@@ -43,8 +41,8 @@
         position: absolute;
     }
     .main .error span.ghost:after{
-		background: 
-					linear-gradient(-45deg, transparent 16px, #4f4f4f 0), 
+		background:
+					linear-gradient(-45deg, transparent 16px, #4f4f4f 0),
 					linear-gradient(45deg, transparent 16px, #4f4f4f  0);
         background-repeat: repeat-x;
 		    background-position: left bottom;
@@ -61,7 +59,7 @@
         margin-left: -16px;
         margin-right: 16px;
         margin-bottom: 35px;
-		
+
 	}
   .main h2{
     margin-top: 0;
@@ -83,15 +81,15 @@
     }
 	 .bg-blue{
       background-color: #222c37;
-    }	 
-    a{ 
+    }
+    a{
       text-decoration: none;
     }
-    .main .navigate{  
+    .main .navigate{
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      align-items: center; 
+      align-items: center;
     }
     .main .navigate a{
       border-radius: 25px;
@@ -123,13 +121,13 @@
       .main .navigate a{
         font-size: 14px;
       }
-    } 
+    }
 	</style>
 </head>
 <body>
 	<div class="main">
     <h2>WHOOPS!</h2>
-    
+
     <img src="http://res.cloudinary.com/plushdeveloper/image/upload/v1506065231/4040_okxzn8.png" height="150px">
     <!--<div class="error">4 <span class="ghost"> </span>4</div>
     -->
@@ -137,12 +135,12 @@
 
 		<p> Sorry the page you are looking for cannot be accessed.
     <br> Check the options below or feel free to</p>
-    
+
     <h4><a class="blue" href="#">REPORT THIS ISSUE</a></h4>
-    
+
     <div class="navigate">
       <a class="bg-coral" href="/dashboard">GO TO DASHBOARD</a>
-      <a class="bg-blue" href="./home">GO TO HOMEPAGE</a>
+      <a class="bg-blue" href="/home">GO TO HOMEPAGE</a>
     </div>
 	</div>
 </body>

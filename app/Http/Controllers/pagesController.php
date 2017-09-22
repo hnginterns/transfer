@@ -11,17 +11,17 @@ class pagesController extends Controller
   use AuthenticatesUsers;
 
   protected $redirectTo = '/dashboard';
-  
+
   public function __contruct(){
     $this->middleware('auth')->except('signin');
-    
+
   }
 
   public function home () {
     return view('home-page');
   }
 
-  public function signin(Request $request) 
+  public function signin(Request $request)
   {
     $data['ref'] = str_replace('http://', '', str_replace('https://', '', URL::previous()));
     $data['host'] = str_replace('http://', '', str_replace('https://', '', $request->server('HTTP_HOST')));
@@ -33,6 +33,19 @@ class pagesController extends Controller
   public function userdashboard(){
     return view('dashboard');
   }
+
+  public function about(){
+    return view('about');
+  }
+
+  public function forgot(){
+    return view('forgot');
+  }
+
+  public function signout(){
+    return view('signin');
+  }
+
 
   public function success(){
     return view('success');

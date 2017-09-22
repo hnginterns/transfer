@@ -21,15 +21,15 @@
         <tbody>
             <tr>
                 <td>
-                @foreach($banks as $bankCode => $bankName)
-                {{$bankCode}}<br>
-                @endforeach
+                  <!--
+
+                -->
                 </td>
 
                 <td>
-                @foreach($banks as $bankCode => $bankName)
-                {{$bankName}}<br>
-                @endforeach
+                <!--
+                
+                  -->
                 </td>
             </tr>
         </tbody>
