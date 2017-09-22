@@ -59,7 +59,14 @@ Route::get('/wallet-view', 'PagesController@viewWallet')->name('wallet');
 
 //return web-analytics
 Route::get('/web-analytics', 'PagesController@webAnalytics');
-
+//return create-wallet
+Route::get('/create-wallet', 'PagesController@createWallet');
+//return manage-users
+Route::get('/manage-users', 'PagesController@manageUsers');
+//return create-user
+Route::get('/create-user', 'PagesController@createUser');
+//return create-wallet
+Route::get('/wallet-archive', 'PagesController@walletArchive');
 // get information about site
 Route::get('/about', function(){
 	return view('about');

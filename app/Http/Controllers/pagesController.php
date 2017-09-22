@@ -64,6 +64,18 @@ class PagesController extends Controller
   public function viewWallet() {
     return view ('wallet-view');
   }
+  public function createWallet() {
+    return view ('create-wallet');
+  }
+  public function manageUsers() {
+    return view ('manage-users');
+  }
+  public function createUser() {
+    return view ('create-user');
+  }
+  public function walletArchive() {
+    return view ('create-user');
+  }
 
   //all other page functions can be added
   /*
