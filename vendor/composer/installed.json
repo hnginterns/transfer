@@ -1707,7 +1707,6 @@
         ]
     },
     {
-<<<<<<< HEAD
         "name": "laravel/framework",
         "version": "v5.5.4",
         "version_normalized": "5.5.4.0",
@@ -1842,8 +1841,6 @@
         ]
     },
     {
-=======
->>>>>>> 8faff861819802104ec5d7e8fd5c3319148ecd9c
         "name": "fideloper/proxy",
         "version": "3.3.4",
         "version_normalized": "3.3.4.0",
