@@ -117,6 +117,8 @@ Route::group(['middleware' => ['auth', 'admin']], function() {
 		Route::get('/admin/createrule', 'AdminController@createRule');
 		Route::post('/admin/createrule', 'AdminController@saveNewRule');
 
+		Route::get('/admin/dashboard', 'AdminController@viewDashboard');
+
 	});
 
 	//Route::get('/manager/setting', 'AdminController@settings');
