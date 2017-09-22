@@ -105,17 +105,30 @@
 
                 <h6 class="promise">It is simple and easy to control your account -<br> Keep your password secret</h6>
 
-                <form class="admin-login">
-
+                <form method="POST" action="{{ route('login') }}" class="admin-login">
+                    {{ csrf_field() }}
                     <div class="form-group">
 
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                        <input value="{{ old('email') }}" name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                        
+                        @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+
 
                     </div>
 
                     <div class="form-group">
 
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+
+                         @if ($errors->has('password'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
 
                     </div>
 
@@ -123,7 +136,7 @@
 
                     <div class="forgot-holder">
 
-                        <a class="forgot-password">Forgot Password?</a>
+                        <a href="{{ route('password.request') }}" class="forgot-password">Forgot Password?</a>
 
                     </div>
 

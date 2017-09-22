@@ -142,7 +142,7 @@
     
     <div class="navigate">
       <a class="bg-coral" href="/dashboard">GO TO DASHBOARD</a>
-      <a class="bg-blue" href="./home">GO TO HOMEPAGE</a>
+      <a class="bg-blue" href="/hvghcfgx">GO TO HOMEPAGE</a>
     </div>
 	</div>
 </body>
