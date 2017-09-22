@@ -16,7 +16,7 @@ class UsersController extends Controller
     }
 
     public function processTransfer(Request $request) {
-
+	// Logic to process Transfer
     }
 
     public function history() {
@@ -28,6 +28,6 @@ class UsersController extends Controller
     }
 
     public function processFundWallet(Request $request) {
-
+	// Logic to process funding of wallet.
     }
 }
