@@ -159,7 +159,7 @@ margin-right: 30px;
 <body>
 <header><div class="container">
 <div class="row bgcolor">
-<div class="col-sm-3 col-xs-6"align="left"><span class="logo">PaysFund</span></div>
+<div class="col-sm-3 col-xs-6"align="left"><a href='http://transfer.hng.fun/'><span class="logo">PaysFund</span></a></div>
 <div class="col-sm-1 col-xs-6" align="right"><span class="bars"><i class="fa fa-bars" aria-hidden="true"></i></span></div>
 <div class="col-sm-3 padding hidden-sm hidden-xs"><span class="white ">Wallet View</span></div>
 <div class="col-sm-3 padding hidden-sm hidden-xs"><input type="text" class="search form-control" placeholder="Search"/></div>
