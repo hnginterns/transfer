@@ -6,27 +6,32 @@ use Illuminate\Http\Request;
 
 class pagesController extends Controller
 {
-    public function home () {
-      return view('home-page');
-    }
 
-    public function signin() 
-    {
-      return view ('sign-in');
-    }
+  public function home () {
+    return view('home-page');
+  }
 
-    public function balance () {
-      return view ('balance');
-    }
+  public function signin() 
+  {
+    return view ('sign-in');
+  }
 
-    public function transfer () {
-      return view ('transfer');
-    }
+  public function userdashboard(){
+    return view('dashboard');
+  }
 
-    //all other page functions can be added
-    /*
-    pubic function <function name> {
-      {all the logic}
-      return view('<blade name>');
-    }*/
+  public function balance () {
+    return view ('balance');
+  }
+
+  public function transfer () {
+    return view ('transfer');
+  }
+
+  //all other page functions can be added
+  /*
+  pubic function <function name> {
+    {all the logic}
+    return view('<blade name>');
+  }*/
 }

@@ -11,15 +11,21 @@
 |
 */
 
+// get default home pages
 Route::get('/', 'pagesController@home');
+// get signin page
 Route::get('/signin', 'pagesController@signin');
-
+// get password forget pages
 Route::get('/forgot', function () {
-		return view('forgot');
+	return view('forgot');
 });
 
+// get dashboard
+Route::get('/userdashboard', 'pagesController@userdashboard');
+
+// get add account page (this page will be move to the admin middleware)
 Route::get('/addaccount', function () {
-		return view('addaccount');
+	return view('/admin/addaccount');
 });
 
 //admin dashboard
@@ -31,19 +37,20 @@ Route::get('/admin', function () {
 Route::get('/404', function(){
 	return view('404');
 });
-
+// get information about site
 Route::get('/about', function(){
 	return view('about');
 });
-
+// get bank route
 Route::get('/banks', 'BanksController@banks');
 
-//Route::view('/balance', 'get-wallet');
-
-//Route::view('/balance', 'get-wallet');
+// get transfer 
 Route::get('/transfer', 'pagesController@transfer');
+
+// get bank balance
 Route::get('/balance', 'pagesController@balance');
 
+// authentications
 Auth::routes();
 Route::group(['middleware' => 'auth'], function() {
 	// Handles Transfers
@@ -58,11 +65,14 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::get('/dashboard/fundwallet', 'UsersController@fundWallet')->name('fundwallet');
 });
 
-//admin dashboard
+// admin dashboard
 Route::get('/admin', function () {
 		return view('/admin/home');
 });
+
+// auth admin
 Route::group(['middleware' => ['auth', 'admin']], function() {
+	// get manager
 	Route::get('/manager', 'AdminController@index');
 
 	// Set rules that users will transfer with
@@ -75,12 +85,4 @@ Route::group(['middleware' => ['auth', 'admin']], function() {
 
 	// Edit Company Details
 	Route::get('/manager/setting', 'AdminController@settings');
-});
-
-//Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/banks', 'BanksController@banks');
-
-Route::get('/ball', function() {
-
 });
