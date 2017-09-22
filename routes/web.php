@@ -25,6 +25,9 @@ Route::get('/confirmation', 'ValidateAccountController@confirm');
 // get dashboard
 Route::get('/userdashboard', 'pagesController@userdashboard');
 
+//View accounts page
+Route::get('/view-accounts', 'pagesController@viewAccounts');
+
 // get add account page (this page will be move to the admin middleware)
 Route::get('/addaccount', function () {
 	return view('/admin/addaccount');

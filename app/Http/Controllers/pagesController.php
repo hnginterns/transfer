@@ -37,6 +37,10 @@ class pagesController extends Controller
     return view ('transfer');
   }
 
+  public function viewAccounts(){
+      return view('view-accounts');
+  }
+
   //all other page functions can be added
   /*
   pubic function <function name> {
