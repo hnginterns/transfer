@@ -10,12 +10,12 @@ header{
 	width:100%;
 	background-color:#25313F;
 	height:70px;
-	padding-top:15px
+	padding-top:15px;
 	}
 	div.bgcolor{
 		background-color:#25313F;
 	}
-span.bars{ 
+span.bars{
 padding-top:7px;
 color:#FFF;
 font-size:24px;
@@ -66,13 +66,13 @@ margin-right: 30px;
 					}
 				   .form-color{
 					background-color:#FFD0B3;
-					border-radius:0 !important; 
+					border-radius:0 !important;
 					border-color:#FFD0B3;
 					width:400px;
 					}
 					.form-text-color{
 					background-color:#FF6200;
-					border-radius:0 !important; 
+					border-radius:0 !important;
 					border-color:#FF6200;
 					}
 					div.form{
@@ -100,17 +100,17 @@ margin-right: 30px;
 						color:#25313E;
 						font-weight:600;
 						font-size:18px;
-						padding-left:40px; 
+						padding-left:40px;
 						padding-top:4px;
 						padding-bottom:4px;
 						text-align:left;
 						}
 						.dashboard{
 							position:fixed;
-							
+
 							left:0px;
 							top:100px;
-							}	
+							}
 							div.content{
 								margin-top:60px;
 								margin-left:15%;
@@ -125,14 +125,14 @@ margin-right: 30px;
 								color:#FFF;
 								padding-right:9px;
 
-							}	
+							}
 							div.HighLighted{
 								background-color: #C1D6DD;
 								width:202px;
-							}			
+							}
 							div.orange-box{
 								background-color:#FF6200;
-								padding:5px; 
+								padding:5px;
 							}
 							div.blue-circle{
 								background-color: #25313F;
@@ -161,7 +161,7 @@ margin-right: 30px;
 <div class="row bgcolor">
 <div class="col-sm-3 col-xs-6"align="left"><a href='/'><span class="logo">PaysFund</span></a></div>
 <div class="col-sm-1 col-xs-6" align="right"><span class="bars"><i class="fa fa-bars" aria-hidden="true"></i></span></div>
-<div class="col-sm-3 padding hidden-sm hidden-xs"><a href='/wallet-view'><span class="white ">Wallet View</span></a></div>
+<div class="col-sm-3 padding hidden-sm hidden-xs"><a href='wallet-view'><span class="white ">Wallet View</span></a></div>
 <div class="col-sm-3 padding hidden-sm hidden-xs"><input type="text" class="search form-control" placeholder="Search"/></div>
 <div class="col-sm-1 hidden-sm hidden-xs"></div>
 <div class="col-sm-1 hidden-sm hidden-xs"><div class="profile"></div></div>
@@ -169,9 +169,9 @@ margin-right: 30px;
 </div></header>
 <div class="container"><div class="row"><div class="col-md-1 sidebar hidden-sm hidden-xs">
 <div class="dashboard">
-<a href='/dashboard'><div class="dashGrey">Dashboard</div></a>
+<div class="dashGrey"><a href="manager">Dashboard</a></div>
 <br />
-<a href='/wallet-view'><div class="dashBlue HighLighted">Wallet View</div></a>
+<div class="dashBlue HighLighted"><a href="wallet-view">Wallet View</a></div>
 <br />
 </div>
 </div>
@@ -214,118 +214,118 @@ margin-right: 30px;
         <td></td>
         <td></td>
            <td></td>
-                
+
       </tr>
       <tr>
         <td></td>
         <td></td>
         <td></td>
            <td></td>
-        
+
       </tr>
       <tr>
         <td></td>
         <td></td>
         <td></td>
            <td></td>
-      
+
       </tr>
       <tr>
         <td></td>
         <td></td>
         <td></td>
            <td></td>
-        
+
       </tr>
       <tr>
         <td></td>
         <td></td>
         <td></td>
            <td></td>
-       
+
       </tr>
       <tr>
         <td></td>
         <td></td>
         <td></td>
            <td></td>
-        
+
       </tr>
          <tr>
         <td></td>
         <td></td>
         <td></td>
            <td></td>
-       
+
       </tr>
       <tr>
         <td></td>
         <td></td>
         <td></td>
            <td></td>
-        
+
       </tr>
          <tr>
         <td></td>
         <td></td>
         <td></td>
            <td></td>
-       
+
       </tr>
       <tr>
         <td></td>
         <td></td>
         <td></td>
            <td></td>
-        
+
       </tr>
          <tr>
         <td></td>
         <td></td>
         <td></td>
            <td></td>
-       
+
       </tr>
       <tr>
         <td></td>
         <td></td>
         <td></td>
            <td></td>
-        
+
       </tr>
          <tr>
         <td></td>
         <td></td>
         <td></td>
            <td></td>
-       
+
       </tr>
       <tr>
         <td></td>
         <td></td>
         <td></td>
            <td></td>
-        
+
       </tr>
          <tr>
         <td></td>
         <td></td>
         <td></td>
            <td></td>
-       
+
       </tr>
       <tr>
         <td></td>
         <td></td>
         <td></td>
            <td></td>
-        
+
       </tr>
-      
+
     </tbody>
   </table>
   <div align="center">
-  <button class="btn btn-default btn-edit">ADJG</button><button class="btn btn-default btn-edit">RJSOIT</button><button class="btn btn-default btn-edit">DKGIU</button><button class="btn btn-default btn-edit">RKSNBT</button>
+  <a href="transfer-to-wallet" class="btn btn-default btn-edit">Transfer to Wallet</a><a href="transfer-to-bank" class="btn btn-default btn-edit">Transfer to Bank</a><button class="btn btn-default btn-edit">DKGIU</button><button class="btn btn-default btn-edit">RKSNBT</button>
   </div> </div>
     </div>
   </div>

@@ -757,11 +757,11 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
-                    <li><a href="#">FAQs</a></li>
-                    <li><a href="#">Features</a></li>
-                    <li><a href="#">Demo</a></li>
-                    <li><a href="#">About</a></li>
-                    <li id="sign-in"><a href="#">SIGN IN</a></li>
+                    <li><a href="/home">FAQs</a></li>
+                    <li><a href="/home">Features</a></li>
+                    <li><a href="/home">Demo</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li id="sign-in"><a href="/signin">SIGN IN</a></li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
@@ -774,7 +774,7 @@
                     Create an account for your company with TransferRules
                 </span>
             <span id="text-hd">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim 
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
                 </span>
             <button id="button-hd">
                 DOWNLOAD APP

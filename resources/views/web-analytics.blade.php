@@ -18,8 +18,8 @@
             <div class="prof_left"></div>
         </div>
         <ul class="side-nav">
-            <li><a href="/dashboard">Dashboard</a></li>
-            <li><a href="#">campaigns</a></li>
+            <li><a href="/manager">Dashboard</a></li>
+            <li><a href="/manager">campaigns</a></li>
             <li><a class="active" href="/web-analytics">Transactions Analytics</a></li>
         </ul>
         <div class="body">
