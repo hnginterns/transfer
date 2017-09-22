@@ -263,12 +263,12 @@ desired effect
         <li class="header">ADMIN CONTROLS</li>
         <!-- Optionally, you can add icons to the links -->
         <li class="active"><a href="#"><i class="fa fa-dashboard"></i> <span>DashBoard</span></a></li>
-        <li><a href="#"><i class="fa fa-group"></i> <span>Manage Users</span></a></li>
+        <li><a href="{{config('app.url')}}/usermanagement"><i class="fa fa-group"></i> <span>Manage Users</span></a></li>
         <li><a href="#"><i class="fa fa-group"></i> <span>Banned Users</span></a></li>
-        <li><a href="#"><i class="fa fa-briefcase"></i> <span>Manage Wallet</span></a></li>
+        <li><a href="{{config('app.url')}}/wallet-view"><i class="fa fa-briefcase"></i> <span>Manage Wallet</span></a></li>
         <li><a href="#"><i class="fa fa-dollar"></i> <span>Currencies</span></a></li>
         <li class="treeview">
-          <a href="#"><i class="fa fa-link"></i> <span>Transaction</span>
+          <a href="{{config('app.url')}}/dashboard/history"><i class="fa fa-link"></i> <span>Transaction</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
