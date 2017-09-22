@@ -32,7 +32,22 @@
               <li><a href="#">FAQs</a></li>
               <li><a href="#">Features</a></li>
               <li><a href="#">Demo</a></li>
-              <li id="sign-in"><a href="#">SIGN IN</a></li>              
+
+              @if(Auth::guest())
+                <li id="sign-in"><a href="/signin">SIGN IN</a></li>     
+              @else
+                <li id="sign-in">
+                                        <a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            Logout
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </li>
+            @endif          
             </ul>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->

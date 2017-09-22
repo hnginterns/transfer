@@ -54,6 +54,7 @@ Route::get('/balance', 'pagesController@balance');
 Auth::routes();
 Route::group(['middleware' => 'auth'], function() {
 	// Handles Transfers
+	Route::get('/dashboard', 'UsersController@index')->name('dashboard');
 	Route::get('/dashboard/transfer', 'UsersController@transfer')->name('transfer');
 	Route::post('/dashboard/transfer', 'UsersController@processTransfer');
 
@@ -65,6 +66,7 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::get('/dashboard/fundwallet', 'UsersController@fundWallet')->name('fundwallet');
 });
 
+<<<<<<< HEAD
 // admin dashboard
 Route::get('/admin', function () {
 		return view('/admin/home');
@@ -74,15 +76,40 @@ Route::get('/admin', function () {
 Route::group(['middleware' => ['auth', 'admin']], function() {
 	// get manager
 	Route::get('/manager', 'AdminController@index');
+=======
+
+Route::group(['middleware' => ['auth', 'admin']], function() {
+
+
+	Route::get('/admin', 'AdminController@index');
+>>>>>>> 69084c30af19a3c1728bb55664ad5e8a88f501a7
 
 	// Set rules that users will transfer with
-	Route::get('/manager/setrule', 'AdminController@setRule');
-	Route::post('/manager/setrule', 'AdminController@saveRule');
+	Route::get('/admin/setrule', 'AdminController@setRule');
+	Route::post('/admin/setrule', 'AdminController@saveRule');
 
 	// New Rule Creation
-	Route::get('/manager/createrule', 'AdminController@createRule');
-	Route::post('/manager/createrule', 'AdminController@saveNewRule');
+	Route::get('/admin/createrule', 'AdminController@createRule');
+	Route::post('/admin/createrule', 'AdminController@saveNewRule');
 
 	// Edit Company Details
+<<<<<<< HEAD
 	Route::get('/manager/setting', 'AdminController@settings');
 });
+=======
+	Route::get('/admin/setting', 'AdminController@settings');
+});
+
+
+
+//Route::group(['middleware' => ['auth']])
+//Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/banks', 'BanksController@banks');
+
+Route::get('/ball', function() {
+
+});
+
+Auth::routes();
+>>>>>>> 69084c30af19a3c1728bb55664ad5e8a88f501a7

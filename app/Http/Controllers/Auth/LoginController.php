@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Support\Facades\URL;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -25,15 +27,17 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/dashboard';
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Request $request)
     {
+        $this->datta['ref'] = str_replace('http://', '', str_replace('https://', '', URL::previous()));
+        $this->datta['host'] = str_replace('http://', '', str_replace('https://', '', $request->server('HTTP_HOST')));
         $this->middleware('guest')->except('logout');
     }
 }
