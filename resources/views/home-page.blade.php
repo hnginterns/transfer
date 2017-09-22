@@ -761,7 +761,7 @@
                     <li><a href="#">Features</a></li>
                     <li><a href="#">Demo</a></li>
                     <li><a href="#">About</a></li>
-                    <li id="sign-in"><a href="#">SIGN IN</a></li>
+                    <li id="sign-in"><a href="/admin">SIGN IN</a></li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
