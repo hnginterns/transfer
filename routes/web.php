@@ -60,13 +60,13 @@ Route::get('/wallet-view', 'pagesController@viewWallet')->name('wallet');
 //return web-analytics
 Route::get('/web-analytics', 'PagesController@webAnalytics');
 //return create-wallet
-Route::get('/create-wallet', 'PagesController@createWallet');
+Route::get('/create-wallet', 'pagesController@createWallet');
 //return manage-users
-Route::get('/manage-users', 'PagesController@manageUsers');
+Route::get('/manage-users', 'pagesController@manageUsers');
 //return create-user
-Route::get('/create-user', 'PagesController@createUser');
+Route::get('/create-user', 'pagesController@createUser');
 //return create-wallet
-Route::get('/wallet-archive', 'PagesController@walletArchive');
+Route::get('/wallet-archive', 'pagesController@walletArchive');
 
 Route::get('/web-analytics', 'pagesController@webAnalytics');
 
