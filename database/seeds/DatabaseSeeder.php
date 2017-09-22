@@ -34,7 +34,7 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('transfer'),
             'is_admin' => true,
             'bank_id' => "021",
-            'account_number' => '2018263637',
+            'account_number' => '2018263627',
             'created_by' => 1000,
             'updated_by' => 0,
 	    'created_at' => $dateNow
@@ -56,7 +56,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'prisca@gmail.com',
             'password' => Hash::make('transfer'),
             'bank_id' => "056",
-            'account_number' => '2018263637',
+            'account_number' => '2011263637',
             'created_by' => 1000,
             'updated_by' => 0,
 	    'created_at' => $dateNow
