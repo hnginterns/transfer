@@ -1,0 +1,21 @@
+<svg width="506" height="382" viewBox="0 0 506 382" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>Polygon</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(-5706 8059)">
+<g id="Polygon" filter="url(#filter0_d)">
+<use xlink:href="#path0_fill" transform="translate(5706.64 -8058.2)" fill="#FFFFFF"/>
+</g>
+</g>
+<defs>
+<filter id="filter0_d" filterUnits="userSpaceOnUse" x="5706" y="-8059" width="506" height="382" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 255 0"/>
+<feOffset dx="0" dy="4"/>
+<feGaussianBlur stdDeviation="12.5"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+</filter>
+<path id="path0_fill" d="M 504.953 0L 504.953 381.134L 471.607 351.086L 439.622 381.134L 399.471 351.086L 360.681 381.134L 327.335 351.086L 288.544 381.134L 255.198 351.086L 216.408 381.134L 183.062 351.086L 144.272 381.134L 110.926 351.086L 72.1361 381.134L 38.7902 351.086L 0 381.134L 0 0L 504.953 0Z"/>
+</defs>
+</svg>

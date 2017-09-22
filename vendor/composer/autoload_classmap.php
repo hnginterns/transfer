@@ -6,6 +6,8 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Bank' => $baseDir . '/app/Bank.php',
+    'App\\Beneficiary' => $baseDir . '/app/Beneficiary.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\AdminController' => $baseDir . '/app/Http/Controllers/AdminController.php',
@@ -17,6 +19,7 @@ return array(
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
     'App\\Http\\Controllers\\UsersController' => $baseDir . '/app/Http/Controllers/UsersController.php',
+    'App\\Http\\Controllers\\ValidateAccountController' => $baseDir . '/app/Http/Controllers/ValidateAccountController.php',
     'App\\Http\\Controllers\\pagesController' => $baseDir . '/app/Http/Controllers/pagesController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Admin' => $baseDir . '/app/Http/Middleware/Admin.php',
@@ -32,6 +35,7 @@ return array(
     'App\\Providers\\EventServiceProvider' => $baseDir . '/app/Providers/EventServiceProvider.php',
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
     'App\\Restriction' => $baseDir . '/app/Restriction.php',
+    'App\\Role' => $baseDir . '/app/Role.php',
     'App\\Rule' => $baseDir . '/app/Rule.php',
     'App\\Transaction' => $baseDir . '/app/Transaction.php',
     'App\\User' => $baseDir . '/app/User.php',
