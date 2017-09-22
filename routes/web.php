@@ -33,6 +33,11 @@ Route::get('/addaccount', function () {
 	return view('/admin/addaccount');
 });
 
+//user management page
+Route::get('/usermanagement', function(){
+	return view('usermanagement');
+});
+
 //admin dashboard
 Route::get('/admin', function () {
 		return view('/admin/home');
@@ -41,6 +46,10 @@ Route::get('/admin', function () {
 // return error 404 page
 Route::get('/404', function(){
 	return view('404');
+});
+//return walletView
+Route::get('/walletview', function(){
+	return view('walletview');
 });
 // get information about site
 Route::get('/about', function(){
