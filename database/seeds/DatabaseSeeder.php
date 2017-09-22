@@ -24,10 +24,10 @@ class DatabaseSeeder extends Seeder
 	            'bank_code' => $faker->creditCardNumber,
 	        ]);
         }
-	    
+
 	$dt = Carbon::now();
         $dateNow = $dt->toDateTimeString();
-	    
+
         User::insert([
             'username' => 'johnobi',
             'email' => 'johnobi@gmail.com',
