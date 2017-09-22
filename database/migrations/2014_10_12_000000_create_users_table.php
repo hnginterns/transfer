@@ -18,9 +18,11 @@ class CreateUsersTable extends Migration
             $table->string('username');
             $table->string('email',40)->unique();
             $table->string('password');
-            $table->boolean('is_admin')->default(false);
-            $table->string('created_by');
-            $table->string('updated_by');
+            $table->integer('bank_id')->unsigned();
+            $table->string('account_number')->unique();
+            $table->integer('created_by')->unsigned();
+            $table->boolean('deleted')->default(false);
+            $table->integer('updated_by')->unsigned();
             $table->rememberToken();
             $table->timestamps();
         });
