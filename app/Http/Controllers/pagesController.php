@@ -8,8 +8,6 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class pagesController extends Controller
 {
-<<<<<<< HEAD
-
   public function home () {
     return view('home-page');
   }
@@ -37,13 +35,12 @@ class pagesController extends Controller
     {all the logic}
     return view('<blade name>');
   }*/
-=======
-    use AuthenticatesUsers;
+    //use AuthenticatesUsers;
 
-    protected $redirectTo = '/dashboard';
-
+    //protected $redirectTo = '/dashboard';
 
 
+  /*
     public function home () {
       return view('home-page');
     }
@@ -70,6 +67,7 @@ class pagesController extends Controller
     pubic function <function name> {
       {all the logic}
       return view('<blade name>');
-    }*/
->>>>>>> 69084c30af19a3c1728bb55664ad5e8a88f501a7
+    }
+  */
+
 }
