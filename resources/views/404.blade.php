@@ -130,7 +130,7 @@
 	<div class="main">
     <h2>WHOOPS!</h2>
     
-    <img src="4040.png" height="150px">
+    <img src="http://res.cloudinary.com/plushdeveloper/image/upload/v1506065231/4040_okxzn8.png" height="150px">
     <!--<div class="error">4 <span class="ghost"> </span>4</div>
     -->
     <h2>ERROR</h2>
