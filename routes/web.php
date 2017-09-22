@@ -59,9 +59,4 @@ Route::group(['middleware' => ['auth', 'admin']], function() {
 	Route::get('/addaccount', 'AdminController@addaccount');
 	Route::get('/usermanagement', 'AdminController@usermanagement');
 	Route::get('/web-analytics', 'pagesController@webAnalytics');
-	Route::get('/banks', 'BanksController@banks');
-	Route::get('/success', 'pagesController@success');
-	Route::get('/failed', 'pagesController@failed');
-	Route::get('/transfer', 'pagesController@transfer');
-	Route::get('/balance', 'pagesController@balance');
 });
