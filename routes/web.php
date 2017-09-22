@@ -90,11 +90,4 @@ Route::post('/admin/setrule', 'AdminController@saveRule');
 Route::get('/admin/createrule', 'AdminController@createRule');
 Route::post('/admin/createrule', 'AdminController@saveNewRule');
 Route::get('/manager/setting', 'AdminController@settings');
-
-
-// NOTE: FOR ROUTE ERROR NO
-// FIX BUGS 
-// ALL CODERS SHOULD COMMENT ON THEIR CODE AND TEAM NAME ***
-// TEAM SHOULD SPECIFY
-// THANKS
 ?>
