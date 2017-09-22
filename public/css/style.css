@@ -14,7 +14,8 @@ body {
     width: 100%;
     height: 650px;
     /* background: linear-gradient(180deg, #358CAA 1.49%, #F87373 98.73%); */
-    background: #333333;
+    /* background: #333333; */
+    background-size: 100% 650px !important;
 }
 
 #logo {
