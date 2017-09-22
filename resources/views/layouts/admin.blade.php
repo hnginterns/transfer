@@ -22,12 +22,12 @@
 
         <!-- Icons -->
         <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
-        <link rel="shortcut icon" href="assets/img/favicons/favicon.png">
+        <link rel="shortcut icon" href="assests/img/favicons/favicon.png">
         <link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicons/favicon-192x192.png">
         <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicons/apple-touch-icon-180x180.png">
         <!-- END Icons -->
 
-        <link rel="stylesheet" id="css-main" href="{{ asset('assets/css/codebase.min.css') }}">
+        <link rel="stylesheet" id="css-main" href="{{ asset('assests/css/codebase.min.css') }}">
 
        
     </head>
@@ -242,7 +242,7 @@
                 <!-- END Header Loader -->
             </header>
             <!-- END Header -->
-            
+
 
                 @yield('content')
 
@@ -262,21 +262,21 @@
         <!-- END Page Container -->
 
         <!-- Codebase Core JS -->
-        <script src="{{ asset('assets/js/core/jquery.min.js') }} "></script>
-        <script src="{{ asset('assets/js/core/popper.min.js') }} "></script>
-        <script src="{{ asset('assets/js/core/bootstrap.min.js') }} "></script>
-        <script src="{{ asset('assets/js/core/jquery.slimscroll.min.js') }} "></script>
-        <script src="{{ asset('assets/js/core/jquery.scrollLock.min.js') }} "></script>
-        <script src="{{ asset('assets/js/core/jquery.appear.min.js') }} "></script>
-        <script src="{{ asset('assets/js/core/jquery.countTo.min.js') }} "></script>
-        <script src="{{ asset('assets/js/core/js.cookie.min.js') }} "></script>
-        <script src="{{ asset('assets/js/codebase.js') }} "></script>
+        <script src="{{ asset('assests/js/core/jquery.min.js') }} "></script>
+        <script src="{{ asset('assests/js/core/popper.min.js') }} "></script>
+        <script src="{{ asset('assests/js/core/bootstrap.min.js') }} "></script>
+        <script src="{{ asset('assests/js/core/jquery.slimscroll.min.js') }} "></script>
+        <script src="{{ asset('assests/js/core/jquery.scrollLock.min.js') }} "></script>
+        <script src="{{ asset('assests/js/core/jquery.appear.min.js') }} "></script>
+        <script src="{{ asset('assests/js/core/jquery.countTo.min.js') }} "></script>
+        <script src="{{ asset('assests/js/core/js.cookie.min.js') }} "></script>
+        <script src="{{ asset('assests/js/codebase.js') }} "></script>
 
         <!-- Page JS Plugins -->
-        <script src="{{ asset('assets/js/plugins/chartjs/Chart.bundle.min.js') }}"></script>
+        <script src="{{ asset('assests/js/plugins/chartjs/Chart.bundle.min.js') }}"></script>
 
         <!-- Page JS Code -->
-        <script src="{{ asset('assets/js/pages/be_pages_dashboard.js') }}"></script>
+        <script src="{{ asset('assests/js/pages/be_pages_dashboard.js') }}"></script>
     </body>
 </html>
 
