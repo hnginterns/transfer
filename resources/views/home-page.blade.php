@@ -756,12 +756,12 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
-                    <li><a href="/home">FAQs</a></li>
-                    <li><a href="/home">Features</a></li>
-                    <li><a href="/home">Demo</a></li>
-                    <li><a href="/about">About</a></li>
-                    <li id="sign-in"><a href="/signin">SIGN IN</a></li>
+                    <li class="active"><a href="{{url("/")}}">Home <span class="sr-only">(current)</span></a></li>
+                    <li><a href="{{url("/")}}">FAQs</a></li>
+                    <li><a href="{{url("/")}}">Features</a></li>
+                    <li><a href="{{url("/")}}">Demo</a></li>
+                    <li><a href="{{url("/about")}}">About</a></li>
+                    <li id="sign-in"><a href="{{url("/signin")}}">SIGN IN</a></li>
 
                 </ul>
             </div><!--/.nav-collapse -->
