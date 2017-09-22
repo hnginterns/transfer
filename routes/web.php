@@ -42,6 +42,10 @@ Route::get('/admin', function () {
 Route::get('/404', function(){
 	return view('404');
 });
+//return walletView
+Route::get('/walletView', function(){
+	return view('/admin/walletView');
+});
 // get information about site
 Route::get('/about', function(){
 	return view('about');
