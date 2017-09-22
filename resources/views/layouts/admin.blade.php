@@ -109,11 +109,11 @@
                                     <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-puzzle"></i><span class="sidebar-mini-hide">Rules</span></a>
                                     <ul>
                                         <li>
-                                            <a href="be_blocks.html">Create Rules</a>
+                                            <a href="{{route('admin.createrule')}}">Create Rules</a>
                                         </li>
                                         
                                         <li>
-                                            <a href="be_blocks_tiles.html">Set Rules</a>
+                                            <a href="{{route('admin.setrule')}}">Set Rules</a>
                                         </li>
                                         
                                     </ul>
