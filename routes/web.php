@@ -53,7 +53,6 @@ Route::get('/balance', 'pagesController@balance');
 
 
 // authentications
-Auth::routes();
 Route::group(['middleware' => 'auth'], function() {
 
 });
