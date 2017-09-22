@@ -45,6 +45,10 @@ class pagesController extends Controller
     return view ('transfer');
   }
 
+  public function bank_transfer (){
+    return view ('transfer-to-bank');
+  }
+
   public function viewAccounts(){
       return view('view-accounts');
   }
@@ -52,6 +56,7 @@ class pagesController extends Controller
   public function viewWallet() {
     return view ('wallet-view');
   }
+
   //all other page functions can be added
   /*
   pubic function <function name> {
