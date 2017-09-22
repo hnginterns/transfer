@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Eloquent\Model;
+
+use Faker\Factory as Faker;
 
 class DatabaseSeeder extends Seeder
 {
@@ -11,10 +14,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(UserTableSeeder::class);
-        $this->call(WalletTableSeeder::class);
-        $this->call(RuleTableSeeder::class);
-        $this->call(RestrictionTableSeeder::class);
-        $this->call(TransactionTableSeeder::class);
+    	$faker = Faker::create();
+    	foreach (range(1,10) as $index) {
+	        DB::table('banks')->insert([
+	            'id' => $faker->numberBetween,
+	            'bank_name' => $faker->name,
+	            'bank_code' => $faker->creditCardNumber,
+	        ]);
+        }
     }
 }
