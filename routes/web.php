@@ -48,6 +48,7 @@ Route::get('/about', function(){
 });
 // get bank route
 Route::get('/banks', 'BanksController@banks');
+Route::get('/success', 'pagesController@success');
 
 // get transfer 
 Route::get('/transfer', 'pagesController@transfer');

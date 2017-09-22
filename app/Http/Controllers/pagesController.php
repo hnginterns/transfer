@@ -29,6 +29,10 @@ class pagesController extends Controller
     return view('dashboard');
   }
 
+  public function success(){
+    return view('success');
+  }
+
   public function balance () {
     return view ('balance');
   }
