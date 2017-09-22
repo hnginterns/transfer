@@ -21,8 +21,8 @@ class CreateRulesTable extends Migration
             $table->decimal('min_amount', 12, 2);
             $table->integer('max_transactions_per_day')->unsigned();
             $table->decimal('max_amount_transfer_per_day', 12, 2);
-            $table->string('created_by');
-            $table->string('updated_by');
+            $table->integer('created_by')->unsigned();
+            $table->integer('updated_by')->unsigned();
             $table->timestamps();
         });
     }

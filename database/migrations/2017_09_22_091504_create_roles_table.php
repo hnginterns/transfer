@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateWalletsTable extends Migration
+class CreateRolesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,13 @@ class CreateWalletsTable extends Migration
      */
     public function up()
     {
-        Schema::create('wallets', function (Blueprint $table) {
+        Schema::create('roles', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('level')->unsigned();
             $table->integer('uuid')->unsigned();
-            $table->decimal('balance', 12, 2);
-            $table->string('wallet_code',100)->unique();
-            $table->boolean('archived')->default(false);
+            $table->integer('created_by')->unsigned();
+            $table->integer('updated_by')->unsigned();
             $table->timestamps();
-
-            $table->foreign('uuid')->references('id')->on('users')
-                    ->onDelete('cascade')
-                    ->onUpdate('cascade');
         });
     }
 
@@ -34,6 +30,6 @@ class CreateWalletsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('wallets');
+        Schema::dropIfExists('roles');
     }
 }

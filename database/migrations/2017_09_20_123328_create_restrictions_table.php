@@ -16,15 +16,17 @@ class CreateRestrictionsTable extends Migration
         Schema::create('restrictions', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('wallet_id')->unsigned();
-            $table->integer('user_id')->unsigned();
+            $table->integer('uuid')->unsigned();
             $table->integer('rule_id')->unsigned();
+            $table->integer('created_by')->unsigned();
+            $table->integer('updated_by')->unsigned();
             $table->timestamps();
 
             $table->foreign('wallet_id')->references('id')->on('wallets')
                     ->onDelete('cascade')
                     ->onUpdate('cascade');
 
-            $table->foreign('user_id')->references('id')->on('users')
+            $table->foreign('uuid')->references('id')->on('users')
                     ->onDelete('cascade')
                     ->onUpdate('cascade');
 
