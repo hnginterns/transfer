@@ -79,7 +79,7 @@
 
                     <li class="nav-item active">
 
-                        <a class="nav-link" data-toggle="modal" href="#loginModal">Sign In</a>
+                        <a class="nav-link" data-toggle="modal" href="/manager">Sign In</a>
 
                     </li>
 
@@ -96,7 +96,7 @@
     <main>
 
         <div class="container">
-  
+
             <div class="login-box">
 
                 <h4 class="intro">Welcome </h4>

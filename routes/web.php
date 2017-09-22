@@ -29,8 +29,8 @@ Route::get('/404', 'pagesController@pagenotfound');
 // admin routes
 Route::get('/manager', 'AdminController@index');
 Route::get('/view-accounts', 'pagesController@viewAccounts');
-Route::get('/addaccount', 'adminController@addaccount');
-Route::get('/usermanagement', 'adminController@usermanagement');
+Route::get('/addaccount', 'AdminController@addaccount');
+Route::get('/usermanagement', 'AdminController@usermanagement');
 Route::get('/web-analytics', 'pagesController@webAnalytics');
 Route::get('/banks', 'BanksController@banks');
 Route::get('/success', 'pagesController@success');

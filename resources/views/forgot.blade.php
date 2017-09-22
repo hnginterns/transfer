@@ -38,11 +38,8 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Get Started</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Sign In</a>
-                    </li>
                     <li class="nav-item active">
-                        <a class="nav-link sign-up" data-toggle="modal" href="#loginModal">Sign Up</a>
+                        <a class="nav-link sign-up" data-toggle="modal" href="#loginModal">Sign In</a>
                     </li>
                 </ul>
             </div>
