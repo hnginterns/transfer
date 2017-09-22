@@ -37,7 +37,7 @@ class DatabaseSeeder extends Seeder
             'account_number' => '2018263637',
             'created_by' => 1000,
             'updated_by' => null,
-            'create_at' => $dateNow
+            'created_at' => $dateNow
         ]);
 
         User::insert([
@@ -48,7 +48,7 @@ class DatabaseSeeder extends Seeder
             'account_number' => '2018263637',
             'created_by' => 1000,
             'updated_by' => null,
-            'create_at' => $dateNow
+            'created_at' => $dateNow
         ]);
 
         User::insert([
@@ -59,7 +59,7 @@ class DatabaseSeeder extends Seeder
             'account_number' => '2018263637',
             'created_by' => 1000,
             'updated_by' => null,
-            'create_at' => $dateNow
+            'created_at' => $dateNow
         ]);
     }
 }
