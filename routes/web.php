@@ -25,20 +25,9 @@ Route::get('/confirmation', 'ValidateAccountController@confirm');
 // get dashboard
 Route::get('/userdashboard', 'pagesController@userdashboard');
 
-//View accounts page
-Route::get('/view-accounts', 'pagesController@viewAccounts');
-
-// tansfer to bank
-Route::get('/transfer-to-bank', 'pagesController@bank_transfer');
-
 // get add account page (this page will be move to the admin middleware)
 Route::get('/addaccount', function () {
 	return view('/admin/addaccount');
-});
-
-//user management page
-Route::get('/usermanagement', function(){
-	return view('usermanagement');
 });
 
 //admin dashboard
@@ -50,23 +39,12 @@ Route::get('/admin', function () {
 Route::get('/404', function(){
 	return view('404');
 });
-
-//return wallet-view
-Route::get('/wallet-view', 'pagesController@viewWallet')->name('wallet');
-
-//return web-analytics
-Route::get('/web-analytics', 'pagesController@webAnalytics');
-
 // get information about site
 Route::get('/about', function(){
 	return view('about');
 });
 // get bank route
 Route::get('/banks', 'BanksController@banks');
-
-Route::get('/success', 'pagesController@success');
-
-Route::get('/failed', 'pagesController@failed');
 
 // get transfer 
 Route::get('/transfer', 'pagesController@transfer');
