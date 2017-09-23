@@ -21,6 +21,21 @@
     </div>
 
     <div class="form-group row">
+      <label for="email" class="col-sm-2 col-form-label col-form-label-sm">Firstname</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control form-control-lg" id="lgFormGroupInput" placeholder="Firstname" name="first_name">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="email" class="col-sm-2 col-form-label col-form-label-sm">Lastname</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control form-control-lg" id="lgFormGroupInput" placeholder="Lastname" name="last_name">
+      </div>
+    </div>
+
+
+    <div class="form-group row">
       <label for="email" class="col-sm-2 col-form-label col-form-label-sm">Account Number</label>
       <div class="col-sm-10">
         <input type="text" class="form-control form-control-lg" id="lgFormGroupInput" placeholder="Acount Number" name="account_number">
