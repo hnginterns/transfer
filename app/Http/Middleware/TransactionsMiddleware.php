@@ -15,6 +15,7 @@ class TransactionsMiddleware
      */
     public function handle($request, Closure $next)
     {
+        // if max_transfer_limit is exceeded
         return $next($request);
     }
 }
