@@ -8,6 +8,7 @@
   <title>Wallet Transfer</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
     crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
     crossorigin="anonymous"></script>
@@ -81,6 +82,13 @@
         font-weight: bold;
         font-size: 32px;
         margin-bottom: 15px;
+    }
+
+    i.fa-window-close {
+      font-size: 20px;
+      color: #fff;
+      margin: 20px;
+      display: none;
     }
 
     .promise {
@@ -157,11 +165,12 @@
     @media screen and (max-width: 750px) {
         .login-box {
             width: 100%;
-            margin-top: 10%;
-            padding: 40px 0 60px;
+           margin-top: 0%;
+           padding: 0px !important;
+           margin-bottom: 40px !important;
         }
         .admin-login {
-            width: 80%;
+            width: 100%;
         }
         .intro{
             margin-bottom: 20px;
@@ -175,6 +184,38 @@
         .promise {
             font-size: 12px;
         }
+
+    }
+
+    @media screen and (max-width:768px) {
+      #sidebar {
+      padding: 0;
+      position: absolute;
+      /*left: -238px;*/
+      top: 30px;
+      }
+      .wallet-container {
+        display: inline;
+        flex-wrap: initial;
+        justify-content: center;
+        padding: 0px;
+        }
+      .navbar-form .form-control {
+        display: inline-block;
+        width: auto;
+        vertical-align: middle;
+        display: none;
+      }
+      .navbar-nav {
+        margin: 7.5px -15px;
+        display: none;
+      }
+      .profile {
+        display: none;
+      }
+      .navbar-form.navbar-right {
+        display: none;
+      }
     }
 
     @media screen and (max-width:768px) {
@@ -224,12 +265,12 @@
       color: white;
     }
 
-    .wallet-container {
+    /*.wallet-container {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       padding: 30px;
-    }
+    }*/
 
     .wallet {
       position: relative;
@@ -355,6 +396,40 @@
     }
 
 
+
+    @media screen and (max-width:768px) {
+      #sidebar {
+        width: 250px !important;
+        height: 200vh;
+      padding: 0;
+      position: absolute;
+      left: -1000px;
+      top: 20px;
+      }
+      i.fa-window-close {
+        font-size: 20px;
+        color: #fff;
+        margin-bottom: 20px;
+        display: block;
+      }
+      .n
+      .navbar-form .form-control {
+        display: inline-block;
+        width: auto;
+        vertical-align: middle;
+        display: none;
+      }
+      .navbar-nav {
+        margin: 7.5px -15px;
+        display: none;
+      }
+      .profile {
+        display: none;
+      }
+      .navbar-form.navbar-right {
+        display: none;
+      }
+    }
   </style>
 </head>
 
@@ -365,7 +440,7 @@
 
         <a class="navbar-brand" href="#"> <span><img src="img/logo.png" alt=""></span>   PaysFund</a>
 
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+        <button type="button" id="navb" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
           aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
@@ -389,6 +464,9 @@
     <div class="row">
 
       <div class="col-sm-2" id="sidebar">
+
+        <i class="fa fa-window-close" id="close" aria-hidden="true"></i>
+
         <ul class="nav nav-stacked">
           <li class="side-item"><a href="/dashboard">Dashboard</a></li>
           <li class="side-items">
@@ -419,12 +497,12 @@
         </ul>
       </div>
 
-      <div class="col-sm-10">
+      <div class="col-sm-12 col-md-10">
         <div class="container-fluid">
 
           <div class="wallet-container">
 
-            <div class="col-md-offset-2 col-md-10 main-content">
+            <div class="col-md-offset-0 col-sm-12 col-md-offset-2 col-md-10 main-content">
                 <div class="login-box" style="">
                     <img src="/svg/naira.svg" alt="no preview" class="transfer-icon">
                     <h4 class="intro" style="font-size: 20px;">Transfer to Wallet account </h4>
@@ -466,8 +544,35 @@
           <span class="text-muted company">2017 TransferFunds - All Rights Reserved</span>
       </div>
   </footer>
-  <script src="/css/jquery.js"></script>
-  <script src="/css/bootstrap.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+      $(document).ready(function() {
+
+        $('#navb').click(function() {
+
+            $('#sidebar').animate({
+                left: "0px",
+                "z-index": 10000
+            }, 200).css(
+              "background-color" , "rgb(37, 49, 63)",
+              "height" , "200vh"
+            );
+
+            $('a.side-item').css(
+                "color" , "#fff"
+            );
+        });
+
+        $('#close').click(function() {
+
+            $('#sidebar').animate({
+                left: "-1000px",
+                "z-index": 10000
+            }, 200);
+        });
+      });
+  </script>
 </body>
 
 </html>
