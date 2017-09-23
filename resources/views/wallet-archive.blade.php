@@ -213,6 +213,7 @@ margin-right: 30px;
 		width:60%;
 		margin-left:20%;
 		font-weight:700;
+		text-align:center;
 	}
 	.body-head
 	{
@@ -425,6 +426,8 @@ margin-right: 30px;
 		text-align: center;
 		color: #F76126 !important;
 		margin: 3px;
+		margin-top:300px !important;
+		
 	}
 	.footnav li:hover,.footnav li.active
 	{
