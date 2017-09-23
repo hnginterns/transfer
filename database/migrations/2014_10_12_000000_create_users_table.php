@@ -22,6 +22,14 @@ class CreateUsersTable extends Migration
             $table->integer('bank_id')->unsigned();
             $table->string('account_number')->unique();
             $table->integer('created_by')->unsigned();
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('avatar')->nullable();
+            $table->string('address')->default('');
+            $table->unsignedInteger('role_id')->default(0);
+            $table->timestamp('last_login')->nullable();
+            $table->string('status', 20)->nullable()->index();
             $table->softDeletes();
             $table->integer('updated_by')->unsigned();
             $table->rememberToken();
