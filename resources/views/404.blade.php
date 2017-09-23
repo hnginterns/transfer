@@ -138,8 +138,8 @@
 
     <h4><a class="blue" href="#">REPORT THIS ISSUE</a></h4>
 
-    <div class="navigate">
-      <a class="bg-coral" href="/dashboard">GO TO DASHBOARD</a>
+    <div class="navigate"></div>
+      <a class="bg-coral" href="/admin">GO TO DASHBOARD</a>
       <a class="bg-blue" href="/">GO TO HOMEPAGE</a>
     </div>
 	</div>
