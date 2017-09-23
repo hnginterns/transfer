@@ -6,7 +6,7 @@
       {{csrf_field()}}
       <label for="lgFormGroupInput" class="col-sm-2 col-form-label col-form-label-lg">Name</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control form-control-lg" id="lgFormGroupInput" placeholder="Name" name="name">
+        <input type="text" class="form-control form-control-lg" id="lgFormGroupInput" placeholder="Name" name="username">
       </div>
     </div>
     <div class="form-group row">

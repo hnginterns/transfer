@@ -42,7 +42,7 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         $User = new User([
-          'name' => $request->get('name'),
+          'username' => $request->get('username'),
           'email' => $request->get('email')
         ]);
         $User->save();
@@ -82,7 +82,11 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        $user->username = $request->get('username');
+        $user->email = $request->get('email');
+        $user->save();
+        return redirect('/admin/users');
     }
 
     /**
@@ -93,6 +97,8 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+        return redirect('/admin/users');
     }
 }

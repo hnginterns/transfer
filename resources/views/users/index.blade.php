@@ -18,7 +18,17 @@
         <td>{{$user['username']}}</td>
         <td>{{$user['email']}}</td>
         <td><a href="{{action('Admin\UsersController@edit', $user['id'])}}" class="btn btn-warning">Edit</a></td>
-        <td><a href="{{action('Admin\UsersController@destroy', $user['id'])}}" class="btn btn-danger">Delete</a></td>
+        <td>
+
+			<form action="{{action('Admin\UsersController@destroy', $user['id'])}}" method="post">
+            {{csrf_field()}}
+            <input name="_method" type="hidden" value="DELETE">
+            <button class="btn btn-danger" type="submit">Delete</button>
+          </form>
+
+
+
+        </td>
       </tr>
       </tr>
       @endforeach
