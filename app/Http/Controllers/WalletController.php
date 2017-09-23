@@ -68,7 +68,7 @@ class WalletController extends Controller
                 "recipientWallet"=> 102,
                 "amount"=> "10",
                 "currency"=> "NGN",
-                "lock"=>"0lanrewaJU"
+                "lock_code"=>"0lanrewaJU"
 
                 ); 
 
@@ -93,7 +93,7 @@ class WalletController extends Controller
                 $token = $this->getToken();
                 $headers = array('content-type' => 'application/json', 'Authorization' => $token);
                 $query = array(
-                "lock"=>"0lanrewaJU",
+                "lock_code"=>"0lanrewaJU",
                  "amount"=>10,
                  "bankcode"=>"044",
                  "accountNumber"=>"0690000005",

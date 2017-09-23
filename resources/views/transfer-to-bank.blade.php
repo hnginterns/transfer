@@ -496,16 +496,37 @@
               <div class="login-box" style="">
                   <img src="/svg/naira.svg" alt="no preview" class="transfer-icon">
                   <h4 class="intro" style="font-size: 20px;">Transfer to bank account </h4>
-                  <form class="admin-login">
-                      <div class="form-group" style="margin: 30px 0;">
-                          <input type="text" class="form-control cus-input" id="benName" placeholder="Beneficiary Name">
+                  <form class="admin-login" action="/transfers" method="POST">
+                    <div class="row">
+                      <div class="col col-lg-6 form-holder">
+                          <div class="form-group" style="margin: 30px 0;">
+                              <input type="text" class="form-control cus-input" id="benName" placeholder="Beneficiary Name">
+                          </div>
+                        </div>
+                      <div class="col col-lg-6 form-holder">
+                          <div class="form-group" style="margin: 30px 0;">
+                              <input type="text" class="form-control cus-input" id="senderName" placeholder="Sender's Name">
+                          </div>
                       </div>
-                      <div class="row">
+                  </div>
+                  <div class="row">
+                      <div class="col col-lg-6 form-holder">
+                        <div class="form-group" style="margin: 30px 0;">
+                            <input type="text" class="form-control cus-input" id="lockCode" placeholder="Lock code">
+                        </div>
+                      </div>
+                      <div class="col col-lg-6 form-holder">
+                        <div class="form-group" style="margin: 30px 0;">
+                            <input type="text" class="form-control cus-input" id="naration" placeholder="naration (optional)">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
                           <div class="col col-lg-6 form-holder">
                               <div class="form-group">
                                   <select class="form-control cus-input" name="bank">
-                                    @foreach(App\Http\Utilities\Bank::all() as $bankCode => $bankName)
                                     <option>Select Beneficiary Bank</option>
+                                    @foreach(App\Http\Utilities\Bank::all() as $bankCode => $bankName)
                                       <option value="{{ $bankCode }}"> {{ $bankName }}</option>
                                       @endforeach
                                   </select>
@@ -517,8 +538,17 @@
                               </div>
                           </div>
                       </div>
-                      <div class="form-group" style="margin: 30px 0;">
-                          <input type="number" class="form-control cus-input" id="amount" placeholder="Amount">
+                      <div class="row">
+                        <div class="col col-lg-6 form-holder">
+                          <div class="form-group" style="margin: 30px 0;">
+                              <input type="number" class="form-control cus-input" id="amount" placeholder="Amount">
+                          </div>
+                        </div>
+                        <div class="col col-lg-6 form-holder">
+                          <div class="form-group" style="margin: 30px 0;">
+                            <input type="number" class="form-control cus-input" id="refNo" placeholder="reference">
+                          </div>
+                        </div>
                       </div>
                       <button type="submit" class="btn btn-primary">Transfer</button>
 
@@ -537,6 +567,9 @@
           <span class="text-muted company">2017 TransferFunds - All Rights Reserved</span>
       </div>
   </footer>
+
+  <script src="/css/jquery.js"></script>
+  <script src="/css/bootstrap.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script type="text/javascript">

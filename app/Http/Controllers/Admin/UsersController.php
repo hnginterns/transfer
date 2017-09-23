@@ -26,13 +26,8 @@ class UsersController extends Controller
         $users = User::all()->toArray();
 
         //dd($users);
-<<<<<<< HEAD
-
-        return view('users.index', compact('users'));
-=======
         $name = Auth::user()->username;
         return view('users.index', compact('users'))->with("name", $name);
->>>>>>> a87ceade991a322015bce80a31d6b1e30c87f5a2
     }
 
     /**
@@ -86,17 +81,6 @@ class UsersController extends Controller
             $password = $request->get('password'); // password is form field
             $hashedpassword = Hash::make($password);
 
-<<<<<<< HEAD
-        $User = new User([
-          'username' => $request->get('username'),
-          'email' => $request->get('email'),
-          'password' => $hashedpassword,
-          'is_admin' => 1,
-          'bank_id' => ""
-        ]);
-        $User->save();
-        return redirect('/admin/users');
-=======
             $dt = Carbon::now();
             $dateNow = $dt->toDateTimeString();
 
@@ -117,7 +101,6 @@ class UsersController extends Controller
             ]);
             return redirect()->to('/admin/users');
         }
->>>>>>> a87ceade991a322015bce80a31d6b1e30c87f5a2
     }
 
     /**
@@ -140,13 +123,8 @@ class UsersController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-<<<<<<< HEAD
-
-        return view('users.edit', compact('user','id'));
-=======
         $name = Auth::user()->username;
         return view('users.edit', compact('user','id'))->with("name", $name);
->>>>>>> a87ceade991a322015bce80a31d6b1e30c87f5a2
     }
 
     /**
@@ -205,5 +183,25 @@ class UsersController extends Controller
         $user->delete();
         $name = Auth::user()->username;
         return redirect('/admin/users')->with("name", $name);
+    }
+
+
+    public function banUser(Request $request, $id){
+
+        $dt = Carbon::now();
+        $dateNow = $dt->toDateTimeString();
+
+        $user = User::where('id', $id)->update(["deleted_at" => $dateNow]);
+        
+        return back();
+
+    }
+
+    public function unbanUser(Request $request, $id){
+
+        $user = User::where('id', $id)->update(["deleted_at" => null]);
+
+        return back();
+
     }
 }
