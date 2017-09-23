@@ -18,6 +18,40 @@ Route::get('/home', 'pagesController@home');
 // get signin page
 Route::get('/signin', 'pagesController@signin');
 
+// get password forget pages
+Route::get('/forgot', function () {
+	return view('forgot');
+});
+
+Route::get('/confirmation', 'ValidateAccountController@confirm');
+
+// get dashboard
+Route::get('/userdashboard', 'pagesController@userdashboard');
+
+// get add account page (this page will be move to the admin middleware)
+Route::get('/addaccount', function () {
+	return view('/admin/addaccount');
+});
+
+//admin dashboard
+Route::get('/admin', function () {
+		return view('/admin/home');
+})->middleware('admin'); //Enable Admin middleware by removing comment around "->middleware('admin')"
+
+// return error 404 page
+Route::get('/404', function(){
+	return view('404');
+});
+// get information about site
+Route::get('/about', function(){
+	return view('about');
+});
+// get bank route
+Route::get('/banks', 'BanksController@banks');
+
+// get transfer 
+Route::get('/transfer', 'pagesController@transfer');
+
 Route::get('/about', 'pagesController@about');
 
 Route::get('/forgot', 'pagesController@forgot');
