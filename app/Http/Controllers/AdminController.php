@@ -63,28 +63,4 @@ class AdminController extends Controller
         return view('usermanagement')->with("name", $name);
     }
 
-    public function banUser(Request $request, User $user){
-
-        if($user->delete()){
-            return back()->with(["alert" => "user with id $user has been banned"]);
-        }else{
-            return back()->with(["alert" => "user with id $user could not be banned"]);
-        }
-
-    }
-
-    public function unbanUser(Request $request, $user_id){
-
-        $state = User::withTrashed()
-                    ->where('id', $user_id)
-                    ->restore();
-        if($state){
-            return back()->with(["alert" => "user with id $user has been restored"]);
-        }else{
-            return back()->with(["alert" => "user with id $user could not be restored"]);
-        }
-
-    }
-
-
 }

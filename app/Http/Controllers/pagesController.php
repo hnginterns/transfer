@@ -14,7 +14,6 @@ class pagesController extends Controller
 
   public function __contruct(){
     $this->middleware('auth')->except('signin');
-
   }
 
   public function home () {

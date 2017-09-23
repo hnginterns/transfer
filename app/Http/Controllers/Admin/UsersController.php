@@ -184,4 +184,24 @@ class UsersController extends Controller
         $name = Auth::user()->username;
         return redirect('/admin/users')->with("name", $name);
     }
+
+
+    public function banUser(Request $request, $id){
+
+        $dt = Carbon::now();
+        $dateNow = $dt->toDateTimeString();
+
+        $user = User::where('id', $id)->update(["deleted_at" => $dateNow]);
+        
+        return back();
+
+    }
+
+    public function unbanUser(Request $request, $id){
+
+        $user = User::where('id', $id)->update(["deleted_at" => null]);
+
+        return back();
+
+    }
 }

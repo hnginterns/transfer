@@ -28,14 +28,17 @@
         <td><a href="{{action('Admin\UsersController@edit', $user['id'])}}" class="btn btn-warning">Edit</a></td>
         <td>
 
-			<form action="{{action('Admin\UsersController@destroy', $user['id'])}}" method="post">
+        @if( $user['deleted_at'] == null)
+			  <form action="{{url('admin/users/banUser/')}}/{{ $user['id'] }}" method="post">
             {{csrf_field()}}
-            <input name="_method" type="hidden" value="DELETE">
-            <button class="btn btn-danger" type="submit">Delete</button>
-          </form>
-
-
-
+            <button class="btn btn-danger" type="submit">Ban</button>
+        </form>
+        @else
+        <form action="{{url('admin/users/unbanUser/')}}/{{ $user['id'] }}" method="post">
+            {{csrf_field()}}
+            <button class="btn btn-success" type="submit">Unban</button>
+        </form>
+        @endif
         </td>
       </tr>
       </tr>

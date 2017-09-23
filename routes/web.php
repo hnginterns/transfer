@@ -71,7 +71,8 @@ Route::group(['middleware' => ['auth', 'admin']], function() {
 	Route::get('/web-analytics', 'pagesController@webAnalytics');
 	Route::resource('admin/users', 'Admin\UsersController');
 	Route::post('admin/users/store', 'Admin\UsersController@store');
-
+	Route::post('admin/users/banUser/{id}', 'Admin\UsersController@banUser');
+	Route::post('admin/users/unbanUser/{id}', 'Admin\UsersController@unbanUser');
 });
 
 // Testing routes
