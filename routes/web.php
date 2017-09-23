@@ -27,6 +27,7 @@ Route::get('/validate', 'ValidateAccountController@accountResolve');
 Route::get('/walletBalance', 'WalletController@walletBalance');
 
 Route::get('/walletCharge', 'WalletController@walletCharge');
+
 Route::get('/createWallet', 'WalletController@createWallet');
 
 Route::get('/walletTransfer', 'WalletController@transfer');
@@ -69,6 +70,7 @@ Route::group(['middleware' => ['auth', 'admin']], function() {
 	Route::get('/usermanagement', 'AdminController@usermanagement');
 	Route::get('/web-analytics', 'pagesController@webAnalytics');
 	Route::resource('admin/users', 'Admin\UsersController');
+	Route::post('admin/users/store', 'Admin\UsersController@store');
 
 });
 
