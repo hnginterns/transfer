@@ -22,7 +22,16 @@ Route::get('/about', 'pagesController@about');
 
 Route::get('/forgot', 'pagesController@forgot');
 
-Route::get('/confirmation', 'ValidateAccountController@confirm');
+Route::get('/validate', 'ValidateAccountController@accountResolve');
+
+Route::get('/walletBalance', 'WalletController@walletBalance');
+
+Route::get('/walletCharge', 'WalletController@walletCharge');
+Route::get('/createWallet', 'WalletController@createWallet');
+
+Route::get('/walletTransfer', 'WalletController@transfer');
+
+Route::get('/transferAccount', 'WalletController@transferAccount');
 
 Route::get('/404', 'pagesController@pagenotfound');
 
@@ -42,7 +51,8 @@ Route::group(['middleware' => 'auth'], function() {
 
 // auth admin
 Route::group(['middleware' => ['auth', 'admin']], function() {
-	// get manager
+	Route::get('/admin', 'AdminController@index');
+	Route::get('/admin/adduser', 'AdminController@addaccount');
 	// Set rules that users will transfer with
 	Route::get('/admin/setrule', 'AdminController@setRule')->name('admin.setrule');
 	Route::post('/admin/setrule', 'AdminController@saveRule')->name('admin.setrule.submit');
@@ -54,7 +64,6 @@ Route::group(['middleware' => ['auth', 'admin']], function() {
 	//Route::get('/manager/setting', 'AdminController@settings');
 
 	// admin routes
-	Route::get('/admin', 'AdminController@index');
 	Route::get('/view-accounts', 'pagesController@viewAccounts');
 	Route::get('/addaccount', 'AdminController@addaccount');
 	Route::get('/usermanagement', 'AdminController@usermanagement');
@@ -62,3 +71,6 @@ Route::group(['middleware' => ['auth', 'admin']], function() {
 	Route::resource('admin/users', 'Admin\UsersController');
 
 });
+
+// Testing routes
+Route::get('/test', 'HomeController@randomFunc');

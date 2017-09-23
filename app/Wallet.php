@@ -42,7 +42,7 @@ class Wallet extends Model
      * @return void
      */
     public function restrictions() {
-        return $this->belongsTo(Restriction::class);
+        return $this->hasOne(Restriction::class);
     }
 
 		/**
@@ -61,5 +61,26 @@ class Wallet extends Model
 
 				// return redirect()->back()->with('status', 'You\'re not Authorized to perform this action');
 				return false;
-    }
+		}
+		
+		public function canTransfer() {
+			// dd("HEre!");
+			
+			$restriction = $this->restrictions()->get();
+
+			$rule = \App\Rule::find($restriction[0]->rule_id);
+
+			// Fecth all the transactions in the past 24 hours
+			// from the db
+			$transactions = $this->transactions()->get();
+			// dd($transactions);
+			$totalTransactionsToday = 3;
+
+			if ($rule->max_transactions_per_day >= $totalTransactionsToday) {
+				return false;
+			} else {
+				return true;
+			}
+
+		}
 }

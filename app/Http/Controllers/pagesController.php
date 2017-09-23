@@ -82,6 +82,10 @@ class pagesController extends Controller
   public function viewWallet() {
     return view ('wallet-view');
   }
+  
+  public function pagenotfound(){
+    return view('404');
+  }
 
   //all other page functions can be added
   /*

@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use App\User;
+use Illuminate\Support\Facades\Hash;
+
 class UsersController extends Controller
 {
     /**
@@ -14,7 +17,11 @@ class UsersController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all()->toArray();
+
+        //dd($users);
+        
+        return view('users.index', compact('users'));
     }
 
     /**
@@ -35,7 +42,18 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $password = $request->get('password'); // password is form field
+        $hashedpassword = Hash::make($password);
+
+        $User = new User([
+          'username' => $request->get('username'),
+          'email' => $request->get('email'),
+          'password' => $hashedpassword,
+          'is_admin' => 1
+        ]);
+        $User->save();
+        return redirect('/admin/users');
     }
 
     /**
@@ -57,7 +75,9 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        
+        return view('users.edit', compact('user','id'));
     }
 
     /**
@@ -69,7 +89,11 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        $user->username = $request->get('username');
+        $user->email = $request->get('email');
+        $user->save();
+        return redirect('/admin/users');
     }
 
     /**
@@ -80,6 +104,8 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+        return redirect('/admin/users');
     }
 }
