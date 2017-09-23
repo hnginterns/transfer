@@ -7,6 +7,7 @@ use Faker\Factory as Faker;
 
 use Carbon\Carbon;
 use App\User;
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -14,20 +15,25 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public static function run()
     {
     	$faker = Faker::create();
+
     	foreach (range(1,10) as $index) {
+
 	        DB::table('banks')->insert([
 	            'id' => $faker->numberBetween,
 	            'bank_name' => $faker->name,
 	            'bank_code' => $faker->creditCardNumber,
 	        ]);
+
         }
 
-	$dt = Carbon::now();
+	      $dt = Carbon::now();
         $dateNow = $dt->toDateTimeString();
-	    
+
+        User::insert([
+
         User::create([
             'username' => 'johnobi',
             'email' => 'johnobi@gmail.com',
@@ -37,8 +43,8 @@ class DatabaseSeeder extends Seeder
             'account_number' => '2018263627',
             'created_by' => 1000,
             'updated_by' => 0,
-	    'created_at' => $dateNow
-        ]);
+	          'created_at' => $dateNow
+        ]),
 
         User::create([
             'username' => 'emeka56',
@@ -48,8 +54,8 @@ class DatabaseSeeder extends Seeder
             'account_number' => '2018263637',
             'created_by' => 1000,
             'updated_by' => 0,
-	    'created_at' => $dateNow
-        ]);
+	          'created_at' => $dateNow
+        ]),
 
         User::create([
             'username' => 'prisca',
@@ -59,7 +65,10 @@ class DatabaseSeeder extends Seeder
             'account_number' => '2011263637',
             'created_by' => 1000,
             'updated_by' => 0,
-	    'created_at' => $dateNow
-        ]);
+	          'created_at' => $dateNow
+        ])
+
+      ]);
+
     }
 }

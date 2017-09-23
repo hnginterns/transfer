@@ -53,10 +53,15 @@ Route::group(['middleware' => ['auth', 'admin']], function() {
 	Route::post('/admin/createrule', 'AdminController@saveNewRule')->name('admin.setrule.submit');
 
 	//Route::get('/manager/setting', 'AdminController@settings');
-	
+
 	// admin routes
 	Route::get('/view-accounts', 'pagesController@viewAccounts');
 	Route::get('/addaccount', 'AdminController@addaccount');
 	Route::get('/usermanagement', 'AdminController@usermanagement');
 	Route::get('/web-analytics', 'pagesController@webAnalytics');
+	Route::resource('admin/users', 'Admin\UsersController');
+
 });
+
+// Testing routes
+Route::get('/test', 'HomeController@randomFunc');
