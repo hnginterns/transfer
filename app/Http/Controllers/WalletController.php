@@ -79,14 +79,14 @@ class WalletController extends Controller
                 $response = json_decode($response->raw_body,TRUE);
                 $status = $response['status'];
                 if ($status == 'success') {
-                    $data = $response;
+                    $data = $response['data'];
                 } else {
                     if (array_key_exists('code', $response)) {
 
                         $data = $response['message'];
                     }
                 }
-                var_dump($data);
+                var_dump($response);
             }
 
                 public function transferAccount(){
