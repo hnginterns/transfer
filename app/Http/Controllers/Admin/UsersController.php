@@ -140,6 +140,8 @@ class UsersController extends Controller
         $validator = Validator::make($input, [
             'username' => 'bail|required',
             'email' => 'bail|email|required',
+            'first_name' => $request->get('first_name'),
+            'last_name' => $request->get('last_name'),
             'account_number' => 'bail|required|numeric'
             ],
             [
@@ -159,6 +161,9 @@ class UsersController extends Controller
             $user = User::find($id);
             $user->username = $input['username'];
             $user->email = $input['email'];
+            $user->first_name = $input['first_name'];
+            $user->last_name = $input['last_name'];
+
             $user->account_number = $input['account_number'];
             $user->save();
             $name = Auth::user()->username;
