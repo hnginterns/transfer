@@ -15,7 +15,7 @@
     <div class="form-group row">
       <label for="email" class="col-sm-2 col-form-label col-form-label-sm">Email</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control form-control-lg" id="lgFormGroupInput" placeholder="Email" name="email" value="{{$user->username}}">
+        <input type="text" class="form-control form-control-lg" id="lgFormGroupInput" placeholder="Email" name="email" value="{{$user->email}}">
       </div>
     </div>
 
