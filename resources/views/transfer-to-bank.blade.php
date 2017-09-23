@@ -496,7 +496,7 @@
               <div class="login-box" style="">
                   <img src="/svg/naira.svg" alt="no preview" class="transfer-icon">
                   <h4 class="intro" style="font-size: 20px;">Transfer to bank account </h4>
-                  <form class="admin-login" action="/transfers" method="GET">
+                  <form class="admin-login" action="/transfers" method="POST">
                       <div class="form-group" style="margin: 30px 0;">
                           <input type="text" class="form-control cus-input" id="benName" placeholder="Beneficiary Name">
                       </div>
@@ -504,8 +504,8 @@
                           <div class="col col-lg-6 form-holder">
                               <div class="form-group">
                                   <select class="form-control cus-input" name="bank">
-                                    @foreach(App\Http\Utilities\Bank::all() as $bankCode => $bankName)
                                     <option>Select Beneficiary Bank</option>
+                                    @foreach(App\Http\Utilities\Bank::all() as $bankCode => $bankName)
                                       <option value="{{ $bankCode }}"> {{ $bankName }}</option>
                                       @endforeach
                                   </select>
