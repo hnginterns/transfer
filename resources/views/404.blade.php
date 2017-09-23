@@ -11,6 +11,35 @@
       height: 100%;
       margin-top: 7%;
     }
+    .bg-coral{
+      
+      width: fit-content;
+    /* color: #E57679; */
+    color: white;
+    border: none;
+    background: #FF5700;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 10px 15px;
+    border-radius: 63px;
+    transition: background 1s, color 2s;
+    z-index: 100
+    }
+	 .bg-blue{
+      background-color: #222c37;
+      width: fit-content;
+    /* color: #E57679; */
+    color: white;
+    border: none;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 10px 15px;
+    border-radius: 63px;
+    transition: background 1s, color 2s;
+    z-index: 100
+    }
+    .bg-coral:hover, .bg-blue:hover {
+
+box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.25);
+    }
 		.main{
       bottom: 0;
       width: 90%;
@@ -29,7 +58,7 @@
       text-align: center;
       font-size: 30px;
       height: 70px;
-}
+    }
     .main .error span.ghost:before{
         content: "\f111   \f111";
         color: #fff;
@@ -76,12 +105,7 @@
 	  p{
 		  color: #686969:
 			  }
-    .bg-coral{
-      background-color: #ff6200;
-    }
-	 .bg-blue{
-      background-color: #222c37;
-    }
+    
     a{
       text-decoration: none;
     }
@@ -92,13 +116,10 @@
       align-items: center;
     }
     .main .navigate a{
-      border-radius: 25px;
-      font-size: 18px;
       text-decoration: none;
       color: #fff;
       padding: 5px 20px;
       margin: 5px 9%;
-      box-shadow: 0 5px 5px 2px rgba(0,0,0,0.14);
     }
     .main .navigate a:hover{
       opacity: 0.9;
@@ -122,6 +143,7 @@
         font-size: 14px;
       }
     }
+
 	</style>
 </head>
 <body>
@@ -138,7 +160,7 @@
 
     <h4><a class="blue" href="#">REPORT THIS ISSUE</a></h4>
 
-    <div class="navigate"></div>
+    <div class="navigate">
       <a class="bg-coral" href="/admin">GO TO DASHBOARD</a>
       <a class="bg-blue" href="/">GO TO HOMEPAGE</a>
     </div>
