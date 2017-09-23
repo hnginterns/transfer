@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Wallet;
 class WalletController extends Controller
 {
     /**
@@ -47,7 +47,7 @@ class WalletController extends Controller
                 $query = array(
                 'name' => "James Okoh",
                 'lock_code' => "felicia",
-                'user_ref' => "102",
+                'user_ref' => "202",
                 'currency' => "NGN");
 
                 $body = \Unirest\Request\Body::json($query);
@@ -150,5 +150,36 @@ class WalletController extends Controller
         $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/get-charge', $headers, $body);
         $data = json_decode($response->raw_body, TRUE);
         $walletCharge = var_dump($data['data']);
+    }
+
+
+    private function storeWalletDetailsToDB($wallet_data, $uuid, $lock_code){
+
+            $wallet                 =      new Wallet;
+            $moneywave_wallet_id    =      $wallet_data['id'];
+            $balance_one            =      $wallet_data['balance_1'];
+            $enabled                =      $wallet_data['enabled'];
+            $wallet_code            =      $wallet_data['uref'];
+            $merchant_id            =      $wallet_data['merchantId'];
+            $currency_id            =      $wallet_data['currencyId'];
+            $balance                =      $wallet_data['balance'];
+            $updatedAt              =      $wallet_data['udpatedAt'];
+            $createdAt              =      $wallet_data['createdAt'];
+
+            $wallet->moneywave_wallet_id        =        $moneywave_wallet_id;
+            $wallet->balance_one                =        $balance_one;
+            $wallet->balance                    =        $balance;
+            $wallet->merchant_id                =        $merchant_id;
+            $wallet->currency_id                =        $currency_id;
+            $wallet->enabled                    =        $enabled;
+            $wallet->lock_code                  =        $lock_code;
+            $wallet->wallet_code                =        $wallet_code;
+
+            if($wallet->save()){
+                return back();
+            }else{
+                return back();
+            }
+
     }
 }
