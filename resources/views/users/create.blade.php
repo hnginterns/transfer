@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 <div class="col-sm-10">
-  <form method="post" action="{{url('admin/users')}}">
+  <form method="post" action="{{url('Admin\UsersController@store')}}">
     <div class="form-group row">
       {{csrf_field()}}
       <label for="username" class="col-sm-2 col-form-label col-form-label-lg">Username</label>

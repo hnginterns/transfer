@@ -18,9 +18,9 @@ class UsersController extends Controller
     {
         $users = User::all()->toArray();
 
-        //dd($users);
+        dd($users);
         
-        return view('users.index', compact('users'));
+        //return view('users.index', compact('users'));
     }
 
     /**
@@ -41,9 +41,15 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
+
+        $password = Input::get('password'); // password is form field
+        $hashedpassword = Hash::make($password);
+
+
         $User = new User([
           'username' => $request->get('username'),
-          'email' => $request->get('email')
+          'email' => $request->get('email'),
+          'password' => $hashedpassword
         ]);
         $User->save();
         return redirect('/admin/users');
