@@ -52,6 +52,8 @@ class UsersController extends Controller
         $input = $request->all();
         $validator = Validator::make($input, [
             'username' => 'bail|required',
+            'first_name' => 'bail|required',
+            'last_name' => 'bail|required',
             'email' => 'bail|email|required',
             'account_number' => 'bail|required|numeric',
             'password' => 'bail|required',
