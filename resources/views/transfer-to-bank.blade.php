@@ -118,6 +118,10 @@
         margin-top: 20px;
     }
 
+    .main-content {
+      padding-top: -30px;
+    }
+
     .admin-login>button {
         background: #FD8032;
         padding: 10px 80px;
