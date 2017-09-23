@@ -33,22 +33,23 @@
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header">ADMIN CONTROLS</li>
       <!-- Optionally, you can add icons to the links -->
-      <li class="active"><a href="/manager"><i class="fa fa-dashboard"></i> <span>DashBoard</span></a></li>
-      <li><a href="/usermanagement"><i class="fa fa-group"></i> <span>Manage Users</span></a></li>
-      <li><a href="#"><i class="fa fa-group"></i> <span>Banned Users</span></a></li>
+      <li class="active">
+        <a href="/admin/adduser"><i class="fa fa-user"></i> <span>Add User</span></a>
+      </li>
+      <li>
+        <a href="/usermanagement"><i class="fa fa-group"></i> <span>Manage Users</span></a>
+      </li>
+
+       <li>
+        <a href="/admin/createrule"><i class="fa fa-plus"></i> <span>Create Rules</span></a>
+      </li>
+
+       <li>
+        <a href="/admin/setrule"><i class="fa fa-group"></i> <span>Set Rules</span></a>
+      </li>
       <li><a href="/wallet-view"><i class="fa fa-briefcase"></i> <span>Manage Wallet</span></a></li>
       <li><a href="#"><i class="fa fa-dollar"></i> <span>Currencies</span></a></li>
-      <li class="treeview">
-        <a href="#"><i class="fa fa-link"></i> <span>Transaction</span>
-          <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-        </a>
-        <ul class="treeview-menu">
-          <li><a href="#">Transaction Detail</a></li>
-          <li><a href="/web-analytics">Transaction Analytics</a></li>
-        </ul>
-      </li>
+      <li><a href="/web-analytics">Transaction Analytics</a></li>
       <li><a href="#"><i class="fa fa-eyedropper"></i> <span>Draft</span></a></li>
       <li><a href="#"><i class="fa fa-trash"></i> <span>Trash</span></a></li>
       <li><a hr
