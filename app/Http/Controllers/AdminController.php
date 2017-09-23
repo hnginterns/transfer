@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+
 use Illuminate\Http\Request;
 use App\User;
 use App\Wallet;
@@ -17,12 +19,14 @@ class AdminController extends Controller
     }
 
 	public function index() {
-		return view('admin.admindashboard');
+        $name = Auth::user()->username;
+		return view('admin.admindashboard')->with("name", $name);
 	}
 
     public function setRule() {
     	// Basically display a paage on which rules are set
-    	return view('admin.set-rules');
+        $name = Auth::user()->username;
+    	return view('admin.set-rules')->with("name", $name);
     }
 
     public function saveRule(Request $request) {
@@ -31,7 +35,8 @@ class AdminController extends Controller
 
     public function createRule() {
     	// Basically display a page on which rules are created e.g A form
-    	return view('admin.create-rules');
+        $name = Auth::user()->username;
+    	return view('admin.create-rules')->with("name", $name);
     }
 
     public function saveNewRule(Request $request) {
@@ -49,11 +54,13 @@ class AdminController extends Controller
     }
 
     public function addaccount(){
-      return view('addaccount');
+       $name = Auth::user()->username;
+       return view('addaccount')->with("name", $name);
     }
 
     public function usermanagement(){
-      return view('usermanagement');
+        $name = Auth::user()->username;
+        return view('usermanagement')->with("name", $name);
     }
 
     public function banUser(Request $request, User $user){
