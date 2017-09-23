@@ -33,11 +33,9 @@
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header">ADMIN CONTROLS</li>
       <!-- Optionally, you can add icons to the links -->
-      <li class="active">
-        <a href="/admin/adduser"><i class="fa fa-user"></i> <span>Add User</span></a>
-      </li>
+      
       <li>
-        <a href="/usermanagement"><i class="fa fa-group"></i> <span>Manage Users</span></a>
+        <a href="/admin/users"><i class="fa fa-group"></i> <span>Manage Users</span></a>
       </li>
 
        <li>
