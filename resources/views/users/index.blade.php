@@ -17,8 +17,8 @@
         <td>{{$user['id']}}</td>
         <td>{{$user['username']}}</td>
         <td>{{$user['email']}}</td>
-        <td><a href="{{action('Admin\UserController@edit', $user['id'])}}" class="btn btn-warning">Edit</a></td>
-        <td><a href="{{action('Admin\UserController@destroy', $user['id'])}}" class="btn btn-danger">Delete</a></td>
+        <td><a href="{{action('Admin\UsersController@edit', $user['id'])}}" class="btn btn-warning">Edit</a></td>
+        <td><a href="{{action('Admin\UsersController@destroy', $user['id'])}}" class="btn btn-danger">Delete</a></td>
       </tr>
       </tr>
       @endforeach
