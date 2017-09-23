@@ -183,6 +183,31 @@
         }
     }
 
+    @media screen and (max-width:768px) {
+      #sidebar {
+      padding: 0;
+      position: absolute;
+      left: -238px;
+      top: 30px;
+      }
+      .navbar-form .form-control {
+        display: inline-block;
+        width: auto;
+        vertical-align: middle;
+        display: none;
+      }
+      .navbar-nav {
+        margin: 7.5px -15px;
+        display: none;
+      }
+      .profile {
+        display: none;
+      }
+      .navbar-form.navbar-right {
+        display: none;
+      }
+    }
+
     body {
       font-family: Nunito Sans;
     }

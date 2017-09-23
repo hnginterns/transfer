@@ -184,6 +184,33 @@
       background: #25313F;
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     }
+
+    @media screen and (max-width:768px) {
+      #sidebar {
+      padding: 0;
+      position: absolute;
+      left: -238px;
+      top: 30px;
+      }
+      .navbar-form .form-control {
+        display: inline-block;
+        width: auto;
+        vertical-align: middle;
+        display: none;
+      }
+      .navbar-nav {
+        margin: 7.5px -15px;
+        display: none;
+      }
+      .profile {
+        display: none;
+      }
+      .navbar-form.navbar-right {
+        display: none;
+      }
+    }
+
+
   </style>
 </head>
 
@@ -194,7 +221,7 @@
 
         <a class="navbar-brand" href="#"> <span><img src="img/logo.png" alt=""></span>   PaysFund</a>
 
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+        <button type="button" id="nav" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
           aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
