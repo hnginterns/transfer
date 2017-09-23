@@ -8,9 +8,9 @@ class BanksController extends Controller
       public function banks()
     {
 
-        function is_curl() {
+       /** function is_curl() {
             return function_exists('curl_version');
-        }
+        }**/
 
         //var_dump(is_curl());
 
