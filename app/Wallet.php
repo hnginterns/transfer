@@ -73,7 +73,7 @@ class Wallet extends Model
 			// Fecth all the transactions in the past 24 hours
 			// from the db
 			$transactions = $this->transactions()->get();
-			dd($transactions);
+			// dd($transactions);
 			$totalTransactionsToday = 3;
 
 			if ($rule->max_transactions_per_day >= $totalTransactionsToday) {
