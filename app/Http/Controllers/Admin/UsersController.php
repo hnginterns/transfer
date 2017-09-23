@@ -18,9 +18,9 @@ class UsersController extends Controller
     {
         $users = User::all()->toArray();
 
-        dd($users);
+        //dd($users);
         
-        //return view('users.index', compact('users'));
+        return view('users.index', compact('users'));
     }
 
     /**
@@ -49,7 +49,8 @@ class UsersController extends Controller
         $User = new User([
           'username' => $request->get('username'),
           'email' => $request->get('email'),
-          'password' => $hashedpassword
+          'password' => $hashedpassword,
+          'is_admin' => 1
         ]);
         $User->save();
         return redirect('/admin/users');
