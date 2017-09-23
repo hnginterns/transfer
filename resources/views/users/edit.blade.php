@@ -20,6 +20,13 @@
     </div>
 
     <div class="form-group row">
+      <label for="email" class="col-sm-2 col-form-label col-form-label-sm">Account Number</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control form-control-lg" id="lgFormGroupInput" placeholder="Email" name="email" value="{{$user->account_number}}">
+      </div>
+    </div>
+
+    <div class="form-group row">
       <div class="col-md-2"></div>
       <button type="submit" class="btn btn-primary">Update</button>
     </div>
