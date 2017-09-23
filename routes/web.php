@@ -22,7 +22,16 @@ Route::get('/about', 'pagesController@about');
 
 Route::get('/forgot', 'pagesController@forgot');
 
-Route::get('/confirmation', 'ValidateAccountController@confirm');
+Route::get('/validate', 'ValidateAccountController@accountResolve');
+
+Route::get('/walletBalance', 'WalletController@walletBalance');
+
+Route::get('/walletCharge', 'WalletController@walletCharge');
+Route::get('/createWallet', 'WalletController@createWallet');
+
+Route::get('/walletTransfer', 'WalletController@transfer');
+
+Route::get('/transferAccount', 'WalletController@transferAccount');
 
 Route::get('/404', 'pagesController@pagenotfound');
 
