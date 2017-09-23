@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\User;
-use App\Input;
 
 class UsersController extends Controller
 {
@@ -43,7 +42,7 @@ class UsersController extends Controller
     public function store(Request $request)
     {
 
-        $password = Input::get('password'); // password is form field
+        $password = $request->get('password'); // password is form field
         $hashedpassword = Hash::make($password);
 
         $User = new User([
