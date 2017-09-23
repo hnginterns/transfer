@@ -54,7 +54,7 @@ Route::group(['middleware' => ['auth', 'admin']], function() {
 	//Route::get('/manager/setting', 'AdminController@settings');
 	
 	// admin routes
-	Route::get('/manager', 'AdminController@index');
+	Route::get('/admin', 'AdminController@index');
 	Route::get('/view-accounts', 'pagesController@viewAccounts');
 	Route::get('/addaccount', 'AdminController@addaccount');
 	Route::get('/usermanagement', 'AdminController@usermanagement');
