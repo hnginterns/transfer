@@ -23,7 +23,7 @@
     <div class="form-group row">
       <label for="email" class="col-sm-2 col-form-label col-form-label-sm">Account Number</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control form-control-lg" id="lgFormGroupInput" placeholder="Account Number" name="account_number">
+        <input type="text" class="form-control form-control-lg" id="lgFormGroupInput" placeholder="Acount Number" name="account_number">
       </div>
     </div>
 
