@@ -27,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/dashboard';
+    protected $redirectTo = '/userdashboard';
 
     /**
      * Create a new controller instance.
@@ -39,5 +39,10 @@ class LoginController extends Controller
         $this->datta['ref'] = str_replace('http://', '', str_replace('https://', '', URL::previous()));
         $this->datta['host'] = str_replace('http://', '', str_replace('https://', '', $request->server('HTTP_HOST')));
         $this->middleware('guest')->except('logout');
+    }
+
+    protected function authenticated(Request $request, $user)
+    {
+        $this->redirectTo = (boolean) $user->is_admin ? '/admin' : '/userdashboard';
     }
 }

@@ -10,11 +10,14 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Auth::routes();
 // get default home pages
 Route::get('/', 'pagesController@home');
+
+Route::get('/home', 'pagesController@home');
 // get signin page
 Route::get('/signin', 'pagesController@signin');
+
 // get password forget pages
 Route::get('/forgot', function () {
 	return view('forgot');
@@ -49,55 +52,45 @@ Route::get('/banks', 'BanksController@banks');
 // get transfer 
 Route::get('/transfer', 'pagesController@transfer');
 
-// get bank balance
-Route::get('/balance', 'pagesController@balance');
+Route::get('/about', 'pagesController@about');
+
+Route::get('/forgot', 'pagesController@forgot');
+
+Route::get('/confirmation', 'ValidateAccountController@confirm');
+
+Route::get('/404', 'pagesController@pagenotfound');
 
 // authentications
-Auth::routes();
 Route::group(['middleware' => 'auth'], function() {
-	// Handles Transfers
-	Route::get('/dashboard', 'UsersController@index')->name('dashboard');
-	Route::get('/dashboard/transfer', 'UsersController@transfer')->name('transfer');
-	Route::post('/dashboard/transfer', 'UsersController@processTransfer');
-
-	// Transaction histories
-	Route::get('/dashboard/history', 'UsersController@history');
-
-	// Wallet Funding
-	Route::post('/dashboard/fundwallet', 'UsersController@processFundWallet');
-	Route::get('/dashboard/fundwallet', 'UsersController@fundWallet')->name('fundwallet');
-});
-
-
-// admin dashboard
-Route::get('/admin', function () {
-		return view('/admin/home');
+	//User routes
+	Route::get('/userdashboard', 'pagesController@userdashboard');
+	Route::get('/transfer-to-bank', 'pagesController@bank_transfer');
+	Route::get('/transfer-to-wallet', 'pagesController@wallet_transfer');
+	Route::get('/wallet-view', 'pagesController@viewWallet')->name('wallet');
+	Route::get('/banks', 'BanksController@banks');
+	Route::get('/success', 'pagesController@success');
+	Route::get('/failed', 'pagesController@failed');
+	Route::get('/transfer', 'pagesController@transfer');
+	Route::get('/balance', 'pagesController@balance');
 });
 
 // auth admin
 Route::group(['middleware' => ['auth', 'admin']], function() {
-
 	// get manager
-	Route::get('/manager', 'AdminController@index');
+	// Set rules that users will transfer with
+	Route::get('/admin/setrule', 'AdminController@setRule')->name('admin.setrule');
+	Route::post('/admin/setrule', 'AdminController@saveRule')->name('admin.setrule.submit');
 
-	Route::group(['middleware' => ['auth', 'admin']], function() {
-
-		Route::get('/admin', 'AdminController@index');
-
-		// Set rules that users will transfer with
-		Route::get('/admin/setrule', 'AdminController@setRule');
-		Route::post('/admin/setrule', 'AdminController@saveRule');
-
-		// New Rule Creation
-		Route::get('/admin/createrule', 'AdminController@createRule');
-		Route::post('/admin/createrule', 'AdminController@saveNewRule');
-
-	});
+	// New Rule <Creati></Creati>on
+	Route::get('/admin/createrule', 'AdminController@createRule')->name('admin.createrule');
+	Route::post('/admin/createrule', 'AdminController@saveNewRule')->name('admin.setrule.submit');
 
 	//Route::get('/manager/setting', 'AdminController@settings');
+	
+	// admin routes
+	Route::get('/admin', 'AdminController@index');
+	Route::get('/view-accounts', 'pagesController@viewAccounts');
+	Route::get('/addaccount', 'AdminController@addaccount');
+	Route::get('/usermanagement', 'AdminController@usermanagement');
+	Route::get('/web-analytics', 'pagesController@webAnalytics');
 });
-
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

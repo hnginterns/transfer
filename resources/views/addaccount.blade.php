@@ -53,10 +53,10 @@
  <div class="col-sm-12 remove-padding">
     <div class="col-sm-2 remove-padding">
       <nav>
-        <a href="" id="indent">Dashboard</a>
-        <a href="" id="indent">Campaigns</a>
-        <a href="">Wallet View</a>
-        <a href="" id="selected">Acounts</a>
+        <a href="/manager" id="indent">Dashboard</a>
+        <a href="/manager" id="indent">Campaigns</a>
+        <a href="/wallet-view">Wallet View</a>
+        <a href="view-accounts" id="selected">Acounts</a>
       </nav>
 
 

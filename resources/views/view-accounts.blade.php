@@ -392,9 +392,9 @@ display: none;
       <span class="fa fa-arrow-left"></span>
     </div>
     <div id="menus">
-      <li><a href="#">Dashboard</a></li>
-      <li><a href="#">Wallet View</a></li>
-      <li class="active"><a href="#">Accounts</a></li>
+      <li><a href="manager">Dashboard</a></li>
+      <li><a href="wallet-view">Wallet View</a></li>
+      <li class="active"><a href="view-accounts">Accounts</a></li>
     </div>
   </div>
 
