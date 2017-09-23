@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use App\User;
+
 class UsersController extends Controller
 {
     /**
@@ -14,7 +16,9 @@ class UsersController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all()->toArray();
+        
+        return view('user.index', compact('users'));
     }
 
     /**
@@ -35,7 +39,12 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $User = new User([
+          'name' => $request->get('name'),
+          'email' => $request->get('email')
+        ]);
+        $User->save();
+        return redirect('/admin/users');
     }
 
     /**
