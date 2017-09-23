@@ -159,9 +159,9 @@ margin-right: 30px;
 <body>
 <header><div class="container">
 <div class="row bgcolor">
-<div class="col-sm-3 col-xs-6"align="left"><span class="logo">PaysFund</span></div>
+<div class="col-sm-3 col-xs-6"align="left"><a href='/'><span class="logo">PaysFund</span></a></div>
 <div class="col-sm-1 col-xs-6" align="right"><span class="bars"><i class="fa fa-bars" aria-hidden="true"></i></span></div>
-<div class="col-sm-3 padding hidden-sm hidden-xs"><span class="white ">Wallet View</span></div>
+<div class="col-sm-3 padding hidden-sm hidden-xs"><a href='/wallet-view'><span class="white ">Wallet View</span></a></div>
 <div class="col-sm-3 padding hidden-sm hidden-xs"><input type="text" class="search form-control" placeholder="Search"/></div>
 <div class="col-sm-1 hidden-sm hidden-xs"></div>
 <div class="col-sm-1 hidden-sm hidden-xs"><div class="profile"></div></div>
@@ -169,9 +169,9 @@ margin-right: 30px;
 </div></header>
 <div class="container"><div class="row"><div class="col-md-1 sidebar hidden-sm hidden-xs">
 <div class="dashboard">
-<div class="dashGrey">Dashboard</div>
+<a href='/dashboard'><div class="dashGrey">Dashboard</div></a>
 <br />
-<div class="dashBlue HighLighted">Wallet View</div>
+<a href='/wallet-view'><div class="dashBlue HighLighted">Wallet View</div></a>
 <br />
 </div>
 </div>

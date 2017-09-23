@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->integer('bank_id')->unsigned();
             $table->string('account_number')->unique();
             $table->integer('created_by')->unsigned();
-            $table->boolean('deleted')->default(false);
+            $table->softDeletes();
             $table->integer('updated_by')->unsigned();
             $table->rememberToken();
             $table->timestamps();

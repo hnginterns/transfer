@@ -280,7 +280,19 @@ desired effect
         </li>
         <li><a href="#"><i class="fa fa-eyedropper"></i> <span>Draft</span></a></li>
         <li><a href="#"><i class="fa fa-trash"></i> <span>Trash</span></a></li>
-        <li><a href="#"><i class="fa fa-link"></i> <span>Logout</span></a></li>
+        <li><a hr
+          <li>
+          <a href="{{ route('logout') }}"
+              onclick="event.preventDefault();
+                       document.getElementById('logout-form').submit();">
+              Logout
+          </a>
+
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+              {{ csrf_field() }}
+          </form>
+        </li>
+
       </ul>
       <!-- /.sidebar-menu -->
     </section>

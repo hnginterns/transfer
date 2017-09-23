@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Auth::routes();
 // get default home pages
 Route::get('/', 'pagesController@home');
 // get signin page
@@ -58,6 +58,16 @@ Route::get('/404', function(){
 Route::get('/wallet-view', 'pagesController@viewWallet')->name('wallet');
 
 //return web-analytics
+Route::get('/web-analytics', 'PagesController@webAnalytics');
+//return create-wallet
+Route::get('/create-wallet', 'pagesController@createWallet');
+//return manage-users
+Route::get('/manage-users', 'pagesController@manageUsers');
+//return create-user
+Route::get('/create-user', 'pagesController@createUser');
+//return create-wallet
+Route::get('/wallet-archive', 'pagesController@walletArchive');
+
 Route::get('/web-analytics', 'pagesController@webAnalytics');
 
 // get information about site
@@ -94,10 +104,10 @@ Route::group(['middleware' => 'auth'], function() {
 });
 
 
-// admin dashboard
-Route::get('/admin', function () {
-		return view('/admin/home');
-});
+// // admin dashboard
+// Route::get('/admin', function () {
+// 		return view('/admin/home');
+// });
 
 // auth admin
 Route::group(['middleware' => ['auth', 'admin']], function() {
@@ -110,12 +120,12 @@ Route::group(['middleware' => ['auth', 'admin']], function() {
 		Route::get('/admin', 'AdminController@index');
 
 		// Set rules that users will transfer with
-		Route::get('/admin/setrule', 'AdminController@setRule');
-		Route::post('/admin/setrule', 'AdminController@saveRule');
+		Route::get('/admin/setrule', 'AdminController@setRule')->name('admin.setrule');
+		Route::post('/admin/setrule', 'AdminController@saveRule')->name('admin.setrule.submit');
 
 		// New Rule Creation
-		Route::get('/admin/createrule', 'AdminController@createRule');
-		Route::post('/admin/createrule', 'AdminController@saveNewRule');
+		Route::get('/admin/createrule', 'AdminController@createRule')->name('admin.createrule');
+		Route::post('/admin/createrule', 'AdminController@saveNewRule')->name('admin.setrule.submit');
 
 		Route::get('/admin/dashboard', 'AdminController@viewDashboard');
 
@@ -125,6 +135,6 @@ Route::group(['middleware' => ['auth', 'admin']], function() {
 });
 
 
-Auth::routes();
+
 
 Route::get('/home', 'HomeController@index')->name('home');
