@@ -1,6 +1,8 @@
 @extends('layouts.admin')
 @section('content')
 <div class="col-sm-10">
+
+	<a href="Admin\UsersController@create">Add User </a>
   
     <table class="table table-striped">
     <thead>
