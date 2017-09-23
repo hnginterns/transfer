@@ -75,6 +75,8 @@ Route::get('/404', 'pagesController@pagenotfound');
 	Route::post('admin/users/store', 'Admin\UsersController@store');
 	Route::post('admin/users/banUser/{id}', 'Admin\UsersController@banUser');
 	Route::post('admin/users/unbanUser/{id}', 'Admin\UsersController@unbanUser');
+	Route::post('admin/users/makeAdmin/{id}', 'Admin\UsersController@makeAdmin');
+	Route::post('admin/users/removeAdmin/{id}', 'Admin\UsersController@removeAdmin');
 //});
 
 // Testing routes

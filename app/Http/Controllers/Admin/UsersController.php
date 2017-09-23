@@ -204,4 +204,21 @@ class UsersController extends Controller
         return back();
 
     }
+
+    public function makeAdmin(Request $request, $id){
+
+        $user = User::where('id', $id)->update(["is_admin" => 1]);
+
+        return back();
+
+    }
+
+    public function removeAdmin(Request $request, $id){
+
+        $user = User::where('id', $id)->update(["is_admin" => 0]);
+
+        return back();
+
+    }
+
 }
