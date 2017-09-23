@@ -26,10 +26,10 @@ class CreateUsersTable extends Migration
             $table->string('last_name')->nullable();
             $table->string('phone')->nullable();
             $table->string('avatar')->nullable();
-            $table->string('address')->default('');
+            $table->string('address')->nullable();
             $table->unsignedInteger('role_id')->default(0);
             $table->timestamp('last_login')->nullable();
-            $table->string('status', 20)->nullable()->index();
+            $table->string('status', 20)->index()->nullable();
             $table->softDeletes();
             $table->integer('updated_by')->unsigned();
             $table->rememberToken();
