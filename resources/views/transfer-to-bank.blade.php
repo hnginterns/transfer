@@ -118,10 +118,6 @@
         margin-top: 20px;
     }
 
-    .main-content {
-      padding-top: -30px;
-    }
-
     .admin-login>button {
         background: #FD8032;
         padding: 10px 80px;
@@ -509,19 +505,19 @@
                         </div>
                       <div class="col col-lg-6 form-holder">
                           <div class="form-group" style="margin: 30px 0;">
-                              <input type="text" class="form-control cus-input" id="benName" placeholder="Sender's Name">
+                              <input type="text" class="form-control cus-input" id="senderName" placeholder="Sender's Name">
                           </div>
                       </div>
                   </div>
                   <div class="row">
                       <div class="col col-lg-6 form-holder">
                         <div class="form-group" style="margin: 30px 0;">
-                            <input type="text" class="form-control cus-input" id="benName" placeholder="Lock code">
+                            <input type="text" class="form-control cus-input" id="lockCode" placeholder="Lock code">
                         </div>
                       </div>
                       <div class="col col-lg-6 form-holder">
                         <div class="form-group" style="margin: 30px 0;">
-                            <input type="text" class="form-control cus-input" id="benName" placeholder="naration (optional)">
+                            <input type="text" class="form-control cus-input" id="naration" placeholder="naration (optional)">
                         </div>
                       </div>
                     </div>
@@ -550,7 +546,7 @@
                         </div>
                         <div class="col col-lg-6 form-holder">
                           <div class="form-group" style="margin: 30px 0;">
-                            <input type="number" class="form-control cus-input" id="amount" placeholder="reference">
+                            <input type="number" class="form-control cus-input" id="refNo" placeholder="reference">
                           </div>
                         </div>
                       </div>
