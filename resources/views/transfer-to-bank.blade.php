@@ -438,6 +438,7 @@
                                   <select class="form-control cus-input" name="bank">
                                     @foreach(App\Http\Utilities\Bank::all() as $bankCode => $bankName)
                                       <option value="{{ $bankCode }}"> {{ $bankName }}</option>
+                                      @endforeach
                                   </select>
                               </div>
                           </div>
