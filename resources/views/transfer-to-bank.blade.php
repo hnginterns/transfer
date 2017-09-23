@@ -507,17 +507,20 @@
                           <input type="text" class="form-control cus-input" id="benName" placeholder="Sender's Name">
                       </div>
                     </div>
+                  </div>
                     </div>
                     <div class="row">
                     <div class="col col-lg-6 form-holder">
                       <div class="form-group" style="margin: 30px 0;">
                           <input type="text" class="form-control cus-input" id="benName" placeholder="Lock code">
                       </div>
+                      <div class="col col-lg-6 form-holder">
                       <div class="form-group" style="margin: 30px 0;">
                           <input type="text" class="form-control cus-input" id="benName" placeholder="naration (optional)">
                       </div>
                     </div>
                     </div>
+                  </div>
                       <div class="row">
                           <div class="col col-lg-6 form-holder">
                               <div class="form-group">
