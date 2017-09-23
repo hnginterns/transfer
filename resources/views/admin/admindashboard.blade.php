@@ -164,7 +164,7 @@ desired effect
 <!-- Bootstrap 3.3.7 -->
 <script src="https://adminlte.io/themes/AdminLTE/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
-<script src="https://adminlte.io/themes/AdminLTE/dist/js/adminlte.min.js"></script>
+<script src="adminlte.js"></script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
