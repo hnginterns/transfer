@@ -511,12 +511,12 @@
                   </div>
                   <div class="row">
                       <div class="col col-lg-6 form-holder">
-                        <div class="form-group" style="margin: 30px 0;">
+                        <div class="form-group">
                             <input type="text" class="form-control cus-input" id="lockCode" placeholder="Lock code">
                         </div>
                       </div>
                       <div class="col col-lg-6 form-holder">
-                        <div class="form-group" style="margin: 30px 0;">
+                        <div class="form-group">
                             <input type="text" class="form-control cus-input" id="naration" placeholder="naration (optional)">
                         </div>
                       </div>
@@ -538,14 +538,14 @@
                               </div>
                           </div>
                       </div>
-                      <div class="row">
+                      <div class="row">-
                         <div class="col col-lg-6 form-holder">
-                          <div class="form-group" style="margin: 30px 0;">
+                          <div class="form-group">
                               <input type="number" class="form-control cus-input" id="amount" placeholder="Amount">
                           </div>
                         </div>
                         <div class="col col-lg-6 form-holder">
-                          <div class="form-group" style="margin: 30px 0;">
+                          <div class="form-group">
                             <input type="number" class="form-control cus-input" id="refNo" placeholder="reference">
                           </div>
                         </div>
