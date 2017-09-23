@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Unirest;
 
 
 class BanksController extends Controller
