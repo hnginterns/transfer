@@ -497,10 +497,31 @@
                   <img src="/svg/naira.svg" alt="no preview" class="transfer-icon">
                   <h4 class="intro" style="font-size: 20px;">Transfer to bank account </h4>
                   <form class="admin-login" action="/transfers" method="POST">
-                      <div class="form-group" style="margin: 30px 0;">
-                          <input type="text" class="form-control cus-input" id="benName" placeholder="Beneficiary Name">
+                    <div class="row">
+                      <div class="col col-lg-6 form-holder">
+                          <div class="form-group" style="margin: 30px 0;">
+                              <input type="text" class="form-control cus-input" id="benName" placeholder="Beneficiary Name">
+                          </div>
+                        </div>
+                      <div class="col col-lg-6 form-holder">
+                          <div class="form-group" style="margin: 30px 0;">
+                              <input type="text" class="form-control cus-input" id="senderName" placeholder="Sender's Name">
+                          </div>
                       </div>
-                      <div class="row">
+                  </div>
+                  <div class="row">
+                      <div class="col col-lg-6 form-holder">
+                        <div class="form-group" style="margin: 30px 0;">
+                            <input type="text" class="form-control cus-input" id="lockCode" placeholder="Lock code">
+                        </div>
+                      </div>
+                      <div class="col col-lg-6 form-holder">
+                        <div class="form-group" style="margin: 30px 0;">
+                            <input type="text" class="form-control cus-input" id="naration" placeholder="naration (optional)">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
                           <div class="col col-lg-6 form-holder">
                               <div class="form-group">
                                   <select class="form-control cus-input" name="bank">
@@ -517,8 +538,17 @@
                               </div>
                           </div>
                       </div>
-                      <div class="form-group" style="margin: 30px 0;">
-                          <input type="number" class="form-control cus-input" id="amount" placeholder="Amount">
+                      <div class="row">
+                        <div class="col col-lg-6 form-holder">
+                          <div class="form-group" style="margin: 30px 0;">
+                              <input type="number" class="form-control cus-input" id="amount" placeholder="Amount">
+                          </div>
+                        </div>
+                        <div class="col col-lg-6 form-holder">
+                          <div class="form-group" style="margin: 30px 0;">
+                            <input type="number" class="form-control cus-input" id="refNo" placeholder="reference">
+                          </div>
+                        </div>
                       </div>
                       <button type="submit" class="btn btn-primary">Transfer</button>
 
