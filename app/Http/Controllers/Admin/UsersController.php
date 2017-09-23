@@ -84,6 +84,8 @@ class UsersController extends Controller
 
             User::insert([
               'username' => $request->get('username'),
+              'first_name' => $request->get('first_name'),
+              'last_name' => $request->get('last_name'),
               'email' => $request->get('email'),
               'password' => $hashedpassword,
               'is_admin' => 0,
