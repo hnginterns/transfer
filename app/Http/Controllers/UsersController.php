@@ -29,4 +29,6 @@ class UsersController extends Controller
     public function processFundWallet(Request $request) {
 	// Logic to process funding of wallet.
     }
+
+		
 }

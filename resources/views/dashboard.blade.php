@@ -204,7 +204,7 @@
       </div>
 
       <ul class="nav navbar-nav">
-        <li><a href="#" style="color:white; font-size:18px;">Wallet View</a></li>
+        <li><a href="#" style="color:white; font-size:18px;">Dashboard</a></li>
       </ul>
 
       <div class="profile navbar-right"></div>
@@ -216,11 +216,12 @@
 
   <div class="container-fluid">
     <div class="row">
+
       <div class="col-sm-2" id="sidebar">
         <ul class="nav nav-stacked">
-          <li class="active-sidebar"><a href="/userdashboard">Dashboard</a></li>
+          <li class="active-sidebar"><a href="/dashboard">Dashboard</a></li>
           <li class="side-items">
-              <a href="/wallet-view" class="side-item active">Wallet View</a>
+              <a href="/wallet-view" class="side-item">Wallet View</a>
           </li>
           <li class="side-items">
               <a href="/transfer-to-wallet" class="side-item">Wallet Transfer</a>
@@ -246,42 +247,10 @@
         </li>
         </ul>
       </div>
+
       <div class="col-sm-10">
         <div class="container-fluid">
-          <!-- <div class="menu">
-            <ul>
-              <a href="" class="menu-item">
-                <li>
-                  Wallets
-                </li>
-              </a>
-              <a href="" class="menu-item">
-                <li>
-                  Transactions
-                </li>
-              </a>
-              <a href="" class="menu-item">
-                <li>
-                  Pay Bills
-                </li>
-              </a>
-              <a href="" class="menu-item">
-                <li>
-                  Account
-                </li>
-              </a>
-              <a href="" class="menu-item">
-                <li>
-                  Lorem
-                </li>
-              </a>
-              <a href="" class="menu-item">
-                <li>
-                  Lorem
-                </li>
-              </a>
-            </ul>
-          </div> -->
+
           <div class="wallet-container">
             <a class="wallet">
               <p class="num">001</p>
