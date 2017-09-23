@@ -223,7 +223,15 @@
               <a href="/wallet-view" class="side-item active">Wallet View</a>
           </li>
           <li class="side-items">
-              <a href="/" class="side-item">Accounts</a>
+              <a href="/transfer-to-wallet" class="side-item">Wallet Transfer</a>
+          </li>
+
+           <li class="side-items">
+              <a href="/transfer-to-bank" class="side-item">Bank Transfer</a>
+          </li>
+
+           <li class="side-items">
+              <a href="/banks" class="side-item">Banks</a>
           </li>
           <li>
           <a href="{{ route('logout') }}"

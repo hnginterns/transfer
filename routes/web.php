@@ -29,7 +29,7 @@ Route::get('/404', 'pagesController@pagenotfound');
 // authentications
 Route::group(['middleware' => 'auth'], function() {
 	//User routes
-	Route::get('/userdashboard', 'pagesController@userdashboard');
+	Route::get('/dashboard', 'pagesController@userdashboard');
 	Route::get('/transfer-to-bank', 'pagesController@bank_transfer');
 	Route::get('/transfer-to-wallet', 'pagesController@wallet_transfer');
 	Route::get('/wallet-view', 'pagesController@viewWallet')->name('wallet');
@@ -54,7 +54,7 @@ Route::group(['middleware' => ['auth', 'admin']], function() {
 	//Route::get('/manager/setting', 'AdminController@settings');
 
 	// admin routes
-	Route::get('/manager', 'AdminController@index');
+	Route::get('/admin', 'AdminController@index');
 	Route::get('/view-accounts', 'pagesController@viewAccounts');
 	Route::get('/addaccount', 'AdminController@addaccount');
 	Route::get('/usermanagement', 'AdminController@usermanagement');
