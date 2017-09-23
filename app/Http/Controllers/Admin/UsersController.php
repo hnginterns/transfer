@@ -132,12 +132,34 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = User::find($id);
-        $user->username = $request->get('username');
-        $user->email = $request->get('email');
-        $user->save();
-        $name = Auth::user()->username;
-        return redirect('/admin/users')->with("name", $name);
+        $input = $request->all();
+        $validator = Validator::make($input, [
+            'username' => 'bail|required',
+            'email' => 'bail|email|required',
+            'account_number' => 'bail|required|numeric'
+            ],
+            [
+                'required' => ':attribute is required',
+                'numeric' => 'account number must be in numbers'
+            ]
+        );
+        if ($validator->fails()) 
+        {
+            $messages = $validator->messages()->toArray();
+            
+            Session::flash('messages', $this->formatMessages($messages, 'error'));
+            return redirect()->to(URL::previous())->withInput();
+        }
+        else
+        {
+            $user = User::find($id);
+            $user->username = $input['username'];
+            $user->email = $input['email'];
+            $user->account_number = $input['account_number'];
+            $user->save();
+            $name = Auth::user()->username;
+            return redirect('/admin/users')->with("name", $name);
+        }
     }
 
     /**
