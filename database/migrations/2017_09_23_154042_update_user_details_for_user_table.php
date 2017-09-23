@@ -19,7 +19,7 @@ class UpdateUserDetailsForUserTable extends Migration
             $table->string('phone')->nullable();
             $table->string('avatar')->nullable();
             $table->string('address')->default('');
-            $table->unsignedInteger('role_id');
+            $table->unsignedInteger('role_id')->default(0);
             $table->timestamp('last_login')->nullable();
             $table->string('status', 20)->index();
         });
