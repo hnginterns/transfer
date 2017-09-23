@@ -20,7 +20,7 @@ class UsersController extends Controller
         $users = User::all()->toArray();
 
         //dd($users);
-        
+
         return view('users.index', compact('users'));
     }
 
@@ -50,7 +50,8 @@ class UsersController extends Controller
           'username' => $request->get('username'),
           'email' => $request->get('email'),
           'password' => $hashedpassword,
-          'is_admin' => 1
+          'is_admin' => 1,
+          'bank_id' => ""
         ]);
         $User->save();
         return redirect('/admin/users');
@@ -76,7 +77,7 @@ class UsersController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        
+
         return view('users.edit', compact('user','id'));
     }
 

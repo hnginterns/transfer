@@ -8,6 +8,7 @@
   <title>Wallet Transfer</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
     crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
     crossorigin="anonymous"></script>
@@ -81,6 +82,13 @@
         font-weight: bold;
         font-size: 32px;
         margin-bottom: 15px;
+    }
+
+    i.fa-window-close {
+      font-size: 20px;
+      color: #fff;
+      margin: 20px;
+      display: none;
     }
 
     .promise {
@@ -183,7 +191,7 @@
       #sidebar {
       padding: 0;
       position: absolute;
-      left: -238px;
+      /*left: -238px;*/
       top: 30px;
       }
       .wallet-container {
@@ -388,6 +396,40 @@
     }
 
 
+
+    @media screen and (max-width:768px) {
+      #sidebar {
+        width: 250px !important;
+        height: 200vh;
+      padding: 0;
+      position: absolute;
+      left: -1000px;
+      top: 20px;
+      }
+      i.fa-window-close {
+        font-size: 20px;
+        color: #fff;
+        margin-bottom: 20px;
+        display: block;
+      }
+      .n
+      .navbar-form .form-control {
+        display: inline-block;
+        width: auto;
+        vertical-align: middle;
+        display: none;
+      }
+      .navbar-nav {
+        margin: 7.5px -15px;
+        display: none;
+      }
+      .profile {
+        display: none;
+      }
+      .navbar-form.navbar-right {
+        display: none;
+      }
+    }
   </style>
 </head>
 
@@ -422,6 +464,9 @@
     <div class="row">
 
       <div class="col-sm-2" id="sidebar">
+
+        <i class="fa fa-window-close" id="close" aria-hidden="true"></i>
+
         <ul class="nav nav-stacked">
           <li class="side-item"><a href="/dashboard">Dashboard</a></li>
           <li class="side-items">
@@ -503,9 +548,29 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script type="text/javascript">
       $(document).ready(function() {
-        $("#navb").click(function(){
-            $('#sidebar').css("left" : "0px");
-      });
+
+        $('#navb').click(function() {
+
+            $('#sidebar').animate({
+                left: "0px",
+                "z-index": 10000
+            }, 200).css(
+              "background-color" , "rgb(37, 49, 63)",
+              "height" , "200vh"
+            );
+
+            $('a.side-item').css(
+                "color" , "#fff"
+            );
+        });
+
+        $('#close').click(function() {
+
+            $('#sidebar').animate({
+                left: "-1000px",
+                "z-index": 10000
+            }, 200);
+        });
       });
   </script>
 </body>
