@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
     {
     	$faker = Faker::create();
 
-    	foreach (range(1,10) as $index) {
+    	foreach (range(2,10) as $index) {
 
 	        DB::table('banks')->insert([
 	            'id' => $faker->numberBetween,

@@ -503,8 +503,10 @@
                       <div class="row">
                           <div class="col col-lg-6 form-holder">
                               <div class="form-group">
-                                  <select class="form-control cus-input">
-                                      <option>Beneficiary Bank</option>
+                                  <select class="form-control cus-input" name="bank">
+                                    @foreach(App\Http\Utilities\Bank::all() as $bankCode => $bankName)
+                                      <option value="{{ $bankCode }}"> {{ $bankName }}</option>
+                                      @endforeach
                                   </select>
                               </div>
                           </div>

@@ -11,7 +11,7 @@
         <i class="fa fa-user" style="font-size: 50px;color:#fff"></i>
       </div>
       <div class="pull-left info">
-        <p>Samfield Hawb</p>
+        <p>{{ $name }}</p>
         <!-- Status -->
         <a href="#"><i class="fa fa-circle text-success" ></i> Online</a>
       </div>
@@ -35,19 +35,19 @@
       <!-- Optionally, you can add icons to the links -->
       
       <li>
-        <a href="/admin/users"><i class="fa fa-group"></i> <span>Manage Users</span></a>
+        <a href="{{ url('/admin/users') }}"><i class="fa fa-group"></i> <span>Manage Users</span></a>
       </li>
 
        <li>
-        <a href="/admin/createrule"><i class="fa fa-plus"></i> <span>Create Rules</span></a>
+        <a href="{{ url('/admin/createrule') }}"><i class="fa fa-plus"></i> <span>Create Rules</span></a>
       </li>
 
        <li>
-        <a href="/admin/setrule"><i class="fa fa-group"></i> <span>Set Rules</span></a>
+        <a href="{{ url('/admin/setrule') }}><i class="fa fa-group"></i> <span>Set Rules</span></a>
       </li>
-      <li><a href="/wallet-view"><i class="fa fa-briefcase"></i> <span>Manage Wallet</span></a></li>
+      <li><a href="{{ url('/admin') }}"><i class="fa fa-briefcase"></i> <span>Manage Wallet</span></a></li>
       <li><a href="#"><i class="fa fa-dollar"></i> <span>Currencies</span></a></li>
-      <li><a href="/web-analytics">Transaction Analytics</a></li>
+      <li><a href="{{ url('/web-analytics') }}">Transaction Analytics</a></li>
       <li><a href="#"><i class="fa fa-eyedropper"></i> <span>Draft</span></a></li>
       <li><a href="#"><i class="fa fa-trash"></i> <span>Trash</span></a></li>
       <li><a hr
