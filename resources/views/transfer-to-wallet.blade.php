@@ -1,365 +1,473 @@
-@extends('layouts.head')
+<!DOCTYPE html>
+<html lang="en">
 
-    @section('title')
-        Sign in 
-    @endsection
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Wallet Transfer</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
 
-    @section('head')
-        <!-- external scripts and meta tags goes here-->
-        <link rel="stylesheet" type="text/css" href="/css/sigin.css">
-        <style type="text/css">
-            html {
-                font-family: 'Nunito Sans', sans-serif;
-                position: relative;
-                min-height: 100%;
-            }
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Nunito+Sans');
 
-            :root {
-                --hue-color: #fd8032;
-            }
 
-            body {
-                margin-bottom: 60px;
-                font-family: 'Nunito Sans', sans-serif;
-            }
+    .search {
+        margin-right: 50px !important;
+    }
 
-            .navbar {
-                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-            }
+    .transfer-icon {
+        height: 100px;
+    }
 
-            .bg-dark {
-                background-color: #333333 !important;
-            }
+    .upper {
+        text-transform: uppercase;
+    }
 
-            .navbar-dark .navbar-nav .active>.nav-link {
-                color: white;
-                border: 2px solid #FD8032;
-                border-radius: 64px;
-                padding: 2px 25px;
-                background: #fd8032;
-            }
+    .side-item.active {
+        color: var(--hue-color);
+    }
 
-            .user-img {
-                border-radius: 25px;
-            }
+    .footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        border-top: 2px solid rgb(197, 195, 195);
+        /* Set the fixed height of the footer here */
+        height: 60px;
+        line-height: 60px;
+        /* Vertically center the text there */
+        background-color: white;
+    }
 
-            .nav-link.active {
-                color: white;
-            }
+    .company {
+        font-weight: bold;
+        font-size: 17px;
+    }
 
-            .sidebar-toggle {
-                border: 1px solid white;
-                border-radius: 2px;
-                background: transparent;
-            }
+    .login-box {
+      margin: auto;
+      /* width: 60%; */
+      /* display: flex; */
+      /* flex-direction: column; */
+      align-items: center;
+      justify-content: center;
+      margin-top: 1%;
+      /*padding: 60px 0 80px;*/
+  }
 
-            .sidebar-toggle>span {
-                height: 1.7em;
-                width: 1.7em;
-            }
+    .admin-login>.form-group>.form-control:focus,
+    .cus-input:focus {
+        border-color: #fd8032;
+    }
 
-            .search {
-                margin-right: 50px !important;
-            }
+    .admin-login>.form-group>.form-control,
+    .cus-input {
+        border-radius: 0;
+        border: none;
+        border-bottom: 2px solid grey;
+    }
 
-            .side-bar {
-                border-right: 1px solid rgb(192, 190, 190);
-            }
+    .form-holder {
+        margin-top: 20px;
+    }
 
-            .main-content {}
+    .sign-in {
+        color: #fd8032;
+        font-weight: bold;
+        font-size: 32px;
+        margin-bottom: 15px;
+    }
 
-            .transfer-icon {
-                height: 100px;
-            }
+    .promise {
+        font-size: 15px;
+        font-weight: 500;
+        opacity: 0.8;
+        letter-spacing: 0.02rem;
+        text-align: center;
+    }
 
-            .sidy {
-                padding: 50px 15px;
-            }
+    .intro {
+        color: black;
+        margin-bottom: 25px;
+        font-weight: bold;
+        font-size: 30px;
+    }
 
-            .nav-list {
-                list-style: none;
-            }
+    .admin-login>.form-group>label {
+        color: white;
+    }
 
-            .side-items {
-                margin-bottom: 20px;
-            }
+    .admin-login>.form-group {
+        text-align: left;
+        margin-bottom: 30px;
+    }
 
-            .side-item {
-                color: rgb(56, 53, 53);
-                font-weight: bold;
-                font-size: 16px;
-                opacity: 0.6;
-            }
+    .form-group {
+        margin-bottom: 1.2rem;
+    }
 
-            .side-item:hover {
-                color: var(--hue-color);
-                text-decoration: none;
-            }
+    .admin-login {
+        text-align: center;
+        width: 70%;
+        margin-top: 20px;
+    }
 
-            .upper {
-                text-transform: uppercase;
-            }
+    .admin-login>button {
+        background: #FD8032;
+        padding: 10px 80px;
+        border-radius: 63px;
+        border-color: #FD8032;
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+        cursor: pointer;
+    }
 
-            .side-item.active {
-                color: var(--hue-color);
-            }
+    .admin-login>button:hover,
+    .admin-login>button:focus {
+        background: rgb(252, 251, 250);
+        color: #FD8032;
+        border-color: #FD8032;
+        border-width: 2px;
+    }
 
-            .footer {
-                position: absolute;
-                bottom: 0;
-                width: 100%;
-                border-top: 2px solid rgb(197, 195, 195);
-                /* Set the fixed height of the footer here */
-                height: 60px;
-                line-height: 60px;
-                /* Vertically center the text there */
-                background-color: white;
-            }
+    .forgot-holder {
+        margin-top: 15px;
+    }
 
-            .company {
-                font-weight: bold;
-                font-size: 17px;
-            }
+    #emailHelp {
+        opacity: 0;
+    }
 
-            .navbar-dark .navbar-nav .nav-link {
-                padding: 5px 10px;
-            }
+    .forgot-holder {
+        margin-top: 15px;
+    }
 
-            li.nav-item {
-                margin: 5px 10px;
-            }
+    .forgot-password {
+        color: black !important;
+        font-size: 12px;
+        margin-bottom: 0;
+        opacity: 0.7;
+        cursor: pointer;
+    }
 
-            .login-box {
-                margin: auto;
-                width: 60%;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                margin-top: 1%;
-                padding: 60px 0 80px;
-            }
+    @media screen and (max-width: 750px) {
+        .login-box {
+            width: 100%;
+            margin-top: 10%;
+            padding: 40px 0 60px;
+        }
+        .admin-login {
+            width: 80%;
+        }
+        .intro{
+            margin-bottom: 20px;
+        }
+        .sign-in {
+            font-size: 18px;
+        }
+        .company {
+            font-size: 14px
+        }
+        .promise {
+            font-size: 12px;
+        }
+    }
 
-            .admin-login>.form-group>.form-control:focus,
-            .cus-input:focus {
-                border-color: #fd8032;
-            }
+    @media screen and (max-width:768px) {
+        .hidden-sm {
+            display: none;
+        }
+    }
 
-            .admin-login>.form-group>.form-control,
-            .cus-input {
-                border-radius: 0;
-                border: none;
-                border-bottom: 2px solid grey;
-            }
+    body {
+      font-family: Nunito Sans;
+    }
 
-            .form-holder {
-                margin-top: 20px;
-            }
+    nav {
+      border-radius: 0 !important;
+    }
 
-            .sign-in {
-                color: #fd8032;
-                font-weight: bold;
-                font-size: 32px;
-                margin-bottom: 15px;
-            }
+    .menu {
+      padding-top: 22px;
+      box-sizing: border-box;
+    }
 
-            .promise {
-                font-size: 15px;
-                font-weight: 500;
-                opacity: 0.8;
-                letter-spacing: 0.02rem;
-                text-align: center;    
-            }
+    .menu-item {
+      color: white;
+      text-decoration: none !important;
+    }
 
-            .intro {
-                color: black;
-                margin-bottom: 25px;
-                font-weight: bold;
-                font-size: 30px;
-            }
+    .menu ul {
+      display: flex;
+      list-style: none;
+      justify-content: space-around;
+      padding: 0;
+    }
 
-            .admin-login>.form-group>label {
-                color: white;
-            }
+    .menu li {
+      width: 140px;
+      height: 50px;
+      background-color: #FD8032;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 2px;
+    }
 
-            .admin-login>.form-group {
-                text-align: left;
-                margin-bottom: 30px;
-            }
+    .menu li:hover {
+      background-color: #25313F;
+      color: white;
+    }
 
-            .form-group {
-                margin-bottom: 1.2rem;
-            }
+    .wallet-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 30px;
+    }
 
-            .admin-login {
-                text-align: center;
-                width: 70%;
-                margin-top: 20px;
-            }
+    .wallet {
+      position: relative;
+      width: 300px;
+      height: 150px;
+      background: #333333;
+      margin: 15px;
+      cursor: pointer;
+      box-shadow: -2px 4px 4px rgba(0, 0, 0, 0.15);
+    }
 
-            .admin-login>button {
-                background: #FD8032;
-                padding: 10px 80px;
-                border-radius: 63px;
-                border-color: #FD8032;
-                box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-                cursor: pointer;
-            }
+    .wallet:hover {
+      box-shadow: none;
+    }
 
-            .admin-login>button:hover,
-            .admin-login>button:focus {
-                background: rgb(252, 251, 250);
-                color: #FD8032;
-                border-color: #FD8032;
-                border-width: 2px;
-            }
+    .wallet .currency {
+      position: absolute;
+      width: 41px;
+      height: 21px;
+      left: 255px;
+      top: 2px;
 
-            .forgot-holder {
-                margin-top: 15px;
-            }
 
-            #emailHelp {
-                opacity: 0;
-            }
+      font-style: normal;
+      font-weight: bold;
+      line-height: normal;
+      font-size: 17px;
+      letter-spacing: 0.68px;
 
-            .forgot-holder {
-                margin-top: 15px;
-            }
+      color: #FFFFFF;
+    }
 
-            .forgot-password {
-                color: black !important;
-                font-size: 12px;
-                margin-bottom: 0;
-                opacity: 0.7;
-                cursor: pointer;
-            }
+    .wallet-img {
+      position: absolute;
+      width: 63px;
+      height: 77px;
+      left: 130px;
+      top: 33px;
+    }
 
-            @media screen and (max-width: 750px) {
-                .login-box {
-                    width: 100%;
-                    margin-top: 10%;
-                    padding: 40px 0 60px;
-                }
-                .admin-login {
-                    width: 80%;
-                }
-                .intro{
-                    margin-bottom: 20px;
-                }
-                .sign-in {
-                    font-size: 18px;
-                }
-                .company {
-                    font-size: 14px
-                }
-                .promise {
-                    font-size: 12px;
-                }
-            }
+    .wallet .id {
+      position: absolute;
+      height: 14px;
+      left: 5px;
+      top: 130px;
+      color: white;
+    }
 
-            @media screen and (max-width:768px) {
-                .hidden-sm {
-                    display: none;
-                }
-            }
-        </style>
-    @endsection
+    .wallet .num {
+      position: absolute;
+      left: 7px;
+      top: 5px;
+      color: white;
+    }
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
+    .wallet .balance {
+      position: absolute;
+      width: 115px;
+      left: 200px;
+      top: 125px;
+      color: white;
+    }
 
-            <a class="navbar-brand" href="#">
-                <img src="img/logo.png" width="30" height="30" class="d-inline-block align-top" alt=""> PaysFund
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+    .profile {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: gray;
+      margin-top: 4px;
+      margin-left: 100px;
+      margin-right: 100px;
+    }
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item hidden-sm">
-                        <button class="sidebar-toggle" type="button">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Wallet View</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav">
-                    <li class="nav-item search">
-                        <form class="form-inline my-2 my-lg-0">
-                            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                        </form>
-                    </li>
-                    <li class="nav-item">
-                        <img width="40" height="40" class="user-img" src="http://static2.uk.businessinsider.com/image/551d3821dd0895ef498b4580-480/man-in-a-suit.jpg">
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    .profile-info {
+      color: white;
+      padding: 5px;
+      line-height: 5.5px;
+      margin-top: 10px;
+    }
 
-    <main>
+    .active-sidebar {
+      background-color: #C1D6DD;
+    }
+
+    .nav-search {
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    .navbar-brand {
+      font-family: Nunito Sans;
+      font-style: normal;
+      font-weight: 800;
+      line-height: normal;
+      font-size: 20px;
+      color: #FFFFFF !important;
+    }
+
+    .navbar-header img {
+      width: 24px;
+      height: 24px;
+    }
+
+    #sidebar {
+      /* margin: 0 !important; */
+      width: 200px;
+      height: 500px;
+      text-align: center;
+      border-right: 1px solid rgb(192, 190, 190);
+      margin-top: 30px;
+      padding: 0;
+    }
+
+    .navbar-toggle {
+      display: block;
+      float: left;
+    }
+
+    .navbar {
+      height: 50px;
+      background: #25313F;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container">
+      <div class="navbar-header">
+
+        <a class="navbar-brand" href="#"> <span><img src="img/logo.png" alt=""></span>   PaysFund</a>
+
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+          aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+      </div>
+
+      <ul class="nav navbar-nav">
+        <li><a href="#" style="color:white; font-size:18px;">Wallet Transfer</a></li>
+      </ul>
+
+      <div class="profile navbar-right"></div>
+      <div class="navbar-form navbar-right">
+        <input type="text" class="form-control" placeholder="Search">
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid">
+    <div class="row">
+
+      <div class="col-sm-2" id="sidebar">
+        <ul class="nav nav-stacked">
+          <li class="side-item"><a href="/dashboard">Dashboard</a></li>
+          <li class="side-items">
+              <a href="/wallet-view" class="side-item">Wallet View</a>
+          </li>
+          <li class="side-items">
+              <a href="/transfer-to-wallet" class="active-sidebar">Wallet Transfer</a>
+          </li>
+
+           <li class="side-items">
+              <a href="/transfer-to-bank" class="side-item">Bank Transfer</a>
+          </li>
+
+           <li class="side-items">
+              <a href="/banks" class="side-item">Banks</a>
+          </li>
+          <li>
+          <a href="{{ route('logout') }}"
+              onclick="event.preventDefault();
+                       document.getElementById('logout-form').submit();">
+              Logout
+          </a>
+
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+              {{ csrf_field() }}
+          </form>
+        </li>
+        </ul>
+      </div>
+
+      <div class="col-sm-10">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col col-lg-2 side-bar hidden-sm hidden-xs">
-                    <div class="sidy">
-                        <ul class="nav-list">
-                            <li class="side-items upper">
-                                <a href="" class="side-item">Dashboard</a>
-                            </li>
-                            <li class="side-items">
-                                <a href="" class="side-item active">Wallet View</a>
-                            </li>
-                            <li class="side-items">
-                                <a href="" class="side-item">Accounts</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col col-lg-10 main-content">
-                    <div class="login-box" style="margin-top: 20px; padding-top: 30px;">
-                        <img src="/svg/naira.svg" alt="no preview" class="transfer-icon">
-                        <h4 class="intro" style="font-size: 20px;">Transfer to Wallet account </h4>
-                        <form class="admin-login">
-                            <div class="form-group" style="margin: 30px 0;">
-                                <input type="text" class="form-control cus-input" id="benName" placeholder="Wallet ID">
-                            </div>
-                            <div class="row">
-                                <div class="col col-lg-6 form-holder">
-                                    <div class="form-group">
-                                        <select class="form-control cus-input">
-                                            <option>Wallet Type</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col col-lg-6 form-holder">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control cus-input" id="benAcc" placeholder="Wallet Name">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group" style="margin: 30px 0;">
-                                <input type="number" class="form-control cus-input" id="amount" placeholder="Amount">
-                            </div>
-                            <button type="submit" class="btn btn-primary">Transfer</button>
 
-                        </form>
-                    </div>
+          <div class="wallet-container">
+
+            <div class="col-md-offset-2 col-md-10 main-content">
+                <div class="login-box" style="">
+                    <img src="/svg/naira.svg" alt="no preview" class="transfer-icon">
+                    <h4 class="intro" style="font-size: 20px;">Transfer to Wallet account </h4>
+                    <form class="admin-login">
+                        <div class="form-group" style="margin: 30px 0;">
+                            <input type="text" class="form-control cus-input" id="benName" placeholder="Wallet ID">
+                        </div>
+                        <div class="row">
+                            <div class="col col-lg-6 form-holder">
+                                <div class="form-group">
+                                    <select class="form-control cus-input">
+                                        <option>Wallet Type</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col col-lg-6 form-holder">
+                                <div class="form-group">
+                                    <input type="text" class="form-control cus-input" id="benAcc" placeholder="Wallet Name">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin: 30px 0;">
+                            <input type="number" class="form-control cus-input" id="amount" placeholder="Amount">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Transfer</button>
+
+                    </form>
                 </div>
             </div>
-        </div>
 
-    </main>
-    <footer class="footer">
-        <div class="container" style="text-align:center">
-            <span class="text-muted company">2017 TransferFunds - All Rights Reserved</span>
+          </div>
         </div>
-    </footer>
-    <script src="/css/jquery.js"></script>
-    <script src="/css/bootstrap.js"></script>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+      <div class="container" style="text-align:center">
+          <span class="text-muted company">2017 TransferFunds - All Rights Reserved</span>
+      </div>
+  </footer>
+  <script src="/css/jquery.js"></script>
+  <script src="/css/bootstrap.js"></script>
 </body>
 
 </html>
