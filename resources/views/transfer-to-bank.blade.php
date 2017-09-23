@@ -502,6 +502,7 @@
                       <div class="form-group" style="margin: 30px 0;">
                           <input type="text" class="form-control cus-input" id="benName" placeholder="Beneficiary Name">
                       </div>
+                      <div class="col col-lg-6 form-holder">
                       <div class="form-group" style="margin: 30px 0;">
                           <input type="text" class="form-control cus-input" id="benName" placeholder="Sender's Name">
                       </div>
