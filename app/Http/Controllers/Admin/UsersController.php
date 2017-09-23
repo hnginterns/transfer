@@ -18,7 +18,7 @@ class UsersController extends Controller
     {
         $users = User::all()->toArray();
         
-        return view('user.index', compact('users'));
+        return view('users.index', compact('users'));
     }
 
     /**
