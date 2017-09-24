@@ -82,6 +82,7 @@ Route::group(['middleware' => ['admin']], function() {
 	Route::get('/view-accounts', 'pagesController@viewAccounts');
 	Route::get('/addaccount', 'AdminController@addaccount');
 	Route::get('/usermanagement', 'AdminController@usermanagement');
+	Route::get('admin/beneficiary', 'AdminController@ViewBeneficiary');
 	Route::get('/web-analytics', 'pagesController@webAnalytics');
 	Route::get('admin/createwallet', 'AdminController@wallet');
 	Route::post('admin/createwallet', 'AdminController@addwallet');

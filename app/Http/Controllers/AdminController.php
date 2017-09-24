@@ -53,7 +53,7 @@ class AdminController extends WalletController
             Session::flash('messages', $this->formatMessages($messages, 'error'));
             return redirect()->to(URL::previous())->withInput();
         } else {
-            
+
             $rule = new Rule;
             $rule->rule_name = $request->rule_name;
             $rule->max_amount = $request->max_amount;
@@ -67,13 +67,13 @@ class AdminController extends WalletController
             if ($rule->save()) {
                 // Session::flash('messages', $this->formatMessages("Rule Could not be created", 'error'));
                 return redirect()->to(URL::previous());
-                
+
             } else {
                 Session::flash('messages', $this->formatMessages("Rule Could not be created", 'error'));
                 return redirect()->to(URL::previous());
             }
         }
-    	
+
     }
 
 
@@ -85,13 +85,13 @@ class AdminController extends WalletController
     public function managewallet() {
 
 			$wallets = Wallet::all();
-			
+
       return view ('admin.managewallet', compact('wallets'));
     }
 
 
     public function addWallet(Request $request) {
-      
+
        $validator = $this->validateWallet($request->all());
 
         if ($validator->fails()) {
@@ -103,13 +103,13 @@ class AdminController extends WalletController
                     // dd($wallet_data);
                 if(!is_bool($wallet_data)){
                     $this->storeWalletDetailsToDB($wallet_data,
-                                                 $request->user_id, 
-                                                 $request->lock_code, 
+                                                 $request->user_id,
+                                                 $request->lock_code,
                                                  $request->rule_id,
                                                  $request->wallet_name);
                 }
-            
-           
+
+
         }
 
       return view ('admin.managewallet');
@@ -140,6 +140,10 @@ class AdminController extends WalletController
       return view ('admin/walletdetails');
     }
 
+    public function ViewBeneficiary() {
+      return view ('admin/createbeneficiary');
+    }
+
      /**
      * Get a validator for an incoming registration request.
      *
@@ -159,6 +163,6 @@ class AdminController extends WalletController
     }
 
 
-   
+
 
 }
