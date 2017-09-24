@@ -175,7 +175,11 @@ class AdminController extends WalletController
 			$wallet = Wallet::find($walletId);
             $transaction = \App\Http\Utilities\Wallet::all();
 
-            
+            $transact = array_map(function ($transc){
+                    return $transc;
+            }, $transaction);
+            var_dump($transact);
+            die();
 			$user = $wallet->users()->get()->toArray();
 
 			$userRef = substr(md5(Carbon::now()),0,10);
