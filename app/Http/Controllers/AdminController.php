@@ -118,8 +118,8 @@ class AdminController extends WalletController
 
 
         }
-	$wallets = Wallet::all(); 
-      return view ('admin.managewallet', $wallets);
+	$data['wallets'] = Wallet::all(); 
+      return view ('admin.managewallet', $data);
     }
 
     public function saveSettings(){
