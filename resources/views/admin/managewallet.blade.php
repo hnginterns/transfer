@@ -70,7 +70,7 @@
   <div class="wallet-container">
 
     <div class="wallet-row row">
-    @foreach(App\Http\Utilities\Wallet->all() as $wallet)
+    @foreach(App\Http\Utilities\Wallet::all() as $wallet)
         <a href="viewwallet" class="single-wallet-holder col-md-3">
             <div class="inner-holder">
                   <h5 class="wallet-name"><b>Wallet name:</b> {{ $wallet['name'] }}</h5>
