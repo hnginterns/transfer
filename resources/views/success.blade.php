@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title></title>
-    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <!-- <link rel="stylesheet" href="css/style.css"> -->
-    <style>
+<style>
         body {
             font-family: 'Nunito Sans', sans-serif;
         }
@@ -86,18 +76,14 @@
             color: #FF6200;
         }
     </style>
-</head>
-<body>
-<button class="btn btn-primary" data-toggle="modal" data-target="#modal">
-    Launch successful transaction
-</button>
 
-<div class="modal fade" id="modal">
+
+<div class="modal fade" id="smodal">
     <div class="modal-dialog">
         <div class="modal-content">
             <!-- Modal Header -->
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button> 
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">TRANSFER RULES</h4>
             </div>
             <!-- Modal Body -->
@@ -145,18 +131,15 @@
     </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<!--    $(document).ready(() => {
+<script>
+    $(document).ready(() => {
         var options = {
-            backdrop: true,
+            backdrop: false,
             keyboard: false,
-            show: false,
+            show: true,
             remote: false
         }
-        $("#modal").modal(options);
+        
     });
-</script> -->
+</script> <!-- -->
 <!-- <script src="js/script.js"></script> -->
-</body>
-</html>

@@ -432,7 +432,6 @@
     }
   </style>
 </head>
-
 <body>
   <nav class="navbar navbar-inverse">
     <div class="container">
@@ -507,7 +506,7 @@
                         <div class="form-group">
                             <select class="form-control cus-input" name="sourceWallet">
 
-                              
+
                                 <option>Select sender Wallet</option>
                                     @foreach($wallets as $wallet)
                                      <option value="{{ $wallet->wallet_code }}">{{ $wallet->wallet_name}}</option>
@@ -519,7 +518,7 @@
                         <div class="form-group">
                             <select class="form-control cus-input" name="recipientWallet">
 
-                              
+
                                 <option>Select recipient wallet</option>
                                     @foreach($wallets as $wallet)
                                      <option value="{{ $wallet->wallet_code }}">{{ $wallet->wallet_name}}</option>
@@ -546,6 +545,8 @@
     </div>
   </div><br><br>
 
+  @include('success');
+  @include('failed');
   <footer class="navbar navbar-fixed-bottom" style="background-color:white;border-top:solid 2px grey;">
       <div class="container" style="text-align:center">
           <span class="text-muted company">2017 TransferFunds - All Rights Reserved</span>
