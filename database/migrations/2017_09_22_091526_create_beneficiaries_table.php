@@ -17,6 +17,7 @@ class CreateBeneficiariesTable extends Migration
             $table->increments('id');
             $table->integer('uuid')->unsigned();
             $table->integer('wallet_id')->unsigned();
+            $table->string('name', 50)
             $table->integer('bank_id')->unsigned();
             $table->string('account_number',10);
             $table->timestamps();
