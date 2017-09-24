@@ -17,6 +17,18 @@
         font-size: 12.5px;
     }
 
+    i.fa.fa-plus {
+      color: white;
+      font-weight: 500;
+    }
+
+    .btn-success {
+        background-color: #00a65a;
+        border-color: #04864a;
+        margin-left: 30px;
+        padding: 10px !important;
+    }
+
     i.fa {
       color: #b8c7ce;
     }
@@ -52,6 +64,8 @@
 
 
 <div class="container-fluid">
+
+  <button type="submit" class="btn btn-success" name="button"><i class="fa fa-plus" aria-hidden="true"> Add Wallet</i></button>
 
   <div class="wallet-container">
 
