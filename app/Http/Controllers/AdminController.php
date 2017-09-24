@@ -49,6 +49,10 @@ class AdminController extends Controller
     	return view('admin.setting');
     }
 
+    public function managewallet() {
+      return view ('admin.managewallet');
+    }
+
     public function saveSettings(){
 
     }

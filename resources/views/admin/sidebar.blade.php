@@ -11,7 +11,7 @@
         <i class="fa fa-user" style="font-size: 50px;color:#fff"></i>
       </div>
       <div class="pull-left info">
-        <p>{{ $name }}</p>
+        <p></p>
         <!-- Status -->
         <a href="#"><i class="fa fa-circle text-success" ></i> Online</a>
       </div>
@@ -33,7 +33,7 @@
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header">ADMIN CONTROLS</li>
       <!-- Optionally, you can add icons to the links -->
-      
+
       <li>
         <a href="{{ url('/admin/users') }}"><i class="fa fa-group"></i> <span>Manage Users</span></a>
       </li>

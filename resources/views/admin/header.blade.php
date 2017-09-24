@@ -122,7 +122,7 @@
             <!--<img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">-->
             <i class="fa fa-user" style="font-size: 25px;color:#fff"></i>
             <!-- hidden-xs hides the username on small devices so only the image appears. -->
-            <span class="hidden-xs">{{ $name }}</span>
+            <span class="hidden-xs"></span>
           </a>
           <ul class="dropdown-menu">
             <!-- The user image in the menu -->
