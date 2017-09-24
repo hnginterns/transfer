@@ -25,6 +25,7 @@
             border-top: none;
             border-bottom: 2px solid #828282;
             margin-bottom: 30px;
+            margin: 0 auto;
             margin-top: 0px;
             padding: 0px 40px;
             padding-bottom: 50px;
@@ -134,7 +135,7 @@
                 <p id="body-footer"> This transaction will automatically close in 20 seconds and you will be redirected to your dashboard</p>
             </div>
             <!-- Modal Footer -->
-            <div class="col-md-4 text-center modal-footer ">
+            <div class="modal-footer ">
                 <h6>Click print to print receipt for reference or ok to continue</h6>
                 <button type="button" class="btn" data-dismiss="modal" id="print">Print</button>
                 <button type="button" class="btn" data-dismiss="modal" id="print">Send via email</button>
