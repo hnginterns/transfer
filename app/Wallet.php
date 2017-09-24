@@ -61,7 +61,19 @@ class Wallet extends Model
 
 				// return redirect()->back()->with('status', 'You\'re not Authorized to perform this action');
 				return false;
-		}
+        }
+        
+    public function unArchive() {
+            
+        if (Auth::check() && Auth::user()->isAdmin()) {
+         
+            $this->archived = 0;
+            
+                 return true;
+            }
+            
+            return false;
+        }
 		
 		public function canTransfer() {
             
@@ -71,9 +83,8 @@ class Wallet extends Model
 
             // Fecth all the transactions in the past 24 hours from the db
             $twentyFourHoursAgo = Carbon::now()->subHours(24);
-
             $transactions = Transaction::where('wallet_code', $this->wallet_code)
-                                // ->orWhere('payee_wallet_code', $this->wallet_code)
+                                // ->orWhere('payee_wallet_code', $this->wallet_code) // Uncomment this line to include recieved transactions
                                 ->where('transaction_status', 1)
                                 ->where('created_at', '>=', $twentyFourHoursAgo)
                                 ->get();
