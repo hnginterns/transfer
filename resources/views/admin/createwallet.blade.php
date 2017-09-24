@@ -75,8 +75,10 @@
                   <br><input type="text" name="lock_code" class="form-control input-defaulted" placeholder="wallet Lock Code">
                   <br><input type="text" name="user_ref" class="form-control input-defaulted" placeholder="User Reference">
                   <br><select name="currency" class="form-control input-defaulted" >
-          					<option value="">Currency</option>
-          					<option value="i">NGN</option>
+                    <option value="1">Nigerian Naira</option>
+                    <option value="2">Kenyan Shilling</option>
+                    <option value="3">Ghanaian Cedi</option>
+                    <option value="4">US Dollar</option>
           				</select>
                   <br><button type="submit" class="btn btn-success" name="button"><i class="fa fa-plus" aria-hidden="true"> Create</i></button>
             </div>
