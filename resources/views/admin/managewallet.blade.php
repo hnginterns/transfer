@@ -71,7 +71,7 @@
 
     <div class="wallet-row row">
     @foreach($wallets as $wallet)
-        <a href="viewwallet" class="single-wallet-holder col-md-3">
+        <a href="{{ route('view-wallet', $wallet->id) }}" class="single-wallet-holder col-md-3">
             <div class="inner-holder">
                   <h5 class="wallet-name"><b>Wallet name:</b> {{ $wallet->wallet_name }}</h5>
                   <button type="button" class="btn btn-primary" name="button"><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></button>
