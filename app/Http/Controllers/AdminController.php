@@ -209,11 +209,11 @@ class AdminController extends WalletController
       return view ('admin/beneficiarydetails');
     }
 
-     public function addBeneficiary() {
+     public function beneficiary() {
       return view ('admin/createbeneficiary');
     }
 
-    public function store(Beneficiary $beneficiary, Request $request)
+    public function addBeneficiary(Beneficiary $beneficiary, Request $request)
     {
         $beneficiary = new Beneficiary;
 
