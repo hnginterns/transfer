@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Wallet;
+use App\WalletTransaction;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
@@ -65,7 +66,7 @@ class WalletController extends Controller
                 $createWallet = var_dump($data);
     }
 
-    public function transfer(Request $request){ 
+    public function transfer(Request $request, WalletTransaction $transaction){ 
                 $token = $this->getToken();
                 $headers = array('content-type' => 'application/json', 'Authorization' => $token);
                 $query = array(
@@ -84,8 +85,16 @@ class WalletController extends Controller
                 $response = json_decode($response->raw_body,TRUE);
                 $status = $response['status'];
                 if ($status == 'success') {
-                    return redirect('success');
-                } 
+                    $wallet = new WalletTransaction;
+                    $wallet->sourceWallet = $request->input('sourceWallet');
+                    $wallet->recipientWallet = $request->input('recipientWallet');
+                    $wallet->amount = $request->input('amount');
+                    if($wallet->save()) {
+                        return redirect('success');
+   
+                    }
+
+               } 
 
                 var_dump($response);
                 
@@ -113,7 +122,7 @@ class WalletController extends Controller
                 $status = $response['status'];
                 
                 if ($status == 'success') {
-                    return redirect()->action('pagesController@success');
+                    return redirect()->action('pagesController@failed');
                 }
                          
                          $data = $response;   
