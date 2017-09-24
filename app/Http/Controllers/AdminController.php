@@ -56,7 +56,28 @@ class AdminController extends WalletController
 			$rule = Rule::find($ruleId);
 
 			return view('admin.editrules', compact('rule'));
-    }
+		}
+		
+		public function updateRule(Request $request) {
+			$rule = Rule::find($request->rule_id);
+
+			if ($rule) {
+
+				$rule->name = $request->rule_name;
+				$rule->max_amount = $request->max_amount;
+				$rule->min_amount = $request->min_amount;
+				$rule->max_transactions_per_day = $request->max_transactions_per_day;
+				$rule->max_amount_transfer_per_day = $request->max_amount_transfer_per_day;
+				$rule->can_transfer = $request->can_transfer;
+				$rule->can_transfer_external = $request->can_transfer_external;
+
+				if ($rule->save()) {
+					return redirect('admin/view-rules');
+				} else {
+						return redirect()->back()->with('status', 'Rule update Failed!');
+				}
+			}
+		}
 
     public function saveNewRule(Request $request) {
         // logic for saving new rules Lies Here

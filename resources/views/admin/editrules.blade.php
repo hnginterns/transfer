@@ -83,9 +83,10 @@
             <div class="inner-holder">
                   <h5 class="wallet-name"><b>Update</b> Rule</h5>
                   
-                  <form action="" method="POST" class="form-horizontal" role="form">
+                  <form action="{{ route('update-rule') }}" method="POST" class="form-horizontal" role="form">
                     {{csrf_field()}}
                     <div class="form-group">
+                        <input type="hidden" name="rule_id" value="{{ $rule->id }}">
                         <input type="text" name="rule_name" id="rule_name" class="form-control" value="{{ $rule->rule_name }}" placeholder="Enter Rule Name" required="required" title="Rule name">
                     </div>
 
