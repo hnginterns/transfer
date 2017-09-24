@@ -68,17 +68,16 @@
   <a type="button" class="btn btn-success" href="createwallet" name="button"><i class="fa fa-plus" aria-hidden="true"> Add Wallet</i></a>
 
   <div class="wallet-container">
- @foreach(App\Http\Utilities\Wallet::all() as $wallet)
+
     <div class="wallet-row row">
-      <div class="col-md-3">
-        <a href="viewwallet" class="single-wallet-holder">
+    @foreach(App\Http\Utilities\Wallet->all() as $wallet)
+        <a href="viewwallet" class="single-wallet-holder col-md-3">
             <div class="inner-holder">
                   <h5 class="wallet-name"><b>Wallet name:</b> {{ $wallet['name'] }}</h5>
                   <button type="button" class="btn btn-primary" name="button"><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></button>
                   <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View User</i></button>
             </div>
         </a>
-      </div>
         @endforeach
       </div>
   </div>
