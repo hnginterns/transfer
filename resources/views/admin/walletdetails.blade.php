@@ -89,6 +89,9 @@
                       </tr>
                       <tr>
                       <tr>
+                        @foreach($transaction as $transact)
+                          {{$transact['balance']}}
+                        @endforeach
                         <td>User Balance:</td>
                         <td>{{ $wallet->balance }}</td>
                       </tr>
