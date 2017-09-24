@@ -68,25 +68,12 @@
 
 
 <div class="container-fluid">
-    <button type="submit" class="btn btn-success" name="button"> Back</button>
+    
     <br>
     <div class="single-wallet-holder col-md-12">
         <div class="inner-holder">
             <div class="box-body">
                 <div class="table-responsive">
-
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
 
                     <table class="table no-margin">
 
