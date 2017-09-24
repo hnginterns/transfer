@@ -68,7 +68,7 @@ class pagesController extends Controller
   }
 
   public function wallet_transfer(){
-    $wallets = Wallet::all());
+    $wallets = Wallet::all();
       return view ('transfer-to-wallet', compact('wallets'));
      }
   }
