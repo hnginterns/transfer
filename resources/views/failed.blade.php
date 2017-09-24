@@ -70,9 +70,9 @@
     </style>
 </head>
 <body>
-<button class="btn btn-primary" data-toggle="modal" data-target="#modal">
+<!--<button class="btn btn-primary" data-toggle="modal" data-target="#modal">
     Launch failed transaction
-</button>
+</button> -->
 
 <!--<div class="modal fade" id="modal">
     <div class="modal-dialog">
