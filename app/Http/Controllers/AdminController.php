@@ -213,6 +213,19 @@ class AdminController extends WalletController
       return view ('admin/createbeneficiary');
     }
 
+    public function store(Beneficiary $beneficiary, Request $request)
+    {
+        $beneficiary = new Beneficiary;
+
+        $beneficiary->name = $request->name;
+        $beneficiary->bank_id = $request->bank_id;
+        $beneficiary->account_number = $request->account_number;
+
+        $beneficiary->save();
+
+        return redirect('/admin');
+    }
+
        /**
      * Get a validator for an incoming registration request.
      *

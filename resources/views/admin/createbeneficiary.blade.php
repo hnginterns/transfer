@@ -71,15 +71,17 @@
         <div class="single-beneficiary-holder col-md-6">
             <div class="inner-holder">
                   <h5 class="beneficiary-name"><b>Create</b> New Beneficiary</h5>
+                  <form action="/add-beneficiary" method="POST">
                   <input type="text" name="name" class="form-control input-defaulted" placeholder="Name">
-                  <br><select name="currency" class="form-control input-defaulted" >
-                    <option value="1">Access Bank</option>
-                    <option value="2">First Bank of Nigeria</option>
-                    <option value="3">Standard Chartered Bank</option>
-                    <option value="4">Zenith Bank</option>
+                  <br><select name="bank_id" class="form-control input-defaulted" >
+                    <option>Select Bank</option>
+                    @foreach(App\Utilities\Bank::all() as $bankCode => $bankName)
+                    <option value="{{$bankCode}}">{{$bankName}}</option>
+                    @endforeach
                   </select>
-                  <br><input type="text" name="account_no" class="form-control input-defaulted" placeholder="Account Number">
+                  <br><input type="text" name="account_number" class="form-control input-defaulted" placeholder="Account Number">
                   <br><button type="submit" class="btn btn-success" name="button"><i class="fa fa-plus" aria-hidden="true"> Create</i></button>
+                </form>
             </div>
         </div>
       </div>
