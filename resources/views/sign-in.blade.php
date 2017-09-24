@@ -141,6 +141,12 @@
                         <a href="{{ route('password.request') }}" class="forgot-password">Forgot Password?</a>
 
                     </div>
+                    <div class="forgot-holder">
+
+                        <a href="{{ route('admin.login') }}" class="forgot-password">Login as Admin</a>
+
+                    </div>
+
 
                 </form>
 
