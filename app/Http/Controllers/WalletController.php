@@ -116,7 +116,7 @@ class WalletController extends Controller
                          
                          $data = $response;   
 
-                        return redirect('failed', compact('response'));  
+                    return redirect()->action('WalletController@transferAccount', ['response' => $response]);  
                     
         
 

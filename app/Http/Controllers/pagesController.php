@@ -51,9 +51,9 @@ class pagesController extends Controller
     return view('success');
   }
 
- /** public function failed(){
+  public function failed(){
     return view('failed');
-  }**/
+  }
 
   public function balance () {
     return view ('balance');
