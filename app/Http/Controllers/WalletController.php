@@ -114,7 +114,7 @@ class WalletController extends Controller
                 return $body;
             }
 
-                public function transferAccount(Request $request){
+                public function transferAccount(){
                 
                 $body= $this->getInput();
 
