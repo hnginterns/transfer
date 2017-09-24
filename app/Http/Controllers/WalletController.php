@@ -112,11 +112,11 @@ class WalletController extends Controller
 
                 if ($status == 'success') {
                     //$data = $response['data'];
-                    return redirect('banks');
+                    return back()->withInput();
                 } else {
                     if (array_key_exists('code', $response)) {
                         //$data = $response['message'];
-                            return redirect('banks');    
+                            return back()->withInput();    
                     
                         //var_dump($data);
                     }
