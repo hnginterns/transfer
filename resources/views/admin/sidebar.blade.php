@@ -50,7 +50,7 @@
       <li><a href="/web-analytics">Transaction Analytics</a></li>
       <li><a href="#"><i class="fa fa-eyedropper"></i> <span>Draft</span></a></li>
       <li><a href="#"><i class="fa fa-trash"></i> <span>Trash</span></a></li>
-      <li><a hr
+      <li>
         <li>
         <a href="{{ route('logout') }}"
             onclick="event.preventDefault();
