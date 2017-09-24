@@ -116,7 +116,10 @@ class WalletController extends Controller
                 } else {
                     if (array_key_exists('code', $response)) {
                         $data = $response['message'];
-                        return redirect('failed');
+                        if($request->expectsJson()) {
+                            return redirect('failed');    
+                        }
+                        var_dump($data);
                     }
                     
                 }
