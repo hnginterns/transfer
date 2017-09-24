@@ -140,8 +140,8 @@
             <!-- Modal Footer -->
             
             <div class="modal-footer">
-                <h6 class="text-center">Click print to print receipt for reference or ok to continue</h6>
-                <div class="col-md-12 col-md-offset-4">
+                <div class="col-md-12 col-md-offset-6">
+                <h6>Click print to print receipt for reference or ok to continue</h6>
                 <button type="button" class="btn" data-dismiss="modal" id="print">Print</button>
                 <button type="button" class="btn" data-dismiss="modal" id="print">Send via email</button>
                 <button type="button" class="btn" id="close">OK</button>
