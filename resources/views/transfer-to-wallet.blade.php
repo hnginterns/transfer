@@ -505,7 +505,7 @@
                     <h4 class="intro" style="font-size: 20px;">Transfer to Wallet account </h4>
                     <form class="admin-login">
                         <div class="form-group">
-                            <select class="form-control cus-input">
+                            <select class="form-control cus-input" name="wallet_id">
 
                               
                                 <option>Select Wallet</option>
@@ -516,7 +516,7 @@
                         </div>
 
                         <div class="form-group" style="margin-top: 50px;">
-                            <input type="number" class="form-control cus-input" id="amount" placeholder="Amount">
+                            <input type="number" class="form-control cus-input" name="amount" id="amount" placeholder="Amount">
                         </div>
                         <button type="submit" class="btn btn-primary">Transfer</button>
 
