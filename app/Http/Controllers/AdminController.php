@@ -150,6 +150,19 @@ class AdminController extends WalletController
       return view ('admin.managewallet', $data);
     }
 
+    public function addBeneficiary(Beneficiary $beneficiary, Request $request)
+    {
+        $beneficiary = new Beneficiary;
+
+        $beneficiary->name = $request('name');
+        $beneficiary->bank_id = $request('bank_id');
+        $beneficiary->account_number = $request('account_number');
+
+        $beneficiary->save();
+
+        return redirect('/admin');
+    }
+
     public function saveSettings(){
 
     }
@@ -211,19 +224,6 @@ class AdminController extends WalletController
 
      public function beneficiary() {
       return view ('admin/createbeneficiary');
-    }
-
-    public function addBeneficiary(Beneficiary $beneficiary, Request $request)
-    {
-        $beneficiary = new Beneficiary;
-
-        $beneficiary->name = $request('name');
-        $beneficiary->bank_id = $request('bank_id');
-        $beneficiary->account_number = $request('account_number');
-
-        $beneficiary->save();
-
-        return redirect('/admin');
     }
 
        /**
