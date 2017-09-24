@@ -89,6 +89,7 @@ class pagesController extends Controller
   public function wallet() {
     return view ('admin/createwallet');
   }
+  
 
   public function pagenotfound(){
     return view('404');
