@@ -8,6 +8,7 @@
   <title>Bank Transfer</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
     crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
     crossorigin="anonymous"></script>
@@ -183,6 +184,31 @@
         }
     }
 
+    @media screen and (max-width:768px) {
+      #sidebar {
+      padding: 0;
+      position: absolute;
+      left: -238px;
+      top: 30px;
+      }
+      .navbar-form .form-control {
+        display: inline-block;
+        width: auto;
+        vertical-align: middle;
+        display: none;
+      }
+      .navbar-nav {
+        margin: 7.5px -15px;
+        display: none;
+      }
+      .profile {
+        display: none;
+      }
+      .navbar-form.navbar-right {
+        display: none;
+      }
+    }
+
     body {
       font-family: Nunito Sans;
     }
@@ -354,6 +380,45 @@
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     }
 
+    i.fa-window-close {
+      font-size: 20px;
+      color: #fff;
+      margin: 20px;
+      display: none;
+    }
+
+    @media screen and (max-width:768px) {
+      #sidebar {
+        width: 250px !important;
+        height: 200vh;
+      padding: 0;
+      position: absolute;
+      left: -1000px;
+      top: 20px;
+      }
+      i.fa-window-close {
+        font-size: 20px;
+        color: #fff;
+        margin-bottom: 20px;
+        display: block;
+      }
+      .navbar-form .form-control {
+        display: inline-block;
+        width: auto;
+        vertical-align: middle;
+        display: none;
+      }
+      .navbar-nav {
+        margin: 7.5px -15px;
+        display: none;
+      }
+      .profile {
+        display: none;
+      }
+      .navbar-form.navbar-right {
+        display: none;
+      }
+    }
 
   </style>
 </head>
@@ -365,7 +430,7 @@
 
         <a class="navbar-brand" href="#"> <span><img src="img/logo.png" alt=""></span>   PaysFund</a>
 
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+        <button type="button" id="navb" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
           aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
@@ -389,6 +454,9 @@
     <div class="row">
 
       <div class="col-sm-2" id="sidebar">
+
+        <i class="fa fa-window-close" id="close" aria-hidden="true"></i>
+
         <ul class="nav nav-stacked">
           <li class="side-item"><a href="/dashboard">Dashboard</a></li>
           <li class="side-items">
@@ -402,9 +470,6 @@
               <a href="/transfer-to-bank" class="active-sidebar">Bank Transfer</a>
           </li>
 
-           <li class="side-items">
-              <a href="/banks" class="side-item">Banks</a>
-          </li>
           <li>
           <a href="{{ route('logout') }}"
               onclick="event.preventDefault();
@@ -428,26 +493,57 @@
               <div class="login-box" style="">
                   <img src="/svg/naira.svg" alt="no preview" class="transfer-icon">
                   <h4 class="intro" style="font-size: 20px;">Transfer to bank account </h4>
-                  <form class="admin-login">
-                      <div class="form-group" style="margin: 30px 0;">
-                          <input type="text" class="form-control cus-input" id="benName" placeholder="Beneficiary Name">
+                  <form class="admin-login" action="/transferAccount" method="GET">
+                    <div class="row">
+                      <div class="col col-lg-6 form-holder">
+                          <div class="form-group" style="margin: 30px 0;">
+                              <input type="text" class="form-control cus-input" id="benName" placeholder="Beneficiary Name">
+                          </div>
+                        </div>
+                      <div class="col col-lg-6 form-holder">
+                          <div class="form-group" style="margin: 30px 0;">
+                              <input type="text" class="form-control cus-input" name="senderName" id="senderName" placeholder="Sender's Name">
+                          </div>
                       </div>
-                      <div class="row">
+                  </div>
+                  <div class="row">
+                      <div class="col col-lg-6 form-holder">
+                        <div class="form-group">
+                            <input type="text" class="form-control cus-input" name="lock_code" id="lockCode" placeholder="Lock code">
+                        </div>
+                      </div>
+                      <div class="col col-lg-6 form-holder">
+                        <div class="form-group">
+                            <input type="text" class="form-control cus-input" name="naration" id="naration" placeholder="naration (optional)">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
                           <div class="col col-lg-6 form-holder">
                               <div class="form-group">
-                                  <select class="form-control cus-input">
-                                      <option>Beneficiary Bank</option>
+                                  <select class="form-control cus-input" name="bank_code">
+                                    <option>Select Beneficiary Bank</option>
+                                      <option value="">Bene 1</option>
                                   </select>
                               </div>
                           </div>
                           <div class="col col-lg-6 form-holder">
                               <div class="form-group">
-                                  <input type="text" class="form-control cus-input" id="benAcc" placeholder="Beneficiary Account No">
+                                  <input type="text" class="form-control cus-input" name="accountNumber" id="benAcc" placeholder="Beneficiary Account No">
                               </div>
                           </div>
                       </div>
-                      <div class="form-group" style="margin: 30px 0;">
-                          <input type="number" class="form-control cus-input" id="amount" placeholder="Amount">
+                      <div class="row">-
+                        <div class="col col-lg-6 form-holder">
+                          <div class="form-group">
+                              <input type="number" class="form-control cus-input" name="amount" id="amount" placeholder="Amount">
+                          </div>
+                        </div>
+                        <div class="col col-lg-6 form-holder">
+                          <div class="form-group">
+                            <input type="text" class="form-control cus-input" name="reference" id="amount" placeholder="reference">
+                          </div>
+                        </div>
                       </div>
                       <button type="submit" class="btn btn-primary">Transfer</button>
 
@@ -466,8 +562,38 @@
           <span class="text-muted company">2017 TransferFunds - All Rights Reserved</span>
       </div>
   </footer>
+
   <script src="/css/jquery.js"></script>
   <script src="/css/bootstrap.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+      $(document).ready(function() {
+
+        $('#navb').click(function() {
+
+            $('#sidebar').animate({
+                left: "0px",
+                "z-index": 10000
+            }, 200).css(
+              "background-color" , "rgb(37, 49, 63)",
+              "height" , "200vh"
+            );
+
+            $('a.side-item').css(
+                "color" , "#fff"
+            );
+        });
+
+        $('#close').click(function() {
+
+            $('#sidebar').animate({
+                left: "-1000px",
+                "z-index": 10000
+            }, 200);
+        });
+      });
+  </script>
 </body>
 
 </html>

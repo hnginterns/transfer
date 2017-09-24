@@ -2,6 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Auth;
+use Validator;
+use Session;
+use Response;
+use URL;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -17,11 +23,11 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::all()->toArray();
+        $users = User::withTrashed()->get()->toArray();
 
-        dd($users);
-        
-        //return view('users.index', compact('users'));
+        //dd($users);
+        $name = Auth::user()->username;
+        return view('users.index', compact('users'))->with("name", $name);
     }
 
     /**
@@ -31,7 +37,8 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        $name = Auth::user()->username;
+        return view('users.create')->with("name", $name);
     }
 
     /**
@@ -42,18 +49,58 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
+        $input = $request->all();
+        $validator = Validator::make($input, [
+            'username' => 'bail|required',
+            'first_name' => 'bail|required',
+            'last_name' => 'bail|required',
+            'email' => 'bail|email|required',
+            'account_number' => 'bail|required|numeric',
+            'password' => 'bail|required',
+            'confirmpassword' => 'bail|required'
+            ],
+            [
+                'required' => ':attribute is required',
+                'numeric' => 'account number must be in numbers'
+            ]
+        );
+        if ($validator->fails()) 
+        {
+            $messages = $validator->messages()->toArray();
+            
+            Session::flash('messages', $this->formatMessages($messages, 'error'));
+            return redirect()->to(URL::previous())->withInput();
+        }
+        else
+        {
+            if($input['password'] !== $input['confirmpassword']){
+                Session::flash('messages', $this->formatMessages("Please confirm password", 'error'));
+                return redirect()->to(URL::previous())->withInput();
+            }
 
-        $password = $request->get('password'); // password is form field
-        $hashedpassword = Hash::make($password);
+            $password = $request->get('password'); // password is form field
+            $hashedpassword = Hash::make($password);
 
-        $User = new User([
-          'username' => $request->get('username'),
-          'email' => $request->get('email'),
-          'password' => $hashedpassword,
-          'is_admin' => 1
-        ]);
-        $User->save();
-        return redirect('/admin/users');
+            $dt = Carbon::now();
+            $dateNow = $dt->toDateTimeString();
+
+            User::insert([
+              'username' => $request->get('username'),
+              'first_name' => $request->get('first_name'),
+              'last_name' => $request->get('last_name'),
+              'email' => $request->get('email'),
+              'password' => $hashedpassword,
+              'is_admin' => 0,
+              'bank_id' => "24",
+              "account_number" => $input['account_number'],
+              "created_by" => Auth::user()->id,
+              "address" => "none",
+              "role_id" => 0,
+              "updated_by" => 0,
+              "created_at" => $dateNow
+            ]);
+            return redirect()->to('/admin/users');
+        }
     }
 
     /**
@@ -76,8 +123,8 @@ class UsersController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        
-        return view('users.edit', compact('user','id'));
+        $name = Auth::user()->username;
+        return view('users.edit', compact('user','id'))->with("name", $name);
     }
 
     /**
@@ -89,11 +136,39 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = User::find($id);
-        $user->username = $request->get('username');
-        $user->email = $request->get('email');
-        $user->save();
-        return redirect('/admin/users');
+        $input = $request->all();
+        $validator = Validator::make($input, [
+            'username' => 'bail|required',
+            'email' => 'bail|email|required',
+            'first_name' => 'bail|required',
+            'last_name' => 'bail|required',
+            'account_number' => 'bail|required|numeric'
+            ],
+            [
+                'required' => ':attribute is required',
+                'numeric' => 'account number must be in numbers'
+            ]
+        );
+        if ($validator->fails()) 
+        {
+            $messages = $validator->messages()->toArray();
+            
+            Session::flash('messages', $this->formatMessages($messages, 'error'));
+            return redirect()->to(URL::previous())->withInput();
+        }
+        else
+        {
+            $user = User::find($id);
+            $user->username = $input['username'];
+            $user->email = $input['email'];
+            $user->first_name = $input['first_name'];
+            $user->last_name = $input['last_name'];
+
+            $user->account_number = $input['account_number'];
+            $user->save();
+            $name = Auth::user()->username;
+            return redirect('/admin/users')->with("name", $name);
+        }
     }
 
     /**
@@ -106,6 +181,45 @@ class UsersController extends Controller
     {
         $user = User::find($id);
         $user->delete();
-        return redirect('/admin/users');
+        $name = Auth::user()->username;
+        return redirect('/admin/users')->with("name", $name);
     }
+
+
+    public function banUser(Request $request, $id){
+
+        $dt = Carbon::now();
+        $dateNow = $dt->toDateTimeString();
+
+        $user = User::where('id', $id)->update(["deleted_at" => $dateNow]);
+        
+        return back();
+
+    }
+
+    public function unbanUser(Request $request, $id){
+
+        $user = User::withTrashed()->where('id', $id);
+        $user->restore();
+
+        return back();
+
+    }
+
+    public function makeAdmin(Request $request, $id){
+
+        $user = User::where('id', $id)->update(["is_admin" => 1]);
+
+        return back();
+
+    }
+
+    public function removeAdmin(Request $request, $id){
+
+        $user = User::where('id', $id)->update(["is_admin" => 0]);
+
+        return back();
+
+    }
+
 }

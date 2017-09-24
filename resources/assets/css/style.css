@@ -11,6 +11,13 @@ body {
     background-color: #333333 !important;
 }
 
+.inner-holder {
+    background: #25313f;
+    color: #fff;
+    padding: 13px 15px;
+    border-radius: 3px;
+}
+
 .navbar-dark .navbar-nav .active>.nav-link {
     color: white;
     border: 2px solid #FD8032;
@@ -107,5 +114,5 @@ li.nav-item {
 }
 
 @media screen and (max-width: ){
-    
+
 }

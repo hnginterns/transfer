@@ -42,8 +42,8 @@ Route::group(['middleware' => 'auth'], function() {
 
 // auth admin
 Route::get('/admin/login', 'AdminLoginController@showLoginForm');
-Route::get('/admin/logout', 'AdminLoginController@logout')->name('admin.logout');
 Route::post('/admin/login', 'AdminLoginController@login')->name('admin.login');
+Route::get('/admin/logout', 'AdminLoginController@logout')->name('admin.logout');
 
 Route::group(['middleware' => ['admin']], function() {
 	Route::get('/admin', 'AdminController@index');
