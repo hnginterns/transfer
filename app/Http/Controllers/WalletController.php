@@ -108,7 +108,7 @@ class WalletController extends Controller
                  "narration"=>$method('naration'), //Optional
                  "ref"=>$method('reference'));
 
-                    
+
                 $body = \Unirest\Request\Body::json($query);
 
                 $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/disburse', $headers, $body);
@@ -127,9 +127,10 @@ class WalletController extends Controller
                     
                 }
 
-                var_dump($data);
+                
                 }
 
+                var_dump($data);
                 
             }
 
