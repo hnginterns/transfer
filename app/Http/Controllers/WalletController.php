@@ -85,18 +85,18 @@ class WalletController extends Controller
                 $response = json_decode($response->raw_body,TRUE);
                 $status = $response['status'];
                 if ($status == 'success') {
-                    $wallet = new WalletTransaction;
-                    $wallet->sourceWallet = $request->input('sourceWallet');
-                    $wallet->recipientWallet = $request->input('recipientWallet');
-                    $wallet->amount = $request->input('amount');
-                    if($wallet->save()) {
+                   // $wallet = new WalletTransaction;
+                    //$wallet->sourceWallet = $request->input('sourceWallet');
+                    //$wallet->recipientWallet = $request->input('recipientWallet');
+                    //$wallet->amount = $request->input('amount');
+                    //if($wallet->save()) {
                         return redirect('success');
    
-                    }
+                    //}
 
                } 
 
-                var_dump($response);
+                return redirect('failed');
                 
         
             }
