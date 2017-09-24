@@ -8,7 +8,9 @@
     .wallet-container {
       padding: 30px;
     }
-
+    tr>td{
+      color: white;
+    }
     .btn-primary {
         color: #b8c7ce;
         background-color: transparent !important;
@@ -64,84 +66,46 @@
 
 
 <div class="container-fluid">
+  <button type="submit" class="btn btn-success" name="button"> Back</button>
 
   <div class="wallet-container">
-
       <div class="wallet-row row">
         <div class="single-wallet-holder col-md-6">
             <div class="inner-holder">
-                  <h5 class="wallet-name"><b>Create</b> New Wallet</h5>
                   <div class="box-body">
-              <div class="table-responsive">
-                <table class="table no-margin">
-                  <thead>
-                  <tr>
-                    <th>Order ID</th>
-                    <th>Item</th>
-                    <th>Status</th>
-                    <th>Popularity</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                    <td>Call of Duty IV</td>
-                    <td><span class="label label-success">Shipped</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#00a65a" data-height="20"><canvas style="display: inline-block; width: 34px; height: 20px; vertical-align: top;" width="34" height="20"></canvas></div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                    <td>Samsung Smart TV</td>
-                    <td><span class="label label-warning">Pending</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#f39c12" data-height="20"><canvas style="display: inline-block; width: 34px; height: 20px; vertical-align: top;" width="34" height="20"></canvas></div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                    <td>iPhone 6 Plus</td>
-                    <td><span class="label label-danger">Delivered</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#f56954" data-height="20"><canvas style="display: inline-block; width: 34px; height: 20px; vertical-align: top;" width="34" height="20"></canvas></div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                    <td>Samsung Smart TV</td>
-                    <td><span class="label label-info">Processing</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#00c0ef" data-height="20"><canvas style="display: inline-block; width: 34px; height: 20px; vertical-align: top;" width="34" height="20"></canvas></div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                    <td>Samsung Smart TV</td>
-                    <td><span class="label label-warning">Pending</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#f39c12" data-height="20"><canvas style="display: inline-block; width: 34px; height: 20px; vertical-align: top;" width="34" height="20"></canvas></div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                    <td>iPhone 6 Plus</td>
-                    <td><span class="label label-danger">Delivered</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#f56954" data-height="20"><canvas style="display: inline-block; width: 34px; height: 20px; vertical-align: top;" width="34" height="20"></canvas></div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                    <td>Call of Duty IV</td>
-                    <td><span class="label label-success">Shipped</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#00a65a" data-height="20"><canvas style="display: inline-block; width: 34px; height: 20px; vertical-align: top;" width="34" height="20"></canvas></div>
-                    </td>
-                  </tr>
-                  </tbody>
-                </table>
-              </div>
+                  <div class="table-responsive">
+                    <table class="table no-margin">
+                      <thead>
+                        <h4 class="wallet-name">Wallet 1 Details</h4>
+                      </thead>
+                      <tbody>
+                      <tr>
+                        <td>Wallet Name:</td>
+                        <td>Wallet 1</td>
+                      </tr>
+                      <tr>
+                        <td>Wallet Lock Code:</td>
+                        <td>204537357</td>
+                      </tr>
+                      <tr>
+                        <td>Wallet User:</td>
+                        <td>User 1</td>
+                      </tr>
+                      <tr>
+                        <td>User ref:</td>
+                        <td>302</td>
+                      </tr>
+                      <tr>
+                        <td>Currency:</td>
+                        <td>Nigerian Naira</td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>
               <!-- /.table-responsive -->
             </div>
             </div>
