@@ -97,9 +97,9 @@ class WalletController extends Controller
                 $headers = array('content-type' => 'application/json', 'Authorization' => $token);
                 $method = $request->method();
 
-    
+                $query = [];
             if ($request->isMethod('post')) {
-                     $query = [
+                     $query[] = [
                 "lock_code"=>$method('lock_code'),
                  "amount"=>$method('amount'),
                  "bankcode"=>$method('bank_code'),
@@ -109,14 +109,18 @@ class WalletController extends Controller
                  "narration"=>$method('naration'), //Optional
                  "ref"=>$method('reference')
 
-                    ];
+                ];
+                    
+
+                }
 
                 $body = \Unirest\Request\Body::json($query);
 
                 $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/disburse', $headers, $body);
 
                 $response = json_decode($response->raw_body,TRUE);
-
+                var_dump($response);
+                die();
                 $status = $response['status'];
 
                 if ($status == 'success') {
@@ -125,12 +129,13 @@ class WalletController extends Controller
                     if (array_key_exists('code', $response)) {
                         $data = $response['message'];
                     }
-            
+                    
+                
+
+                    var_dump($response);
                 }
 
-                var_dump($response);
-
-                }
+                
 
             }
 
