@@ -140,12 +140,11 @@
             <!-- Modal Footer -->
             
             <div class="modal-footer">
-                <div class="col-md-12 col-md-offset-6">
                 <h6>Click print to print receipt for reference or ok to continue</h6>
                 <button type="button" class="btn" data-dismiss="modal" id="print">Print</button>
                 <button type="button" class="btn" data-dismiss="modal" id="print">Send via email</button>
                 <button type="button" class="btn" id="close">OK</button>
-            </div>
+        
         </div>
             <p style="text-align: center; font-size: 13px;">Copyright &#169; 2017 Transfer Rules | Rave Pay | Privacy Policy | Terms Of Service</p>
        <!-- </div>
