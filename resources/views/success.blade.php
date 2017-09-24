@@ -60,7 +60,7 @@
 
         .modal-footer h6 {
             color: #FF6200;
-            text-align: left;
+            text-align: center;
         }
 
         #body-footer {
@@ -70,7 +70,7 @@
         }
 
         .modal-footer button {
-            float: left;
+            float: right;
             transition: color 2s, background 1s;
             box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
             border-radius: 63px;
@@ -134,14 +134,12 @@
                 <p id="body-footer"> This transaction will automatically close in 20 seconds and you will be redirected to your dashboard</p>
             </div>
             <!-- Modal Footer -->
-            <div class="text-center">
             <div class="modal-footer">
                 <h6 class="text-center">Click print to print receipt for reference or ok to continue</h6>
                 <button type="button" class="btn" data-dismiss="modal" id="print">Print</button>
                 <button type="button" class="btn" data-dismiss="modal" id="print">Send via email</button>
                 <button type="button" class="btn" id="close">OK</button>
             </div>
-        </div>
             <p style="text-align: center; font-size: 13px;">Copyright &#169; 2017 Transfer Rules | Rave Pay | Privacy Policy | Terms Of Service</p>
        <!-- </div>
     </div>
