@@ -89,7 +89,6 @@ class AdminController extends WalletController
       return view ('admin.managewallet', compact('wallets'));
     }
 
-
     public function addWallet(Request $request) {
 
        $validator = $this->validateWallet($request->all());
@@ -140,10 +139,25 @@ class AdminController extends WalletController
       return view ('admin/walletdetails');
     }
 
+<<<<<<< HEAD
     public function ViewBeneficiary() {
       return view ('admin/createbeneficiary');
     }
 
+=======
+     public function managebeneficiary() {
+      return view ('admin/managebeneficiary');
+    }
+
+     public function createbeneficiary() {
+      return view ('admin/createbeneficiary');
+    }
+
+    public function viewbeneficiary() {
+      return view ('admin/beneficiarydetails');
+    }
+
+>>>>>>> ce301993408f435fd755b751c9f6fc4597bedadd
      /**
      * Get a validator for an incoming registration request.
      *

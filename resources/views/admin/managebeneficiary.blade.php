@@ -72,33 +72,33 @@
       <div class="beneficiary-row row">
         <a href="viewbeneficiary" class="single-beneficiary-holder col-md-3">
             <div class="inner-holder">
-                  <h5 class="beneficiary-name"><b>beneficiary name:</b> New beneficiary</h5>
+                  <h5 class="beneficiary-name"><b>Beneficiary name:</b> New Beneficiary</h5>
                   <button type="button" class="btn btn-primary" name="button"><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></button>
-                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View User</i></button>
+                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View </i></button>
             </div>
         </a>
 
         <a href="viewbeneficiary" class="single-beneficiary-holder col-md-3">
             <div class="inner-holder">
-                  <h5 class="beneficiary-name"><b>beneficiary name:</b> New beneficiary</h5>
+                  <h5 class="beneficiary-name"><b>Beneficiary name:</b> New Beneficiary</h5>
                   <button type="button" class="btn btn-primary" name="button"><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></button>
-                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View User</i></button>
+                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View </i></button>
             </div>
         </a>
 
         <a href="viewbeneficiary" class="single-beneficiary-holder col-md-3">
             <div class="inner-holder">
-                  <h5 class="beneficiary-name"><b>beneficiary name:</b> New beneficiary</h5>
+                  <h5 class="beneficiary-name"><b>Beneficiary name:</b> New Beneficiary</h5>
                   <button type="button" class="btn btn-primary" name="button"><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></button>
-                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View User</i></button>
+                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View </i></button>
             </div>
         </a>
 
         <a href="viewbeneficiary" class="single-beneficiary-holder col-md-3">
             <div class="inner-holder">
-                  <h5 class="beneficiary-name"><b>beneficiary name:</b> New beneficiary</h5>
+                  <h5 class="beneficiary-name"><b>Beneficiary name:</b> New Beneficiary</h5>
                   <button type="button" class="btn btn-primary" name="button"><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></button>
-                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View User</i></button>
+                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View </i></button>
             </div>
         </a>
       </div>
@@ -106,67 +106,33 @@
       <div class="beneficiary-row row">
         <a href="viewbeneficiary" class="single-beneficiary-holder col-md-3">
             <div class="inner-holder">
-                  <h5 class="beneficiary-name"><b>beneficiary name:</b> New beneficiary</h5>
+                  <h5 class="beneficiary-name"><b>Beneficiary name:</b> New Beneficiary</h5>
                   <button type="button" class="btn btn-primary" name="button"><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></button>
-                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View User</i></button>
+                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View </i></button>
             </div>
         </a>
 
         <a href="viewbeneficiary" class="single-beneficiary-holder col-md-3">
             <div class="inner-holder">
-                  <h5 class="beneficiary-name"><b>beneficiary name:</b> New beneficiary</h5>
+                  <h5 class="beneficiary-name"><b>Beneficiary name:</b> New Beneficiary</h5>
                   <button type="button" class="btn btn-primary" name="button"><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></button>
-                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View User</i></button>
+                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View </i></button>
             </div>
         </a>
 
         <div class="single-beneficiary-holder col-md-3">
             <div class="inner-holder">
-                  <h5 class="beneficiary-name"><b>beneficiary name:</b> New beneficiary</h5>
+                  <h5 class="beneficiary-name"><b>Beneficiary name:</b> New Beneficiary</h5>
                   <button type="button" class="btn btn-primary" name="button"><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></button>
-                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View User</i></button>
+                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View </i></button>
             </div>
         </div>
 
         <div class="single-beneficiary-holder col-md-3">
             <div class="inner-holder">
-                  <h5 class="beneficiary-name"><b>beneficiary name:</b> New beneficiary</h5>
+                  <h5 class="beneficiary-name"><b>Beneficiary name:</b> New Beneficiary</h5>
                   <button type="button" class="btn btn-primary" name="button"><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></button>
-                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View User</i></button>
-            </div>
-        </div>
-      </div>
-
-      <div class="beneficiary-row row">
-        <div class="single-beneficiary-holder col-md-3">
-            <div class="inner-holder">
-                  <h5 class="beneficiary-name"><b>beneficiary name:</b> New beneficiary</h5>
-                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></button>
-                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View User</i></button>
-            </div>
-        </div>
-
-        <div class="single-beneficiary-holder col-md-3">
-            <div class="inner-holder">
-                  <h5 class="beneficiary-name"><b>beneficiary name:</b> New beneficiary</h5>
-                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></button>
-                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View User</i></button>
-            </div>
-        </div>
-
-        <div class="single-beneficiary-holder col-md-3">
-            <div class="inner-holder">
-                  <h5 class="beneficiary-name"><b>beneficiary name:</b> New beneficiary</h5>
-                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></button>
-                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View User</i></button>
-            </div>
-        </div>
-
-        <div class="single-beneficiary-holder col-md-3">
-            <div class="inner-holder">
-                  <h5 class="beneficiary-name"><b>beneficiary name:</b> New beneficiary</h5>
-                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></button>
-                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View User</i></button>
+                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View </i></button>
             </div>
         </div>
       </div>
@@ -174,33 +140,67 @@
       <div class="beneficiary-row row">
         <div class="single-beneficiary-holder col-md-3">
             <div class="inner-holder">
-                  <h5 class="beneficiary-name"><b>beneficiary name:</b> New beneficiary</h5>
+                  <h5 class="beneficiary-name"><b>Beneficiary name:</b> New Beneficiary</h5>
                   <button type="button" class="btn btn-primary" name="button"><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></button>
-                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View User</i></button>
+                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View </i></button>
             </div>
         </div>
 
         <div class="single-beneficiary-holder col-md-3">
             <div class="inner-holder">
-                  <h5 class="beneficiary-name"><b>beneficiary name:</b> New beneficiary</h5>
+                  <h5 class="beneficiary-name"><b>Beneficiary name:</b> New Beneficiary</h5>
                   <button type="button" class="btn btn-primary" name="button"><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></button>
-                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View User</i></button>
+                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View </i></button>
             </div>
         </div>
 
         <div class="single-beneficiary-holder col-md-3">
             <div class="inner-holder">
-                  <h5 class="beneficiary-name"><b>beneficiary name:</b> New beneficiary</h5>
+                  <h5 class="beneficiary-name"><b>Beneficiary name:</b> New Beneficiary</h5>
                   <button type="button" class="btn btn-primary" name="button"><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></button>
-                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View User</i></button>
+                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View </i></button>
             </div>
         </div>
 
         <div class="single-beneficiary-holder col-md-3">
             <div class="inner-holder">
-                  <h5 class="beneficiary-name"><b>beneficiary name:</b> New beneficiary</h5>
+                  <h5 class="beneficiary-name"><b>Beneficiary name:</b> New Beneficiary</h5>
                   <button type="button" class="btn btn-primary" name="button"><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></button>
-                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View User</i></button>
+                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View </i></button>
+            </div>
+        </div>
+      </div>
+
+      <div class="beneficiary-row row">
+        <div class="single-beneficiary-holder col-md-3">
+            <div class="inner-holder">
+                  <h5 class="beneficiary-name"><b>Beneficiary name:</b> New Beneficiary</h5>
+                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-trash-o" Saria-hidden="true"> Delete</i></button>
+                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View </i></button>
+            </div>
+        </div>
+
+        <div class="single-beneficiary-holder col-md-3">
+            <div class="inner-holder">
+                  <h5 class="beneficiary-name"><b>Beneficiary name:</b> New Beneficiary</h5>
+                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></button>
+                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View </i></button>
+            </div>
+        </div>
+
+        <div class="single-beneficiary-holder col-md-3">
+            <div class="inner-holder">
+                  <h5 class="beneficiary-name"><b>Beneficiary name:</b> New Beneficiary</h5>
+                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></button>
+                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View </i></button>
+            </div>
+        </div>
+
+        <div class="single-beneficiary-holder col-md-3">
+            <div class="inner-holder">
+                  <h5 class="beneficiary-name"><b>Beneficiary name:</b> New Beneficiary</h5>
+                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></button>
+                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View </i></button>
             </div>
         </div>
       </div>
