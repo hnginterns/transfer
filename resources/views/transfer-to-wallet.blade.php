@@ -528,14 +528,7 @@
                         </div>
 
                         <div class="form-group">
-                            <select class="form-control cus-input" name="lock">
-
-                              
-                                <option>Select Wallet to add lock</option>
-                                    @foreach(App\Http\Utilities\Wallet::all() as $wallet)
-                                     <option value="{{ $wallet['lock'] }}">{{ $wallet['name']}}</option>
-                                    @endforeach
-                            </select>
+                            <input type="text" class="form-control cus-input" name="lock">
                         </div>
 
                         <div class="form-group" style="margin-top: 50px;">
