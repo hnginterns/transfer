@@ -24,9 +24,8 @@ class AdminController extends WalletController
 	public function index() {
         $name = Auth::user()->username;
         $wallets = Wallet::all();
-        $transaction = \App\Http\Utilities\Wallet::all();
         $users = User::all();
-		return view('admin.admindashboard', compact('wallets','users', 'transaction'));
+		return view('admin.admindashboard', compact('wallets','users'));
 	}
 
     public function setRule() {
@@ -121,8 +120,9 @@ class AdminController extends WalletController
     public function managewallet() {
 
 			$wallets = Wallet::all();
+            $transaction = \App\Http\Utilities\Wallet::all();
 
-      return view ('admin.managewallet', compact('wallets'));
+      return view ('admin.managewallet', compact('wallets', 'transaction'));
     }
 
     public function addWallet(Request $request) {
