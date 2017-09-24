@@ -89,8 +89,12 @@
                       </tr>
                       <tr>
                       <tr>
+                      @foreach($transaction as $transact)
+                      @if($wallet->wallet_code == $transact['uref'])
                         <td>User Balance:</td>
-                        <td>{{ $bal }}</td>
+                        <td>{{ $wallet->balance }}</td>
+                        @endif
+                        @endforeach
                       </tr>
                       <tr>
                         <td>User ref:</td>
