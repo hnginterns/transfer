@@ -109,21 +109,19 @@ class WalletController extends Controller
 
                 $response = json_decode($response->raw_body,TRUE);
                 $status = $response['status'];
-                var_dump($response);
-                die();
-
-                if ($status == 'success') {
+                
+                if ($status == 'error') {
                     //$data = $response['data'];
-                    return back()->withInput();
+                    //return back()->withInput();
+                    var_dump($status);
+                    die();
                 } else {
-                    if (array_key_exists('code', $response)) {
-                        //$data = $response['message'];
                             return back()->withInput();    
                     
                         //var_dump($data);
                     }
                     
-                }
+        
 
                 
             }
