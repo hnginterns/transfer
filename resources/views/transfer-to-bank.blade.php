@@ -557,6 +557,8 @@
     </div>
   </div><br><br><br><br>
 
+  @include('success');
+  @include('failed');
 
   <footer class="navbar navbar-fixed-bottom" style="background-color:white;border-top:solid 2px grey;">
       <div class="container" style="text-align:center">

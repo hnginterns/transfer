@@ -79,14 +79,7 @@
             <div class="inner-holder">
                   <h5 class="wallet-name"><b>Wallet name:</b> {{ $wallet->wallet_name }}</h5>
                   <button type="button" class="btn btn-primary" name="button"><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></button>
-
-                  <button type="button" class="btn btn-primary" name="button">
-                    @foreach($transaction as $transact)
-                    @if($transact['uref'] == $wallet->wallet_code)
-                    {{ $transact['balance'] }}
-                    @endif
-                    @endforeach
-                  </button>
+                  <button type="button" class="btn btn-primary" name="button">Balance {{  $wallet->balance }}</button>
             </div>
         </a>
         @endforeach

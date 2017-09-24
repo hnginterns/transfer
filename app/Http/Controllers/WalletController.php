@@ -26,7 +26,7 @@ class WalletController extends Controller
 
         \Unirest\Request::verifyPeer(false);
 
-        $headers = array('content-type' => 'application/json'); 
+        $headers = array('content-type' => 'application/json');
         $query =  array('apiKey' => $api_key, 'secret' => $secret_key);
 
         $body = \Unirest\Request\Body::json($query);
@@ -66,7 +66,7 @@ class WalletController extends Controller
                 $createWallet = var_dump($data);
     }
 
-    public function transfer(Request $request, WalletTransaction $transaction){ 
+    public function transfer(Request $request, WalletTransaction $transaction){
                 $token = $this->getToken();
                 $headers = array('content-type' => 'application/json', 'Authorization' => $token);
                 $query = array(
@@ -76,7 +76,7 @@ class WalletController extends Controller
                 "currency"=> "NGN",
                 "lock"=> $request->input('lock')
 
-                ); 
+                );
 
                 $body = \Unirest\Request\Body::json($query);
 
@@ -90,15 +90,15 @@ class WalletController extends Controller
                     //$wallet->recipientWallet = $request->input('recipientWallet');
                     //$wallet->amount = $request->input('amount');
                     //if($wallet->save()) {
-                        return redirect('success');
-   
+                        //return redirect('success');
+                        echo '<script>$("#smodal").modal(options);</script>';
                     //}
 
-               } 
+               }else {
+                 echo '<script>$("#fmodal").modal(options);</script>';
+               }
 
-                return redirect('failed');
-                
-        
+
             }
 
                 public function transferAccount(Request $request){
@@ -120,18 +120,18 @@ class WalletController extends Controller
 
                 $response = json_decode($response->raw_body,TRUE);
                 $status = $response['status'];
-                
+
                 if ($status == 'success') {
                     return redirect()->action('pagesController@failed');
                 }
-                         
-                         $data = $response;   
+
+                         $data = $response;
 
                     return redirect('failed');
-                    
-        
 
-                
+
+
+
             }
 
 
@@ -143,7 +143,7 @@ class WalletController extends Controller
 
                 $data = json_decode($response->raw_body, true);
                 $walletBalance = $data['data'];
-                
+
                 //$walletBalance = array_pluck($walletBalance, 'id', 'id');
                 var_dump($walletBalance);
                 die();
