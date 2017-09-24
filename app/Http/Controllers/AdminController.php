@@ -173,17 +173,13 @@ class AdminController extends WalletController
     public function show($walletId) {
 
 			$wallet = Wallet::find($walletId);
-            var_dump($wallet->wallet_code);
-            die();
             $transaction = \App\Http\Utilities\Wallet::all();
 
             $transact = array_column($transaction, 'balance', 'uref');
 
             foreach($transact as $key => $value) {
-                if($wallet->wallet_code == $key) {
-                $bal = $value;
-
-                var_dump($bal);
+                if($key == $wallet_code) {
+                var_dump($key);
                 die();
                 }
             }
