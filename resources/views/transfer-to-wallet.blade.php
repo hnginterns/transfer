@@ -502,15 +502,15 @@
             <div class="col-sm-8 col-md-offset-2 main-content">
                 <div class="login-box" style="">
                     <img src="/svg/naira.svg" alt="no preview" class="transfer-icon">
-                    <h4 class="intro" style="font-size: 20px;">Transfer to Wallet account </h4>
+                    <h4 class="intro" style="font-size: 20px;">Transfer to another Wallet account </h4>
                     <form class="admin-login" action="/transferWallet" method="GET">
                         <div class="form-group">
                             <select class="form-control cus-input" name="sourceWallet">
 
                               
                                 <option>Select sender Wallet</option>
-                                    @foreach(App\Http\Utilities\Wallet::all() as $wallet)
-                                     <option value="{{ $wallet['uref'] }}">{{ $wallet['name']}}</option>
+                                    @foreach($wallets as $wallet)
+                                     <option value="{{ $wallet->wallet_code }}">{{ $wallet->wallet_name}}</option>
                                     @endforeach
                             </select>
                         </div>
@@ -544,9 +544,9 @@
         </div>
       </div>
     </div>
-  </div>
+  </div><br><br>
 
-  <footer class="footer">
+  <footer class="navbar navbar-fixed-bottom" style="background-color:white;border-top:solid 2px grey;">
       <div class="container" style="text-align:center">
           <span class="text-muted company">2017 TransferFunds - All Rights Reserved</span>
       </div>
