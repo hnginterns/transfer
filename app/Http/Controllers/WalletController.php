@@ -84,14 +84,11 @@ class WalletController extends Controller
                 $response = json_decode($response->raw_body,TRUE);
                 $status = $response['status'];
                 if ($status == 'success') {
-                    $data = $response['data'];
-                } else {
-                    if (array_key_exists('code', $response)) {
+                    return redirect('success');
+                } 
 
-                        $data = $response['message'];
-                    }
-                }
-                var_dump($data);
+                return redirect('failed');
+                
         
             }
 
