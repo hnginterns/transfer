@@ -31,7 +31,8 @@ class pagesController extends Controller
   }
 
   public function userdashboard(){
-    return view('dashboard');
+    $wallets = Wallet::all();
+    return view('dashboard', compact('wallets'));
   }
 
   public function about(){
