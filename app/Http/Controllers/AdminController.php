@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Session;
 use App\User;
 use App\Wallet;
 use App\Rule;
-class AdminController extends Controller
+use Carbon\Carbon;
+class AdminController extends WalletController
 {
 
 
@@ -83,6 +84,32 @@ class AdminController extends Controller
       return view ('admin.managewallet');
     }
 
+
+    public function addWallet(Request $request) {
+      
+       $validator = $this->validateWallet($request->all());
+
+        if ($validator->fails()) {
+            $messages = $validator->messages()->toArray();
+            Session::flash('messages', $this->formatMessages($messages, 'error'));
+            return redirect()->to(URL::previous())->withInput();
+        } else {
+                    $wallet_data = $this->createWalletAdmin($request);
+                    // dd($wallet_data);
+                if(!is_bool($wallet_data)){
+                    $this->storeWalletDetailsToDB($wallet_data,
+                                                 $request->user_id, 
+                                                 $request->lock_code, 
+                                                 $request->rule_id,
+                                                 $request->wallet_name);
+                }
+            
+           
+        }
+
+      return view ('admin.managewallet');
+    }
+
     public function saveSettings(){
 
     }
@@ -95,6 +122,17 @@ class AdminController extends Controller
     public function usermanagement(){
         $name = Auth::user()->username;
         return view('usermanagement')->with("name", $name);
+    }
+
+     public function wallet() {
+        $rule = Rule::all();
+        $user = User::all();
+        $user_ref = substr(md5(Carbon::now()),0,10);
+        return view ('admin/createwallet', compact('rule','user','user_ref'));
+    }
+
+    public function ViewWallet() {
+      return view ('admin/walletdetails');
     }
 
      /**
@@ -115,12 +153,7 @@ class AdminController extends Controller
 
     }
 
-    public function wallet() {
-      return view ('admin/createwallet');
-    }
 
-    public function ViewWallet() {
-      return view ('admin/walletdetails');
-    }
+   
 
 }
