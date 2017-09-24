@@ -67,6 +67,7 @@ Route::get('/admin/logout', 'AdminLoginController@logout')->name('admin.logout')
 Route::group(['middleware' => ['admin']], function() {
 	Route::get('/admin', 'AdminController@index');
 	Route::get('/admin/managewallet', 'AdminController@managewallet');
+	Route::get('/admin/managebeneficiary', 'AdminController@managebeneficiary');
 	Route::get('/admin/adduser', 'AdminController@addaccount');
 	// Set rules that users will transfer with
 	Route::get('/admin/setrule', 'AdminController@setRule')->name('admin.setrule');
@@ -86,8 +87,8 @@ Route::group(['middleware' => ['admin']], function() {
 	Route::get('admin/createwallet', 'AdminController@wallet');
 	Route::post('admin/createwallet', 'AdminController@addwallet');
 	Route::get('admin/viewwallet', 'AdminController@viewWallet');
-	Route::post('admin/createbeneficiary', 'AdminController@addbeneficiary');
-	Route::get('admin/viewbeneficiary', 'AdminController@viewBeneficiary');
+	Route::get('admin/createbeneficiary', 'AdminController@createbeneficiary');
+	Route::get('admin/viewbeneficiary', 'AdminController@viewbeneficiary');
 	Route::resource('admin/users', 'Admin\UsersController');
 	Route::post('admin/users/store', 'Admin\UsersController@store');
 	Route::post('admin/users/banUser/{id}', 'Admin\UsersController@banUser');
