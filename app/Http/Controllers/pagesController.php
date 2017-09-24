@@ -70,7 +70,7 @@ class pagesController extends Controller
   public function wallet_transfer(){
     $wallets = Wallet::all();
       return view ('transfer-to-wallet', compact('wallets'));
-     }
+     
   }
 
   public function viewAccounts(){
