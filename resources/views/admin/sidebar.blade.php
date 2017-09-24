@@ -50,7 +50,7 @@
       <li><a href="{{ url('/web-analytics') }}">Transaction Analytics</a></li>
       <li><a href="#"><i class="fa fa-eyedropper"></i> <span>Draft</span></a></li>
       <li><a href="#"><i class="fa fa-trash"></i> <span>Trash</span></a></li>
-      <li><a hr
+      <li>
         <li>
         <a href="{{ route('logout') }}"
             onclick="event.preventDefault();
@@ -60,6 +60,7 @@
 
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             {{ csrf_field() }}
+            <input type="hidden" name="rdr" value="/admin/logout" placeholder="">
         </form>
       </li>
 
