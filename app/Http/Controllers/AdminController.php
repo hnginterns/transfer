@@ -97,7 +97,6 @@ class AdminController extends Controller
         return view('usermanagement')->with("name", $name);
     }
 
-
      /**
      * Get a validator for an incoming registration request.
      *
@@ -113,6 +112,15 @@ class AdminController extends Controller
             'max_transactions_per_day' => 'required|numeric',
             'max_amount_transfer_per_day' => 'required|numeric',
         ]);
+
+    }
+
+    public function wallet() {
+      return view ('admin/createwallet');
+    }
+
+    public function ViewWallet() {
+      return view ('admin/walletdetails');
     }
 
 }

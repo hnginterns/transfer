@@ -480,9 +480,6 @@
               <a href="/transfer-to-bank" class="side-item">Bank Transfer</a>
           </li>
 
-           <li class="side-items">
-              <a href="/banks" class="side-item">Banks</a>
-          </li>
           <li>
           <a href="{{ route('logout') }}"
               onclick="event.preventDefault();
@@ -502,29 +499,21 @@
 
           <div class="wallet-container">
 
-            <div class="col-md-offset-0 col-sm-12 col-md-offset-2 col-md-10 main-content">
+            <div class="col-sm-8 col-md-offset-2 main-content">
                 <div class="login-box" style="">
                     <img src="/svg/naira.svg" alt="no preview" class="transfer-icon">
                     <h4 class="intro" style="font-size: 20px;">Transfer to Wallet account </h4>
                     <form class="admin-login">
-                        <div class="form-group" style="margin: 30px 0;">
-                            <input type="text" class="form-control cus-input" id="benName" placeholder="Wallet ID">
+                        <div class="form-group">
+                            <select class="form-control cus-input">
+                                <option>Select Wallet</option>
+                                    <option>Wallet 1</option>
+                                    <option>Wallet 2</option>
+                                    <option>Wallet 3</option>
+                            </select>
                         </div>
-                        <div class="row">
-                            <div class="col col-lg-6 form-holder">
-                                <div class="form-group">
-                                    <select class="form-control cus-input">
-                                        <option>Wallet Type</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col col-lg-6 form-holder">
-                                <div class="form-group">
-                                    <input type="text" class="form-control cus-input" id="benAcc" placeholder="Wallet Name">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group" style="margin: 30px 0;">
+
+                        <div class="form-group" style="margin-top: 50px;">
                             <input type="number" class="form-control cus-input" id="amount" placeholder="Amount">
                         </div>
                         <button type="submit" class="btn btn-primary">Transfer</button>
