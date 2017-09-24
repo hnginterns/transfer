@@ -446,6 +446,12 @@
       <div class="col-sm-10">
         <div class="container-fluid">
 
+        	<div class="row">
+        		<div class="col-sm-2"></div>
+        		<div class="col-sm-4">
+        			<a href="create-wallet" class="btn btn-default btn-edit">Create Wallet</a>
+        		</div>
+        	</div>
           <div class="wallet-container">
 
 						<div class="content">
