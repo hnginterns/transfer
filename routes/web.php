@@ -12,7 +12,7 @@
 */
 Auth::routes();
 // get default home pages
-Route::get('/', 'pagesController@home');
+Route::get('/', 'pagesController@home')->name('transferrules');
 
 Route::get('/home', 'pagesController@home');
 // get signin page
@@ -42,6 +42,7 @@ Route::group(['middleware' => 'auth'], function() {
 
 // auth admin
 Route::get('/admin/login', 'AdminLoginController@showLoginForm');
+Route::get('/admin/logout', 'AdminLoginController@logout')->name('admin.logout');
 Route::post('/admin/login', 'AdminLoginController@login')->name('admin.login');
 
 Route::group(['middleware' => ['admin']], function() {

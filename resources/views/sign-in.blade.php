@@ -79,7 +79,7 @@
 
                     <li class="nav-item active">
 
-                        <a class="nav-link" data-toggle="modal" href="/manager">Sign In</a>
+                        <a class="nav-link" data-toggle="modal" href="/login">Sign In</a>
 
                     </li>
 

@@ -192,7 +192,7 @@
     <div class="container">
       <div class="navbar-header">
 
-        <a class="navbar-brand" href="#"> <span><img src="img/logo.png" alt=""></span>   PaysFund</a>
+        <a class="navbar-brand" href="{{ route('transferrules') }}"> <span><img src="img/logo.png" alt=""></span>   PaysFund</a>
 
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
           aria-controls="navbar">
