@@ -50,7 +50,7 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::get('/wallet-view', 'pagesController@viewWallet')->name('wallet');
 	Route::get('/banks', 'BanksController@banks');
 	Route::get('/success', 'pagesController@success');
-	Route::get('/failed', 'pagesController@failed');
+	Route::get('/failed', 'WalletController@transferAccount');
 	Route::get('/transfer', 'pagesController@transfer');
 	Route::get('/balance', 'pagesController@balance');
 	Route::get('/ravepay', 'RavepayController@index');
