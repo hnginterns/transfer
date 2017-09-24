@@ -68,7 +68,7 @@
   <div class="wallet-container">
 
       <div class="wallet-row row">
-        <div class="single-wallet-holder col-md-8">
+        <div class="single-wallet-holder col-md-6">
             <div class="inner-holder">
                   <h5 class="wallet-name"><b>Create</b> New Wallet</h5>
                   <input type="text" name="wallet_name" class="form-control input-defaulted" placeholder="Wallet Name">
