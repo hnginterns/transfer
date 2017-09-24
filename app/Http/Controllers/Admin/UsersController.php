@@ -199,7 +199,8 @@ class UsersController extends Controller
 
     public function unbanUser(Request $request, $id){
 
-        $user = User::where('id', $id)->update(["deleted_at" => null]);
+        $user = User::withTrashed()->where('id', $id);
+        $user->restore();
 
         return back();
 
