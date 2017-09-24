@@ -94,7 +94,9 @@ class WalletController extends Controller
                 var_dump($response);
             }
 
-                public function transferAccount(Request $request){
+            public function getInput(Request $request)
+            {
+
                 $token = $this->getToken();
                 $headers = array('content-type' => 'application/json', 'Authorization' => $token);
                 $query = array(
@@ -109,25 +111,33 @@ class WalletController extends Controller
 
                 $body = \Unirest\Request\Body::json($query);
 
+                return $body;
+            }
+
+                public function transferAccount(Request $request){
+                
+                $body= $this->getInput();
+
                 $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/disburse', $headers, $body);
 
                 $response = json_decode($response->raw_body,TRUE);
-                var_dump($response);
-                die();
                 $status = $response['status'];
-
+                
                 if ($status == 'success') {
-                    $data = $response['data'];
-                } else {
-                    if (array_key_exists('code', $response)) {
-                        $data = $response['message'];
-                    }
-                    
+                    return redirect()->action('pagesController@failed');
                 }
+                         
+                         var_dump($response);
+                         die();
+                         $data = $response;   
 
-                var_dump($data);
+                    return redirect()->action('WalletController@transferAccount', ['response' => $response]);  
+                    
+        
+
                 
             }
+
 
             public function walletBalance() {
                 $token = $this->getToken();

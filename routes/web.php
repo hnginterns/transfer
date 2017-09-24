@@ -36,7 +36,7 @@ Route::get('/walletTransfer', 'WalletController@transfer');
 
 Route::get('/gettoken', 'WalletController@getToken');
 
-Route::get('/transferAccount', 'WalletController@transferAccount');
+Route::get('/transferAccount', 'WalletController@getInput');
 
 Route::get('/404', 'pagesController@pagenotfound');
 
@@ -45,13 +45,12 @@ Route::group(['middleware' => 'auth'], function() {
 	//User routes
 	Route::get('/dashboard', 'pagesController@userdashboard');
 	Route::get('/transfer-to-bank', 'pagesController@bank_transfer');
-	Route::get('/add-beneficiary', 'pagesController@beneficiary');
 	Route::get('/transfer-to-wallet', 'pagesController@wallet_transfer');
 	Route::get('/create-wallet', 'pagesController@createWallet');
 	Route::get('/wallet-view', 'pagesController@viewWallet')->name('wallet');
 	Route::get('/banks', 'BanksController@banks');
 	Route::get('/success', 'pagesController@success');
-	Route::get('/failed', 'pagesController@failed');
+	Route::get('/failed', 'WalletController@transferAccount');
 	Route::get('/transfer', 'pagesController@transfer');
 	Route::get('/balance', 'pagesController@balance');
 	Route::get('/ravepay', 'RavepayController@index');
