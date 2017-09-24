@@ -480,7 +480,7 @@
                     <li><a href="/home">Features</a></li>
                     <li><a href="/home">Demo</a></li>
                     <li class="active"><a href="/about">About<span class="sr-only">(current)</span></a></li>
-                    <li id="sign-in"><a href="/signin">SIGN IN</a></li>
+                    <li id="sign-in"><a href="/login">SIGN IN</a></li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->

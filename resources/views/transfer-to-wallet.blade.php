@@ -522,7 +522,7 @@
                               
                                 <option>Select recipient wallet</option>
                                     @foreach($wallets as $wallet)
-                                     <option value="{{ $wallet['uref'] }}">{{ $wallet['name']}}</option>
+                                     <option value="{{ $wallet->wallet_code }}">{{ $wallet->wallet_name}}</option>
                                     @endforeach
                             </select>
                         </div>
