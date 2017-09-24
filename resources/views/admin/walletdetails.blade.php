@@ -90,7 +90,7 @@
                       <tr>
                       <tr>
                         <td>User Balance:</td>
-                        <td>{{ $wallet->balance }}</td>
+                        <td>{{ $bal }}</td>
                       </tr>
                       <tr>
                         <td>User ref:</td>

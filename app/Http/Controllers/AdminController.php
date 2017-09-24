@@ -173,14 +173,23 @@ class AdminController extends WalletController
     public function show($walletId) {
 
 			$wallet = Wallet::find($walletId);
-            
+
+            $transaction = App\Http\Utilities\Wallet::all();
+
+            $transact = array_column($transaction, 'balance', 'uref');
+
+            if($wallet->wallet_code == $transact['uref']) {
+                $bal = $transact['balance'];
+
+                return $bal;
+            }
 			$user = $wallet->users()->get()->toArray();
 
 			$userRef = substr(md5(Carbon::now()),0,10);
 
 			
 
-      return view ('admin/walletdetails', compact('wallet', 'user', 'userRef'));
+      return view ('admin/walletdetails', compact('wallet', 'user', 'bal'));
 		}
 		
 		public function walletdetails() {
