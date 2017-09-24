@@ -66,7 +66,9 @@
 
 
 <div class="container-fluid">
-  <button type="submit" class="btn btn-success" name="button"> Back</button>
+  <a href="/admin/managewallet">
+  <button type="submit" class="btn btn-success" name="button">Back</button>
+  </a>
   <br>
         <div class="single-wallet-holder col-md-6">
             <div class="inner-holder">
