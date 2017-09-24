@@ -217,9 +217,9 @@ class AdminController extends WalletController
     {
         $beneficiary = new Beneficiary;
 
-        $beneficiary->name = $request->name;
-        $beneficiary->bank_id = $request->bank_id;
-        $beneficiary->account_number = $request->account_number;
+        $beneficiary->name = $request('name');
+        $beneficiary->bank_id = $request('bank_id');
+        $beneficiary->account_number = $request('account_number');
 
         $beneficiary->save();
 
