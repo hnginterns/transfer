@@ -177,7 +177,7 @@ class AdminController extends WalletController
             $transaction = \App\Http\Utilities\Wallet::all();
 
             $transact = array_column($transaction, 'balance', 'uref');
-            foreach($trasact as $key => $value) {
+            foreach($transact as $key => $value) {
                 if($wallet->wallet_code == $key) {
                 $bal = $value;
 
