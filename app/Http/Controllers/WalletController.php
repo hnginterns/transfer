@@ -116,7 +116,7 @@ class WalletController extends Controller
                          
                          $data = $response;   
 
-                        return redirect()->action('WalletController@failed');    
+                        return redirect('failed', compact('response'));    
                     
                         
                     }
@@ -124,30 +124,6 @@ class WalletController extends Controller
         
 
                 
-            }
-
-            public function failed() {
-
-                $token = $this->getToken();
-                $headers = array('content-type' => 'application/json', 'Authorization' => $token);
-                $query = array(
-                "lock"=>$request->input('lock_code'),
-                 "amount"=>$request->input('amount'),
-                 "bankcode"=>$request->input('bank_code'),
-                 "accountNumber"=>$request->input('accountNumber'),
-                 "currency"=>"NGN",
-                 "senderName"=>$request->input('senderName'),
-                 "narration"=>$request->input('naration'), //Optional
-                 "ref"=>$request->input('reference'));
-
-                $body = \Unirest\Request\Body::json($query);
-
-                $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/disburse', $headers, $body);
-
-                $response = json_decode($response->raw_body,TRUE);
-                $status = $response['status'];
-
-                return view('failed', compact('response'));
             }
 
 
