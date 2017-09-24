@@ -176,7 +176,7 @@ class AdminController extends WalletController
             $transaction = \App\Http\Utilities\Wallet::all();
 
             $transact = array_column($transaction, 'balance', 'uref');
-            var_dump($transact['uref']);
+            var_dump($transaction['uref']);
             die();
 
 			$user = $wallet->users()->get()->toArray();
