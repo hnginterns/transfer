@@ -63,7 +63,7 @@ class AdminController extends WalletController
 
 			if ($rule) {
 
-				$rule->name = $request->rule_name;
+				$rule->rule_name = $request->rule_name;
 				$rule->max_amount = $request->max_amount;
 				$rule->min_amount = $request->min_amount;
 				$rule->max_transactions_per_day = $request->max_transactions_per_day;
