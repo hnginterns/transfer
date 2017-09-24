@@ -65,7 +65,7 @@
 
 <div class="container-fluid">
 
-  <a type="button" class="btn btn-success" href="admin/createwallet" name="button"><i class="fa fa-plus" aria-hidden="true"> Add Wallet</i></a>
+  <a type="button" class="btn btn-success" href="createwallet" name="button"><i class="fa fa-plus" aria-hidden="true"> Add Wallet</i></a>
 
   <div class="wallet-container">
 
