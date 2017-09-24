@@ -14,7 +14,11 @@ class RavepayController extends Controller
     {
         //
     }
-
+    
+    public function index(){
+            return view('ravepay');
+    }
+    
    public function success($ref, $amount, $currency){
         if (isset($ref)) {
         
