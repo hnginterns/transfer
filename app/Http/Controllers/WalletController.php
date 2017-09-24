@@ -95,15 +95,19 @@ class WalletController extends Controller
                 public function transferAccount(Request $request){
                 $token = $this->getToken();
                 $headers = array('content-type' => 'application/json', 'Authorization' => $token);
-                $query = array(
-                "lock_code"=>$request->input('lock_code'),
-                 "amount"=>$request->input('amount'),
-                 "bankcode"=>$request->input('bank_code'),
-                 "accountNumber"=>$request->input('accountNumber'),
+                $method = $request->method();
+
+            if ($request->isMethod('get')) {
+                     $query = array(
+                "lock_code"=>$method('lock_code'),
+                 "amount"=>$method('amount'),
+                 "bankcode"=>$method('bank_code'),
+                 "accountNumber"=>$method('accountNumber'),
                  "currency"=>"NGN",
-                 "senderName"=>$request->input('senderName'),
-                 "narration"=>$request->input('naration'), //Optional
-                 "ref"=>$request->input('reference'));
+                 "senderName"=>$method('senderName'),
+                 "narration"=>$method('naration'), //Optional
+                 "ref"=>$method('reference'));
+                }
 
                 $body = \Unirest\Request\Body::json($query);
 
