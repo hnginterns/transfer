@@ -92,9 +92,9 @@
     Launch successful transaction
 </button> -->
 
-<div class="modal fade" id="modal">
+<!--<div class="modal fade" id="modal">
     <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content">-->
             <!-- Modal Header -->
             <div class="modal-header">
                 <!--<button type="button" class="close" data-dismiss="modal">&times;</button> -->
