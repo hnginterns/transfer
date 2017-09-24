@@ -110,15 +110,15 @@ class WalletController extends Controller
                 $response = json_decode($response->raw_body,TRUE);
                 $status = $response['status'];
                 
-                if ($status == 'error') {
+                if ($status == 'success') {
                     //$data = $response['data'];
                     //return back()->withInput();
                     var_dump($status);
                     die();
                 } else {
-                            return back()->withInput();    
+                            return redirect()->action('pagesController@failed');    
                     
-                        //var_dump($data);
+                        
                     }
                     
         
