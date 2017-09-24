@@ -6,7 +6,8 @@
         border-radius: 3px;
     }
     .inner-holder :hover{
-      opacity: .7;
+        background: #b8c7ce ;
+        color: #222d32;
     }
     .wallet-container {
       padding: 30px;
@@ -78,7 +79,7 @@
             <div class="inner-holder">
                   <h5 class="wallet-name"><b>Wallet name:</b> {{ $wallet->wallet_name }}</h5>
                   <button type="button" class="btn btn-primary" name="button"><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></button>
-                  <button type="button" class="btn btn-primary" name="button"><{{ $wallet->balance }}</button>
+                  <button type="button" class="btn btn-primary" name="button">{{ $wallet->balance }}</button>
             </div>
         </a>
         @endforeach
