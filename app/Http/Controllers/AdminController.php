@@ -178,11 +178,11 @@ class AdminController extends WalletController
             $transact = array_column($transaction, 'balance', 'uref');
 
             foreach($transact as $key => $value) {
-                if($key == $wallet->wallet_code) {
-                var_dump($key);
+                
+                var_dump($wallet->wallet_code);
                 die();
                 }
-            }
+            
 			$user = $wallet->users()->get()->toArray();
 
 			$userRef = substr(md5(Carbon::now()),0,10);
