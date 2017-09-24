@@ -136,11 +136,11 @@ class AdminController extends WalletController
 
     public function show(Wallet $wallet) {
 
-			$wallet = Wallet::find($walletId);
+			//$wallet = Wallet::find($walletId);
 
-			$user = $wallet->users()->get()->toArray();
+			//$user = $wallet->users()->get()->toArray();
 
-			$userRef = substr(md5(Carbon::now()),0,10);
+			//$userRef = substr(md5(Carbon::now()),0,10);
 
       return view ('admin/walletdetails', compact('wallet', 'user', 'userRef'));
     }
