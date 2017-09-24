@@ -96,8 +96,8 @@
 </button> -->
 
 <!--<div class="modal fade" id="modal">
-    <div class="modal-dialog">
-        <div class="modal-content">-->
+    <div class="modal-dialog">-->
+        <div class="modal-content">
             <!-- Modal Header -->
             <div class="modal-header">
                 <!--<button type="button" class="close" data-dismiss="modal">&times;</button> -->
@@ -146,8 +146,8 @@
             </div>
             </div>
             <p style="text-align: center; font-size: 13px;">Copyright &#169; 2017 Transfer Rules | Rave Pay | Privacy Policy | Terms Of Service</p>
-       <!-- </div>
-    </div>
+       </div>
+    <!--</div>
 </div>-->
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
