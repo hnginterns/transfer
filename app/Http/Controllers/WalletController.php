@@ -94,7 +94,7 @@ class WalletController extends Controller
                 $token = $this->getToken();
                 $headers = array('content-type' => 'application/json', 'Authorization' => $token);
                 $query = array(
-                "lock_code"=>$request->input('lock_code'),
+                "lock"=>$request->input('lock_code'),
                  "amount"=>$request->input('amount'),
                  "bankcode"=>$request->input('bank_code'),
                  "accountNumber"=>$request->input('accountNumber'),
