@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 use App\Wallet;
-use Illuminate\Http\Request;
 class WalletController extends Controller
 {
     /**
@@ -48,7 +47,7 @@ class WalletController extends Controller
                 $query = array(
                 'name' => "James Okoh",
                 'lock_code' => "felicia",
-                'user_ref' => "576",
+                'user_ref' => "202",
                 'currency' => "NGN");
 
                 $body = \Unirest\Request\Body::json($query);
@@ -59,8 +58,6 @@ class WalletController extends Controller
                 $status = $response['status'];
                 $data = $response['data'];
                 $createWallet = var_dump($data);
-
-                $this->storeWalletDetailsToDB($data, 1, "felicia");
     }
 
     public function transfer(){ 
@@ -95,24 +92,15 @@ class WalletController extends Controller
                 public function transferAccount(Request $request){
                 $token = $this->getToken();
                 $headers = array('content-type' => 'application/json', 'Authorization' => $token);
-                $method = $request->method();
-
-                $query = [];
-            if ($request->isMethod('post')) {
-                     $query[] = [
-                "lock_code"=>$method('lock_code'),
-                 "amount"=>$method('amount'),
-                 "bankcode"=>$method('bank_code'),
-                 "accountNumber"=>$method('accountNumber'),
+                $query = array(
+                "lock_code"=>$request->input('lock_code'),
+                 "amount"=>$request->input('amount'),
+                 "bankcode"=>$request->input('bank_code'),
+                 "accountNumber"=>$request->input('accountNumber'),
                  "currency"=>"NGN",
-                 "senderName"=>$method('senderName'),
-                 "narration"=>$method('naration'), //Optional
-                 "ref"=>$method('reference')
-
-                ];
-                    
-
-                }
+                 "senderName"=>$request->input('senderName'),
+                 "narration"=>$request->input('naration'), //Optional
+                 "ref"=>$request->input('reference'));
 
                 $body = \Unirest\Request\Body::json($query);
 
@@ -130,13 +118,10 @@ class WalletController extends Controller
                         $data = $response['message'];
                     }
                     
-                
-
-                    var_dump($response);
                 }
 
+                var_dump($data);
                 
-
             }
 
             public function walletBalance() {
@@ -178,7 +163,7 @@ class WalletController extends Controller
             $merchant_id            =      $wallet_data['merchantId'];
             $currency_id            =      $wallet_data['currencyId'];
             $balance                =      $wallet_data['balance'];
-            $updatedAt              =      $wallet_data['updatedAt'];
+            $updatedAt              =      $wallet_data['udpatedAt'];
             $createdAt              =      $wallet_data['createdAt'];
 
             $wallet->moneywave_wallet_id        =        $moneywave_wallet_id;
@@ -189,7 +174,7 @@ class WalletController extends Controller
             $wallet->enabled                    =        $enabled;
             $wallet->lock_code                  =        $lock_code;
             $wallet->wallet_code                =        $wallet_code;
-            $wallet->uuid                       =        $uuid;
+
             if($wallet->save()){
                 return back();
             }else{
