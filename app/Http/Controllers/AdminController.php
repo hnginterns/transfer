@@ -136,7 +136,7 @@ class AdminController extends WalletController
     }
 
     public function ViewWallet($walletId) {
-			
+
 			$wallet = Wallet::find($walletId);
 
 			$user = $wallet->users()->get()->toArray();
@@ -146,12 +146,10 @@ class AdminController extends WalletController
       return view ('admin/walletdetails', compact('wallet', 'user', 'userRef'));
     }
 
-<<<<<<< HEAD
     public function ViewBeneficiary() {
       return view ('admin/createbeneficiary');
     }
 
-=======
      public function managebeneficiary() {
       return view ('admin/managebeneficiary');
     }
@@ -160,12 +158,7 @@ class AdminController extends WalletController
       return view ('admin/createbeneficiary');
     }
 
-    public function viewbeneficiary() {
-      return view ('admin/beneficiarydetails');
-    }
-
->>>>>>> ce301993408f435fd755b751c9f6fc4597bedadd
-     /**
+       /**
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
