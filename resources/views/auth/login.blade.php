@@ -48,9 +48,6 @@
                                 </div>
                             </div>
                         </div>
-                        <a class="btn btn-link" href="{{ route('admin.login') }}">
-                                    Sign in as admin instead?
-                                </a>
 
                         <div class="form-group">
                             <div class="col-md-8 col-md-offset-4">
@@ -60,9 +57,6 @@
 
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
                                     Forgot Your Password?
-                                </a>
-                                <a class="btn btn-link" href="{{ route('admin.login') }}">
-                                    Sign in as admin instead?
                                 </a>
                             </div>
                         </div>
