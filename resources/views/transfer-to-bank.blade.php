@@ -470,9 +470,6 @@
               <a href="/transfer-to-bank" class="active-sidebar">Bank Transfer</a>
           </li>
 
-           <li class="side-items">
-              <a href="/banks" class="side-item">Banks</a>
-          </li>
           <li>
           <a href="{{ route('logout') }}"
               onclick="event.preventDefault();
@@ -526,9 +523,7 @@
                               <div class="form-group">
                                   <select class="form-control cus-input" name="bank_code">
                                     <option>Select Beneficiary Bank</option>
-                                    @foreach(App\Http\Utilities\Bank::all() as $bankCode => $bankName)
-                                      <option value="{{ $bankCode }}"> {{ $bankName }}</option>
-                                      @endforeach
+                                      <option value="">Bene 1</option>
                                   </select>
                               </div>
                           </div>

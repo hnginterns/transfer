@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use Auth;
-
+use URL;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Session;
 use App\User;
 use App\Wallet;
-
-class AdminController extends Controller
+use App\Rule;
+use Carbon\Carbon;
+class AdminController extends WalletController
 {
 
 
@@ -40,7 +43,35 @@ class AdminController extends Controller
     }
 
     public function saveNewRule(Request $request) {
-    	// logic for saving new rules Lies Here
+        // logic for saving new rules Lies Here
+        $validator = $this->validateRule($request->all());
+
+        if ($validator->fails()) {
+            $messages = $validator->messages()->toArray();
+            Session::flash('messages', $this->formatMessages($messages, 'error'));
+            return redirect()->to(URL::previous())->withInput();
+        } else {
+            
+            $rule = new Rule;
+            $rule->rule_name = $request->rule_name;
+            $rule->max_amount = $request->max_amount;
+            $rule->min_amount = $request->min_amount;
+            $rule->max_transactions_per_day = $request->max_transactions_per_day;
+            $rule->max_amount_transfer_per_day = $request->max_amount_transfer_per_day;
+            $rule->can_transfer = $request->can_transfer;
+            $rule->can_transfer_external = $request->can_transfer_external;
+            $rule->created_by = Auth::user()->id;
+            $rule->updated_by = Auth::user()->id;
+            if ($rule->save()) {
+                // Session::flash('messages', $this->formatMessages("Rule Could not be created", 'error'));
+                return redirect()->to(URL::previous());
+                
+            } else {
+                Session::flash('messages', $this->formatMessages("Rule Could not be created", 'error'));
+                return redirect()->to(URL::previous());
+            }
+        }
+    	
     }
 
 
@@ -50,6 +81,32 @@ class AdminController extends Controller
     }
 
     public function managewallet() {
+      return view ('admin.managewallet');
+    }
+
+
+    public function addWallet(Request $request) {
+      
+       $validator = $this->validateWallet($request->all());
+
+        if ($validator->fails()) {
+            $messages = $validator->messages()->toArray();
+            Session::flash('messages', $this->formatMessages($messages, 'error'));
+            return redirect()->to(URL::previous())->withInput();
+        } else {
+                    $wallet_data = $this->createWalletAdmin($request);
+                    // dd($wallet_data);
+                if(!is_bool($wallet_data)){
+                    $this->storeWalletDetailsToDB($wallet_data,
+                                                 $request->user_id, 
+                                                 $request->lock_code, 
+                                                 $request->rule_id,
+                                                 $request->wallet_name);
+                }
+            
+           
+        }
+
       return view ('admin.managewallet');
     }
 
@@ -66,5 +123,37 @@ class AdminController extends Controller
         $name = Auth::user()->username;
         return view('usermanagement')->with("name", $name);
     }
+
+     public function wallet() {
+        $rule = Rule::all();
+        $user = User::all();
+        $user_ref = substr(md5(Carbon::now()),0,10);
+        return view ('admin/createwallet', compact('rule','user','user_ref'));
+    }
+
+    public function ViewWallet() {
+      return view ('admin/walletdetails');
+    }
+
+     /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validateRule(array $data)
+    {
+        return Validator::make($data, [
+            'rule_name' => 'required|string|max:255',
+            'max_amount' => 'required|numeric',
+            'min_amount' => 'required|numeric',
+            'max_transactions_per_day' => 'required|numeric',
+            'max_amount_transfer_per_day' => 'required|numeric',
+        ]);
+
+    }
+
+
+   
 
 }

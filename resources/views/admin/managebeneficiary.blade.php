@@ -5,7 +5,7 @@
         padding: 13px 15px;
         border-radius: 3px;
     }
-    .wallet-container {
+    .beneficiary-container {
       padding: 30px;
     }
 
@@ -41,17 +41,17 @@
       color: #fff;
     }
 
-    .wallet-row.row {
+    .beneficiary-row.row {
       margin-bottom: 30px;
     }
 
-    h5.wallet-name {
+    h5.beneficiary-name {
       margin-bottom: 20px;
     }
 
     @media screen and (max-width:768px) {
 
-      .single-wallet-holder.col-md-3 {
+      .single-beneficiary-holder.col-md-3 {
           margin-bottom: 20px;
           padding: 0px;
       }
@@ -65,140 +65,140 @@
 
 <div class="container-fluid">
 
-  <a type="button" class="btn btn-success" href="createwallet" name="button"><i class="fa fa-plus" aria-hidden="true"> Add Wallet</i></a>
+  <a type="button" class="btn btn-success" href="createbeneficiary" name="button"><i class="fa fa-plus" aria-hidden="true"> Add beneficiary</i></a>
 
-  <div class="wallet-container">
+  <div class="beneficiary-container">
 
-      <div class="wallet-row row">
-        <a href="viewwallet" class="single-wallet-holder col-md-3">
+      <div class="beneficiary-row row">
+        <a href="viewbeneficiary" class="single-beneficiary-holder col-md-3">
             <div class="inner-holder">
-                  <h5 class="wallet-name"><b>Wallet name:</b> New Wallet</h5>
+                  <h5 class="beneficiary-name"><b>beneficiary name:</b> New beneficiary</h5>
                   <button type="button" class="btn btn-primary" name="button"><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></button>
                   <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View User</i></button>
             </div>
         </a>
 
-        <a href="viewwallet" class="single-wallet-holder col-md-3">
+        <a href="viewbeneficiary" class="single-beneficiary-holder col-md-3">
             <div class="inner-holder">
-                  <h5 class="wallet-name"><b>Wallet name:</b> New Wallet</h5>
+                  <h5 class="beneficiary-name"><b>beneficiary name:</b> New beneficiary</h5>
                   <button type="button" class="btn btn-primary" name="button"><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></button>
                   <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View User</i></button>
             </div>
         </a>
 
-        <a href="viewwallet" class="single-wallet-holder col-md-3">
+        <a href="viewbeneficiary" class="single-beneficiary-holder col-md-3">
             <div class="inner-holder">
-                  <h5 class="wallet-name"><b>Wallet name:</b> New Wallet</h5>
+                  <h5 class="beneficiary-name"><b>beneficiary name:</b> New beneficiary</h5>
                   <button type="button" class="btn btn-primary" name="button"><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></button>
                   <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View User</i></button>
             </div>
         </a>
 
-        <a href="viewwallet" class="single-wallet-holder col-md-3">
+        <a href="viewbeneficiary" class="single-beneficiary-holder col-md-3">
             <div class="inner-holder">
-                  <h5 class="wallet-name"><b>Wallet name:</b> New Wallet</h5>
+                  <h5 class="beneficiary-name"><b>beneficiary name:</b> New beneficiary</h5>
                   <button type="button" class="btn btn-primary" name="button"><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></button>
                   <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View User</i></button>
             </div>
         </a>
       </div>
 
-      <div class="wallet-row row">
-        <a href="viewwallet" class="single-wallet-holder col-md-3">
+      <div class="beneficiary-row row">
+        <a href="viewbeneficiary" class="single-beneficiary-holder col-md-3">
             <div class="inner-holder">
-                  <h5 class="wallet-name"><b>Wallet name:</b> New Wallet</h5>
+                  <h5 class="beneficiary-name"><b>beneficiary name:</b> New beneficiary</h5>
                   <button type="button" class="btn btn-primary" name="button"><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></button>
                   <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View User</i></button>
             </div>
         </a>
 
-        <a href="viewwallet" class="single-wallet-holder col-md-3">
+        <a href="viewbeneficiary" class="single-beneficiary-holder col-md-3">
             <div class="inner-holder">
-                  <h5 class="wallet-name"><b>Wallet name:</b> New Wallet</h5>
+                  <h5 class="beneficiary-name"><b>beneficiary name:</b> New beneficiary</h5>
                   <button type="button" class="btn btn-primary" name="button"><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></button>
                   <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View User</i></button>
             </div>
         </a>
 
-        <div class="single-wallet-holder col-md-3">
+        <div class="single-beneficiary-holder col-md-3">
             <div class="inner-holder">
-                  <h5 class="wallet-name"><b>Wallet name:</b> New Wallet</h5>
+                  <h5 class="beneficiary-name"><b>beneficiary name:</b> New beneficiary</h5>
                   <button type="button" class="btn btn-primary" name="button"><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></button>
                   <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View User</i></button>
             </div>
         </div>
 
-        <div class="single-wallet-holder col-md-3">
+        <div class="single-beneficiary-holder col-md-3">
             <div class="inner-holder">
-                  <h5 class="wallet-name"><b>Wallet name:</b> New Wallet</h5>
+                  <h5 class="beneficiary-name"><b>beneficiary name:</b> New beneficiary</h5>
                   <button type="button" class="btn btn-primary" name="button"><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></button>
                   <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View User</i></button>
             </div>
         </div>
       </div>
 
-      <div class="wallet-row row">
-        <div class="single-wallet-holder col-md-3">
+      <div class="beneficiary-row row">
+        <div class="single-beneficiary-holder col-md-3">
             <div class="inner-holder">
-                  <h5 class="wallet-name"><b>Wallet name:</b> New Wallet</h5>
+                  <h5 class="beneficiary-name"><b>beneficiary name:</b> New beneficiary</h5>
                   <button type="button" class="btn btn-primary" name="button"><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></button>
                   <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View User</i></button>
             </div>
         </div>
 
-        <div class="single-wallet-holder col-md-3">
+        <div class="single-beneficiary-holder col-md-3">
             <div class="inner-holder">
-                  <h5 class="wallet-name"><b>Wallet name:</b> New Wallet</h5>
+                  <h5 class="beneficiary-name"><b>beneficiary name:</b> New beneficiary</h5>
                   <button type="button" class="btn btn-primary" name="button"><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></button>
                   <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View User</i></button>
             </div>
         </div>
 
-        <div class="single-wallet-holder col-md-3">
+        <div class="single-beneficiary-holder col-md-3">
             <div class="inner-holder">
-                  <h5 class="wallet-name"><b>Wallet name:</b> New Wallet</h5>
+                  <h5 class="beneficiary-name"><b>beneficiary name:</b> New beneficiary</h5>
                   <button type="button" class="btn btn-primary" name="button"><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></button>
                   <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View User</i></button>
             </div>
         </div>
 
-        <div class="single-wallet-holder col-md-3">
+        <div class="single-beneficiary-holder col-md-3">
             <div class="inner-holder">
-                  <h5 class="wallet-name"><b>Wallet name:</b> New Wallet</h5>
+                  <h5 class="beneficiary-name"><b>beneficiary name:</b> New beneficiary</h5>
                   <button type="button" class="btn btn-primary" name="button"><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></button>
                   <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View User</i></button>
             </div>
         </div>
       </div>
 
-      <div class="wallet-row row">
-        <div class="single-wallet-holder col-md-3">
+      <div class="beneficiary-row row">
+        <div class="single-beneficiary-holder col-md-3">
             <div class="inner-holder">
-                  <h5 class="wallet-name"><b>Wallet name:</b> New Wallet</h5>
+                  <h5 class="beneficiary-name"><b>beneficiary name:</b> New beneficiary</h5>
                   <button type="button" class="btn btn-primary" name="button"><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></button>
                   <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View User</i></button>
             </div>
         </div>
 
-        <div class="single-wallet-holder col-md-3">
+        <div class="single-beneficiary-holder col-md-3">
             <div class="inner-holder">
-                  <h5 class="wallet-name"><b>Wallet name:</b> New Wallet</h5>
+                  <h5 class="beneficiary-name"><b>beneficiary name:</b> New beneficiary</h5>
                   <button type="button" class="btn btn-primary" name="button"><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></button>
                   <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View User</i></button>
             </div>
         </div>
 
-        <div class="single-wallet-holder col-md-3">
+        <div class="single-beneficiary-holder col-md-3">
             <div class="inner-holder">
-                  <h5 class="wallet-name"><b>Wallet name:</b> New Wallet</h5>
+                  <h5 class="beneficiary-name"><b>beneficiary name:</b> New beneficiary</h5>
                   <button type="button" class="btn btn-primary" name="button"><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></button>
                   <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View User</i></button>
             </div>
         </div>
 
-        <div class="single-wallet-holder col-md-3">
+        <div class="single-beneficiary-holder col-md-3">
             <div class="inner-holder">
-                  <h5 class="wallet-name"><b>Wallet name:</b> New Wallet</h5>
+                  <h5 class="beneficiary-name"><b>beneficiary name:</b> New beneficiary</h5>
                   <button type="button" class="btn btn-primary" name="button"><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></button>
                   <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View User</i></button>
             </div>
