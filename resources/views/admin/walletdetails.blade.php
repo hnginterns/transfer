@@ -68,8 +68,6 @@
 <div class="container-fluid">
   <button type="submit" class="btn btn-success" name="button"> Back</button>
 
-  <div class="wallet-container">
-      <div class="wallet-row row">
         <div class="single-wallet-holder col-md-6">
             <div class="inner-holder">
                   <div class="box-body">
@@ -108,10 +106,7 @@
                   </div>
               <!-- /.table-responsive -->
             </div>
-            </div>
-        </div>
-      </div>
-
+          </div>
     </div>
 
 </div>
