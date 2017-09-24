@@ -60,7 +60,7 @@
 
         .modal-footer h6 {
             color: #FF6200;
-            text-align: center;
+            text-align: left;
         }
 
         #body-footer {
@@ -68,7 +68,6 @@
             font-size: 12px;
             /* text-align: left; */
         }
-
 
         .modal-footer button {
             float: left;
@@ -81,10 +80,7 @@
             color: white;
             border: none;
         }
-        .button {
-            margin: 0;
-            text-align: center;
-        }
+
         .modal-footer button:hover {
             background: white;
             color: #FF6200;
@@ -92,16 +88,16 @@
     </style>
 </head>
 <body>
-<!--<button class="btn btn-primary" data-toggle="modal" data-target="#modal">
+<button class="btn btn-primary" data-toggle="modal" data-target="#modal">
     Launch successful transaction
-</button> -->
+</button>
 
-<!--<div class="modal fade" id="modal">
+<div class="modal fade" id="modal">
     <div class="modal-dialog">
-        <div class="modal-content">-->
+        <div class="modal-content">
             <!-- Modal Header -->
             <div class="modal-header">
-                <!--<button type="button" class="close" data-dismiss="modal">&times;</button> -->
+                <button type="button" class="close" data-dismiss="modal">&times;</button> 
                 <h4 class="modal-title">TRANSFER RULES</h4>
             </div>
             <!-- Modal Body -->
@@ -138,19 +134,16 @@
                 <p id="body-footer"> This transaction will automatically close in 20 seconds and you will be redirected to your dashboard</p>
             </div>
             <!-- Modal Footer -->
-            
             <div class="modal-footer">
-                <h6 class="text-center">Click print to print receipt for reference or ok to continue</h6>
-                <div class="col-md-12 col-md-offset-4">
+                <h6>Click print to print receipt for reference or ok to continue</h6>
                 <button type="button" class="btn" data-dismiss="modal" id="print">Print</button>
                 <button type="button" class="btn" data-dismiss="modal" id="print">Send via email</button>
                 <button type="button" class="btn" id="close">OK</button>
             </div>
-        </div>
             <p style="text-align: center; font-size: 13px;">Copyright &#169; 2017 Transfer Rules | Rave Pay | Privacy Policy | Terms Of Service</p>
-       <!-- </div>
+        </div>
     </div>
-</div>-->
+</div>
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
