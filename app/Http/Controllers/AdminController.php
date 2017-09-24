@@ -89,11 +89,6 @@ class AdminController extends WalletController
       return view ('admin.managewallet', compact('wallets'));
     }
 
-    public function managebeneficiary() {
-      return view ('admin.managebeneficiary');
-    }
-
-
     public function addWallet(Request $request) {
       
        $validator = $this->validateWallet($request->all());
@@ -144,7 +139,15 @@ class AdminController extends WalletController
       return view ('admin/walletdetails');
     }
 
-    public function ViewBeneficiary() {
+     public function managebeneficiary() {
+      return view ('admin/managebeneficiary');
+    }
+
+     public function createbeneficiary() {
+      return view ('admin/createbeneficiary');
+    }
+
+    public function viewbeneficiary() {
       return view ('admin/beneficiarydetails');
     }
 
