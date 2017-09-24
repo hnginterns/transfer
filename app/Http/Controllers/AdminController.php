@@ -67,4 +67,12 @@ class AdminController extends Controller
         return view('usermanagement')->with("name", $name);
     }
 
+    public function wallet() {
+      return view ('admin/createwallet');
+    }
+
+    public function ViewWallet() {
+      return view ('admin/walletdetails');
+    }
+
 }
