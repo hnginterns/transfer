@@ -178,13 +178,12 @@ class AdminController extends WalletController
 
             $transact = array_column($transaction, 'balance', 'uref');
 
-            var_dump($transact);
-            die();
             foreach($transact as $key => $value) {
                 if($wallet->wallet_code == $key) {
                 $bal = $value;
 
-                return $bal;
+                var_dump($bal);
+                die();
                 }
             }
 			$user = $wallet->users()->get()->toArray();
