@@ -116,7 +116,7 @@ class WalletController extends Controller
                          
                          $data = $response;   
 
-                        return redirect()->action('pagesController@failed');    
+                        return redirect()->action('pagesController@failed', compact('data'));    
                     
                         
                     }
