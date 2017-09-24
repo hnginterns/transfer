@@ -20,7 +20,7 @@ return array(
     'App\\Http\\Controllers\\BanksController' => $baseDir . '/app/Http/Controllers/BanksController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
-    'App\\Http\\Controllers\\PaymentController' => $baseDir . '/app/Http/Controllers/paymentController.php',
+    'App\\Http\\Controllers\\PaymentController' => $baseDir . '/app/Http/Controllers/PaymentController.php',
     'App\\Http\\Controllers\\UsersController' => $baseDir . '/app/Http/Controllers/UsersController.php',
     'App\\Http\\Controllers\\ValidateAccountController' => $baseDir . '/app/Http/Controllers/ValidateAccountController.php',
     'App\\Http\\Controllers\\pagesController' => $baseDir . '/app/Http/Controllers/pagesController.php',

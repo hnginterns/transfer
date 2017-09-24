@@ -104,7 +104,9 @@
                 <h3 class="sign-in">Sign In to your PaysFund Account</h3>
 
                 <h6 class="promise">It is simple and easy to control your account -<br> Keep your password secret</h6>
-
+                @if (Session::has('messages'))
+                    {!! Session::get('messages') !!}
+                @endif
                 <form method="POST" action="{{ route('login') }}" class="admin-login">
                     {{ csrf_field() }}
                     <div class="form-group">

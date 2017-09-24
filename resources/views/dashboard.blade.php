@@ -8,6 +8,7 @@
   <title>Wallet Dashboard</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
     crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
     crossorigin="anonymous"></script>
@@ -184,6 +185,48 @@
       background: #25313F;
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     }
+
+    i.fa-window-close {
+      font-size: 20px;
+      color: #fff;
+      margin: 20px;
+      display: none;
+    }
+
+    @media screen and (max-width:768px) {
+      #sidebar {
+        width: 250px !important;
+        height: 200vh;
+      padding: 0;
+      position: absolute;
+      left: -1000px;
+      top: 20px;
+      }
+      i.fa-window-close {
+        font-size: 20px;
+        color: #fff;
+        margin-bottom: 20px;
+        display: block;
+      }
+      .navbar-form .form-control {
+        display: inline-block;
+        width: auto;
+        vertical-align: middle;
+        display: none;
+      }
+      .navbar-nav {
+        margin: 7.5px -15px;
+        display: none;
+      }
+      .profile {
+        display: none;
+      }
+      .navbar-form.navbar-right {
+        display: none;
+      }
+    }
+
+
   </style>
 </head>
 
@@ -194,7 +237,7 @@
 
         <a class="navbar-brand" href="{{ route('transferrules') }}"> <span><img src="img/logo.png" alt=""></span>   PaysFund</a>
 
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+        <button type="button" id="navb" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
           aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
@@ -218,6 +261,9 @@
     <div class="row">
 
       <div class="col-sm-2" id="sidebar">
+
+        <i class="fa fa-window-close" id="close" aria-hidden="true"></i>
+
         <ul class="nav nav-stacked">
           <li class="active-sidebar"><a href="/dashboard">Dashboard</a></li>
           <li class="side-items">
@@ -251,55 +297,58 @@
       <div class="col-sm-10">
         <div class="container-fluid">
 
+           @foreach($wallets as $wallet)
+                                     <option value="{{ $wallet->id }}">{{ $wallet->wallet_code}}</option>
+                                   
+
           <div class="wallet-container">
             <a class="wallet">
-              <p class="num">001</p>
+              <p class="num">{{ $wallet->id }}</p>
               <p class="currency">NGN</p>
               <img src="img/wallet-i.svg" alt="" class="wallet-img">
-              <p class="id">ID: 0125665</p>
-              <div class="balance">₦5,263,200.00</div>
+              <p class="id">ID: {{ $wallet->wallet_code}}</p>
+              <div class="balance">₦ {{ $wallet->balance}}</div>
             </a>
 
-            <a class="wallet">
-              <p class="num">001</p>
-              <p class="currency">NGN</p>
-              <img src="img/wallet-i.svg" alt="" class="wallet-img">
-              <p class="id">ID: 0125665</p>
-              <div class="balance">₦5,263,200.00</div>
-            </a>
+             @endforeach
 
-            <a class="wallet">
-              <p class="num">001</p>
-              <p class="currency">NGN</p>
-              <img src="img/wallet-i.svg" alt="" class="wallet-img">
-              <p class="id">ID: 0125665</p>
-              <div class="balance">₦5,263,200.00</div>
-            </a>
 
-            <a class="wallet">
-              <p class="num">001</p>
-              <p class="currency">NGN</p>
-              <img src="img/wallet-i.svg" alt="" class="wallet-img">
-              <p class="id">ID: 0125665</p>
-              <div class="balance">₦5,263,200.00</div>
-            </a>
 
-            <a class="wallet">
-              <p class="num">001</p>
-              <p class="currency">NGN</p>
-              <img src="img/wallet-i.svg" alt="" class="wallet-img">
-              <p class="id">ID: 0125665</p>
-              <div class="balance">₦5,263,200.00</div>
-            </a>
-
-            
-            
 
           </div>
         </div>
       </div>
     </div>
   </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+      $(document).ready(function() {
+
+        $('#navb').click(function() {
+
+            $('#sidebar').animate({
+                left: "0px",
+                "z-index": 10000
+            }, 200).css(
+              "background-color" , "rgb(37, 49, 63)",
+              "height" , "200vh"
+            );
+
+            $('a.side-item').css(
+                "color" , "#fff"
+            );
+        });
+
+        $('#close').click(function() {
+
+            $('#sidebar').animate({
+                left: "-1000px",
+                "z-index": 10000
+            }, 200);
+        });
+      });
+  </script>
 </body>
 
 </html>
