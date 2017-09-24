@@ -71,7 +71,7 @@
         <div class="single-beneficiary-holder col-md-6">
             <div class="inner-holder">
                   <h5 class="beneficiary-name"><b>Create</b> New Beneficiary</h5>
-                  <form action="/add-beneficiary" method="POST">
+                  <form action="admin/add-beneficiary" method="POST">
                   <input type="text" name="name" class="form-control input-defaulted" placeholder="Name">
                   <br><select name="bank_id" class="form-control input-defaulted" >
                     <option>Select Bank</option>
