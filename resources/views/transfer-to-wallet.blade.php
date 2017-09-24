@@ -505,23 +505,35 @@
                     <h4 class="intro" style="font-size: 20px;">Transfer to Wallet account </h4>
                     <form class="admin-login">
                         <div class="form-group">
-                            <select class="form-control cus-input" name="wallet_id">
+                            <select class="form-control cus-input" name="sourceWallet">
 
                               
-                                <option>Select Wallet</option>
-                                    @foreach($wallets as $wallet)
-                                     <option value="{{ $wallet->id }}">{{ $wallet->wallet_name}}</option>
+                                <option>Select sender Wallet</option>
+                                    @foreach(App\Http\Utilities\Wallet::all() as $wallet)
+                                     <option value="{{ $wallet['id'] }}">{{ $wallet['name']}}</option>
+                                    @endforeach
+                            </select>
+                        </div>
+
+
+                        <div class="form-group">
+                            <select class="form-control cus-input" name="recipientWallet">
+
+                              
+                                <option>Select recipient wallet</option>
+                                    @foreach(App\Http\Utilities\Wallet::all() as $wallet)
+                                     <option value="{{ $wallet['id'] }}">{{ $wallet['name']}}</option>
                                     @endforeach
                             </select>
                         </div>
 
                         <div class="form-group">
-                            <select class="form-control cus-input" name="sourceWallet">
+                            <select class="form-control cus-input" name="lock">
 
                               
-                                <option>Select Wallet</option>
+                                <option>Select Wallet to add lock</option>
                                     @foreach(App\Http\Utilities\Wallet::all() as $wallet)
-                                     <option value="{{ $wallet['id'] }}">{{ $wallet['name']}}</option>
+                                     <option value="{{ $wallet['lock'] }}">{{ $wallet['name']}}</option>
                                     @endforeach
                             </select>
                         </div>
