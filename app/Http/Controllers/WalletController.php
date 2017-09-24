@@ -95,7 +95,7 @@ class WalletController extends Controller
                 public function transferAccount(Request $request){
                 $token = $this->getToken();
                 $headers = array('content-type' => 'application/json', 'Authorization' => $token);
-                $method = $request->method();
+                $method = $request->method('get');
 
             if ($request->isMethod('get')) {
                      $query = array(
