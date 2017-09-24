@@ -45,15 +45,12 @@ Route::group(['middleware' => 'auth'], function() {
 	//User routes
 	Route::get('/dashboard', 'pagesController@userdashboard');
 	Route::get('/transfer-to-bank', 'pagesController@bank_transfer');
-	Route::get('/add-beneficiary', 'pagesController@beneficiary');
 	Route::get('/transfer-to-wallet', 'pagesController@wallet_transfer');
 	Route::get('/create-wallet', 'pagesController@createWallet');
 	Route::get('/wallet-view', 'pagesController@viewWallet')->name('wallet');
 	Route::get('/banks', 'BanksController@banks');
 	Route::get('/success', 'pagesController@success');
-	Route::get('/failed', function() {
-		return redirect('failed');
-	});
+	Route::get('/failed', 'WalletController@failed');
 	Route::get('/transfer', 'pagesController@transfer');
 	Route::get('/balance', 'pagesController@balance');
 	Route::get('/ravepay', 'RavepayController@index');
@@ -82,8 +79,6 @@ Route::group(['middleware' => ['auth', 'admin']], function() {
 	Route::get('/addaccount', 'AdminController@addaccount');
 	Route::get('/usermanagement', 'AdminController@usermanagement');
 	Route::get('/web-analytics', 'pagesController@webAnalytics');
-	Route::get('admin/createwallet', 'AdminController@wallet');
-	Route::get('admin/viewwallet', 'AdminController@viewWallet');
 	Route::resource('admin/users', 'Admin\UsersController');
 	Route::post('admin/users/store', 'Admin\UsersController@store');
 	Route::post('admin/users/banUser/{id}', 'Admin\UsersController@banUser');
