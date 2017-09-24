@@ -88,7 +88,7 @@
 
                 <table>
                     <tr>
-                        @foreach($data as $key => $value)
+                        @foreach($response as $key => $value)
                         <td>{{$key}}</td>
                         <td>{{$value}}</td>
                         @endforeach
