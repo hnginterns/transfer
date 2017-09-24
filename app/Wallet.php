@@ -27,14 +27,14 @@ class Wallet extends Model
         return $this->belongsTo(User::class);
     }
 
-    /**
-     * Get transactions related to this wallet
-     *
-     * @return void
-     */
-    public function transactions() {
-        return $this->hasMany(Transaction::class, 'wallet_code', 'wallet_code');
-    }
+    // /**
+    //  * Get transactions related to this wallet
+    //  *
+    //  * @return void
+    //  */
+    // public function transactions() {
+    //     return $this->hasMany(Transaction::class, 'wallet_code', 'wallet_code');
+    // }
 
     /**
      * Get Wallet restriction
@@ -64,23 +64,27 @@ class Wallet extends Model
 		}
 		
 		public function canTransfer() {
-			// dd("HEre!");
-			
-			$restriction = $this->restrictions()->get();
+            
+            $restriction = $this->restrictions()->get();
 
-			$rule = \App\Rule::find($restriction[0]->rule_id);
+            $rule = \App\Rule::find($restriction[0]->rule_id);
 
-			// Fecth all the transactions in the past 24 hours
-			// from the db
-			$transactions = $this->transactions()->get();
-			// dd($transactions);
-			$totalTransactionsToday = 3;
+            // Fecth all the transactions in the past 24 hours from the db
+            $twentyFourHoursAgo = Carbon::now()->subHours(24);
 
-			if ($rule->max_transactions_per_day >= $totalTransactionsToday) {
-				return false;
-			} else {
-				return true;
-			}
+            $transactions = Transaction::where('wallet_code', $this->wallet_code)
+                                // ->orWhere('payee_wallet_code', $this->wallet_code)
+                                ->where('transaction_status', 1)
+                                ->where('created_at', '>=', $twentyFourHoursAgo)
+                                ->get();
 
-		}
+            $totalTransactionsToday = count($transactions);
+
+            if ($rule->max_transactions_per_day <= $totalTransactionsToday) {
+                return false;
+            } else {
+                return true;
+            }
+
+        }
 }
