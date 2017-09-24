@@ -178,7 +178,7 @@ class AdminController extends WalletController
             $transact = array_map(function ($transc){
                     return $transc;
             }, $transaction);
-            var_dump($transact['uref']);
+            var_dump($transact[0]);
             die();
 			$user = $wallet->users()->get()->toArray();
 
