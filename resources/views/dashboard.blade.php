@@ -298,7 +298,7 @@
         <div class="container-fluid">
 
            @foreach($wallets as $wallet)
-                                     <option value="{{ $wallet->id }}">{{ $wallet->wallet_code}}</option>
+                                     
                                    
 
           <div class="wallet-container">
