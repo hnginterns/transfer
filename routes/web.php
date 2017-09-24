@@ -39,7 +39,7 @@ Route::post('/transferAccount', 'WalletController@transferAccount');
 Route::get('/404', 'pagesController@pagenotfound');
 
 // authentications
-//Route::group(['middleware' => 'auth'], function() {
+Route::group(['middleware' => 'auth'], function() {
 	//User routes
 	Route::get('/dashboard', 'pagesController@userdashboard');
 	Route::get('/transfer-to-bank', 'pagesController@bank_transfer');
@@ -50,10 +50,10 @@ Route::get('/404', 'pagesController@pagenotfound');
 	Route::get('/failed', 'pagesController@failed');
 	Route::get('/transfer', 'pagesController@transfer');
 	Route::get('/balance', 'pagesController@balance');
-//});
+});
 
 // auth admin
-//Route::group(['middleware' => ['auth', 'admin']], function() {
+Route::group(['middleware' => ['auth', 'admin']], function() {
 	Route::get('/admin', 'AdminController@index');
 	Route::get('/admin/adduser', 'AdminController@addaccount');
 	// Set rules that users will transfer with
@@ -77,7 +77,7 @@ Route::get('/404', 'pagesController@pagenotfound');
 	Route::post('admin/users/unbanUser/{id}', 'Admin\UsersController@unbanUser');
 	Route::post('admin/users/makeAdmin/{id}', 'Admin\UsersController@makeAdmin');
 	Route::post('admin/users/removeAdmin/{id}', 'Admin\UsersController@removeAdmin');
-//});
+});
 
 // Testing routes
 Route::get('/test', 'HomeController@randomFunc');
