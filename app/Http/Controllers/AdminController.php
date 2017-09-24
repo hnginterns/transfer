@@ -134,9 +134,9 @@ class AdminController extends WalletController
         return view ('admin/createwallet', compact('rule','user','user_ref'));
     }
 
-    public function ViewWallet($walletId) {
+    public function show(Wallet $wallet) {
 
-			$wallet = Wallet::find($walletId);
+			//$wallet = Wallet::find($walletId);
 
 			$user = $wallet->users()->get()->toArray();
 

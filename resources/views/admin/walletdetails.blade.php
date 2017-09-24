@@ -85,7 +85,7 @@
                       </tr>
                       <tr>
                         <td>Wallet Lock Code:</td>
-                        <td>{{ $wallet->lock_code }}</td>
+                        <td>{{ $wallet->wallet_code }}</td>
                       </tr>
                       <tr>
                       <tr>
