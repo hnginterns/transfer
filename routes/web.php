@@ -91,6 +91,8 @@ Route::group(['middleware' => ['admin']], function() {
 	Route::get('admin/beneficiarydetails', 'AdminController@BeneficiaryDetails');
 	Route::get('/web-analytics', 'pagesController@webAnalytics');
 	Route::get('admin/createwallet', 'AdminController@wallet');
+	Route::get('admin/wallet-details', 'AdminController@walletdetails');
+	Route::get('admin/view-rules', 'AdminController@viewRules');
 	Route::post('admin/createwallet', 'AdminController@addwallet');
 	Route::get('admin/viewwallet/{walletId}', 'AdminController@show')->name('view-wallet');
 	Route::resource('admin/users', 'Admin\UsersController');
@@ -100,6 +102,3 @@ Route::group(['middleware' => ['admin']], function() {
 	Route::post('admin/users/makeAdmin/{id}', 'Admin\UsersController@makeAdmin');
 	Route::post('admin/users/removeAdmin/{id}', 'Admin\UsersController@removeAdmin');
 });
-
-// Testing routes
-Route::get('/test', 'HomeController@randomFunc');

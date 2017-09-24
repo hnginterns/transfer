@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use URL;
+use App\WalletTransaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
@@ -35,6 +36,14 @@ class AdminController extends WalletController
 
     public function saveRule(Request $request) {
     	// logic for saving the rules Lies Here
+		}
+		
+		public function viewRules() {
+    	// Basically display a paage on which rules are set
+			$name = Auth::user()->username;
+			
+			$rules = Rule::all();
+    	return view('admin.viewrules', compact('rules'))->with("name", $name);
     }
 
     public function createRule() {
@@ -137,13 +146,30 @@ class AdminController extends WalletController
     public function show($walletId) {
 
 			$wallet = Wallet::find($walletId);
+            
+			$user = $wallet->users()->get()->toArray();
 
-			//$user = $wallet->users()->get()->toArray();
+			$userRef = substr(md5(Carbon::now()),0,10);
 
-			//$userRef = substr(md5(Carbon::now()),0,10);
+			
 
       return view ('admin/walletdetails', compact('wallet', 'user', 'userRef'));
-    }
+		}
+		
+		public function walletdetails() {
+			$token = $this->getToken();
+			$headers = array('content-type' => 'application/json','Authorization'=> $token);
+
+			$response = \Unirest\Request::get('https://moneywave.herokuapp.com/v1/wallet', $headers);
+
+			$data = json_decode($response->raw_body, true);
+			$walletBalance = $data['data'];
+			
+			//$walletBalance = array_pluck($walletBalance, 'id', 'id');
+			dd($walletBalance);
+
+}
+
 
     public function ViewBeneficiary() {
       return view ('admin/managebeneficiary');
