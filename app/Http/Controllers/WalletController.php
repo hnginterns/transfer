@@ -127,11 +127,11 @@ class WalletController extends Controller
                     
                 }
 
-                
+                    var_dump($response);
                 }
 
-                var_dump($data);
                 
+
             }
 
             public function walletBalance() {
