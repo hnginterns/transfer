@@ -6,7 +6,7 @@ use Unirest;
 
 class Wallet {
 
-	public function getToken(){
+	public static function getToken(){
         $api_key = 'ts_VZJ5K36HYKSVE4VRS5VC';
         $secret_key = 'ts_09443SHY1WRF56TZBYRK0Z55OOO68C';
 
