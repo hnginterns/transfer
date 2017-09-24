@@ -119,10 +119,10 @@
 
     .wallet .balance {
       position: absolute;
-      width: 115px;
-      left: 200px;
+      right: 0;
       top: 125px;
       color: white;
+      padding-right: 5px;
     }
 
     .profile {

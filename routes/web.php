@@ -36,6 +36,8 @@ Route::get('/walletTransfer', 'WalletController@transfer');
 
 Route::get('/gettoken', 'WalletController@getToken');
 
+Route::get('/transferWallet', 'WalletController@transfer');
+
 Route::get('/transferAccount', 'WalletController@transferAccount');
 
 Route::get('/404', 'pagesController@pagenotfound');
@@ -58,6 +60,7 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('/ravepaysuccess/{ref}/{amount}/{currency}', 'RavepayController@success');
 
 });
+
 
 // auth admin
 Route::get('/admin/login', 'AdminLoginController@showLoginForm');
