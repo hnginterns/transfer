@@ -87,12 +87,12 @@ Route::group(['middleware' => ['admin']], function() {
 	Route::get('/addaccount', 'AdminController@addaccount');
 	Route::get('/usermanagement', 'AdminController@usermanagement');
 	Route::get('admin/beneficiary', 'AdminController@ViewBeneficiary');
-	Route::get('admin/addBeneficiary', 'AdminController@addBeneficiary');
+	Route::get('admin/addBeneficiary', 'AdminController@beneficiary');
 	Route::get('admin/beneficiarydetails', 'AdminController@BeneficiaryDetails');
 	Route::get('/web-analytics', 'pagesController@webAnalytics');
 	Route::get('admin/createwallet', 'AdminController@wallet');
 	Route::get('admin/wallet-details', 'AdminController@walletdetails');
-	Route::post('admin/addBeneficiary', 'AdminController@store');
+	Route::post('admin/addBeneficiary', 'AdminController@addBeneficiary');
 	Route::get('admin/view-rules', 'AdminController@viewRules');
 	Route::post('admin/update-rule', 'AdminController@updateRule')->name('update-rule');
 	Route::get('admin/edit-rule/{ruleId}', 'AdminController@editRules')->name('edit-rule');
