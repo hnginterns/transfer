@@ -102,7 +102,7 @@ class WalletController extends Controller
                      $query = [
                 "lock_code"=>$method('lock_code'),
                  "amount"=>$method('amount'),
-                 "bankcode"=>$method('bank_code'),
+                 "bankcode"=>"058",
                  "accountNumber"=>$method('accountNumber'),
                  "currency"=>"NGN",
                  "senderName"=>$method('senderName'),
