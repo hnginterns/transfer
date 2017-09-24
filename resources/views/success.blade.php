@@ -138,8 +138,9 @@
                 <p id="body-footer"> This transaction will automatically close in 20 seconds and you will be redirected to your dashboard</p>
             </div>
             <!-- Modal Footer -->
-            <div class="col-md-12 col-md-offset-6">
+            
             <div class="modal-footer">
+                <div class="col-md-12">
                 <h6 class="text-center">Click print to print receipt for reference or ok to continue</h6>
                 <button type="button" class="btn" data-dismiss="modal" id="print">Print</button>
                 <button type="button" class="btn" data-dismiss="modal" id="print">Send via email</button>
