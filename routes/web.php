@@ -92,7 +92,7 @@ Route::group(['middleware' => ['admin']], function() {
 	Route::get('/web-analytics', 'pagesController@webAnalytics');
 	Route::get('admin/createwallet', 'AdminController@wallet');
 	Route::get('admin/wallet-details', 'AdminController@walletdetails');
-	Route::post('admin/add-beneficiary', 'AdminController@store');
+	Route::post('admin/addBeneficiary', 'AdminController@store');
 	Route::get('admin/view-rules', 'AdminController@viewRules');
 	Route::post('admin/update-rule', 'AdminController@updateRule')->name('update-rule');
 	Route::get('admin/edit-rule/{ruleId}', 'AdminController@editRules')->name('edit-rule');
