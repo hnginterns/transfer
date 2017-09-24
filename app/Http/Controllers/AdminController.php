@@ -39,8 +39,7 @@ class AdminController extends WalletController
 		}
 		
 		public function viewRules() {
-    	// Basically display a paage on which rules are set
-			$name = Auth::user()->username;
+    	$name = Auth::user()->username;
 			
 			$rules = Rule::all();
     	return view('admin.viewrules', compact('rules'))->with("name", $name);
@@ -50,6 +49,13 @@ class AdminController extends WalletController
     	// Basically display a page on which rules are created e.g A form
         $name = Auth::user()->username;
     	return view('admin.create-rules')->with("name", $name);
+		}
+		
+		public function editRules($ruleId) {
+    	
+			$rule = Rule::find($ruleId);
+
+			return view('admin.editrules', compact('rule'));
     }
 
     public function saveNewRule(Request $request) {
@@ -118,8 +124,8 @@ class AdminController extends WalletController
 
 
         }
-
-      return view ('admin.managewallet');
+	$data['wallets'] = Wallet::all(); 
+      return view ('admin.managewallet', $data);
     }
 
     public function saveSettings(){
