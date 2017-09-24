@@ -42,7 +42,7 @@
         <a href="{{ url('/admin/view-rules') }}"><i class="fa fa-plus"></i> <span>Manage Rules</span></a>
       </li>
       <li><a href="{{ url('/admin/managewallet') }}"><i class="fa fa-briefcase"></i> <span>Manage Wallet</span></a></li>
-      <li><a href="beneficiary"><i class="fa fa-dollar"></i> <span>Beneficiary</span></a></li>
+      <li><a href="{{ url('/admin/beneficiary') }}"><i class="fa fa-dollar"></i> <span>Beneficiary</span></a></li>
       <li><a href="{{ url('/web-analytics') }}">Transaction Analytics</a></li>
       <li><a href="#"><i class="fa fa-eyedropper"></i> <span>Draft</span></a></li>
       <li><a href="#"><i class="fa fa-trash"></i> <span>Trash</span></a></li>
