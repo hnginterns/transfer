@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Wallet;
 
 class pagesController extends Controller
 {
@@ -67,7 +68,9 @@ class pagesController extends Controller
   }
 
   public function wallet_transfer(){
-    return view ('transfer-to-wallet');
+    $wallets = Wallet::all();
+      return view ('transfer-to-wallet', compact('wallets'));
+     
   }
 
   public function viewAccounts(){
