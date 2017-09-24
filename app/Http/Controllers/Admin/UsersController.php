@@ -23,7 +23,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::all()->toArray();
+        $users = User::withTrashed()->get()->toArray();
 
         //dd($users);
         $name = Auth::user()->username;
