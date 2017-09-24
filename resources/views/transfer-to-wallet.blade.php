@@ -515,6 +515,17 @@
                             </select>
                         </div>
 
+                        <div class="form-group">
+                            <select class="form-control cus-input" name="sourceWallet">
+
+                              
+                                <option>Select Wallet</option>
+                                    @foreach(App\Http\Utilities\Wallet::all() as $wallet)
+                                     <option value="{{ $wallet['id'] }}">{{ $wallet['name']}}</option>
+                                    @endforeach
+                            </select>
+                        </div>
+
                         <div class="form-group" style="margin-top: 50px;">
                             <input type="number" class="form-control cus-input" name="amount" id="amount" placeholder="Amount">
                         </div>
