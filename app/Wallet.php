@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Auth;
 
 class Wallet extends Model
 {
-	// By Timolin - Team-calculon
     /**
      * Mass assignable attributes
      *
@@ -26,15 +25,6 @@ class Wallet extends Model
     public function users() {
         return $this->belongsTo(User::class);
     }
-
-    // /**
-    //  * Get transactions related to this wallet
-    //  *
-    //  * @return void
-    //  */
-    // public function transactions() {
-    //     return $this->hasMany(Transaction::class, 'wallet_code', 'wallet_code');
-    // }
 
     /**
      * Get Wallet restriction
