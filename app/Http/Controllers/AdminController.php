@@ -179,7 +179,7 @@ class AdminController extends WalletController
 
             foreach($transact as $key => $value) {
                 
-                var_dump($wallet->wallet_code);
+                var_dump($key);
                 die();
                 }
             
