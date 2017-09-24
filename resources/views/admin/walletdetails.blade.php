@@ -74,14 +74,12 @@
                   <div class="table-responsive">
                     <table class="table no-margin">
                       <thead>
-                        <h4 class="wallet-name">Wallet</h4>
+                        <h4 class="wallet-name">Wallet 1 Details</h4>
                       </thead>
                       <tbody>
                       <tr>
-                        @foreach(App\Http\Utilities\Wallet::all() as $key => $value)
-                        <td>{{$key}}</td>
-                        <td>{{$value}}</td>
-                        @endforeach
+                        <td>Wallet Name:</td>
+                        <td>Wallet 1</td>
                       </tr>
                       <tr>
                         <td>Wallet Lock Code:</td>
