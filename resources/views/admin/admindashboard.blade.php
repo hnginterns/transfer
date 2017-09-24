@@ -28,13 +28,13 @@ $totalwallets = count($wallets);
         </div>
         <!-- ./col -->
 
-      </div>
+      
 
       <!-- Small boxes (Stat box) -->
       <div class="row">
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
-          <div class="small-box bg-aqua">
+          <div class="small-box bg-green">
             <div class="inner">
               <h3>{{$totalusers}}</h3>
 
@@ -48,7 +48,7 @@ $totalwallets = count($wallets);
         </div>
         <!-- ./col -->
 
-      </div>
+      
 
   </section>
 
