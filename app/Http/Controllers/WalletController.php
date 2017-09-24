@@ -111,15 +111,14 @@ class WalletController extends Controller
                 $status = $response['status'];
 
                 if ($status == 'success') {
-                    $data = $response['data'];
-                    return redirect('success');
+                    //$data = $response['data'];
+                    return redirect('banks');
                 } else {
                     if (array_key_exists('code', $response)) {
-                        $data = $response['message'];
-                        if($request->expectsJson()) {
-                            return redirect('failed');    
-                        }
-                        var_dump($data);
+                        //$data = $response['message'];
+                            return redirect('banks');    
+                    
+                        //var_dump($data);
                     }
                     
                 }
