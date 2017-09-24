@@ -70,7 +70,7 @@
         }
 
         .modal-footer button {
-            margin: 0;
+            float: left;
             transition: color 2s, background 1s;
             box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
             border-radius: 63px;
@@ -80,7 +80,10 @@
             color: white;
             border: none;
         }
-
+        .button {
+            margin: 0;
+            text-align: center;
+        }
         .modal-footer button:hover {
             background: white;
             color: #FF6200;
@@ -136,9 +139,11 @@
             <!-- Modal Footer -->
             <div class="modal-footer">
                 <h6 class="text-center">Click print to print receipt for reference or ok to continue</h6>
+                <div class="button">
                 <button type="button" class="btn" data-dismiss="modal" id="print">Print</button>
                 <button type="button" class="btn" data-dismiss="modal" id="print">Send via email</button>
                 <button type="button" class="btn" id="close">OK</button>
+            </div>
             </div>
             <p style="text-align: center; font-size: 13px;">Copyright &#169; 2017 Transfer Rules | Rave Pay | Privacy Policy | Terms Of Service</p>
        <!-- </div>
