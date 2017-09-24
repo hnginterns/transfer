@@ -16,7 +16,6 @@ class AdminController extends WalletController
 
 
     public  function __construct(){
-
         $this->middleware('admin')->except('logout');
 
     }
@@ -147,14 +146,14 @@ class AdminController extends WalletController
     }
 
     public function ViewBeneficiary() {
-      return view ('admin/createbeneficiary');
-    }
-
-     public function managebeneficiary() {
       return view ('admin/managebeneficiary');
     }
 
-     public function createbeneficiary() {
+     public function BeneficiaryDetails() {
+      return view ('admin/beneficiarydetails');
+    }
+
+     public function addBeneficiary() {
       return view ('admin/createbeneficiary');
     }
 
