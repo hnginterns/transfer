@@ -45,6 +45,7 @@ Route::group(['middleware' => 'auth'], function() {
 	//User routes
 	Route::get('/dashboard', 'pagesController@userdashboard');
 	Route::get('/transfer-to-bank', 'pagesController@bank_transfer');
+	Route::get('/add-beneficiary', 'pagesController@beneficiary');
 	Route::get('/transfer-to-wallet', 'pagesController@wallet_transfer');
 	Route::get('/create-wallet', 'pagesController@createWallet');
 	Route::get('/wallet-view', 'pagesController@viewWallet')->name('wallet');
