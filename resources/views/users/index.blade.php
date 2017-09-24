@@ -40,6 +40,20 @@
         </form>
         @endif
         </td>
+        <td>
+
+        @if( $user['is_admin'] == 0)
+        <form action="{{url('admin/users/makeAdmin/')}}/{{ $user['id'] }}" method="post">
+            {{csrf_field()}}
+            <button class="btn btn-danger" type="submit">Make Admin</button>
+        </form>
+        @else
+        <form action="{{url('admin/users/removeAdmin/')}}/{{ $user['id'] }}" method="post">
+            {{csrf_field()}}
+            <button class="btn btn-success" type="submit">Remove Admin</button>
+        </form>
+        @endif
+        </td>
       </tr>
       </tr>
       @endforeach

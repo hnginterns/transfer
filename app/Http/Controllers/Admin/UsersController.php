@@ -140,8 +140,8 @@ class UsersController extends Controller
         $validator = Validator::make($input, [
             'username' => 'bail|required',
             'email' => 'bail|email|required',
-            'first_name' => $request->get('first_name'),
-            'last_name' => $request->get('last_name'),
+            'first_name' => 'bail|required',
+            'last_name' => 'bail|required',
             'account_number' => 'bail|required|numeric'
             ],
             [
@@ -204,4 +204,21 @@ class UsersController extends Controller
         return back();
 
     }
+
+    public function makeAdmin(Request $request, $id){
+
+        $user = User::where('id', $id)->update(["is_admin" => 1]);
+
+        return back();
+
+    }
+
+    public function removeAdmin(Request $request, $id){
+
+        $user = User::where('id', $id)->update(["is_admin" => 0]);
+
+        return back();
+
+    }
+
 }

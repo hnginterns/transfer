@@ -496,7 +496,7 @@
               <div class="login-box" style="">
                   <img src="/svg/naira.svg" alt="no preview" class="transfer-icon">
                   <h4 class="intro" style="font-size: 20px;">Transfer to bank account </h4>
-                  <form class="admin-login" action="/transfers" method="POST">
+                  <form class="admin-login" action="/transferAccount" method="POST">
                     <div class="row">
                       <div class="col col-lg-6 form-holder">
                           <div class="form-group" style="margin: 30px 0;">
@@ -505,26 +505,26 @@
                         </div>
                       <div class="col col-lg-6 form-holder">
                           <div class="form-group" style="margin: 30px 0;">
-                              <input type="text" class="form-control cus-input" id="senderName" placeholder="Sender's Name">
+                              <input type="text" class="form-control cus-input" name="senderName" id="senderName" placeholder="Sender's Name">
                           </div>
                       </div>
                   </div>
                   <div class="row">
                       <div class="col col-lg-6 form-holder">
                         <div class="form-group">
-                            <input type="text" class="form-control cus-input" id="lockCode" placeholder="Lock code">
+                            <input type="text" class="form-control cus-input" name="lock_code" id="lockCode" placeholder="Lock code">
                         </div>
                       </div>
                       <div class="col col-lg-6 form-holder">
                         <div class="form-group">
-                            <input type="text" class="form-control cus-input" id="naration" placeholder="naration (optional)">
+                            <input type="text" class="form-control cus-input" name="naration" id="naration" placeholder="naration (optional)">
                         </div>
                       </div>
                     </div>
                     <div class="row">
                           <div class="col col-lg-6 form-holder">
                               <div class="form-group">
-                                  <select class="form-control cus-input" name="bank">
+                                  <select class="form-control cus-input" name="bank_code">
                                     <option>Select Beneficiary Bank</option>
                                     @foreach(App\Http\Utilities\Bank::all() as $bankCode => $bankName)
                                       <option value="{{ $bankCode }}"> {{ $bankName }}</option>
@@ -534,19 +534,19 @@
                           </div>
                           <div class="col col-lg-6 form-holder">
                               <div class="form-group">
-                                  <input type="text" class="form-control cus-input" id="benAcc" placeholder="Beneficiary Account No">
+                                  <input type="text" class="form-control cus-input" name="accountNumber" id="benAcc" placeholder="Beneficiary Account No">
                               </div>
                           </div>
                       </div>
                       <div class="row">-
                         <div class="col col-lg-6 form-holder">
                           <div class="form-group">
-                              <input type="number" class="form-control cus-input" id="amount" placeholder="Amount">
+                              <input type="number" class="form-control cus-input" name="amount" id="amount" placeholder="Amount">
                           </div>
                         </div>
                         <div class="col col-lg-6 form-holder">
                           <div class="form-group">
-                            <input type="number" class="form-control cus-input" id="refNo" placeholder="reference">
+                            <input type="text" class="form-control cus-input" name="reference" id="amount" placeholder="reference">
                           </div>
                         </div>
                       </div>
