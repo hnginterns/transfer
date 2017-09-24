@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use URL;
+use App\WalletTransaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
@@ -134,10 +135,10 @@ class AdminController extends WalletController
         return view ('admin/createwallet', compact('rule','user','user_ref'));
     }
 
-    public function show($walletId) {
+    public function show($walletId, WalletTransaction $transaction) {
 
 			$wallet = Wallet::find($walletId);
-
+            
 			//$user = $wallet->users()->get()->toArray();
 
 			//$userRef = substr(md5(Carbon::now()),0,10);
