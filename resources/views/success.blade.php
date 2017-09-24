@@ -71,7 +71,8 @@
 
 
         .modal-footer button {
-            float: left;
+            margin: 0 auto;
+            display: inline-block;
             transition: color 2s, background 1s;
             box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
             border-radius: 63px;
