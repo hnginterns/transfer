@@ -97,12 +97,12 @@ class WalletController extends Controller
                 $headers = array('content-type' => 'application/json', 'Authorization' => $token);
                 $method = $request->method();
 
-                $query = [];
+    
             if ($request->isMethod('post')) {
                      $query = [
                 "lock_code"=>$method('lock_code'),
                  "amount"=>$method('amount'),
-                 "bankcode"=>"058",
+                 "bankcode"=>$method('bank_code'),
                  "accountNumber"=>$method('accountNumber'),
                  "currency"=>"NGN",
                  "senderName"=>$method('senderName'),
@@ -110,8 +110,6 @@ class WalletController extends Controller
                  "ref"=>$method('reference')
 
                     ];
-
-                }
 
                 $body = \Unirest\Request\Body::json($query);
 
@@ -131,7 +129,8 @@ class WalletController extends Controller
                 }
 
                 var_dump($response);
-                
+
+                }
 
             }
 
