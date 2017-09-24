@@ -176,13 +176,10 @@ class AdminController extends WalletController
             $transaction = \App\Http\Utilities\Wallet::all();
 
             $transact = array_column($transaction, 'balance', 'uref');
+            $tranc = array_keys($transact);
+            var_dump($tranc);
+            die();
 
-            foreach($transact as $key => $value) {
-                
-                var_dump($key);
-                die();
-                }
-            
 			$user = $wallet->users()->get()->toArray();
 
 			$userRef = substr(md5(Carbon::now()),0,10);
