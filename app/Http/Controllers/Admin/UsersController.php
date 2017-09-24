@@ -140,8 +140,8 @@ class UsersController extends Controller
         $validator = Validator::make($input, [
             'username' => 'bail|required',
             'email' => 'bail|email|required',
-            'first_name' => $request->get('first_name'),
-            'last_name' => $request->get('last_name'),
+            'first_name' => 'bail|required',
+            'last_name' => 'bail|required',
             'account_number' => 'bail|required|numeric'
             ],
             [
