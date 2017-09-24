@@ -15,6 +15,7 @@ class CreateRulesTable extends Migration
     {
         Schema::create('rules', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('rule_name', 20);
             $table->boolean('can_transfer')->default(true);
             $table->boolean('can_transfer_external')->default(false);
             $table->decimal('max_amount', 12, 2);

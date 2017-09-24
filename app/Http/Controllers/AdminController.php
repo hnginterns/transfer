@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Auth;
-
+use URL;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Session;
 use App\User;
 use App\Wallet;
-
+use App\Rule;
 class AdminController extends Controller
 {
 
@@ -40,7 +42,35 @@ class AdminController extends Controller
     }
 
     public function saveNewRule(Request $request) {
-    	// logic for saving new rules Lies Here
+        // logic for saving new rules Lies Here
+        $validator = $this->validateRule($request->all());
+
+        if ($validator->fails()) {
+            $messages = $validator->messages()->toArray();
+            Session::flash('messages', $this->formatMessages($messages, 'error'));
+            return redirect()->to(URL::previous())->withInput();
+        } else {
+            
+            $rule = new Rule;
+            $rule->rule_name = $request->rule_name;
+            $rule->max_amount = $request->max_amount;
+            $rule->min_amount = $request->min_amount;
+            $rule->max_transactions_per_day = $request->max_transactions_per_day;
+            $rule->max_amount_transfer_per_day = $request->max_amount_transfer_per_day;
+            $rule->can_transfer = $request->can_transfer;
+            $rule->can_transfer_external = $request->can_transfer_external;
+            $rule->created_by = Auth::user()->id;
+            $rule->updated_by = Auth::user()->id;
+            if ($rule->save()) {
+                // Session::flash('messages', $this->formatMessages("Rule Could not be created", 'error'));
+                return redirect()->to(URL::previous());
+                
+            } else {
+                Session::flash('messages', $this->formatMessages("Rule Could not be created", 'error'));
+                return redirect()->to(URL::previous());
+            }
+        }
+    	
     }
 
 
@@ -65,6 +95,24 @@ class AdminController extends Controller
     public function usermanagement(){
         $name = Auth::user()->username;
         return view('usermanagement')->with("name", $name);
+    }
+
+
+     /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validateRule(array $data)
+    {
+        return Validator::make($data, [
+            'rule_name' => 'required|string|max:255',
+            'max_amount' => 'required|numeric',
+            'min_amount' => 'required|numeric',
+            'max_transactions_per_day' => 'required|numeric',
+            'max_amount_transfer_per_day' => 'required|numeric',
+        ]);
     }
 
 }
