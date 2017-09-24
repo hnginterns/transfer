@@ -546,7 +546,7 @@
                         </div>
                         <div class="col col-lg-6 form-holder">
                           <div class="form-group">
-                            <input type="text" class="form-control cus-input" id="reference" placeholder="reference">
+                            <input type="text" class="form-control cus-input" id="amount" placeholder="reference">
                           </div>
                         </div>
                       </div>
