@@ -86,13 +86,7 @@ Route::group(['middleware' => ['admin']], function() {
 	Route::get('/web-analytics', 'pagesController@webAnalytics');
 	Route::get('admin/createwallet', 'AdminController@wallet');
 	Route::post('admin/createwallet', 'AdminController@addwallet');
-<<<<<<< HEAD
 	Route::get('admin/viewwallet/{walletId}', 'AdminController@viewWallet')->name('view-wallet');
-=======
-	Route::get('admin/viewwallet', 'AdminController@viewWallet');
-	Route::get('admin/createbeneficiary', 'AdminController@createbeneficiary');
-	Route::get('admin/viewbeneficiary', 'AdminController@viewbeneficiary');
->>>>>>> ce301993408f435fd755b751c9f6fc4597bedadd
 	Route::resource('admin/users', 'Admin\UsersController');
 	Route::post('admin/users/store', 'Admin\UsersController@store');
 	Route::post('admin/users/banUser/{id}', 'Admin\UsersController@banUser');
