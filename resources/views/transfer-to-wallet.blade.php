@@ -509,8 +509,8 @@
 
                               
                                 <option>Select sender Wallet</option>
-                                    @foreach(App\Http\Utilities\Wallet::all() as $wallet)
-                                     <option value="{{ $wallet['uref'] }}">{{ $wallet['name']}}</option>
+                                    @foreach($wallets as $wallet)
+                                     <option value="{{ $wallet->wallet_code }}">{{ $wallet->wallet_name}}</option>
                                     @endforeach
                             </select>
                         </div>
