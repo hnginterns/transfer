@@ -88,10 +88,8 @@
 
                 <table>
                     <tr>
-                        @foreach($response as $key => $value)
-                        <td>{{$key}}</td>
-                        <td>{{$value}}</td>
-                        @endforeach
+                        <td>Merchant Name</td>
+                        <td>Nwauwa Victor Ifeanyi</td>
                     </tr>
                     <tr>
                         <td>Reference No.</td>
