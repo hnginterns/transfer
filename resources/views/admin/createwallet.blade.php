@@ -73,6 +73,11 @@
                   <h5 class="wallet-name"><b>Create</b> New Wallet</h5>
                   <input type="text" name="wallet_name" class="form-control input-defaulted" placeholder="Wallet Name">
                   <br><input type="text" name="lock_code" class="form-control input-defaulted" placeholder="wallet Lock Code">
+                  <br><select name="user" class="form-control input-defaulted" >
+                    <option value="1">Select Wallet User</option>
+                    <option value="1">User 2</option>
+                    <option value="1">User 3</option>
+          				</select>
                   <br><input type="text" name="user_ref" class="form-control input-defaulted" placeholder="User Reference">
                   <br><select name="currency" class="form-control input-defaulted" >
                     <option value="1">Nigerian Naira</option>
