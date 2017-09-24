@@ -58,6 +58,9 @@
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
                                     Forgot Your Password?
                                 </a>
+                                <a class="btn btn-link" href="{{ route('admin.login') }}">
+                                    Sign in as admin instead?
+                                </a>
                             </div>
                         </div>
                     </form>
