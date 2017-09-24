@@ -92,12 +92,9 @@
                         <td>User Balance:</td>
                         <td>{{ $wallet->balance }}</td>
                       </tr>
-                        <td>Wallet User:</td>
-                        <td>{{ $user[0]['username'] }}</td>
-                      </tr>
                       <tr>
                         <td>User ref:</td>
-                        <td>{{ $userRef }}</td>
+                        <td>{{ $wallet->userRef }}</td>
                       </tr>
                       <tr>
                         <td>Currency:</td>

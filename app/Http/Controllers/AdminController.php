@@ -136,7 +136,7 @@ class AdminController extends WalletController
 
     public function show(Wallet $wallet) {
 
-			//$wallet = Wallet::find($walletId);
+			$wallet = Wallet::find($walletId);
 
 			$user = $wallet->users()->get()->toArray();
 
