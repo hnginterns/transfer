@@ -134,16 +134,16 @@
                 <p id="body-footer"> This transaction will automatically close in 20 seconds and you will be redirected to your dashboard</p>
             </div>
             <!-- Modal Footer -->
-            <div class="modal-footer text-center">
+            <div class="modal-footer ">
                 <h6>Click print to print receipt for reference or ok to continue</h6>
                 <button type="button" class="btn" data-dismiss="modal" id="print">Print</button>
                 <button type="button" class="btn" data-dismiss="modal" id="print">Send via email</button>
                 <button type="button" class="btn" id="close">OK</button>
             </div>
             <p style="text-align: center; font-size: 13px;">Copyright &#169; 2017 Transfer Rules | Rave Pay | Privacy Policy | Terms Of Service</p>
-        </div>
+       <!-- </div>
     </div>
-</div>
+</div>-->
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
