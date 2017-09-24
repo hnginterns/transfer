@@ -84,6 +84,10 @@ class AdminController extends WalletController
       return view ('admin.managewallet');
     }
 
+    public function managebeneficiary() {
+      return view ('admin.managebeneficiary');
+    }
+
 
     public function addWallet(Request $request) {
       
@@ -133,6 +137,10 @@ class AdminController extends WalletController
 
     public function ViewWallet() {
       return view ('admin/walletdetails');
+    }
+
+    public function ViewBeneficiary() {
+      return view ('admin/beneficiarydetails');
     }
 
      /**

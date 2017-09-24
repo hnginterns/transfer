@@ -89,6 +89,14 @@ class pagesController extends Controller
     return view ('create-wallet');
   }
 
+  public function createBeneficiary() {
+    return view ('create-beneficiary');
+  }
+
+  public function viewBeneficiary() {
+    return view ('beneficiary-view');
+  }
+
   
   public function pagenotfound(){
     return view('404');
