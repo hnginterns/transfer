@@ -35,7 +35,7 @@ class Wallet {
 
 
 	public static function all() {
-		$token = $this->getToken();
+		$token = self::getToken();
                 $headers = array('content-type' => 'application/json','Authorization'=> $token);
 
                 $response = \Unirest\Request::get('https://moneywave.herokuapp.com/v1/wallet', $headers);
