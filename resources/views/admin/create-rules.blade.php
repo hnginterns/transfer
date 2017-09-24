@@ -131,8 +131,8 @@
                         
                     
 
-                    <br><button type="submit" class="btn btn-success" name="button"><i class="" aria-hidden="true"> Create</i></button>
-                    <a href="/admin/view-rules" class="btn btn-danger" name="button"><i class="" aria-hidden="true"> Cancel</i></a>
+                    <br><button type="submit" class="btn btn-success" name="button"><i class="fa fa-refresh" aria-hidden="true"> Create</i></button>
+                    <a href="/admin/view-rules" class="btn btn-danger" style="padding:10px;"><i class="fa fa-times" aria-hidden="true"> Cancel</i></a>
            
                   </form>
                   
