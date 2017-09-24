@@ -507,13 +507,11 @@
                         <div class="form-group">
                             <select class="form-control cus-input">
 
-                              @foreach($wallets as $wallet)
-                               <option value="{{ $wallet->id }}">{{ $wallet->wallet_code}}</option>
-                              @endforeach
+                              
                                 <option>Select Wallet</option>
-                                    <option>Wallet 1</option>
-                                    <option>Wallet 2</option>
-                                    <option>Wallet 3</option>
+                                    @foreach($wallets as $wallet)
+                                     <option value="{{ $wallet->id }}">{{ $wallet->wallet_code}}</option>
+                                    @endforeach
                             </select>
                         </div>
 
