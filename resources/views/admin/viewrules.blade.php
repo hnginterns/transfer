@@ -102,6 +102,7 @@
                                 <td>{{ $rule->min_amount }}</td>
                                 <td>{{ $rule->max_transactions_per_day }}</td>
                                 <td>{{ $rule->max_amount_transfer_per_day }}</td>
+                                <td><a href="{{ route('edit-rule', $rule->id) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
                             </tr>
                         </tbody>
                         {{--  {{ $i++ }}  --}}
