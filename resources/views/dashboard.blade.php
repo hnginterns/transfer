@@ -310,7 +310,7 @@
               <div class="balance">
                 @foreach($transaction as $transact)
                 @if($transact['uref'] == $wallet->wallet_code)
-                ₦ {{ $wallet->balance}}
+                ₦ {{ $transact['balance']}}
                 @endif
                 @endforeach
               </div>
