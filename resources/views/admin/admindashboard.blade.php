@@ -23,7 +23,7 @@ $totalwallets = count($wallets);
             <div class="icon">
               <i class="fa fa-bag"></i>
             </div>
-            <a href="{{url(admin/managewallet)}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{url('admin/managewallet')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -43,7 +43,7 @@ $totalwallets = count($wallets);
             <div class="icon">
               <i class="fa fa-users"></i>
             </div>
-            <a href="{{url(admin/users)}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{url('admin/users')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
