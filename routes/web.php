@@ -50,6 +50,10 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::get('/failed', 'pagesController@failed');
 	Route::get('/transfer', 'pagesController@transfer');
 	Route::get('/balance', 'pagesController@balance');
+	Route::get('/ravepay', 'RavepayController@index');
+        Route::get('/integrity/{txRef}/{email}', 'RavepayController@checkSum');
+        Route::get('/ravepaysuccess/{ref}/{amount}/{currency}', 'RavepayController@success');
+
 });
 
 // auth admin
