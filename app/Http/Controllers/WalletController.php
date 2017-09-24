@@ -47,7 +47,7 @@ class WalletController extends Controller
                 $query = array(
                 'name' => "James Okoh",
                 'lock_code' => "felicia",
-                'user_ref' => "202",
+                'user_ref' => "576",
                 'currency' => "NGN");
 
                 $body = \Unirest\Request\Body::json($query);
@@ -58,6 +58,8 @@ class WalletController extends Controller
                 $status = $response['status'];
                 $data = $response['data'];
                 $createWallet = var_dump($data);
+
+                $this->storeWalletDetailsToDB($data, 1, "felicia");
     }
 
     public function transfer(){ 
@@ -163,7 +165,7 @@ class WalletController extends Controller
             $merchant_id            =      $wallet_data['merchantId'];
             $currency_id            =      $wallet_data['currencyId'];
             $balance                =      $wallet_data['balance'];
-            $updatedAt              =      $wallet_data['udpatedAt'];
+            $updatedAt              =      $wallet_data['updatedAt'];
             $createdAt              =      $wallet_data['createdAt'];
 
             $wallet->moneywave_wallet_id        =        $moneywave_wallet_id;
@@ -174,7 +176,7 @@ class WalletController extends Controller
             $wallet->enabled                    =        $enabled;
             $wallet->lock_code                  =        $lock_code;
             $wallet->wallet_code                =        $wallet_code;
-
+            $wallet->uuid                       =        $uuid;
             if($wallet->save()){
                 return back();
             }else{
