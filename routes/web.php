@@ -12,11 +12,11 @@
 */
 Auth::routes();
 // get default home pages
-Route::get('/', 'pagesController@home');
+Route::get('/', 'pagesController@home')->name('transferrules');
 
 Route::get('/home', 'pagesController@home');
 // get signin page
-Route::get('/signin', 'pagesController@signin');
+//Route::get('/signin', 'pagesController@signin');
 
 Route::get('/about', 'pagesController@about');
 
@@ -60,7 +60,11 @@ Route::group(['middleware' => 'auth'], function() {
 });
 
 // auth admin
-Route::group(['middleware' => ['auth', 'admin']], function() {
+Route::get('/admin/login', 'AdminLoginController@showLoginForm');
+Route::post('/admin/login', 'AdminLoginController@login')->name('admin.login');
+Route::get('/admin/logout', 'AdminLoginController@logout')->name('admin.logout');
+
+Route::group(['middleware' => ['admin']], function() {
 	Route::get('/admin', 'AdminController@index');
 	Route::get('/admin/managewallet', 'AdminController@managewallet');
 	Route::get('/admin/adduser', 'AdminController@addaccount');

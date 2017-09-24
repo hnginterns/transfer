@@ -235,7 +235,7 @@
     <div class="container">
       <div class="navbar-header">
 
-        <a class="navbar-brand" href="#"> <span><img src="img/logo.png" alt=""></span>   PaysFund</a>
+        <a class="navbar-brand" href="{{ route('transferrules') }}"> <span><img src="img/logo.png" alt=""></span>   PaysFund</a>
 
         <button type="button" id="navb" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
           aria-controls="navbar">
@@ -297,46 +297,20 @@
       <div class="col-sm-10">
         <div class="container-fluid">
 
+           @foreach($wallets as $wallet)
+                                     
+                                   
+
           <div class="wallet-container">
             <a class="wallet">
-              <p class="num">001</p>
+              <p class="num">{{ $wallet->id }}</p>
               <p class="currency">NGN</p>
               <img src="img/wallet-i.svg" alt="" class="wallet-img">
-              <p class="id">ID: 0125665</p>
-              <div class="balance">₦5,263,200.00</div>
+              <p class="id">ID: {{ $wallet->wallet_code}}</p>
+              <div class="balance">₦ {{ $wallet->balance}}</div>
             </a>
 
-            <a class="wallet">
-              <p class="num">001</p>
-              <p class="currency">NGN</p>
-              <img src="img/wallet-i.svg" alt="" class="wallet-img">
-              <p class="id">ID: 0125665</p>
-              <div class="balance">₦5,263,200.00</div>
-            </a>
-
-            <a class="wallet">
-              <p class="num">001</p>
-              <p class="currency">NGN</p>
-              <img src="img/wallet-i.svg" alt="" class="wallet-img">
-              <p class="id">ID: 0125665</p>
-              <div class="balance">₦5,263,200.00</div>
-            </a>
-
-            <a class="wallet">
-              <p class="num">001</p>
-              <p class="currency">NGN</p>
-              <img src="img/wallet-i.svg" alt="" class="wallet-img">
-              <p class="id">ID: 0125665</p>
-              <div class="balance">₦5,263,200.00</div>
-            </a>
-
-            <a class="wallet">
-              <p class="num">001</p>
-              <p class="currency">NGN</p>
-              <img src="img/wallet-i.svg" alt="" class="wallet-img">
-              <p class="id">ID: 0125665</p>
-              <div class="balance">₦5,263,200.00</div>
-            </a>
+             @endforeach
 
 
 

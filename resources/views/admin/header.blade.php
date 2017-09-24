@@ -2,7 +2,7 @@
 <header class="main-header" style="background-color: #25313F;">
 
   <!-- Logo -->
-  <a href="index2.html" class="logo" style="background-color: #25313F;">
+  <a href="{{ route('transferrules') }}" class="logo" style="background-color: #25313F;">
     <!-- mini logo for sidebar mini 50x50 pixels -->
     <span class="logo-mini"><b>T</b>R</span>
     <!-- logo for regular state and mobile devices -->
