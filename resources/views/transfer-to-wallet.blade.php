@@ -510,7 +510,7 @@
                               
                                 <option>Select Wallet</option>
                                     @foreach($wallets as $wallet)
-                                     <option value="{{ $wallet->id }}">{{ $wallet->wallet_code}}</option>
+                                     <option value="{{ $wallet->id }}">{{ $wallet->id}}</option>
                                     @endforeach
                             </select>
                         </div>
