@@ -176,7 +176,9 @@ class AdminController extends WalletController
             $transaction = \App\Http\Utilities\Wallet::all();
 
             $transact = array_map(function ($transc){
-                    return $transc;
+                    if($wallet->wallet_code == $transc['uref']){
+                        return 'aye';
+                    }
             }, $transaction);
             var_dump($transact);
             die();
