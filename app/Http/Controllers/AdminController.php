@@ -174,7 +174,10 @@ class AdminController extends WalletController
 
 			$wallet = Wallet::find($walletId);
             $transaction = \App\Http\Utilities\Wallet::all();
-
+            foreach($transaction as $transact) {
+                var_dump($transact['uref']);
+                die();
+            }
             $transact = array_column($transaction, 'balance', 'uref');
             var_dump($transaction['uref']);
             die();
