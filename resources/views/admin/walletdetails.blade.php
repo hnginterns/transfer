@@ -74,24 +74,28 @@
                   <div class="table-responsive">
                     <table class="table no-margin">
                       <thead>
-                        <h4 class="wallet-name">Wallet 1 Details</h4>
+                        <h4 class="wallet-name">{{ $wallet->wallet_name }} Details</h4>
                       </thead>
                       <tbody>
                       <tr>
                         <td>Wallet Name:</td>
-                        <td>Wallet 1</td>
+                        <td>{{ $wallet->wallet_name }}</td>
                       </tr>
                       <tr>
                         <td>Wallet Lock Code:</td>
-                        <td>204537357</td>
+                        <td>{{ $wallet->lock_code }}</td>
                       </tr>
                       <tr>
+                      <tr>
+                        <td>User ref:</td>
+                        <td>{{ $wallet->balance }}</td>
+                      </tr>
                         <td>Wallet User:</td>
-                        <td>User 1</td>
+                        <td>{{ $user[0]['username'] }}</td>
                       </tr>
                       <tr>
                         <td>User ref:</td>
-                        <td>302</td>
+                        <td>{{ $userRef }}</td>
                       </tr>
                       <tr>
                         <td>Currency:</td>

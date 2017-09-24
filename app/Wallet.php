@@ -23,7 +23,7 @@ class Wallet extends Model
      * @return void
      */
     public function users() {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'uuid');
     }
 
     /**
