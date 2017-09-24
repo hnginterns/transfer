@@ -36,6 +36,8 @@ Route::get('/walletTransfer', 'WalletController@transfer');
 
 Route::get('/gettoken', 'WalletController@getToken');
 
+Route::get('/transferWallet', 'WalletController@transfer');
+
 Route::get('/transferAccount', 'WalletController@transferAccount');
 
 Route::get('/404', 'pagesController@pagenotfound');
@@ -58,6 +60,7 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('/ravepaysuccess/{ref}/{amount}/{currency}', 'RavepayController@success');
 
 });
+
 
 // auth admin
 Route::get('/admin/login', 'AdminLoginController@showLoginForm');
@@ -83,12 +86,15 @@ Route::group(['middleware' => ['admin']], function() {
 	Route::get('/view-accounts', 'pagesController@viewAccounts');
 	Route::get('/addaccount', 'AdminController@addaccount');
 	Route::get('/usermanagement', 'AdminController@usermanagement');
+	Route::get('admin/beneficiary', 'AdminController@ViewBeneficiary');
+	Route::get('admin/addBeneficiary', 'AdminController@addBeneficiary');
+	Route::get('admin/beneficiarydetails', 'AdminController@BeneficiaryDetails');
 	Route::get('/web-analytics', 'pagesController@webAnalytics');
 	Route::get('admin/createwallet', 'AdminController@wallet');
 	Route::get('admin/wallet-details', 'AdminController@walletdetails');
 	Route::get('admin/view-rules', 'AdminController@viewRules');
 	Route::post('admin/createwallet', 'AdminController@addwallet');
-	Route::get('admin/viewwallet/{walletId}', 'AdminController@viewWallet')->name('view-wallet');
+	Route::get('admin/viewwallet/{walletId}', 'AdminController@show')->name('view-wallet');
 	Route::resource('admin/users', 'Admin\UsersController');
 	Route::post('admin/users/store', 'Admin\UsersController@store');
 	Route::post('admin/users/banUser/{id}', 'Admin\UsersController@banUser');

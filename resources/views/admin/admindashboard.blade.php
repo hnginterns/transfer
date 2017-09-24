@@ -23,12 +23,15 @@ $totalwallets = count($wallets);
             <div class="icon">
               <i class="fa fa-briefcase"></i>
             </div>
+            <a href="{{ url('/admin/managewallet') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+
             <a href="{{url('admin/managewallet')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+
           </div>
         </div>
         <!-- ./col -->
 
-      
+
 
       <!-- Small boxes (Stat box) -->
       <div class="row">
@@ -60,7 +63,7 @@ $totalwallets = count($wallets);
 			        <th>Email</th>
 			        <th>Firstname</th>
 			        <th>Lastname</th>
-			        
+
 			        <th colspan="2">Action</th>
 			      </tr>
 			    </thead>
@@ -72,7 +75,7 @@ $totalwallets = count($wallets);
 			        <td>{{$user['email']}}</td>
 			        <td>{{$user['first_name']}}</td>
 			        <td>{{$user['last_name']}}</td>
-			        
+
 			        <td><a href="{{action('Admin\UsersController@edit', $user['id'])}}" class="btn btn-warning">Edit</a></td>
 			        <td>
 
@@ -112,26 +115,8 @@ $totalwallets = count($wallets);
   </div>
 
 
-
-
   </section>
 
 
 
 @endsection
-
-  
-      
-
-
-
-
-
-
-
-
-
-
-
-
-    

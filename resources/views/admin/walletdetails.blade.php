@@ -66,7 +66,9 @@
 
 
 <div class="container-fluid">
-  <button type="submit" class="btn btn-success" name="button"> Back</button>
+  <a href="/admin/managewallet">
+  <button type="submit" class="btn btn-success" name="button">Back</button>
+  </a>
   <br>
         <div class="single-wallet-holder col-md-6">
             <div class="inner-holder">
@@ -83,19 +85,16 @@
                       </tr>
                       <tr>
                         <td>Wallet Lock Code:</td>
-                        <td>{{ $wallet->lock_code }}</td>
+                        <td>{{ $wallet->wallet_code }}</td>
                       </tr>
                       <tr>
                       <tr>
-                        <td>User ref:</td>
+                        <td>User Balance:</td>
                         <td>{{ $wallet->balance }}</td>
                       </tr>
-                        <td>Wallet User:</td>
-                        <td>{{ $user[0]['username'] }}</td>
-                      </tr>
                       <tr>
                         <td>User ref:</td>
-                        <td>{{ $userRef }}</td>
+                        <td>{{ $wallet->userRef }}</td>
                       </tr>
                       <tr>
                         <td>Currency:</td>

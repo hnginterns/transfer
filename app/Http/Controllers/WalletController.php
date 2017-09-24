@@ -65,15 +65,15 @@ class WalletController extends Controller
                 $createWallet = var_dump($data);
     }
 
-    public function transfer(){ 
+    public function transfer(Request $request){ 
                 $token = $this->getToken();
                 $headers = array('content-type' => 'application/json', 'Authorization' => $token);
                 $query = array(
-                "sourceWallet"=> 0,
-                "recipientWallet"=> 102,
-                "amount"=> "10",
+                "sourceWallet"=> $request->input('sourceWallet'),
+                "recipientWallet"=> $request->input('recipientWallet'),
+                "amount"=> $request->input('amount'),
                 "currency"=> "NGN",
-                "lock_code"=>"0lanrewaJU"
+                "lock"=> $request->input('lock')
 
                 ); 
 
@@ -84,14 +84,12 @@ class WalletController extends Controller
                 $response = json_decode($response->raw_body,TRUE);
                 $status = $response['status'];
                 if ($status == 'success') {
-                    $data = $response['data'];
-                } else {
-                    if (array_key_exists('code', $response)) {
+                    return redirect('success');
+                } 
 
-                        $data = $response['message'];
-                    }
-                }
                 var_dump($response);
+                
+        
             }
 
                 public function transferAccount(Request $request){

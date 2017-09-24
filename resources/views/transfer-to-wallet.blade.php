@@ -503,16 +503,32 @@
                 <div class="login-box" style="">
                     <img src="/svg/naira.svg" alt="no preview" class="transfer-icon">
                     <h4 class="intro" style="font-size: 20px;">Transfer to Wallet account </h4>
-                    <form class="admin-login">
+                    <form class="admin-login" action="/transferWallet" method="GET">
                         <div class="form-group">
-                            <select class="form-control cus-input" name="wallet_id">
+                            <select class="form-control cus-input" name="sourceWallet">
 
                               
-                                <option>Select Wallet</option>
-                                    @foreach($wallets as $wallet)
-                                     <option value="{{ $wallet->id }}">{{ $wallet->wallet_name}}</option>
+                                <option>Select sender Wallet</option>
+                                    @foreach(App\Http\Utilities\Wallet::all() as $wallet)
+                                     <option value="{{ $wallet['uref'] }}">{{ $wallet['name']}}</option>
                                     @endforeach
                             </select>
+                        </div>
+
+
+                        <div class="form-group">
+                            <select class="form-control cus-input" name="recipientWallet">
+
+                              
+                                <option>Select recipient wallet</option>
+                                    @foreach(App\Http\Utilities\Wallet::all() as $wallet)
+                                     <option value="{{ $wallet['uref'] }}">{{ $wallet['name']}}</option>
+                                    @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control cus-input" name="lock" placeholder="lock code">
                         </div>
 
                         <div class="form-group" style="margin-top: 50px;">

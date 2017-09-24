@@ -119,10 +119,10 @@
 
     .wallet .balance {
       position: absolute;
-      width: 115px;
-      left: 200px;
+      right: 0;
       top: 125px;
       color: white;
+      padding-right: 5px;
     }
 
     .profile {
@@ -296,12 +296,12 @@
 
       <div class="col-sm-10">
         <div class="container-fluid">
+          <div class="wallet-container">
 
            @foreach($wallets as $wallet)
                                      
                                    
 
-          <div class="wallet-container">
             <a class="wallet">
               <p class="num">{{ $wallet->id }}</p>
               <p class="currency">NGN</p>
