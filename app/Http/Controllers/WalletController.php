@@ -87,7 +87,7 @@ class WalletController extends Controller
                     return redirect('success');
                 } 
 
-                return redirect('failed');
+                var_dump($response);
                 
         
             }
