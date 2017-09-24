@@ -12,11 +12,11 @@
 */
 Auth::routes();
 // get default home pages
-Route::get('/', 'pagesController@home');
+Route::get('/', 'pagesController@home')->name('transferrules');
 
 Route::get('/home', 'pagesController@home');
 // get signin page
-Route::get('/signin', 'pagesController@signin');
+//Route::get('/signin', 'pagesController@signin');
 
 Route::get('/about', 'pagesController@about');
 
@@ -50,7 +50,7 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::get('/wallet-view', 'pagesController@viewWallet')->name('wallet');
 	Route::get('/banks', 'BanksController@banks');
 	Route::get('/success', 'pagesController@success');
-	Route::get('/failed', 'WalletController@transferAccount');
+	Route::get('/failed', 'pagesController@failed');
 	Route::get('/transfer', 'pagesController@transfer');
 	Route::get('/balance', 'pagesController@balance');
 	Route::get('/ravepay', 'RavepayController@index');
@@ -60,7 +60,11 @@ Route::group(['middleware' => 'auth'], function() {
 });
 
 // auth admin
-Route::group(['middleware' => ['auth', 'admin']], function() {
+Route::get('/admin/login', 'AdminLoginController@showLoginForm');
+Route::post('/admin/login', 'AdminLoginController@login')->name('admin.login');
+Route::get('/admin/logout', 'AdminLoginController@logout')->name('admin.logout');
+
+Route::group(['middleware' => ['admin']], function() {
 	Route::get('/admin', 'AdminController@index');
 	Route::get('/admin/managewallet', 'AdminController@managewallet');
 	Route::get('/admin/adduser', 'AdminController@addaccount');

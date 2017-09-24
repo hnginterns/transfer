@@ -72,9 +72,9 @@
 <body>
 <!--<button class="btn btn-primary" data-toggle="modal" data-target="#modal">
     Launch failed transaction
-</button>
+</button> -->
 
-<div class="modal fade" id="modal">
+<!--<div class="modal fade" id="modal">
     <div class="modal-dialog">
         <div class="modal-content"> -->
             <!-- Modal Header -->
@@ -88,10 +88,8 @@
 
                 <table>
                     <tr>
-                        @foreach($response as $key => $value)
-                        <td>{{$key}}</td>
-                        <td>{{$value}}</td>
-                        @endforeach
+                        <td>Merchant Name</td>
+                        <td>Nwauwa Victor Ifeanyi</td>
                     </tr>
                     <tr>
                         <td>Reference No.</td>

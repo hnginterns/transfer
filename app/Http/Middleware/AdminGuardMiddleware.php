@@ -5,7 +5,8 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class AdminMiddleware
+
+class AdminGuardMiddleware
 {
     /**
      * Handle an incoming request.
@@ -14,12 +15,12 @@ class AdminMiddleware
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle($request, Closure $next, $guard = null)
     {
-        if(Auth::check() && Auth::user()->isAdmin()) {
-            return $next($request);
+        if (Auth::guard($guard)->check()) {
+            //return redirect('/admin');
         }
 
-        return redirect('/admin/login')->with('message', 'You Must be logged in as an Admin');
+        return $next($request);
     }
 }

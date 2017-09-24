@@ -11,11 +11,11 @@
 
     <title>Sign In</title>
 
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="/css/bootstrap.css" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
 
-    <link href="css/signin.css" rel="stylesheet">
+    <link href="/css/signin.css" rel="stylesheet">
 
 </head>
 
@@ -99,15 +99,13 @@
 
             <div class="login-box">
 
-                <h4 class="intro">Welcome </h4>
+                <h4 class="intro">Welcome Administrator</h4>
 
                 <h3 class="sign-in">Sign In to your PaysFund Account</h3>
 
                 <h6 class="promise">It is simple and easy to control your account -<br> Keep your password secret</h6>
-                @if (Session::has('messages'))
-                    {!! Session::get('messages') !!}
-                @endif
-                <form method="POST" action="{{ route('login') }}" class="admin-login">
+
+                <form method="POST" action="{{ route('admin.login') }}" class="admin-login">
                     {{ csrf_field() }}
                     <div class="form-group">
 
