@@ -41,7 +41,7 @@ Route::get('/transferAccount', 'WalletController@transferAccount');
 Route::get('/404', 'pagesController@pagenotfound');
 
 // authentications
-//Route::group(['middleware' => 'auth'], function() {
+Route::group(['middleware' => 'auth'], function() {
 	//User routes
 	Route::get('/dashboard', 'pagesController@userdashboard');
 	Route::get('/transfer-to-bank', 'pagesController@bank_transfer');
@@ -52,10 +52,14 @@ Route::get('/404', 'pagesController@pagenotfound');
 	Route::get('/failed', 'pagesController@failed');
 	Route::get('/transfer', 'pagesController@transfer');
 	Route::get('/balance', 'pagesController@balance');
-//});
+	Route::get('/ravepay', 'RavepayController@index');
+        Route::get('/integrity/{txRef}/{email}', 'RavepayController@checkSum');
+        Route::get('/ravepaysuccess/{ref}/{amount}/{currency}', 'RavepayController@success');
+
+});
 
 // auth admin
-//Route::group(['middleware' => ['auth', 'admin']], function() {
+Route::group(['middleware' => ['auth', 'admin']], function() {
 	Route::get('/admin', 'AdminController@index');
 	Route::get('/admin/managewallet', 'AdminController@managewallet');
 	Route::get('/admin/adduser', 'AdminController@addaccount');
@@ -80,7 +84,7 @@ Route::get('/404', 'pagesController@pagenotfound');
 	Route::post('admin/users/unbanUser/{id}', 'Admin\UsersController@unbanUser');
 	Route::post('admin/users/makeAdmin/{id}', 'Admin\UsersController@makeAdmin');
 	Route::post('admin/users/removeAdmin/{id}', 'Admin\UsersController@removeAdmin');
-//});
+});
 
 // Testing routes
 Route::get('/test', 'HomeController@randomFunc');

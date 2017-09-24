@@ -23,7 +23,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::all()->toArray();
+        $users = User::withTrashed()->get()->toArray();
 
         //dd($users);
         $name = Auth::user()->username;
@@ -140,8 +140,8 @@ class UsersController extends Controller
         $validator = Validator::make($input, [
             'username' => 'bail|required',
             'email' => 'bail|email|required',
-            'first_name' => $request->get('first_name'),
-            'last_name' => $request->get('last_name'),
+            'first_name' => 'bail|required',
+            'last_name' => 'bail|required',
             'account_number' => 'bail|required|numeric'
             ],
             [
@@ -199,7 +199,8 @@ class UsersController extends Controller
 
     public function unbanUser(Request $request, $id){
 
-        $user = User::where('id', $id)->update(["deleted_at" => null]);
+        $user = User::withTrashed()->where('id', $id);
+        $user->restore();
 
         return back();
 

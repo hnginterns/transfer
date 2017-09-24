@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Wallet;
+use Illuminate\Http\Request;
 class WalletController extends Controller
 {
     /**
@@ -89,18 +90,18 @@ class WalletController extends Controller
                 var_dump($response);
             }
 
-                public function transferAccount(){
+                public function transferAccount(Request $request){
                 $token = $this->getToken();
                 $headers = array('content-type' => 'application/json', 'Authorization' => $token);
                 $query = array(
-                "lock_code"=>"0lanrewaJU",
-                 "amount"=>10,
-                 "bankcode"=>"044",
-                 "accountNumber"=>"0690000005",
+                "lock"=>$request->input('lock_code'),
+                 "amount"=>$request->input('amount'),
+                 "bankcode"=>$request->input('bank_code'),
+                 "accountNumber"=>$request->input('accountNumber'),
                  "currency"=>"NGN",
-                 "senderName"=>"Prime Inc",
-                 "narration"=>"Gucchi shirt payment", //Optional
-                 "ref"=>"KFKJ09091");
+                 "senderName"=>$request->input('senderName'),
+                 "narration"=>$request->input('naration'), //Optional
+                 "ref"=>$request->input('reference'));
 
                 $body = \Unirest\Request\Body::json($query);
 
