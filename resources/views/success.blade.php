@@ -69,8 +69,14 @@
             /* text-align: left; */
         }
 
+        .modal-footer {
+
+            margin: 0 auto;
+
+        }
+
         .modal-footer button {
-            float: left;
+            float: none;
             transition: color 2s, background 1s;
             box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
             border-radius: 63px;
@@ -96,8 +102,8 @@
 </button> -->
 
 <!--<div class="modal fade" id="modal">
-    <div class="modal-dialog">-->
-        <div class="modal-content">
+    <div class="modal-dialog">
+        <div class="modal-content">-->
             <!-- Modal Header -->
             <div class="modal-header">
                 <!--<button type="button" class="close" data-dismiss="modal">&times;</button> -->
@@ -139,15 +145,13 @@
             <!-- Modal Footer -->
             <div class="modal-footer">
                 <h6 class="text-center">Click print to print receipt for reference or ok to continue</h6>
-                <div class="button">
                 <button type="button" class="btn" data-dismiss="modal" id="print">Print</button>
                 <button type="button" class="btn" data-dismiss="modal" id="print">Send via email</button>
                 <button type="button" class="btn" id="close">OK</button>
             </div>
-            </div>
             <p style="text-align: center; font-size: 13px;">Copyright &#169; 2017 Transfer Rules | Rave Pay | Privacy Policy | Terms Of Service</p>
-       </div>
-    <!--</div>
+       <!-- </div>
+    </div>
 </div>-->
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
