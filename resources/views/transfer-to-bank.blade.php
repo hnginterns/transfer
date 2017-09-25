@@ -510,19 +510,19 @@
                           </div>
                       </div>-->
                   </div>
-                  <div class="row">
-                      <!--<div class="col col-lg-6 form-holder">
+                 <!-- <div class="row">
+                      <div class="col col-lg-6 form-holder">
                         <div class="form-group">
                             <input type="text" class="form-control cus-input" name="lock_code" id="lockCode" placeholder="Lock code">
                         </div>
-                      </div>-->
+                      </div>
                       
                       <div class="col col-lg-6 form-holder">
                         <div class="form-group">
                             <input type="text" class="form-control cus-input" name="naration" id="naration" placeholder="naration (optional)">
                         </div>
                       </div>
-                    </div>
+                    </div>-->
                       <div class="row">
                         <div class="col col-lg-6 form-holder">
                           <div class="form-group">
