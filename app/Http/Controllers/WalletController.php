@@ -80,8 +80,8 @@ class WalletController extends Controller
                 if($rules[0]['can_transfer'] == 1){
                     $date = new DateTime();
                     $date_string = date_format($date,"Y-m-d");
-                    $wallet_transactions = WalletTransaction::count();
-                    $total_amount = WalletTransaction::sum('amount');
+                    $wallet_transactions = Transaction::count();
+                    $total_amount = Transaction::sum('amount');
                     if($wallet_transactions < $rules[0]['max_transactions_per_day'] && $total_amount < $rules[0]['max_amount_transfer_per_day']){
                         if($amount >= $rules[0]['min_amount'] && $amount <= $rules[0]['max_amount']){
                             $token = $this->getToken();
@@ -101,14 +101,15 @@ class WalletController extends Controller
                             $response_arr = json_decode($response->raw_body,TRUE);
                             $status = $response_arr['status'];
                             if ($status == 'success') {
-                                 $wallet = new WalletTransaction;
-                                 $wallet->sourceWallet = $request->input('sourceWallet');
-                                 $wallet->recipientWallet = $request->input('recipientWallet');
-                                 $wallet->amount = $request->input('amount');
-                                 $wallet->created_at = new DateTime();
-                                 if($wallet->save()) {
+                                 //$wallet = new Transaction;
+                                 //$wallet->sourceWallet = $request->input('sourceWallet');
+                                 //$wallet->transaction_status = 1;
+                                 //$wallet->recipientWallet = $request->input('recipientWallet');
+                                 //$wallet->amount = $request->input('amount');
+                                 
+                                 //if($wallet->save()) {
                                     return response()->json(['status' => 'success']);
-                                 }
+                                 //}
                            }
                            else{
                                return response()->json([ 'status' => 'failed', 'msg' => $response_arr['message'] ]);
