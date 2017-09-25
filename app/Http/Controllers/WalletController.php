@@ -139,7 +139,7 @@ class WalletController extends Controller
                             $data = $response;
                             return redirect()->action('pagesController@success');
                         }else{
-                            return redirect('failed');
+                            return redirect()->action('pagesController@failed');
                         }
 
                         }
