@@ -504,18 +504,18 @@
                             @endforeach
                         </select>
                         </div>
-                      <div class="col col-lg-6 form-holder">
+                      <!--<div class="col col-lg-6 form-holder">
                           <div class="form-group" style="margin: 30px 0;">
                               <input type="text" class="form-control cus-input" name="sender_name" id="senderName" placeholder="Sender's Name">
                           </div>
-                      </div>
+                      </div>-->
                   </div>
                   <div class="row">
-                      <div class="col col-lg-6 form-holder">
+                      <!--<div class="col col-lg-6 form-holder">
                         <div class="form-group">
                             <input type="text" class="form-control cus-input" name="lock_code" id="lockCode" placeholder="Lock code">
                         </div>
-                      </div>
+                      </div>-->
                       
                       <div class="col col-lg-6 form-holder">
                         <div class="form-group">
@@ -529,11 +529,11 @@
                               <input type="number" class="form-control cus-input" name="amount" id="amount" placeholder="Amount">
                           </div>
                         </div>
-                        <div class="col col-lg-6 form-holder">
+                        <!--<div class="col col-lg-6 form-holder">
                           <div class="form-group">
                             <input type="text" class="form-control cus-input" name="reference" id="amount" placeholder="reference">
                           </div>
-                        </div>
+                        </div>-->
                       </div>
                       <div class="row">
                           <div class="col col-lg-6 form-holder">
@@ -541,11 +541,11 @@
                                 <input disabled type="text" class="form-control cus-input" value="{{$wallet->wallet_name}}" name="wallet_name" id="wallet_name">
                             </div>
                          </div>
-                         <div class="col col-lg-6 form-holder">
+                         <!--<div class="col col-lg-6 form-holder">
                             <div class="form-group">
                                 <input disabled type="text" class="form-control cus-input" value="{{$wallet->balance}}" name="wallet_balance" id="wallet_balance">
                             </div>
-                         </div>
+                         </div>-->
                       </div>
 
                       <button type="submit" class="btn btn-primary">Transfer</button>
