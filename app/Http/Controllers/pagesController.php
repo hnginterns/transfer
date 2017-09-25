@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Wallet;
-
+use Illuminate\Support\Facades\Auth;
+use App\Beneficiary;
 class pagesController extends Controller
 {
   use AuthenticatesUsers;
@@ -66,7 +67,8 @@ class pagesController extends Controller
   }
 
   public function bank_transfer (){
-    return view ('transfer-to-bank');
+    $beneficiary = Beneficiary::where('uuid',Auth::user()->id)->get();
+    return view ('transfer-to-bank', compact('beneficiary'));
   }
 
   public function wallet_transfer(){
