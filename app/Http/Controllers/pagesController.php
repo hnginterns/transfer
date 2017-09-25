@@ -70,7 +70,7 @@ class pagesController extends Controller
   }
 
   public function bank_transfer (){
-    $beneficiary = Beneficiary::where('uuid',Auth::user()->id)->get();
+    $beneficiary = Beneficiary::all();
     $wallet = Wallet::where('uuid', '=', Auth::user()->id)->limit(1)->get();
     if(!empty($wallet)){
       $wallet = $wallet[0];
