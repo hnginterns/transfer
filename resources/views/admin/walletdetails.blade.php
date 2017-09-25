@@ -114,10 +114,11 @@
                   </div>
               <!-- /.table-responsive -->                     
             
-            </div>            
-            <button type="submit" class="btn btn-block btn-primary btn-sm" name="button">Fund Wallet</button>  
-            <button type="submit" class="btn btn-block btn-primary btn-sm" name="button">Delete Wallet</button>  
+            </div>           
           </div>
+            
+          <a type="submit" class="btn btn-block btn-primary btn-sm" name="button">Fund Wallet</a>  
+            <a type="submit" class="btn btn-block btn-primary btn-sm" name="button">Delete Wallet</a> 
     </div>
 
 </div>
