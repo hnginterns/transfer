@@ -70,6 +70,7 @@ class WalletController extends Controller
 
     public function transfer(Request $request, WalletTransaction $transaction){
                 $lock_code = Wallet::where('uuid', Auth::user()->id)->get();
+                echo $lock_code[0]['lock_code'];
                 $token = $this->getToken();
                 $headers = array('content-type' => 'application/json', 'Authorization' => $token);
                 $query = array(
