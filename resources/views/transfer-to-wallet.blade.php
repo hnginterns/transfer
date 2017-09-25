@@ -586,10 +586,6 @@
           $.getJSON('/walletTransfer', data, function(resp) {
             console.log(resp);
             if(resp.status = 'failed') {
-              $("[name=lock]").val('');
-              $("[name=sourceWallet]").val('');
-              $("[name=recipientWallet]").val('');
-              $("[name=amount]").val('');
               var options = {
                   backdrop: false,
                   keyboard: false,
@@ -599,7 +595,6 @@
              $("#fmsg").html(resp.msg);
              $("#fmodal").modal(options);
             } else {
-              $("[name=lock]").val('');
               $("[name=sourceWallet]").val('');
               $("[name=recipientWallet]").val('');
               $("[name=amount]").val('');
