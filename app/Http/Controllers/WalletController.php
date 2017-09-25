@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use DateTime;
 use App\Wallet;
 use App\WalletTransaction;
 use Illuminate\Support\Facades\Validator;
@@ -9,6 +10,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Restriction;
 use App\Beneficiary;
+use App\Rule;
+use App\Transaction;
 use URL;
 class WalletController extends Controller
 {
@@ -69,39 +72,61 @@ class WalletController extends Controller
     }
 
     public function transfer(Request $request, WalletTransaction $transaction){
-                $token = $this->getToken();
-                $headers = array('content-type' => 'application/json', 'Authorization' => $token);
-                $query = array(
-                "sourceWallet"=> $request->input('sourceWallet'),
-                "recipientWallet"=> $request->input('recipientWallet'),
-                "amount"=> $request->input('amount'),
-                "currency"=> "NGN",
-                "lock"=> $request->input('lock')
+                
+                $lock_code = Wallet::where('uuid', Auth::user()->id)->get();
+                $restriction = Restriction::where('wallet_id', $lock_code[0]['id'])->get();
+                $rules = Rule::where('id', $restriction[0]['rule_id'] )->get();
+                $amount = $request->input('amount');
+                if($rules[0]['can_transfer'] == 1){
+                    $date = new DateTime();
+                    $date_string = date_format($date,"Y-m-d");
+                    $wallet_transactions = WalletTransaction::count();
+                    $total_amount = WalletTransaction::sum('amount');
+                    if($wallet_transactions < $rules[0]['max_transactions_per_day'] && $total_amount < $rules[0]['max_amount_transfer_per_day']){
+                        if($amount >= $rules[0]['min_amount'] && $amount <= $rules[0]['max_amount']){
+                            $token = $this->getToken();
+                            $headers = array('content-type' => 'application/json', 'Authorization' => $token);
+                            $query = array(
+                                "sourceWallet"=> $request->input('sourceWallet'),
+                                "recipientWallet"=> $request->input('recipientWallet'),
+                                "amount"=> $request->input('amount'),
+                                "currency"=> "NGN",
+                                "lock"=> $lock_code[0]['lock_code']
+                            );
 
-                );
+                            $body = \Unirest\Request\Body::json($query);
 
-                $body = \Unirest\Request\Body::json($query);
+                            $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/wallet/transfer', $headers, $body);
 
-                $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/wallet/transfer', $headers, $body);
-
-                $response_arr = json_decode($response->raw_body,TRUE);
-                $status = $response_arr['status'];
-                if ($status == 'success') {
-                   // $wallet = new WalletTransaction;
-                    //$wallet->sourceWallet = $request->input('sourceWallet');
-                    //$wallet->recipientWallet = $request->input('recipientWallet');
-                    //$wallet->amount = $request->input('amount');
-                    //if($wallet->save()) {
-                    return $response;
-                        return back('transfer-to-wallet');
-                        echo '<script>$("#smodal").modal(options);</script>';
-                    //}
-
-               }
-                return ['status' => 'failed'];
-                return redirect('transfer-to-wallet');
-                echo '<script>$("#smodal").modal(options);</script>';
-
+                            $response_arr = json_decode($response->raw_body,TRUE);
+                            $status = $response_arr['status'];
+                            if ($status == 'success') {
+                                 $wallet = new WalletTransaction;
+                                 $wallet->sourceWallet = $request->input('sourceWallet');
+                                 $wallet->recipientWallet = $request->input('recipientWallet');
+                                 $wallet->amount = $request->input('amount');
+                                 $wallet->created_at = new DateTime();
+                                 if($wallet->save()) {
+                                    return response()->json(['status' => 'success']);
+                                 }
+                           }
+                           else{
+                               return response()->json([ 'status' => 'failed', 'msg' => $response_arr['message'] ]);
+                           }
+                        }
+                        else{
+                            return response()->json([ 'status' => 'failed', 'msg' => 'You can only transfer between '.$rules[0]['min_amount'].' and '.$rules[0]['max_amount'] ]);
+                        }
+                    }
+                    else{
+                        return response()->json([ 'status' => 'failed', 'msg' => 'You have exceeded your transfer limit for the day.' ]);
+                    }
+                }
+                else{
+                    return response()->json([ 'status' => 'failed', 'msg' => 'You wallet cannot transfer. Contact the admin' ]);
+                }
+                
+                
             }
 
             public function transferAccount(Request $request){

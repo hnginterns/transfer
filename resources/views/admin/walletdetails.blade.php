@@ -69,7 +69,7 @@
   <a href="/admin/managewallet">
   <button type="submit" class="btn btn-success" name="button">Back</button>
   </a>
-  <br>
+  <br> <br>
         <div class="single-wallet-holder col-md-6">
             <div class="inner-holder">
                   <div class="box-body">
@@ -113,6 +113,9 @@
                     </table>
                   </div>
               <!-- /.table-responsive -->
+            
+              <button type="submit" class="btn btn-primary" name="button">Fund Wallet</button>            
+            
             </div>
           </div>
     </div>

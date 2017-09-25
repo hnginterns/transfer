@@ -75,6 +75,7 @@
             <!-- Modal Body -->
             <div class="modal-body">
                 <h4>YOUR TRANSACTION FAILED</h4>
+                <h6 id="fmsg"></h6>
         </div>
     </div>
 </div>

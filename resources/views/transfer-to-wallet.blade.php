@@ -509,7 +509,7 @@
 
                                 <option value="">Select sender Wallet</option>
                                     @foreach($wallets as $wallet)
-                                       @if($wallet->id == $user_id)
+                                       @if($wallet->uuid == $user_id)
                                           <option value="{{ $wallet->wallet_code }}">{{ $wallet->wallet_name}}</option>
                                         @endif
                                     @endforeach
@@ -523,15 +523,11 @@
 
                                 <option value="">Select recipient wallet</option>
                                     @foreach($wallets as $wallet)
-                                      @if($wallet->id !== $user_id)
+                                      @if($wallet->uuid !== $user_id)
                                           <option value="{{ $wallet->wallet_code }}">{{ $wallet->wallet_name}}</option>
                                       @endif
                                     @endforeach
                             </select>
-                        </div>
-
-                        <div class="form-group">
-                            <input type="text" class="form-control cus-input" name="lock" placeholder="lock code">
                         </div>
 
                         <div class="form-group" style="margin-top: 50px;">
@@ -600,6 +596,7 @@
                   show: true,
                   remote: false
               }
+             $("#fmsg").html(resp.msg);
              $("#fmodal").modal(options);
             } else {
               $("[name=lock]").val('');
