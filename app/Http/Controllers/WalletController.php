@@ -70,16 +70,14 @@ class WalletController extends Controller
 
     public function transfer(Request $request, WalletTransaction $transaction){
                 $lock_code = Wallet::where('uuid', Auth::user()->id)->get();
-                print_r($lock_code[0]['lock_code']);
                 $token = $this->getToken();
                 $headers = array('content-type' => 'application/json', 'Authorization' => $token);
                 $query = array(
-                "sourceWallet"=> $request->input('sourceWallet'),
-                "recipientWallet"=> $request->input('recipientWallet'),
-                "amount"=> $request->input('amount'),
-                "currency"=> "NGN",
-                "lock"=> $request->$lock_code[0]->lock_code
-
+                    "sourceWallet"=> $request->input('sourceWallet'),
+                    "recipientWallet"=> $request->input('recipientWallet'),
+                    "amount"=> $request->input('amount'),
+                    "currency"=> "NGN",
+                    "lock"=> $request->$lock_code[0]['lock_code']
                 );
 
                 $body = \Unirest\Request\Body::json($query);
