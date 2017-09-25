@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Session;
 use App\User;
 use App\Wallet;
 use App\Rule;
+use App\Beneficiary;
 use Carbon\Carbon;
 class AdminController extends WalletController
 {
@@ -150,18 +151,35 @@ class AdminController extends WalletController
       return view ('admin.managewallet', $data);
     }
 
-    public function addbeneficiary(Beneficiary $beneficiary, Request $request)
+    public function addbeneficiary(Request $request)
     {
-        //$beneficiary = new Beneficiary;
-        $beneficiary = $request->all();
-        //$beneficiary->name = $request('name');
-        //$beneficiary->bank_id = $request('bank_id');
-        //$beneficiary->account_number = $request('account_number');
+       $validator = $this->validateBeneficiary($request->all());
 
-        $beneficiary->save();
+        if ($validator->fails()) {
+            $messages = $validator->messages()->toArray();
+            Session::flash('messages', $this->formatMessages($messages, 'error'));
+            return redirect()->to(URL::previous())->withInput();
+        }else {
+                $beneficiary = new Beneficiary;
+                $beneficiary->name = $request->name;
+                $beneficiary->account_number = $request->account_number;
+                $beneficiary->bank_id = $request->bank_id;
+                $beneficiary->uuid = Auth::user()->id;
+                if($beneficiary->save()){
+                    return redirect('/admin')->with('success', 'Beneficiary added');
+                }else{
+                    return redirect('/admin')->with('failure', 'Beneficiary could not be added');
+                }
 
-        return redirect('/admin');
-    }
+        
+
+        }
+
+        
+        }
+
+        
+    
 
     public function saveSettings(){
 
@@ -188,7 +206,6 @@ class AdminController extends WalletController
 
 			$wallet = Wallet::find($walletId);
             $transaction = \App\Http\Utilities\Wallet::all();
-
             
 			$user = $wallet->users()->get()->toArray();
 
@@ -240,6 +257,23 @@ class AdminController extends WalletController
             'min_amount' => 'required|numeric',
             'max_transactions_per_day' => 'required|numeric',
             'max_amount_transfer_per_day' => 'required|numeric',
+        ]);
+
+    }
+
+
+       /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validateBeneficiary(array $data)
+    {
+        return Validator::make($data, [
+            'name' => 'required|string|max:255',
+            'bank_id' => 'required|numeric',
+            'account_number' => 'required|string|max:10',
         ]);
 
     }
