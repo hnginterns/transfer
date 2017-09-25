@@ -530,10 +530,6 @@
                             </select>
                         </div>
 
-                        <div class="form-group">
-                            <input type="text" class="form-control cus-input" name="lock" placeholder="lock code">
-                        </div>
-
                         <div class="form-group" style="margin-top: 50px;">
                             <input type="number" class="form-control cus-input" name="amount" id="amount" placeholder="Amount">
                         </div>
