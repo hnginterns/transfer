@@ -71,7 +71,7 @@ class WalletController extends Controller
     public function transfer(Request $request, WalletTransaction $transaction){
                 
                 $lock_code = Wallet::where('uuid', Auth::user()->id)->get();
-                $restriction = Restriction::where('wallet_id', $lock_code[0]['id])->get();
+                $restriction = Restriction::where('wallet_id', $lock_code[0]['id'])->get();
                 print_r($restriction[0]);
                 
                 $token = $this->getToken();
