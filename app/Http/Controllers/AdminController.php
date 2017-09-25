@@ -233,7 +233,8 @@ class AdminController extends WalletController
 
 
     public function ViewBeneficiary() {
-      return view ('admin/managebeneficiary');
+        $beneficiaries = Beneficiary::all();
+      return view ('admin/managebeneficiary', compact('beneficiaries'));
     }
 
      public function BeneficiaryDetails() {

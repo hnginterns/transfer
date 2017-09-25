@@ -38,7 +38,7 @@ Route::get('/gettoken', 'WalletController@getToken');
 
 Route::get('/transferWallet', 'WalletController@transfer');
 
-Route::get('/transferAccount', 'WalletController@transferAccount');
+Route::post('/transferAccount', 'WalletController@transferAccount');
 
 Route::get('/404', 'pagesController@pagenotfound');
 

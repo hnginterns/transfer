@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Restriction;
+use App\Beneficiary;
 class WalletController extends Controller
 {
     /**
@@ -102,36 +103,48 @@ class WalletController extends Controller
 
             }
 
-                public function transferAccount(Request $request){
-                $token = $this->getToken();
-                $headers = array('content-type' => 'application/json', 'Authorization' => $token);
-                $query = array(
-                "lock"=>$request->input('lock_code'),
-                 "amount"=>$request->input('amount'),
-                 "bankcode"=>$request->input('bank_code'),
-                 "accountNumber"=>$request->input('accountNumber'),
-                 "currency"=>"NGN",
-                 "senderName"=>$request->input('senderName'),
-                 "narration"=>$request->input('naration'), //Optional
-                 "ref"=>$request->input('reference'));
+            public function transferAccount(Request $request){
 
-                $body = \Unirest\Request\Body::json($query);
+                $validator = $this->validateBeneficiary($request->all());
 
-                $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/disburse', $headers, $body);
+                if ($validator->fails()) {
+                    $messages = $validator->messages()->toArray();
+                    Session::flash('messages', $this->formatMessages($messages, 'error'));
+                    return redirect()->to(URL::previous())->withInput();
+                }else {
 
-                $response = json_decode($response->raw_body,TRUE);
-                $status = $response['status'];
+                        $beneficiary = Beneficiary::where('uuid', '=', Auth::user()->id)
+                                                    ->where('id', '=', $request->beneficiary_id)
+                                                    ->get();                     
+                        if(!empty($beneficiary)){
+                            $token = $this->getToken();
+                            $headers = array('content-type' => 'application/json', 'Authorization' => $token);
+                            $query = array(
+                            "lock"=>$request->lock_code,
+                            "amount"=>$request->amount,
+                            "bankcode"=>$beneficiary[0]->bank_id,
+                            "accountNumber"=>$beneficiary[0]->account_number,
+                            "currency"=>"NGN",
+                            "senderName"=>$request->sender_name,
+                            "narration"=>$request->narration, //Optional
+                            "ref"=>$request->reference);
 
-                if ($status == 'success') {
-                    return redirect()->action('pagesController@failed');
+                            $body = \Unirest\Request\Body::json($query);
+
+                            $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/disburse', $headers, $body);
+
+                            $response = json_decode($response->raw_body,TRUE);
+                            $status = $response['status'];
+
+                        if ($status == 'success') {
+                            $data = $response;
+                            return redirect()->action('pagesController@success');
+                        }else{
+                            return redirect('failed');
+                        }
+
+                        }
                 }
-
-                         $data = $response;
-
-                    return redirect('failed');
-
-
-
 
             }
 
@@ -238,6 +251,24 @@ class WalletController extends Controller
             'rule_id' => 'required|numeric',
             'user_id' => 'required|numeric',
             'currency_id' => 'required|numeric',
+        ]);
+
+    }
+
+            /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validatebeneficiary(array $data)
+    {
+        return Validator::make($data, [
+            'sender_name' => 'required|string',
+            'lock_code' => 'required|string|max:100',
+            'reference' => 'required|string',
+            'amount' => 'required|numeric',
+            'beneficiary_id' => 'required|numeric',
         ]);
 
     }
