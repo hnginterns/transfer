@@ -80,9 +80,8 @@ class WalletController extends Controller
                 if($rules[0]['can_transfer'] == 1){
                     $date = new DateTime();
                     $date_string = date_format($date,"Y-m-d");
-                    $wallet_transactions = Transaction::count();
-                    $total_amount = WalletTransaction::sum('amount_transfered');
-                    echo $wallet_transactions;
+                    $wallet_transactions = WalletTransaction::count();
+                    $total_amount = WalletTransaction::sum('amount');
                     if($wallet_transactions < $rules[0]['max_transactions_per_day'] && $total_amount < $rules[0]['max_amount_transfer_per_day']){
                         if($amount >= $rules[0]['min_amount'] && $amount <= $rules[0]['max_amount']){
                             $token = $this->getToken();
