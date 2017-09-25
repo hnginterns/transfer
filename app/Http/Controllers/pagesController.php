@@ -87,10 +87,10 @@ class pagesController extends Controller
 
   public function viewWallet(User $user, Wallet $wallet) {
     
-    $wallets = $wallet::where('uuid', \Auth::id());
+    $wallets = $wallet::where('uuid', \Auth::id())->get();
     $transaction = UtilWallet::all();
-    // dd($transaction);
-    return view ('wallet-view', compact('wallets', 'transcation'));
+    // dd($wallets);
+    return view ('wallet-view', compact('wallets', 'transaction'));
   }
 
   public function createWallet() {

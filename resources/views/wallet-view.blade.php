@@ -452,7 +452,7 @@
 							<div class="row">
 								<div class="col-md-4">
 					<div class="blue-circle"><img src="http://www.ravcontest.com/HNGpoints/image/W1.png" alt="icon"/></div>
-					@foreach($wallets as $wallet)
+					@foreach($wallets as $key => $wallet)
 					<div align="center" class="left-content">
 						<h5 class="side-header"> {{ $wallet->wallet_name }} </h5>
 					<br/>
