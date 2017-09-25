@@ -43,6 +43,6 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, $user)
     {
-        //$this->redirectTo = (boolean) $user->is_admin ? '/admin' : '/dashboard';
+        $this->redirectTo = (boolean) $user->is_admin ? '/admin' : '/dashboard';
     }
 }
