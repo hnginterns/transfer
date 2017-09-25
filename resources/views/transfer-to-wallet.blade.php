@@ -507,7 +507,7 @@
                             <select class="form-control cus-input" name="sourceWallet">
 
 
-                                <option>Select sender Wallet</option>
+                                <option value="">Select sender Wallet</option>
                                     @foreach($wallets as $wallet)
                                        @if($wallet->id == $user_id)
                                           <option value="{{ $wallet->wallet_code }}">{{ $wallet->wallet_name}}</option>
@@ -521,7 +521,7 @@
                             <select class="form-control cus-input" name="recipientWallet">
 
 
-                                <option>Select recipient wallet</option>
+                                <option value="">Select recipient wallet</option>
                                     @foreach($wallets as $wallet)
                                       @if($wallet->id !== $user_id)
                                           <option value="{{ $wallet->wallet_code }}">{{ $wallet->wallet_name}}</option>
@@ -590,6 +590,10 @@
           $.getJSON('/walletTransfer', data, function(resp) {
             console.log(resp);
             if(resp.status = 'failed') {
+              $("[name=lock]").val('');
+              $("[name=sourceWallet]").val('');
+              $("[name=recipientWallet]").val('');
+              $("[name=amount]").val('');
               var options = {
                   backdrop: false,
                   keyboard: false,
@@ -598,6 +602,10 @@
               }
              $("#fmodal").modal(options);
             } else {
+              $("[name=lock]").val('');
+              $("[name=sourceWallet]").val('');
+              $("[name=recipientWallet]").val('');
+              $("[name=amount]").val('');
               var options = {
                   backdrop: false,
                   keyboard: false,
