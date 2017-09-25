@@ -78,7 +78,7 @@ class WalletController extends Controller
                     "recipientWallet"=> $request->input('recipientWallet'),
                     "amount"=> $request->input('amount'),
                     "currency"=> "NGN",
-                    "lock"=> $request->"$lock_code[0]['lock_code']"
+                    "lock"=> $lock_code[0]['lock_code']
                 );
 
                 $body = \Unirest\Request\Body::json($query);
