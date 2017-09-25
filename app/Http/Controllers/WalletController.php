@@ -87,7 +87,9 @@ class WalletController extends Controller
         if ($validator->fails()) 
         {
             $messages = $validator->messages()->toArray();
-            return response()->json([ 'status' => 'failed', 'msg' => $messages ]);
+          
+            Session::flash('messages', $this->formatMessages($messages, 'error'));
+            return redirect()->to(URL::previous())->withInput();
         }
         else
         {
