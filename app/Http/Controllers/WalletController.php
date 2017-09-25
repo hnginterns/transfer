@@ -90,14 +90,14 @@ class WalletController extends Controller
                     //$wallet->recipientWallet = $request->input('recipientWallet');
                     //$wallet->amount = $request->input('amount');
                     //if($wallet->save()) {
-                        //return redirect('success');
+                        return back();
                         echo '<script>$("#smodal").modal(options);</script>';
                     //}
 
-               }else {
-                 echo '<script>$("#fmodal").modal(options);</script>';
                }
 
+                return back();
+                echo '<script>$("#smodal").modal(options);</script>';
 
             }
 
