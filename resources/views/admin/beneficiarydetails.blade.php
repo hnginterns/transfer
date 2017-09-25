@@ -78,7 +78,7 @@
                       </thead>
                       <tbody>
                       <tr>
-                        <td>Bank:</td>
+                        <td>Bank Code:</td>
                         <td>{{$beneficiary->bank_id}}</td>
                       </tr>
                       <tr>
