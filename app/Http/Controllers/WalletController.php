@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Restriction;
 use App\Beneficiary;
+use App\Rules;
 use URL;
 class WalletController extends Controller
 {
