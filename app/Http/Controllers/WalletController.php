@@ -72,7 +72,25 @@ class WalletController extends Controller
     }
 
     public function transfer(Request $request, WalletTransaction $transaction){
-                
+           
+        $input = $request->all();
+        $validator = Validator::make($input, [
+            'sourceWallet' => 'bail|required',
+            'recipientWallet' => 'bail|required',
+            'amount' => 'bail|required|numeric'
+            ],
+            [
+                'required' => ':attribute is required',
+                'numeric' => ':attribute must be in numbers'
+            ]
+        );
+        if ($validator->fails()) 
+        {
+            $messages = $validator->messages()->toArray();
+            return response()->json([ 'status' => 'failed', 'msg' => $messages ]);
+        }
+        else
+        {
                 $lock_code = Wallet::where('uuid', Auth::user()->id)->get();
                 $restriction = Restriction::where('wallet_id', $lock_code[0]['id'])->get();
                 $rules = Rule::where('id', $restriction[0]['rule_id'] )->get();
@@ -126,9 +144,9 @@ class WalletController extends Controller
                 else{
                     return response()->json([ 'status' => 'failed', 'msg' => 'You wallet cannot transfer. Contact the admin' ]);
                 }
+        }
                 
-                
-            }
+   }
 
             public function transferAccount(Request $request){
 
