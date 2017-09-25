@@ -145,11 +145,8 @@ class AdminController extends WalletController
                                                  $request->wallet_name);
                 }
 
-
+		return redirect()->to('admin/managewallet');
         }
-
-	$data['wallets'] = Wallet::all(); 
-      return view ('admin.managewallet', $data);
     }
 
     public function addbeneficiary(Request $request)
