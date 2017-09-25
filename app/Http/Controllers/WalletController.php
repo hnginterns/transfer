@@ -105,7 +105,7 @@ class WalletController extends Controller
                                  $wallet->sourceWallet = $request->input('sourceWallet');
                                  $wallet->recipientWallet = $request->input('recipientWallet');
                                  $wallet->amount = $request->input('amount');
-                                 $wallet->created_at = 
+                                 $wallet->created_at = new DateTime();
                                  if($wallet->save()) {
                                     return response()->json(['status' => 'success']);
                                  }
