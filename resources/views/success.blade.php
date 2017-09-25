@@ -139,7 +139,7 @@
             show: true,
             remote: false
         }
-        $("#smodal").modal(options);
+      //  $("#smodal").modal(options);
     });
 </script> <!-- -->
 <!-- <script src="js/script.js"></script> -->

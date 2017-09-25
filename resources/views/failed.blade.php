@@ -119,7 +119,7 @@
             show: true,
             remote: false
         }
-        $("#fmodal").modal(options);
+      //  $("#fmodal").modal(options);
     });
 </script>
 <!-- <script src="js/script.js"></script> -->
