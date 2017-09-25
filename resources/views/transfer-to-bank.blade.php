@@ -493,17 +493,20 @@
               <div class="login-box" style="">
                   <img src="/svg/naira.svg" alt="no preview" class="transfer-icon">
                   <h4 class="intro" style="font-size: 20px;">Transfer to bank account </h4>
-                  <form class="admin-login" action="/transferAccount" method="GET">
+                  <form class="admin-login" action="/transferAccount" method="POST">
+                  {{csrf_field()}}
                     <div class="row">
                       <div class="col col-lg-6 form-holder">
-                        <select class="form-control cus-input" name="benefi">
+                        <select class="form-control cus-input" name="beneficiary_id">
                           <option>Select Beneficiary</option>
-                            <option value="">Bene 1</option>
+                            @foreach($beneficiary as $key => $beneficiaries)
+                              <option value="{{$beneficiaries->id}}">{{$beneficiaries->name}}</option>
+                            @endforeach
                         </select>
                         </div>
                       <div class="col col-lg-6 form-holder">
                           <div class="form-group" style="margin: 30px 0;">
-                              <input type="text" class="form-control cus-input" name="senderName" id="senderName" placeholder="Sender's Name">
+                              <input type="text" class="form-control cus-input" name="sender_name" id="senderName" placeholder="Sender's Name">
                           </div>
                       </div>
                   </div>
