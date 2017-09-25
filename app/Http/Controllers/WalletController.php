@@ -72,7 +72,8 @@ class WalletController extends Controller
                 
                 $lock_code = Wallet::where('uuid', Auth::user()->id)->get();
                 $restriction = Restriction::where('wallet_id', $lock_code[0]['id'])->get();
-                print_r($restriction[0]);
+                $rules = Rules::where('id', $restriction[0]['rule_id'] )->get();
+                print_r($rules);
                 
                 $token = $this->getToken();
                 $headers = array('content-type' => 'application/json', 'Authorization' => $token);
