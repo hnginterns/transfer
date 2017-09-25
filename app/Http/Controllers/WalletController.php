@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Restriction;
 use App\Beneficiary;
-use App\Rules;
+use App\Rule;
 use URL;
 class WalletController extends Controller
 {
@@ -73,7 +73,7 @@ class WalletController extends Controller
                 
                 $lock_code = Wallet::where('uuid', Auth::user()->id)->get();
                 $restriction = Restriction::where('wallet_id', $lock_code[0]['id'])->get();
-                $rules = Rules::where('id', $restriction[0]['rule_id'] )->get();
+                $rules = Rule::where('id', $restriction[0]['rule_id'] )->get();
                 print_r($rules);
                 
                 $token = $this->getToken();
