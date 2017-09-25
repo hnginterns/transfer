@@ -496,9 +496,10 @@
                   <form class="admin-login" action="/transferAccount" method="GET">
                     <div class="row">
                       <div class="col col-lg-6 form-holder">
-                          <div class="form-group" style="margin: 30px 0;">
-                              <input type="text" class="form-control cus-input" id="benName" placeholder="Beneficiary Name">
-                          </div>
+                        <select class="form-control cus-input" name="benefi">
+                          <option>Select Beneficiary</option>
+                            <option value="">Bene 1</option>
+                        </select>
                         </div>
                       <div class="col col-lg-6 form-holder">
                           <div class="form-group" style="margin: 30px 0;">
@@ -518,22 +519,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="row">
-                          <div class="col col-lg-6 form-holder">
-                              <div class="form-group">
-                                  <select class="form-control cus-input" name="bank_code">
-                                    <option>Select Beneficiary Bank</option>
-                                      <option value="">Bene 1</option>
-                                  </select>
-                              </div>
-                          </div>
-                          <div class="col col-lg-6 form-holder">
-                              <div class="form-group">
-                                  <input type="text" class="form-control cus-input" name="accountNumber" id="benAcc" placeholder="Beneficiary Account No">
-                              </div>
-                          </div>
-                      </div>
-                      <div class="row">-
+                      <div class="row">
                         <div class="col col-lg-6 form-holder">
                           <div class="form-group">
                               <input type="number" class="form-control cus-input" name="amount" id="amount" placeholder="Amount">
