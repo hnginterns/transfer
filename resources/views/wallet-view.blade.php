@@ -464,11 +464,11 @@
 					<br/>
 					<h5 class="side-header">Currency Type</h5>
 					@foreach($transaction as $trans)
-					<p class="side-content">{{$trans['uref'] == $wallet->wallet_code ? $trans['currency'] : ""}}</p>
-					@endforeach
+					<p class="side-content">{{$trans['uref'] == $wallet->wallet_code ? $trans['currency'] : "NGN"}}</p>
 					<br/>
 					<h5 class="side-header">Balance</h5>
 					<p class="side-content">{{$trans['uref'] == $wallet->wallet_code ? $trans['balance'] : $wallet->balance}}</p>
+					@endforeach
 					<br/>
 					</div>
 					@endforeach
