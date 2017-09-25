@@ -509,7 +509,7 @@
 
                                 <option value="">Select sender Wallet</option>
                                     @foreach($wallets as $wallet)
-                                       @if($wallet->id == $user_id)
+                                       @if($wallet->uuid == $user_id)
                                           <option value="{{ $wallet->wallet_code }}">{{ $wallet->wallet_name}}</option>
                                         @endif
                                     @endforeach
@@ -523,7 +523,7 @@
 
                                 <option value="">Select recipient wallet</option>
                                     @foreach($wallets as $wallet)
-                                      @if($wallet->id !== $user_id)
+                                      @if($wallet->uuid !== $user_id)
                                           <option value="{{ $wallet->wallet_code }}">{{ $wallet->wallet_name}}</option>
                                       @endif
                                     @endforeach
