@@ -96,6 +96,7 @@ class WalletController extends Controller
                     //}
 
                }
+               print_r($response_arr);
                return response()->json(['status' => 'failed']);
             }
 
