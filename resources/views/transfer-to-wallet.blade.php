@@ -502,7 +502,7 @@
                 <div class="login-box" style="">
                     <img src="/svg/naira.svg" alt="no preview" class="transfer-icon">
                     <h4 class="intro" style="font-size: 20px;">Transfer to another Wallet account </h4>
-                    <form id="trform" class="admin-login" method="GET">
+                    <form id="trform" class="admin-login">
                         <div class="form-group">
                             <select class="form-control cus-input" name="sourceWallet">
 
@@ -538,8 +538,8 @@
                             <input type="number" class="form-control cus-input" name="amount" id="amount" placeholder="Amount">
                         </div>
 
-                    </form>
                         <button id="transferbt" type="submit" class="btn btn-primary">Transfer</button>
+                    </form>
                 </div>
             </div>
 
@@ -584,7 +584,8 @@
             }, 200);
         });
 
-        $("#transferbt").click(function() {
+        $("#transferbt").click(function(e) {
+          e.preventDefault();
           var data = $("#trform").serializeArray();
           $.getJSON('/walletTransfer', data, function(resp) {
             console.log(resp);
