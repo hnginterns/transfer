@@ -112,8 +112,7 @@ class WalletController extends Controller
                     return redirect()->to(URL::previous())->withInput();
                 }else {
 
-                        $beneficiary = Beneficiary::where('uuid', '=', Auth::user()->id)
-                                                    ->where('id', '=', $request->beneficiary_id)
+                        $beneficiary = Beneficiary::where('id', '=', $request->beneficiary_id)
                                                     ->get();                     
                         if(!empty($beneficiary)){
                             $token = $this->getToken();
