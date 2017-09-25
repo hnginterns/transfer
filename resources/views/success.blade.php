@@ -78,7 +78,7 @@
     </style>
 
 
-<div class="modal fade" id="smodal">
+<div style="display:none;" class="modal fade" id="smodal">
     <div class="modal-dialog">
         <div class="modal-content">
             <!-- Modal Header -->
@@ -139,7 +139,7 @@
             show: true,
             remote: false
         }
-        $("#smodal").modal(options);
+        //$("#smodal").modal(options);
     });
 </script> <!-- -->
 <!-- <script src="js/script.js"></script> -->

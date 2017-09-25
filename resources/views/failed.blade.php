@@ -64,7 +64,7 @@
     Launch failed transaction
 </button> -->
 
-<div class="modal fade" id="fmodal">
+<div style="display: none;" class="modal fade" id="fmodal">
     <div class="modal-dialog">
         <div class="modal-content">
             <!-- Modal Header -->
@@ -119,7 +119,7 @@
             show: true,
             remote: false
         }
-        $("#fmodal").modal(options);
+       //$("#fmodal").modal(options);
     });
 </script>
 <!-- <script src="js/script.js"></script> -->

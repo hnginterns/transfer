@@ -502,7 +502,7 @@
                 <div class="login-box" style="">
                     <img src="/svg/naira.svg" alt="no preview" class="transfer-icon">
                     <h4 class="intro" style="font-size: 20px;">Transfer to another Wallet account </h4>
-                    <form class="admin-login" action="/transferWallet" method="GET">
+                    <form id="trform" class="admin-login" method="GET">
                         <div class="form-group">
                             <select class="form-control cus-input" name="sourceWallet">
 
@@ -537,9 +537,9 @@
                         <div class="form-group" style="margin-top: 50px;">
                             <input type="number" class="form-control cus-input" name="amount" id="amount" placeholder="Amount">
                         </div>
-                        <button type="submit" class="btn btn-primary">Transfer</button>
 
                     </form>
+                        <button id="transferbt" type="submit" class="btn btn-primary">Transfer</button>
                 </div>
             </div>
 
@@ -582,6 +582,30 @@
                 left: "-1000px",
                 "z-index": 10000
             }, 200);
+        });
+
+        $("#transferbt").click(function() {
+          var data = $("#trform").serializeArray();
+          $.getJSON('/walletTransfer', data, function(resp) {
+            console.log(resp);
+            if(resp.status = 'failed') {
+              var options = {
+                  backdrop: false,
+                  keyboard: false,
+                  show: true,
+                  remote: false
+              }
+             $("#fmodal").modal(options);
+            } else {
+              var options = {
+                  backdrop: false,
+                  keyboard: false,
+                  show: true,
+                  remote: false
+              }
+              $("#smodal").modal(options);
+            }
+          })
         });
       });
   </script>

@@ -83,20 +83,21 @@ class WalletController extends Controller
 
                 $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/wallet/transfer', $headers, $body);
 
-                $response = json_decode($response->raw_body,TRUE);
-                $status = $response['status'];
+                $response_arr = json_decode($response->raw_body,TRUE);
+                $status = $response_arr['status'];
                 if ($status == 'success') {
                    // $wallet = new WalletTransaction;
                     //$wallet->sourceWallet = $request->input('sourceWallet');
                     //$wallet->recipientWallet = $request->input('recipientWallet');
                     //$wallet->amount = $request->input('amount');
                     //if($wallet->save()) {
+                    return $response;
                         return back('transfer-to-wallet');
                         echo '<script>$("#smodal").modal(options);</script>';
                     //}
 
                }
-
+                return ['status' => 'failed'];
                 return redirect('transfer-to-wallet');
                 echo '<script>$("#smodal").modal(options);</script>';
 
