@@ -96,7 +96,7 @@ Route::group(['middleware' => ['admin']], function() {
 	Route::post('admin/update-rule', 'AdminController@updateRule')->name('update-rule');
 	Route::get('admin/edit-rule/{ruleId}', 'AdminController@editRules')->name('edit-rule');
 	Route::post('admin/createwallet', 'AdminController@addwallet');
-	Route::post('admin/addBeneficiary', 'AdminController@addBeneficiary');
+	Route::post('admin/addbeneficiary', 'AdminController@addbeneficiary');
 	Route::get('admin/viewwallet/{walletId}', 'AdminController@show')->name('view-wallet');
 	Route::resource('admin/users', 'Admin\UsersController');
 	Route::post('admin/users/store', 'Admin\UsersController@store');
