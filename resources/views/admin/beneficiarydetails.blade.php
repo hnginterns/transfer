@@ -74,20 +74,16 @@
                   <div class="table-responsive">
                     <table class="table no-margin">
                       <thead>
-                        <h4 class="beneficiary-name">beneficiary 1 Details</h4>
+                        <h4 class="beneficiary-name">{{$beneficiary->name}}</h4>
                       </thead>
                       <tbody>
                       <tr>
-                        <td>Beneficiary Name:</td>
-                        <td>beneficiary 1</td>
-                      </tr>
-                      <tr>
                         <td>Bank:</td>
-                        <td>204537357</td>
+                        <td>{{$beneficiary->bank_id}}</td>
                       </tr>
                       <tr>
                         <td>Account Number:</td>
-                        <td>User 1</td>
+                        <td>{{$beneficiary->account_number}}</td>
                       </tr>
                       <tr>
                         <td></td>

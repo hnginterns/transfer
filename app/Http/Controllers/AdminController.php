@@ -237,8 +237,9 @@ class AdminController extends WalletController
       return view ('admin/managebeneficiary', compact('beneficiaries'));
     }
 
-     public function BeneficiaryDetails() {
-      return view ('admin/beneficiarydetails');
+     public function BeneficiaryDetails($id) {
+        $beneficiary = Beneficiary::find($id);
+      return view ('admin/beneficiarydetails', compact('beneficiary'));
     }
 
      public function beneficiary() {
