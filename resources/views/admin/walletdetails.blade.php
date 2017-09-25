@@ -114,7 +114,7 @@
                   </div>
               <!-- /.table-responsive -->
             
-              <button type="submit" class="btn btn-primary" name="button">Fund Wallet</button>            
+              <button type="submit" class="btn btn-block btn-primary btn-sm" name="button">Fund Wallet</button>            
             
             </div>
           </div>
