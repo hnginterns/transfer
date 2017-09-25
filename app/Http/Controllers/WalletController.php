@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Restriction;
 use App\Beneficiary;
 use App\Rule;
+use App\Transaction;
 use URL;
 class WalletController extends Controller
 {
@@ -79,7 +80,7 @@ class WalletController extends Controller
                 if($rules[0]['can_transfer'] == 1){
                     $date = new DateTime();
                     $date_string = date_format($date,"Y-m-d");
-                    $wallet_transactions = WalletTransaction::count();
+                    $wallet_transactions = Transaction::where('created_at', $date_string)->get()->count();
                     //$total_amount = WalletTransaction::where('created_at', $date_string)->sum('amount');
                     //echo $wallet_transactions;
                     if($wallet_transactions < $rules[0]['max_transactions_per_day'] && $total_amount < $rules[0]['max_amount_transfer_per_day']){
