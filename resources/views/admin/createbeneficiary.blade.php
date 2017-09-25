@@ -72,6 +72,7 @@
             <div class="inner-holder">
                   <h5 class="beneficiary-name"><b>Create</b> New Beneficiary</h5>
                   <form action="" method="POST">
+                  {{csrf_field()}}
                   <input type="text" name="name" class="form-control input-defaulted" placeholder="Name">
                   <br><select name="bank_id" class="form-control input-defaulted" >
                     <option>Select Bank</option>
