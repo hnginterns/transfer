@@ -112,12 +112,15 @@
                       </tbody>
                     </table>
                   </div>
-              <!-- /.table-responsive -->
+              <!-- /.table-responsive -->                     
             
-              <button type="submit" class="btn btn-primary" name="button">Fund Wallet</button>            
-            
-            </div>
+            </div>           
           </div>
+            
+    </div>
+    <div class="col-md-12">      
+    <a type="submit" class="btn btn-block btn-primary btn-sm" >Fund Wallet</a>  
+            <a type="submit" class="btn btn-block btn-danger btn-sm">Delete Wallet</a> 
     </div>
 
 </div>
