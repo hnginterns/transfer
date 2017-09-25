@@ -113,8 +113,7 @@ class WalletController extends Controller
                     return redirect()->to(URL::previous())->withInput();
                 }else {
 
-                        $beneficiary = Beneficiary::where('uuid', '=', Auth::user()->id)
-                                                    ->where('id', '=', $request->beneficiary_id)
+                        $beneficiary = Beneficiary::where('id', '=', $request->beneficiary_id)
                                                     ->get();                     
                         if(!empty($beneficiary)){
                             $token = $this->getToken();
@@ -140,7 +139,7 @@ class WalletController extends Controller
                             $data = $response;
                             return redirect()->action('pagesController@success');
                         }else{
-                            return redirect('failed');
+                            return redirect()->action('pagesController@failed');
                         }
 
                         }
