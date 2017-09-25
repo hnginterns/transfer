@@ -81,28 +81,29 @@
       <div class="wallet-row row">
         <div class="single-wallet-holder col-md-6">
             <div class="inner-holder">
-                  <h5 class="wallet-name"><b>Create</b> New Rule</h5>
+                  <h5 class="wallet-name"><b>Update</b> Rule</h5>
                   
-                  <form action="" method="POST" class="form-horizontal" role="form">
+                  <form action="{{ route('update-rule') }}" method="POST" class="form-horizontal" role="form">
                     {{csrf_field()}}
                     <div class="form-group">
-                        <input type="text" name="rule_name" id="rule_name" class="form-control" value="" placeholder="Enter Rule Name" required="required" title="Rule name">
+                        <input type="hidden" name="rule_id" value="{{ $rule->id }}">
+                        <input type="text" name="rule_name" id="rule_name" class="form-control" value="{{ $rule->rule_name }}" placeholder="Enter Rule Name" required="required" title="Rule name">
                     </div>
 
                     <div class="form-group">
-                        <input type="number" name="max_amount" id="max_amount" class="form-control" value="" placeholder="Enter maximum transfer amount" required="required" title="Maximum Amount">
+                        <input type="number" name="max_amount" id="max_amount" class="form-control" value="{{ $rule->max_amount }}" placeholder="Enter maximum transfer amount" required="required" title="Maximum Amount">
                     </div>
 
                     <div class="form-group">
-                        <input type="number" name="min_amount" id="min_amount" class="form-control" value="" placeholder="Enter minimum transfer amount" required="required" title="Minimum Amount">
+                        <input type="number" name="min_amount" id="min_amount" class="form-control" value="{{ $rule->min_amount }}" placeholder="Enter minimum transfer amount" required="required" title="Minimum Amount">
                     </div>
 
                     <div class="form-group">
-                        <input type="number" name="max_transactions_per_day" id="max_transactions_per_day" class="form-control" value="" placeholder="Enter maximum transactions per day" required="required" title="Rule name">
+                        <input type="number" name="max_transactions_per_day" id="max_transactions_per_day" class="form-control" value="{{ $rule->max_transactions_per_day }}" placeholder="Enter maximum transactions per day" required="required" title="Rule name">
                     </div>
 
                     <div class="form-group">
-                        <input type="number" name="max_amount_transfer_per_day" id="max_amount_transfer_per_day" class="form-control" value="" placeholder="Enter maximum Amount to Transfer per day" required="required" title="Rule name">
+                        <input type="number" name="max_amount_transfer_per_day" id="max_amount_transfer_per_day" class="form-control" value="{{ $rule->max_amount_transfer_per_day }}" placeholder="Enter maximum Amount to Transfer per day" required="required" title="Rule name">
                     </div>
                     
                     
@@ -110,9 +111,9 @@
                         <div class="radio">
                            Can Transfer
                             <span class="rule-radio-label"></span>
-                            <input type="radio" name="can_transfer" value="1" id="can_transfer" checked>
+                            <input type="radio" name="can_transfer" value="1" id="can_transfer" {{ $rule->can_transfer ? "checked" : "" }}>
                              <span class="rule-radio-label">YES</span>
-                             <input type="radio" name="can_transfer" value="0" id="can_transfer">
+                             <input type="radio" name="can_transfer" value="0" id="can_transfer" {{ $rule->can_transfer ? "" : "checked" }}>
                             <span class="rule-radio-label">NO</span>
                         
                         </div>
@@ -121,9 +122,9 @@
                         <div class="radio">
                           Can Transfer External  
                             <span class="rule-radio-label"></span>
-                            <input type="radio" name="can_transfer_external" value="1" id="can_transfer_external">
+                            <input type="radio" name="can_transfer_external" value="1" id="can_transfer_external" {{ $rule->can_transfer_external ? "checked" : "" }} >
                              <span class="rule-radio-label">YES</span>
-                             <input type="radio" name="can_transfer_external" value="0" id="can_transfer_external" checked>
+                             <input type="radio" name="can_transfer_external" value="0" id="can_transfer_external" {{ $rule->can_transfer_external ? "" : "checked" }} >
                             <span class="rule-radio-label">NO</span>
                         
                         </div>
@@ -131,8 +132,8 @@
                         
                     
 
-                    <br><button type="submit" class="btn btn-success" name="button"><i class="fa fa-refresh" aria-hidden="true"> Create</i></button>
-                    <a href="/admin/view-rules" class="btn btn-danger" style="padding:10px;"><i class="fa fa-times" aria-hidden="true"> Cancel</i></a>
+                    <br><button type="submit" class="btn btn-success" name="button"><i class="fa fa-refresh" aria-hidden="true"> Update</i></button>
+                    <a href="/admin/view-rules" style="padding:10px;" class="btn btn-danger" name="button"><i class="fa fa-times" aria-hidden="true"> Cancel</i></a>
            
                   </form>
                   

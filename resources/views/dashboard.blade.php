@@ -305,9 +305,15 @@
             <a class="wallet">
               <p class="num">{{ $wallet->id }}</p>
               <p class="currency">NGN</p>
-              <img src="img/wallet-i.svg" alt="" class="wallet-img">
+              <img src="../resources/assets/img/wallet-i.svg" alt="" class="wallet-img">
               <p class="id">ID: {{ $wallet->wallet_code}}</p>
-              <div class="balance">₦ {{ $wallet->balance}}</div>
+              <div class="balance">
+                @foreach($transaction as $transact)
+                @if($transact['uref'] == $wallet->wallet_code)
+                ₦ {{ $transact['balance']}}
+                @endif
+                @endforeach
+              </div>
             </a>
 
              @endforeach

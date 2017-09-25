@@ -85,16 +85,21 @@
                       </tr>
                       <tr>
                         <td>Wallet Lock Code:</td>
-                        <td>{{ $wallet->wallet_code }}</td>
+                        <td>{{ $wallet->lock_code }}</td>
                       </tr>
                       <tr>
                       <tr>
+                        @foreach($transaction as $transact)
+                        @if($transact['uref'] == $wallet->wallet_code)
                         <td>User Balance:</td>
-                        <td>{{ $wallet->balance }}</td>
+                        <td>{{ $transact['balance'] }}</td>
+                          @endif
+                        @endforeach
+                        
                       </tr>
                       <tr>
                         <td>User ref:</td>
-                        <td>{{ $wallet->userRef }}</td>
+                        <td>{{ $wallet->wallet_code }}</td>
                       </tr>
                       <tr>
                         <td>Currency:</td>

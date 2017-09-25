@@ -26,7 +26,7 @@ class WalletController extends Controller
 
         \Unirest\Request::verifyPeer(false);
 
-        $headers = array('content-type' => 'application/json'); 
+        $headers = array('content-type' => 'application/json');
         $query =  array('apiKey' => $api_key, 'secret' => $secret_key);
 
         $body = \Unirest\Request\Body::json($query);
@@ -66,7 +66,7 @@ class WalletController extends Controller
                 $createWallet = var_dump($data);
     }
 
-    public function transfer(Request $request, WalletTransaction $transaction){ 
+    public function transfer(Request $request, WalletTransaction $transaction){
                 $token = $this->getToken();
                 $headers = array('content-type' => 'application/json', 'Authorization' => $token);
                 $query = array(
@@ -76,29 +76,30 @@ class WalletController extends Controller
                 "currency"=> "NGN",
                 "lock"=> $request->input('lock')
 
-                ); 
+                );
 
                 $body = \Unirest\Request\Body::json($query);
 
                 $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/wallet/transfer', $headers, $body);
 
-                $response = json_decode($response->raw_body,TRUE);
-                $status = $response['status'];
+                $response_arr = json_decode($response->raw_body,TRUE);
+                $status = $response_arr['status'];
                 if ($status == 'success') {
-                    $wallet = new WalletTransaction;
-                    $wallet->sourceWallet = $request->input('sourceWallet');
-                    $wallet->recipientWallet = $request->input('recipientWallet');
-                    $wallet->amount = $request->input('amount');
-                    if($wallet->save()) {
-                        return redirect('success');
-   
-                    }
+                   // $wallet = new WalletTransaction;
+                    //$wallet->sourceWallet = $request->input('sourceWallet');
+                    //$wallet->recipientWallet = $request->input('recipientWallet');
+                    //$wallet->amount = $request->input('amount');
+                    //if($wallet->save()) {
+                    return $response;
+                        return back('transfer-to-wallet');
+                        echo '<script>$("#smodal").modal(options);</script>';
+                    //}
 
-               } 
+               }
+                return ['status' => 'failed'];
+                return redirect('transfer-to-wallet');
+                echo '<script>$("#smodal").modal(options);</script>';
 
-                var_dump($response);
-                
-        
             }
 
                 public function transferAccount(Request $request){
@@ -120,18 +121,18 @@ class WalletController extends Controller
 
                 $response = json_decode($response->raw_body,TRUE);
                 $status = $response['status'];
-                
+
                 if ($status == 'success') {
                     return redirect()->action('pagesController@failed');
                 }
-                         
-                         $data = $response;   
+
+                         $data = $response;
 
                     return redirect('failed');
-                    
-        
 
-                
+
+
+
             }
 
 
@@ -143,7 +144,7 @@ class WalletController extends Controller
 
                 $data = json_decode($response->raw_body, true);
                 $walletBalance = $data['data'];
-                
+
                 //$walletBalance = array_pluck($walletBalance, 'id', 'id');
                 var_dump($walletBalance);
                 die();
