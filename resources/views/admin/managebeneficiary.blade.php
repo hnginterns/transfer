@@ -70,74 +70,15 @@
   <div class="beneficiary-container">
 
       <div class="beneficiary-row row">
+        @foreach($beneficiaries as $beneficiary)
         <a href="beneficiarydetails" class="single-beneficiary-holder col-md-3">
             <div class="inner-holder">
-                  <h5 class="beneficiary-name"><b>Beneficiary name:</b> New Beneficiary</h5>
+                  <h5 class="beneficiary-name"><b>Beneficiary name:</b>{{$beneficiary->name}}</h5>
                   <button type="button" class="btn btn-primary" name="button"><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></button>
                   <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View </i></button>
             </div>
         </a>
-
-        <a href="beneficiarydetails" class="single-beneficiary-holder col-md-3">
-            <div class="inner-holder">
-                  <h5 class="beneficiary-name"><b>Beneficiary name:</b> New Beneficiary</h5>
-                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></button>
-                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View </i></button>
-            </div>
-        </a>
-
-        <a href="beneficiarydetails" class="single-beneficiary-holder col-md-3">
-            <div class="inner-holder">
-                  <h5 class="beneficiary-name"><b>Beneficiary name:</b> New Beneficiary</h5>
-                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></button>
-                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View </i></button>
-            </div>
-        </a>
-
-        <a href="beneficiarydetails" class="single-beneficiary-holder col-md-3">
-            <div class="inner-holder">
-                  <h5 class="beneficiary-name"><b>Beneficiary name:</b> New Beneficiary</h5>
-                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></button>
-                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View </i></button>
-            </div>
-        </a>
-      </div>
-
-      <div class="beneficiary-row row">
-        <a href="beneficiarydetails" class="single-beneficiary-holder col-md-3">
-            <div class="inner-holder">
-                  <h5 class="beneficiary-name"><b>Beneficiary name:</b> New Beneficiary</h5>
-                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></button>
-                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View </i></button>
-            </div>
-        </a>
-
-        <a href="beneficiarydetails" class="single-beneficiary-holder col-md-3">
-            <div class="inner-holder">
-                  <h5 class="beneficiary-name"><b>Beneficiary name:</b> New Beneficiary</h5>
-                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></button>
-                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View </i></button>
-            </div>
-        </a>
-
-
-
-      <div class="beneficiary-row row">
-        <div class="single-beneficiary-holder col-md-3">
-            <div class="inner-holder">
-                  <h5 class="beneficiary-name"><b>Beneficiary name:</b> New Beneficiary</h5>
-                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-trash-o" Saria-hidden="true"> Delete</i></button>
-                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View </i></button>
-            </div>
-        </div>
-
-        <div class="single-beneficiary-holder col-md-3">
-            <div class="inner-holder">
-                  <h5 class="beneficiary-name"><b>Beneficiary name:</b> New Beneficiary</h5>
-                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></button>
-                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View </i></button>
-            </div>
-        </div>
+        @endforeach
 
       </div>
   </div>
