@@ -600,6 +600,7 @@
                   show: true,
                   remote: false
               }
+             $("#fmsg").html(resp.msg);
              $("#fmodal").modal(options);
             } else {
               $("[name=lock]").val('');
