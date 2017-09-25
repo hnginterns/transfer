@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Wallet;
+use App\User;
+use App\Http\Utilities\Wallet as UtilWallet;
 
 class pagesController extends Controller
 {
@@ -83,8 +85,12 @@ class pagesController extends Controller
     return view ('web-analytics');
   }
 
-  public function viewWallet() {
-    return view ('wallet-view');
+  public function viewWallet(User $user, Wallet $wallet) {
+    
+    $wallets = $wallet::where('uuid', \Auth::id());
+    $transaction = UtilWallet::all();
+    // dd($transaction);
+    return view ('wallet-view', compact('wallets', 'transcation'));
   }
 
   public function createWallet() {
