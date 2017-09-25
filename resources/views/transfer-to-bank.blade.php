@@ -497,6 +497,7 @@
                   {{csrf_field()}}
                     <div class="row">
                       <div class="col col-lg-6 form-holder">
+                      <label>Beneficiary</label>
                         <select class="form-control cus-input" name="beneficiary_id">
                           <option>Select Beneficiary</option>
                             @foreach($beneficiary as $key => $beneficiaries)
@@ -525,6 +526,7 @@
                     </div>-->
                       <div class="row">
                         <div class="col col-lg-6 form-holder">
+                        <label>Amount</label>
                           <div class="form-group">
                               <input type="number" class="form-control cus-input" name="amount" id="amount" placeholder="Amount">
                           </div>
@@ -537,6 +539,7 @@
                       </div>
                       <div class="row">
                           <div class="col col-lg-6 form-holder">
+                          <label>Wallet Name</label>
                             <div class="form-group">
                                 <input disabled type="text" class="form-control cus-input" value="{{$wallet->wallet_name}}" name="wallet_name" id="wallet_name">
                             </div>
