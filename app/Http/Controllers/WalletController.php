@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use DateTime;
 use App\Wallet;
 use App\WalletTransaction;
 use Illuminate\Support\Facades\Validator;
@@ -75,34 +76,57 @@ class WalletController extends Controller
                 $restriction = Restriction::where('wallet_id', $lock_code[0]['id'])->get();
                 $rules = Rule::where('id', $restriction[0]['rule_id'] )->get();
                 print_r($rules);
+                $amount = $request->input('amount');
+                if($rules[0]['can_transfer'] == 1){
+                    $date = new DateTime();
+                    $date_string = date_format($date,"Y-m-d");
+                    $wallet_transactions = WalletTransaction::where('created_at', $dateString)->get();
+                    print_r($wallet_transactions);
+                    if(){
+                        if($amount >= $rules[0]['min_amount'] && $amount <= $rules[0]['max_amount']){
+                            $token = $this->getToken();
+                            $headers = array('content-type' => 'application/json', 'Authorization' => $token);
+                            $query = array(
+                                "sourceWallet"=> $request->input('sourceWallet'),
+                                "recipientWallet"=> $request->input('recipientWallet'),
+                                "amount"=> $request->input('amount'),
+                                "currency"=> "NGN",
+                                "lock"=> $lock_code[0]['lock_code']
+                            );
+
+                            $body = \Unirest\Request\Body::json($query);
+
+                            $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/wallet/transfer', $headers, $body);
+
+                            $response_arr = json_decode($response->raw_body,TRUE);
+                            $status = $response_arr['status'];
+                            if ($status == 'success') {
+                                 $wallet = new WalletTransaction;
+                                 $wallet->sourceWallet = $request->input('sourceWallet');
+                                 $wallet->recipientWallet = $request->input('recipientWallet');
+                                 $wallet->amount = $request->input('amount');
+                                 $wallet->created_at = 
+                                 if($wallet->save()) {
+                                    return response()->json(['status' => 'success']);
+                                 }
+                           }
+                           else{
+                               return response()->json([ 'status' => 'failed', 'msg' => $response_arr['message'] ]);
+                           }
+                        }
+                        else{
+                            return response()->json([ 'status' => 'failed', 'msg' => 'You can only transfer between '.$rules[0]['min_amount'].' and '.$rules[0]['max_amount'] ]);
+                        }
+                    }
+                    else{
+                        return response()->json([ 'status' => 'failed', 'msg' => 'You have exceeded your transfer limit for the day.' ]);
+                    }
+                }
+                else{
+                    return response()->json([ 'status' => 'failed', 'msg' => 'You wallet cannot transfer. Contact the admin' ]);
+                }
                 
-                $token = $this->getToken();
-                $headers = array('content-type' => 'application/json', 'Authorization' => $token);
-                $query = array(
-                    "sourceWallet"=> $request->input('sourceWallet'),
-                    "recipientWallet"=> $request->input('recipientWallet'),
-                    "amount"=> $request->input('amount'),
-                    "currency"=> "NGN",
-                    "lock"=> $lock_code[0]['lock_code']
-                );
-
-                $body = \Unirest\Request\Body::json($query);
-
-                $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/wallet/transfer', $headers, $body);
-
-                $response_arr = json_decode($response->raw_body,TRUE);
-                $status = $response_arr['status'];
-                if ($status == 'success') {
-                   // $wallet = new WalletTransaction;
-                    //$wallet->sourceWallet = $request->input('sourceWallet');
-                    //$wallet->recipientWallet = $request->input('recipientWallet');
-                    //$wallet->amount = $request->input('amount');
-                    //if($wallet->save()) {
-                     return response()->json(['status' => 'success']);
-                    //}
-
-               }
-               return response()->json([ 'status' => 'failed', 'msg' => $response_arr['message'] ]);
+                
             }
 
             public function transferAccount(Request $request){
