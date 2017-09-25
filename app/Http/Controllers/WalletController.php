@@ -22,8 +22,8 @@ class WalletController extends Controller
     }
 
     public function getToken(){
-        $api_key = 'ts_VZJ5K36HYKSVE4VRS5VC';
-        $secret_key = 'ts_09443SHY1WRF56TZBYRK0Z55OOO68C';
+        $api_key = 'ts_PQOAA7GKWFH3RKC9CP83';
+        $secret_key = 'ts_LL1JQ7Y4S0MCOXBVGQWKAO4KRGDYXV';
 
         \Unirest\Request::verifyPeer(false);
 
