@@ -92,16 +92,11 @@ class WalletController extends Controller
                     //$wallet->recipientWallet = $request->input('recipientWallet');
                     //$wallet->amount = $request->input('amount');
                     //if($wallet->save()) {
-                    return $response;
-                        return back('transfer-to-wallet');
-                        echo '<script>$("#smodal").modal(options);</script>';
+                     return response()->json(['status' => 'success']);
                     //}
 
                }
-                return ['status' => 'failed'];
-                return redirect('transfer-to-wallet');
-                echo '<script>$("#smodal").modal(options);</script>';
-
+               return response()->json(['status' => 'failed']);
             }
 
             public function transferAccount(Request $request){
