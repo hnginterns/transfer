@@ -96,8 +96,7 @@ class WalletController extends Controller
                     //}
 
                }
-               print_r($response_arr);
-               return response()->json(['status' => 'failed', 'msg' => $response_arr['message']);
+               return response()->json([ 'status' => 'failed', 'msg' => $response_arr['message'] ]);
             }
 
             public function transferAccount(Request $request){
