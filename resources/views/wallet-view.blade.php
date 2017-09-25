@@ -452,22 +452,26 @@
 							<div class="row">
 								<div class="col-md-4">
 					<div class="blue-circle"><img src="http://www.ravcontest.com/HNGpoints/image/W1.png" alt="icon"/></div>
+					@foreach($wallets as $wallet)
 					<div align="center" class="left-content">
-						<h5 class="side-header">Wallet 1</h5>
+						<h5 class="side-header"> {{ $wallet->wallet_name }} </h5>
 					<br/>
 					<h5 class="side-header">Wallet S/N</h5>
-					<p class="side-content">0001</p>
+					<p class="side-content">{{$key + 1}}</p>
 					<br/>
-					<h5 class="side-header">Wallet Id</h5>
-					<p class="side-content">id 2334556</p>
+					<h5 class="side-header">Wallet Code</h5>
+					<p class="side-content">{{ $wallet->wallet_code }} </p>
 					<br/>
 					<h5 class="side-header">Currency Type</h5>
-					<p class="side-content">NGN</p>
+					@foreach($transaction as $trans)
+					<p class="side-content">{{$trans['uref'] == $wallet->wallet_code ? $trans['currency'] : ""}}</p>
+					@endforeach
 					<br/>
 					<h5 class="side-header">Balance</h5>
-					<p class="side-content">134,455,667.78</p>
+					<p class="side-content">{{$trans['uref'] == $wallet->wallet_code ? $trans['balance'] : $wallet->balance}}</p>
 					<br/>
 					</div>
+					@endforeach
 								</div>
 								<div class="col-md-8">
 					<div class="orange-box"><h4 class="title" align="center">TRANSACTION HISTORY</h4></div>
