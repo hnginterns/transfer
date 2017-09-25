@@ -119,8 +119,9 @@
             
     </div>
     <div class="col-md-12">      
-    <a type="submit" class="btn btn-block btn-primary btn-sm" >Fund Wallet</a>  
-            <a type="submit" class="btn btn-block btn-danger btn-sm">Delete Wallet</a> 
+    <a type="submit" class="btn btn-block btn-info btn-sm col-md-2" >Fund Wallet</a>  
+            <a type="submit" class="btn btn-block btn-danger btn-sm col-md-2">Delete Wallet</a> 
+            <div class="col-md-8"></div>
     </div>
 
 </div>
