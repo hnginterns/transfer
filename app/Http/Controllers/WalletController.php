@@ -87,7 +87,7 @@ class WalletController extends Controller
         if ($validator->fails()) 
         {
             $messages = $validator->messages()->toArray();
-            return response()->json([ 'status' => 'failed', 'msg' => $messages ]);
+             return response()->json([ 'status' => 'failed', 'msg' => 'All field are required' ]);
         }
         else
         {
