@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->boolean('is_admin')->default(false);
             $table->integer('bank_id')->unsigned();
-            $table->string('account_number')->unique();
+            $table->string('account_number')->nullable()->unique();
             $table->integer('created_by')->unsigned();
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
