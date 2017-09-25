@@ -119,6 +119,8 @@ class AdminController extends WalletController
 
         }
 
+        $wallets = Wallet::all();
+
       return view ('admin.managewallet');
     }
 
