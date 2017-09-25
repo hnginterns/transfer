@@ -78,8 +78,8 @@ class pagesController extends Controller
 
   public function wallet_transfer(){
     $wallets = Wallet::all();
-      return view ('transfer-to-wallet', compact('wallets'));
-     
+    $user_id = Auth::user()->id;
+    return view ('transfer-to-wallet', compact('wallets'))->with('user_id', $user_id);
   }
 
   public function viewAccounts(){
@@ -92,10 +92,10 @@ class pagesController extends Controller
 
   public function viewWallet(User $user, Wallet $wallet) {
     
-    $wallets = $wallet::where('uuid', \Auth::id());
+    $wallets = $wallet::where('uuid', \Auth::id())->get();
     $transaction = UtilWallet::all();
-    // dd($transaction);
-    return view ('wallet-view', compact('wallets', 'transcation'));
+    // dd($wallets);
+    return view ('wallet-view', compact('wallets', 'transaction'));
   }
 
   public function createWallet() {
