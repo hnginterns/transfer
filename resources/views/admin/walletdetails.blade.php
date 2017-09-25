@@ -117,8 +117,10 @@
             </div>           
           </div>
             
-          <a type="submit" class="btn btn-block btn-primary btn-sm" name="button">Fund Wallet</a>  
-            <a type="submit" class="btn btn-block btn-primary btn-sm" name="button">Delete Wallet</a> 
+    </div>
+    <div class="col-md-12">      
+    <a type="submit" class="btn btn-block btn-primary btn-sm" >Fund Wallet</a>  
+            <a type="submit" class="btn btn-block btn-danger btn-sm">Delete Wallet</a> 
     </div>
 
 </div>
