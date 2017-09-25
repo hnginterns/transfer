@@ -71,7 +71,9 @@ class pagesController extends Controller
 
   public function bank_transfer (){
     $beneficiary = Beneficiary::where('uuid',Auth::user()->id)->get();
-    return view ('transfer-to-bank', compact('beneficiary'));
+    $wallet = Wallet::where('uuid', '=', Auth::user()->id)->limit(1)->get();
+    $wallet = $wallet[0];
+    return view ('transfer-to-bank', compact('beneficiary', 'wallet'));
   }
 
   public function wallet_transfer(){
