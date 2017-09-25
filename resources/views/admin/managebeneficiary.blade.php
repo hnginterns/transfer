@@ -75,7 +75,7 @@
             <div class="inner-holder">
                   <h5 class="beneficiary-name"><b>Beneficiary name:</b>{{$beneficiary->name}}</h5>
                   <button type="button" class="btn btn-primary" name="button"><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></button>
-                  <a href="/beneficiarydetails/{{$beneficiary->id}}"><button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View </i></button></a>
+                  <a href="admin/beneficiarydetails/{{$beneficiary->id}}"><button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View </i></button></a>
             </div>
         </div>
         @endforeach
