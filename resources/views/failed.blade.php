@@ -75,38 +75,6 @@
             <!-- Modal Body -->
             <div class="modal-body">
                 <h4>YOUR TRANSACTION FAILED</h4>
-
-                <table>
-                    <tr>
-                        <td>Merchant Name</td>
-                        <td>Nwauwa Victor Ifeanyi</td>
-                    </tr>
-                    <tr>
-                        <td>Reference No.</td>
-                        <td>02CS44BDE55N</td>
-                    </tr>
-                    <tr>
-                        <td>Transaction Date/Time</td>
-                        <td>20-9-2017/05:30pm</td>
-                    </tr>
-                    <tr>
-                        <td>Error code</td>
-                        <td>2173</td>
-                    </tr>
-                    <tr>
-                        <td>Error Message</td>
-                        <td>Transaction unsuccessful :  Insufficient Balance Error 2173</td>
-                    </tr>
-                </table>
-
-                <h6>This transaction will automatically close in 20 seconds and you will be redirected to your dashboard</h6>
-            </div>
-            <!-- Modal Footer -->
-            <div class="modal-footer">
-                <h6>Click print to print receipt for reference or ok to continue</h6>
-                <button type="button" class="btn" data-dismiss="modal" id="print">Print</button>
-                <button type="button" class="btn" id="close">OK</button>
-            </div>
         </div>
     </div>
 </div>
