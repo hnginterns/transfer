@@ -81,8 +81,8 @@ class WalletController extends Controller
                     $date = new DateTime();
                     $date_string = date_format($date,"Y-m-d");
                     $wallet_transactions = Transaction::where('created_at', $date_string)->get()->count();
-                    //$total_amount = WalletTransaction::where('created_at', $date_string)->sum('amount');
-                    //echo $wallet_transactions;
+                    $total_amount = WalletTransaction::where('created_at', $date_string)->sum('amount');
+                    echo $wallet_transactions;
                     if($wallet_transactions < $rules[0]['max_transactions_per_day'] && $total_amount < $rules[0]['max_amount_transfer_per_day']){
                         if($amount >= $rules[0]['min_amount'] && $amount <= $rules[0]['max_amount']){
                             $token = $this->getToken();
