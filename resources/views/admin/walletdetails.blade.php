@@ -69,7 +69,7 @@
   <a href="/admin/managewallet">
   <button type="submit" class="btn btn-success" name="button">Back</button>
   </a>
-  <br>
+  <br> <br>
         <div class="single-wallet-holder col-md-6">
             <div class="inner-holder">
                   <div class="box-body">
@@ -90,10 +90,9 @@
                       <tr>
                       <tr>
                         @foreach($transaction as $transact)
-                        @if($transact['uref'] == $wallet->wallet_code)
+                        
                         <td>User Balance:</td>
                         <td>{{ $transact['balance'] }}</td>
-                          @endif
                         @endforeach
                         
                       </tr>
