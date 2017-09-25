@@ -516,6 +516,7 @@
                             <input type="text" class="form-control cus-input" name="lock_code" id="lockCode" placeholder="Lock code">
                         </div>
                       </div>
+                      
                       <div class="col col-lg-6 form-holder">
                         <div class="form-group">
                             <input type="text" class="form-control cus-input" name="naration" id="naration" placeholder="naration (optional)">
@@ -534,6 +535,19 @@
                           </div>
                         </div>
                       </div>
+                      <div class="row">
+                          <div class="col col-lg-6 form-holder">
+                            <div class="form-group">
+                                <input disabled type="text" class="form-control cus-input" value="{{$wallet->wallet_name}}" name="wallet_name" id="wallet_name">
+                            </div>
+                         </div>
+                         <div class="col col-lg-6 form-holder">
+                            <div class="form-group">
+                                <input disabled type="text" class="form-control cus-input" value="{{$wallet->balance}}" name="wallet_balance" id="wallet_balance">
+                            </div>
+                         </div>
+                      </div>
+
                       <button type="submit" class="btn btn-primary">Transfer</button>
 
                   </form>
