@@ -521,7 +521,9 @@
 
                                 <option>Select recipient wallet</option>
                                     @foreach($wallets as $wallet)
-                                     <option value="{{ $wallet->wallet_code }}">{{ $wallet->wallet_name}}</option>
+                                      @if($wallet->id == $user_id)
+                                          <option value="{{ $wallet->wallet_code }}">{{ $wallet->wallet_name}}</option>
+                                      @endif
                                     @endforeach
                             </select>
                         </div>
