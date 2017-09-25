@@ -22,14 +22,14 @@
     <div class="form-group row">
       <label for="email" class="col-sm-2 col-form-label col-form-label-sm">Firstname</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control form-control-lg" id="lgFormGroupInput" placeholder="Email" name="first_name" value="{{$user->first_name}}">
+        <input type="text" class="form-control form-control-lg" id="lgFormGroupInput" placeholder="First Name" name="first_name" value="{{$user->first_name}}">
       </div>
     </div>
 
     <div class="form-group row">
       <label for="email" class="col-sm-2 col-form-label col-form-label-sm">Lastname</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control form-control-lg" id="lgFormGroupInput" placeholder="Email" name="last_name" value="{{$user->last_name}}">
+        <input type="text" class="form-control form-control-lg" id="lgFormGroupInput" placeholder="Last Name" name="last_name" value="{{$user->last_name}}">
       </div>
     </div>
 
