@@ -169,7 +169,7 @@ class WalletController extends Controller
                             $query = array(
                             "lock"=>$walletdata[0]['lock_code'],
                             "amount"=>$request->amount,
-                            "bankcode"=>$beneficiary[0]->bank_id,// Returns error
+                            "bankcode"=>315,// Returns error
                             "accountNumber"=>$beneficiary[0]->account_number,
                             "currency"=>"NGN",
                             "senderName"=>Auth::user()->username,
