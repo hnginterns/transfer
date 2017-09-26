@@ -29,6 +29,10 @@
         padding: 10px !important;
     }
 
+    tr>td {
+        color: white;
+    }
+
     i.fa {
       color: #b8c7ce;
     }
