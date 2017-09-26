@@ -78,14 +78,13 @@
         <a href="{{ route('view-wallet', $wallet->id) }}" class="single-wallet-holder col-md-3">
             <div class="inner-holder">
                   <h5 class="wallet-name"><b>Wallet name:</b> {{ $wallet->wallet_name }}</h5>
-                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></button>
-                  <button type="button" class="btn btn-primary" name="button">
+                  <h5 data-color="#ffffff">
                     @foreach($transaction as $transact)
                     @if($wallet->wallet_code == $transact['uref'])
                     Balance {{  $transact['balance'] }}
                     @endif
                     @endforeach
-                  </button>
+                  </h5>
             </div>
         </a>
         @endforeach
