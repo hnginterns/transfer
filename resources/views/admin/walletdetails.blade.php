@@ -124,7 +124,7 @@
           <a type="submit" class="btn btn-block btn-info" >Fund Wallet</a>
         </div>
         <div class="col-sm-2">
-          <a type="submit" class="btn btn-block btn-info" >Fund Wallet with RavePay</a>
+          <a type="submit" class="btn btn-block btn-info" >Fund Wallet-RavePay</a>
         </div>
         <div class="col-sm-2">
           <a type="submit" class="btn btn-block btn-danger">Delete Wallet</a>       
