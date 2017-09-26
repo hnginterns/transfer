@@ -53,7 +53,7 @@
 
     @media screen and (max-width:768px) {
 
-      .single-wallet-holder.col-md-3 {
+      .single-wallet-holder.col-sm-3 {
           margin-bottom: 20px;
           padding: 0px;
       }
@@ -70,7 +70,7 @@
   <button type="submit" class="btn btn-success" name="button">Back</button>
   </a>
   <br> <br>
-        <div class="single-wallet-holder col-md-6">
+        <div class="single-wallet-holder col-sm-6">
             <div class="inner-holder">
                   <div class="box-body">
                   <div class="table-responsive">
@@ -118,12 +118,18 @@
           </div>
             
     </div>
-    <div class="col-md-12">      
-    <a type="submit" class="btn btn-block btn-info btn-sm col-md-2" >Fund Wallet</a>  
-            <a type="submit" class="btn btn-block btn-danger btn-sm col-md-2">Delete Wallet</a> 
-            <div class="col-md-8"></div>
+    <div class="row">
+    <br><br>
+      <div class="col-sm-12"> 
+        <div class="col-sm-2">
+          <a type="submit" class="btn btn-block btn-info" >Fund Wallet</a>
+        </div>
+        <div class="col-sm-2">
+          <a type="submit" class="btn btn-block btn-danger">Delete Wallet</a>       
+        </div>      
+        <div class="col-sm-6"></div>
+      </div>
     </div>
-
 </div>
 
 @endsection
