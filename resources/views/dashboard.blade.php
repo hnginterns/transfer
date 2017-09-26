@@ -252,58 +252,62 @@
 
   <div class="container-fluid">
     <div class="row">
-      <div class="col-sm-2" style="text-align: left;" id="sidebar" >
+      <div class="col-md-2" style="text-align: left;" id="sidebar" >
         <i class="fa fa-window-close" id="close" aria-hidden="true"></i>
-
         <ul class="nav nav-stacked">
-          <li class="active-sidebar"><a href="/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-          <li class="side-items"><a href="/wallet-view" class="side-item"><i class="fa fa-google-wallet"></i> Wallet View</a></li>
-          <li class="side-items"><a href="/transfer-to-wallet" class="side-item"><i class="fa fa-tasks"></i> Wallet Transfer</a></li>
-          <li class="side-items"><a href="/transfer-to-bank" class="side-item"><i class="fa fa-bank"></i> Bank Transfer</a></li>
-          <li class="side-items"><a href="/banks" class="side-item"><i class="fa fa-bank"></i> Banks</a></li>
+          <li class="active-sidebar">
+            <a href="/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a>
+          </li>
+          <li class="side-items">
+            <a href="/wallet-view" class="side-item"><i class="fa fa-google-wallet"></i> Wallet View</a>
+          </li>
+          <li class="side-items">
+            <a href="/transfer-to-wallet" class="side-item"><i class="fa fa-tasks"></i> Wallet Transfer</a>
+          </li>
+          <li class="side-items">
+            <a href="/transfer-to-bank" class="side-item"><i class="fa fa-bank"></i> Bank Transfer</a>
+          </li>
+          <li class="side-items">
+            <a href="/banks" class="side-item"><i class="fa fa-bank"></i> Banks</a>
+          </li>
           <li>
-          <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
             <i class="fa fa-sign-out"></i> Logout
-          </a>
+            </a>
 
-          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-              {{ csrf_field() }}
-          </form>
-        </li>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                {{ csrf_field() }}
+            </form>
+          </li>
         </ul>
       </div>
 
-      <div class="col-md-8">
-            <div class="row">
-              @foreach($wallets as $wallet)
-                <div class="col-md-3">
-                  <div class="thumbnail">
-                    <div class="panel panel-info">
-                      <div class="panel-heading">
-                        <i class="fa fa-money"></i> Wallet ID: <i class="fa fa-lock"></i> {{ $wallet->id }}
-                      </div>
-                      <div class="panel-body">
-                        <p class="currency">NGN</p>
-                        <img src="http://www.casumobonus.com/wp-content/uploads/2017/05/e-wallet-casumo.png" alt="" class="wallet-img">
-                        <p class="id">Wallet Code: {{ $wallet->wallet_code}}</p>
-                        <div class="well">
-                          @foreach($transaction as $transact)
-                          @if($transact['uref'] == $wallet->wallet_code)
-                          ₦ {{ $transact['balance']}}
-                          @endif
-                          @endforeach
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-              @endforeach
+      <div class="col-md-10">
+        <div class="row">
+          @foreach($wallets as $wallet)
+            <div class="col-md-4">
+              <div class="panel panel-info">
+                <div class="panel-heading">
+                  <i class="fa fa-money"></i> Wallet ID: <i class="fa fa-lock"></i> {{ $wallet->id }}
+                </div>
+                <div class="panel-body">
+                  <p class="lead">NGN</p>
+                  <img src="http://www.casumobonus.com/wp-content/uploads/2017/05/e-wallet-casumo.png" width="70%" height="50%" alt="">
+                  <p class="lead">Wallet Code: {{ $wallet->wallet_code}}</p>
+                    @foreach($transaction as $transact)
+                      @if($transact['uref'] == $wallet->wallet_code)
+                        ₦ {{ $transact['balance']}}
+                      @endif
+                    @endforeach
+                </div>
+              </div>
             </div>
-
-          </div>
+          @endforeach
         </div>
       </div>
     </div>
   </div>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script type="text/javascript">
