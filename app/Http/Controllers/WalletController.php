@@ -161,7 +161,8 @@ class WalletController extends Controller
                         $beneficiary = Beneficiary::where('id', '=', $request->beneficiary_id)
                                                     ->get();
                         // We need to get the loack code of a wallet in order to make the transfer.
-                        $wallet_data = Wallet::where('wallet_name', $request->wallet_name)->get();                     
+                        $wallet_data = Wallet::where('wallet_name', $request->wallet_name)->get();   
+                        dd($wallet_data);                  
                         if(!empty($beneficiary)){
                             $token = $this->getToken();
                             $headers = array('content-type' => 'application/json', 'Authorization' => $token);
