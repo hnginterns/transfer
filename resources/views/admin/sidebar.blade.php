@@ -16,19 +16,7 @@
         <a href="#"><i class="fa fa-circle text-success" ></i> Online</a>
       </div>
     </div>
-
-    <!-- search form (Optional) -->
-    <form action="#" method="get" class="sidebar-form">
-      <div class="input-group">
-        <input type="text" name="q" class="form-control" placeholder="Search...">
-        <span class="input-group-btn">
-            <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-            </button>
-          </span>
-      </div>
-    </form>
-    <!-- /.search form -->
-
+    
     <!-- Sidebar Menu -->
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header">ADMIN CONTROLS</li>
@@ -44,8 +32,6 @@
       <li><a href="{{ url('/admin/managewallet') }}"><i class="fa fa-briefcase"></i> <span>Manage Wallet</span></a></li>
       <li><a href="{{ url('/admin/beneficiary') }}"><i class="fa fa-dollar"></i> <span>Beneficiary</span></a></li>
       <li><a href="{{ url('/web-analytics') }}">Transaction Analytics</a></li>
-      <li><a href="#"><i class="fa fa-eyedropper"></i> <span>Draft</span></a></li>
-      <li><a href="#"><i class="fa fa-trash"></i> <span>Trash</span></a></li>
       <li>
         <li>
         <a href="{{ route('logout') }}"
