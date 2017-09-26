@@ -244,14 +244,9 @@
       <ul class="nav navbar-nav">
         <li><a href="#" style="color:white; font-size:18px;"><i class="fa fa-dashboard"></i> Dashboard</a></li>
       </ul>
-      <div style="color:#FFF; font-size:18px;" class="pull-right">
-        <div class="nav navbar-nav-right">
-          <ul class="nav navbar-nav">
-              <li class="nav-item"><i class="fa fa-user"></i> </li>
-              <li class="nav-item"> Emeka Jude</li>
-          </ul>
-        </div>
-      </div>
+      <ul class="nav navbar-nav pull-right">
+        <li><a href="#" style="color:white; font-size:18px;"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+      </ul>
   </div>
   </nav>
 
@@ -261,7 +256,7 @@
         <i class="fa fa-window-close" id="close" aria-hidden="true"></i>
 
         <ul class="nav nav-stacked">
-          <li class="active-sidebar"><a href="/dashboard">Dashboard</a></li>
+          <li class="active-sidebar"><a href="/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
           <li class="side-items"><a href="/wallet-view" class="side-item"><i class="fa fa-google-wallet"></i> Wallet View</a></li>
           <li class="side-items"><a href="/transfer-to-wallet" class="side-item"><i class="fa fa-tasks"></i> Wallet Transfer</a></li>
           <li class="side-items"><a href="/transfer-to-bank" class="side-item"><i class="fa fa-bank"></i> Bank Transfer</a></li>
@@ -282,20 +277,25 @@
             <div class="row">
               @foreach($wallets as $wallet)
                 <div class="col-md-3">
-                    <a class="wallet">
-                    <p class="num">{{ $wallet->id }}</p>
-                    <p class="currency">NGN</p>
-                    <img src="http://www.casumobonus.com/wp-content/uploads/2017/05/e-wallet-casumo.png" alt="" class="wallet-img">
-                    <p class="id">ID: {{ $wallet->wallet_code}}</p>
-                    <div class="balance">
-                      @foreach($transaction as $transact)
-                      @if($transact['uref'] == $wallet->wallet_code)
-                      ₦ {{ $transact['balance']}}
-                      @endif
-                      @endforeach
+                  <div class="thumbnail">
+                    <div class="panel panel-info">
+                      <div class="panel-heading">
+                        <i class="fa fa-money"></i> Wallet ID: <i class="fa fa-lock"></i> {{ $wallet->id }}
+                      </div>
+                      <div class="panel-body">
+                        <p class="currency">NGN</p>
+                        <img src="http://www.casumobonus.com/wp-content/uploads/2017/05/e-wallet-casumo.png" alt="" class="wallet-img">
+                        <p class="id">Wallet Code: {{ $wallet->wallet_code}}</p>
+                        <div class="well">
+                          @foreach($transaction as $transact)
+                          @if($transact['uref'] == $wallet->wallet_code)
+                          ₦ {{ $transact['balance']}}
+                          @endif
+                          @endforeach
+                        </div>
+                      </div>
                     </div>
-                  </a>
-                </div>
+                  </div>
               @endforeach
             </div>
 
