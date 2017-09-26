@@ -108,3 +108,4 @@ Route::post('admin/users/banUser/{id}', 'Admin\UsersController@banUser');
 Route::post('admin/users/unbanUser/{id}', 'Admin\UsersController@unbanUser');
 Route::post('admin/users/makeAdmin/{id}', 'Admin\UsersController@makeAdmin');
 Route::post('admin/users/removeAdmin/{id}', 'Admin\UsersController@removeAdmin');
+Route::post('admin/editbeneficiary/{beneficiary}', 'AdminController@postEditbeneficiary');

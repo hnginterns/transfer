@@ -197,6 +197,26 @@ class AdminController extends WalletController
 
     }
 
+    public function postEditBeneficiary(Request $request, Beneficiary $beneficiary){
+        $validator = $this->validateBeneficiary($request->all());
+
+        if ($validator->fails()) {
+            $messages = $validator->messages()->toArray();
+            Session::flash('messages', $this->formatMessages($messages, 'error'));
+            return redirect()->to(URL::previous())->withInput();
+        }
+        else {
+            $beneficiary->name = $request->name;
+            $beneficiary->account_number = $request->account_number;
+            $beneficiary->bank_id = $request->bank_id;
+            if ($beneficiary->save()) {
+                return redirect('/admin')->with('success', 'Beneficiary added');
+            }
+            else {
+                return redirect('/admin')->with('failure', 'Beneficiary could not be added');
+            }
+    }
+    }
     public function saveSettings()
     {
 
@@ -206,6 +226,7 @@ class AdminController extends WalletController
     {
         return View('admin/editbeneficiary', compact('beneficiary'));
     }
+
 
     public function addaccount()
     {
