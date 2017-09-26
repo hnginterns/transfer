@@ -118,12 +118,13 @@
           </div>
             
     </div>
+    <br><br>
     <div class="col-sm-12"> 
-      <div class="col-sm-3">
-        <a type="submit" class="btn btn-block btn-info btn-sm col-sm-2" >Fund Wallet</a>
+      <div class="col-sm-2">
+        <a type="submit" class="btn btn-block btn-info" >Fund Wallet</a>
       </div>
-      <div class="col-sm-3">
-        <a type="submit" class="btn btn-block btn-danger btn-sm col-sm-2">Delete Wallet</a>       
+      <div class="col-sm-2">
+        <a type="submit" class="btn btn-block btn-danger">Delete Wallet</a>       
       </div>      
       <div class="col-sm-6"></div>
     </div>
