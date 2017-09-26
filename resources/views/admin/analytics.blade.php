@@ -71,8 +71,6 @@
 
 <div class="container-fluid">
 
-  <a type="button" class="btn btn-success" href="createwallet" name="button"><i class="fa fa-plus" aria-hidden="true"> Add Wallet</i></a>
-
   <div class="wallet-container">
   <div class="chart_contain"><svg width="1570" height="716" viewBox="0 0 1570 716" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <title>Page 1</title>
