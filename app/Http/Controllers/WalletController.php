@@ -161,20 +161,20 @@ class WalletController extends Controller
                         $beneficiary = Beneficiary::where('id', '=', $request->beneficiary_id)
                                                     ->get();
                         // We need to get the loack code of a wallet in order to make the transfer.
-                        $wallet_data = Wallet::where('wallet_name', $request->wallet_name)->get();   
+                        $walletdata = Wallet::where('wallet_name', $request->wallet_name)->get();   
                         //dd($wallet_data);                  
                         if(!empty($beneficiary)){
                             $token = $this->getToken();
                             $headers = array('content-type' => 'application/json', 'Authorization' => $token);
                             $query = array(
-                            "lock"=>123456,
+                            "lock"=>$walletdata[0]['lock_code'],
                             "amount"=>$request->amount,
-                            "bankcode"=>$beneficiary[0]->bank_id,
+                            "bankcode"=>$beneficiary[0]->bank_id,// Returns error
                             "accountNumber"=>$beneficiary[0]->account_number,
                             "currency"=>"NGN",
                             "senderName"=>Auth::user()->username,
                             "narration"=>$request->narration, //Optional
-                            "ref"=>$request->reference);
+                            "ref"=>$request->reference); // No Refrence from request
 
                             $body = \Unirest\Request\Body::json($query);
 
