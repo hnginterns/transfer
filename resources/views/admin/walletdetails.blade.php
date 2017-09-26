@@ -90,10 +90,10 @@
                       <tr>
                       <tr>
                         @foreach($transaction as $transact)
-                        @if($transact['uref'] == $wallet->wallet_code)
+                       <!-- @if($transact['uref'] == $wallet->wallet_code) -->
                         <td>User Balance:</td>
                         <td>{{ $transact['balance'] }}</td>
-                          @endif
+                         <!--  @endif -->
                         @endforeach
                         
                       </tr>
