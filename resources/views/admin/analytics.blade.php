@@ -70,7 +70,9 @@
 
 
 <div class="container-fluid">
-
+<div class="labels label1"><i class="fa fa fa-bar-chart bck fa-2x"></i> <span class="con_text">Transactions<br>Welcome to Analytics Dashboard</span></div>
+            <div class="labels label2"><i class="fa fa-money bck fa-2x"></i> <span class="con_text">$4323,53154,300<br>Transactions 36486</span></div>
+            <div class="labels label3"><i class="fa fa-money bck fa-2x"></i> <span class="con_text">$4323,53154,300<br>Transactions 36486</span></div>
   <div class="wallet-container">
   <div class="chart_contain"><svg width="1570" height="716" viewBox="0 0 1570 716" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <title>Page 1</title>
