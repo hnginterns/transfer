@@ -92,17 +92,18 @@
                             <th>Account Number</th>
                             <th></th>
                         </tr>
-                        @foreach($beneficiaries as $beneficiary)
+                        @php($i = 1)
+                        @foreach($beneficiaries as $key => $beneficiary)
                         <tbody>
                             <tr>
-                                <td>#</td>
+                                <td>{{$i}}</td>
                                 <td>{{ $beneficiary->name }}</td>
-                                <td>{{ $beneficiary->bank_id }}</td>
+                                <td>{{ $beneficiary->bank->bank_name }}</td>
                                 <td>{{ $beneficiary->account_number }}</td>
-                                <td><a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"><span>edit</span></i> </a></td>
+                                <td><a href="{{config('app.url')}}/admin/beneficiary/edit/{{$beneficiary->id}}"><i class="fa fa-pencil-square-o" aria-hidden="true"><span>edit</span></i> </a></td>
                             </tr>
                         </tbody>
-                        {{--  {{ $i++ }}  --}}
+                        @php($i++)
                         @endforeach
                     </table>
                 </div>
