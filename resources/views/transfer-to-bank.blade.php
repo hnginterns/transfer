@@ -541,7 +541,7 @@
                           <div class="col col-lg-6 form-holder">
                           <label>Wallet Name</label>
                             <div class="form-group">
-                              <select name="wallet_name" id="wallet_name">
+                              <select class="form-control cus-input" name="wallet_name" id="wallet_name">
                                 <option value=""> Select Wallet</option>
                                 @forelse($wallets as $wallet)
                                   <option value="{{ $wallet->wallet_name }}">{{ $wallet->wallet_name }}</option>
