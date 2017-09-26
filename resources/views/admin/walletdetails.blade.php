@@ -118,8 +118,7 @@
           </div>
             
     </div>
-    <div class="row">
-    <br><br>
+    <div class="row" style="padding-top:40px">
       <div class="col-sm-12"> 
         <div class="col-sm-2">
           <a type="submit" class="btn btn-block btn-info" >Fund Wallet</a>
