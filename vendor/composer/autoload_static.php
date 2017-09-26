@@ -333,7 +333,7 @@ class ComposerStaticInitcb56c8f99153a160391720319584c667
         'App\\Http\\Controllers\\BanksController' => __DIR__ . '/../..' . '/app/Http/Controllers/BanksController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
-        'App\\Http\\Controllers\\PaymentController' => __DIR__ . '/../..' . '/app/Http/Controllers/PaymentController.php',
+        'App\\Http\\Controllers\\PaymentController' => __DIR__ . '/../..' . '/app/Http/Controllers/paymentController.php',
         'App\\Http\\Controllers\\RavepayController' => __DIR__ . '/../..' . '/app/Http/Controllers/RavepayController.php',
         'App\\Http\\Controllers\\UsersController' => __DIR__ . '/../..' . '/app/Http/Controllers/UsersController.php',
         'App\\Http\\Controllers\\ValidateAccountController' => __DIR__ . '/../..' . '/app/Http/Controllers/ValidateAccountController.php',

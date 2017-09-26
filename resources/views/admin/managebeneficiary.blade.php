@@ -29,6 +29,10 @@
         padding: 10px !important;
     }
 
+    tr>td {
+        color: white;
+    }
+
     i.fa {
       color: #b8c7ce;
     }
@@ -70,15 +74,42 @@
   <div class="beneficiary-container">
 
       <div class="beneficiary-row row">
-        @foreach($beneficiaries as $beneficiary)
-        <div class="single-beneficiary-holder col-md-3">
+        
+        <div class="single-beneficiary-holder col-md-12">
             <div class="inner-holder">
-                  <h5 class="beneficiary-name"><b>Beneficiary name:</b>{{$beneficiary->name}}</h5>
-                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></button>
-                  <a href="beneficiarydetails/{{$beneficiary->id}}"><button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View </i></button></a>
+            <div class="table-responsive">
+
+                    <table class="table no-margin">
+
+                        <thead>
+                            <h4 class="wallet-name">Beneficiary</h4>
+                        </thead>
+
+                        <tr style="color: white;">
+                            <th>S/N</th>
+                            <th>Name</th>
+                            <th>Bank</th>
+                            <th>Account Number</th>
+                            <th></th>
+                        </tr>
+                        @foreach($beneficiaries as $beneficiary)
+                        <tbody>
+                            <tr>
+                                <td>#</td>
+                                <td>{{ $beneficiary->name }}</td>
+                                <td>{{ $beneficiary->bank_id }}</td>
+                                <td>{{ $beneficiary->account_number }}</td>
+                                <td><a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"><span>edit</span></i> </a></td>
+                            </tr>
+                        </tbody>
+                        {{--  {{ $i++ }}  --}}
+                        @endforeach
+                    </table>
+                </div>
+                <!-- /.table-responsive -->
             </div>
         </div>
-        @endforeach
+       
 
       </div>
   </div>

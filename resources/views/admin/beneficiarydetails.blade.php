@@ -66,7 +66,7 @@
 
 
 <div class="container-fluid">
-  <a href="beneficiary"><button type="submit" class="btn btn-success" name="button"> Back</button></a>
+  <a href="/admin/beneficiary"><button type="submit" class="btn btn-success" name="button"> Back</button></a>
   <br>  <br>
         <div class="single-beneficiary-holder col-md-6">
             <div class="inner-holder">

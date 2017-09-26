@@ -92,6 +92,7 @@
                             <th>Min. Amt. per Transfer</th>
                             <th>Max. Transactions per day</th>
                             <th>Max. Amt. Transfer Per day</th>
+                            <th></th>
                         </tr>
                         @foreach($rules as $key => $rule)
                         <tbody>
