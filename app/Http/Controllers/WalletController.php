@@ -217,9 +217,7 @@ class WalletController extends Controller
         $token = $this->getToken();
         $headers = array('content-type' => 'application/json','Authorization'=> $token);
         $query = array('amount'=> 10000,'fee' => 45);
-
         $body = \Unirest\Request\Body::json($query);
-
         $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/get-charge', $headers, $body);
         $data = json_decode($response->raw_body, TRUE);
         $walletCharge = var_dump($data['data']);
