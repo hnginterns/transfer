@@ -284,6 +284,10 @@ class AdminController extends WalletController
 
     }
 
+    public function webAnalytics() {
+        return view ('admin/analytics');
+    }
+
     public function ViewBeneficiary()
     {
         $beneficiaries = Beneficiary::all();

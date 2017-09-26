@@ -89,10 +89,7 @@ class pagesController extends Controller
       return view('view-accounts');
   }
 
-  public function webAnalytics() {
-    return view ('web-analytics');
-  }
-
+  
   public function viewWallet(User $user, Wallet $wallet) {
     
     $wallets = $wallet::where('uuid', \Auth::id())->get();
