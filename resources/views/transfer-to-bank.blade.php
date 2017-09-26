@@ -541,17 +541,23 @@
                           <div class="col col-lg-6 form-holder">
                           <label>Wallet Name</label>
                             <div class="form-group">
-                                <input disabled type="text" class="form-control cus-input" value="{{$wallet->wallet_name}}" name="wallet_name" id="wallet_name">
+                              <select name="wallet_name" id="wallet_name">
+                                <option value=""> Select Wallet</option>
+                                @forelse($wallets as $wallet)
+                                  <option value="{{ $wallet->wallet_name }}">{{ $wallet->wallet_name }}</option>
+                                @empty
+                                @endforelse
+                              </select>
                             </div>
                          </div>
                          <!--<div class="col col-lg-6 form-holder">
                             <div class="form-group">
-                                <input disabled type="text" class="form-control cus-input" value="{{$wallet->balance}}" name="wallet_balance" id="wallet_balance">
+                                <input disabled type="text" class="form-control cus-input" value="" name="wallet_balance" id="wallet_balance">
                             </div>
                          </div>-->
                       </div>
+                      <button type="submit" class="btn btn-primary pull-left">Transfer</button>
 
-                      <button type="submit" class="btn btn-primary">Transfer</button>
 
                   </form>
               </div>
