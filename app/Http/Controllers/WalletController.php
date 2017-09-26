@@ -153,10 +153,11 @@ class WalletController extends Controller
                 $validator = $this->validateBeneficiary($request->all());
 
                 if ($validator->fails()) {
+                    //dd($request);
                     $messages = $validator->messages()->toArray();
                     Session::flash('messages', $this->formatMessages($messages, 'error'));
                     return redirect()->to(URL::previous())->withInput();
-                }else {
+                } else {
 
                         $beneficiary = Beneficiary::where('id', '=', $request->beneficiary_id)
                                                     ->get();                     
@@ -308,9 +309,10 @@ class WalletController extends Controller
     protected function validatebeneficiary(array $data)
     {
         return Validator::make($data, [
-            'sender_name' => 'required|string',
-            'lock_code' => 'required|string|max:100',
-            'reference' => 'required|string',
+            //'sender_name' => 'required|string',
+            'wallet_name' => 'required|string',
+            //'lock_code' => 'required|string|max:100',
+            //'reference' => 'required|string',
             'amount' => 'required|numeric',
             'beneficiary_id' => 'required|numeric',
         ]);
