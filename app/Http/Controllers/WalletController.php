@@ -167,9 +167,9 @@ class WalletController extends Controller
                             $token = $this->getToken();
                             $headers = array('content-type' => 'application/json', 'Authorization' => $token);
                             $query = array(
-                            "lock"=> '12345',//$walletdata[0]->lock_code,
+                            "lock"=>$walletdata[0]->lock_code,
                             "amount"=>$request->amount,
-                            "bankcode"=>  '058',//$beneficiary[0]->bank_id,// Returns error
+                            "bankcode"=>$beneficiary[0]->bank_id,// Returns error
                             "accountNumber"=>$beneficiary[0]->account_number,
                             "currency"=>"NGN",
                             "senderName"=>Auth::user()->username,
