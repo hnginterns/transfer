@@ -51,6 +51,7 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::get('/create-wallet', 'pagesController@createWallet');
 	Route::get('/wallet-view', 'pagesController@viewWallet')->name('wallet');
 	Route::get('/banks', 'BanksController@banks');
+	Route::get('/populatebank', 'BanksController@populateBanks');
 	Route::get('/success', 'pagesController@success');
 	Route::get('/failed', 'pagesController@failed');
 	Route::get('/transfer', 'pagesController@transfer');
@@ -107,4 +108,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 	Route::post('admin/users/unbanUser/{id}', 'Admin\UsersController@unbanUser');
 	Route::post('admin/users/makeAdmin/{id}', 'Admin\UsersController@makeAdmin');
 	Route::post('admin/users/removeAdmin/{id}', 'Admin\UsersController@removeAdmin');
-});
+// });
