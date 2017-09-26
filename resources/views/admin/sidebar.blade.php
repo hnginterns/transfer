@@ -31,7 +31,7 @@
       </li>
       <li><a href="{{ url('/admin/managewallet') }}"><i class="fa fa-briefcase"></i> <span>Manage Wallet</span></a></li>
       <li><a href="{{ url('/admin/beneficiary') }}"><i class="fa fa-dollar"></i> <span>Beneficiary</span></a></li>
-      <li><a href="{{ url('/web-analytics') }}"><i class="fa fa-line-chart"></i> <span>Transaction Analytics<span></a></li>
+      <li><a href="{{ url('/admin/analytics') }}"><i class="fa fa-line-chart"></i> <span>Transaction Analytics<span></a></li>
       <li>
         <li>
         <a href="{{ route('logout') }}"
