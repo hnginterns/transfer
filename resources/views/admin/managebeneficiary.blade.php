@@ -82,7 +82,7 @@
                     <table class="table no-margin">
 
                         <thead>
-                            <h4 class="wallet-name">Rules</h4>
+                            <h4 class="wallet-name">Beneficiary</h4>
                         </thead>
 
                         <tr style="color: white;">
