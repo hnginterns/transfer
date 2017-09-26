@@ -261,12 +261,9 @@ class AdminController extends WalletController
     public function ViewBeneficiary()
     {
         $beneficiaries = Beneficiary::all();
-<<<<<<< HEAD
-        return view('admin/managebeneficiary', compact('beneficiaries'));
-=======
+                
         $beneficiaries = $beneficiaries->load('bank');
       return view ('admin/managebeneficiary', compact('beneficiaries'));
->>>>>>> 1e009c9ea0a43a0f05624c473e9f148138f71c01
     }
 
     public function BeneficiaryDetails($id)
