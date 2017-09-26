@@ -73,14 +73,14 @@
                   <h5 class="beneficiary-name"><b>Edit</b> Beneficiary</h5>
                   <form action="" method="POST">
                   {{csrf_field()}}
-                  <input type="text" name="name" class="form-control input-defaulted" placeholder="Name">
+                  <input type="text" name="name" value="{{$beneficiary->name}}" class="form-control input-defaulted" placeholder="Name">
                   <br><select name="bank_id" class="form-control input-defaulted" >
                     <option>Select Bank</option>
                     @foreach(App\Http\Utilities\Bank::all() as $bankCode => $bankName)
                     <option value="{{$bankCode}}">{{$bankName}}</option>
                     @endforeach
                   </select>
-                  <br><input type="text" name="account_number" class="form-control input-defaulted" placeholder="Account Number">
+                  <br><input type="text" name="account_number" value="{{$beneficiary->account_number}}" class="form-control input-defaulted" placeholder="Account Number">
                   <br><button type="submit" class="btn btn-success" name="button"><i class="fa fa-plus" aria-hidden="true"> Save</i></button>
                 </form>
             </div>
