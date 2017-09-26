@@ -1,5 +1,4 @@
 
-<link rel="stylesheet" type="text/css" href="{{ asset('css/webanalytics.css')}}">
 <style media="screen">
     .inner-holder {
         background: #222d32;
