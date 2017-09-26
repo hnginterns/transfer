@@ -244,8 +244,14 @@
       <ul class="nav navbar-nav">
         <li><a href="#" style="color:white; font-size:18px;"><i class="fa fa-dashboard"></i> Dashboard</a></li>
       </ul>
-
-      <div class="profile navbar-right"></div> Emeka Jude
+      <div class="menu-container">
+        <div class="nav navbar-nav navbar-nav-right">
+          <ul class="nav navbar-nav">
+              <li><i class="fa fa-user"></i></li>
+              <li>Emeka Jude</li>
+          </ul>
+        </div>
+      </div>
   </div>
   </nav>
 
@@ -272,25 +278,28 @@
         </ul>
       </div>
 
-      <div class="col-sm-10">
+      <div class="col-md-10">
         <div class="container-fluid">
-          <div class="wallet-container" style="background-image: url(http://www.casumobonus.com/wp-content/uploads/2017/05/e-wallet-casumo.png);">
-
-            @foreach($wallets as $wallet)
-              <a class="wallet">
-                <p class="num">{{ $wallet->id }}</p>
-                <p class="currency">NGN</p>
-                <img src="http://www.casumobonus.com/wp-content/uploads/2017/05/e-wallet-casumo.png" alt="" class="wallet-img">
-                <p class="id">ID: {{ $wallet->wallet_code}}</p>
-                <div class="balance">
-                  @foreach($transaction as $transact)
-                  @if($transact['uref'] == $wallet->wallet_code)
-                  ₦ {{ $transact['balance']}}
-                  @endif
-                  @endforeach
+          <div class="wallet-container">
+            <div class="row">
+              @foreach($wallets as $wallet)
+                <div class="col-md-3">
+                    <a class="wallet">
+                    <p class="num">{{ $wallet->id }}</p>
+                    <p class="currency">NGN</p>
+                    <img src="http://www.casumobonus.com/wp-content/uploads/2017/05/e-wallet-casumo.png" alt="" class="wallet-img">
+                    <p class="id">ID: {{ $wallet->wallet_code}}</p>
+                    <div class="balance">
+                      @foreach($transaction as $transact)
+                      @if($transact['uref'] == $wallet->wallet_code)
+                      ₦ {{ $transact['balance']}}
+                      @endif
+                      @endforeach
+                    </div>
+                  </a>
                 </div>
-              </a>
-            @endforeach
+              @endforeach
+            </div>
 
           </div>
         </div>
