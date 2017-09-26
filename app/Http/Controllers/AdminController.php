@@ -278,6 +278,11 @@ class AdminController extends WalletController
 
     }
 
+    public function fundWallet()
+    {
+       return View('admin/fundwallet');
+
+    }
 
     public function ViewBeneficiary()
     {

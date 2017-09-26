@@ -96,6 +96,7 @@ Route::get('admin/beneficiarydetails/{id}', 'AdminController@BeneficiaryDetails'
 Route::get('/web-analytics', 'pagesController@webAnalytics');
 Route::get('admin/createwallet', 'AdminController@wallet');
 Route::get('admin/wallet-details', 'AdminController@walletdetails');
+Route::get('admin/fundwallet', 'AdminController@fundWallet');
 Route::get('admin/view-rules', 'AdminController@viewRules');
 Route::post('admin/update-rule', 'AdminController@updateRule')->name('update-rule');
 Route::get('admin/edit-rule/{ruleId}', 'AdminController@editRules')->name('edit-rule');
