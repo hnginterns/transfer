@@ -91,7 +91,7 @@
                         @foreach($beneficiaries as $beneficiary)
                         <tbody>
                             <tr>
-                                <td>{{ $key + 1}}</td>
+                                <td>#</td>
                                 <td>{{ $beneficiary->name }}</td>
                                 <td>{{ $beneficiary->bank_id }}</td>
                                 <td>{{ $beneficiary->account_number }}</td>
