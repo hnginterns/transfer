@@ -172,7 +172,7 @@ class WalletController extends Controller
                             "bankcode"=>$beneficiary[0]->bank_id,
                             "accountNumber"=>$beneficiary[0]->account_number,
                             "currency"=>"NGN",
-                            "senderName"=>$request->sender_name,
+                            "senderName"=>Auth::user()->username,
                             "narration"=>$request->narration, //Optional
                             "ref"=>$request->reference);
 
