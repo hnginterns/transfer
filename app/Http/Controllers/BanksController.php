@@ -23,7 +23,7 @@ class BanksController extends Controller
         if(count($lists) != 0){
             foreach($lists as $key=> $value){
             $bank = new Bank;
-            $bank->bank_code = $key;
+            $bank->bank_code = (int)$key;
             $bank->bank_name = $value;
             $bank->save();
             }

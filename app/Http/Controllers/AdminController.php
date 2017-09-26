@@ -263,7 +263,7 @@ class AdminController extends WalletController
         $beneficiaries = Beneficiary::all();
                 
         $beneficiaries = $beneficiaries->load('bank');
-        dd($beneficiaries);
+        // dd($beneficiaries);
       return view ('admin/managebeneficiary', compact('beneficiaries'));
     }
 
