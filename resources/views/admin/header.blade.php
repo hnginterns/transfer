@@ -35,8 +35,7 @@
               <i class="fa fa-user" style="font-size: 50px;color:#fff"></i>
 
               <p>
-               Samfield Hawb - Web Developer
-                <small>Member since Nov. 2012</small>
+               Transfer Rule Admin
               </p>
             </li>
             <!-- Menu Body -->
@@ -57,10 +56,7 @@
             </li>
           </ul>
         </li>
-        <!-- Control Sidebar Toggle Button -->
-        <li>
-          <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-        </li>
+        
       </ul>
     </div>
   </nav>
