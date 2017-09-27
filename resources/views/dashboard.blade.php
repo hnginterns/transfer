@@ -245,7 +245,7 @@
         <li><a href="#" style="color:white; font-size:18px;"><i class="fa fa-dashboard"></i> Dashboard</a></li>
       </ul>
       <ul class="nav navbar-nav pull-right">
-        <li><a href="#" style="color:white; font-size:18px;"><i class="fa fa-user"></i> Emake Jude</a></li>
+        <li><a href="#" style="color:white; font-size:18px;"><i class="fa fa-user"></i> {{ Auth::user()->email }} </a></li>
       </ul>
   </div>
   </nav>
