@@ -245,7 +245,7 @@
         <li><a href="#" style="color:white; font-size:18px;"><i class="fa fa-dashboard"></i> Dashboard</a></li>
       </ul>
       <ul class="nav navbar-nav pull-right">
-        <li><a href="#" style="color:white; font-size:18px;"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a href="#" style="color:white; font-size:18px;"><i class="fa fa-user"></i> Emake Jude</a></li>
       </ul>
   </div>
   </nav>
@@ -255,7 +255,7 @@
       <div class="col-md-2" style="text-align: left;" id="sidebar" >
         <i class="fa fa-window-close" id="close" aria-hidden="true"></i>
         <ul class="nav nav-stacked">
-          <li class="active-sidebar">
+          <li class="side-items active">
             <a href="/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a>
           </li>
           <li class="side-items">
@@ -289,11 +289,19 @@
               <div class="panel panel-info">
                 <div class="panel-heading">
                   <i class="fa fa-money"></i> Wallet ID: <i class="fa fa-lock"></i> {{ $wallet->id }}
+                  <span class="pull-right"><i class="fa fa-money"></i>
+                    @foreach($transaction as $transact)
+                      @if($transact['uref'] == $wallet->wallet_code)
+                        ₦ {{ $transact['balance']}}
+                      @endif
+                    @endforeach
+                  </span>
                 </div>
                 <div class="panel-body">
                   <p class="lead">NGN</p>
                   <img src="http://www.casumobonus.com/wp-content/uploads/2017/05/e-wallet-casumo.png" width="70%" height="50%" alt="">
-                  <p class="lead">Wallet Code: {{ $wallet->wallet_code}}</p>
+                  <hr />
+                  <p class="small">Wallet Code: {{ $wallet->wallet_code}}</p>
                     @foreach($transaction as $transact)
                       @if($transact['uref'] == $wallet->wallet_code)
                         ₦ {{ $transact['balance']}}
