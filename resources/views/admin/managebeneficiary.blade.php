@@ -92,19 +92,21 @@
                             <th>Account Number</th>
                             <th></th>
                         </tr>
+                        
+                        <tbody>
                         @php($i = 1)
                         @foreach($beneficiaries as $key => $beneficiary)
-                        <tbody>
                             <tr>
                                 <td>{{$i}}</td>
                                 <td>{{ $beneficiary->name }}</td>
                                 <td>{{ $beneficiary->bank->bank_name }}</td>
                                 <td>{{ $beneficiary->account_number }}</td>
-                                <td><a href="{{config('app.url')}}/admin/editbeneficiary/{{$beneficiary->id}}"><i class="fa fa-pencil-square-o" aria-hidden="true"><span>edit</span></i> </a></td>
+                                <td><a href="{{config('app.url')}}/admin/editbeneficiary/{{$beneficiary->id}}"><i class="fa fa-pencil-square-o" aria-hidden="true"><span> Edit</span></i> </a></td>
+                                <td><a href=""><i class="fa fa-delete" aria-hidden="true"><span> Delete</span></i> </a></td>
                             </tr>
-                        </tbody>
                         @php($i++)
                         @endforeach
+                        </tbody>
                     </table>
                 </div>
                 <!-- /.table-responsive -->
