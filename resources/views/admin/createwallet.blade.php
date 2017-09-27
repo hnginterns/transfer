@@ -98,7 +98,7 @@
                     <option value="3">Ghanaian Cedi</option>
                     <option value="4">US Dollar</option>
           				</select>
-                  <br><button type="submit" class="btn btn-success" name="button"><i class="fa fa-plus" aria-hidden="true"> Create</i></button>
+                  <br><button type="submit" class="btn btn-info" name="button"><i class="fa fa-plus" aria-hidden="true"> Create</i></button>
             </div>
         </div>
       </div>
