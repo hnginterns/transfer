@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -37,7 +38,8 @@ class pagesController extends Controller
   public function userdashboard(){
     $wallets = Wallet::all();
     $transaction = \App\Http\Utilities\Wallet::all();
-    return view('dashboard', compact('wallets', 'transaction'));
+		$user_id = Auth::user()->id;
+    return view('dashboard', compact('wallets', 'transaction', 'user_id'));
   }
 
   public function about(){
