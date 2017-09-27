@@ -480,15 +480,9 @@
           </li>
 
           <li>
-          <a href="{{ route('logout') }}"
-              onclick="event.preventDefault();
-                       document.getElementById('logout-form').submit();">
+          <a href="{{ url('/logout') }}">
               Logout
           </a>
-
-          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-              {{ csrf_field() }}
-          </form>
         </li>
         </ul>
       </div>
@@ -584,8 +578,7 @@
           e.preventDefault();
           var data = $("#trform").serializeArray();
           $.getJSON('/walletTransfer', data, function(resp) {
-            console.log(resp);
-            if(resp.status = 'failed') {
+            if(resp.status == 'failed') {
               var options = {
                   backdrop: false,
                   keyboard: false,
@@ -594,7 +587,7 @@
               }
              $("#fmsg").html(resp.msg);
              $("#fmodal").modal(options);
-            } else {
+            } else if(resp.status == 'success'){
               $("[name=sourceWallet]").val('');
               $("[name=recipientWallet]").val('');
               $("[name=amount]").val('');
