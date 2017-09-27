@@ -403,12 +403,10 @@
 					<p class="side-content">{{ $wallet->wallet_code }} </p>
 					<br/>
 					<h5 class="side-header">Currency Type</h5>
-					@foreach($transaction as $trans)
 					<p class="side-content">{{$trans['uref'] == $wallet->wallet_code ? $trans['currency'] : "NGN"}}</p>
 					<br/>
 					<h5 class="side-header">Balance</h5>
 					<p class="side-content">{{$trans['uref'] == $wallet->wallet_code ? $trans['balance'] : $wallet->balance}}</p>
-					@endforeach
 					<br/>
 					</div>
 					@endforeach
@@ -425,6 +423,8 @@
 								</tr>
 							</thead>
 							<tbody>
+							@if(count(transaction) > 0)
+							 	@foreach($transaction as $trans)
 								<tr>
 									<td></td>
 									<td></td>
@@ -432,112 +432,16 @@
 										 <td></td>
 
 								</tr>
+								@endforeach
+							@else
 								<tr>
 									<td></td>
+									<td>No transaction history</td>
 									<td></td>
 									<td></td>
-										 <td></td>
-
 								</tr>
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-										 <td></td>
-
-								</tr>
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-										 <td></td>
-
-								</tr>
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-										 <td></td>
-
-								</tr>
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-										 <td></td>
-
-								</tr>
-									 <tr>
-									<td></td>
-									<td></td>
-									<td></td>
-										 <td></td>
-
-								</tr>
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-										 <td></td>
-
-								</tr>
-									 <tr>
-									<td></td>
-									<td></td>
-									<td></td>
-										 <td></td>
-
-								</tr>
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-										 <td></td>
-
-								</tr>
-									 <tr>
-									<td></td>
-									<td></td>
-									<td></td>
-										 <td></td>
-
-								</tr>
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-										 <td></td>
-
-								</tr>
-									 <tr>
-									<td></td>
-									<td></td>
-									<td></td>
-										 <td></td>
-
-								</tr>
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-										 <td></td>
-
-								</tr>
-									 <tr>
-									<td></td>
-									<td></td>
-									<td></td>
-										 <td></td>
-
-								</tr>
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-										 <td></td>
-
-								</tr>
-
+								
+							@endif
 							</tbody>
 						</table>
 						<div align="center">
