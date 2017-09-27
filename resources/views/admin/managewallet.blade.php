@@ -77,15 +77,8 @@
     @foreach($wallets as $wallet)
         <a href="{{ route('view-wallet', $wallet->id) }}" class="single-wallet-holder col-md-3">
             <div class="inner-holder">
-                  <h5 class="wallet-name"><b>Wallet name:</b> {{ $wallet->wallet_name }}</h5>
-                  <h5 class="wallet-name"><b>Balance:</b> {{ $wallet->balance }}</h5>
-                  <h5 data-color="#ffffff">
-                    @foreach($transaction as $transact)
-                    @if($wallet->wallet_code == $transact['uref'])
-                    Balance {{  $transact['balance'] }}
-                    @endif
-                    @endforeach
-                  </h5>
+                  <h5 class="wallet-name"><b>Wallet Name:</b> {{ $wallet->wallet_name }}</h5>
+                  <h5 class="wallet-name"><b>Balance:</b> {{ $wallet->balance }}</h5>                  
             </div>
         </a>
         @endforeach
