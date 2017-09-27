@@ -79,11 +79,8 @@
     }
 
     .wallet-img {
-      position: absolute;
-      width: 63px;
-      height: 77px;
-      left: 130px;
-      top: 33px;
+      width: 70%;
+      height: auto;
     }
 
     .wallet .id {
