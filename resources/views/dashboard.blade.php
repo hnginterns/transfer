@@ -286,22 +286,19 @@
         <div class="row">
           @foreach($wallets as $wallet)
             <div class="col-md-4">
-              <div class="thumbnail">
-                <div class="panel panel-info">
-                  <div class="panel-heading">
-                    <i class="fa fa-money"></i> Wallet ID: <i class="fa fa-lock"></i> {{ $wallet->id }}
-                  </div>
-                  <div class="panel-body">
-                    <p class="lead">NGN</p>
-                    <img src="http://www.casumobonus.com/wp-content/uploads/2017/05/e-wallet-casumo.png" alt="">
-                    <p class="lead">Wallet Code: {{ $wallet->wallet_code}}</p>
-
-                      @foreach($transaction as $transact)
-                        @if($transact['uref'] == $wallet->wallet_code)
-                          ₦ {{ $transact['balance']}}
-                        @endif
-                      @endforeach
-                  </div>
+              <div class="panel panel-info">
+                <div class="panel-heading">
+                  <i class="fa fa-money"></i> Wallet ID: <i class="fa fa-lock"></i> {{ $wallet->id }}
+                </div>
+                <div class="panel-body">
+                  <p class="lead">NGN</p>
+                  <img src="http://www.casumobonus.com/wp-content/uploads/2017/05/e-wallet-casumo.png" width="70%" height="50%" alt="">
+                  <p class="lead">Wallet Code: {{ $wallet->wallet_code}}</p>
+                    @foreach($transaction as $transact)
+                      @if($transact['uref'] == $wallet->wallet_code)
+                        ₦ {{ $transact['balance']}}
+                      @endif
+                    @endforeach
                 </div>
               </div>
             </div>
