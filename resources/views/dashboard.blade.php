@@ -22,6 +22,7 @@
       <div class="col-md-10">
         <div class="row">
           @foreach($wallets as $wallet)
+            @if($wallet->uuid == $user_id)
             <div class="col-md-4">
               <div class="panel panel-info">
                 <div class="panel-heading">
@@ -43,6 +44,7 @@
                 </div>
               </div>
             </div>
+            @endif
           @endforeach
         </div>
       </div>
