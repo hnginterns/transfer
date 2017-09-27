@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-=======
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -301,8 +300,8 @@
           <div class="wallet-container">
 
            @foreach($wallets as $wallet)
-                                     
-                                   
+
+
 
             <a class="wallet">
               <p class="num">{{ $wallet->id }}</p>
@@ -360,4 +359,3 @@
 </body>
 
 </html>
->>>>>>> 6006a9fd8b3b2971cf5d12124ac2a1e83e5dfc68
