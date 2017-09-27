@@ -295,7 +295,7 @@
                 </div>
                 <div class="panel-body">
                   <p class="lead">NGN</p>
-                  <img src="http://www.casumobonus.com/wp-content/uploads/2017/05/e-wallet-casumo.png" width="70%" height="50%" alt="">
+                  <img src="http://www.casumobonus.com/wp-content/uploads/2017/05/e-wallet-casumo.png" width="40%" height="30%" alt="Wallet Photo">
                   <hr />
                   <p class="small">Wallet Code: {{ $wallet->wallet_code}}</p>
                     @foreach($transaction as $transact)
@@ -304,8 +304,6 @@
                       @endif
                     @endforeach
                 </div>
-                <div class="panel-footer"> Wallet Name: {{ $wallet->name }} </div>
-
               </div>
             </div>
           @endforeach
