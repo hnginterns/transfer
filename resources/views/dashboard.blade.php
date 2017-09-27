@@ -231,7 +231,7 @@
   <nav class="navbar navbar-inverse">
     <div class="container">
       <div class="navbar-header">
-        <a class="navbar-brand" href="{{ route('transferrules') }}"> <span><img src="img/logo.png" alt=""></span>PaysFund</a>
+        <a class="navbar-brand" href="{{ route('transferrules') }}"> <span> <img src="/img/logo.png" alt=""></span> PaysFund</a>
         <button type="button" id="navb" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
           aria-controls="navbar">
           <span class="sr-only">Toggle navigation</span>
@@ -244,11 +244,11 @@
       <ul class="nav navbar-nav">
         <li><a href="#" style="color:white; font-size:18px;"><i class="fa fa-dashboard"></i> Dashboard</a></li>
       </ul>
-      <div style="color:#FFF; font-size:18px;">
-        <div class="nav navbar-nav navbar-nav-right">
+      <div style="color:#FFF; font-size:18px;" class="pull-right">
+        <div class="nav navbar-nav-right">
           <ul class="nav navbar-nav">
-              <li><i class="fa fa-user"></i></li>
-              <li>Emeka Jude</li>
+              <li class="nav-item"><i class="fa fa-user"></i> </li>
+              <li class="nav-item"> Emeka Jude</li>
           </ul>
         </div>
       </div>
@@ -278,9 +278,7 @@
         </ul>
       </div>
 
-      <div class="col-md-10">
-        <div class="container-fluid">
-
+      <div class="col-md-8">
             <div class="row">
               @foreach($wallets as $wallet)
                 <div class="col-md-3">
@@ -299,7 +297,7 @@
                   </a>
                 </div>
               @endforeach
-
+            </div>
 
           </div>
         </div>
