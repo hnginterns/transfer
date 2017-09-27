@@ -8,8 +8,7 @@ class UsersController extends Controller
 {
 	
 	public function index(Request $request) {
-		$user_id = Auth::user()->id;
-		return view('dashboard')->with('user_id', $user_id);
+		return view('dashboard');
 	}
 
 
