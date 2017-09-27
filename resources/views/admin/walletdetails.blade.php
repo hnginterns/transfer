@@ -67,7 +67,7 @@
 
 <div class="container-fluid">
   <a href="/admin/managewallet">
-  <button type="submit" class="btn btn-success" name="button">Back</button>
+  <button type="submit" class="btn btn-info" name="button">Back</button>
   </a>
   <br> <br>
         <div class="single-wallet-holder col-sm-6">
@@ -112,26 +112,14 @@
                       </tbody>
                     </table>
                   </div>
-              <!-- /.table-responsive -->                     
-            
+              <!-- /.table-responsive -->   
+                <a type="submit" class="btn btn-md btn-info" >Fund Wallet- RavePay</a>
+                <a type="submit" class="btn btn-md btn-danger">Achieve Wallet</a> 
             </div>           
           </div>
             
     </div>
-    <div class="row" style="padding-top:40px">
-      <div class="col-sm-12"> 
-        <div class="col-sm-2">
-          <a type="submit" class="btn btn-block btn-info" >Fund Wallet</a>
-        </div>
-        <div class="col-sm-2">
-          <a type="submit" class="btn btn-block btn-info" >Fund Wallet- RavePay</a>
-        </div>
-        <div class="col-sm-2">
-          <a type="submit" class="btn btn-block btn-danger">Delete Wallet</a>       
-        </div>      
-        <div class="col-sm-6"></div>
-      </div>
-    </div>
+    
 </div>
 
 @endsection

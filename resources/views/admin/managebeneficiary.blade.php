@@ -69,7 +69,7 @@
 
 <div class="container-fluid">
 
-  <a type="button" class="btn btn-success" href="addbeneficiary" name="button"><i class="fa fa-plus" aria-hidden="true"> Add beneficiary</i></a>
+  <a type="button" class="btn btn-info" href="addbeneficiary" name="button"><i class="fa fa-plus" aria-hidden="true"> Add beneficiary</i></a>
 
   <div class="beneficiary-container">
 
