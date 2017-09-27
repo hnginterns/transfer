@@ -480,15 +480,9 @@
           </li>
 
           <li>
-          <a href="{{ route('logout') }}"
-              onclick="event.preventDefault();
-                       document.getElementById('logout-form').submit();">
+          <a href="{{ url('/logout') }}">
               Logout
           </a>
-
-          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-              {{ csrf_field() }}
-          </form>
         </li>
         </ul>
       </div>
@@ -593,7 +587,7 @@
               }
              $("#fmsg").html(resp.msg);
              $("#fmodal").modal(options);
-            } else if(resp.status == 'failed'){
+            } else if(resp.status == 'success'){
               $("[name=sourceWallet]").val('');
               $("[name=recipientWallet]").val('');
               $("[name=amount]").val('');
