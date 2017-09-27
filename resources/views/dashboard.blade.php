@@ -244,7 +244,7 @@
       <ul class="nav navbar-nav">
         <li><a href="#" style="color:white; font-size:18px;"><i class="fa fa-dashboard"></i> Dashboard</a></li>
       </ul>
-      <div class="menu-container">
+      <div style="color:#FFF; font-size:18px;">
         <div class="nav navbar-nav navbar-nav-right">
           <ul class="nav navbar-nav">
               <li><i class="fa fa-user"></i></li>
@@ -280,7 +280,7 @@
 
       <div class="col-md-10">
         <div class="container-fluid">
-          <div class="wallet-container">
+
             <div class="row">
               @foreach($wallets as $wallet)
                 <div class="col-md-3">
@@ -299,7 +299,7 @@
                   </a>
                 </div>
               @endforeach
-            </div>
+
 
           </div>
         </div>
