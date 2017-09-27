@@ -388,30 +388,36 @@
 
           <div class="wallet-container">
 
-						<div class="content">
-							<div class="row">
-								<div class="col-md-4">
+		<div class="content">
+			<div class="row">
+				<div class="col-md-4">
 					<div class="blue-circle"><img src="http://www.ravcontest.com/HNGpoints/image/W1.png" alt="icon"/></div>
 					@foreach($wallets as $key => $wallet)
-					<div align="center" class="left-content">
-						<h5 class="side-header"> {{ $wallet->wallet_name }} </h5>
-					<br/>
-					<h5 class="side-header">Wallet S/N</h5>
-					<p class="side-content">{{$key + 1}}</p>
-					<br/>
-					<h5 class="side-header">Wallet Code</h5>
-					<p class="side-content">{{ $wallet->wallet_code }} </p>
-					<br/>
-					<h5 class="side-header">Currency Type</h5>
-					<p class="side-content">{{$trans['uref'] == $wallet->wallet_code ? $trans['currency'] : "NGN"}}</p>
-					<br/>
-					<h5 class="side-header">Balance</h5>
-					<p class="side-content">{{$trans['uref'] == $wallet->wallet_code ? $trans['balance'] : $wallet->balance}}</p>
-					<br/>
-					</div>
+						@if($wallet->uuid == $user_id)
+							<div align="center" class="left-content">
+								<h5 class="side-header"> {{ $wallet->wallet_name }} </h5>
+								<br/>
+								<h5 class="side-header">Wallet S/N</h5>
+								<p class="side-content">{{$key + 1}}</p>
+								<br/>
+								<h5 class="side-header">Wallet Code</h5>
+								<p class="side-content">{{ $wallet->wallet_code }} </p>
+								<br/>
+								@foreach($transaction as $trans)
+									@if($trans['uref'] == $wallet->wallet_code)
+									<h5 class="side-header">Currency Type</h5>
+									<p class="side-content">{{$trans['uref'] == $wallet->wallet_code ? $trans['currency'] : "NGN"}}</p>
+									<br/>
+									<h5 class="side-header">Balance</h5>
+									<p class="side-content">{{$trans['uref'] == $wallet->wallet_code ? $trans['balance'] : $wallet->balance}}</p>
+									<br/>
+									@endif
+								@endforeach
+							</div>
+						@endif
 					@endforeach
-								</div>
-								<div class="col-md-8">
+				</div>
+				<div class="col-md-8">
 					<div class="orange-box"><h4 class="title" align="center">TRANSACTION HISTORY</h4></div>
 						<table class="table" style="width:100%;">
 							<thead>
