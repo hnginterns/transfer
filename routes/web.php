@@ -51,6 +51,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/create-wallet', 'pagesController@createWallet');
 	Route::get('/wallet-view', 'pagesController@viewWallet')->name('wallet');
 	Route::get('/banks', 'BanksController@banks');
+	Route::get('/populatebank', 'BanksController@populateBanks');
 	Route::get('/success', 'pagesController@success');
 	Route::get('/failed', 'pagesController@failed');
 	Route::get('/transfer', 'pagesController@transfer');
