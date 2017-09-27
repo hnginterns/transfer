@@ -290,11 +290,7 @@
                 <div class="panel-heading">
                   <i class="fa fa-money"></i> Wallet ID: <i class="fa fa-lock"></i> {{ $wallet->id }}
                   <span class="pull-right"><i class="fa fa-money"></i>
-                    @foreach($transaction as $transact)
-                      @if($transact['uref'] == $wallet->wallet_code)
-                        ₦ {{ $transact['balance']}}
-                      @endif
-                    @endforeach
+                    ₦ {{ $wallet->balance }}
                   </span>
                 </div>
                 <div class="panel-body">
@@ -308,6 +304,8 @@
                       @endif
                     @endforeach
                 </div>
+                <div class="panel-footer"> Wallet Name: {{ $wallet->name }} </div>
+
               </div>
             </div>
           @endforeach
