@@ -79,7 +79,10 @@
 
                     <li class="nav-item active">
 
-                        <a class="nav-link" data-toggle="modal" href="/manager">Sign In</a>
+
+
+                        <a href="{{ route('admin.login') }}"class="nav-link">Admin login</a>
+
 
                     </li>
 
@@ -141,6 +144,8 @@
                         <a href="{{ route('password.request') }}" class="forgot-password">Forgot Password?</a>
 
                     </div>
+                    
+
 
                 </form>
 

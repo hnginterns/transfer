@@ -432,7 +432,6 @@
     }
   </style>
 </head>
-
 <body>
   <nav class="navbar navbar-inverse">
     <div class="container">
@@ -480,9 +479,6 @@
               <a href="/transfer-to-bank" class="side-item">Bank Transfer</a>
           </li>
 
-           <li class="side-items">
-              <a href="/banks" class="side-item">Banks</a>
-          </li>
           <li>
           <a href="{{ route('logout') }}"
               onclick="event.preventDefault();
@@ -502,33 +498,43 @@
 
           <div class="wallet-container">
 
-            <div class="col-md-offset-0 col-sm-12 col-md-offset-2 col-md-10 main-content">
+            <div class="col-sm-8 col-md-offset-2 main-content">
                 <div class="login-box" style="">
                     <img src="/svg/naira.svg" alt="no preview" class="transfer-icon">
-                    <h4 class="intro" style="font-size: 20px;">Transfer to Wallet account </h4>
-                    <form class="admin-login">
-                        <div class="form-group" style="margin: 30px 0;">
-                            <input type="text" class="form-control cus-input" id="benName" placeholder="Wallet ID">
-                        </div>
-                        <div class="row">
-                            <div class="col col-lg-6 form-holder">
-                                <div class="form-group">
-                                    <select class="form-control cus-input">
-                                        <option>Wallet Type</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col col-lg-6 form-holder">
-                                <div class="form-group">
-                                    <input type="text" class="form-control cus-input" id="benAcc" placeholder="Wallet Name">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group" style="margin: 30px 0;">
-                            <input type="number" class="form-control cus-input" id="amount" placeholder="Amount">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Transfer</button>
+                    <h4 class="intro" style="font-size: 20px;">Transfer to another Wallet account </h4>
+                    <form id="trform" class="admin-login">
+                        <div class="form-group">
+                            <select class="form-control cus-input" name="sourceWallet">
 
+
+                                <option value="">Select sender Wallet</option>
+                                    @foreach($wallets as $wallet)
+                                       @if($wallet->uuid == $user_id)
+                                          <option value="{{ $wallet->wallet_code }}">{{ $wallet->wallet_name}}</option>
+                                        @endif
+                                    @endforeach
+                            </select>
+                        </div>
+
+
+                        <div class="form-group">
+                            <select class="form-control cus-input" name="recipientWallet">
+
+
+                                <option value="">Select recipient wallet</option>
+                                    @foreach($wallets as $wallet)
+                                      @if($wallet->uuid !== $user_id)
+                                          <option value="{{ $wallet->wallet_code }}">{{ $wallet->wallet_name}}</option>
+                                      @endif
+                                    @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group" style="margin-top: 50px;">
+                            <input type="number" class="form-control cus-input" name="amount" id="amount" placeholder="Amount">
+                        </div>
+
+                        <button id="transferbt" type="submit" class="btn btn-primary">Transfer</button>
                     </form>
                 </div>
             </div>
@@ -537,9 +543,11 @@
         </div>
       </div>
     </div>
-  </div>
+  </div><br><br>
 
-  <footer class="footer">
+  @include('success');
+  @include('failed');
+  <footer class="navbar navbar-fixed-bottom" style="background-color:white;border-top:solid 2px grey;">
       <div class="container" style="text-align:center">
           <span class="text-muted company">2017 TransferFunds - All Rights Reserved</span>
       </div>
@@ -570,6 +578,35 @@
                 left: "-1000px",
                 "z-index": 10000
             }, 200);
+        });
+
+        $("#transferbt").click(function(e) {
+          e.preventDefault();
+          var data = $("#trform").serializeArray();
+          $.getJSON('/walletTransfer', data, function(resp) {
+            console.log(resp);
+            if(resp.status = 'failed') {
+              var options = {
+                  backdrop: false,
+                  keyboard: false,
+                  show: true,
+                  remote: false
+              }
+             $("#fmsg").html(resp.msg);
+             $("#fmodal").modal(options);
+            } else {
+              $("[name=sourceWallet]").val('');
+              $("[name=recipientWallet]").val('');
+              $("[name=amount]").val('');
+              var options = {
+                  backdrop: false,
+                  keyboard: false,
+                  show: true,
+                  remote: false
+              }
+              $("#smodal").modal(options);
+            }
+          })
         });
       });
   </script>

@@ -34,14 +34,6 @@
       </div>
     </div>
 
-
-    <div class="form-group row">
-      <label for="email" class="col-sm-2 col-form-label col-form-label-sm">Account Number</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control form-control-lg" id="lgFormGroupInput" placeholder="Acount Number" name="account_number">
-      </div>
-    </div>
-
     <div class="form-group row">
       <label for="smFormGroupInput" class="col-sm-2 col-form-label col-form-label-sm">Password</label>
       <div class="col-sm-10">

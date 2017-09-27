@@ -761,7 +761,21 @@
                     <li><a href="{{url("/")}}">Features</a></li>
                     <li><a href="{{url("/")}}">Demo</a></li>
                     <li><a href="{{url("/about")}}">About</a></li>
-                    <li id="sign-in"><a href="{{url("/signin")}}">SIGN IN</a></li>
+                    @if(Auth::guest())
+                        <li id="sign-in"><a href="{{url("/login")}}">SIGN IN</a></li>
+                    @else
+                        <li id="sign-in">
+                        <a href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                     document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                      </li>
+                    @endif
 
                 </ul>
             </div><!--/.nav-collapse -->

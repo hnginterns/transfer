@@ -19,8 +19,8 @@ class CreateUsersTable extends Migration
             $table->string('email',40)->unique();
             $table->string('password');
             $table->boolean('is_admin')->default(false);
-            $table->integer('bank_id')->unsigned();
-            $table->string('account_number')->unique();
+            $table->integer('bank_id')->nullable()->unsigned();
+            $table->string('account_number')->nullable();
             $table->integer('created_by')->unsigned();
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
@@ -31,7 +31,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('last_login')->nullable();
             $table->string('status', 20)->index()->nullable();
             $table->softDeletes();
-            $table->integer('updated_by')->unsigned();
+            $table->integer('updated_by')->nullable()->unsigned();
             $table->rememberToken();
             $table->timestamps();
         });

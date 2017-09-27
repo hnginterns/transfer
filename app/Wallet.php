@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Auth;
 
 class Wallet extends Model
 {
-	// By Timolin - Team-calculon
     /**
      * Mass assignable attributes
      *
@@ -24,16 +23,7 @@ class Wallet extends Model
      * @return void
      */
     public function users() {
-        return $this->belongsTo(User::class);
-    }
-
-    /**
-     * Get transactions related to this wallet
-     *
-     * @return void
-     */
-    public function transactions() {
-        return $this->hasMany(Transaction::class, 'wallet_code', 'wallet_code');
+        return $this->belongsTo(User::class, 'uuid');
     }
 
     /**
@@ -61,26 +51,41 @@ class Wallet extends Model
 
 				// return redirect()->back()->with('status', 'You\'re not Authorized to perform this action');
 				return false;
-		}
+        }
+        
+    public function unArchive() {
+            
+        if (Auth::check() && Auth::user()->isAdmin()) {
+         
+            $this->archived = 0;
+            
+                 return true;
+            }
+            
+            return false;
+        }
 		
 		public function canTransfer() {
-			// dd("HEre!");
-			
-			$restriction = $this->restrictions()->get();
+            
+            $restriction = $this->restrictions()->get();
 
-			$rule = \App\Rule::find($restriction[0]->rule_id);
+            $rule = \App\Rule::find($restriction[0]->rule_id);
 
-			// Fecth all the transactions in the past 24 hours
-			// from the db
-			$transactions = $this->transactions()->get();
-			// dd($transactions);
-			$totalTransactionsToday = 3;
+            // Fecth all the transactions in the past 24 hours from the db
+            $twentyFourHoursAgo = Carbon::now()->subHours(24);
+            $transactions = Transaction::where('wallet_code', $this->wallet_code)
+                                // ->orWhere('payee_wallet_code', $this->wallet_code) // Uncomment this line to include recieved transactions
+                                ->where('transaction_status', 1)
+                                ->where('created_at', '>=', $twentyFourHoursAgo)
+                                ->get();
 
-			if ($rule->max_transactions_per_day >= $totalTransactionsToday) {
-				return false;
-			} else {
-				return true;
-			}
+            $totalTransactionsToday = count($transactions);
 
-		}
+            if ($rule->max_transactions_per_day <= $totalTransactionsToday) {
+                return false;
+            } else {
+                return true;
+            }
+
+        }
 }

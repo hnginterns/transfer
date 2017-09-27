@@ -18,12 +18,13 @@ class CreateWalletsTable extends Migration
             $table->integer('uuid')->unsigned();
             $table->decimal('balance_one', 12, 2);
             $table->decimal('balance', 12, 2);
+            $table->string('wallet_name');
             $table->integer('merchant_id')->unsigned();
             $table->string('lock_code',100);
             $table->integer('moneywave_wallet_id')->unsigned();
             $table->boolean('enabled');
             $table->integer('currency_id')->unsigned();
-            $table->string('wallet_code',100)->unique();
+            $table->string('wallet_code',10)->unique();
             $table->boolean('archived')->default(false);
             $table->timestamps();
 
