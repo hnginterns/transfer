@@ -18,6 +18,13 @@ Route::get('/home', 'pagesController@home');
 // get signin page
 //Route::get('/signin', 'pagesController@signin');
 
+Route::get('/logout', function(){
+    Auth::logout();
+    Session::flush();
+    return redirect('/login');
+});
+
+
 Route::get('/about', 'pagesController@about');
 
 Route::get('/forgot', 'pagesController@forgot');
