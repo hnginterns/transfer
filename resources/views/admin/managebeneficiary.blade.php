@@ -91,6 +91,7 @@
                             <th>Bank</th>
                             <th>Account Number</th>
                             <th></th>
+                            <th></th>
                         </tr>
                         
                         <tbody>
@@ -102,7 +103,7 @@
                                 <td>{{ $beneficiary->bank->bank_name }}</td>
                                 <td>{{ $beneficiary->account_number }}</td>
                                 <td><a href="{{config('app.url')}}/admin/editbeneficiary/{{$beneficiary->id}}"><i class="fa fa-pencil-square-o" aria-hidden="true"><span> Edit</span></i> </a></td>
-                                <td><a href=""><i class="fa fa-delete" aria-hidden="true"><span> Delete</span></i> </a></td>
+                                <td><a href=""><i class="fa fa-trash" aria-hidden="true"></i><span> Delete</span> </a></td>
                             </tr>
                         @php($i++)
                         @endforeach

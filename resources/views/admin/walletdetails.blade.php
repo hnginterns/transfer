@@ -113,7 +113,7 @@
                     </table>
                   </div>
               <!-- /.table-responsive -->   
-                <a href="{{ url("admin/fundwallet") }}" type="submit" class="btn btn-md btn-info" >Fund Wallet- RavePay</a>
+                <a type="submit" class="btn btn-md btn-info" >Fund Wallet- RavePay</a>
                 <a type="submit" class="btn btn-md btn-danger">Achieve Wallet</a> 
             </div>           
           </div>
