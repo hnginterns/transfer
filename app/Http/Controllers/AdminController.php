@@ -202,9 +202,9 @@ class AdminController extends WalletController
 
     }
 
-    public function editbeneficiary()
+    public function editbeneficiary(Beneficiary $beneficiary)
     {
-        return View('admin/editbeneficiary');
+        return View('admin/editbeneficiary', compact('beneficiary'));
     }
 
     public function addaccount()

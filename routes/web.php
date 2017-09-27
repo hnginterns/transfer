@@ -91,7 +91,7 @@ Route::get('/addaccount', 'AdminController@addaccount');
 Route::get('/usermanagement', 'AdminController@usermanagement');
 Route::get('admin/beneficiary', 'AdminController@ViewBeneficiary')->name('beneficiary');
 Route::get('admin/addbeneficiary', 'AdminController@beneficiary');
-Route::get('admin/editbeneficiary', 'AdminController@editbeneficiary'); //routE FOR EDITING BENEFICIARY
+Route::get('admin/editbeneficiary/{beneficiary}', 'AdminController@editbeneficiary'); //routE FOR EDITING BENEFICIARY
 Route::get('admin/beneficiarydetails/{id}', 'AdminController@BeneficiaryDetails');
 Route::get('/web-analytics', 'pagesController@webAnalytics');
 Route::get('admin/createwallet', 'AdminController@wallet');
