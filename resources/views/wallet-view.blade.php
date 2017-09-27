@@ -380,68 +380,8 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-inverse">
-    <div class="container">
-      <div class="navbar-header">
-
-        <a class="navbar-brand" href="#"> <span><img src="img/logo.png" alt=""></span>   PaysFund</a>
-
-        <button type="button" id="navb" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-          aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-      </div>
-
-      <ul class="nav navbar-nav">
-        <li><a href="#" style="color:white; font-size:18px;">Wallet View</a></li>
-      </ul>
-
-      <div class="profile navbar-right"></div>
-      <div class="navbar-form navbar-right">
-        <input type="text" class="form-control" placeholder="Search">
-      </div>
-    </div>
-  </nav>
-
-  <div class="container-fluid">
-    <div class="row">
-
-      <div class="col-sm-2" id="sidebar">
-
-        <i class="fa fa-window-close" id="close" aria-hidden="true"></i>
-
-        <ul class="nav nav-stacked">
-          <li class="side-item"><a href="/dashboard">Dashboard</a></li>
-          <li class="side-items">
-              <a href="/wallet-view" class="active-sidebar">Wallet View</a>
-          </li>
-          <li class="side-items">
-              <a href="/transfer-to-wallet" class="side-item">Wallet Transfer</a>
-          </li>
-
-           <li class="side-items">
-              <a href="/transfer-to-bank" class="side-item">Bank Transfer</a>
-          </li>
-
-           <li class="side-items">
-              <a href="/banks" class="side-item">Banks</a>
-          </li>
-          <li>
-          <a href="{{ route('logout') }}"
-              onclick="event.preventDefault();
-                       document.getElementById('logout-form').submit();">
-              Logout
-          </a>
-
-          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-              {{ csrf_field() }}
-          </form>
-        </li>
-        </ul>
-      </div>
+	@section('content', 'Wallet View')
+  	@include('users/user-nav')
 
       <div class="col-sm-10">
         <div class="container-fluid">
