@@ -404,13 +404,13 @@
 								<p class="side-content">{{ $wallet->wallet_code }} </p>
 								<br/>
 								@foreach($transaction as $trans)
-									@if($trans['uref'] == $wallet->wallet_code)
-									<h5 class="side-header">Currency Type</h5>
-									<p class="side-content">{{$trans['uref'] == $wallet->wallet_code ? $trans['currency'] : "NGN"}}</p>
-									<br/>
-									<h5 class="side-header">Balance</h5>
-									<p class="side-content">{{$trans['uref'] == $wallet->wallet_code ? $trans['balance'] : $wallet->balance}}</p>
-									<br/>
+									@if($trans->uref !== $wallet->wallet_code)
+										<h5 class="side-header">Currency Type</h5>
+										<p class="side-content">{{$trans['uref'] == $wallet->wallet_code ? $trans['currency'] : "NGN"}}</p>
+										<br/>
+										<h5 class="side-header">Balance</h5>
+										<p class="side-content">{{$trans['uref'] == $wallet->wallet_code ? $trans['balance'] : $wallet->balance}}</p>
+										<br/>
 									@endif
 								@endforeach
 							</div>
