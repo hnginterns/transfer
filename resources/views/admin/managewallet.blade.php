@@ -73,8 +73,9 @@
 
   <div class="wallet-container">
 
-    <div class="wallet-row col-sm-3">s
+    <div class="wallet-row row">
     @foreach($wallets as $wallet)
+    <div class=" col-sm-3">
         <a href="{{ route('view-wallet', $wallet->id) }}" class="single-wallet-holder col-md-3">
             <div class="inner-holder">
             <h5 class="wallet-name"><b>Wallet name:</b> {{ $wallet->wallet_name }}</h5>
@@ -88,6 +89,7 @@
                   </h5>
             </div>
         </a>
+        </div>
         @endforeach
       </div>
   </div>
