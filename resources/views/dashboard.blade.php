@@ -262,7 +262,7 @@
           <li class="side-items"><a href="/banks" class="side-item"><i class="fa fa-bank"></i> Banks</a></li>
           <li>
           <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-            <i class="fa fa-signout"></i> Logout
+            <i class="fa fa-sign-out"></i> Logout
           </a>
 
           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -274,7 +274,7 @@
 
       <div class="col-sm-10">
         <div class="container-fluid">
-          <div class="wallet-container">
+          <div class="wallet-container" style="background-image: url(http://www.casumobonus.com/wp-content/uploads/2017/05/e-wallet-casumo.png);">
 
             @foreach($wallets as $wallet)
               <a class="wallet">
