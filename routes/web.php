@@ -81,11 +81,9 @@ Route::group(['middleware' => ['admin']], function() {
 	Route::post('/admin/createrule', 'AdminController@saveNewRule')->name('admin.setrule.submit');
 
 	//Route::get('/manager/setting', 'AdminController@settings');
-<<<<<<< HEAD
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
-=======
 
 	// admin routes
 	Route::get('/view-accounts', 'pagesController@viewAccounts');
@@ -110,4 +108,3 @@ Route::get('/home', 'HomeController@index')->name('home');
 	Route::post('admin/users/makeAdmin/{id}', 'Admin\UsersController@makeAdmin');
 	Route::post('admin/users/removeAdmin/{id}', 'Admin\UsersController@removeAdmin');
 });
->>>>>>> 6006a9fd8b3b2971cf5d12124ac2a1e83e5dfc68
