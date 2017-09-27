@@ -274,13 +274,13 @@
 
       <div class="col-sm-10">
         <div class="container-fluid">
-          <div class="wallet-container" style="background-image: url(http://www.casumobonus.com/wp-content/uploads/2017/05/e-wallet-casumo.png);">
+          <div class="wallet-container">
 
             @foreach($wallets as $wallet)
               <a class="wallet">
                 <p class="num">{{ $wallet->id }}</p>
                 <p class="currency">NGN</p>
-                <img src="http://www.casumobonus.com/wp-content/uploads/2017/05/e-wallet-casumo.png" alt="" class="wallet-img">
+                <img src="http://www.casumobonus.com/wp-content/uploads/2017/05/e-wallet-casumo.png" alt="">
                 <p class="id">ID: {{ $wallet->wallet_code}}</p>
                 <div class="balance">
                   @foreach($transaction as $transact)
