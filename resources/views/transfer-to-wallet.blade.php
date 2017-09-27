@@ -527,8 +527,7 @@
           e.preventDefault();
           var data = $("#trform").serializeArray();
           $.getJSON('/walletTransfer', data, function(resp) {
-            console.log(resp);
-            if(resp.status = 'failed') {
+            if(resp.status == 'failed') {
               var options = {
                   backdrop: false,
                   keyboard: false,
@@ -537,7 +536,7 @@
               }
              $("#fmsg").html(resp.msg);
              $("#fmodal").modal(options);
-            } else {
+            } else if(resp.status == 'success'){
               $("[name=sourceWallet]").val('');
               $("[name=recipientWallet]").val('');
               $("[name=amount]").val('');
