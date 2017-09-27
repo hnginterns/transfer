@@ -95,8 +95,9 @@ class pagesController extends Controller
     
     $wallets = $wallet::where('uuid', \Auth::id())->get();
     $transaction = UtilWallet::all();
+    $trans = UtilWallet::where('uref', $wallet[0]['wallet_code'])->get();
     // dd($wallets);
-    return view ('wallet-view', compact('wallets', 'transaction'));
+    return view ('wallet-view', compact('wallets', 'transaction', 'trans'));
   }
 
   public function createWallet() {
