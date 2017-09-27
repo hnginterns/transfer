@@ -1,16 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Auth;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
-
-
-
+	
 	public function index(Request $request) {
-		return view('dashboard');
+		$user_id = Auth::user()->id;
+		return view('dashboard')->with('user_id', $user_id);
 	}
 
 
