@@ -429,7 +429,7 @@
 								</tr>
 							</thead>
 							<tbody>
-							@if(count(transaction) > 0)
+							@if(count($transaction) > 0)
 							 	@foreach($transaction as $trans)
 								<tr>
 									<td></td>
