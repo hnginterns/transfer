@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Beneficiary extends Model
 {
-    //
+    protected $guarded =[];
 }

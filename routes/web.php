@@ -12,126 +12,102 @@
 */
 Auth::routes();
 // get default home pages
-Route::get('/', 'pagesController@home');
+Route::get('/', 'pagesController@home')->name('transferrules');
+
+Route::get('/home', 'pagesController@home');
 // get signin page
-Route::get('/signin', 'pagesController@signin');
-// get password forget pages
-Route::get('/forgot', function () {
-	return view('forgot');
-});
+//Route::get('/signin', 'pagesController@signin');
 
-Route::get('/confirmation', 'ValidateAccountController@confirm');
+Route::get('/about', 'pagesController@about');
 
-// get dashboard
-Route::get('/userdashboard', 'pagesController@userdashboard');
+Route::get('/forgot', 'pagesController@forgot');
 
-//View accounts page
-Route::get('/view-accounts', 'pagesController@viewAccounts');
+Route::get('/manageWallet', 'pagesController@manageWallet');
 
-// tansfer to bank
-Route::get('/transfer-to-bank', 'pagesController@bank_transfer');
+Route::get('/validate', 'ValidateAccountController@accountResolve');
 
-// tansfer to bank
-Route::get('/transfer-to-wallet', 'pagesController@wallet_transfer');
+Route::get('/walletBalance', 'WalletController@walletBalance');
 
-// get add account page (this page will be move to the admin middleware)
-Route::get('/addaccount', function () {
-	return view('/admin/addaccount');
-});
+Route::get('/walletCharge', 'WalletController@walletCharge');
 
-//user management page
-Route::get('/usermanagement', function(){
-	return view('usermanagement');
-});
+Route::get('/createWallet', 'WalletController@createWallet');
 
-//admin dashboard
-Route::get('/admin', function () {
-		return view('/admin/home');
-})->middleware('admin'); //Enable Admin middleware by removing comment around "->middleware('admin')"
+Route::get('/walletTransfer', 'WalletController@transfer');
 
-// return error 404 page
-Route::get('/404', function(){
-	return view('404');
-});
+Route::get('/gettoken', 'WalletController@getToken');
 
-//return wallet-view
-Route::get('/wallet-view', 'pagesController@viewWallet')->name('wallet');
+Route::get('/transferWallet', 'WalletController@transfer');
 
-//return web-analytics
-Route::get('/web-analytics', 'PagesController@webAnalytics');
-//return create-wallet
-Route::get('/create-wallet', 'pagesController@createWallet');
-//return manage-users
-Route::get('/manage-users', 'pagesController@manageUsers');
-//return create-user
-Route::get('/create-user', 'pagesController@createUser');
-//return create-wallet
-Route::get('/wallet-archive', 'pagesController@walletArchive');
+Route::post('/transferAccount', 'WalletController@transferAccount');
 
-Route::get('/web-analytics', 'pagesController@webAnalytics');
-
-// get information about site
-Route::get('/about', function(){
-	return view('about');
-});
-// get bank route
-Route::get('/banks', 'BanksController@banks');
-
-Route::get('/success', 'pagesController@success');
-
-Route::get('/failed', 'pagesController@failed');
-
-// get transfer 
-Route::get('/transfer', 'pagesController@transfer');
-
-// get bank balance
-Route::get('/balance', 'pagesController@balance');
+Route::get('/404', 'pagesController@pagenotfound');
 
 // authentications
-Auth::routes();
 Route::group(['middleware' => 'auth'], function() {
-	// Handles Transfers
-	Route::get('/dashboard', 'UsersController@index')->name('dashboard');
-	Route::get('/dashboard/transfer', 'UsersController@transfer')->name('transfer');
-	Route::post('/dashboard/transfer', 'UsersController@processTransfer');
+	//User routes
+	Route::get('/dashboard', 'pagesController@userdashboard');
+	Route::get('/transfer-to-bank', 'pagesController@bank_transfer');
+	Route::get('/transfer-to-wallet', 'pagesController@wallet_transfer');
+	Route::get('/create-wallet', 'pagesController@createWallet');
+	Route::get('/wallet-view', 'pagesController@viewWallet')->name('wallet');
+	Route::get('/banks', 'BanksController@banks');
+	Route::get('/success', 'pagesController@success');
+	Route::get('/failed', 'pagesController@failed');
+	Route::get('/transfer', 'pagesController@transfer');
+	Route::get('/balance', 'pagesController@balance');
+	Route::get('/ravepay', 'RavepayController@index');
+        Route::get('/integrity/{txRef}/{email}', 'RavepayController@checkSum');
+        Route::get('/ravepaysuccess/{ref}/{amount}/{currency}', 'RavepayController@success');
 
-	// Transaction histories
-	Route::get('/dashboard/history', 'UsersController@history');
-
-	// Wallet Funding
-	Route::post('/dashboard/fundwallet', 'UsersController@processFundWallet');
-	Route::get('/dashboard/fundwallet', 'UsersController@fundWallet')->name('fundwallet');
 });
 
 
-// // admin dashboard
-// Route::get('/admin', function () {
-// 		return view('/admin/home');
-// });
-
 // auth admin
-Route::group(['middleware' => ['auth', 'admin']], function() {
+Route::get('/admin/login', 'AdminLoginController@showLoginForm');
+Route::post('/admin/login', 'AdminLoginController@login')->name('admin.login');
+Route::get('/admin/logout', 'AdminLoginController@logout')->name('admin.logout');
 
-	// get manager
-	Route::get('/manager', 'AdminController@index');
+Route::group(['middleware' => ['admin']], function() {
+	Route::get('/admin', 'AdminController@index');
+	Route::get('/admin/managewallet', 'AdminController@managewallet');
+	Route::get('/admin/managebeneficiary', 'AdminController@managebeneficiary');
+	Route::get('/admin/adduser', 'AdminController@addaccount');
+	// Set rules that users will transfer with
+	Route::get('/admin/setrule', 'AdminController@setRule')->name('admin.setrule');
+	Route::post('/admin/setrule', 'AdminController@saveRule')->name('admin.setrule.submit');
 
-	Route::group(['middleware' => ['auth', 'admin']], function() {
-
-		Route::get('/admin', 'AdminController@index');
-
-		// Set rules that users will transfer with
-		Route::get('/admin/setrule', 'AdminController@setRule')->name('admin.setrule');
-		Route::post('/admin/setrule', 'AdminController@saveRule')->name('admin.setrule.submit');
-
-		// New Rule Creation
-		Route::get('/admin/createrule', 'AdminController@createRule')->name('admin.createrule');
-		Route::post('/admin/createrule', 'AdminController@saveNewRule')->name('admin.setrule.submit');
-
-		Route::get('/admin/dashboard', 'AdminController@viewDashboard');
-
-	});
+	// New Rule <Creati></Creati>on
+	Route::get('/admin/createrule', 'AdminController@createRule')->name('admin.createrule');
+	Route::post('/admin/createrule', 'AdminController@saveNewRule')->name('admin.setrule.submit');
 
 	//Route::get('/manager/setting', 'AdminController@settings');
+<<<<<<< HEAD
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
+=======
+
+	// admin routes
+	Route::get('/view-accounts', 'pagesController@viewAccounts');
+	Route::get('/addaccount', 'AdminController@addaccount');
+	Route::get('/usermanagement', 'AdminController@usermanagement');
+	Route::get('admin/beneficiary', 'AdminController@ViewBeneficiary')->name('beneficiary');
+	Route::get('admin/addbeneficiary', 'AdminController@beneficiary');
+	Route::get('admin/beneficiarydetails/{id}', 'AdminController@BeneficiaryDetails');
+	Route::get('/web-analytics', 'pagesController@webAnalytics');
+	Route::get('admin/createwallet', 'AdminController@wallet');
+	Route::get('admin/wallet-details', 'AdminController@walletdetails');
+	Route::get('admin/view-rules', 'AdminController@viewRules');
+	Route::post('admin/update-rule', 'AdminController@updateRule')->name('update-rule');
+	Route::get('admin/edit-rule/{ruleId}', 'AdminController@editRules')->name('edit-rule');
+	Route::post('admin/createwallet', 'AdminController@addwallet');
+	Route::post('admin/addbeneficiary', 'AdminController@addbeneficiary');
+	Route::get('admin/viewwallet/{walletId}', 'AdminController@show')->name('view-wallet');
+	Route::resource('admin/users', 'Admin\UsersController');
+	Route::post('admin/users/store', 'Admin\UsersController@store');
+	Route::post('admin/users/banUser/{id}', 'Admin\UsersController@banUser');
+	Route::post('admin/users/unbanUser/{id}', 'Admin\UsersController@unbanUser');
+	Route::post('admin/users/makeAdmin/{id}', 'Admin\UsersController@makeAdmin');
+	Route::post('admin/users/removeAdmin/{id}', 'Admin\UsersController@removeAdmin');
+});
+>>>>>>> 6006a9fd8b3b2971cf5d12124ac2a1e83e5dfc68

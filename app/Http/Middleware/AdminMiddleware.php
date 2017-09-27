@@ -15,11 +15,11 @@ class AdminMiddleware
      * @return mixed
      */
     public function handle($request, Closure $next)
-    {   
+    {
         if(Auth::check() && Auth::user()->isAdmin()) {
             return $next($request);
         }
 
-        return redirect('home')->with('message', 'You Must be logged in as an Admin');
+        return redirect('/admin/login')->with('message', 'You Must be logged in as an Admin');
     }
 }

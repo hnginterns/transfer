@@ -475,12 +475,12 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">FAQs</a></li>
-                    <li><a href="#">Features</a></li>
-                    <li><a href="#">Demo</a></li>
-                    <li class="active"><a href="#">About<span class="sr-only">(current)</span></a></li>
-                    <li id="sign-in"><a href="#">SIGN IN</a></li>
+                    <li><a href="/home">Home</a></li>
+                    <li><a href="/home">FAQs</a></li>
+                    <li><a href="/home">Features</a></li>
+                    <li><a href="/home">Demo</a></li>
+                    <li class="active"><a href="/about">About<span class="sr-only">(current)</span></a></li>
+                    <li id="sign-in"><a href="/login">SIGN IN</a></li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->

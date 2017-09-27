@@ -756,12 +756,27 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
-                    <li><a href="#">FAQs</a></li>
-                    <li><a href="#">Features</a></li>
-                    <li><a href="#">Demo</a></li>
-                    <li><a href="#">About</a></li>
-                    <li id="sign-in"><a href="/login">SIGN IN</a></li>
+                    <li class="active"><a href="{{url("/")}}">Home <span class="sr-only">(current)</span></a></li>
+                    <li><a href="{{url("/")}}">FAQs</a></li>
+                    <li><a href="{{url("/")}}">Features</a></li>
+                    <li><a href="{{url("/")}}">Demo</a></li>
+                    <li><a href="{{url("/about")}}">About</a></li>
+                    @if(Auth::guest())
+                        <li id="sign-in"><a href="{{url("/login")}}">SIGN IN</a></li>
+                    @else
+                        <li id="sign-in">
+                        <a href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                     document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                      </li>
+                    @endif
+
                 </ul>
             </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
@@ -774,7 +789,7 @@
                     Create an account for your company with TransferRules
                 </span>
             <span id="text-hd">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim 
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
                 </span>
             <button id="button-hd">
                 DOWNLOAD APP

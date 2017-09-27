@@ -40,4 +40,9 @@ class LoginController extends Controller
         $this->datta['host'] = str_replace('http://', '', str_replace('https://', '', $request->server('HTTP_HOST')));
         $this->middleware('guest')->except('logout');
     }
+
+    protected function authenticated(Request $request, $user)
+    {
+        $this->redirectTo = (boolean) $user->is_admin ? '/admin' : '/dashboard';
+    }
 }

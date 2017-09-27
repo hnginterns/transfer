@@ -1,287 +1,153 @@
+<!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Admin Dashboard</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel="stylesheet" href="https://adminlte.io/themes/AdminLTE/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://adminlte.io/themes/AdminLTE/bower_components/Ionicons/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="https://adminlte.io/themes/AdminLTE/dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+        page. However, you can choose any other skin. Make sure you
+        apply the skin class to the body tag so the changes take effect. -->
+  <link rel="stylesheet" href="https://adminlte.io/themes/AdminLTE/dist/css/skins/skin-blue.min.css">
 
-<!doctype html>
-<!--[if lte IE 9]>     <html lang="en" class="no-focus lt-ie10 lt-ie10-msg"> <![endif]-->
-<!--[if gt IE 9]><!--> <html lang="en" class="no-focus"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
 
-        <title>HotelsNG Internship Project - Admin</title>
+  <!-- Google Font -->
+ <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
 
-        <meta name="description" content="HotelsNG Internship Project - Admin<">
-        <meta name="author" content="DreamTeam">
-        <meta name="robots" content="noindex, nofollow">
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
 
-        <!-- Open Graph Meta -->
-        <meta property="og:title" content="HotelsNG Intership Project">
-        <meta property="og:site_name" content="TransferRules">
-        <meta property="og:description" content="HotelsNG Internship Project - Admin<">
-        <meta property="og:type" content="website">
-        <meta property="og:url" content="">
-        <meta property="og:image" content="">
+  @include('admin/header')
 
-        <!-- Icons -->
-        <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
-        <link rel="shortcut icon" href="assests/img/favicons/favicon.png">
-        <link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicons/favicon-192x192.png">
-        <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicons/apple-touch-icon-180x180.png">
-        <!-- END Icons -->
+  @include('admin/sidebar')
 
-        <link rel="stylesheet" id="css-main" href="{{ asset('assests/css/codebase.min.css') }}">
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Dashboard Manager
+        <small>Optional description</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+        <li class="active">Here</li>
+      </ol>
+    </section>
 
-       
-    </head>
-    <body>
-     
-        <div id="page-container" class="sidebar-o side-scroll page-header-modern main-content-boxed">      
-            <nav id="sidebar">
-                <!-- Sidebar Scroll Container -->
-                <div id="sidebar-scroll">
-                    <!-- Sidebar Content -->
-                    <div class="sidebar-content">
-                        <!-- Side Header -->
-                        <div class="content-header content-header-fullrow px-15">
-                            <!-- Mini Mode -->
-                            <div class="content-header-section sidebar-mini-visible-b">
-                                <!-- Logo -->
-                                <span class="content-header-item font-w700 font-size-xl float-left animated fadeIn">
-                                    <span class="text-dual-primary-dark">c</span><span class="text-primary">b</span>
-                                </span>
-                                <!-- END Logo -->
-                            </div>
-                            <!-- END Mini Mode -->
+    <!-- Main content -->
+    <section class="content container-fluid">
 
-                            <!-- Normal Mode -->
-                            <div class="content-header-section text-center align-parent sidebar-mini-hidden">
-                                <!-- Close Sidebar, Visible only on mobile screens -->
-                                <!-- Layout API, functionality initialized in Codebase() -> uiApiLayout() -->
-                                <button type="button" class="btn btn-circle btn-dual-secondary d-lg-none align-v-r" data-toggle="layout" data-action="sidebar_close">
-                                    <i class="fa fa-times text-danger"></i>
-                                </button>
-                                <!-- END Close Sidebar -->
+        @yield('content')
 
-                                <!-- Logo -->
-                                <div class="content-header-item">
-                                    <a class="link-effect font-w700" href="index.html">
-                                        <i class="si si-fire text-primary"></i>
-                                        <span class="font-size-xl text-dual-primary-dark">Transfer</span><span class="font-size-xl text-primary">Rules</span>
-                                    </a>
-                                </div>
-                                <!-- END Logo -->
-                            </div>
-                            <!-- END Normal Mode -->
-                        </div>
-                        <!-- END Side Header -->
+        </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
 
-                        <!-- Side User -->
-                        <div class="content-side content-side-full content-side-user px-10 align-parent">
-                            <!-- Visible only in mini mode -->
-                            <div class="sidebar-mini-visible-b align-v animated fadeIn">
-                                <img class="img-avatar img-avatar32" src="assets/img/avatars/avatar15.jpg" alt="">
-                            </div>
-                            <!-- END Visible only in mini mode -->
+  <!-- Main Footer -->
+  <footer class="main-footer">
+    <!-- To the right -->
+    <div class="pull-right hidden-xs">
+      Anything you want
+    </div>
+    <!-- Default to the left -->
+    <strong>Copyright &copy; 2017 <a href="#">transferrules.com</a>.</strong> All rights reserved.
+  </footer>
 
-                            <!-- Visible only in normal mode -->
-                            <div class="sidebar-mini-hidden-b text-center">
-                                <a class="img-link" href="be_pages_generic_profile.html">
-                                    <img class="img-avatar" src="assets/img/avatars/avatar15.jpg" alt="">
-                                </a>
-                                <ul class="list-inline mt-10">
-                                    <li class="list-inline-item">
-                                        <a class="link-effect text-dual-primary-dark font-size-xs font-w600 text-uppercase" href="be_pages_generic_profile.html">Transfer Admin</a>
-                                    </li>
-                                    
-                                </ul>
-                            </div>
-                            <!-- END Visible only in normal mode -->
-                        </div>
-                        <!-- END Side User -->
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Create the tabs -->
+    <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+      <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+      <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+    </ul>
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <!-- Home tab content -->
+      <div class="tab-pane active" id="control-sidebar-home-tab">
+        <h3 class="control-sidebar-heading">Recent Activity</h3>
+        <ul class="control-sidebar-menu">
+          <li>
+            <a href="javascript:;">
+              <i class="menu-icon fa fa-birthday-cake bg-red"></i>
 
-                        <!-- Side Navigation -->
-                        <div class="content-side content-side-full">
-                            <ul class="nav-main">
-                                <li>
-                                    <a class="active" href="be_pages_dashboard.html"><i class="si si-cup"></i><span class="sidebar-mini-hide">Dashboard</span></a>
-                                </li>
-                                
-                                <li class="nav-main-heading"><span class="sidebar-mini-visible">Users</span><span class="sidebar-mini-hidden">Manage Users</span></li>
-                                <li>
-                                    <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-puzzle"></i><span class="sidebar-mini-hide">Rules</span></a>
-                                    <ul>
-                                        <li>
-                                            <a href="{{route('admin.createrule')}}">Create Rules</a>
-                                        </li>
-                                        
-                                        <li>
-                                            <a href="{{route('admin.setrule')}}">Set Rules</a>
-                                        </li>
-                                        
-                                    </ul>
-                                </li>
-                               
-                                
-                                
-                               
-                                
-                            </ul>
-                        </div>
-                        <!-- END Side Navigation -->
-                    </div>
-                    <!-- Sidebar Content -->
-                </div>
-                <!-- END Sidebar Scroll Container -->
-            </nav>
-            <!-- END Sidebar -->
+              <div class="menu-info">
+                <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
 
-            <!-- Header -->
-            <header id="page-header">
-                <!-- Header Content -->
-                <div class="content-header">
-                    <!-- Left Section -->
-                    <div class="content-header-section">
-                        <!-- Toggle Sidebar -->
-                        <!-- Layout API, functionality initialized in Codebase() -> uiApiLayout() -->
-                        <button type="button" class="btn btn-circle btn-dual-secondary" data-toggle="layout" data-action="sidebar_toggle">
-                            <i class="fa fa-navicon"></i>
-                        </button>
-                        <!-- END Toggle Sidebar -->
-
-                        <!-- Open Search Section -->
-                        <!-- Layout API, functionality initialized in Codebase() -> uiApiLayout() -->
-                        <button type="button" class="btn btn-circle btn-dual-secondary" data-toggle="layout" data-action="header_search_on">
-                            <i class="fa fa-search"></i>
-                        </button>
-                        <!-- END Open Search Section -->
-
-                        
-
-                        
-                    </div>
-                    <!-- END Left Section -->
-
-                    <!-- Right Section -->
-                    <div class="content-header-section">
-                        <!-- User Dropdown -->
-                        <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-rounded btn-dual-secondary" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                TransferRules Admin<i class="fa fa-angle-down ml-5"></i>
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-right min-width-150" aria-labelledby="page-header-user-dropdown">
-                                <a class="dropdown-item" href="be_pages_generic_profile.html">
-                                    <i class="si si-user mr-5"></i> Profile
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center justify-content-between" href="be_pages_generic_inbox.html">
-                                    <span><i class="si si-envelope-open mr-5"></i> Inbox</span>
-                                    <span class="badge badge-primary">3</span>
-                                </a>
-                                <a class="dropdown-item" href="be_pages_generic_invoice.html">
-                                    <i class="si si-note mr-5"></i> Invoices
-                                </a>
-                                <div class="dropdown-divider"></div>
-
-                                <!-- Toggle Side Overlay -->
-                                <!-- Layout API, functionality initialized in Codebase() -> uiApiLayout() -->
-                                <a class="dropdown-item" href="javascript:void(0)" data-toggle="layout" data-action="side_overlay_toggle">
-                                    <i class="si si-wrench mr-5"></i> Settings
-                                </a>
-                                <!-- END Side Overlay -->
-
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="{{ url('logout')}}">
-                                    <i class="si si-logout mr-5"></i> Sign Out
-                                </a>
-                            </div>
-                        </div>
-                        <!-- END User Dropdown -->
-
-                        <!-- Toggle Side Overlay -->
-                        <!-- Layout API, functionality initialized in Codebase() -> uiApiLayout() -->
-                        <button type="button" class="btn btn-circle btn-dual-secondary" data-toggle="layout" data-action="side_overlay_toggle">
-                            <i class="fa fa-tasks"></i>
-                        </button>
-                        <!-- END Toggle Side Overlay -->
-                    </div>
-                    <!-- END Right Section -->
-                </div>
-                <!-- END Header Content -->
-
-                <!-- Header Search -->
-                <div id="page-header-search" class="overlay-header">
-                    <div class="content-header content-header-fullrow">
-                        <form action="be_pages_generic_search.html" method="post">
-                            <div class="input-group">
-                                <span class="input-group-btn">
-                                    <!-- Close Search Section -->
-                                    <!-- Layout API, functionality initialized in Codebase() -> uiApiLayout() -->
-                                    <button type="button" class="btn btn-secondary" data-toggle="layout" data-action="header_search_off">
-                                        <i class="fa fa-times"></i>
-                                    </button>
-                                    <!-- END Close Search Section -->
-                                </span>
-                                <input type="text" class="form-control" placeholder="Search or hit ESC.." id="page-header-search-input" name="page-header-search-input">
-                                <span class="input-group-btn">
-                                    <button type="submit" class="btn btn-secondary">
-                                        <i class="fa fa-search"></i>
-                                    </button>
-                                </span>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <!-- END Header Search -->
-
-                <!-- Header Loader -->
-                <!-- Please check out the Activity page under Elements category to see examples of showing/hiding it -->
-                <div id="page-header-loader" class="overlay-header bg-primary">
-                    <div class="content-header content-header-fullrow text-center">
-                        <div class="content-header-item">
-                            <i class="fa fa-sun-o fa-spin text-white"></i>
-                        </div>
-                    </div>
-                </div>
-                <!-- END Header Loader -->
-            </header>
-            <!-- END Header -->
+                <p>Will be 23 on April 24th</p>
+              </div>
+            </a>
+          </li>
+        </ul>
+        <!-- /.control-sidebar-menu -->
 
 
-                @yield('content')
+      </div>
+      <!-- /.tab-pane -->
+      <!-- Stats tab content -->
+      <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
+      <!-- /.tab-pane -->
+      <!-- Settings tab content -->
+      <div class="tab-pane" id="control-sidebar-settings-tab">
+        <form method="post">
+          <h3 class="control-sidebar-heading">General Settings</h3>
 
+          <div class="form-group">
+            <label class="control-sidebar-subheading">
+              Report panel usage
+              <input type="checkbox" class="pull-right" checked>
+            </label>
 
+            <p>
+              Some information about this general settings option
+            </p>
+          </div>
+          <!-- /.form-group -->
+        </form>
+      </div>
+      <!-- /.tab-pane -->
+    </div>
+  </aside>
+  <!-- /.control-sidebar -->
+  <!-- Add the sidebar's background. This div must be placed
+  immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
 
-            <!-- Footer -->
-            <footer id="page-footer" class="opacity-0">
-                <div class="content py-20 font-size-xs clearfix">
-                    
-                    <div class="float-left">
-                        <a class="font-w600" href="#" target="_blank">HGN Intership</a> &copy; <span class="js-year-copy">2017</span>
-                    </div>
-                </div>
-            </footer>
-            <!-- END Footer -->
-        </div>
-        <!-- END Page Container -->
+<!-- REQUIRED JS SCRIPTS -->
 
-        <!-- Codebase Core JS -->
-        <script src="{{ asset('assests/js/core/jquery.min.js') }} "></script>
-        <script src="{{ asset('assests/js/core/popper.min.js') }} "></script>
-        <script src="{{ asset('assests/js/core/bootstrap.min.js') }} "></script>
-        <script src="{{ asset('assests/js/core/jquery.slimscroll.min.js') }} "></script>
-        <script src="{{ asset('assests/js/core/jquery.scrollLock.min.js') }} "></script>
-        <script src="{{ asset('assests/js/core/jquery.appear.min.js') }} "></script>
-        <script src="{{ asset('assests/js/core/jquery.countTo.min.js') }} "></script>
-        <script src="{{ asset('assests/js/core/js.cookie.min.js') }} "></script>
-        <script src="{{ asset('assests/js/codebase.js') }} "></script>
+<!-- jQuery 3 -->
+<script src="https://adminlte.io/themes/AdminLTE/bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="https://adminlte.io/themes/AdminLTE/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- AdminLTE App -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.0/js/adminlte.min.js"></script>
 
-        <!-- Page JS Plugins -->
-        <script src="{{ asset('assests/js/plugins/chartjs/Chart.bundle.min.js') }}"></script>
-
-        <!-- Page JS Code -->
-        <script src="{{ asset('assests/js/pages/be_pages_dashboard.js') }}"></script>
-    </body>
+<!-- Optionally, you can add Slimscroll and FastClick plugins.
+     Both of these plugins are recommended to enhance the
+     user experience. -->
+</body>
 </html>
-
-
-
-
-
 

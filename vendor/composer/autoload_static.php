@@ -50,6 +50,7 @@ class ComposerStaticInitcb56c8f99153a160391720319584c667
             'Symfony\\Component\\Debug\\' => 24,
             'Symfony\\Component\\CssSelector\\' => 30,
             'Symfony\\Component\\Console\\' => 26,
+            'Sarav\\Multiauth\\' => 16,
         ),
         'R' => 
         array (
@@ -178,6 +179,10 @@ class ComposerStaticInitcb56c8f99153a160391720319584c667
         array (
             0 => __DIR__ . '/..' . '/symfony/console',
         ),
+        'Sarav\\Multiauth\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sarav/laravel-multiauth/src',
+        ),
         'Ramsey\\Uuid\\' => 
         array (
             0 => __DIR__ . '/..' . '/ramsey/uuid/src',
@@ -304,6 +309,13 @@ class ComposerStaticInitcb56c8f99153a160391720319584c667
                 0 => __DIR__ . '/..' . '/doctrine/lexer/lib',
             ),
         ),
+        'C' => 
+        array (
+            'Curl' => 
+            array (
+                0 => __DIR__ . '/..' . '/curl/curl/src',
+            ),
+        ),
     );
 
     public static $classMap = array (
@@ -312,6 +324,8 @@ class ComposerStaticInitcb56c8f99153a160391720319584c667
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminController.php',
+        'App\\Http\\Controllers\\AdminLoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminLoginController.php',
+        'App\\Http\\Controllers\\Admin\\UsersController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/UsersController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
@@ -319,17 +333,24 @@ class ComposerStaticInitcb56c8f99153a160391720319584c667
         'App\\Http\\Controllers\\BanksController' => __DIR__ . '/../..' . '/app/Http/Controllers/BanksController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
+        'App\\Http\\Controllers\\PaymentController' => __DIR__ . '/../..' . '/app/Http/Controllers/paymentController.php',
+        'App\\Http\\Controllers\\RavepayController' => __DIR__ . '/../..' . '/app/Http/Controllers/RavepayController.php',
         'App\\Http\\Controllers\\UsersController' => __DIR__ . '/../..' . '/app/Http/Controllers/UsersController.php',
         'App\\Http\\Controllers\\ValidateAccountController' => __DIR__ . '/../..' . '/app/Http/Controllers/ValidateAccountController.php',
+        'App\\Http\\Controllers\\WalletController' => __DIR__ . '/../..' . '/app/Http/Controllers/WalletController.php',
         'App\\Http\\Controllers\\pagesController' => __DIR__ . '/../..' . '/app/Http/Controllers/pagesController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Admin' => __DIR__ . '/../..' . '/app/Http/Middleware/Admin.php',
+        'App\\Http\\Middleware\\AdminGuardMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/AdminGuardMiddleware.php',
         'App\\Http\\Middleware\\AdminMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/AdminMiddleware.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
         'App\\Http\\Middleware\\RedirectIfAuthenticated' => __DIR__ . '/../..' . '/app/Http/Middleware/RedirectIfAuthenticated.php',
+        'App\\Http\\Middleware\\TransactionsMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/TransactionsMiddleware.php',
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Http\\Utilities\\Bank' => __DIR__ . '/../..' . '/app/Http/Utilities/Bank.php',
+        'App\\Http\\Utilities\\Wallet' => __DIR__ . '/../..' . '/app/Http/Utilities/Wallet.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
@@ -341,6 +362,7 @@ class ComposerStaticInitcb56c8f99153a160391720319584c667
         'App\\Transaction' => __DIR__ . '/../..' . '/app/Transaction.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
         'App\\Wallet' => __DIR__ . '/../..' . '/app/Wallet.php',
+        'App\\WalletTransaction' => __DIR__ . '/../..' . '/app/WalletTransaction.php',
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
         'Carbon\\CarbonInterval' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
         'Carbon\\Exceptions\\InvalidDateException' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Exceptions/InvalidDateException.php',
@@ -354,6 +376,7 @@ class ComposerStaticInitcb56c8f99153a160391720319584c667
         'Cron\\MinutesField' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/MinutesField.php',
         'Cron\\MonthField' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/MonthField.php',
         'Cron\\YearField' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/YearField.php',
+        'Curl\\Curl' => __DIR__ . '/..' . '/curl/curl/src/Curl/Curl.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
         'DeepCopy\\DeepCopy' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
         'DeepCopy\\Exception\\CloneException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/CloneException.php',
@@ -2840,6 +2863,15 @@ class ComposerStaticInitcb56c8f99153a160391720319584c667
         'Ramsey\\Uuid\\UuidInterface' => __DIR__ . '/..' . '/ramsey/uuid/src/UuidInterface.php',
         'RestrictionTableSeeder' => __DIR__ . '/../..' . '/database/seeds/RestrictionTableSeeder.php',
         'RuleTableSeeder' => __DIR__ . '/../..' . '/database/seeds/RuleTableSeeder.php',
+        'Sarav\\Multiauth\\AuthManager' => __DIR__ . '/..' . '/sarav/laravel-multiauth/src/AuthManager.php',
+        'Sarav\\Multiauth\\Foundation\\AuthenticatesAndRegistersUsers' => __DIR__ . '/..' . '/sarav/laravel-multiauth/src/Foundation/AuthenticatesAndRegistersUsers.php',
+        'Sarav\\Multiauth\\Foundation\\AuthenticatesUsers' => __DIR__ . '/..' . '/sarav/laravel-multiauth/src/Foundation/AuthenticatesUsers.php',
+        'Sarav\\Multiauth\\Foundation\\RedirectsUsers' => __DIR__ . '/..' . '/sarav/laravel-multiauth/src/Foundation/RedirectsUsers.php',
+        'Sarav\\Multiauth\\Foundation\\RegistersUsers' => __DIR__ . '/..' . '/sarav/laravel-multiauth/src/Foundation/RegistersUsers.php',
+        'Sarav\\Multiauth\\Foundation\\ResetsPasswords' => __DIR__ . '/..' . '/sarav/laravel-multiauth/src/Foundation/ResetsPasswords.php',
+        'Sarav\\Multiauth\\Guard' => __DIR__ . '/..' . '/sarav/laravel-multiauth/src/Guard.php',
+        'Sarav\\Multiauth\\Manager' => __DIR__ . '/..' . '/sarav/laravel-multiauth/src/Manager.php',
+        'Sarav\\Multiauth\\MultiauthServiceProvider' => __DIR__ . '/..' . '/sarav/laravel-multiauth/src/MultiauthServiceProvider.php',
         'SebastianBergmann\\CodeCoverage\\CodeCoverage' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/CodeCoverage.php',
         'SebastianBergmann\\CodeCoverage\\CoveredCodeNotExecutedException' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/Exception/CoveredCodeNotExecutedException.php',
         'SebastianBergmann\\CodeCoverage\\Driver\\Driver' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/Driver/Driver.php',

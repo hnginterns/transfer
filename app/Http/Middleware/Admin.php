@@ -22,6 +22,6 @@ class Admin
             return $next($request);
         }
 
-        return redirect('/signin')->with('message', 'You Must be logged in as an Admin');
+        return redirect('/admin/login')->with('message', 'You Must be logged in as an Admin');
     }
 }

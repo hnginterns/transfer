@@ -25,6 +25,7 @@ class CreateTransactionsTable extends Migration
             $table->string('payee_wallet_code');
             $table->string('transaction_reference', 100)->unique();
             $table->timestamps();
+            
             $table->foreign('wallet_code')->references('wallet_code')->on('wallets')
                     ->onDelete('cascade')
                     ->onUpdate('cascade');

@@ -1,17 +1,44 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
-<html>
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">   
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<title>404</title>
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-  
+
   <style>
     body{
       font-family: lato;
       height: 100%;
       margin-top: 7%;
+    }
+    .bg-coral{
+      
+      width: fit-content;
+    /* color: #E57679; */
+    color: white;
+    border: none;
+    background: #FF5700;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 10px 15px;
+    border-radius: 63px;
+    transition: background 1s, color 2s;
+    z-index: 100
+    }
+	 .bg-blue{
+      background-color: #222c37;
+      width: fit-content;
+    /* color: #E57679; */
+    color: white;
+    border: none;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 10px 15px;
+    border-radius: 63px;
+    transition: background 1s, color 2s;
+    z-index: 100
+    }
+    .bg-coral:hover, .bg-blue:hover {
+
+box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.25);
     }
 		.main{
       bottom: 0;
@@ -24,14 +51,14 @@
       color: #4f4f4f;
       font-weight: bolder;
       font-size: 150px;
-    }    
+    }
     .main .error span.ghost{
       color: #000;
       letter-spacing: 10px;
       text-align: center;
       font-size: 30px;
       height: 70px;
-}
+    }
     .main .error span.ghost:before{
         content: "\f111   \f111";
         color: #fff;
@@ -43,8 +70,8 @@
         position: absolute;
     }
     .main .error span.ghost:after{
-		background: 
-					linear-gradient(-45deg, transparent 16px, #4f4f4f 0), 
+		background:
+					linear-gradient(-45deg, transparent 16px, #4f4f4f 0),
 					linear-gradient(45deg, transparent 16px, #4f4f4f  0);
         background-repeat: repeat-x;
 		    background-position: left bottom;
@@ -61,7 +88,7 @@
         margin-left: -16px;
         margin-right: 16px;
         margin-bottom: 35px;
-		
+
 	}
   .main h2{
     margin-top: 0;
@@ -78,29 +105,21 @@
 	  p{
 		  color: #686969:
 			  }
-    .bg-coral{
-      background-color: #ff6200;
-    }
-	 .bg-blue{
-      background-color: #222c37;
-    }	 
-    a{ 
+    
+    a{
       text-decoration: none;
     }
-    .main .navigate{  
+    .main .navigate{
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      align-items: center; 
+      align-items: center;
     }
     .main .navigate a{
-      border-radius: 25px;
-      font-size: 18px;
       text-decoration: none;
       color: #fff;
       padding: 5px 20px;
       margin: 5px 9%;
-      box-shadow: 0 5px 5px 2px rgba(0,0,0,0.14);
     }
     .main .navigate a:hover{
       opacity: 0.9;
@@ -123,13 +142,14 @@
       .main .navigate a{
         font-size: 14px;
       }
-    } 
+    }
+
 	</style>
 </head>
 <body>
 	<div class="main">
     <h2>WHOOPS!</h2>
-    
+
     <img src="http://res.cloudinary.com/plushdeveloper/image/upload/v1506065231/4040_okxzn8.png" height="150px">
     <!--<div class="error">4 <span class="ghost"> </span>4</div>
     -->
@@ -137,12 +157,12 @@
 
 		<p> Sorry the page you are looking for cannot be accessed.
     <br> Check the options below or feel free to</p>
-    
+
     <h4><a class="blue" href="#">REPORT THIS ISSUE</a></h4>
-    
+
     <div class="navigate">
-      <a class="bg-coral" href="/dashboard">GO TO DASHBOARD</a>
-      <a class="bg-blue" href="./home">GO TO HOMEPAGE</a>
+      <a class="bg-coral" href="/admin">GO TO DASHBOARD</a>
+      <a class="bg-blue" href="/">GO TO HOMEPAGE</a>
     </div>
 	</div>
 </body>

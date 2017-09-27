@@ -13,7 +13,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except(['randomFunc']);
     }
 
     /**
@@ -24,5 +24,13 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    // This is for Testing
+    public function randomFunc(\App\Wallet $wallet) {
+        $wal = $wallet->find(1);
+
+        // return $wal->archive() ? "Wallet was Archived" : "Archiving Failed!";
+        return $wal->canTransfer() ? "Transaction can Proceed" : "Transaction Failed! You have reached your Transaction Limit for the day";
     }
 }
