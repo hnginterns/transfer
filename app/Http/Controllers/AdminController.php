@@ -281,7 +281,7 @@ class AdminController extends WalletController
     public function archiveWallet($id) {
       $wallet = Wallet::findOrFail($id);
 
-      Wallet::where('id', $id)->update(['archived', => 0]);
+      Wallet::where('id', $id)->update(['archived' => 0]);
 
       return redirect('admin/viewwallet/{{ '.$id.' }}')->with('message', 'Wallet Archived successfully.')
     }
