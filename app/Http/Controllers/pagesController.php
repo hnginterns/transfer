@@ -37,7 +37,8 @@ class pagesController extends Controller
   public function userdashboard(){
     $wallets = Wallet::all();
     $transaction = \App\Http\Utilities\Wallet::all();
-    return view('dashboard', compact('wallets', 'transaction'));
+		$user_id = Auth::user()->id;
+    return view('dashboard', compact('wallets', 'transaction', 'user_id'));
   }
 
   public function about(){
@@ -89,16 +90,14 @@ class pagesController extends Controller
       return view('view-accounts');
   }
 
-  public function webAnalytics() {
-    return view ('web-analytics');
-  }
-
+  
   public function viewWallet(User $user, Wallet $wallet) {
     
     $wallets = $wallet::where('uuid', \Auth::id())->get();
     $transaction = UtilWallet::all();
+    $user_id = Auth::user()->id;
     // dd($wallets);
-    return view ('wallet-view', compact('wallets', 'transaction'));
+    return view ('wallet-view', compact('wallets', 'transaction', 'user_id'));
   }
 
   public function createWallet() {

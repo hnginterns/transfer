@@ -8,9 +8,7 @@
     .beneficiary-container {
       padding: 30px;
     }
-    tr>td{
-      color: white;
-    }
+
     .btn-primary {
         color: #b8c7ce;
         background-color: transparent !important;
@@ -66,35 +64,29 @@
 
 
 <div class="container-fluid">
-  <a href="/admin/beneficiary"><button type="submit" class="btn btn-success" name="button"> Back</button></a>
-  <br>  <br>
+
+  <div class="beneficiary-container">
+
+      <div class="beneficiary-row row">
         <div class="single-beneficiary-holder col-md-6">
             <div class="inner-holder">
-                  <div class="box-body">
-                  <div class="table-responsive">
-                    <table class="table no-margin">
-                      <thead>
-                        <h4 class="beneficiary-name">{{$beneficiary->name}}</h4>
-                      </thead>
-                      <tbody>
-                      <tr>
-                        <td>Bank Code:</td>
-                        <td>{{$beneficiary->bank_id}}</td>
-                      </tr>
-                      <tr>
-                        <td>Account Number:</td>
-                        <td>{{$beneficiary->account_number}}</td>
-                      </tr>
-                      <tr>
-                        <td></td>
-                        <td></td>
-                      </tr>
-                      </tbody>
-                    </table>
-                  </div>
-              <!-- /.table-responsive -->
+                  <h5 class="beneficiary-name"><b>Edit</b> Beneficiary</h5>
+                  <form action="" method="POST">
+                  {{csrf_field()}}
+                  <input type="text" name="name" value="{{$beneficiary->name}}" class="form-control input-defaulted" placeholder="Name">
+                  <br><select name="bank_id" class="form-control input-defaulted" >
+                    <option>Select Bank</option>
+                    @foreach(App\Http\Utilities\Bank::all() as $bankCode => $bankName)
+                    <option value="{{$bankCode}}" {{$bankCode == $beneficiary->bank->bank_code ? "selected" : ""}}>{{$bankName}}</option>
+                    @endforeach
+                  </select>
+                  <br><input type="text" name="account_number" value="{{$beneficiary->account_number}}" class="form-control input-defaulted" placeholder="Account Number">
+                  <br><button type="submit" class="btn btn-info" name="button"> Save</i></button>
+                </form>
             </div>
-          </div>
+        </div>
+      </div>
+
     </div>
 
 </div>
