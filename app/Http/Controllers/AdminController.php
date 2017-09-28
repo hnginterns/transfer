@@ -250,7 +250,7 @@ class AdminController extends WalletController
 
     public function show($walletId)
     {
-        dd($walletId);
+
         $wallet = Wallet::find($walletId);
         $transaction = \App\Http\Utilities\Wallet::all();
 
@@ -283,7 +283,7 @@ class AdminController extends WalletController
 
       Wallet::where('id', $id)->update(['archived' => 0]);
 
-      return redirect('/admin/viewwallet/{{ '.$id.' }}')->with('message', 'Wallet Archived successfully.');
+      return redirect('/admin/viewwallet/'.$id)->with('message', 'Wallet Archived successfully.');
     }
 
     public function fundWallet()
