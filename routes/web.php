@@ -90,7 +90,6 @@ Route::group(['middleware' => ['admin']], function () {
   Route::get('/admin/{id}/archivewallet', 'AdminController@archiveWallet');
   Route::get('/admin/{id}/activatewallet', 'AdminController@activateWallet');
 
-<<<<<<< HEAD
 	// admin routes
 	Route::get('/view-accounts', 'pagesController@viewAccounts');
 	Route::get('/addaccount', 'AdminController@addaccount');
@@ -109,9 +108,9 @@ Route::group(['middleware' => ['admin']], function () {
 	Route::post('admin/users/unbanUser/{id}', 'Admin\UsersController@unbanUser');
 	Route::post('admin/users/makeAdmin/{id}', 'Admin\UsersController@makeAdmin');
 	Route::post('admin/users/removeAdmin/{id}', 'Admin\UsersController@removeAdmin');
-=======
+
 	//Route::get('/manager/setting', 'AdminController@settings');
->>>>>>> 3aab21449f76cf14fcd466698114e461e3cf453d
+
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
