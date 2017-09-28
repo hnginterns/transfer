@@ -117,7 +117,7 @@
                 @if($wallet->archived == 0)
                   <a href="/admin/{{ $wallet->id }}/archivewallet" type="submit" class="btn btn-md btn-danger">{{ 'Archive Wallet' }}</a>
                 @else
-                  <a href="/admin/{{ $wallet->id }}/activatewallet" type="submit" class="btn btn-md btn-suceess">{{ 'Activate Wallet' }}</a>
+                  <a href="/admin/{{ $wallet->id }}/activatewallet" type="submit" class="btn btn-md btn-success">{{ 'Activate Wallet' }}</a>
                 @endif
             </div>
           </div>
