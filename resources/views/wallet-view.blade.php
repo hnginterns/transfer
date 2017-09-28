@@ -380,96 +380,44 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-inverse">
-    <div class="container">
-      <div class="navbar-header">
-
-        <a class="navbar-brand" href="#"> <span><img src="img/logo.png" alt=""></span>   PaysFund</a>
-
-        <button type="button" id="navb" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-          aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-      </div>
-
-      <ul class="nav navbar-nav">
-        <li><a href="#" style="color:white; font-size:18px;">Wallet View</a></li>
-      </ul>
-
-      <div class="profile navbar-right"></div>
-      <div class="navbar-form navbar-right">
-        <input type="text" class="form-control" placeholder="Search">
-      </div>
-    </div>
-  </nav>
-
-  <div class="container-fluid">
-    <div class="row">
-
-      <div class="col-sm-2" id="sidebar">
-
-        <i class="fa fa-window-close" id="close" aria-hidden="true"></i>
-
-        <ul class="nav nav-stacked">
-          <li class="side-item"><a href="/dashboard">Dashboard</a></li>
-          <li class="side-items">
-              <a href="/wallet-view" class="active-sidebar">Wallet View</a>
-          </li>
-          <li class="side-items">
-              <a href="/transfer-to-wallet" class="side-item">Wallet Transfer</a>
-          </li>
-
-           <li class="side-items">
-              <a href="/transfer-to-bank" class="side-item">Bank Transfer</a>
-          </li>
-
-           <li class="side-items">
-              <a href="/banks" class="side-item">Banks</a>
-          </li>
-          <li>
-          <a href="{{ route('logout') }}"
-              onclick="event.preventDefault();
-                       document.getElementById('logout-form').submit();">
-              Logout
-          </a>
-
-          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-              {{ csrf_field() }}
-          </form>
-        </li>
-        </ul>
-      </div>
+	@section('content', 'Wallet View')
+  	@include('users/user-nav')
 
       <div class="col-sm-10">
         <div class="container-fluid">
 
           <div class="wallet-container">
 
-						<div class="content">
-							<div class="row">
-								<div class="col-md-4">
+		<div class="content">
+			<div class="row">
+				<div class="col-md-4">
 					<div class="blue-circle"><img src="http://www.ravcontest.com/HNGpoints/image/W1.png" alt="icon"/></div>
-					<div align="center" class="left-content">
-						<h5 class="side-header">Wallet 1</h5>
-					<br/>
-					<h5 class="side-header">Wallet S/N</h5>
-					<p class="side-content">0001</p>
-					<br/>
-					<h5 class="side-header">Wallet Id</h5>
-					<p class="side-content">id 2334556</p>
-					<br/>
-					<h5 class="side-header">Currency Type</h5>
-					<p class="side-content">NGN</p>
-					<br/>
-					<h5 class="side-header">Balance</h5>
-					<p class="side-content">134,455,667.78</p>
-					<br/>
-					</div>
-								</div>
-								<div class="col-md-8">
+					@foreach($wallets as $key => $wallet)
+						@if($wallet->uuid == $user_id)
+							<div align="center" class="left-content">
+								<h5 class="side-header"> {{ $wallet->wallet_name }} </h5>
+								<br/>
+								<h5 class="side-header">Wallet S/N</h5>
+								<p class="side-content">{{$key + 1}}</p>
+								<br/>
+								<h5 class="side-header">Wallet Code</h5>
+								<p class="side-content">{{ $wallet->wallet_code }} </p>
+								<br/>
+								@foreach($transaction as $trans)
+									@if($trans['uref'] !== $wallet->wallet_code)
+										<h5 class="side-header">Currency Type</h5>
+										<p class="side-content">{{$trans['uref'] == $wallet->wallet_code ? $trans['currency'] : "NGN"}}</p>
+										<br/>
+										<h5 class="side-header">Balance</h5>
+										<p class="side-content">{{$trans['uref'] == $wallet->wallet_code ? $trans['balance'] : $wallet->balance}}</p>
+										<br/>
+									@endif
+								@endforeach
+							</div>
+						@endif
+					@endforeach
+				</div>
+				<div class="col-md-8">
 					<div class="orange-box"><h4 class="title" align="center">TRANSACTION HISTORY</h4></div>
 						<table class="table" style="width:100%;">
 							<thead>
@@ -481,6 +429,8 @@
 								</tr>
 							</thead>
 							<tbody>
+							@if(count($transaction) > 0)
+							 	@foreach($transaction as $trans)
 								<tr>
 									<td></td>
 									<td></td>
@@ -488,112 +438,16 @@
 										 <td></td>
 
 								</tr>
+								@endforeach
+							@else
 								<tr>
 									<td></td>
+									<td>No transaction history</td>
 									<td></td>
 									<td></td>
-										 <td></td>
-
 								</tr>
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-										 <td></td>
-
-								</tr>
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-										 <td></td>
-
-								</tr>
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-										 <td></td>
-
-								</tr>
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-										 <td></td>
-
-								</tr>
-									 <tr>
-									<td></td>
-									<td></td>
-									<td></td>
-										 <td></td>
-
-								</tr>
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-										 <td></td>
-
-								</tr>
-									 <tr>
-									<td></td>
-									<td></td>
-									<td></td>
-										 <td></td>
-
-								</tr>
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-										 <td></td>
-
-								</tr>
-									 <tr>
-									<td></td>
-									<td></td>
-									<td></td>
-										 <td></td>
-
-								</tr>
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-										 <td></td>
-
-								</tr>
-									 <tr>
-									<td></td>
-									<td></td>
-									<td></td>
-										 <td></td>
-
-								</tr>
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-										 <td></td>
-
-								</tr>
-									 <tr>
-									<td></td>
-									<td></td>
-									<td></td>
-										 <td></td>
-
-								</tr>
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-										 <td></td>
-
-								</tr>
-
+								
+							@endif
 							</tbody>
 						</table>
 						<div align="center">

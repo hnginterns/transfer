@@ -8,9 +8,7 @@
     .beneficiary-container {
       padding: 30px;
     }
-    tr>td{
-      color: white;
-    }
+
     .btn-primary {
         color: #b8c7ce;
         background-color: transparent !important;
@@ -66,35 +64,23 @@
 
 
 <div class="container-fluid">
-  <a href="/admin/beneficiary"><button type="submit" class="btn btn-success" name="button"> Back</button></a>
-  <br>  <br>
+
+  <div class="beneficiary-container">
+
+      <div class="beneficiary-row row">
         <div class="single-beneficiary-holder col-md-6">
             <div class="inner-holder">
-                  <div class="box-body">
-                  <div class="table-responsive">
-                    <table class="table no-margin">
-                      <thead>
-                        <h4 class="beneficiary-name">{{$beneficiary->name}}</h4>
-                      </thead>
-                      <tbody>
-                      <tr>
-                        <td>Bank Code:</td>
-                        <td>{{$beneficiary->bank_id}}</td>
-                      </tr>
-                      <tr>
-                        <td>Account Number:</td>
-                        <td>{{$beneficiary->account_number}}</td>
-                      </tr>
-                      <tr>
-                        <td></td>
-                        <td></td>
-                      </tr>
-                      </tbody>
-                    </table>
-                  </div>
-              <!-- /.table-responsive -->
+                  <h5 class="beneficiary-name"><b>Fund: </b> Wallet Name</h5>
+                  <form action="" method="POST">
+                  <input type="email" name="name"  class="form-control input-defaulted" placeholder="Email">                  
+                  <br><input type="text" name="account_number" class="form-control " placeholder="Account Number">
+                  <br><input type="text" name="refkey" class="form-control" placeholder="Reference Key">
+                  <br><button type="submit" class="btn btn-info" name="button">Fund</button>
+                </form>
             </div>
-          </div>
+        </div>
+      </div>
+
     </div>
 
 </div>

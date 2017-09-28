@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Wallet;
+use Illuminate\Support\Facades\Auth;
+use App\Beneficiary;
+use App\User;
+use App\Http\Utilities\Wallet as UtilWallet;
 
 class pagesController extends Controller
 {
@@ -32,7 +36,9 @@ class pagesController extends Controller
 
   public function userdashboard(){
     $wallets = Wallet::all();
-    return view('dashboard', compact('wallets'));
+    $transaction = \App\Http\Utilities\Wallet::all();
+		$user_id = Auth::user()->id;
+    return view('dashboard', compact('wallets', 'transaction', 'user_id'));
   }
 
   public function about(){
@@ -65,25 +71,33 @@ class pagesController extends Controller
   }
 
   public function bank_transfer (){
-    return view ('transfer-to-bank');
+    $beneficiary = Beneficiary::all();
+    $wallets = Wallet::where('uuid', '=', Auth::user()->id)->get();
+    if(!empty($wallet)){
+      //$wallet = $wallet[0];
+    }
+    
+    return view ('transfer-to-bank', compact('beneficiary', 'wallets'));
   }
 
   public function wallet_transfer(){
     $wallets = Wallet::all();
-      return view ('transfer-to-wallet', compact('wallets'));
-     
+    $user_id = Auth::user()->id;
+    return view ('transfer-to-wallet', compact('wallets'))->with('user_id', $user_id);
   }
 
   public function viewAccounts(){
       return view('view-accounts');
   }
 
-  public function webAnalytics() {
-    return view ('web-analytics');
-  }
-
-  public function viewWallet() {
-    return view ('wallet-view');
+  
+  public function viewWallet(User $user, Wallet $wallet) {
+    
+    $wallets = $wallet::where('uuid', \Auth::id())->get();
+    $transaction = UtilWallet::all();
+    $user_id = Auth::user()->id;
+    // dd($wallets);
+    return view ('wallet-view', compact('wallets', 'transaction', 'user_id'));
   }
 
   public function createWallet() {

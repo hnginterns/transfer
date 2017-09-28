@@ -762,18 +762,12 @@
                     <li><a href="{{url("/")}}">Demo</a></li>
                     <li><a href="{{url("/about")}}">About</a></li>
                     @if(Auth::guest())
-                        <li id="sign-in"><a href="{{url("/login")}}">SIGN IN</a></li>
+                        <li id="sign-in"><a href="{{url('/login')}}">SIGN IN</a></li>
                     @else
                         <li id="sign-in">
-                        <a href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                                     document.getElementById('logout-form').submit();">
+                        <a href="{{ url('/logout') }}">
                             Logout
                         </a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            {{ csrf_field() }}
-                        </form>
                       </li>
                     @endif
 

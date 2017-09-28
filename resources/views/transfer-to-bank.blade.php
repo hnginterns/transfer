@@ -424,65 +424,8 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-inverse">
-    <div class="container">
-      <div class="navbar-header">
-
-        <a class="navbar-brand" href="#"> <span><img src="img/logo.png" alt=""></span>   PaysFund</a>
-
-        <button type="button" id="navb" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-          aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-      </div>
-
-      <ul class="nav navbar-nav">
-        <li><a href="#" style="color:white; font-size:18px;">Bank Transfer</a></li>
-      </ul>
-
-      <div class="profile navbar-right"></div>
-      <div class="navbar-form navbar-right">
-        <input type="text" class="form-control" placeholder="Search">
-      </div>
-    </div>
-  </nav>
-
-  <div class="container-fluid">
-    <div class="row">
-
-      <div class="col-sm-2" id="sidebar">
-
-        <i class="fa fa-window-close" id="close" aria-hidden="true"></i>
-
-        <ul class="nav nav-stacked">
-          <li class="side-item"><a href="/dashboard">Dashboard</a></li>
-          <li class="side-items">
-              <a href="/wallet-view" class="side-item">Wallet View</a>
-          </li>
-          <li class="side-items">
-              <a href="/transfer-to-wallet" class="side-item">Wallet Transfer</a>
-          </li>
-
-           <li class="side-items">
-              <a href="/transfer-to-bank" class="active-sidebar">Bank Transfer</a>
-          </li>
-
-          <li>
-          <a href="{{ route('logout') }}"
-              onclick="event.preventDefault();
-                       document.getElementById('logout-form').submit();">
-              Logout
-          </a>
-
-          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-              {{ csrf_field() }}
-          </form>
-        </li>
-        </ul>
-      </div>
+    @section('content', 'Bank Transfer')
+    @include('users/user-nav')
 
       <div class="col-sm-10">
         <div class="container-fluid">
@@ -493,59 +436,71 @@
               <div class="login-box" style="">
                   <img src="/svg/naira.svg" alt="no preview" class="transfer-icon">
                   <h4 class="intro" style="font-size: 20px;">Transfer to bank account </h4>
-                  <form class="admin-login" action="/transferAccount" method="GET">
+                  <form class="admin-login" action="/transferAccount" method="POST">
+                  {{csrf_field()}}
                     <div class="row">
                       <div class="col col-lg-6 form-holder">
-                          <div class="form-group" style="margin: 30px 0;">
-                              <input type="text" class="form-control cus-input" id="benName" placeholder="Beneficiary Name">
-                          </div>
+                      <label>Beneficiary</label>
+                        <select class="form-control cus-input" name="beneficiary_id">
+                          <option>Select Beneficiary</option>
+                            @foreach($beneficiary as $key => $beneficiaries)
+                              <option value="{{$beneficiaries->id}}">{{$beneficiaries->name}}</option>
+                            @endforeach
+                        </select>
                         </div>
-                      <div class="col col-lg-6 form-holder">
+                      <!--<div class="col col-lg-6 form-holder">
                           <div class="form-group" style="margin: 30px 0;">
-                              <input type="text" class="form-control cus-input" name="senderName" id="senderName" placeholder="Sender's Name">
+                              <input type="text" class="form-control cus-input" name="sender_name" id="senderName" placeholder="Sender's Name">
                           </div>
-                      </div>
+                      </div>-->
                   </div>
-                  <div class="row">
+                 <!-- <div class="row">
                       <div class="col col-lg-6 form-holder">
                         <div class="form-group">
                             <input type="text" class="form-control cus-input" name="lock_code" id="lockCode" placeholder="Lock code">
                         </div>
                       </div>
+                      
                       <div class="col col-lg-6 form-holder">
                         <div class="form-group">
                             <input type="text" class="form-control cus-input" name="naration" id="naration" placeholder="naration (optional)">
                         </div>
                       </div>
-                    </div>
-                    <div class="row">
-                          <div class="col col-lg-6 form-holder">
-                              <div class="form-group">
-                                  <select class="form-control cus-input" name="bank_code">
-                                    <option>Select Beneficiary Bank</option>
-                                      <option value="">Bene 1</option>
-                                  </select>
-                              </div>
-                          </div>
-                          <div class="col col-lg-6 form-holder">
-                              <div class="form-group">
-                                  <input type="text" class="form-control cus-input" name="accountNumber" id="benAcc" placeholder="Beneficiary Account No">
-                              </div>
-                          </div>
-                      </div>
-                      <div class="row">-
+                    </div>-->
+                      <div class="row">
                         <div class="col col-lg-6 form-holder">
+                        <label>Amount</label>
                           <div class="form-group">
                               <input type="number" class="form-control cus-input" name="amount" id="amount" placeholder="Amount">
                           </div>
                         </div>
-                        <div class="col col-lg-6 form-holder">
+                        <!--<div class="col col-lg-6 form-holder">
                           <div class="form-group">
                             <input type="text" class="form-control cus-input" name="reference" id="amount" placeholder="reference">
                           </div>
-                        </div>
+                        </div>-->
                       </div>
-                      <button type="submit" class="btn btn-primary">Transfer</button>
+                      <div class="row">
+                          <div class="col col-lg-6 form-holder">
+                          <label>Wallet Name</label>
+                            <div class="form-group">
+                              <select class="form-control cus-input" name="wallet_name" id="wallet_name">
+                                <option value=""> Select Wallet</option>
+                                @forelse($wallets as $wallet)
+                                  <option value="{{ $wallet->wallet_name }}">{{ $wallet->wallet_name }}</option>
+                                @empty
+                                @endforelse
+                              </select>
+                            </div>
+                         </div>
+                         <!--<div class="col col-lg-6 form-holder">
+                            <div class="form-group">
+                                <input disabled type="text" class="form-control cus-input" value="" name="wallet_balance" id="wallet_balance">
+                            </div>
+                         </div>-->
+                      </div>
+                      <button type="submit" class="btn btn-primary pull-left">Transfer</button>
+
 
                   </form>
               </div>
@@ -555,9 +510,12 @@
         </div>
       </div>
     </div>
-  </div>
+  </div><br><br><br><br>
 
-  <footer class="footer">
+  @include('success');
+  @include('failed');
+
+  <footer class="navbar navbar-fixed-bottom" style="background-color:white;border-top:solid 2px grey;">
       <div class="container" style="text-align:center">
           <span class="text-muted company">2017 TransferFunds - All Rights Reserved</span>
       </div>

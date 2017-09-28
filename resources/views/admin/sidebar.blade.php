@@ -16,19 +16,7 @@
         <a href="#"><i class="fa fa-circle text-success" ></i> Online</a>
       </div>
     </div>
-
-    <!-- search form (Optional) -->
-    <form action="#" method="get" class="sidebar-form">
-      <div class="input-group">
-        <input type="text" name="q" class="form-control" placeholder="Search...">
-        <span class="input-group-btn">
-            <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-            </button>
-          </span>
-      </div>
-    </form>
-    <!-- /.search form -->
-
+    
     <!-- Sidebar Menu -->
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header">ADMIN CONTROLS</li>
@@ -39,29 +27,17 @@
       </li>
 
        <li>
-        <a href="{{ url('/admin/createrule') }}"><i class="fa fa-plus"></i> <span>Create Rules</span></a>
-      </li>
-
-       <li>
-        <a href="{{ url('/admin/setrule') }}"><i class="fa fa-group"></i> <span>Set Rules</span></a>
+        <a href="{{ url('/admin/view-rules') }}"><i class="fa fa-plus"></i> <span>Manage Rules</span></a>
       </li>
       <li><a href="{{ url('/admin/managewallet') }}"><i class="fa fa-briefcase"></i> <span>Manage Wallet</span></a></li>
-      <li><a href="beneficiary"><i class="fa fa-dollar"></i> <span>Beneficiary</span></a></li>
-      <li><a href="{{ url('/web-analytics') }}">Transaction Analytics</a></li>
-      <li><a href="#"><i class="fa fa-eyedropper"></i> <span>Draft</span></a></li>
-      <li><a href="#"><i class="fa fa-trash"></i> <span>Trash</span></a></li>
+      <li><a href="{{ url('/admin/beneficiary') }}"><i class="fa fa-dollar"></i> <span>Beneficiary</span></a></li>
+      <li><a href="{{ url('/admin/analytics') }}"><i class="fa fa-line-chart"></i> <span>Transaction Analytics<span></a></li>
       <li>
         <li>
-        <a href="{{ route('logout') }}"
-            onclick="event.preventDefault();
-                     document.getElementById('logout-form').submit();">
-            Logout
+        <a href="{{ url('/logout') }}">
+            <i class="fa fa-sign-out" aria-hidden="true"></i>
+            <span> Logout</span>
         </a>
-
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-            {{ csrf_field() }}
-            <input type="hidden" name="rdr" value="/admin/logout" placeholder="">
-        </form>
       </li>
 
     </ul>

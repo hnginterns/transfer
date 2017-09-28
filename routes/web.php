@@ -9,7 +9,7 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 Auth::routes();
 // get default home pages
 Route::get('/', 'pagesController@home')->name('transferrules');
@@ -17,6 +17,13 @@ Route::get('/', 'pagesController@home')->name('transferrules');
 Route::get('/home', 'pagesController@home');
 // get signin page
 //Route::get('/signin', 'pagesController@signin');
+
+Route::get('/logout', function(){
+    Auth::logout();
+    Session::flush();
+    return redirect('/login');
+});
+
 
 Route::get('/about', 'pagesController@about');
 
@@ -38,12 +45,12 @@ Route::get('/gettoken', 'WalletController@getToken');
 
 Route::get('/transferWallet', 'WalletController@transfer');
 
-Route::get('/transferAccount', 'WalletController@transferAccount');
+Route::post('/transferAccount', 'WalletController@transferAccount');
 
 Route::get('/404', 'pagesController@pagenotfound');
 
 // authentications
-Route::group(['middleware' => 'auth'], function() {
+Route::group(['middleware' => 'auth'], function () {
 	//User routes
 	Route::get('/dashboard', 'pagesController@userdashboard');
 	Route::get('/transfer-to-bank', 'pagesController@bank_transfer');
@@ -51,23 +58,23 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::get('/create-wallet', 'pagesController@createWallet');
 	Route::get('/wallet-view', 'pagesController@viewWallet')->name('wallet');
 	Route::get('/banks', 'BanksController@banks');
+	Route::get('/populatebank', 'BanksController@populateBanks');
 	Route::get('/success', 'pagesController@success');
 	Route::get('/failed', 'pagesController@failed');
 	Route::get('/transfer', 'pagesController@transfer');
 	Route::get('/balance', 'pagesController@balance');
 	Route::get('/ravepay', 'RavepayController@index');
-        Route::get('/integrity/{txRef}/{email}', 'RavepayController@checkSum');
-        Route::get('/ravepaysuccess/{ref}/{amount}/{currency}', 'RavepayController@success');
+	Route::get('/integrity/{txRef}/{email}', 'RavepayController@checkSum');
+	Route::get('/ravepaysuccess/{ref}/{amount}/{currency}', 'RavepayController@success');
 
 });
-
 
 // auth admin
 Route::get('/admin/login', 'AdminLoginController@showLoginForm');
 Route::post('/admin/login', 'AdminLoginController@login')->name('admin.login');
 Route::get('/admin/logout', 'AdminLoginController@logout')->name('admin.logout');
 
-Route::group(['middleware' => ['admin']], function() {
+Route::group(['middleware' => ['admin']], function () {
 	Route::get('/admin', 'AdminController@index');
 	Route::get('/admin/managewallet', 'AdminController@managewallet');
 	Route::get('/admin/managebeneficiary', 'AdminController@managebeneficiary');
@@ -80,8 +87,10 @@ Route::group(['middleware' => ['admin']], function() {
 	Route::get('/admin/createrule', 'AdminController@createRule')->name('admin.createrule');
 	Route::post('/admin/createrule', 'AdminController@saveNewRule')->name('admin.setrule.submit');
 
-	//Route::get('/manager/setting', 'AdminController@settings');
+  Route::get('/admin/{id}/archivewallet', 'AdminController@archiveWallet');
+  Route::get('/admin/{id}/activatewallet', 'AdminController@activateWallet');
 
+<<<<<<< HEAD
 	// admin routes
 	Route::get('/view-accounts', 'pagesController@viewAccounts');
 	Route::get('/addaccount', 'AdminController@addaccount');
@@ -100,7 +109,35 @@ Route::group(['middleware' => ['admin']], function() {
 	Route::post('admin/users/unbanUser/{id}', 'Admin\UsersController@unbanUser');
 	Route::post('admin/users/makeAdmin/{id}', 'Admin\UsersController@makeAdmin');
 	Route::post('admin/users/removeAdmin/{id}', 'Admin\UsersController@removeAdmin');
+=======
+	//Route::get('/manager/setting', 'AdminController@settings');
+>>>>>>> 3aab21449f76cf14fcd466698114e461e3cf453d
 });
 
-// Testing routes
-Route::get('/test', 'HomeController@randomFunc');
+Route::get('/home', 'HomeController@index')->name('home');
+
+// admin routes
+Route::get('/view-accounts', 'pagesController@viewAccounts');
+Route::get('/addaccount', 'AdminController@addaccount');
+Route::get('/usermanagement', 'AdminController@usermanagement');
+Route::get('admin/beneficiary', 'AdminController@ViewBeneficiary')->name('beneficiary');
+Route::get('admin/addbeneficiary', 'AdminController@beneficiary');
+Route::get('admin/editbeneficiary/{beneficiary}', 'AdminController@editbeneficiary'); //routE FOR EDITING BENEFICIARY
+Route::get('admin/beneficiarydetails/{id}', 'AdminController@BeneficiaryDetails');
+Route::get('admin/analytics', 'AdminController@webAnalytics');
+Route::get('admin/createwallet', 'AdminController@wallet');
+Route::get('admin/wallet-details', 'AdminController@walletdetails');
+Route::get('admin/fundwallet', 'AdminController@fundWallet');
+Route::get('admin/view-rules', 'AdminController@viewRules');
+Route::post('admin/update-rule', 'AdminController@updateRule')->name('update-rule');
+Route::get('admin/edit-rule/{ruleId}', 'AdminController@editRules')->name('edit-rule');
+Route::post('admin/createwallet', 'AdminController@addwallet');
+Route::post('admin/addbeneficiary', 'AdminController@addbeneficiary');
+Route::get('admin/viewwallet/{walletId}', 'AdminController@show')->name('view-wallet');
+Route::resource('admin/users', 'Admin\UsersController');
+Route::post('admin/users/store', 'Admin\UsersController@store');
+Route::post('admin/users/banUser/{id}', 'Admin\UsersController@banUser');
+Route::post('admin/users/unbanUser/{id}', 'Admin\UsersController@unbanUser');
+Route::post('admin/users/makeAdmin/{id}', 'Admin\UsersController@makeAdmin');
+Route::post('admin/users/removeAdmin/{id}', 'Admin\UsersController@removeAdmin');
+Route::post('admin/editbeneficiary/{beneficiary}', 'AdminController@postEditbeneficiary');

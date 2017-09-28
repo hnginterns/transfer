@@ -49,6 +49,7 @@ return array(
     'App\\Transaction' => $baseDir . '/app/Transaction.php',
     'App\\User' => $baseDir . '/app/User.php',
     'App\\Wallet' => $baseDir . '/app/Wallet.php',
+    'App\\WalletTransaction' => $baseDir . '/app/WalletTransaction.php',
     'Carbon\\Carbon' => $vendorDir . '/nesbot/carbon/src/Carbon/Carbon.php',
     'Carbon\\CarbonInterval' => $vendorDir . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
     'Carbon\\Exceptions\\InvalidDateException' => $vendorDir . '/nesbot/carbon/src/Carbon/Exceptions/InvalidDateException.php',

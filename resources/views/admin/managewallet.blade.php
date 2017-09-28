@@ -5,6 +5,10 @@
         padding: 13px 15px;
         border-radius: 3px;
     }
+    .inner-holder :hover{
+        background: #b8c7ce ;
+        color: #222d32;
+    }
     .wallet-container {
       padding: 30px;
     }
@@ -65,7 +69,7 @@
 
 <div class="container-fluid">
 
-  <a type="button" class="btn btn-success" href="createwallet" name="button"><i class="fa fa-plus" aria-hidden="true"> Add Wallet</i></a>
+  <a type="button" class="btn btn-info" href="createwallet" name="button"> Add Wallet</i></a>
 
   <div class="wallet-container">
 
@@ -73,9 +77,8 @@
     @foreach($wallets as $wallet)
         <a href="{{ route('view-wallet', $wallet->id) }}" class="single-wallet-holder col-md-3">
             <div class="inner-holder">
-                  <h5 class="wallet-name"><b>Wallet name:</b> {{ $wallet->wallet_name }}</h5>
-                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></button>
-                  <button type="button" class="btn btn-primary" name="button"><i class="fa fa-eye" aria-hidden="true"> View User</i></button>
+                  <h5 class="wallet-name"><b>Wallet Name:</b> {{ $wallet->wallet_name }}</h5>
+                  <h5 class="wallet-name"><b>Balance:</b> {{ $wallet->balance }}</h5>                  
             </div>
         </a>
         @endforeach

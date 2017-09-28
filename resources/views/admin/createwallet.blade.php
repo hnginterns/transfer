@@ -74,7 +74,7 @@
                   <form action="" method="POST" role="form">
                   {{csrf_field()}}
                   <input type="text" name="wallet_name" class="form-control input-defaulted" placeholder="Wallet Name">
-                  <br><input type="text" name="lock_code" class="form-control input-defaulted" placeholder="wallet Lock Code">
+                  <br><input type="text" name="lock_code" class="form-control input-defaulted" placeholder="Wallet Lock Code">
                   <br><select name="user_id" class="form-control input-defaulted" >
                     <option>--Select Wallet User--</option>
                     @foreach($user as $key => $users)
@@ -98,7 +98,7 @@
                     <option value="3">Ghanaian Cedi</option>
                     <option value="4">US Dollar</option>
           				</select>
-                  <br><button type="submit" class="btn btn-success" name="button"><i class="fa fa-plus" aria-hidden="true"> Create</i></button>
+                  <br><button type="submit" class="btn btn-info" name="button"><i class="fa fa-plus" aria-hidden="true"> Create</i></button>
             </div>
         </div>
       </div>

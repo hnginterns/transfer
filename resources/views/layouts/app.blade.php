@@ -34,7 +34,7 @@
               <li><a href="#">Demo</a></li>
 
               @if(Auth::guest())
-                <li id="sign-in"><a href="/signin">SIGN IN</a></li>     
+                <li id="sign-in"><a href="/signin">SIGN IN</a></li>
               @else
                 <li id="sign-in">
                                         <a href="{{ route('logout') }}"

@@ -432,67 +432,9 @@
     }
   </style>
 </head>
-
 <body>
-  <nav class="navbar navbar-inverse">
-    <div class="container">
-      <div class="navbar-header">
-
-        <a class="navbar-brand" href="#"> <span><img src="img/logo.png" alt=""></span>   PaysFund</a>
-
-        <button type="button" id="navb" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-          aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-      </div>
-
-      <ul class="nav navbar-nav">
-        <li><a href="#" style="color:white; font-size:18px;">Wallet Transfer</a></li>
-      </ul>
-
-      <div class="profile navbar-right"></div>
-      <div class="navbar-form navbar-right">
-        <input type="text" class="form-control" placeholder="Search">
-      </div>
-    </div>
-  </nav>
-
-  <div class="container-fluid">
-    <div class="row">
-
-      <div class="col-sm-2" id="sidebar">
-
-        <i class="fa fa-window-close" id="close" aria-hidden="true"></i>
-
-        <ul class="nav nav-stacked">
-          <li class="side-item"><a href="/dashboard">Dashboard</a></li>
-          <li class="side-items">
-              <a href="/wallet-view" class="side-item">Wallet View</a>
-          </li>
-          <li class="side-items">
-              <a href="/transfer-to-wallet" class="active-sidebar">Wallet Transfer</a>
-          </li>
-
-           <li class="side-items">
-              <a href="/transfer-to-bank" class="side-item">Bank Transfer</a>
-          </li>
-
-          <li>
-          <a href="{{ route('logout') }}"
-              onclick="event.preventDefault();
-                       document.getElementById('logout-form').submit();">
-              Logout
-          </a>
-
-          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-              {{ csrf_field() }}
-          </form>
-        </li>
-        </ul>
-      </div>
+    @section('content', 'Wallet Transfer')
+    @include('users/user-nav')
 
       <div class="col-sm-12 col-md-10">
         <div class="container-fluid">
@@ -502,15 +444,17 @@
             <div class="col-sm-8 col-md-offset-2 main-content">
                 <div class="login-box" style="">
                     <img src="/svg/naira.svg" alt="no preview" class="transfer-icon">
-                    <h4 class="intro" style="font-size: 20px;">Transfer to Wallet account </h4>
-                    <form class="admin-login" action="/transferWallet" method="GET">
+                    <h4 class="intro" style="font-size: 20px;">Transfer to another Wallet account </h4>
+                    <form id="trform" class="admin-login">
                         <div class="form-group">
                             <select class="form-control cus-input" name="sourceWallet">
 
-                              
-                                <option>Select sender Wallet</option>
-                                    @foreach(App\Http\Utilities\Wallet::all() as $wallet)
-                                     <option value="{{ $wallet['uref'] }}">{{ $wallet['name']}}</option>
+
+                                <option value="">Select sender Wallet</option>
+                                    @foreach($wallets as $wallet)
+                                       @if($wallet->uuid == $user_id)
+                                          <option value="{{ $wallet->wallet_code }}">{{ $wallet->wallet_name}}</option>
+                                        @endif
                                     @endforeach
                             </select>
                         </div>
@@ -519,23 +463,21 @@
                         <div class="form-group">
                             <select class="form-control cus-input" name="recipientWallet">
 
-                              
-                                <option>Select recipient wallet</option>
-                                    @foreach(App\Http\Utilities\Wallet::all() as $wallet)
-                                     <option value="{{ $wallet['uref'] }}">{{ $wallet['name']}}</option>
+
+                                <option value="">Select recipient wallet</option>
+                                    @foreach($wallets as $wallet)
+                                      @if($wallet->uuid !== $user_id)
+                                          <option value="{{ $wallet->wallet_code }}">{{ $wallet->wallet_name}}</option>
+                                      @endif
                                     @endforeach
                             </select>
-                        </div>
-
-                        <div class="form-group">
-                            <input type="text" class="form-control cus-input" name="lock" placeholder="lock code">
                         </div>
 
                         <div class="form-group" style="margin-top: 50px;">
                             <input type="number" class="form-control cus-input" name="amount" id="amount" placeholder="Amount">
                         </div>
-                        <button type="submit" class="btn btn-primary">Transfer</button>
 
+                        <button id="transferbt" type="submit" class="btn btn-primary">Transfer</button>
                     </form>
                 </div>
             </div>
@@ -544,9 +486,11 @@
         </div>
       </div>
     </div>
-  </div>
+  </div><br><br>
 
-  <footer class="footer">
+  @include('success');
+  @include('failed');
+  <footer class="navbar navbar-fixed-bottom" style="background-color:white;border-top:solid 2px grey;">
       <div class="container" style="text-align:center">
           <span class="text-muted company">2017 TransferFunds - All Rights Reserved</span>
       </div>
@@ -577,6 +521,34 @@
                 left: "-1000px",
                 "z-index": 10000
             }, 200);
+        });
+
+        $("#transferbt").click(function(e) {
+          e.preventDefault();
+          var data = $("#trform").serializeArray();
+          $.getJSON('/walletTransfer', data, function(resp) {
+            if(resp.status == 'failed') {
+              var options = {
+                  backdrop: false,
+                  keyboard: false,
+                  show: true,
+                  remote: false
+              }
+             $("#fmsg").html(resp.msg);
+             $("#fmodal").modal(options);
+            } else if(resp.status == 'success'){
+              $("[name=sourceWallet]").val('');
+              $("[name=recipientWallet]").val('');
+              $("[name=amount]").val('');
+              var options = {
+                  backdrop: false,
+                  keyboard: false,
+                  show: true,
+                  remote: false
+              }
+              $("#smodal").modal(options);
+            }
+          })
         });
       });
   </script>

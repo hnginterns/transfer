@@ -53,7 +53,7 @@
 
     @media screen and (max-width:768px) {
 
-      .single-wallet-holder.col-md-3 {
+      .single-wallet-holder.col-sm-3 {
           margin-bottom: 20px;
           padding: 0px;
       }
@@ -67,10 +67,10 @@
 
 <div class="container-fluid">
   <a href="/admin/managewallet">
-  <button type="submit" class="btn btn-success" name="button">Back</button>
+  <button type="submit" class="btn btn-info" name="button">Back</button>
   </a>
-  <br>
-        <div class="single-wallet-holder col-md-6">
+  <br> <br>
+        <div class="single-wallet-holder col-sm-6">
             <div class="inner-holder">
                   <div class="box-body">
                   <div class="table-responsive">
@@ -85,16 +85,21 @@
                       </tr>
                       <tr>
                         <td>Wallet Lock Code:</td>
-                        <td>{{ $wallet->wallet_code }}</td>
+                        <td>{{ $wallet->lock_code }}</td>
                       </tr>
                       <tr>
                       <tr>
+                        @foreach($transaction as $transact)
+                       <!-- @if($transact['uref'] == $wallet->wallet_code) -->
                         <td>User Balance:</td>
-                        <td>{{ $wallet->balance }}</td>
+                        <td>{{ $transact['balance'] }}</td>
+                         <!--  @endif -->
+                        @endforeach
+
                       </tr>
                       <tr>
                         <td>User ref:</td>
-                        <td>{{ $wallet->userRef }}</td>
+                        <td>{{ $wallet->wallet_code }}</td>
                       </tr>
                       <tr>
                         <td>Currency:</td>
@@ -108,8 +113,15 @@
                     </table>
                   </div>
               <!-- /.table-responsive -->
+                <a type="submit" class="btn btn-md btn-info" >Fund Wallet- RavePay</a>
+                @if($wallet->archived == 0)
+                  <a href="/admin/{{ $wallet->id }}/archivewallet" type="submit" class="btn btn-md btn-danger">{{ 'Archive Wallet' }}</a>
+                @else
+                  <a href="/admin/{{ $wallet->id }}/activatewallet" type="submit" class="btn btn-md btn-success">{{ 'Activate Wallet' }}</a>
+                @endif
             </div>
           </div>
+
     </div>
 
 </div>
