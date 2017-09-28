@@ -16,11 +16,7 @@ use Carbon\Carbon;
 class AdminController extends WalletController
 {
 
-
-    public  function __construct(){
-
-
-    public function __construct()
+  public function __construct()
     {
 
         $this->middleware('admin')->except('logout');
