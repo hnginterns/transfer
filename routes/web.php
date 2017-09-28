@@ -88,6 +88,7 @@ Route::group(['middleware' => ['admin']], function () {
 	Route::post('/admin/createrule', 'AdminController@saveNewRule')->name('admin.setrule.submit');
 
   Route::get('/admin/{id}/archivewallet', 'AdminController@archiveWallet');
+  Route::get('/admin/{id}/activatewallet', 'AdminController@activateWallet');
 
 	//Route::get('/manager/setting', 'AdminController@settings');
 });
