@@ -72,7 +72,7 @@ class WalletController extends Controller
     }
 
     public function transfer(Request $request, WalletTransaction $transaction){
-           
+
         $input = $request->all();
         $validator = Validator::make($input, [
             'sourceWallet' => 'bail|required',
@@ -84,7 +84,7 @@ class WalletController extends Controller
                 'numeric' => ':attribute must be in numbers'
             ]
         );
-        if ($validator->fails()) 
+        if ($validator->fails())
         {
             $messages = $validator->messages()->toArray();
              return response()->json([ 'status' => 'failed', 'msg' => 'All fields are required' ]);
@@ -124,7 +124,7 @@ class WalletController extends Controller
                                  //$wallet->transaction_status = 1;
                                  //$wallet->recipientWallet = $request->input('recipientWallet');
                                  //$wallet->amount = $request->input('amount');
-                                 
+
                                  //if($wallet->save()) {
                                     return response()->json(['status' => 'success']);
                                  //}
@@ -145,7 +145,7 @@ class WalletController extends Controller
                     return response()->json([ 'status' => 'failed', 'msg' => 'You wallet cannot transfer. Contact the admin' ]);
                 }
         }
-                
+
    }
 
             public function transferAccount(Request $request){
@@ -161,8 +161,8 @@ class WalletController extends Controller
                         $beneficiary = Beneficiary::where('id', '=', $request->beneficiary_id)
                                                     ->get();
                         // We need to get the loack code of a wallet in order to make the transfer.
-                        $walletdata = Wallet::where('wallet_name', $request->wallet_name)->get();   
-                        //dd($wallet_data);                  
+                        $walletdata = Wallet::where('wallet_name', $request->wallet_name)->get();
+                        //dd($wallet_data);
                         if(!empty($beneficiary)){
                             $token = $this->getToken();
                             $headers = array('content-type' => 'application/json', 'Authorization' => $token);
