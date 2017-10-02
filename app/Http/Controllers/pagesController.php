@@ -84,12 +84,13 @@ class pagesController extends Controller
   {
     $beneficiary = Beneficiary::all();
     $wallets = Wallet::where('uuid', '=', Auth::user()->id)->get();
+    $data = [];
     if (!empty($wallet)) {
       //$wallet = $wallet[0];
 
     }
 
-    return view('transfer-to-bank', compact('beneficiary', 'wallets'));
+    return view('transfer-to-bank', compact('beneficiary', 'wallets', 'data'));
   }
 
   public function wallet_transfer()
