@@ -102,7 +102,6 @@ Route::group(['middleware' => ['admin']], function () {
 	
 	//beneficiary
 	Route::get('admin/addBeneficiary', 'AdminController@addBeneficiary');
-	Route::get('admin/beneficiarydetails', 'AdminController@BeneficiaryDetails');
 	Route::get('admin/beneficiary', 'AdminController@ViewBeneficiary')->name('beneficiary');
 	Route::get('admin/addbeneficiary', 'AdminController@beneficiary');
 	Route::get('admin/editbeneficiary/{beneficiary}', 'AdminController@editbeneficiary');
