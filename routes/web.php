@@ -86,9 +86,14 @@ Route::group(['middleware' => ['admin']], function () {
 	// New Rule <Creati></Creati>on
 	Route::get('/admin/createrule', 'AdminController@createRule')->name('admin.createrule');
 	Route::post('/admin/createrule', 'AdminController@saveNewRule')->name('admin.setrule.submit');
+	
+	Route::get('admin/view-rules', 'AdminController@viewRules');
+	Route::post('admin/update-rule', 'AdminController@updateRule')->name('update-rule');
+	Route::get('admin/edit-rule/{ruleId}', 'AdminController@editRules')->name('edit-rule');
+	Route::get('admin/delete-rule/{ruleId}', 'AdminController@deleteRule')->name('delete-rule');
 
-  Route::get('/admin/{id}/archivewallet', 'AdminController@archiveWallet');
-  Route::get('/admin/{id}/activatewallet', 'AdminController@activateWallet');
+  	Route::get('/admin/{id}/archivewallet', 'AdminController@archiveWallet');
+  	Route::get('/admin/{id}/activatewallet', 'AdminController@activateWallet');
 
 	// admin routes
 	Route::get('/view-accounts', 'pagesController@viewAccounts');
@@ -126,17 +131,5 @@ Route::get('admin/beneficiarydetails/{id}', 'AdminController@BeneficiaryDetails'
 Route::get('admin/analytics', 'AdminController@webAnalytics');
 Route::get('admin/createwallet', 'AdminController@wallet');
 Route::get('admin/wallet-details', 'AdminController@walletdetails');
-Route::get('admin/fundwallet', 'AdminController@fundWallet');
-Route::get('admin/view-rules', 'AdminController@viewRules');
-Route::post('admin/update-rule', 'AdminController@updateRule')->name('update-rule');
-Route::get('admin/edit-rule/{ruleId}', 'AdminController@editRules')->name('edit-rule');
-Route::post('admin/createwallet', 'AdminController@addwallet');
 Route::post('admin/addbeneficiary', 'AdminController@addbeneficiary');
-Route::get('admin/viewwallet/{walletId}', 'AdminController@show')->name('view-wallet');
-Route::resource('admin/users', 'Admin\UsersController');
-Route::post('admin/users/store', 'Admin\UsersController@store');
-Route::post('admin/users/banUser/{id}', 'Admin\UsersController@banUser');
-Route::post('admin/users/unbanUser/{id}', 'Admin\UsersController@unbanUser');
-Route::post('admin/users/makeAdmin/{id}', 'Admin\UsersController@makeAdmin');
-Route::post('admin/users/removeAdmin/{id}', 'Admin\UsersController@removeAdmin');
 Route::post('admin/editbeneficiary/{beneficiary}', 'AdminController@postEditbeneficiary');
