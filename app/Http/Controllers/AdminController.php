@@ -97,6 +97,7 @@ class AdminController extends WalletController
         if ($rule) {
 	     $rule->delete();
              return redirect('admin/view-rules');
+	}
         else {
              return redirect()->back()->with('status', 'Delete Rule Failed!');
 	}
