@@ -84,7 +84,7 @@ class pagesController extends Controller
   {
     $beneficiary = Beneficiary::all();
     $wallets = Wallet::where('uuid', '=', Auth::user()->id)->get();
-    $data = [];
+    $data = ['dgd' => 'shshs'];
     if (!empty($wallet)) {
       //$wallet = $wallet[0];
 
