@@ -80,7 +80,7 @@ class pagesController extends Controller
     return view('transfer');
   }
 
-  public function bank_transfer()
+  public function bank_transferbank_transfer()
   {
     $beneficiary = Beneficiary::all();
     $wallets = Wallet::where('uuid', '=', Auth::user()->id)->get();
