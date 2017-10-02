@@ -1,0 +1,48 @@
+
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans');
+body {
+font-family: Nunito Sans;
+}
+
+nav {
+border-radius: 0 !important;
+}
+
+.active-sidebar {
+background-color: #C1D6DD;
+}
+
+.nav-search {
+margin-right: auto;
+margin-left: auto;
+}
+
+.navbar-brand {
+font-family: Nunito Sans;
+font-style: normal;
+font-weight: 800;
+line-height: normal;
+font-size: 20px;
+color: #FFFFFF !important;
+}
+
+.navbar-header img {
+width: 24px;
+height: 24px;
+}
+
+#sidebar {
+/* margin: 0 !important; */
+text-align: left;
+border-right: 1px solid rgb(192, 190, 190);
+margin-top: 0px;
+padding: 0;
+}
+
+.navbar {
+height: 50px;
+background: #25313F;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+

@@ -145,6 +145,7 @@ class AdminController extends WalletController
         return view('admin.setting');
     }
 
+    
     public function managewallet()
     {
 
