@@ -432,7 +432,9 @@
 
           <div class="wallet-container">
             <div class="">
-            
+            @if(session()->has('data'))
+                <h3> {{ session()->get('data') }} </h3>
+            @endif
             </div>
             <div class="col-md-offset-2 col-md-10 main-content">
               <div class="login-box" style="">
