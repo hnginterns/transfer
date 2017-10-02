@@ -152,7 +152,8 @@ class WalletController extends Controller
                             "currency"=>"NGN",
                             "senderName"=>Auth::user()->username,
                             "narration"=>$request->narration, //Optional
-                            "ref"=>$request->reference); // No Refrence from request
+                            "ref"=>$request->reference, // No Refrence from request
+                            "walletUref"=>$walletdata[0]->wallet_code); // No Refrence from request
                             $body = \Unirest\Request\Body::json($query);
                             $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/disburse', $headers, $body);
                             $response = json_decode($response->raw_body,TRUE);
@@ -187,6 +188,7 @@ class WalletController extends Controller
         $data = json_decode($response->raw_body, TRUE);
         $walletCharge = var_dump($data['data']);
     }
+
     public function storeWalletDetailsToDB($wallet_data, $uuid, $lock_code, $rule_id, $wallet_name){
             $restriction            =      new Restriction;
             $wallet                 =      new Wallet;
@@ -221,6 +223,7 @@ class WalletController extends Controller
                 return back();
             }
     }
+
     public function createWalletAdmin($data){
                 $token = $this->getToken();
                 $headers = array('content-type' => 'application/json', 'Authorization' => $token);
