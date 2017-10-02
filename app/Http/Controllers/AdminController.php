@@ -332,7 +332,7 @@ class AdminController extends WalletController
         return view('admin/beneficiarydetails', compact('beneficiary'));
     }
 	
-    public function deletebenificiary($beneficiary)
+    public function deletebeneficiary($beneficiary)
     {
         $beneficiary = Beneficiary::find($beneficiary);
 	if($beneficiary){
