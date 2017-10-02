@@ -90,9 +90,9 @@ class AdminController extends WalletController
         }
     }
 	
-    public function deleteRule(Request $request)
+    public function deleteRule($ruleId)
     {
-        $rule = Rule::find($request->rule_id);
+        $rule = Rule::find($ruleId);
 
         if ($rule) {
 	     $rule->delete();
