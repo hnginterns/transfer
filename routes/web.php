@@ -25,6 +25,8 @@ Route::get('/logout', function(){
 });
 
 
+Route::get('/transaction', 'transactionController@toBankSuccess');
+
 Route::get('/about', 'pagesController@about');
 
 Route::get('/forgot', 'pagesController@forgot');

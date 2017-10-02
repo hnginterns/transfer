@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 class transactionController extends Controller
 {
     public function toBankSuccess(){
-        return view('/transfer-to-bank');
+        return view('/transactionsuccesss');
     }
 
     public function toBankFailed(){
