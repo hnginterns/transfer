@@ -89,6 +89,18 @@ class AdminController extends WalletController
             }
         }
     }
+	
+    public function deleteRule(Request $request)
+    {
+        $rule = Rule::find($request->rule_id);
+
+        if ($rule) {
+	     $rule->delete();
+             return redirect('admin/view-rules');
+        else {
+             return redirect()->back()->with('status', 'Delete Rule Failed!');
+	}
+    }
 
     public function saveNewRule(Request $request)
     {
