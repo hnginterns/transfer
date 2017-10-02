@@ -185,11 +185,11 @@ class WalletController extends Controller
                 if ($status == 'success') {
                     $data = $response;
                     //return redirect()->action('pagesController@bank_transfer', $data);
-                    return redirect()->back()->with('data', ['some kind of data']);
+                    return redirect()->back()->with('data', 'some kind of data');
                 }
                 else {
                     //return redirect()->action('pagesController@bank_transfer',  $data);
-                    return redirect()->back()->with('data', ['failed some kind of data']);
+                    return redirect()->back()->with('data', 'failed some kind of data');
                 }
             }
         }
