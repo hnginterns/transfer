@@ -432,9 +432,7 @@
 
           <div class="wallet-container">
             <div class="">
-            @if($data)
-              {{ dd($data) }}
-            @endif
+           
             </div>
             <div class="col-md-offset-2 col-md-10 main-content">
               <div class="login-box" style="">
