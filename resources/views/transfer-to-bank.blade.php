@@ -431,7 +431,11 @@
         <div class="container-fluid">
 
           <div class="wallet-container">
-
+            <div class="">
+            @if($data)
+              {{ dd($data) }}
+            @endif
+            </div>
             <div class="col-md-offset-2 col-md-10 main-content">
               <div class="login-box" style="">
                   <img src="/svg/naira.svg" alt="no preview" class="transfer-icon">
@@ -511,6 +515,7 @@
       </div>
     </div>
   </div><br><br><br><br>
+
 
   @include('success');
   @include('failed');
