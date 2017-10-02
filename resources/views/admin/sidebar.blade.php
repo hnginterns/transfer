@@ -16,7 +16,7 @@
         <a href="#"><i class="fa fa-circle text-success" ></i> Online</a>
       </div>
     </div>
-    
+
     <!-- Sidebar Menu -->
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header">ADMIN CONTROLS</li>
@@ -32,6 +32,7 @@
       <li><a href="{{ url('/admin/managewallet') }}"><i class="fa fa-briefcase"></i> <span>Manage Wallet</span></a></li>
       <li><a href="{{ url('/admin/beneficiary') }}"><i class="fa fa-dollar"></i> <span>Beneficiary</span></a></li>
       <li><a href="{{ url('/admin/analytics') }}"><i class="fa fa-line-chart"></i> <span>Transaction Analytics<span></a></li>
+      <li><a class="flwpug_getpaid" data-PBFPubKey="FLWPUBK-832fd55bf568237a65fd571ee6d8a649-X" data-txref="rave-checkout-1506546533" data-amount="" data-customer_email="profchydon@gmail.com" data-currency = "NGN" data-pay_button_text = "Fund Wallet" data-country="NG" data-custom_title = "Transferrules" data-custom_description = "" data-redirect_url = "" data-custom_logo = "" data-payment_method = "both" data-exclude_banks="">Fund Wallet</a></li>
       <li>
         <li>
         <a href="{{ route('logout') }}"
@@ -52,3 +53,5 @@
   </section>
   <!-- /.sidebar -->
 </aside>
+
+<script type="text/javascript" src="https://api.ravepay.co/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
