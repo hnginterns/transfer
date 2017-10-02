@@ -1,86 +1,66 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<?php 
 
-        <title>TransferRules</title>
+function getToken()
+{
+    $api_key = 'ts_PQOAA7GKWFH3RKC9CP83';
+    $secret_key = 'ts_LL1JQ7Y4S0MCOXBVGQWKAO4KRGDYXV';
+    \Unirest\Request::verifyPeer(false);
+    $headers = array('content-type' => 'application/json');
+    $query = array('apiKey' => $api_key, 'secret' => $secret_key);
+    $body = \Unirest\Request\Body::json($query);
+    $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/merchant/verify', $headers, $body);
+    $response = json_decode($response->raw_body, TRUE);
+    $status = $response['status'];
+    if (!$status == 'success') {
+        echo 'INVALID TOKEN';
+    }
+    else {
+        $token = $response['token'];
+        return $token;
+    }
+}
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+function transferAccount()
+{
+    $token = getToken();
+    $headers = array('content-type' => 'application/json', 'Authorization' => $token);
+    $query = array(
+        "lock" => '12345',
+        "amount" => 200,
+        "bankcode" => '058',// Returns error
+        "accountNumber" => '0921318712',
+        "currency" => "NGN",
+        "senderName" => 'Stephen',
+        "narration" => '', //Optional
+        "ref" => '1222',
+        "walletUref" => "20d24cb8c7" 
+    ); // No Refrence from request
+    $body = \Unirest\Request\Body::json($query);
+    $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/disburse', $headers, $body);
+    $response = json_decode($response->raw_body, TRUE);
+    $status = $response['status'];
+    if ($status == 'success') {
+        //$data = $response;
+        dd($response);
+    }
+    else {
+        dd($response);
+    }
+}
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
+function walletBalance() {
+    $token = getToken();
+    $headers = array('content-type' => 'application/json','Authorization'=> $token);
+    $response = \Unirest\Request::get('https://moneywave.herokuapp.com/v1/wallet', $headers);
+    $data = json_decode($response->raw_body, true);
+    $walletBalance = $data['data'];
+    //$walletBalance = array_pluck($walletBalance, 'id', 'id');
+    dd($walletBalance);
+    die();
+    //return view('walletBalance', compact('walletBalance'));
+}
 
-            .full-height {
-                height: 100vh;
-            }
+//echo walletBalance().'<br>';
+echo $res = transferAccount();
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Transfer Rules
-                </div>
-
-                <div class="links">
-                    By HNG Interns.
-                </div>
-            </div>
-        </div>
-    </body>
-</html>
+?>
