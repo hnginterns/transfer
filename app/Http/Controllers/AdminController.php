@@ -16,9 +16,9 @@ use Carbon\Carbon;
 class AdminController extends WalletController
 {
 
-
-    public function __construct()
+  public function __construct()
     {
+
         $this->middleware('admin')->except('logout');
 
     }
@@ -272,10 +272,26 @@ class AdminController extends WalletController
 
         $data = json_decode($response->raw_body, true);
         $walletBalance = $data['data'];
-			
+
 			//$walletBalance = array_pluck($walletBalance, 'id', 'id');
         dd($walletBalance);
 
+    }
+
+    public function archiveWallet($id) {
+      $wallet = Wallet::findOrFail($id);
+
+      Wallet::where('id', $id)->update(['archived' => 1]);
+
+      return redirect('/admin/viewwallet/'.$id)->with('message', 'Wallet Archived successfully.');
+    }
+
+    public function activateWallet($id) {
+      $wallet = Wallet::findOrFail($id);
+
+      Wallet::where('id', $id)->update(['archived' => 0]);
+
+      return redirect('/admin/viewwallet/'.$id)->with('message', 'Wallet Activated successfully.');
     }
 
     public function fundWallet()
@@ -291,7 +307,7 @@ class AdminController extends WalletController
     public function ViewBeneficiary()
     {
         $beneficiaries = Beneficiary::all();
-                
+
         $beneficiaries = $beneficiaries->load('bank');
         // dd($beneficiaries);
       return view ('admin/managebeneficiary', compact('beneficiaries'));

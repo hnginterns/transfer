@@ -95,7 +95,7 @@
                         <td>{{ $transact['balance'] }}</td>
                          <!--  @endif -->
                         @endforeach
-                        
+
                       </tr>
                       <tr>
                         <td>User ref:</td>
@@ -112,14 +112,18 @@
                       </tbody>
                     </table>
                   </div>
-              <!-- /.table-responsive -->   
+              <!-- /.table-responsive -->
                 <a type="submit" class="btn btn-md btn-info" >Fund Wallet- RavePay</a>
-                <a type="submit" class="btn btn-md btn-danger">Achieve Wallet</a> 
-            </div>           
+                @if($wallet->archived == 0)
+                  <a href="/admin/{{ $wallet->id }}/archivewallet" type="submit" class="btn btn-md btn-danger">{{ 'Archive Wallet' }}</a>
+                @else
+                  <a href="/admin/{{ $wallet->id }}/activatewallet" type="submit" class="btn btn-md btn-success">{{ 'Activate Wallet' }}</a>
+                @endif
+            </div>
           </div>
-            
+
     </div>
-    
+
 </div>
 
 @endsection
