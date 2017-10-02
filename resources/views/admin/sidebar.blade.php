@@ -16,7 +16,7 @@
         <a href="#"><i class="fa fa-circle text-success" ></i> Online</a>
       </div>
     </div>
-
+    
     <!-- Sidebar Menu -->
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header">ADMIN CONTROLS</li>
@@ -32,7 +32,6 @@
       <li><a href="{{ url('/admin/managewallet') }}"><i class="fa fa-briefcase"></i> <span>Manage Wallet</span></a></li>
       <li><a href="{{ url('/admin/beneficiary') }}"><i class="fa fa-dollar"></i> <span>Beneficiary</span></a></li>
       <li><a href="{{ url('/admin/analytics') }}"><i class="fa fa-line-chart"></i> <span>Transaction Analytics<span></a></li>
-      <li><a href="{{ url('/admin/smswallet') }}"><i class="fa fa-envelope"></i> <span>SMS Wallet</span></a></a></li>
       <li>
         <li>
         <a href="{{ url('/logout') }}">
@@ -46,5 +45,3 @@
   </section>
   <!-- /.sidebar -->
 </aside>
-
-<script type="text/javascript" src="https://api.ravepay.co/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>

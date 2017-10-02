@@ -127,8 +127,6 @@ Route::group(['middleware' => ['admin']], function () {
 
 	//Route::get('/manager/setting', 'AdminController@settings');
 
-  Route::get('/admin/smswallet', 'SmsWalletController@smsWalletBalance');
-
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
