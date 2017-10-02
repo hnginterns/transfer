@@ -107,7 +107,7 @@
                                 <td>{{ $rule->max_transactions_per_day }}</td>
                                 <td>{{ $rule->max_amount_transfer_per_day }}</td>
                                 <td><a href="{{ route('edit-rule', $rule->id) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"><span></span></i> </a></td>
-                                <td><a href="#"><i class="fa fa-trash" aria-hidden="true"><span></span></i> </a></td>
+                                <td><a href="{{ route('delete-rule', $rule->id) }}"><i class="fa fa-trash" aria-hidden="true"><span></span></i> </a></td>
                             </tr>
                         </tbody>
                         {{--  {{ $i++ }}  --}}
