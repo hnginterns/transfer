@@ -99,13 +99,24 @@ Route::group(['middleware' => ['admin']], function () {
 	Route::get('/view-accounts', 'pagesController@viewAccounts');
 	Route::get('/addaccount', 'AdminController@addaccount');
 	Route::get('/usermanagement', 'AdminController@usermanagement');
-	Route::get('admin/beneficiary', 'AdminController@ViewBeneficiary');
+	
+	//beneficiary
 	Route::get('admin/addBeneficiary', 'AdminController@addBeneficiary');
 	Route::get('admin/beneficiarydetails', 'AdminController@BeneficiaryDetails');
+	Route::get('admin/beneficiary', 'AdminController@ViewBeneficiary')->name('beneficiary');
+	Route::get('admin/addbeneficiary', 'AdminController@beneficiary');
+	Route::get('admin/editbeneficiary/{beneficiary}', 'AdminController@editbeneficiary'); //routE FOR EDITING BENEFICIARY
+	Route::get('admin/beneficiarydetails/{id}', 'AdminController@BeneficiaryDetails');
+	Route::post('admin/addbeneficiary', 'AdminController@addbeneficiary');
+	Route::post('admin/editbeneficiary/{beneficiary}', 'AdminController@postEditbeneficiary');
+	
 	Route::get('/web-analytics', 'pagesController@webAnalytics');
+	
 	Route::get('admin/createwallet', 'AdminController@wallet');
 	Route::post('admin/createwallet', 'AdminController@addwallet');
 	Route::get('admin/viewwallet/{walletId}', 'AdminController@show')->name('view-wallet');
+	Route::get('admin/wallet-details', 'AdminController@walletdetails');
+	
 	Route::resource('admin/users', 'Admin\UsersController');
 	//Route::resource('admin/users', 'Admin\UsersController');
 	Route::post('admin/users/store', 'Admin\UsersController@store');
@@ -124,12 +135,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/view-accounts', 'pagesController@viewAccounts');
 Route::get('/addaccount', 'AdminController@addaccount');
 Route::get('/usermanagement', 'AdminController@usermanagement');
-Route::get('admin/beneficiary', 'AdminController@ViewBeneficiary')->name('beneficiary');
-Route::get('admin/addbeneficiary', 'AdminController@beneficiary');
-Route::get('admin/editbeneficiary/{beneficiary}', 'AdminController@editbeneficiary'); //routE FOR EDITING BENEFICIARY
-Route::get('admin/beneficiarydetails/{id}', 'AdminController@BeneficiaryDetails');
 Route::get('admin/analytics', 'AdminController@webAnalytics');
-Route::get('admin/createwallet', 'AdminController@wallet');
-Route::get('admin/wallet-details', 'AdminController@walletdetails');
-Route::post('admin/addbeneficiary', 'AdminController@addbeneficiary');
-Route::post('admin/editbeneficiary/{beneficiary}', 'AdminController@postEditbeneficiary');
+
