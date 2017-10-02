@@ -184,11 +184,11 @@ class WalletController extends Controller
                 $status = $response['status'];
                 if ($status == 'success') {
                     $data = $response;
-                    return redirect()->action('transactionController@toBankSuccess');
+                    return redirect()->back();
                     //return redirect()->route('/transfer-to-bank'');
                 }
                 else {
-                    return redirect()->action('transactionController@toBankFailed');
+                    return redirect()->back();
                 }
             }
         }
