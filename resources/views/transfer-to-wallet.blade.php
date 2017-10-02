@@ -433,65 +433,8 @@
   </style>
 </head>
 <body>
-  <nav class="navbar navbar-inverse">
-    <div class="container">
-      <div class="navbar-header">
-
-        <a class="navbar-brand" href="#"> <span><img src="img/logo.png" alt=""></span>   PaysFund</a>
-
-        <button type="button" id="navb" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-          aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-      </div>
-
-      <ul class="nav navbar-nav">
-        <li><a href="#" style="color:white; font-size:18px;">Wallet Transfer</a></li>
-      </ul>
-
-      <div class="profile navbar-right"></div>
-      <div class="navbar-form navbar-right">
-        <input type="text" class="form-control" placeholder="Search">
-      </div>
-    </div>
-  </nav>
-
-  <div class="container-fluid">
-    <div class="row">
-
-      <div class="col-sm-2" id="sidebar">
-
-        <i class="fa fa-window-close" id="close" aria-hidden="true"></i>
-
-        <ul class="nav nav-stacked">
-          <li class="side-item"><a href="/dashboard">Dashboard</a></li>
-          <li class="side-items">
-              <a href="/wallet-view" class="side-item">Wallet View</a>
-          </li>
-          <li class="side-items">
-              <a href="/transfer-to-wallet" class="active-sidebar">Wallet Transfer</a>
-          </li>
-
-           <li class="side-items">
-              <a href="/transfer-to-bank" class="side-item">Bank Transfer</a>
-          </li>
-
-          <li>
-          <a href="{{ route('logout') }}"
-              onclick="event.preventDefault();
-                       document.getElementById('logout-form').submit();">
-              Logout
-          </a>
-
-          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-              {{ csrf_field() }}
-          </form>
-        </li>
-        </ul>
-      </div>
+    @section('content', 'Wallet Transfer')
+    @include('users/user-nav')
 
       <div class="col-sm-12 col-md-10">
         <div class="container-fluid">
@@ -584,8 +527,7 @@
           e.preventDefault();
           var data = $("#trform").serializeArray();
           $.getJSON('/walletTransfer', data, function(resp) {
-            console.log(resp);
-            if(resp.status = 'failed') {
+            if(resp.status == 'failed') {
               var options = {
                   backdrop: false,
                   keyboard: false,
@@ -594,7 +536,7 @@
               }
              $("#fmsg").html(resp.msg);
              $("#fmodal").modal(options);
-            } else {
+            } else if(resp.status == 'success'){
               $("[name=sourceWallet]").val('');
               $("[name=recipientWallet]").val('');
               $("[name=amount]").val('');

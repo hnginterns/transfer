@@ -81,7 +81,7 @@
                     @endforeach
                   </select>
                   <br><input type="text" name="account_number" value="{{$beneficiary->account_number}}" class="form-control input-defaulted" placeholder="Account Number">
-                  <br><button type="submit" class="btn btn-success" name="button"><i class="fa fa-plus" aria-hidden="true"> Save</i></button>
+                  <br><button type="submit" class="btn btn-info" name="button"> Save</i></button>
                 </form>
             </div>
         </div>

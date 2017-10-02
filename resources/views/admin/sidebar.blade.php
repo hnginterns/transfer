@@ -35,17 +35,10 @@
       <li><a class="flwpug_getpaid" data-PBFPubKey="FLWPUBK-832fd55bf568237a65fd571ee6d8a649-X" data-txref="rave-checkout-1506546533" data-amount="" data-customer_email="profchydon@gmail.com" data-currency = "NGN" data-pay_button_text = "Fund Wallet" data-country="NG" data-custom_title = "Transferrules" data-custom_description = "" data-redirect_url = "" data-custom_logo = "" data-payment_method = "both" data-exclude_banks="">Fund Wallet</a></li>
       <li>
         <li>
-        <a href="{{ route('logout') }}"
-            onclick="event.preventDefault();
-                     document.getElementById('logout-form').submit();">
-                     <i class="fa fa-sign-out" aria-hidden="true"></i>
-                      <span> Logout</span>
+        <a href="{{ url('/logout') }}">
+            <i class="fa fa-sign-out" aria-hidden="true"></i>
+            <span> Logout</span>
         </a>
-
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-            {{ csrf_field() }}
-            <input type="hidden" name="rdr" value="/admin/logout" placeholder="">
-        </form>
       </li>
 
     </ul>

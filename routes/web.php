@@ -87,7 +87,30 @@ Route::group(['middleware' => ['admin']], function () {
 	Route::get('/admin/createrule', 'AdminController@createRule')->name('admin.createrule');
 	Route::post('/admin/createrule', 'AdminController@saveNewRule')->name('admin.setrule.submit');
 
+  Route::get('/admin/{id}/archivewallet', 'AdminController@archiveWallet');
+  Route::get('/admin/{id}/activatewallet', 'AdminController@activateWallet');
+
+	// admin routes
+	Route::get('/view-accounts', 'pagesController@viewAccounts');
+	Route::get('/addaccount', 'AdminController@addaccount');
+	Route::get('/usermanagement', 'AdminController@usermanagement');
+	Route::get('admin/beneficiary', 'AdminController@ViewBeneficiary');
+	Route::get('admin/addBeneficiary', 'AdminController@addBeneficiary');
+	Route::get('admin/beneficiarydetails', 'AdminController@BeneficiaryDetails');
+	Route::get('/web-analytics', 'pagesController@webAnalytics');
+	Route::get('admin/createwallet', 'AdminController@wallet');
+	Route::post('admin/createwallet', 'AdminController@addwallet');
+	Route::get('admin/viewwallet/{walletId}', 'AdminController@show')->name('view-wallet');
+	Route::resource('admin/users', 'Admin\UsersController');
+	//Route::resource('admin/users', 'Admin\UsersController');
+	Route::post('admin/users/store', 'Admin\UsersController@store');
+	Route::post('admin/users/banUser/{id}', 'Admin\UsersController@banUser');
+	Route::post('admin/users/unbanUser/{id}', 'Admin\UsersController@unbanUser');
+	Route::post('admin/users/makeAdmin/{id}', 'Admin\UsersController@makeAdmin');
+	Route::post('admin/users/removeAdmin/{id}', 'Admin\UsersController@removeAdmin');
+
 	//Route::get('/manager/setting', 'AdminController@settings');
+
 });
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -68,7 +68,7 @@
 
 
 <div class="container-fluid">
-    <a href="{{route('admin.createrule')}}" class="btn btn-success"> <i class="fa fa-plus"></i> <span>Add New Rule</span> </a><br>
+    <a href="{{route('admin.createrule')}}" class="btn btn-info"> <span>Add New Rule</span> </a><br>
     <br>
     
     <div class="single-wallet-holder col-md-12">
@@ -93,6 +93,7 @@
                             <th>Max. Transactions per day</th>
                             <th>Max. Amt. Transfer Per day</th>
                             <th></th>
+                            <th></th>
                         </tr>
                         @foreach($rules as $key => $rule)
                         <tbody>
@@ -105,7 +106,8 @@
                                 <td>{{ $rule->min_amount }}</td>
                                 <td>{{ $rule->max_transactions_per_day }}</td>
                                 <td>{{ $rule->max_amount_transfer_per_day }}</td>
-                                <td><a href="{{ route('edit-rule', $rule->id) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"><span>edit</span></i> </a></td>
+                                <td><a href="{{ route('edit-rule', $rule->id) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"><span></span></i> </a></td>
+                                <td><a href="#"><i class="fa fa-trash" aria-hidden="true"><span></span></i> </a></td>
                             </tr>
                         </tbody>
                         {{--  {{ $i++ }}  --}}
