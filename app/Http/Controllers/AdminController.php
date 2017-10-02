@@ -197,10 +197,10 @@ class AdminController extends WalletController
             $beneficiary->bank_id = $request->bank_id;
             $beneficiary->uuid = Auth::user()->id;
             if ($beneficiary->save()) {
-                return redirect('/admin')->with('success', 'Beneficiary added');
+                return redirect('/admin/beneficiary')->with('success', 'Beneficiary added');
             }
             else {
-                return redirect('/admin')->with('failure', 'Beneficiary could not be added');
+                return redirect('/admin/beneficiary')->with('failure', 'Beneficiary could not be added');
             }
 
 
@@ -223,10 +223,10 @@ class AdminController extends WalletController
             $beneficiary->account_number = $request->account_number;
             $beneficiary->bank_id = $request->bank_id;
             if ($beneficiary->save()) {
-                return redirect('/admin')->with('success', 'Beneficiary added');
+                return redirect('/admin/beneficiary')->with('success', 'Beneficiary added');
             }
             else {
-                return redirect('/admin')->with('failure', 'Beneficiary could not be added');
+                return redirect('/admin/beneficiary')->with('failure', 'Beneficiary could not be added');
             }
     }
     }
@@ -330,6 +330,18 @@ class AdminController extends WalletController
     {
         $beneficiary = Beneficiary::find($id);
         return view('admin/beneficiarydetails', compact('beneficiary'));
+    }
+	
+    public function deletebenificiary($beneficiary)
+    {
+        $beneficiary = Beneficiary::find($beneficiary);
+	if($beneficiary){
+	     $beneficiary->delete();
+             return redirect('admin/beneficiary');
+	}
+        else {
+             return redirect()->back()->with('status', 'Delete Beneficiary Failed!');
+	}
     }
 
     public function beneficiary()
