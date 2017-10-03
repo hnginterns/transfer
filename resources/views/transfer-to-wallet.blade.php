@@ -45,10 +45,6 @@
                     </form>
             </div>
 
-
-  @include('success');
-  @include('failed');
-
   <script type="text/javascript">
       $(document).ready(function() {
 

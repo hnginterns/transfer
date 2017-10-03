@@ -46,7 +46,4 @@
                   </form>
             </div>
 
-  @include('success');
-  @include('failed');
-    
   @endsection
