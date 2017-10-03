@@ -71,11 +71,12 @@
         <div class="single-beneficiary-holder col-md-6">
             <div class="inner-holder">
                 <h5 class="beneficiary-name"><b>Fund: </b> Wallet Name</h5>
-                <form action="" method="POST">
+                <form action="fundWallet" method="POST">
+                  {{ csrf_field() }}
                   <input type="text" name="fname"  class="form-control input-defaulted" placeholder="First Name">     
-                  <br><input type="number" name="lname"  class="form-control" placeholder="Last Name">       
-                  <br><input type="email" name="phone"  class="form-control" placeholder="Phone Number">       
-                  <br><input type="number" name="emailaddr"  class="form-control" placeholder="Email Address">       
+                  <br><input type="text" name="lname"  class="form-control" placeholder="Last Name">       
+                  <br><input type="text" name="phone"  class="form-control" placeholder="Phone Number">       
+                  <br><input type="email" name="emailaddr"  class="form-control" placeholder="Email Address">       
                   <br><input type="number" name="card_no"  class="form-control" placeholder="Card No.">       
                   <br><input type="number" name="cvv"  class="form-control" placeholder="CVV">                  
                   <br><input type="number" name="expiry_year" class="form-control " placeholder="Expiry Year">

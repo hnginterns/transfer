@@ -24,6 +24,8 @@ Route::get('/logout', function(){
     return redirect('/login');
 });
 
+//Route::get('/fundWallet', 'WalletController@fundWallet');
+
 
 Route::get('/transaction', 'transactionController@toBankSuccess');
 
@@ -99,6 +101,7 @@ Route::group(['middleware' => ['admin']], function () {
 
 	//fund wallet
 	Route::get('/admin/fundwallet', 'AdminController@fundwallet');
+	Route::post('/admin/fundWallet', 'WalletController@cardWallet');
 	
 	// admin routes
 	Route::get('/view-accounts', 'pagesController@viewAccounts');
