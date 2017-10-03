@@ -105,14 +105,9 @@ class pagesController extends Controller
   }
 
 
-  public function viewWallet(User $user, Wallet $wallet)
+  public function history()
   {
-
-    $wallets = $wallet::where('uuid', \Auth::id())->get();
-    $transaction = UtilWallet::all();
-    $user_id = Auth::user()->id;
-    // dd($wallets);
-    return view('wallet-view', compact('wallets', 'transaction', 'user_id'));
+    return view('history');
   }
 
   public function createWallet()

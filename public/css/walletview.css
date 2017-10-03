@@ -1,4 +1,7 @@
-.wallet-details{
-    border: 2px solid #E7581F;
-    box-shadow: 2px 2px 2px #E7581F;
+
+.orange-box{
+    background: #FF6200;
+    padding: 5px;
+    color: white;
+    font-family: "Nunito Sans";
 }

@@ -6,11 +6,7 @@
                 <i class="fa fa-dashboard fa-lg"></i> Dashboard
                 </a>
               </li>  
-                <li>
-                <a href="/wallet-view">
-                <i class="fa fa-list-alt fa-lg"></i> Wallet View
-                </a>
-              </li>  
+                 
                 <li>
                 <a href="/transfer-to-wallet">
                 <i class="fa  fa-money fa-lg"></i> Wallet Transfer
@@ -27,10 +23,18 @@
                 <i class="fa fa-credit-card fa-lg"></i> Clearing Wallet
                 </a>
               </li>
+              <li>
+                <a href="/history">
+                <i class="fa fa-history fa-lg"></i> Transaction History
+                </a>
+              </li>
                 <li>
                 <a href="{{ url('/logout') }}">
                 <i class="fa fa-dashboard fa-lg"></i> Logout
                 </a>
               </li> 
+
+               
+
           </ul>
 </div>

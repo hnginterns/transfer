@@ -1,12 +1,21 @@
-  <!-- <link rel="stylesheet" href="css/style.css"> -->
-    <style>
+@extends('layouts.user')
+
+@section('title')
+      Transfer to Bank
+@endsection
+@section('content')
+
+<style>
         body {
             font-family: 'Nunito Sans', sans-serif;
         }
 
-        .modal-header,
+        .modal-header {
+            border-bottom: 2px solid #828282;
+        }
+
         .modal-body {
-            border-bottom: 2px solid #828282;;
+            border-bottom: none;
         }
 
         .modal-body {
@@ -28,6 +37,9 @@
             text-align: left;
             width: 100%;
         }
+        .table>tr{
+            border:0px;
+        }
 
         td {
             padding: 10px 30px;
@@ -37,18 +49,17 @@
             font-weight: bold;
         }
 
-        .modal-footer h6 {
+        .text-orange{
             color: #FF6200;
             text-align: left;
         }
 
-        .modal-footer button {
+        button {
             float: left;
             transition: color 2s, background 1s;
             box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
             border-radius: 63px;
-            padding-right: 20px;
-            padding-left: 20px;
+            padding:6px 15px;
             background: #FF6200;
             color: white;
             border: none;
@@ -60,37 +71,38 @@
         }
     </style>
 
-<!--<button class="btn btn-primary" data-toggle="modal" data-target="#modal">
-    Launch failed transaction
-</button> -->
 
-<div style="display: none;" class="modal fade" id="fmodal">
-    <div class="modal-dialog">
-        <div class="modal-content">
+<div class="col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2">
             <!-- Modal Header -->
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">TRANSFER RULES</h4>
+                <h3 class="modal-title">TRANSFER RULES</h3>
             </div>
             <!-- Modal Body -->
             <div class="modal-body">
                 <h4>YOUR TRANSACTION FAILED</h4>
-                <h6 id="fmsg"></h6>
-        </div>
-    </div>
+            </div>
+
+            <div class="table-responsive">
+               <table class="table">
+                 <tbody>
+                   <tr><td><b>Merchant/sender Name</b></td><td>:Nwauwa Victor Ifeanyi</td></tr>
+                   <tr><td><b>Reference No</b></td><td></td></tr>
+                   <tr><td><b>Transaction Date/Time</b></td><td></td></tr>
+                   <tr><td><b>Error Code</b></td><td></td></tr>
+                   <tr><td><b>Error Message</b></td><td></td></tr>
+                   <tr><td><b></b></td><td></td></tr>
+                 </tbody>
+               </table>
+            </div>
+
+            <div class="col-sm-12">
+            <p class="text-orange">Click print to print receipt for reference or ok to continue</p>
+            </div>
+
+             <!-- Modal Header -->
+            <div class="modal-header">
+              <button>Print</button>
+            </div>
 </div>
 
-<script>
-    $(document).ready(() => {
-        var options = {
-            backdrop: false,
-            keyboard: false,
-            show: true,
-            remote: false
-        }
-       //$("#fmodal").modal(options);
-    });
-</script>
-<!-- <script src="js/script.js"></script> -->
-</body>
-</html>
+@endsection
