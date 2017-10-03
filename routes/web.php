@@ -24,6 +24,8 @@ Route::get('/logout', function(){
     return redirect('/login');
 });
 
+Route::get('/fundWallet', 'WalletController@fundWallet');
+
 
 Route::get('/transaction', 'transactionController@toBankSuccess');
 
