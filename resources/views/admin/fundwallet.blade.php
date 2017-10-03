@@ -70,13 +70,21 @@
       <div class="beneficiary-row row">
         <div class="single-beneficiary-holder col-md-6">
             <div class="inner-holder">
-                  <h5 class="beneficiary-name"><b>Fund: </b> Wallet Name</h5>
-                  <form action="" method="POST">
-                  <input type="email" name="name"  class="form-control input-defaulted" placeholder="Email">                  
-                  <br><input type="text" name="account_number" class="form-control " placeholder="Account Number">
-                  <br><input type="text" name="refkey" class="form-control" placeholder="Reference Key">
+                <h5 class="beneficiary-name"><b>Fund: </b> Wallet Name</h5>
+                <form action="" method="POST">
+                  <input type="text" name="fname"  class="form-control input-defaulted" placeholder="First Name">     
+                  <br><input type="number" name="lname"  class="form-control" placeholder="Last Name">       
+                  <br><input type="email" name="phone"  class="form-control" placeholder="Phone Number">       
+                  <br><input type="number" name="emailaddr"  class="form-control" placeholder="Email Address">       
+                  <br><input type="number" name="card_no"  class="form-control" placeholder="Card No.">       
+                  <br><input type="number" name="cvv"  class="form-control" placeholder="CVV">                  
+                  <br><input type="number" name="expiry_year" class="form-control " placeholder="Expiry Year">
+                  <br><input type="number" name="expiry_month" class="form-control" placeholder="Expiry Month">
+                  <br><input type="number" name="pin" class="form-control" placeholder="PIN">
+                  <br><input type="number" name="amount" class="form-control" placeholder="Amount">
                   <br><button type="submit" class="btn btn-info" name="button">Fund</button>
-                </form>
+                  <button type="button" class="btn btn-danger" name="button">Cancel</button>
+                </form>                
             </div>
         </div>
       </div>
