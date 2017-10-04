@@ -67,8 +67,8 @@ function toWallet(){
 
     $query = array(
         "sourceWallet" => '0',
-        "recipientWallet" => 'c9be800cc9',
-        "amount" => '538',
+        "recipientWallet" => 'aacafb2209',
+        "amount" => '5038',
         "currency" => "NGN",
         "lock" =>'123456'
     );
