@@ -77,7 +77,7 @@
                   <br><select name="bank_id" class="form-control input-defaulted" >
                     <option>Select Bank</option>
                     @foreach(App\Http\Controllers\BanksController::getAllBanks() as $bankCode)
-                    <option value="058">{{ $bankCode}}</option>
+                    <option value="058">{{ $bankCode->bank_name }}</option>
                     @endforeach
                   </select>
                   <br><input type="text" name="account_number" class="form-control input-defaulted" placeholder="Account Number">
