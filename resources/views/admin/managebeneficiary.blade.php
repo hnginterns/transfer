@@ -74,7 +74,7 @@
   <div class="beneficiary-container">
 
       <div class="beneficiary-row row">
-        
+
         <div class="single-beneficiary-holder col-md-12">
             <div class="inner-holder">
             <div class="table-responsive">
@@ -93,14 +93,14 @@
                             <th></th>
                             <th></th>
                         </tr>
-                        
+
                         <tbody>
                         @php($i = 1)
                         @foreach($beneficiaries as $key => $beneficiary)
                             <tr>
                                 <td>{{$i}}</td>
                                 <td>{{ $beneficiary->name }}</td>
-                                <td>{{ $beneficiary->bank_name }}</td>
+                                <td>{{ $beneficiary->name }}</td>
                                 <td>{{ $beneficiary->account_number }}</td>
                                 <td><a href="{{config('app.url')}}/admin/editbeneficiary/{{$beneficiary->id}}"><i class="fa fa-pencil-square-o" aria-hidden="true"><span</span></i> </a></td>
                                 <td><a href="{{config('app.url')}}/admin/deletebeneficiary/{{$beneficiary->id}}"><i class="fa fa-trash" aria-hidden="true"></i><span> </span> </a></td>
@@ -113,7 +113,7 @@
                 <!-- /.table-responsive -->
             </div>
         </div>
-       
+
 
       </div>
   </div>
