@@ -1,7 +1,7 @@
 @extends('layouts.user')
 
 @section('title')
-      Transfer to Bank
+      Transfer to Clearing Wallet
 @endsection
 @section('content')
 
@@ -14,28 +14,15 @@
                   {{csrf_field()}}
 
                     <div class="form-group">
-                      <label>Beneficiary</label>
-                        <select class="form-control cus-input" name="beneficiary_id">
-                          <option>Select Beneficiary</option>
-                            @foreach($beneficiary as $key => $beneficiaries)
-                              <option value="{{$beneficiaries->id}}">{{$beneficiaries->name}}</option>
-                            @endforeach
-                        </select>
+                      
                     </div>
                       
                  
                           <div class="form-group">
-                              <input type="number" class="form-control cus-input" name="amount" id="amount" placeholder="Amount">
                           </div>
 
                             <div class="form-group">
-                              <select class="form-control cus-input" name="wallet_name" id="wallet_name">
-                                <option value=""> Select Wallet</option>
-                                @forelse($wallets as $wallet)
-                                  <option value="{{ $wallet->wallet_name }}">{{ $wallet->wallet_name }}</option>
-                                @empty
-                                @endforelse
-                              </select>
+                              
                             </div>
                             
                         <div class="form-group center-block">    
