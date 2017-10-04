@@ -100,7 +100,7 @@
                             <tr>
                                 <td>{{$i}}</td>
                                 <td>{{ $beneficiary->name }}</td>
-                                <td>{{ $beneficiary->bank->bank_name }}</td>
+                                <td>{{ $beneficiary->bank_name }}</td>
                                 <td>{{ $beneficiary->account_number }}</td>
                                 <td><a href="{{config('app.url')}}/admin/editbeneficiary/{{$beneficiary->id}}"><i class="fa fa-pencil-square-o" aria-hidden="true"><span</span></i> </a></td>
                                 <td><a href="{{config('app.url')}}/admin/deletebeneficiary/{{$beneficiary->id}}"><i class="fa fa-trash" aria-hidden="true"></i><span> </span> </a></td>
