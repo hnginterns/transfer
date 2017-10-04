@@ -27,7 +27,8 @@ class HomeController extends Controller
     }
 
     // This is for Testing
-    public function randomFunc(\App\Wallet $wallet) {
+    public function randomFunc(\App\Wallet $wallet)
+    {
         $wal = $wallet->find(1);
 
         // return $wal->archive() ? "Wallet was Archived" : "Archiving Failed!";

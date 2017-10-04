@@ -24,10 +24,6 @@ class WalletController extends Controller
     public function __construct()
     {
         //
-
-
-
-
     }
 
     //get token for new transaction
@@ -40,12 +36,11 @@ class WalletController extends Controller
         $query = array('apiKey' => $api_key, 'secret' => $secret_key);
         $body = \Unirest\Request\Body::json($query);
         $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/merchant/verify', $headers, $body);
-        $response = json_decode($response->raw_body, TRUE);
+        $response = json_decode($response->raw_body, true);
         $status = $response['status'];
         if (!$status == 'success') {
             echo 'INVALID TOKEN';
-        }
-        else {
+        } else {
             $token = $response['token'];
             return $token;
         }
@@ -92,15 +87,14 @@ class WalletController extends Controller
         );
         $body = \Unirest\Request\Body::json($query);
         $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/wallet', $headers, $body);
-                // var_dump($response);
-        $response = json_decode($response->raw_body, TRUE);
+        // var_dump($response);
+        $response = json_decode($response->raw_body, true);
         var_dump($response);
     }
 
     //transfer from wallet to wallet
     public function transfer(Request $request, WalletTransaction $transaction)
     {
-
         $input = $request->all();
         $validator = Validator::make(
             $input,
@@ -114,13 +108,10 @@ class WalletController extends Controller
                 'numeric' => ':attribute must be in numbers'
             ]
         );
-        if ($validator->fails())
-            {
+        if ($validator->fails()) {
             $messages = $validator->messages()->toArray();
             return response()->json(['status' => 'failed', 'msg' => 'All fields are required']);
-        }
-        else
-            {
+        } else {
             $lock_code = Wallet::where('uuid', Auth::user()->id)->get();
             $restriction = Restriction::where('wallet_id', $lock_code[0]['id'])->get();
             $rules = Rule::where('id', $restriction[0]['rule_id'])->get();
@@ -143,49 +134,40 @@ class WalletController extends Controller
                         );
                         $body = \Unirest\Request\Body::json($query);
                         $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/wallet/transfer', $headers, $body);
-                        $response_arr = json_decode($response->raw_body, TRUE);
+                        $response_arr = json_decode($response->raw_body, true);
                         $status = $response_arr['status'];
                         if ($status == 'success') {
-                                
+
 
                                  //$wallet = new Transaction;
-                                 //$wallet->sourceWallet = $request->input('sourceWallet');
-                                 //$wallet->transaction_status = 1;
-                                 //$wallet->recipientWallet = $request->input('recipientWallet');
-                                 //$wallet->amount = $request->input('amount');
+                            //$wallet->sourceWallet = $request->input('sourceWallet');
+                            //$wallet->transaction_status = 1;
+                            //$wallet->recipientWallet = $request->input('recipientWallet');
+                            //$wallet->amount = $request->input('amount');
 
-                                 //if($wallet->save()) {
+                            //if($wallet->save()) {
                             //return response()->json(['status' => 'success']);
                             //'transactiondata' => $response_arr.data
-                                 //}
+                            //}
 
-                            return redirect()->action('pagesController@success',$response);           
-
-
-                        }
-                        else {
+                            return redirect()->action('pagesController@success', $response);
+                        } else {
                             //return response()->json(['status' => 'failed', 'msg' => $response_arr['message']]);
-                            return redirect()->action('pagesController@failed',$response);
+                            return redirect()->action('pagesController@failed', $response);
                         }
-                    }
-                    else {
-                        
-                        return redirect()->action('pagesController@failed',$response);
+                    } else {
+                        return redirect()->action('pagesController@failed', $response);
                         //return response()->json(['status' => 'failed', 'msg' => 'You can only transfer between ' . $rules[0]['min_amount'] . ' and ' . $rules[0]['max_amount']]);
                     }
-                }
-                else {
-                    
-                    return redirect()->action('pagesController@failed',$response);
+                } else {
+                    return redirect()->action('pagesController@failed', $response);
                     //return response()->json(['status' => 'failed', 'msg' => 'You have exceeded your transfer limit for the day.']);
                 }
-            }
-            else {
-                return redirect()->action('pagesController@failed',$response);
+            } else {
+                return redirect()->action('pagesController@failed', $response);
                 //return response()->json(['status' => 'failed', 'msg' => 'You wallet cannot transfer. Contact the admin']);
             }
         }
-
     }
 
     //transfer from wallet to bank
@@ -196,13 +178,16 @@ class WalletController extends Controller
             $messages = $validator->messages()->toArray();
             Session::flash('messages', $this->formatMessages($messages, 'error'));
             return redirect()->to(URL::previous())->withInput();
-        }
-        else {
+        } else {
             $beneficiary = Beneficiary::where('id', '=', $request->beneficiary_id)
                 ->get();
+<<<<<<< HEAD
                         // We need to get the lock code of a wallet in order to make the transfer.
+=======
+            // We need to get the loack code of a wallet in order to make the transfer.
+>>>>>>> 06cabe459188984dee0341e40cd6723fe71824bd
             $walletdata = Wallet::where('wallet_name', $request->wallet_name)->get();
-                        //dd($wallet_data);
+            //dd($wallet_data);
             if (!empty($beneficiary)) {
                 $token = $this->getToken();
                 $headers = array('content-type' => 'application/json', 'Authorization' => $token);
@@ -219,15 +204,21 @@ class WalletController extends Controller
                 ); // No Refrence from request
                 $body = \Unirest\Request\Body::json($query);
                 $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/disburse', $headers, $body);
-                $response = json_decode($response->raw_body, TRUE);
+                $response = json_decode($response->raw_body, true);
                 $status = $response['status'];
                 if ($status == 'success') {
                     $data = $response;
                     //return redirect()->action('pagesController@bank_transfer', $data);
+<<<<<<< HEAD
                     return redirect('/success')->with(['status' => $data]);
                 }
                 else {
                     return redirect('/failure')->with(['status' => $data]);
+=======
+                    return redirect()->action('pagesController@success', $response);
+                } else {
+                    return redirect()->action('pagesController@failed', $response);
+>>>>>>> 06cabe459188984dee0341e40cd6723fe71824bd
                 }
             }
         }
@@ -244,11 +235,7 @@ class WalletController extends Controller
 
         var_dump($walletBalance);
         die();
-                //return view('walletBalance', compact('walletBalance'));
-
-
-
-
+        //return view('walletBalance', compact('walletBalance'));
     }
 
     //
@@ -259,7 +246,7 @@ class WalletController extends Controller
         $query = array('amount' => 10000, 'fee' => 45);
         $body = \Unirest\Request\Body::json($query);
         $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/get-charge', $headers, $body);
-        $data = json_decode($response->raw_body, TRUE);
+        $data = json_decode($response->raw_body, true);
         $walletCharge = var_dump($data['data']);
     }
 
@@ -294,8 +281,7 @@ class WalletController extends Controller
             $restriction->wallet_id = $wallet->id;
             $restriction->save();
             return back();
-        }
-        else {
+        } else {
             return back();
         }
     }
@@ -314,7 +300,7 @@ class WalletController extends Controller
         );
         $body = \Unirest\Request\Body::json($query);
         $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/wallet', $headers, $body);
-        $response = json_decode($response->raw_body, TRUE);
+        $response = json_decode($response->raw_body, true);
         $status = $response['status'];
         $data = $response['data'];
         return (!is_array($data)) ? true : $data;
