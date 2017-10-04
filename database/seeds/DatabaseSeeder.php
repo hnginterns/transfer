@@ -20,15 +20,7 @@ class DatabaseSeeder extends Seeder
     {
     	$faker = Faker::create();
 
-    	foreach (range(2,10) as $index) {
-
-	        DB::table('banks')->insert([
-	            'id' => $faker->numberBetween,
-	            'bank_name' => $faker->name,
-	            'bank_code' => $faker->creditCardNumber,
-	        ]);
-
-        }
+    	
 
 	      $dt = Carbon::now();
         $dateNow = $dt->toDateTimeString();
