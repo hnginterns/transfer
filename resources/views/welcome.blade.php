@@ -77,7 +77,7 @@ function toWallet(){
     $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/wallet/transfer', $headers, $body);
     $response_arr = json_decode($response->raw_body, TRUE);
     $status = $response_arr['status'];
-    dd($response_arr);
+    // dd($response_arr);a few chan
     return redirect()->action('pagesController@failed', ['response'=> $response_arr]);
     //dd($response_arr);
 }
