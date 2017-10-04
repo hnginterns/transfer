@@ -131,6 +131,7 @@ class pagesController extends Controller
     return view('404');
   }
 
+
   //all other page functions can be added
   /*
   pubic function <function name> {

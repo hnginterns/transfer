@@ -23,13 +23,15 @@ class BanksController extends Controller
         if(count($lists) != 0){
             foreach($lists as $key=> $value){
             $bank = new Bank;
-            $bank->bank_code = (int)$key;
+            $bank->bank_code = '058';
             $bank->bank_name = $value;
             $bank->save();
             }
+            
         }else{
             dd("error");
         }
-        
+        $banks = $lists;
+       return view('banks', compact('banks')); 
     }
 }

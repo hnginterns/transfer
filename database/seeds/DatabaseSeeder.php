@@ -68,6 +68,7 @@ class DatabaseSeeder extends Seeder
             'updated_by' => 0,
 	          'created_at' => $dateNow
         ])
+        
 
       ]);
 
