@@ -65,9 +65,9 @@ class pagesController extends Controller
     return view('success');
   }
 
-  public function failed()
+  public function failed($response)
   {
-    return view('failed');
+    return view('failed', compact($response));
   }
 
   public function balance()
@@ -84,7 +84,6 @@ class pagesController extends Controller
   {
     $beneficiary = Beneficiary::all();
     $wallets = Wallet::where('uuid', '=', Auth::user()->id)->get();
-    $data = ['dgd' => 'shshs'];
     if (!empty($wallet)) {
       //$wallet = $wallet[0];
 
@@ -106,14 +105,9 @@ class pagesController extends Controller
   }
 
 
-  public function viewWallet(User $user, Wallet $wallet)
+  public function history()
   {
-
-    $wallets = $wallet::where('uuid', \Auth::id())->get();
-    $transaction = UtilWallet::all();
-    $user_id = Auth::user()->id;
-    // dd($wallets);
-    return view('wallet-view', compact('wallets', 'transaction', 'user_id'));
+    return view('history');
   }
 
   public function createWallet()

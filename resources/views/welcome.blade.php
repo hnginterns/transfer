@@ -60,7 +60,30 @@ function walletBalance() {
     //return view('walletBalance', compact('walletBalance'));
 }
 
+function toWallet(){
+
+    $token = getToken();
+    $headers = array('content-type' => 'application/json', 'Authorization' => $token);
+
+    $query = array(
+        "sourceWallet" => 'Stephen Jude',
+        "recipientWallet" => 'Loans wallet',
+        "amount" => '538',
+        "currency" => "NGN",
+        "lock" =>'ASDHFG'
+    );
+
+    $body = \Unirest\Request\Body::json($query);
+    $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/wallet/transfer', $headers, $body);
+    $response_arr = json_decode($response->raw_body, TRUE);
+    $status = $response_arr['status'];
+
+    return redirect()->route('failed', ['response'=> $response_arr]);
+    //dd($response_arr);
+}
+
 //echo walletBalance().'<br>';
-echo $res = transferAccount();
+echo toWallet().'<br>';
+//echo $res = transferAccount();
 
 ?>

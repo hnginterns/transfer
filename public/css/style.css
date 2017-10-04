@@ -29,12 +29,13 @@ body {
     margin: 0px;
     padding-top: 30px !important;
     padding: 0px;
-    background: transparent;
+    background:#25313F;
     width: 100%;
     border-radius: 0px;
     border: none;
     color: white;
 }
+
 
 .navbar-brand,
 .navbar-nav a {
@@ -54,27 +55,7 @@ body {
     margin-right: 20px;
 }
 
-.navbar-nav .active > a {
-    background: transparent !important;
-    border: 2px solid white;
-    border-radius: 10px;
-    padding: 5px 10px;
-    margin-top: 9px;
-}
-
-#sign-in {
-    margin-top: 9px;        
-    /* background: #E57679; */
-    background: #FF6200;
-    border-radius: 63px;
-    padding-left: 12px;
-    padding-right: 12px;          
-}
-
-#sign-in a  {
-    padding: 7px 14px;        
-}
-
+.nav-sidebar
 
 /* HEADER BODY STYLE */
 #background-text {

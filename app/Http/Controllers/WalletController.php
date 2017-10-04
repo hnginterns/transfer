@@ -26,6 +26,8 @@ class WalletController extends Controller
         //
 
 
+
+
     }
 
     //get token for new transaction
@@ -48,24 +50,51 @@ class WalletController extends Controller
             return $token;
         }
     }
-    
+
+    public function cardWallet(Request $request)
+    {
+        $token = $this->getToken();
+        $headers = array('content-type' => 'application/json', 'Authorization' => $token);
+        $query = array(
+            "firstname" => $request->fname,
+            "lastname" => $request->lname,
+            "email" => $request->emailaddr,
+            "phonenumber" => $request->phone,
+            "recipient" => "wallet",
+            "card_no" => $request->card_no,
+            "cvv" => $request->cvv,
+            "pin" => $request->pin, //optional required when using VERVE card
+            "expiry_year" => $request->expiry_year,
+            "expiry_month" => $request->expiry_month,
+            "charge_auth" => "PIN", //optional required where card is a local Mastercard
+            "apiKey" => "ts_PQOAA7GKWFH3RKC9CP83",
+            "amount" => $request->amount,
+            "fee" => 0,
+            "medium" => "web",
+            "redirecturl" => "https://google.com"
+        );
+        $body = \Unirest\Request\Body::json($query);
+
+        $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer', $headers, $body);
+        var_dump($response);
+    }
+
     public function createWallet()
     {
         $token = $this->getToken();
         $headers = array('content-type' => 'application/json', 'Authorization' => $token);
         $query = array(
-            'name' => "James Okoh",
-            'lock_code' => "felicia",
-            'user_ref' => "ab4gFhj",
-            'currency' => "NGN"
+            "sourceWallet" => "932405db53",
+            "recipientWallet" => "aacafb2209",
+            "amount" => "20000",
+            "currency" => "NGN",
+            "lock" => "12345"
         );
         $body = \Unirest\Request\Body::json($query);
         $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/wallet', $headers, $body);
                 // var_dump($response);
         $response = json_decode($response->raw_body, TRUE);
-        $status = $response['status'];
-        $data = $response['data'];
-        $createWallet = var_dump($data);
+        var_dump($response);
     }
 
     //transfer from wallet to wallet
@@ -117,6 +146,8 @@ class WalletController extends Controller
                         $response_arr = json_decode($response->raw_body, TRUE);
                         $status = $response_arr['status'];
                         if ($status == 'success') {
+                                
+
                                  //$wallet = new Transaction;
                                  //$wallet->sourceWallet = $request->input('sourceWallet');
                                  //$wallet->transaction_status = 1;
@@ -127,6 +158,8 @@ class WalletController extends Controller
                             return response()->json(['status' => 'success']);
                             //'transactiondata' => $response_arr.data
                                  //}
+
+
 
 
                         }
@@ -184,10 +217,17 @@ class WalletController extends Controller
                 $status = $response['status'];
                 if ($status == 'success') {
                     $data = $response;
-                    return redirect()->action('pagesController@bank_transfer', $data);
+                    //return redirect()->action('pagesController@bank_transfer', $data);
+                    return redirect()->action(
+                        'pagesController@success',
+                        $response
+                    );
                 }
                 else {
-                    return redirect()->action('pagesController@bank_transfer',  $data);
+                    return redirect()->action(
+                        'pagesController@failed',
+                        $response
+                    );
                 }
             }
         }
@@ -201,10 +241,12 @@ class WalletController extends Controller
         $response = \Unirest\Request::get('https://moneywave.herokuapp.com/v1/wallet', $headers);
         $data = json_decode($response->raw_body, true);
         $walletBalance = $data['data'];
-                //$walletBalance = array_pluck($walletBalance, 'id', 'id');
+
         var_dump($walletBalance);
         die();
                 //return view('walletBalance', compact('walletBalance'));
+
+
 
 
     }
@@ -302,6 +344,8 @@ class WalletController extends Controller
     {
         return Validator::make($data, [
             //'sender_name' => 'required|string',
+
+
 
 
             'wallet_name' => 'required|string',

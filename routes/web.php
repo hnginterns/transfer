@@ -18,12 +18,18 @@ Route::get('/home', 'pagesController@home');
 // get signin page
 //Route::get('/signin', 'pagesController@signin');
 
-Route::get('/logout', function(){
-    Auth::logout();
-    Session::flush();
-    return redirect('/login');
+Route::get('/logout', function () {
+	Auth::logout();
+	Session::flush();
+	return redirect('/login');
 });
 
+//Route::get('/fundWallet', 'WalletController@fundWallet');
+
+
+Route::get('/welcome', function () {
+	return view('welcome');
+});
 
 Route::get('/about', 'pagesController@about');
 
@@ -56,11 +62,11 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/transfer-to-bank', 'pagesController@bank_transfer');
 	Route::get('/transfer-to-wallet', 'pagesController@wallet_transfer');
 	Route::get('/create-wallet', 'pagesController@createWallet');
-	Route::get('/wallet-view', 'pagesController@viewWallet')->name('wallet');
+	Route::get('/history', 'pagesController@history');
 	Route::get('/banks', 'BanksController@banks');
 	Route::get('/populatebank', 'BanksController@populateBanks');
 	Route::get('/success', 'pagesController@success');
-	Route::get('/failed', 'pagesController@failed');
+	Route::get('/failed', 'pagesController@failed') ->name('failed');
 	Route::get('/transfer', 'pagesController@transfer');
 	Route::get('/balance', 'pagesController@balance');
 	Route::get('/ravepay', 'RavepayController@index');
@@ -92,15 +98,19 @@ Route::group(['middleware' => ['admin']], function () {
 	Route::get('admin/edit-rule/{ruleId}', 'AdminController@editRules')->name('edit-rule');
 	Route::get('admin/delete-rule/{ruleId}', 'AdminController@deleteRule')->name('delete-rule');
 
-  	Route::get('/admin/{id}/archivewallet', 'AdminController@archiveWallet');
-  	Route::get('/admin/{id}/activatewallet', 'AdminController@activateWallet');
+	Route::get('/admin/{id}/archivewallet', 'AdminController@archiveWallet');
+	Route::get('/admin/{id}/activatewallet', 'AdminController@activateWallet');
+
+	//fund wallet
+	Route::get('/admin/fundwallet', 'AdminController@fundwallet');
+	Route::post('/admin/fundWallet', 'WalletController@cardWallet');
 
 	// admin routes
 	Route::get('/view-accounts', 'pagesController@viewAccounts');
-	Route::get('/addaccount', 'AdminController@addaccount');
 	Route::get('/usermanagement', 'AdminController@usermanagement');
 
-	//beneficiary
+	Route::get('/addaccount', 'AdminController@addaccount');
+
 	Route::get('admin/addBeneficiary', 'AdminController@addBeneficiary');
 	Route::get('admin/beneficiary', 'AdminController@ViewBeneficiary')->name('beneficiary');
 	Route::get('admin/addbeneficiary', 'AdminController@beneficiary');
@@ -127,7 +137,7 @@ Route::group(['middleware' => ['admin']], function () {
 
 	//Route::get('/manager/setting', 'AdminController@settings');
 
-  Route::get('/admin/smswallet', 'SmsWalletController@smsWalletBalance');
+	Route::get('/admin/smswallet', 'SmsWalletController@smsWalletBalance');
 
 });
 
