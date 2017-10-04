@@ -9,7 +9,7 @@
 
             <div class="col-md-6 col-sm-6 col-md-offset-3 col-sm-offset-3">
                   <img src="/svg/naira.svg" alt="no preview" class="transfer-icon">
-                  <h4 class="intro text-center">Transfer To Beneficiary </h4>
+                  <h4 class="intro text-center">Transfer To Main Wallet (Clearing Account) </h4>
                   <form class="input-form" action="/transferAccount" method="POST">
                   {{csrf_field()}}
 
