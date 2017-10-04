@@ -208,8 +208,7 @@ class WalletController extends Controller
                     $data['senderName'] = Auth::user()->username;
                     $data['receiverName'] = $beneficiary[0]->name;
                     $data['walletCodeSender'] = $walletdata[0]->wallet_code;
-                    //return redirect()->action('pagesController@bank_transfer', $data);
-                    // dd($data);
+                    $data['amount'] = $request->amount;
                     return redirect('/success')->with(['status' => $data]);
                 }
                 else {
