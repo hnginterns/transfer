@@ -180,8 +180,8 @@ class AdminController extends WalletController
             $beneficiary->account_number = $request->account_number;
 
             list($bank_id, $bank_name) = explode('||', $request->bank_id);
-            $beneficiary->bank_id = explode($request->bank_id)[0];
-            $beneficiary->bank_name = explode($request->bank_id)[1];
+            $beneficiary->bank_id = $bank_id;
+            $beneficiary->bank_name = $bank_name;
             $beneficiary->uuid = Auth::user()->id;
             if ($beneficiary->save()) {
                 return redirect('/admin/beneficiary')->with('success', 'Beneficiary added');
@@ -355,7 +355,7 @@ class AdminController extends WalletController
     {
         return Validator::make($data, [
             'name' => 'required|string|max:255',
-            'bank_id' => 'required|numeric',
+            //'bank_id' => 'required|string',
             'account_number' => 'required|string|max:10',
         ]);
     }
