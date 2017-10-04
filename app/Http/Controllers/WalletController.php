@@ -203,13 +203,17 @@ class WalletController extends Controller
                 $response = json_decode($response->raw_body, true);
                 $status = $response['status'];
                 if ($status == 'success') {
-                    $data = $response;
+                    $data = $response['data']['data'];
+                    $data['narration'] = $request->narration;
+                    $data['senderName'] = Auth::user()->username;
+                    $data['receiverName'] = $beneficiary[0]->name;
+                    $data['walletCodeSender'] = $walletdata[0]->wallet_code;
                     //return redirect()->action('pagesController@bank_transfer', $data);
-                    dd($data);
+                    // dd($data);
                     return redirect('/success')->with(['status' => $data]);
                 }
                 else {
-                    dd($data);
+                    // dd($data);
                     return redirect('/failure')->with(['status' => $data]);
                 }
             }

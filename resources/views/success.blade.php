@@ -81,17 +81,17 @@
             <div class="modal-body">
                 <h4>YOUR TRANSACTION WAS SUCCESSFULL</h4>
             </div>
-            
+
             <div class="table-responsive">
                <table class="table">
                  <tbody>
-                   <tr><td><b>Merchant/sender Name</b></td><td>:Nwauwa Victor Ifeanyi</td></tr>
-                   <tr><td><b>sender wallet/account</b></td><td>:Nwauwa Victor Ifeanyi</td></tr>
-                   <tr><td><b>Beneficiary/Receiver Name</b></td><td></td></tr>
+                   <tr><td><b>Merchant/sender Name</b></td><td>: {{$data['senderName']}}</td></tr>
+                   <tr><td><b>sender wallet/account</b></td><td>: {{$data['walletCodeSender']}}</td></tr>
+                   <tr><td><b>Beneficiary/Receiver Name</b></td>: {{$data['receiverName']}}<td></td></tr>
                    <tr><td><b>Beneficiary/Receiver wallet name/account no</b></td><td></td></tr>
-                   <tr><td><b>Reference No</b></td><td></td></tr>
-                   <tr><td><b>Transaction Date/Time</b></td><td></td></tr>
-                   <tr><td><b>Narration</b></td><td></td></tr>
+                   <tr><td><b>Reference No</b></td><td>{{$data['TTMW000073626']}}</td></tr>
+                   <tr><td><b>Transaction Date/Time</b></td><td>{{$data['ref']}}</td></tr>
+                   <tr><td><b>Narration</b></td><td>{{$data['narration']}}</td></tr>
                    <tr><td><b></b></td><td></td></tr>
                  </tbody>
                </table>
