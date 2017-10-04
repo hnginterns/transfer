@@ -72,6 +72,7 @@
     </style>
 
 @if(Session::has('status'))
+@php($data = Session::get('status'))
 <div class="col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2">
             <!-- Modal Header -->
             <div class="modal-header">
