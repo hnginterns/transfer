@@ -178,7 +178,10 @@ class AdminController extends WalletController
             $beneficiary = new Beneficiary;
             $beneficiary->name = $request->name;
             $beneficiary->account_number = $request->account_number;
-            $beneficiary->bank_id = $request->bank_id;
+
+            list($bank_id, $bank_name) = explode('||', $request->bank_id);
+            $beneficiary->bank_id = explode($request->bank_id)[0];
+            $beneficiary->bank_name = explode($request->bank_id)[1];
             $beneficiary->uuid = Auth::user()->id;
             if ($beneficiary->save()) {
                 return redirect('/admin/beneficiary')->with('success', 'Beneficiary added');
