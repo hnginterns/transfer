@@ -80,6 +80,9 @@
             <!-- Modal Body -->
             <div class="modal-body">
                 <h4>YOUR TRANSACTION FAILED</h4>
+                  
+                {{ $response }}
+                
             </div>
 
             <div class="table-responsive">
@@ -94,7 +97,7 @@
                  </tbody>
                </table>
             </div>
-
+          
             <div class="col-sm-12">
             <p class="text-orange">Click print to print receipt for reference or ok to continue</p>
             </div>

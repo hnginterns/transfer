@@ -65,9 +65,9 @@ class pagesController extends Controller
     return view('success');
   }
 
-  public function failed()
+  public function failed($response)
   {
-    return view('failed');
+    return view('failed', compact($response));
   }
 
   public function balance()
