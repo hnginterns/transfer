@@ -340,6 +340,7 @@ class ComposerStaticInitcb56c8f99153a160391720319584c667
         'App\\Http\\Controllers\\ValidateAccountController' => __DIR__ . '/../..' . '/app/Http/Controllers/ValidateAccountController.php',
         'App\\Http\\Controllers\\WalletController' => __DIR__ . '/../..' . '/app/Http/Controllers/WalletController.php',
         'App\\Http\\Controllers\\pagesController' => __DIR__ . '/../..' . '/app/Http/Controllers/pagesController.php',
+        'App\\Http\\Controllers\\transactionController' => __DIR__ . '/../..' . '/app/Http/Controllers/transactionController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Admin' => __DIR__ . '/../..' . '/app/Http/Middleware/Admin.php',
         'App\\Http\\Middleware\\AdminGuardMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/AdminGuardMiddleware.php',

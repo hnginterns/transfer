@@ -13,31 +13,30 @@ class AdminLoginController extends Controller
 
     protected $redirectTo = '/admin';
 
-    public function __construct() {
-    	$this->middleware('guestAdmin')->except('admin.logout');
-    }
-
-    public function showLoginForm() {
-    	if(Auth::check() && Auth::user()->is_admin == 1) {
-    		//Auth::logout();
-	    	//$data['title'] = 'Admin login';
-	    	//return view('admin.ad-sign-in', $data);
-    		return redirect('/admin');
-    	}
-	    	$data['title'] = 'Admin login';
-	    	return view('admin.ad-sign-in', $data);
-    }
-
-
-    protected function attemptLogin(Request $request) 
+    public function __construct()
     {
-    	if(Auth::attempt(['email' => $request->email, 'password' => $request->password, 'is_admin' => 1])) {
-    		return true;
-    	}
-
-    	return false;
+        $this->middleware('guestAdmin')->except('admin.logout');
     }
 
-   
+    public function showLoginForm()
+    {
+        if (Auth::check() && Auth::user()->is_admin == 1) {
+            //Auth::logout();
+            //$data['title'] = 'Admin login';
+            //return view('admin.ad-sign-in', $data);
+            return redirect('/admin');
+        }
+        $data['title'] = 'Admin login';
+        return view('admin.ad-sign-in', $data);
+    }
 
+
+    protected function attemptLogin(Request $request)
+    {
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'is_admin' => 1])) {
+            return true;
+        }
+
+        return false;
+    }
 }

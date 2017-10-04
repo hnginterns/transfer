@@ -19,7 +19,7 @@
               </li>  
                
                 <li>
-                <a href="mainwallet">
+                <a href="clearingwallet">
                 <i class="fa fa-credit-card fa-lg"></i> Clearing Wallet
                 </a>
               </li>

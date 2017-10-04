@@ -31,30 +31,19 @@ class Controller extends BaseController
 
         //$arr = !empty($arr['messages']) ? $arr['messages'] : $arr;
 
-        if (!empty($arr) && is_array($arr))
-        {
-            foreach ($arr as $value)
-            {
-                if (is_array($value))
-                {
-                    foreach ($value as $v)
-                    {
+        if (!empty($arr) && is_array($arr)) {
+            foreach ($arr as $value) {
+                if (is_array($value)) {
+                    foreach ($value as $v) {
                         $ret .= '<span>' . $v . '</span> <br>';
                     }
-                }
-                else
-                {
+                } else {
                     $ret .= '<span>' . $value . '</span>';
                 }
-
             }
-        }
-        elseif (is_string($arr))
-        {
+        } elseif (is_string($arr)) {
             $ret .= '<span>' . $arr . '<span>';
-        }
-        else
-        {
+        } else {
             return 'Invalid Argument';
         }
         return $ret . '</div>';

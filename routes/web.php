@@ -63,10 +63,15 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/transfer-to-wallet', 'pagesController@wallet_transfer');
 	Route::get('/create-wallet', 'pagesController@createWallet');
 	Route::get('/history', 'pagesController@history');
+	Route::get('/clearingwallet', 'pagesController@mainwallet');
 	Route::get('/banks', 'BanksController@banks');
 	Route::get('/populatebank', 'BanksController@populateBanks');
 	Route::get('/success', 'pagesController@success');
+<<<<<<< HEAD
 	Route::get('/failed', 'pagesController@failed')->name('failed');
+=======
+	Route::get('/failed', 'pagesController@failed');
+>>>>>>> 458c7b22189d02f5842c3490d1c39ae5a572ebea
 	Route::get('/transfer', 'pagesController@transfer');
 	Route::get('/balance', 'pagesController@balance');
 	Route::get('/ravepay', 'RavepayController@index');
@@ -108,9 +113,13 @@ Route::group(['middleware' => ['admin']], function () {
 	// admin routes
 	Route::get('/view-accounts', 'pagesController@viewAccounts');
 	Route::get('/usermanagement', 'AdminController@usermanagement');
+
 	Route::get('/addaccount', 'AdminController@addaccount');
 
+<<<<<<< HEAD
 	//beneficiary
+=======
+>>>>>>> 458c7b22189d02f5842c3490d1c39ae5a572ebea
 	Route::get('admin/addBeneficiary', 'AdminController@addBeneficiary');
 	Route::get('admin/beneficiary', 'AdminController@ViewBeneficiary')->name('beneficiary');
 	Route::get('admin/addbeneficiary', 'AdminController@beneficiary');

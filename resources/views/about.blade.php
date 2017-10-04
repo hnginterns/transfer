@@ -549,26 +549,25 @@
 
 <!-- FOOTER -->
 
+
+
 <div id="footer">
-    <div id="footer-heading">
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-    </div>
     <div id="footer-links">
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/home">About Us</a></li>
+        <li><a href="/home">Privacy Policy</a></li>
+
+        <li><a href="#">How it works</a></li>
+        <li><a href="#">Sign Up</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Disclaimer</a></li>
+
+        <li><a href="#">Help & Support</a></li>
+        <li><a href="#">Sign In</a></li>
+        <li><a href="#">FAQs</a></li>
+        <li><a href="#">Terms & Condition</a></li>
+
+        <li><a href="#">Site Map</a></li>
     </div>
     <p id="line"> </p>
     <div id="lower-footer">

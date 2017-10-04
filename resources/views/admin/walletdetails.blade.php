@@ -113,7 +113,6 @@
                     </table>
                   </div>
               <!-- /.table-responsive -->
-                <a type="submit" class="btn btn-md btn-info" >Fund Wallet- RavePay</a>
                 @if($wallet->archived == 0)
                   <a href="/admin/{{ $wallet->id }}/archivewallet" type="submit" class="btn btn-md btn-danger">{{ 'Archive Wallet' }}</a>
                 @else
