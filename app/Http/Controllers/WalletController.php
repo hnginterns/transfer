@@ -200,7 +200,7 @@ class WalletController extends Controller
         else {
             $beneficiary = Beneficiary::where('id', '=', $request->beneficiary_id)
                 ->get();
-                        // We need to get the loack code of a wallet in order to make the transfer.
+                        // We need to get the lock code of a wallet in order to make the transfer.
             $walletdata = Wallet::where('wallet_name', $request->wallet_name)->get();
                         //dd($wallet_data);
             if (!empty($beneficiary)) {
@@ -224,10 +224,10 @@ class WalletController extends Controller
                 if ($status == 'success') {
                     $data = $response;
                     //return redirect()->action('pagesController@bank_transfer', $data);
-                    return redirect()->action('pagesController@success',$response);
+                    return redirect('/success')->with(['status' => $data]);
                 }
                 else {
-                    return redirect()->action('pagesController@failed',$response);
+                    return redirect('/failure')->with(['status' => $data]);
                 }
             }
         }
@@ -299,6 +299,8 @@ class WalletController extends Controller
             return back();
         }
     }
+
+
 
     public function createWalletAdmin($data)
     {

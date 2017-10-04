@@ -71,7 +71,7 @@
         }
     </style>
 
-
+@if(Session::has('status'))
 <div class="col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2">
             <!-- Modal Header -->
             <div class="modal-header">
@@ -81,7 +81,7 @@
             <div class="modal-body">
                 <h4>YOUR TRANSACTION WAS SUCCESSFULL</h4>
             </div>
-
+            
             <div class="table-responsive">
                <table class="table">
                  <tbody>
@@ -106,5 +106,5 @@
               <button>Print</button>
             </div>
 </div>
-
+@endif
 @endsection
