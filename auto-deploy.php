@@ -20,7 +20,7 @@
 
     // exec commands
     $output = '';
-    foreach($commands AS $command){
+    foreach ($commands as $command) {
         $tmp = shell_exec($command);
 
         $output .= "<span style=\"color: #6BE234;\">\$</span><span style=\"color: #729FCF;\">{$command}\n</span><br />";
