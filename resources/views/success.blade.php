@@ -93,7 +93,7 @@
                    <tr><td><b>Reference No</b></td><td>{{$data['uniquereference']}}</td></tr>
                    <tr><td><b>Transaction Date/Time</b></td><td>{{$data['ref']}}</td></tr>
                    <tr><td><b>Narration</b></td><td>{{$data['narration']}}</td></tr>
-                   <tr><td><b>Amount</b></td><td>&#8358 {{$data['amount']}}</td></tr>
+                   <tr><td><b>Amount</b></td><td>&#8358; {{$data['amount']}}</td></tr>
                  </tbody>
                </table>
             </div>
