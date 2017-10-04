@@ -29,8 +29,8 @@ class WalletController extends Controller
     //get token for new transaction
     public function getToken()
     {
-        $api_key = 'ts_PQOAA7GKWFH3RKC9CP83';
-        $secret_key = 'ts_LL1JQ7Y4S0MCOXBVGQWKAO4KRGDYXV';
+        $api_key = env('API_KEY');
+        $secret_key = env('API_SECRET');
         \Unirest\Request::verifyPeer(false);
         $headers = array('content-type' => 'application/json');
         $query = array('apiKey' => $api_key, 'secret' => $secret_key);
