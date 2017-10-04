@@ -86,7 +86,7 @@ Route::group(['middleware' => ['admin']], function () {
 	// New Rule <Creati></Creati>on
 	Route::get('/admin/createrule', 'AdminController@createRule')->name('admin.createrule');
 	Route::post('/admin/createrule', 'AdminController@saveNewRule')->name('admin.setrule.submit');
-	
+
 	Route::get('admin/view-rules', 'AdminController@viewRules');
 	Route::post('admin/update-rule', 'AdminController@updateRule')->name('update-rule');
 	Route::get('admin/edit-rule/{ruleId}', 'AdminController@editRules')->name('edit-rule');
@@ -99,7 +99,7 @@ Route::group(['middleware' => ['admin']], function () {
 	Route::get('/view-accounts', 'pagesController@viewAccounts');
 	Route::get('/addaccount', 'AdminController@addaccount');
 	Route::get('/usermanagement', 'AdminController@usermanagement');
-	
+
 	//beneficiary
 	Route::get('admin/addBeneficiary', 'AdminController@addBeneficiary');
 	Route::get('admin/beneficiary', 'AdminController@ViewBeneficiary')->name('beneficiary');
@@ -109,14 +109,14 @@ Route::group(['middleware' => ['admin']], function () {
 	Route::get('admin/beneficiarydetails/{id}', 'AdminController@BeneficiaryDetails');
 	Route::post('admin/addbeneficiary', 'AdminController@addbeneficiary');
 	Route::post('admin/editbeneficiary/{beneficiary}', 'AdminController@postEditbeneficiary');
-	
+
 	Route::get('/web-analytics', 'pagesController@webAnalytics');
-	
+
 	Route::get('admin/createwallet', 'AdminController@wallet');
 	Route::post('admin/createwallet', 'AdminController@addwallet');
 	Route::get('admin/viewwallet/{walletId}', 'AdminController@show')->name('view-wallet');
 	Route::get('admin/wallet-details', 'AdminController@walletdetails');
-	
+
 	Route::resource('admin/users', 'Admin\UsersController');
 	//Route::resource('admin/users', 'Admin\UsersController');
 	Route::post('admin/users/store', 'Admin\UsersController@store');
@@ -138,4 +138,3 @@ Route::get('/view-accounts', 'pagesController@viewAccounts');
 Route::get('/addaccount', 'AdminController@addaccount');
 Route::get('/usermanagement', 'AdminController@usermanagement');
 Route::get('admin/analytics', 'AdminController@webAnalytics');
-
