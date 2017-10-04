@@ -78,7 +78,7 @@ function toWallet(){
     $response_arr = json_decode($response->raw_body, TRUE);
     $status = $response_arr['status'];
 
-    return redirect()->route('failed', ['response'=> $response_arr]);
+    return redirect()->action('pagesController@failed', ['response'=> $response_arr]);
     //dd($response_arr);
 }
 

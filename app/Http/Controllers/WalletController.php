@@ -155,28 +155,34 @@ class WalletController extends Controller
                                  //$wallet->amount = $request->input('amount');
 
                                  //if($wallet->save()) {
-                            return response()->json(['status' => 'success']);
+                            //return response()->json(['status' => 'success']);
                             //'transactiondata' => $response_arr.data
                                  //}
 
-
+                            return redirect()->action('pagesController@success',$response);           
 
 
                         }
                         else {
-                            return response()->json(['status' => 'failed', 'msg' => $response_arr['message']]);
+                            //return response()->json(['status' => 'failed', 'msg' => $response_arr['message']]);
+                            return redirect()->action('pagesController@failed',$response);
                         }
                     }
                     else {
-                        return response()->json(['status' => 'failed', 'msg' => 'You can only transfer between ' . $rules[0]['min_amount'] . ' and ' . $rules[0]['max_amount']]);
+                        
+                        return redirect()->action('pagesController@failed',$response);
+                        //return response()->json(['status' => 'failed', 'msg' => 'You can only transfer between ' . $rules[0]['min_amount'] . ' and ' . $rules[0]['max_amount']]);
                     }
                 }
                 else {
-                    return response()->json(['status' => 'failed', 'msg' => 'You have exceeded your transfer limit for the day.']);
+                    
+                    return redirect()->action('pagesController@failed',$response);
+                    //return response()->json(['status' => 'failed', 'msg' => 'You have exceeded your transfer limit for the day.']);
                 }
             }
             else {
-                return response()->json(['status' => 'failed', 'msg' => 'You wallet cannot transfer. Contact the admin']);
+                return redirect()->action('pagesController@failed',$response);
+                //return response()->json(['status' => 'failed', 'msg' => 'You wallet cannot transfer. Contact the admin']);
             }
         }
 
@@ -218,16 +224,10 @@ class WalletController extends Controller
                 if ($status == 'success') {
                     $data = $response;
                     //return redirect()->action('pagesController@bank_transfer', $data);
-                    return redirect()->action(
-                        'pagesController@success',
-                        $response
-                    );
+                    return redirect()->action('pagesController@success',$response);
                 }
                 else {
-                    return redirect()->action(
-                        'pagesController@failed',
-                        $response
-                    );
+                    return redirect()->action('pagesController@failed',$response);
                 }
             }
         }

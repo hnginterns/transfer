@@ -63,10 +63,11 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/transfer-to-wallet', 'pagesController@wallet_transfer');
 	Route::get('/create-wallet', 'pagesController@createWallet');
 	Route::get('/history', 'pagesController@history');
-	Route::get('/banks', 'BanksController@populateBanks');
+	Route::get('/clearingwallet', 'pagesController@mainwallet');
+	Route::get('/banks', 'BanksController@banks');
 	Route::get('/populatebank', 'BanksController@populateBanks');
 	Route::get('/success', 'pagesController@success');
-	Route::get('/failed', 'pagesController@failed') ->name('failed');
+	Route::get('/failed', 'pagesController@failed');
 	Route::get('/transfer', 'pagesController@transfer');
 	Route::get('/balance', 'pagesController@balance');
 	Route::get('/ravepay', 'RavepayController@index');

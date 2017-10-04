@@ -34,4 +34,10 @@ class BanksController extends Controller
         $banks = $lists;
        return view('banks', compact('banks')); 
     }
+
+    public static function getAllBanks(){
+        $banks = Bank::all();            
+        
+       return $banks ; 
+    }
 }
