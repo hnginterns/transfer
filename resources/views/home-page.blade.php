@@ -117,16 +117,18 @@
         }
 
         #heading-hd {
-            font-size: 26px;
+            font-size: 36px;
             letter-spacing: 0.07em;
             padding-right: 100px;
         }
 
         #text-hd {
-            padding-right: 100px;
-            word-spacing: 0.09em;
-            letter-spacing: 0.05em;
-            z-index: 100;
+          padding-right: 100px;
+          word-spacing: 0.09em;
+          letter-spacing: 0.05em;
+          z-index: 100;
+          font-size: 16px;
+          line-height: 25px;
         }
 
         #button-hd {
@@ -162,7 +164,7 @@
         #divider,
         #footer {
             text-align: center;
-            margin-top: 90px;
+            margin-top: 30px;
         }
 
         .section-header {
@@ -225,9 +227,9 @@
 
         /* SECTION 2 STYLE */
         .testimony-img {
-            width: 60px;
-            height: 60px;
-            border-radius: 30px;
+            width: 100px;
+            height: 100px;
+            border-radius: 90px;
             /* background: linear-gradient(180deg, #358CAA 1.49%, #F87373 98.73%); */
             background: linear-gradient(180deg, #FF6200 0%, #000000 98.9%);
         }
@@ -752,7 +754,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#"><img id="logo" src="img/logo.png" alt="Company logo" style="display: inline;"> TransferRules</a>
+                <a class="navbar-brand" href="#"><img id="logo" src="img/logo.png" alt="Company logo" style="display: inline;"> </a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
@@ -780,10 +782,10 @@
         <img src="img/phone.png" alt="Transfer rules mobile app screenshot" id="mobile-app">
         <div id="content-text" class="clearfix">
                 <span id="heading-hd">
-                    Create an account for your company with TransferRules
+                    TransferRules
                 </span>
             <span id="text-hd">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+                    Create an account for your company with TransferRules and gain full control over financial transactions, disbursement of funds and lot more services.
                 </span>
             <button id="button-hd">
                 DOWNLOAD APP
@@ -799,32 +801,26 @@
     <p class="section-header">
         Amazing Features
     </p>
-    <p class="section-sub">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-    </p>
+      <!-- <p class="section-sub">
+          Enjoy our great and amazing features
+      </p> -->
     <div id="features">
         <img src="img/screenshots.png" alt="site screenshot" id="screenshots">
         <div id="features-list">
             <div class="feature">
                 <span class="feature-img"></span>
                 <span id="feature-heading">Get Payment <span class="fa fa-money features-icons"></span></span>
-                <span class="feature-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
+                <span class="feature-text">You can trust transferrules with fast and secure online payment.</span>
             </div>
             <div class="feature">
                 <span class="feature-img"></span>
                 <span id="feature-heading">Manage Funds <span class="fa fa-money features-icons"></span></span>
-                <span class="feature-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
+                <span class="feature-text">Transferrules gives you full control to manage and track your company funds.</span>
             </div>
             <div class="feature">
                 <span class="feature-img"></span>
                 <span id="feature-heading">Access Wallet <span class="fa fa-shopping-bag features-icons"></span></span>
-                <span class="feature-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
-            </div>
-            <div class="feature">
-                <span class="feature-img"></span>
-                <span id="feature-heading">Multiple User Access <span class="fa fa-users features-icons"></span></span>
-                <span class="feature-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
+                <span class="feature-text">Create, access and manage unlimited number of wallets for every staff.</span>
             </div>
         </div>
     </div>
@@ -838,29 +834,29 @@
         Testimonies
     </p>
     <p class="section-sub">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+        Our Users are passionate about us because we are passionate about them. Hear what they say about us!
     </p>
 
     <div id="t-container">
         <div class="row">
             <div class="media col-md-6" id="media1">
                 <a class="pull-left" href="#">
-                    <span class="media-object testimony-img"></span>
+                    <img src="img/man.jpg" alt="man" class="testimony-img">
                 </a>
                 <div class="media-body">
-                    <h4 class="media-heading name">Name</h4>
-                    <p class="testimony">Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i</p>
+                    <h4 class="media-heading name">Mr. Musa Abubakar</h4>
+                    <p class="testimony">It has been more than 2 years my company started using TRANSFERRULES for fund disbursement and i must confess it has been great, fast and secure. </p>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="media col-md-12 pull-right" id="media2">
                 <a class="pull-right" href="#">
-                    <span class="media-object testimony-img"></span>
+                    <img src="img/woman.jpg" alt="man" class="testimony-img">
                 </a>
                 <div class="media-body">
-                    <h4 class="media-heading name">Name</h4>
-                    <p class="testimony">Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i</p>
+                    <h4 class="media-heading name">Miss Natasha Paul</h4>
+                    <p class="testimony">Thank you TRANSFERRULES for providing a secure, friendly and trusted way for we to manage funds in my company.</p>
                 </div>
             </div>
         </div>
@@ -872,13 +868,12 @@
 <div id="divider">
     <div id="divider-content">
         <div id="divider-text">
-            <p id="divider-title">Imagine your companie's future</p>
+            <p id="divider-title">Get Started in Five Minutes</p>
             <p id="">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, Lorem ipsum dolor sit amet, consectetur adipiscing
+                Create an account in less than 5 minutes. Login to your account and create wallets for your company
             </p>
         </div>
-        <button id="divider-cta">GET STARTED</button>
+        <button id="divider-cta">Sign Up Now</button>
     </div>
 </div>
 <!-- DIVIDER ENDS-->
@@ -886,25 +881,22 @@
 <!-- FOOTER -->
 
 <div id="footer">
-    <div id="footer-heading">
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-    </div>
     <div id="footer-links">
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/home">Privacy Policy</a></li>
+
+        <li><a href="#">How it works</a></li>
+        <li><a href="#">Sign Up</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Disclaimer</a></li>
+
+        <li><a href="#">Help & Support</a></li>
+        <li><a href="#">Sign In</a></li>
+        <li><a href="#">FAQs</a></li>
+        <li><a href="#">Terms & Condition</a></li>
+
+        <li><a href="#">Site Map</a></li>
     </div>
     <p id="line"> </p>
     <div id="lower-footer">

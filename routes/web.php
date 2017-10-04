@@ -104,13 +104,13 @@ Route::group(['middleware' => ['admin']], function () {
 	//fund wallet
 	Route::get('/admin/fundwallet', 'AdminController@fundwallet');
 	Route::post('/admin/fundWallet', 'WalletController@cardWallet');
-	
+
 	// admin routes
 	Route::get('/view-accounts', 'pagesController@viewAccounts');
 	Route::get('/usermanagement', 'AdminController@usermanagement');
+
 	Route::get('/addaccount', 'AdminController@addaccount');
-	
-	//beneficiary
+
 	Route::get('admin/addBeneficiary', 'AdminController@addBeneficiary');
 	Route::get('admin/beneficiary', 'AdminController@ViewBeneficiary')->name('beneficiary');
 	Route::get('admin/addbeneficiary', 'AdminController@beneficiary');
@@ -148,4 +148,3 @@ Route::get('/view-accounts', 'pagesController@viewAccounts');
 Route::get('/addaccount', 'AdminController@addaccount');
 Route::get('/usermanagement', 'AdminController@usermanagement');
 Route::get('admin/analytics', 'AdminController@webAnalytics');
-
