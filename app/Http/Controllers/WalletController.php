@@ -26,6 +26,8 @@ class WalletController extends Controller
         //
 
 
+
+
     }
 
     //get token for new transaction
@@ -52,41 +54,41 @@ class WalletController extends Controller
     public function cardWallet(Request $request)
     {
         $token = $this->getToken();
-        $headers = array('content-type' => 'application/json','Authorization'=>$token);
-$query = array(
-           "firstname"=> $request->fname,
-           "lastname"=> $request->lname,
-           "email"=>$request->emailaddr,
-           "phonenumber"=>$request->phone,
-           "recipient"=>"wallet",
-           "card_no"=> $request->card_no,
-           "cvv"=> $request->cvv,
-           "pin"=>$request->pin, //optional required when using VERVE card
-           "expiry_year"=>$request->expiry_year,
-           "expiry_month"=>$request->expiry_month,
-           "charge_auth"=>"PIN", //optional required where card is a local Mastercard
-           "apiKey" =>"ts_PQOAA7GKWFH3RKC9CP83",
-           "amount" =>$request->amount,
-           "fee"=>0,
-           "medium"=> "web",
-           "redirecturl"=> "https://google.com"
-    ); 
-$body = \Unirest\Request\Body::json($query);
+        $headers = array('content-type' => 'application/json', 'Authorization' => $token);
+        $query = array(
+            "firstname" => $request->fname,
+            "lastname" => $request->lname,
+            "email" => $request->emailaddr,
+            "phonenumber" => $request->phone,
+            "recipient" => "wallet",
+            "card_no" => $request->card_no,
+            "cvv" => $request->cvv,
+            "pin" => $request->pin, //optional required when using VERVE card
+            "expiry_year" => $request->expiry_year,
+            "expiry_month" => $request->expiry_month,
+            "charge_auth" => "PIN", //optional required where card is a local Mastercard
+            "apiKey" => "ts_PQOAA7GKWFH3RKC9CP83",
+            "amount" => $request->amount,
+            "fee" => 0,
+            "medium" => "web",
+            "redirecturl" => "https://google.com"
+        );
+        $body = \Unirest\Request\Body::json($query);
 
-$response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer', $headers, $body);
-    var_dump($response);
+        $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer', $headers, $body);
+        var_dump($response);
     }
-    
+
     public function createWallet()
     {
         $token = $this->getToken();
         $headers = array('content-type' => 'application/json', 'Authorization' => $token);
         $query = array(
-            "sourceWallet"=> "932405db53",
-      "recipientWallet"=> "aacafb2209",
-      "amount"=> "20000",
-      "currency"=> "NGN",
-      "lock"=>"12345"
+            "sourceWallet" => "932405db53",
+            "recipientWallet" => "aacafb2209",
+            "amount" => "20000",
+            "currency" => "NGN",
+            "lock" => "12345"
         );
         $body = \Unirest\Request\Body::json($query);
         $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/wallet', $headers, $body);
@@ -158,6 +160,8 @@ $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer'
                                  //}
 
 
+
+
                         }
                         else {
                             return response()->json(['status' => 'failed', 'msg' => $response_arr['message']]);
@@ -214,11 +218,16 @@ $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer'
                 if ($status == 'success') {
                     $data = $response;
                     //return redirect()->action('pagesController@bank_transfer', $data);
-                    return redirect()->back()->with('data', 'some kind of data');
+                    return redirect()->action(
+                        'pagesController@success',
+                        $response
+                    );
                 }
                 else {
-                    //return redirect()->action('pagesController@bank_transfer',  $data);
-                    return redirect()->back()->with('data', 'failed some kind of data');
+                    return redirect()->action(
+                        'pagesController@failed',
+                        $response
+                    );
                 }
             }
         }
@@ -236,6 +245,8 @@ $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer'
         var_dump($walletBalance);
         die();
                 //return view('walletBalance', compact('walletBalance'));
+
+
 
 
     }
@@ -333,6 +344,8 @@ $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer'
     {
         return Validator::make($data, [
             //'sender_name' => 'required|string',
+
+
 
 
             'wallet_name' => 'required|string',
