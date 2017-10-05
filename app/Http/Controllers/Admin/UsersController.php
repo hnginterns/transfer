@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\User;
+
 use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
@@ -115,7 +116,7 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
+        $user = App\User::find($id);
         $name = Auth::user()->username;
         return view('users.edit', compact('user','id'))->with("name", $name);
     }
