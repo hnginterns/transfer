@@ -31,7 +31,7 @@
                 <img src="https://adminlte.io/themes/AdminLTE/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                	{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
+                	{{ Auth::user()->email }}
                   
                   <small>{{ Auth::user()->itle }}</small>
                 </p>
