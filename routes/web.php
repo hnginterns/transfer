@@ -112,8 +112,8 @@ Route::group(['middleware' => ['admin']], function () {
   	Route::post('admin/beneficiaries/update/{id}', 'Admin\BeneficiaryController@update')->name('beneficiaries.update');
   	Route::get('admin/beneficiaries/delete/{id}', 'Admin\BeneficiaryController@delete')->name('beneficiaries.delete');
 
-	  Route::get('/admin/addpermission', 'Admin\WalletController@addPermission');
-
+	Route::get('/admin/addpermission', 'Admin\WalletController@addPermission');
+	Route::post('/admin/addpermission', 'Admin\WalletController@PostAddPermission');
 
 	Route::get('/admin', 'AdminController@index')->name('admin.dashboard');
 	Route::get('/admin/managewallet', 'AdminController@managewallet');
