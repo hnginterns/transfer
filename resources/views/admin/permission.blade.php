@@ -70,7 +70,7 @@
       <div class="beneficiary-row row">
         <div class="single-beneficiary-holder col-md-6">
             <div class="inner-holder">
-                <h3 class="beneficiary-name">Permissions</h3>
+                <h3 class="beneficiary-name">Permissions</h3><hr>
                 <form action="fundWallet" method="POST">
                   {{ csrf_field() }}
                   
