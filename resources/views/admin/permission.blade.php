@@ -71,20 +71,25 @@
         <div class="single-beneficiary-holder col-md-6">
             <div class="inner-holder">
                 <h3 class="beneficiary-name">Permissions</h3><hr>
-                <form action="fundWallet" method="POST">
+                <form action="" method="POST">
                   {{ csrf_field() }}
                   
                   <div class="form-group">
                     <label>Select User</label>
-                    <select id="" name="" class="form-control">
-                      <options value="ss">select user</options>
+                    <select id="" name="uuid" class="form-control">
+                    <!-- <options>--Select user--</options> -->
+                    @foreach($user as $key => $users)
+                      <options value="{{$users->id}}">{{$users->email}}</options>
+                    @endforeach
                     </select>
                   </div> 
 
                   <div class="form-group">
-                   <label>Add wallet</label>
+                   <!-- <label>Add wallet</label> -->
                     <select id="" name="" class="form-control">
-                      <options value="">Select wallet</options>
+                      @foreach($wallet as $key => $wallets)
+                      <options value="{{$wallets->id}}">{{$wallets->wallet_name}}</options>
+                      @endforeach
                     </select>
                   </div> 
 

@@ -156,7 +156,6 @@ class AdminController extends WalletController
             if (!is_bool($wallet_data)) {
                 $this->storeWalletDetailsToDB(
                     $wallet_data,
-                    $request->uuid,
                     $request->lock_code,
                     $request->wallet_name
                 );
