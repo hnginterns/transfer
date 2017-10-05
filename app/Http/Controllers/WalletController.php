@@ -75,7 +75,7 @@ class WalletController extends Controller
         $response = $response['data'];
         $response = $response['transfer']['meta'];
         $response = json_decode($response, TRUE);
-        var_dump($response);
+        var_dump($response['processor']['transactionreference']);
     }
 
     public function createWallet()
