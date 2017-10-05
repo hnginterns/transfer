@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="col-sm-10">
-  <form method="post" action="{{action('Admin\UsersController@update', $id)}}">
+  <form method="post" action="{{action('UsermgtController@update', $id)}}">
     <div class="form-group row">
       {{csrf_field()}}
        <input name="_method" type="hidden" value="PATCH">
