@@ -1,4 +1,6 @@
 @extends('layouts.admin')
+@section('title', 'Manage User')
+@section('subtitle', 'Users List')
 @section('content')
 <div class="col-sm-10">
 
