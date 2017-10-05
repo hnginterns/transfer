@@ -103,9 +103,9 @@ class pagesController extends Controller
     }
 
 
-    public function history()
+    public function walletView()
     {
-        return view('history');
+        return view('wallet-view');
     }
 
     public function createWallet()
