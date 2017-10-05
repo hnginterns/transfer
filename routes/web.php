@@ -186,7 +186,7 @@ Route::group(['middleware' => ['admin']], function () {
 	// admin routes
 	Route::get('/view-accounts', 'pagesController@viewAccounts');
 	Route::get('/addaccount', 'AdminController@addaccount');
-	Route::get('/usermanagement', 'AdminController@usermanagement');
+	Route::get('/userwalment', 'AdminController@usermanagement');
 	Route::get('admin/analytics', 'AdminController@webAnalytics');
 
 });

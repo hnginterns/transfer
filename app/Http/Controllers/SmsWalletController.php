@@ -34,7 +34,7 @@ class SmsWalletController extends Controller
             $detail  = [
                     'username' => $wallet['username'],
                     'balance' => $response->raw_body
-                    ];
+                ];
 
             array_push($smswalletdetails, $detail);
         }
