@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\User;
+
 use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
@@ -23,7 +24,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::withTrashed()->get()->toArray();
+        $users = User::all();
         //dd($users);
         $name = Auth::user()->username;
         return view('users.index', compact('users'))->with("name", $name);
@@ -35,7 +36,7 @@ class UsersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
+    {   
         $name = Auth::user()->username;
         return view('users.create')->with("name", $name);
     }
@@ -56,11 +57,9 @@ class UsersController extends Controller
             'email' => 'bail|email|required',
             'password' => 'bail|required',
             'confirmpassword' => 'bail|required'
-            ],
-            [
-                'required' => ':attribute is required'
             ]
         );
+
         if ($validator->fails()) 
         {
             $messages = $validator->messages()->toArray();
@@ -90,7 +89,6 @@ class UsersController extends Controller
               'is_admin' => 0,
               "created_by" => Auth::user()->id,
               "role_id" => 0,
-              "created_at" => $dateNow
             ]);
             return redirect()->to('/admin/users');
         }
@@ -104,7 +102,7 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
     }
 
     /**

@@ -19,18 +19,10 @@ class CreateBeneficiariesTable extends Migration
             $table->integer('wallet_id')->unsigned();
             $table->string('name', 50);
             $table->integer('bank_id')->unsigned();
+            $table->string('bank_name', 255);
             $table->string('account_number',10);
+            $table->softDeletes();
             $table->timestamps();
-
-            $table->foreign('uuid')->references('id')
-                  ->on('users')
-                  ->onDelete('cascade')
-                  ->onUpdate('cascade');
-
-            $table->foreign('wallet_id')->references('id')
-                  ->on('wallets')
-                  ->onDelete('cascade')
-                  ->onUpdate('cascade');
         });
     }
 

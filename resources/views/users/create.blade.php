@@ -1,10 +1,14 @@
 @extends('layouts.admin')
+@section('title', 'Manage User')
+@section('subtitle', 'Add User')
+
 @section('content')
 <div class="col-sm-10">
   @if (Session::has('messages'))
       {!! Session::get('messages') !!}
   @endif
-  <form method="post" action="{{url('admin/users/store')}}">
+  <form method="post" action="{{action('UsermgtController@store')}}">
+    
     <div class="form-group row">
       {{csrf_field()}}
       <label for="username" class="col-sm-2 col-form-label col-form-label-lg">Username</label>

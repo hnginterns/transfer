@@ -14,7 +14,7 @@ use App\Http\Controllers\Controller;
 use App\Beneficiary;
 use Illuminate\Support\Facades\Hash;
 
-class UsersController extends Controller
+class BeneficiaryController extends Controller
 {
     /**
      * Display a listing of the resource.

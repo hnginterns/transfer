@@ -15,12 +15,9 @@ use Carbon\Carbon;
 
 class AdminController extends WalletController
 {
-
-  public function __construct()
+    public function __construct()
     {
-
         $this->middleware('admin')->except('logout');
-
     }
 
     public function index()
@@ -28,20 +25,19 @@ class AdminController extends WalletController
         $name = Auth::user()->username;
         $wallets = Wallet::all();
         $users = User::all();
-        return view('admin.admindashboard', compact('wallets', 'users'));
+        return view('admin.dashboard', compact('wallets', 'users'));
     }
 
     public function setRule()
     {
-    	// Basically display a paage on which rules are set
+        // Basically display a paage on which rules are set
         $name = Auth::user()->username;
         return view('admin.set-rules')->with("name", $name);
     }
 
     public function saveRule(Request $request)
     {
-    	// logic for saving the rules Lies Here
-
+        // logic for saving the rules Lies Here
     }
 
     public function viewRules()
@@ -54,14 +50,13 @@ class AdminController extends WalletController
 
     public function createRule()
     {
-    	// Basically display a page on which rules are created e.g A form
+        // Basically display a page on which rules are created e.g A form
         $name = Auth::user()->username;
         return view('admin.create-rules')->with("name", $name);
     }
 
     public function editRules($ruleId)
     {
-
         $rule = Rule::find($ruleId);
 
         return view('admin.editrules', compact('rule'));
@@ -72,7 +67,6 @@ class AdminController extends WalletController
         $rule = Rule::find($request->rule_id);
 
         if ($rule) {
-
             $rule->rule_name = $request->rule_name;
             $rule->max_amount = $request->max_amount;
             $rule->min_amount = $request->min_amount;
@@ -83,24 +77,22 @@ class AdminController extends WalletController
 
             if ($rule->save()) {
                 return redirect('admin/view-rules');
-            }
-            else {
+            } else {
                 return redirect()->back()->with('status', 'Rule update Failed!');
             }
         }
     }
-	
+
     public function deleteRule($ruleId)
     {
         $rule = Rule::find($ruleId);
 
         if ($rule) {
-	     $rule->delete();
-             return redirect('admin/view-rules');
-	}
-        else {
-             return redirect()->back()->with('status', 'Delete Rule Failed!');
-	}
+            $rule->delete();
+            return redirect('admin/view-rules');
+        } else {
+            return redirect()->back()->with('status', 'Delete Rule Failed!');
+        }
     }
 
     public function saveNewRule(Request $request)
@@ -112,9 +104,7 @@ class AdminController extends WalletController
             $messages = $validator->messages()->toArray();
             Session::flash('messages', $this->formatMessages($messages, 'error'));
             return redirect()->to(URL::previous())->withInput();
-        }
-        else {
-
+        } else {
             $rule = new Rule;
             $rule->rule_name = $request->rule_name;
             $rule->max_amount = $request->max_amount;
@@ -128,28 +118,26 @@ class AdminController extends WalletController
             if ($rule->save()) {
                 // Session::flash('messages', $this->formatMessages("Rule Could not be created", 'error'));
                 return redirect()->to(URL::previous());
-
-            }
-            else {
+            } else {
                 Session::flash('messages', $this->formatMessages("Rule Could not be created", 'error'));
                 return redirect()->to(URL::previous());
             }
         }
-
     }
 
 
     public function settings()
     {
-    	// Basically display a paage on which the company can edit settings
+        // Basically display a paage on which the company can edit settings
         return view('admin.setting');
     }
 
-    
+
     public function managewallet()
     {
-
         $wallets = Wallet::all();
+        //return $wallets->toJson();
+        //dd($wallets);
         $transaction = \App\Http\Utilities\Wallet::all();
 
         return view('admin.managewallet', compact('wallets', 'transaction'));
@@ -157,23 +145,19 @@ class AdminController extends WalletController
 
     public function addWallet(Request $request)
     {
-
         $validator = $this->validateWallet($request->all());
 
         if ($validator->fails()) {
             $messages = $validator->messages()->toArray();
             Session::flash('messages', $this->formatMessages($messages, 'error'));
             return redirect()->to(URL::previous())->withInput();
-        }
-        else {
+        } else {
             $wallet_data = $this->createWalletAdmin($request);
-                    // dd($wallet_data);
             if (!is_bool($wallet_data)) {
                 $this->storeWalletDetailsToDB(
                     $wallet_data,
-                    $request->user_id,
+                    $request->uuid,
                     $request->lock_code,
-                    $request->rule_id,
                     $request->wallet_name
                 );
             }
@@ -190,50 +174,44 @@ class AdminController extends WalletController
             $messages = $validator->messages()->toArray();
             Session::flash('messages', $this->formatMessages($messages, 'error'));
             return redirect()->to(URL::previous())->withInput();
-        }
-        else {
+        } else {
             $beneficiary = new Beneficiary;
             $beneficiary->name = $request->name;
             $beneficiary->account_number = $request->account_number;
-            $beneficiary->bank_id = $request->bank_id;
+
+            list($bank_id, $bank_name) = explode('||', $request->bank_id);
+            $beneficiary->bank_id = $bank_id;
+            $beneficiary->bank_name = $bank_name;
             $beneficiary->uuid = Auth::user()->id;
             if ($beneficiary->save()) {
                 return redirect('/admin/beneficiary')->with('success', 'Beneficiary added');
-            }
-            else {
+            } else {
                 return redirect('/admin/beneficiary')->with('failure', 'Beneficiary could not be added');
             }
-
-
-
         }
-
-
     }
 
-    public function postEditBeneficiary(Request $request, Beneficiary $beneficiary){
+    public function postEditBeneficiary(Request $request, Beneficiary $beneficiary)
+    {
         $validator = $this->validateBeneficiary($request->all());
 
         if ($validator->fails()) {
             $messages = $validator->messages()->toArray();
             Session::flash('messages', $this->formatMessages($messages, 'error'));
             return redirect()->to(URL::previous())->withInput();
-        }
-        else {
+        } else {
             $beneficiary->name = $request->name;
             $beneficiary->account_number = $request->account_number;
             $beneficiary->bank_id = $request->bank_id;
             if ($beneficiary->save()) {
                 return redirect('/admin/beneficiary')->with('success', 'Beneficiary added');
-            }
-            else {
+            } else {
                 return redirect('/admin/beneficiary')->with('failure', 'Beneficiary could not be added');
             }
-    }
+        }
     }
     public function saveSettings()
     {
-
     }
 
     public function editbeneficiary(Beneficiary $beneficiary)
@@ -256,23 +234,19 @@ class AdminController extends WalletController
 
     public function wallet()
     {
-        $rule = Rule::all();
         $user = User::all();
-        $user_ref = substr(md5(Carbon::now()), 0, 10);
-        return view('admin/createwallet', compact('rule', 'user', 'user_ref'));
+        
+        return view('admin/createwallet', compact('user'));
     }
 
     public function show($walletId)
     {
-
         $wallet = Wallet::find($walletId);
         $transaction = \App\Http\Utilities\Wallet::all();
 
         $user = $wallet->users()->get()->toArray();
 
         $userRef = substr(md5(Carbon::now()), 0, 10);
-
-
 
         return view('admin/walletdetails', compact('wallet', 'user', 'transaction'));
     }
@@ -287,35 +261,36 @@ class AdminController extends WalletController
         $data = json_decode($response->raw_body, true);
         $walletBalance = $data['data'];
 
-			//$walletBalance = array_pluck($walletBalance, 'id', 'id');
+        //$walletBalance = array_pluck($walletBalance, 'id', 'id');
         dd($walletBalance);
-
     }
 
-    public function archiveWallet($id) {
-      $wallet = Wallet::findOrFail($id);
+    public function archiveWallet($id)
+    {
+        $wallet = Wallet::findOrFail($id);
 
-      Wallet::where('id', $id)->update(['archived' => 1]);
+        Wallet::where('id', $id)->update(['archived' => 1]);
 
-      return redirect('/admin/viewwallet/'.$id)->with('message', 'Wallet Archived successfully.');
+        return redirect('/admin/viewwallet/'.$id)->with('message', 'Wallet Archived successfully.');
     }
 
-    public function activateWallet($id) {
-      $wallet = Wallet::findOrFail($id);
+    public function activateWallet($id)
+    {
+        $wallet = Wallet::findOrFail($id);
 
-      Wallet::where('id', $id)->update(['archived' => 0]);
+        Wallet::where('id', $id)->update(['archived' => 0]);
 
-      return redirect('/admin/viewwallet/'.$id)->with('message', 'Wallet Activated successfully.');
+        return redirect('/admin/viewwallet/'.$id)->with('message', 'Wallet Activated successfully.');
     }
 
     public function fundWallet()
     {
-       return View('admin/fundwallet');
-
+        return View('admin/fundwallet');
     }
 
-    public function webAnalytics() {
-        return view ('admin/analytics');
+    public function webAnalytics()
+    {
+        return view('admin/analytics');
     }
 
     public function ViewBeneficiary()
@@ -324,7 +299,7 @@ class AdminController extends WalletController
 
         $beneficiaries = $beneficiaries->load('bank');
         // dd($beneficiaries);
-      return view ('admin/managebeneficiary', compact('beneficiaries'));
+        return view('admin/managebeneficiary', compact('beneficiaries'));
     }
 
     public function BeneficiaryDetails($id)
@@ -332,17 +307,16 @@ class AdminController extends WalletController
         $beneficiary = Beneficiary::find($id);
         return view('admin/beneficiarydetails', compact('beneficiary'));
     }
-	
+
     public function deletebeneficiary($beneficiary)
     {
         $beneficiary = Beneficiary::find($beneficiary);
-	if($beneficiary){
-	     $beneficiary->delete();
-             return redirect('admin/beneficiary');
-	}
-        else {
-             return redirect()->back()->with('status', 'Delete Beneficiary Failed!');
-	}
+        if ($beneficiary) {
+            $beneficiary->delete();
+            return redirect('admin/beneficiary');
+        } else {
+            return redirect()->back()->with('status', 'Delete Beneficiary Failed!');
+        }
     }
 
     public function beneficiary()
@@ -365,7 +339,6 @@ class AdminController extends WalletController
             'max_transactions_per_day' => 'required|numeric',
             'max_amount_transfer_per_day' => 'required|numeric',
         ]);
-
     }
 
 
@@ -379,13 +352,8 @@ class AdminController extends WalletController
     {
         return Validator::make($data, [
             'name' => 'required|string|max:255',
-            'bank_id' => 'required|numeric',
+            //'bank_id' => 'required|string',
             'account_number' => 'required|string|max:10',
         ]);
-
     }
-
-
-
-
 }

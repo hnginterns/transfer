@@ -12,129 +12,128 @@ use App\Http\Utilities\Wallet as UtilWallet;
 
 class pagesController extends Controller
 {
-  use AuthenticatesUsers;
+    use AuthenticatesUsers;
 
-  protected $redirectTo = '/dashboard';
+    protected $redirectTo = '/dashboard';
 
-  public function __contruct()
-  {
-    $this->middleware('auth')->except('signin');
-  }
-
-  public function home()
-  {
-    return view('home-page');
-  }
-
-  public function signin(Request $request)
-  {
-    $data['ref'] = str_replace('http://', '', str_replace('https://', '', URL::previous()));
-    $data['host'] = str_replace('http://', '', str_replace('https://', '', $request->server('HTTP_HOST')));
-
-    return $this->showLoginForm(); // Does the same thing as above
-    // return view ('sign-in');
-
-  }
-
-  public function userdashboard()
-  {
-    $wallets = Wallet::all();
-    $transaction = \App\Http\Utilities\Wallet::all();
-    $user_id = Auth::user()->id;
-    return view('dashboard', compact('wallets', 'transaction', 'user_id'));
-  }
-
-  public function about()
-  {
-    return view('about');
-  }
-
-  public function forgot()
-  {
-    return view('forgot');
-  }
-
-  public function signout()
-  {
-    return view('signin');
-  }
-
-
-  public function success()
-  {
-    return view('success');
-  }
-
-  public function failed($response)
-  {
-    return view('failed', compact($response));
-  }
-
-  public function balance()
-  {
-    return view('balance');
-  }
-
-  public function transfer()
-  {
-    return view('transfer');
-  }
-
-  public function bank_transfer()
-  {
-    $beneficiary = Beneficiary::all();
-    $wallets = Wallet::where('uuid', '=', Auth::user()->id)->get();
-    if (!empty($wallet)) {
-      //$wallet = $wallet[0];
-
+    public function __contruct()
+    {
+        $this->middleware('auth')->except('signin');
     }
 
-    return view('transfer-to-bank', compact('beneficiary', 'wallets', 'data'));
-  }
+    public function home()
+    {
+        return view('home-page');
+    }
 
-  public function wallet_transfer()
-  {
-    $wallets = Wallet::all();
-    $user_id = Auth::user()->id;
-    return view('transfer-to-wallet', compact('wallets'))->with('user_id', $user_id);
-  }
+    public function signin(Request $request)
+    {
+        $data['ref'] = str_replace('http://', '', str_replace('https://', '', URL::previous()));
+        $data['host'] = str_replace('http://', '', str_replace('https://', '', $request->server('HTTP_HOST')));
 
-  public function viewAccounts()
-  {
-    return view('view-accounts');
-  }
+        return $this->showLoginForm(); // Does the same thing as above
+    // return view ('sign-in');
+    }
+
+    public function userdashboard()
+    {
+        $wallets = Wallet::all();
+        $transaction = \App\Http\Utilities\Wallet::all();
+        $user_id = Auth::user()->id;
+        return view('dashboard', compact('wallets', 'transaction', 'user_id'));
+    }
+
+    public function about()
+    {
+        return view('about');
+    }
+
+    public function forgot()
+    {
+        return view('forgot');
+    }
+
+    public function signout()
+    {
+        return view('signin');
+    }
 
 
-  public function history()
-  {
-    return view('history');
-  }
+    public function success()
+    {
+        return view('success');
+    }
 
-  public function createWallet()
-  {
-    return view('create-wallet');
-  }
+    public function failed($response)
+    {
+        return view('failed', compact($response));
+    }
 
-  public function createBeneficiary()
-  {
-    return view('create-beneficiary');
-  }
+    public function balance()
+    {
+        return view('balance');
+    }
 
-  public function viewBeneficiary()
-  {
-    return view('beneficiary-view');
-  }
+    public function transfer()
+    {
+        return view('transfer');
+    }
+
+    public function bank_transfer()
+    {
+        $beneficiary = Beneficiary::all();
+        $wallets = Wallet::where('uuid', '=', Auth::user()->id)->get();
+        if (!empty($wallet)) {
+            //$wallet = $wallet[0];
+        }
+
+        return view('transfer-to-bank', compact('beneficiary', 'wallets', 'data'));
+    }
+
+    public function wallet_transfer()
+    {
+        $wallets = Wallet::all();
+        $user_id = Auth::user()->id;
+        return view('transfer-to-wallet', compact('wallets'))->with('user_id', $user_id);
+    }
+
+    public function viewAccounts()
+    {
+        return view('view-accounts');
+    }
 
 
-  public function pagenotfound()
-  {
-    return view('404');
-  }
+    public function walletView()
+    {
+        return view('wallet-view');
+    }
 
-  //all other page functions can be added
-  /*
-  pubic function <function name> {
-    {all the logic}
-    return view('<blade name>');
-  }*/
+    public function createWallet()
+    {
+        return view('create-wallet');
+    }
+
+    public function createBeneficiary()
+    {
+        return view('create-beneficiary');
+    }
+
+    public function viewBeneficiary()
+    {
+        return view('beneficiary-view');
+    }
+
+
+    public function pagenotfound()
+    {
+        return view('404');
+    }
+
+
+    //all other page functions can be added
+
+    public function mainWallet()
+    {
+        return view('to-main-wallet');
+    }
 }

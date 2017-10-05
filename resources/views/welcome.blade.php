@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 function getToken()
 {
@@ -33,7 +33,7 @@ function transferAccount()
         "senderName" => 'Stephen',
         "narration" => '', //Optional
         "ref" => '1222',
-        "walletUref" => "20d24cb8c7" 
+        "walletUref" => "20d24cb8c7"
     ); // No Refrence from request
     $body = \Unirest\Request\Body::json($query);
     $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/disburse', $headers, $body);
@@ -66,19 +66,19 @@ function toWallet(){
     $headers = array('content-type' => 'application/json', 'Authorization' => $token);
 
     $query = array(
-        "sourceWallet" => 'Stephen Jude',
-        "recipientWallet" => 'Loans wallet',
-        "amount" => '538',
+        "sourceWallet" => '0',
+        "recipientWallet" => 'aacafb2209',
+        "amount" => '5038',
         "currency" => "NGN",
-        "lock" =>'ASDHFG'
+        "lock" =>'123456'
     );
 
     $body = \Unirest\Request\Body::json($query);
     $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/wallet/transfer', $headers, $body);
     $response_arr = json_decode($response->raw_body, TRUE);
     $status = $response_arr['status'];
-
-    return redirect()->route('failed', ['response'=> $response_arr]);
+    // dd($response_arr);a few chan
+    return redirect()->action('pagesController@failed', ['response'=> $response_arr]);
     //dd($response_arr);
 }
 

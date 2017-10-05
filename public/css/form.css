@@ -50,8 +50,8 @@
       cursor: pointer;
   }
 
-  .input-form>.form-group>button:hover,
-  .input-form>.form-group>button:focus {
+  .form-group>button:hover,
+  .form-group>button:focus {
       background: rgb(252, 251, 250);
       color: #FD8032;
       border-color: #FD8032;

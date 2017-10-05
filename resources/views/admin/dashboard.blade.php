@@ -1,4 +1,6 @@
 @extends('layouts.admin')
+@section('title', 'Dashboard')
+@section('subtitle', 'Control Panel')
 
 @section('content')
 
@@ -24,8 +26,6 @@ $totalwallets = count($wallets);
               <i class="fa fa-briefcase"></i>
             </div>
             <a href="{{ url('/admin/managewallet') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-
-            {{--  <a href="{{url('admin/managewallet')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>  --}}
 
           </div>
         </div>
