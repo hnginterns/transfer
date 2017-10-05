@@ -6,7 +6,7 @@
 
 <?php
 
-$tbeneficiaries = count($beneficiaries);
+//$tbeneficiaries = count($beneficiaries);
 
 ?>
 
