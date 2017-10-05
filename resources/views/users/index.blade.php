@@ -16,7 +16,7 @@
 
 	<a href="{{action('Admin\UsersController@create')}}" class="btn btn-success">Add User </a>
   
-    <table class="table table-striped">
+    <table id="datatable" class="table table-striped">
     <thead>
       <tr>
         <th>ID</th>
