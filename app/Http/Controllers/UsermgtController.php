@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
 use Auth;
 use Validator;
@@ -11,10 +11,11 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use App\Beneficiary;
+use App\User;
+
 use Illuminate\Support\Facades\Hash;
 
-class BeneficiaryController extends Controller
+class UsermgtController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,8 +24,7 @@ class BeneficiaryController extends Controller
      */
     public function index()
     {
-        $users = Beneficiary::withTrashed()->get()->toArray();
-
+        $users = User::all();
         //dd($users);
         $name = Auth::user()->username;
         return view('users.index', compact('users'))->with("name", $name);
@@ -55,13 +55,11 @@ class BeneficiaryController extends Controller
             'first_name' => 'bail|required',
             'last_name' => 'bail|required',
             'email' => 'bail|email|required',
-            'account_number' => 'bail|required|numeric',
             'password' => 'bail|required',
             'confirmpassword' => 'bail|required'
             ],
             [
-                'required' => ':attribute is required',
-                'numeric' => 'account number must be in numbers'
+                'required' => ':attribute is required'
             ]
         );
         if ($validator->fails()) 
@@ -91,12 +89,8 @@ class BeneficiaryController extends Controller
               'email' => $request->get('email'),
               'password' => $hashedpassword,
               'is_admin' => 0,
-              'bank_id' => "24",
-              "account_number" => $input['account_number'],
               "created_by" => Auth::user()->id,
-              "address" => "none",
               "role_id" => 0,
-              "updated_by" => 0,
               "created_at" => $dateNow
             ]);
             return redirect()->to('/admin/users');
@@ -111,7 +105,7 @@ class BeneficiaryController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
     }
 
     /**
@@ -141,8 +135,7 @@ class BeneficiaryController extends Controller
             'username' => 'bail|required',
             'email' => 'bail|email|required',
             'first_name' => 'bail|required',
-            'last_name' => 'bail|required',
-            'account_number' => 'bail|required|numeric'
+            'last_name' => 'bail|required'
             ],
             [
                 'required' => ':attribute is required',
@@ -163,8 +156,6 @@ class BeneficiaryController extends Controller
             $user->email = $input['email'];
             $user->first_name = $input['first_name'];
             $user->last_name = $input['last_name'];
-
-            $user->account_number = $input['account_number'];
             $user->save();
             $name = Auth::user()->username;
             return redirect('/admin/users')->with("name", $name);

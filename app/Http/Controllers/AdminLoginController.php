@@ -21,11 +21,9 @@ class AdminLoginController extends Controller
     public function showLoginForm()
     {
         if (Auth::check() && Auth::user()->is_admin == 1) {
-            //Auth::logout();
-            //$data['title'] = 'Admin login';
-            //return view('admin.ad-sign-in', $data);
             return redirect('/admin');
         }
+        
         $data['title'] = 'Admin login';
         return view('admin.ad-sign-in', $data);
     }

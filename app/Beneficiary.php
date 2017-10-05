@@ -3,9 +3,15 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Beneficiary extends Model
 {
+
+    use SoftDeletes;
+
+    protected $dates = ['deleted_at'];
+
     protected $guarded =[];
 
 
@@ -13,3 +19,4 @@ class Beneficiary extends Model
         return $this->hasOne(Bank::class,'bank_code','bank_id');
     }
 }
+    

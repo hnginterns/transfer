@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\User;
+
 use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
@@ -23,7 +24,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::withTrashed()->get()->toArray();
+        $users = User::all();
         //dd($users);
         $name = Auth::user()->username;
         return view('users.index', compact('users'))->with("name", $name);
@@ -104,7 +105,7 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
     }
 
     /**

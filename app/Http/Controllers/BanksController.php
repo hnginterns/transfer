@@ -39,6 +39,6 @@ class BanksController extends Controller
     {
         $banks = Bank::all();
 
-        return $banks ;
+        return $banks;
     }
 }

@@ -19,7 +19,9 @@ class CreateBeneficiariesTable extends Migration
             $table->integer('wallet_id')->unsigned();
             $table->string('name', 50);
             $table->integer('bank_id')->unsigned();
+            $table->string('bank_name', 255);
             $table->string('account_number',10);
+            $table->softDeletes();
             $table->timestamps();
 
             $table->foreign('uuid')->references('id')

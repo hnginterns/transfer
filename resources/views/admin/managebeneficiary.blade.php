@@ -74,7 +74,7 @@
   <div class="beneficiary-container">
 
       <div class="beneficiary-row row">
-        
+
         <div class="single-beneficiary-holder col-md-12">
             <div class="inner-holder">
             <div class="table-responsive">
@@ -93,7 +93,7 @@
                             <th></th>
                             <th></th>
                         </tr>
-                        
+
                         <tbody>
                         @php($i = 1)
                         @foreach($beneficiaries as $key => $beneficiary)
@@ -113,7 +113,7 @@
                 <!-- /.table-responsive -->
             </div>
         </div>
-       
+
 
       </div>
   </div>

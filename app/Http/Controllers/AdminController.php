@@ -25,7 +25,7 @@ class AdminController extends WalletController
         $name = Auth::user()->username;
         $wallets = Wallet::all();
         $users = User::all();
-        return view('admin.admindashboard', compact('wallets', 'users'));
+        return view('admin.dashboard', compact('wallets', 'users'));
     }
 
     public function setRule()
@@ -136,6 +136,8 @@ class AdminController extends WalletController
     public function managewallet()
     {
         $wallets = Wallet::all();
+        //return $wallets->toJson();
+        //dd($wallets);
         $transaction = \App\Http\Utilities\Wallet::all();
 
         return view('admin.managewallet', compact('wallets', 'transaction'));
@@ -178,7 +180,10 @@ class AdminController extends WalletController
             $beneficiary = new Beneficiary;
             $beneficiary->name = $request->name;
             $beneficiary->account_number = $request->account_number;
-            $beneficiary->bank_id = $request->bank_id;
+
+            list($bank_id, $bank_name) = explode('||', $request->bank_id);
+            $beneficiary->bank_id = $bank_id;
+            $beneficiary->bank_name = $bank_name;
             $beneficiary->uuid = Auth::user()->id;
             if ($beneficiary->save()) {
                 return redirect('/admin/beneficiary')->with('success', 'Beneficiary added');
@@ -245,8 +250,6 @@ class AdminController extends WalletController
         $user = $wallet->users()->get()->toArray();
 
         $userRef = substr(md5(Carbon::now()), 0, 10);
-
-
 
         return view('admin/walletdetails', compact('wallet', 'user', 'transaction'));
     }
@@ -352,7 +355,7 @@ class AdminController extends WalletController
     {
         return Validator::make($data, [
             'name' => 'required|string|max:255',
-            'bank_id' => 'required|numeric',
+            //'bank_id' => 'required|string',
             'account_number' => 'required|string|max:10',
         ]);
     }
