@@ -137,10 +137,10 @@ class AdminController extends WalletController
     {
         $wallets = Wallet::all();
         return $wallets->toJson();
-        //dd($wallets);
-        //$transaction = \App\Http\Utilities\Wallet::all();
+        dd($wallets);
+        $transaction = \App\Http\Utilities\Wallet::all();
 
-        //return view('admin.managewallet', compact('wallets', 'transaction'));
+        return view('admin.managewallet', compact('wallets', 'transaction'));
     }
 
     public function addWallet(Request $request)

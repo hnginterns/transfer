@@ -19,20 +19,18 @@ $tbeneficiaries = count($beneficiaries);
           <div class="box box-primary">
             <div class="box-body box-profile">
               
-              <h3 class="profile-username text-center">Name: {{ $wallet->name }}</h3>
+              <h3 class="profile-username text-center">Name: {{ $wallet->wallet_name }}</h3>
 
-              <p class="text-muted text-center">Rule: {{ $wallet->rule_id }} | Status: {{ $wallet->status }}</p>
+              <p class="text-muted text-center">Lock Code: {{$wallet->lock_code}}</p>
 
               <ul class="list-group list-group-unbordered">
                 <li class="list-group-item">
-                  <b>Total Balance</b> <a class="pull-right">N1,000</a>
+                  <b>Total Balance</b> <a class="pull-right">{{ $wallet->balance }}</a>
                 </li>
                 <li class="list-group-item">
                   <b>Total Beneficiaries</b> <a class="pull-right">{{$tbeneficiaries}}</a>
                 </li>
-                <li class="list-group-item">
-                  <b>Reference Code</b> <a class="pull-right">1{{ $wallet->ref_code }}</a>
-                </li>
+                
 
                 <li class="list-group-item">
                  <a href="{{ route('wallets.manualfund', $wallet->id)}} " class="btn btn-warning">Manual Fund Wallet</a>
@@ -42,6 +40,17 @@ $tbeneficiaries = count($beneficiaries);
                   
                   <a href="{{ route('wallets.ravefund', $wallet->id)}}" class="btn btn-info" >Add Fund Ravepay</a>
                 </li>
+            
+              <li class="list-group-item">
+                 <a href="{{ route('wallets.manualfund', $wallet->id)}} " class="btn btn-warning">Manual Fund Wallet</a>
+
+                 @if($wallet->archived == 0)
+                  <a href="/admin/{{ $wallet->id }}/archivewallet" type="submit" class="btn btn-md btn-danger" onclick="return confirm('Are you sure to archive this wallet?')">{{ 'Archive Wallet' }}</a>
+                @else
+                  <a href="/admin/{{ $wallet->id }}/activatewallet" type="submit" class="btn btn-md btn-success" onclick="return confirm('Are you sure you want to Activate this wallet?')">{{ 'Activate Wallet' }}</a>
+                @endif
+                </li>
+
               </ul>
 
               
