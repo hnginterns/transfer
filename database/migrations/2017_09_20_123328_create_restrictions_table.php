@@ -17,10 +17,17 @@ class CreateRestrictionsTable extends Migration
             $table->increments('id');
             $table->integer('wallet_id')->unsigned();
             $table->integer('uuid')->unsigned();
-            $table->integer('rule_id')->unsigned();
             $table->integer('created_by')->unsigned();
             $table->integer('updated_by')->unsigned();
+            $table->boolean('can_transfer_from_wallet')->default(false);
+            $table->boolean('can_fund_wallet')->default(false);
+            $table->boolean('can_add_beneficiary')->default(false);
+            $table->json('can_transfer_to_wallet')->nullable();
+            $table->boolean('can_transfer_to_beneficiary')->default(false);
+            $table->softDeletes();
             $table->timestamps();
+
+            $table->unique(['uuid','wallet_id']);
 
             $table->foreign('wallet_id')->references('id')->on('wallets')
                     ->onDelete('cascade')
@@ -30,9 +37,6 @@ class CreateRestrictionsTable extends Migration
                     ->onDelete('cascade')
                     ->onUpdate('cascade');
 
-            $table->foreign('rule_id')->references('id')->on('rules')
-                    ->onDelete('cascade')
-                    ->onUpdate('cascade');
         });
     }
 
