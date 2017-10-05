@@ -10,7 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
  */
+
 Auth::routes();
+
 // get default home pages
 Route::get('/', 'pagesController@home')->name('transferrules');
 
