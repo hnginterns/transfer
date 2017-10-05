@@ -6,7 +6,7 @@
         border-radius: 3px;
     }
     .beneficiary-container {
-      padding: 30px;
+      padding: 10px;
     }
 
     .btn-primary {
@@ -77,56 +77,55 @@
                   <div class="form-group">
                     <label>Select User</label>
                     <select id="" name="uuid" class="form-control">
-                    <!-- <options>--Select user--</options> -->
                     @foreach($user as $key => $users)
-                      <options value="{{$users->id}}">{{$users->email}}</options>
+                      <option value="{{$users->id}}">{{$users->email}}</option>
                     @endforeach
                     </select>
                   </div> 
 
                   <div class="form-group">
                    <!-- <label>Add wallet</label> -->
-                    <select id="" name="" class="form-control">
+                    <select id="" name="wallet_id" class="form-control">
                       @foreach($wallet as $key => $wallets)
-                      <options value="{{$wallets->id}}">{{$wallets->wallet_name}}</options>
+                      <option value="{{$wallets->id}}">{{$wallets->wallet_name}}</option>
                       @endforeach
                     </select>
                   </div> 
 
                   <div class="form-group">
                     <label>Maximum Amount</label>
-                    <input type="number" name="" class="form-control" placeholder="Maximum Amount">                  
+                    <input type="number" name="max_amount" class="form-control" required placeholder="Maximum Amount">                  
                   </div> 
 
                   <div class="form-group">
                   <label>Minimum Amount</label>
-                    <input type="number" name="" class="form-control" placeholder="Minimum Amount">                  
+                    <input type="number" name="min_amount" class="form-control" required placeholder="Minimum Amount">                  
                   </div>
 
                   <div class="checkbox">
                     <label>
-                      <input type="checkbox" name="" id="">Can Transfer From Wallet
+                      <input type="checkbox" name="can_transfer_from_wallet" id="">Can Transfer From Wallet
                     </label>
                   </div> 
 
                   <div class="checkbox">
                     <label>
-                      <input type="checkbox" name="" id="">Can Fund Wallet
+                      <input type="checkbox" name="can_fund_wallet" id="">Can Fund Wallet
                     </label>
                   </div> 
 
                   <div class="checkbox">
                     <label>
-                      <input type="checkbox" name="" id="">Can Add Beneficiary
+                      <input type="checkbox" name="can_add_beneficiary" id="">Can Add Beneficiary
                     </label>
                   </div> 
-
+                  @foreach($wallet as $key => $wallets)
                   <div class="checkbox">
                     <label>
-                      <input type="checkbox" name="" id="">Can Transfer To Wallets
+                      <input type="checkbox" value="{{$wallets->id}}" name="can_transfer_to_wallets[]" id="">Can Transfer To {{$wallets->wallet_name}}('s) wallet
                     </label>
                   </div> 
-
+                  @endforeach
 
                   <br><button type="submit" class="btn btn-info" name="button">Add Permissions</button>
                   <button type="button" class="btn btn-danger" name="button">Cancel</button>
