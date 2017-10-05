@@ -38,7 +38,7 @@
 <div class="wrapper">
 
 @include('admin.partials.head')
-@include('admin.partials.sidebar')
+@include('admin.sidebar')
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
