@@ -75,7 +75,7 @@
                   {{csrf_field()}}
                   <input type="text" name="wallet_name" class="form-control input-defaulted" placeholder="Wallet Name">
                   <br><input type="text" name="lock_code" class="form-control input-defaulted" placeholder="Wallet Lock Code">
-                  <br><select name="user_id" class="form-control input-defaulted" >
+                  <br><select name="uuid" class="form-control input-defaulted" >
                     <option>--Select Wallet User--</option>
                     @foreach($user as $key => $users)
                     <option value="{{$users->id}}">{{$users->email}}</option>
@@ -83,15 +83,6 @@
                     <!-- <option value="1">User 3</option> -->
           				</select>
 
-                  <br><select name="rule_id" class="form-control input-defaulted" >
-                    <option>--Select Rule For User--</option>
-                    @foreach($rule as $key => $rules)
-                    <option value="{{$rules->id}}">{{$rules->rule_name}}</option>
-                    @endforeach
-                    <!-- <option value="1">User 3</option> -->
-          				</select>
-
-                  <br><input type="text" name="user_ref" class="form-control input-defaulted" value="{{$user_ref}}" placeholder="User Reference">
                   <br><select name="currency_id" class="form-control input-defaulted" >
                     <option value="1">Nigerian Naira</option>
                     <option value="2">Kenyan Shilling</option>

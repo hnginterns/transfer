@@ -228,14 +228,13 @@ class WalletController extends Controller
         $walletCharge = var_dump($data['data']);
     }
 
-    public function storeWalletDetailsToDB($wallet_data, $uuid, $lock_code, $rule_id, $wallet_name)
+    public function storeWalletDetailsToDB($wallet_data, $uuid, $lock_code, $wallet_name)
     {
-        $restriction = new Restriction;
         $wallet = new Wallet;
         $moneywave_wallet_id = $wallet_data['id'];
         $balance_one = $wallet_data['balance_1'];
         $enabled = $wallet_data['enabled'];
-        $wallet_code = $wallet_data['uref'];
+        $wallet_code = substr(md5(Carbon::now()), 0, 10);
         $merchant_id = $wallet_data['merchantId'];
         $currency_id = $wallet_data['currencyId'];
         $balance = $wallet_data['balance'];
@@ -250,15 +249,9 @@ class WalletController extends Controller
         $wallet->lock_code = $lock_code;
         $wallet->wallet_code = $wallet_code;
         $wallet->uuid = $uuid;
-        $wallet->wallet_name = $wallet_name;
-        $restriction->uuid = $uuid;
-        $restriction->rule_id = $rule_id;
-        $restriction->created_by = Auth::user()->id;
-        $restriction->updated_by = Auth::user()->id;
+        $wallet->wallet_name = $wallet_name;;
 
         if ($wallet->save()) {
-            $restriction->wallet_id = $wallet->id;
-            $restriction->save();
             return back();
         } else {
             return back();
@@ -294,10 +287,8 @@ class WalletController extends Controller
     protected function validateWallet(array $data) {
         return Validator::make($data, [
             'wallet_name' => 'required|string|max:255',
-            'user_ref' => 'required|string|max:10',
             'lock_code' => 'required|string|max:100',
-            'rule_id' => 'required|numeric',
-            'user_id' => 'required|numeric',
+            'uuid' => 'required|numeric',
             'currency_id' => 'required|numeric',
         ]);
     }

@@ -153,13 +153,11 @@ class AdminController extends WalletController
             return redirect()->to(URL::previous())->withInput();
         } else {
             $wallet_data = $this->createWalletAdmin($request);
-            // dd($wallet_data);
             if (!is_bool($wallet_data)) {
                 $this->storeWalletDetailsToDB(
                     $wallet_data,
-                    $request->user_id,
+                    $request->uuid,
                     $request->lock_code,
-                    $request->rule_id,
                     $request->wallet_name
                 );
             }
@@ -236,10 +234,9 @@ class AdminController extends WalletController
 
     public function wallet()
     {
-        $rule = Rule::all();
         $user = User::all();
-        $user_ref = substr(md5(Carbon::now()), 0, 10);
-        return view('admin/createwallet', compact('rule', 'user', 'user_ref'));
+        
+        return view('admin/createwallet', compact('user'));
     }
 
     public function show($walletId)
