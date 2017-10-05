@@ -32,8 +32,11 @@ class SmsWalletController extends Controller
             $response = Unirest\Request::get($url, $headers);
 
             $detail  = [
+                    'id' => $wallet['id'],
                     'username' => $wallet['username'],
-                    'balance' => $response->raw_body
+                    'bank_code' => $wallet['bank_code'],
+                    'bank_account' => $wallet['bank_account'],
+                    'balance' => $response->raw_body,
                     ];
 
             array_push($smswalletdetails, $detail);
