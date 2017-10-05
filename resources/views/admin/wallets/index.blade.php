@@ -23,7 +23,7 @@
                         <th>Name</th>
                         <th>Balance</th>
                         <th>Lock Code</th>
-                        <th>Rule</th>
+                        <th>Status</th>
                         <th>Created</th>
                         <th>Action</th>
                     </thead>
@@ -44,7 +44,20 @@
                             </td>
 
                             <td class="table-text">
-                                <div>{{$wallet->status}}</div>
+                                <div>
+
+                                    @if ($wallet->archived == 1)
+
+                                    Archived 
+
+                                    @else
+
+                                    Active
+
+                                    @endif
+
+
+                                </div>
                             </td>
 
                                 <td class="table-text">
@@ -53,7 +66,13 @@
                             <td>
                                 <a href="{{ route('wallets.details', $wallet->id) }}" class="btn btn-success">Details</a>
                                 <a href="{{ route('wallets.edit', $wallet->id) }}" class="btn btn-warning">Edit</a>
-                                <a href="{{ route('wallets.delete', $wallet->id) }}" class="btn btn-danger" onclick="return confirm('Are you sure to archive this wallet?')">Archive</a>
+
+                                @if($wallet->archived == 0)
+                                  <a href="/admin/{{ $wallet->id }}/archivewallet" type="submit" class="btn btn-md btn-danger" onclick="return confirm('Are you sure to archive this wallet?')">{{ 'Archive Wallet' }}</a>
+                                @else
+                                  <a href="/admin/{{ $wallet->id }}/activatewallet" type="submit" class="btn btn-md btn-success" onclick="return confirm('Are you sure you want to Activate this wallet?')">{{ 'Activate Wallet' }}</a>
+                                @endif
+
                             </td>
                         </tr>
                     @endforeach
