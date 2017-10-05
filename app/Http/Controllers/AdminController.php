@@ -25,7 +25,7 @@ class AdminController extends WalletController
         $name = Auth::user()->username;
         $wallets = Wallet::all();
         $users = User::all();
-        return view('admin.admindashboard', compact('wallets', 'users'));
+        return view('admin.dashboard', compact('wallets', 'users'));
     }
 
     public function setRule()
