@@ -8,7 +8,7 @@
   <div class="box">
             <div class="box-header">
               <h3 class="box-title">Editing {{$user->username}} </h3>
-              <a href="{{action('UsermgtController')}}" class="btn btn-primary pull-right">Users List </a>
+              <a href="{{url('admin/users')}}" class="btn btn-primary pull-right">Users List </a>
             </div>
             <!-- /.box-header -->
             <div class="box-body">   
