@@ -78,8 +78,13 @@ class WalletController extends Controller
             $response = json_decode($response, TRUE);
             $transRef = $response['processor']['transactionreference'];
 
-            
-            var_dump($transRef);
+            $headers = array('content-type' => 'application/json');
+            $query = array('transactionRef'=>$transRef,'otp' => '123456'); // array contains all the required parameters;
+            $body = \Unirest\Request\Body::json($query);
+
+            $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer/charge/auth/card', $headers, $body);
+
+            var_dump($response);
 
         }
         
