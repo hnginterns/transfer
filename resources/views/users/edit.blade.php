@@ -12,8 +12,9 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">   
+              {!! Form::model($user, ['method' => 'PATCH','route' => ['users.update', $user->id]]) !!}
 
-  <form method="post" action="{{action('UsermgtController@update', $id)}}">
+  
     <div class="form-group row">
       {{csrf_field()}}
        <input name="_method" type="hidden" value="PATCH">
@@ -48,7 +49,7 @@
       <div class="col-md-2"></div>
       <button type="submit" class="btn btn-primary">Update</button>
     </div>
-  </form>
+  {!! Form::close() !!}
 </div>
 </div>
 </div>
