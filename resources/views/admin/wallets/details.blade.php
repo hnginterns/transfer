@@ -33,14 +33,14 @@
                 <li class="list-group-item">
                  <a href="{{ route('wallets.manualfund', $wallet->id)}} " class="btn btn-warning">Manual Fund Wallet</a>
                 </li>
+
                 <li class="list-group-item">
-                  <a class="flwpug_getpaid " data-PBFPubKey="FLWPUBK-5bfc6d310982b2de8fbf0c98843a8a63-X" data-txref="rave-checkout-1506688603" data-amount="" data-customer_email="user@example.com" data-currency = "NGN" data-pay_button_text = "Add Fund Ravepay" data-country="NG" data-custom_title = "SmS Wallet" data-custom_description = "" data-redirect_url = "" data-custom_logo = "" data-payment_method = "card" data-exclude_banks="">Add Fund Ravepay</a>
+                  
                   
                   <a href="{{ route('wallets.ravefund', $wallet->id)}}" class="btn btn-info" >Add Fund Ravepay</a>
                 </li>
             
               <li class="list-group-item">
-                 <a href="{{ route('wallets.manualfund', $wallet->id)}} " class="btn btn-warning">Manual Fund Wallet</a>
 
                  @if($wallet->archived == 0)
                   <a href="/admin/{{ $wallet->id }}/archivewallet" type="submit" class="btn btn-md btn-danger" onclick="return confirm('Are you sure to archive this wallet?')">{{ 'Archive Wallet' }}</a>
