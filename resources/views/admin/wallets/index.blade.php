@@ -3,18 +3,18 @@
 @section('subtitle', 'Wallet List')
 
 @section('content')
-<div class="row">
-    <div class="col-lg-12">
-        <br>
+<div class="col-sm-12">
+    <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Wallet List</h3>
+              <a href="{{ route('wallets.add') }}" class="btn btn-success pull-right">Add New Wallet </a>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+
         
     <!-- wallets list -->
     @if(!empty($wallets))
-   
-          <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">Wallet List</h3>
-              <a class="btn btn-success pull-right" href="{{ route('wallets.add') }}"> Add New</a>
-            </div>
             <!-- /.box-header -->
             <div class="box-body">
                <table id="datatable" class="table table-bordered table-hover">
@@ -79,8 +79,9 @@
                     </tbody>
                 </table>
             </div>
+            @endif
         </div>
-    @endif
+    
     </div>
 </div>
 @endsection
