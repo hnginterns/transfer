@@ -83,7 +83,7 @@ Route::post('/admin/login', 'AdminLoginController@login')->name('admin.login');
 Route::get('/admin/logout', 'AdminLoginController@logout')->name('admin.logout');
 
 Route::group(['middleware' => ['admin']], function () {
-	Route::get('/admin', 'AdminController@index');
+	Route::get('/admin', 'AdminController@index')->name('admin.dashboard');
 	Route::get('/admin/managewallet', 'AdminController@managewallet');
 	Route::get('/admin/managebeneficiary', 'AdminController@managebeneficiary');
 	Route::get('/admin/adduser', 'AdminController@addaccount');
@@ -109,7 +109,7 @@ Route::group(['middleware' => ['admin']], function () {
 
 	// admin routes
 	Route::get('/view-accounts', 'pagesController@viewAccounts');
-	Route::get('/usermanagement', 'AdminController@usermanagement');
+	//Route::get('/usermanagement', 'AdminController@usermanagement');
 
 	Route::get('/addaccount', 'AdminController@addaccount');
 
@@ -142,12 +142,14 @@ Route::group(['middleware' => ['admin']], function () {
 
 	Route::get('/admin/smswallet', 'SmsWalletController@smsWalletBalance');
 
+	// admin routes
+	Route::get('/view-accounts', 'pagesController@viewAccounts');
+	Route::get('/addaccount', 'AdminController@addaccount');
+	Route::get('/usermanagement', 'AdminController@usermanagement');
+	Route::get('admin/analytics', 'AdminController@webAnalytics');
+
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-// admin routes
-Route::get('/view-accounts', 'pagesController@viewAccounts');
-Route::get('/addaccount', 'AdminController@addaccount');
-Route::get('/usermanagement', 'AdminController@usermanagement');
-Route::get('admin/analytics', 'AdminController@webAnalytics');
+

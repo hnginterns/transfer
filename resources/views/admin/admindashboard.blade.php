@@ -25,8 +25,6 @@ $totalwallets = count($wallets);
             </div>
             <a href="{{ url('/admin/managewallet') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
 
-            {{--  <a href="{{url('admin/managewallet')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>  --}}
-
           </div>
         </div>
         <!-- ./col -->
