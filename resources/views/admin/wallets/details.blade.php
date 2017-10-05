@@ -13,8 +13,7 @@
      <div class="col-sm-12">
     <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Wallet List</h3>
-              <a href="{{ route('wallets.index') }}" class="btn btn-success pull-right">Back to Wallets </a>
+              <a href="{{ route('wallets.index') }}" class="btn btn-success">Back to Wallets </a>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -112,8 +111,6 @@
                 
               </div>
               
-
-            
               <!-- /.tab-pane -->
             </div>
             <!-- /.tab-content -->

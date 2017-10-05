@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Manule Fund Wallet')
+@section('title', 'Manual Fund Wallet')
 @section('subtitle', 'Fund Wallet')
 
 @section('content')
@@ -15,7 +15,7 @@
         @endif
         <div class="panel panel-default">
             <div class="panel-heading">
-                Fund <strong>{{ $wallet->name }} </strong>  Wallet Manually <a href="{{ route('wallets.details', $wallet->id) }}" class="label label-primary pull-right">Back</a>
+                Fund <strong>{{ $wallet->wallet_name }} </strong>  Wallet Manually <a href="{{ route('wallets.details', $wallet->id) }}" class="label label-primary pull-right">Back</a>
             </div>
             
                 <div class="panel-body">
@@ -29,7 +29,7 @@
                     <div class="form-group">
                         <label class="control-label col-sm-2" >Wallet Name</label>
                         <div class="col-sm-10">
-                            <input type="text" name="wallet" id="wallet" class="form-control" value="{{ $wallet->name }}" disabled="disabled">
+                            <input type="text" name="wallet" id="wallet" class="form-control" value="{{ $wallet->walet_name }}" disabled="disabled">
                         </div>
                     </div>
 
