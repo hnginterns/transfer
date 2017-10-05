@@ -18,4 +18,13 @@ class Restriction extends Model
     protected $casts = [
         'can_transfer_to_wallet' => 'json'
     ];
+
+
+    public function user(){
+        return $this->belongsTo(User::class, 'uuid','id');
+    }
+
+    public function wallet(){
+        return $this->belongsTo(Wallet::class);
+    }
 }
