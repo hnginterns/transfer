@@ -53,8 +53,8 @@
                 </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{route('wallets.index')}}"><i class="fa fa-circle-o"></i> Wallets</a></li>
-            <li><a href="{{ route('beneficiaries.index') }}"><i class="fa fa-circle-o"></i> Beneficiaries</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> Wallets</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> Beneficiaries</a></li>
             <li><a href="#"><i class="fa fa-circle-o"></i> Wallet History</a></li>   
           </ul>
         </li>
