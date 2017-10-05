@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
 use Auth;
 use Validator;
@@ -15,7 +15,7 @@ use App\User;
 
 use Illuminate\Support\Facades\Hash;
 
-class UsersController extends Controller
+class UsermgtController extends Controller
 {
     /**
      * Display a listing of the resource.
