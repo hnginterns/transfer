@@ -3,10 +3,7 @@
 @section('subtitle', 'Users List')
 @section('content')
 
-
-
-
-<div class="col-sm-10">
+<div class="col-sm-12">
     <div class="box">
             <div class="box-header">
               <h3 class="box-title">Users List</h3>
@@ -36,8 +33,7 @@
         <td>{{$user['email']}}</td>
         <td>{{$user['first_name']}}</td>
         <td>{{$user['last_name']}}</td>
-        <td>{{$user['account_number']}}</td>
-        <td><a href="{{action('Admin\UsersController@edit', $user['id'])}}" class="btn btn-warning">Edit</a></td>
+        <td><a href="{{ action('Admin\UsersController@edit', $user['id']) }}" class="btn btn-warning">Edit</a></td>
         <td>
 
         @if( $user['deleted_at'] == null)
@@ -74,6 +70,5 @@
 </div>
 </div>
 </div>
-
 
 @endsection

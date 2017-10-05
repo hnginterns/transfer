@@ -1,4 +1,9 @@
 @extends('layouts.admin')
+
+@section('title', 'Manage User')
+@section('subtitle', 'Add User')
+
+
 @section('content')
 <div class="col-sm-10">
   @if (Session::has('messages'))

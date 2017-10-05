@@ -23,10 +23,10 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::withTrashed()->get()->toArray();
-        dd($users);
-        //$name = Auth::user()->username;
-        //return view('users.index', compact('users'))->with("name", $name);
+        $users = User::all();
+        //dd($users);
+        $name = Auth::user()->username;
+        return view('users.index', compact('users'))->with("name", $name);
     }
 
     /**
