@@ -74,6 +74,30 @@
                 <form action="fundWallet" method="POST">
                   {{ csrf_field() }}
                   
+                  <div class="form-group">
+                    <label>Select User</label>
+                    <select id="" name="" class="form-control">
+                      <options value="ss">select user</options>
+                    </select>
+                  </div> 
+
+                  <div class="form-group">
+                   <label>Add wallet</label>
+                    <select id="" name="" class="form-control">
+                      <options value="">Select wallet</options>
+                    </select>
+                  </div> 
+
+                  <div class="form-group">
+                    <label>Maximum Amount</label>
+                    <input type="number" name="" class="form-control" placeholder="Maximum Amount">                  
+                  </div> 
+
+                  <div class="form-group">
+                  <label>Minimum Amount</label>
+                    <input type="number" name="" class="form-control" placeholder="Minimum Amount">                  
+                  </div>
+
                   <div class="checkbox">
                     <label>
                       <input type="checkbox" name="" id="">Can Transfer From Wallet
@@ -98,16 +122,6 @@
                     </label>
                   </div> 
 
-                     
-                     
-                  <div class="form-group">
-                    <input type="number" name="" class="form-control" placeholder="Maximum Amount">                  
-                  </div> 
-                  <div class="form-group">
-                    <input type="number" name="" class="form-control" placeholder="Minimum Amount">                  
-                  </div> 
-
-                 
 
                   <br><button type="submit" class="btn btn-info" name="button">Add Permissions</button>
                   <button type="button" class="btn btn-danger" name="button">Cancel</button>
