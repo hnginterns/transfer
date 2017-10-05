@@ -22,8 +22,9 @@ class CreateRestrictionsTable extends Migration
             $table->boolean('can_transfer_from_wallet')->default(false);
             $table->boolean('can_fund_wallet')->default(false);
             $table->boolean('can_add_beneficiary')->default(false);
-            $table->json('can_transfer_to_wallet')->nullable();
-            $table->boolean('can_transfer_to_beneficiary')->default(false);
+            $table->text('can_transfer_to_wallets');
+            $table->decimal('max_amount', 12, 2);
+            $table->decimal('min_amount', 12, 2);
             $table->softDeletes();
             $table->timestamps();
 
