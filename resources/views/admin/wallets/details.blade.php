@@ -27,9 +27,7 @@ $tbeneficiaries = count($beneficiaries);
                 <li class="list-group-item">
                   <b>Total Balance</b> <a class="pull-right">{{ $wallet->balance }}</a>
                 </li>
-                <li class="list-group-item">
-                  <b>Total Beneficiaries</b> <a class="pull-right">{{$tbeneficiaries}}</a>
-                </li>
+                
                 
 
                 <li class="list-group-item">
@@ -84,22 +82,7 @@ $tbeneficiaries = count($beneficiaries);
                     </thead>
                     <tbody>
 
-                      @foreach ($beneficiaries as $beneficiary)
-                      <tr>
-                        <td>{{$beneficiary->name}}</td>
-                        <td>{{$beneficiary->account_number}}</td>
-                        <td>{{$beneficiary->bank_id}}</td>
-                        <td>{{$beneficiary->status}}</td>
-                        <td>
-                          <a href="{{ route('beneficiaries.details', $beneficiary->id) }}" class="btn btn-success">Details</a>
-                                <a href="{{ route('beneficiaries.edit', $beneficiary->id) }}" class="btn btn-warning">Edit</a>
-                                <a href="{{ route('beneficiaries.delete', $beneficiary->id) }}" class="btn btn-danger" onclick="return confirm('Are you sure to archive this beneficiary?')">Archive</a>
-                            </td>
-                      </tr>
-                      @endforeach
-
-
-
+                      
                     </tbody>
                     
                 </table>

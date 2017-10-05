@@ -38,10 +38,10 @@ class WalletController  extends Controller
         //fetch wallet data
         $wallet = Wallet::find($id);
 
-        $beneficiaries  = DB::table('beneficiaries')->where('wallet_id', $id)->get();
+        //$beneficiaries  = DB::table('beneficiaries')->where('wallet_id', $id)->get();
         
         //pass wallets data to view and load list view
-        return view('admin.wallets.details', compact('wallet', 'beneficiaries'));
+        return view('admin.wallets.details', compact('wallet'));
     }
     
     public function add(){
