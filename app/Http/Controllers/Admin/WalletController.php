@@ -10,6 +10,7 @@ use Session;
 use App\Wallet;
 use App\Beneficiary;
 use DB;
+use App\User;
 
 class WalletController  extends Controller
 {
@@ -22,6 +23,12 @@ class WalletController  extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+    public function addPermission(){
+        $user = User::all();
+        $wallet = Wallet::all(); 
+        return view('admin.permission', compact('user','wallet'));
     }
     
     public function index(){

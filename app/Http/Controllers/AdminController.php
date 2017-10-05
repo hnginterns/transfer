@@ -156,7 +156,6 @@ class AdminController extends WalletController
             if (!is_bool($wallet_data)) {
                 $this->storeWalletDetailsToDB(
                     $wallet_data,
-                    $request->uuid,
                     $request->lock_code,
                     $request->wallet_name
                 );
@@ -235,8 +234,8 @@ class AdminController extends WalletController
     public function wallet()
     {
         $user = User::all();
-        
-        return view('admin/createwallet', compact('user'));
+        $user_ref = substr(md5(Carbon::now()), 0, 10);
+        return view('admin/createwallet', compact('user', 'user_ref'));
     }
 
     public function show($walletId)
