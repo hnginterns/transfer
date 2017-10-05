@@ -110,6 +110,9 @@ Route::group(['middleware' => ['admin']], function () {
   	Route::post('admin/beneficiaries/update/{id}', 'Admin\BeneficiaryController@update')->name('beneficiaries.update');
   	Route::get('admin/beneficiaries/delete/{id}', 'Admin\BeneficiaryController@delete')->name('beneficiaries.delete');
 
+	  Route::get('/admin/addpermission', function(){
+		  return view('admin.permission');
+	  });
 
 
 	Route::get('/admin', 'AdminController@index')->name('admin.dashboard');
