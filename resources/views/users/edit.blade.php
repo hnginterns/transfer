@@ -3,7 +3,7 @@
 @section('subtitle', 'Update User Details')
 @section('content')
 
-<div class="col-sm-10">
+<div class="col-sm-16 col-md-offset-2">
 
   <div class="box">
             <div class="box-header">
