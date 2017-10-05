@@ -2,7 +2,17 @@
 @section('title', 'Manage User')
 @section('subtitle', 'Users List')
 @section('content')
+
+
+
+
 <div class="col-sm-10">
+    <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Users List</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
 
 	<a href="{{action('Admin\UsersController@create')}}" class="btn btn-success">Add User </a>
   
@@ -61,6 +71,9 @@
       @endforeach
     </tbody>
   </table>
-
 </div>
+</div>
+</div>
+
+
 @endsection
