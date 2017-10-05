@@ -82,33 +82,33 @@ Route::get('/admin/login', 'AdminLoginController@showLoginForm');
 Route::post('/admin/login', 'AdminLoginController@login')->name('admin.login');
 Route::get('/admin/logout', 'AdminLoginController@logout')->name('admin.logout');
 
-Route::prefix('admin')->group(['middleware' => ['admin']], function () {
+Route::group(['middleware' => ['admin']], function () {
 
 	//Wallets Routes
 
-  	Route::get('/wallets', 'Admin\WalletController@index')->name('wallets.index');
-  	Route::get('/wallets/details/{id}', 'Admin\WalletController@details')->name('wallets.details');
-  	Route::get('/wallets/add', 'Admin\WalletController@add')->name('wallets.add');
-  	Route::post('/wallets/insert', 'Admin\WalletController@insert')->name('wallets.insert');
-  	Route::get('/wallets/edit/{id}', 'Admin\WalletController@edit')->name('wallets.edit');
-  	Route::post('/wallets/update/{id}', 'Admin\WalletController@update')->name('wallets.update');
-  	Route::get('/wallets/delete/{id}', 'Admin\WalletController@delete')->name('wallets.delete');
+  	Route::get('admin/wallets', 'Admin\WalletController@index')->name('wallets.index');
+  	Route::get('admin/wallets/details/{id}', 'Admin\WalletController@details')->name('wallets.details');
+  	Route::get('admin/wallets/add', 'Admin\WalletController@add')->name('wallets.add');
+  	Route::post('admin/wallets/insert', 'Admin\WalletController@insert')->name('wallets.insert');
+  	Route::get('admin/wallets/edit/{id}', 'Admin\WalletController@edit')->name('wallets.edit');
+  	Route::post('admin/wallets/update/{id}', 'Admin\WalletController@update')->name('wallets.update');
+  	Route::get('admin/wallets/delete/{id}', 'Admin\WalletController@delete')->name('wallets.delete');
 
-  	Route::get('/wallets/manualfund/{id}', 'Admin\WalletController@manualfund')->name('wallets.manualfund');
-  	Route::post('/wallets/manualfund/{id}', 'Admin\WalletController@manualfundstore')->name('wallets.manualfund.store');
+  	Route::get('admin/wallets/manualfund/{id}', 'Admin\WalletController@manualfund')->name('wallets.manualfund');
+  	Route::post('admin/wallets/manualfund/{id}', 'Admin\WalletController@manualfundstore')->name('wallets.manualfund.store');
 
-  	Route::get('/wallets/ravefund/{id}', 'Admin\WalletController@ravefund')->name('wallets.ravefund');
-  	Route::post('/wallets/ravefund/{id}', 'Admin\WalletController@ravefundstore')->name('wallets.ravefund.store');
+  	Route::get('admin/wallets/ravefund/{id}', 'Admin\WalletController@ravefund')->name('wallets.ravefund');
+  	Route::post('admin/wallets/ravefund/{id}', 'Admin\WalletController@ravefundstore')->name('wallets.ravefund.store');
 
   	//Beneficiaries Routes
 
-  	Route::get('/beneficiaries', 'Admin\BeneficiaryController@index')->name('beneficiaries.index');
-  	Route::get('/beneficiaries/details/{id}', 'Admin\BeneficiaryController@details')->name('beneficiaries.details');
-  	Route::get('/beneficiaries/add', 'Admin\BeneficiaryController@add')->name('beneficiaries.add');
-  	Route::post('/beneficiaries/insert', 'Admin\BeneficiaryController@insert')->name('beneficiaries.insert');
-  	Route::get('/beneficiaries/edit/{id}', 'Admin\BeneficiaryController@edit')->name('beneficiaries.edit');
-  	Route::post('/beneficiaries/update/{id}', 'Admin\BeneficiaryController@update')->name('beneficiaries.update');
-  	Route::get('/beneficiaries/delete/{id}', 'Admin\BeneficiaryController@delete')->name('beneficiaries.delete');
+  	Route::get('admin/beneficiaries', 'Admin\BeneficiaryController@index')->name('beneficiaries.index');
+  	Route::get('admin/beneficiaries/details/{id}', 'Admin\BeneficiaryController@details')->name('beneficiaries.details');
+  	Route::get('admin/beneficiaries/add', 'Admin\BeneficiaryController@add')->name('beneficiaries.add');
+  	Route::post('admin/beneficiaries/insert', 'Admin\BeneficiaryController@insert')->name('beneficiaries.insert');
+  	Route::get('admin/beneficiaries/edit/{id}', 'Admin\BeneficiaryController@edit')->name('beneficiaries.edit');
+  	Route::post('admin/beneficiaries/update/{id}', 'Admin\BeneficiaryController@update')->name('beneficiaries.update');
+  	Route::get('admin/beneficiaries/delete/{id}', 'Admin\BeneficiaryController@delete')->name('beneficiaries.delete');
 
 
 
