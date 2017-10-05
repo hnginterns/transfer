@@ -164,15 +164,6 @@ Route::group(['middleware' => ['admin']], function () {
 	Route::get('admin/wallet-details', 'AdminController@walletdetails');
 
 
-	/*
-	Route::resource('admin/users', 'Admin\UsersController');
-	Route::post('admin/users/store', 'Admin\UsersController@store');
-	Route::post('admin/users/banUser/{id}', 'Admin\UsersController@banUser');
-	Route::post('admin/users/unbanUser/{id}', 'Admin\UsersController@unbanUser');
-	Route::post('admin/users/makeAdmin/{id}', 'Admin\UsersController@makeAdmin');
-	Route::post('admin/users/removeAdmin/{id}', 'Admin\UsersController@removeAdmin');
-	*/
-
 	Route::resource('admin/users', 'UsermgtController');
 	Route::post('admin/users/banUser/{id}', 'UsermgtController@banUser');
 	Route::post('admin/users/unbanUser/{id}', 'UsermgtController@unbanUser');

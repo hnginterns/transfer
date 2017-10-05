@@ -1,8 +1,6 @@
 @extends('layouts.user')
+@section('title', 'Dashboard')
 
-@section('title')
-      Dashboard
-@endsection
 @section('content')
 
       <div class="col-md-12 col-sm-12">
