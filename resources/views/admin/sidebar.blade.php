@@ -21,7 +21,7 @@
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header">ADMIN CONTROLS</li>
       <!-- Optionally, you can add icons to the links -->
-
+    <li><a href="{{route('admin.dashboard')}}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
       <li>
         <a href="{{ url('/admin/users') }}"><i class="fa fa-group"></i> <span>Manage Users</span></a>
       </li>
