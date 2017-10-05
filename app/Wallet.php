@@ -7,16 +7,18 @@ use App\User;
 use App\Transaction;
 use App\Restriction;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 class Wallet extends Model
 {
+
+    use SoftDeletes;
     /**
      * Mass assignable attributes
      *
      * @var array
      */
     protected $fillable = ['uuid', 'balance', 'wallet_code'];
-
+    
     /**
      * Get the owner of this wallet
      *

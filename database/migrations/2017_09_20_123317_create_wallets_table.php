@@ -26,8 +26,9 @@ class CreateWalletsTable extends Migration
             $table->integer('currency_id')->unsigned();
             $table->string('wallet_code',10)->unique();
             $table->boolean('archived')->default(false);
+            $table->softDeletes();
             $table->timestamps();
-
+    
             $table->foreign('uuid')->references('id')->on('users')
                     ->onDelete('cascade')
                     ->onUpdate('cascade');
