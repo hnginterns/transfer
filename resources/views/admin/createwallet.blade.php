@@ -83,6 +83,7 @@
                     <!-- <option value="1">User 3</option> -->
           				</select>
 
+                  <input type="hidden" name="user_ref" class="form-control input-defaulted" value="{{$user_ref}}" placeholder="User Reference">
                   <br><select name="currency_id" class="form-control input-defaulted" >
                     <option value="1">Nigerian Naira</option>
                     <option value="2">Kenyan Shilling</option>
