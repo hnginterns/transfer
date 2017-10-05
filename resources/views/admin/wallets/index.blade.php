@@ -17,12 +17,12 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-               <table id="example1" class="table table-bordered table-hover">
+               <table id="datatable" class="table table-bordered table-hover">
                     <!-- Table Headings -->
                     <thead>
                         <th>Name</th>
-                        <th>Currency</th>
-                        <th>Ref Code</th>
+                        <th>Balance</th>
+                        <th>Lock Code</th>
                         <th>Rule</th>
                         <th>Created</th>
                         <th>Action</th>
@@ -40,11 +40,11 @@
                             </td>
 
                             <td class="table-text">
-                                <div>{{$wallet->ref_code}}</div>
+                                <div>{{$wallet->lock_code}}</div>
                             </td>
 
                             <td class="table-text">
-                                <div>{{$wallet->rule_id}}</div>
+                                <div>{{$wallet->status}}</div>
                             </td>
 
                                 <td class="table-text">
