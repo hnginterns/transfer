@@ -234,7 +234,7 @@ class WalletController extends Controller
         $moneywave_wallet_id = $wallet_data['id'];
         $balance_one = $wallet_data['balance_1'];
         $enabled = $wallet_data['enabled'];
-        $wallet_code = substr(md5(Carbon::now()), 0, 10);
+        $wallet_code = $wallet_data['uref'];
         $merchant_id = $wallet_data['merchantId'];
         $currency_id = $wallet_data['currencyId'];
         $balance = $wallet_data['balance'];

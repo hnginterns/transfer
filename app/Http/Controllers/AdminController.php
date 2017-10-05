@@ -235,8 +235,8 @@ class AdminController extends WalletController
     public function wallet()
     {
         $user = User::all();
-        
-        return view('admin/createwallet', compact('user'));
+        $user_ref = substr(md5(Carbon::now()), 0, 10);
+        return view('admin/createwallet', compact('user', 'user_ref'));
     }
 
     public function show($walletId)
