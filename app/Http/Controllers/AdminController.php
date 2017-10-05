@@ -136,9 +136,10 @@ class AdminController extends WalletController
     public function managewallet()
     {
         $wallets = Wallet::all();
-        $transaction = \App\Http\Utilities\Wallet::all();
+        dd($wallets);
+        //$transaction = \App\Http\Utilities\Wallet::all();
 
-        return view('admin.managewallet', compact('wallets', 'transaction'));
+        //return view('admin.managewallet', compact('wallets', 'transaction'));
     }
 
     public function addWallet(Request $request)

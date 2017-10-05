@@ -33,10 +33,10 @@
                     @foreach($wallets as $wallet)
                         <tr>
                             <td class="table-text">
-                                <div>{{$wallet->name}}</div>
+                                <div>{{ $wallet->wallet_name }}</div>
                             </td>
                             <td class="table-text">
-                                <div>{{$wallet->currency}}</div>
+                                <div>{{ $wallet->balance }}</div>
                             </td>
 
                             <td class="table-text">
