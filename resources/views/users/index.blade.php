@@ -22,7 +22,6 @@
         <th>Email</th>
         <th>Firstname</th>
         <th>Lastname</th>
-        <th>Account Number</th>
         <th colspan="2">Action</th>
       </tr>
     </thead>
