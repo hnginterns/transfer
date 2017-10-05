@@ -7,11 +7,12 @@
     <div class="box">
             <div class="box-header">
               <h3 class="box-title">Users List</h3>
+              <a href="{{action('Admin\UsersController@create')}}" class="btn btn-success pull-right">Add User </a>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
 
-	<a href="{{action('Admin\UsersController@create')}}" class="btn btn-success">Add User </a>
+	
   
     <table id="datatable" class="table table-striped">
     <thead>
