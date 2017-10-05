@@ -34,6 +34,11 @@
  <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
+<style>
+.input-group.topup-input {
+    margin: 20px;
+}
+</style>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
@@ -49,21 +54,21 @@
         {{ Auth::user()->itle }} @yield('title')
         <small>@yield('subtitle')</small>
       </h1>
-     
+
     </section>
 
 
     @include('partials.messages')
 
 <section class="content">
-    
+
       <div class="row">
 
         @yield('content')
 
       </div>
 </section>
-    
+
   </div>
 
 @include('admin.partials.footer')
@@ -100,6 +105,3 @@
 
 </body>
 </html>
-
-
-
