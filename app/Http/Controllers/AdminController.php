@@ -249,8 +249,6 @@ class AdminController extends WalletController
 
         $userRef = substr(md5(Carbon::now()), 0, 10);
 
-
-
         return view('admin/walletdetails', compact('wallet', 'user', 'transaction'));
     }
 
