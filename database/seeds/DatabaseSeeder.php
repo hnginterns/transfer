@@ -71,21 +71,21 @@ class DatabaseSeeder extends Seeder
 
       ]);
 
-    //   SmsWallet::insert([
-    //
-    //   SmsWallet::create([
-    //       'username' => 'profchydon@gmail.com',
-    //       'api_key' => 'aedf4ca62fa26b9aa501ba3bd83af5e7ac9c45f8',
-    //       'user_id' => "11"
-    //   ]),
-    //
-    //   SmsWallet::create([
-    //       'username' => 'joseph.mbassey2@gmail.com',
-    //       'api_key' => 'a28c39088ccb2b9a72502dbefdc546d0011b0418',
-    //       'user_id' => "12"
-    //   ])
-    //
-    // ]);
+      SmsWallet::insert([
+
+      SmsWallet::create([
+          'username' => 'profchydon@gmail.com',
+          'api_key' => 'aedf4ca62fa26b9aa501ba3bd83af5e7ac9c45f8',
+          'user_id' => "11"
+      ]),
+
+      SmsWallet::create([
+          'username' => 'joseph.mbassey2@gmail.com',
+          'api_key' => 'a28c39088ccb2b9a72502dbefdc546d0011b0418',
+          'user_id' => "12"
+      ])
+
+    ]);
 
     }
 }
