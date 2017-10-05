@@ -51,7 +51,15 @@
 
     @include('partials.messages')
 
-    @yield('content')
+<section class="content">
+    
+      <div class="row">
+
+        @yield('content')
+
+      </div>
+</section>
+    
   </div>
 
 @include('admin.partials.footer')
