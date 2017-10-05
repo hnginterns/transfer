@@ -26,7 +26,7 @@ class UsersController extends Controller
         $users = User::withTrashed()->get()->toArray();
         dd($users);
         //$name = Auth::user()->username;
-        return view('users.index', compact('users'))->with("name", $name);
+        //return view('users.index', compact('users'))->with("name", $name);
     }
 
     /**
