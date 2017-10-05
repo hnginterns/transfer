@@ -31,7 +31,7 @@
                 </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i> Users</a></li>
+            <li><a href="{{ url('/admin/users') }}"><i class="fa fa-circle-o"></i> Users</a></li>
             <li><a href="#"><i class="fa fa-circle-o"></i> Roles</a></li>
             <li><a href="#"><i class="fa fa-circle-o"></i> Permissions</a></li>   
           </ul>
@@ -53,9 +53,10 @@
                 </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href=""><i class="fa fa-circle-o"></i> Wallets</a></li>
-            <li><a href=""><i class="fa fa-circle-o"></i> Beneficiaries</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Wallet History</a></li>   
+            <li><a href="{{ url('/admin/managewallet') }}"><i class="fa fa-circle-o"></i> Wallets</a></li>
+            <li><a href="{{ url('/admin/beneficiary') }}"><i class="fa fa-circle-o"></i> Beneficiaries</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Wallet History</a></li> 
+            <li><a href="{{ url('/admin/smswallet') }}"><i class="fa fa-envelope"></i> <span>SMS Wallet</span></a></a></li>  
           </ul>
         </li>
 
@@ -64,3 +65,5 @@
     </section>
     <!-- /.sidebar -->
   </aside>
+
+  <script type="text/javascript" src="https://api.ravepay.co/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>

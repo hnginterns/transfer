@@ -33,8 +33,8 @@
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
-@include('admin.header')
-@include('admin.sidebar')
+@include('admin.partials.head')
+@include('admin.partials.sidebar')
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
