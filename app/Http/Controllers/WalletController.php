@@ -73,7 +73,9 @@ class WalletController extends Controller
         $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer', $headers, $body);
         $response = json_decode($response->raw_body, TRUE);
         $response = $response['data'];
-        var_dump($response['transfer']['meta']);
+        $response = $response['transfer'];
+        $response = json_decode($response->meta, TRUE);
+        var_dump($response);
     }
 
     public function createWallet()
