@@ -53,7 +53,7 @@
                 </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ url('/admin/wallets') }}"><i class="fa fa-circle-o"></i> Wallets</a></li>
+            <li><a href="{{ url('/admin/managewallet') }}"><i class="fa fa-circle-o"></i> Wallets</a></li>
             <li><a href="{{ url('/admin/beneficiary') }}"><i class="fa fa-circle-o"></i> Beneficiaries</a></li>
             <li><a href="#"><i class="fa fa-circle-o"></i> Wallet History</a></li> 
             <li><a href="{{ url('/admin/smswallet') }}"><i class="fa fa-envelope"></i> <span>SMS Wallet</span></a></a></li>  
