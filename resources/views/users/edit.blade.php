@@ -1,8 +1,19 @@
 @extends('layouts.admin')
+@section('title', 'Manage User')
+@section('subtitle', 'Update User Details')
 @section('content')
 
-<div class="col-sm-10">
-  <form method="post" action="{{action('Admin\UsersController@update', $id)}}">
+<div class="col-sm-6 col-md-offset-2">
+
+  <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Editing {{$user->username}} </h3>
+              <a href="{{url('admin/users')}}" class="btn btn-primary pull-right">Users List </a>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">   
+
+  <form method="post" action="{{ action('UsermgtController@update', $id)}}">
     <div class="form-group row">
       {{csrf_field()}}
        <input name="_method" type="hidden" value="PATCH">
@@ -38,6 +49,8 @@
       <button type="submit" class="btn btn-primary">Update</button>
     </div>
   </form>
+</div>
+</div>
 </div>
 
 @endsection

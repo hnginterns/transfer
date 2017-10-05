@@ -25,7 +25,7 @@ class AdminController extends WalletController
         $name = Auth::user()->username;
         $wallets = Wallet::all();
         $users = User::all();
-        return view('admin.admindashboard', compact('wallets', 'users'));
+        return view('admin.dashboard', compact('wallets', 'users'));
     }
 
     public function setRule()
@@ -136,6 +136,8 @@ class AdminController extends WalletController
     public function managewallet()
     {
         $wallets = Wallet::all();
+        //return $wallets->toJson();
+        //dd($wallets);
         $transaction = \App\Http\Utilities\Wallet::all();
 
         return view('admin.managewallet', compact('wallets', 'transaction'));
@@ -248,8 +250,6 @@ class AdminController extends WalletController
         $user = $wallet->users()->get()->toArray();
 
         $userRef = substr(md5(Carbon::now()), 0, 10);
-
-
 
         return view('admin/walletdetails', compact('wallet', 'user', 'transaction'));
     }

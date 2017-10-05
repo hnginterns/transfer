@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
 use Auth;
 use Validator;
@@ -15,7 +15,7 @@ use App\User;
 
 use Illuminate\Support\Facades\Hash;
 
-class UsersController extends Controller
+class UsermgtController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -36,7 +36,7 @@ class UsersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {   
+    {
         $name = Auth::user()->username;
         return view('users.create')->with("name", $name);
     }
@@ -57,9 +57,11 @@ class UsersController extends Controller
             'email' => 'bail|email|required',
             'password' => 'bail|required',
             'confirmpassword' => 'bail|required'
+            ],
+            [
+                'required' => ':attribute is required'
             ]
         );
-
         if ($validator->fails()) 
         {
             $messages = $validator->messages()->toArray();
@@ -89,6 +91,7 @@ class UsersController extends Controller
               'is_admin' => 0,
               "created_by" => Auth::user()->id,
               "role_id" => 0,
+              "created_at" => $dateNow
             ]);
             return redirect()->to('/admin/users');
         }

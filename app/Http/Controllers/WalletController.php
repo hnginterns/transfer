@@ -62,7 +62,7 @@ class WalletController extends Controller
             "expiry_year" => $request->expiry_year,
             "expiry_month" => $request->expiry_month,
             "charge_auth" => "PIN", //optional required where card is a local Mastercard
-            "apiKey" => "ts_PQOAA7GKWFH3RKC9CP83",
+            "apiKey" => env('APP_KEY'),
             "amount" => $request->amount,
             "fee" => 0,
             "medium" => "web",
