@@ -34,7 +34,7 @@
         <td>{{$user['email']}}</td>
         <td>{{$user['first_name']}}</td>
         <td>{{$user['last_name']}}</td>
-        <td><a href="{{ action('Admin\UsersController@edit', $user['id']) }}" class="btn btn-warning">Edit</a></td>
+        <td><a href="{{ action('UsermgtController@edit', $user['id']) }}" class="btn btn-warning">Edit</a></td>
         <td>
 
         @if( $user['deleted_at'] == null)
