@@ -321,6 +321,7 @@ class ComposerStaticInitcb56c8f99153a160391720319584c667
     public static $classMap = array (
         'App\\Bank' => __DIR__ . '/../..' . '/app/Bank.php',
         'App\\Beneficiary' => __DIR__ . '/../..' . '/app/Beneficiary.php',
+        'App\\CardWallet' => __DIR__ . '/../..' . '/app/CardWallet.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminController.php',

@@ -86,6 +86,7 @@
                   <div class="form-group">
                    <!-- <label>Add wallet</label> -->
                     <select id="" name="wallet_id" class="form-control">
+                     <option value="none"> Select Wallet</option>
                       @foreach($wallet as $key => $wallets)
                       <option value="{{$wallets->id}}">{{$wallets->wallet_name}}</option>
                       @endforeach

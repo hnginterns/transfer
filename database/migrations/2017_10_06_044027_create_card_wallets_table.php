@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSmsWalletsTable extends Migration
+class CreateCardWalletsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateSmsWalletsTable extends Migration
      */
     public function up()
     {
-        Schema::create('sms_wallets', function (Blueprint $table) {
+        Schema::create('card_wallets', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
-            $table->string('username');
-            $table->string('bank_code');
-            $table->string('bank_account');
-            $table->string('api_key');
+            $table->string('firstName');
+            $table->string('lastName');
+            $table->string('phoneNumber');
+            $table->integer('amount');
+            $table->string('ref');
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreateSmsWalletsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sms_wallets');
+        Schema::dropIfExists('card_wallets');
     }
 }
