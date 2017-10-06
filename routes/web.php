@@ -33,7 +33,7 @@ Route::get('/welcome', function () {
 	return view('welcome');
 });
 
-Route::get('/otp', 'WalletController@cardWallet');
+Route::get('/otp', 'pagesController@otp');
 
 Route::get('/about', 'pagesController@about');
 
