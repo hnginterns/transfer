@@ -13,7 +13,7 @@
               <input type="hidden" name="wallet_id" value="{{$wallet->id}}">
               <div class="form-group">  
                 <label for="">Email address</label>
-                <input type="text" name="email" id="email" class="form-control" value="user@example.com" placeholder="Enter email address" >
+                <input type="text" name="email" id="email" class="form-control" value="{{$user->email}}" placeholder="Enter email address" >
               </div>
 
               <div class="form-group"> 
