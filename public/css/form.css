@@ -5,16 +5,18 @@
   .input-form>.form-group>.form-control:focus,
   .cus-input:focus {
       border-color: #fd8032;
+      background: #FD8032;
   }
 
   .input-form>.form-group>.form-control,
   .cus-input {
       border-radius: 0;
-      height: 45px;
+      height: 40px;
       background: #FFECE0;
       border: 1;
   }
 
+ 
   .form-holder {
       margin-top: 20px;
   }
