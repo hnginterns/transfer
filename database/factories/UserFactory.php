@@ -70,3 +70,5 @@ $factory->define(App\Transaction::class, function (Faker $faker) {
         'payee_wallet_code' => App\Wallet::all()->random()->wallet_code,
     ];
 });
+
+

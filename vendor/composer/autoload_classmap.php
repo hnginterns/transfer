@@ -23,7 +23,7 @@ return array(
     'App\\Http\\Controllers\\BanksController' => $baseDir . '/app/Http/Controllers/BanksController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
-    'App\\Http\\Controllers\\PaymentController' => $baseDir . '/app/Http/Controllers/paymentController.php',
+    'App\\Http\\Controllers\\PaymentController' => $baseDir . '/app/Http/Controllers/PaymentController.php',
     'App\\Http\\Controllers\\RavepayController' => $baseDir . '/app/Http/Controllers/RavepayController.php',
     'App\\Http\\Controllers\\RestrictionValidationController' => $baseDir . '/app/Http/Controllers/RestrictionValidationController.php',
     'App\\Http\\Controllers\\SmsWalletController' => $baseDir . '/app/Http/Controllers/SmsWalletController.php',
