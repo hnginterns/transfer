@@ -86,7 +86,7 @@
 					</div>
           
           <div class="col-sm-12">    
-            <a href="/ravepay" class="btn btn-dark">Fund</a>
+            <a href="{{ route('ravepay.pay', $wallet->id)}}" class="btn btn-dark">Fund</a>
 
             <a href="/transfer-to-bank" class="btn btn-dark ">Transfer</a>
               
