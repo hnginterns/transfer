@@ -196,7 +196,7 @@ class WalletController extends Controller
                 $query = array(
                     "lock" => $wallet->lock_code,
                     "amount" => $request->amount,
-                    "bankcode" => $beneficiary->bank_id,// Returns error
+                    "bankcode" => $beneficiary->bank->bank_code,// Returns error
                     "accountNumber" => $beneficiary->account_number,
                     "currency" => "NGN",
                     "senderName" => Auth::user()->username,
@@ -204,7 +204,6 @@ class WalletController extends Controller
                     "ref" => $request->reference, // No Refrence from request
                     "walletUref" => $wallet->wallet_code
                 );
-
                 $permit = Restriction::where('wallet_id', $wallet->id)
                         ->where('uuid', Auth::user()->id)
                         ->first();
