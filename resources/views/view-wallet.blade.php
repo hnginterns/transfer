@@ -5,7 +5,7 @@
 @endsection
 @section('content')
 
-<link rel="stylesheet" href="/css/form.css">
+<link rel="stylesheet" href="/css/walletview.css">
 
             <div class="col-md-5 col-sm-5">
                   
