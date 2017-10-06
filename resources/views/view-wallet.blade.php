@@ -85,12 +85,17 @@
 						</table>
 					</div>
           
-          <div class="col-sm-12">    
-            <a href="{{ route('ravepay.pay', $wallet->id)}}" class="btn btn-dark">Fund</a>
-
+          <div class="col-sm-12">  
+		  	@if(!array_key_exists('can_fund_wallet', $rules))  
+            	<a href="{{ route('ravepay.pay', $wallet->id)}}" class="btn btn-dark">Fund</a>
+			@endif
+			
+			@if(!array_key_exists('can_transfer_from_wallet', $rules)) 
             <a href="/transfer-to-bank" class="btn btn-dark ">Transfer</a>
-              
-            <a href="/addbeneficiary" class="btn btn-dark ">Add Beneficiary</a>
+			@endif
+            @if(!array_key_exists('can_add_beneficiary', $rules))
+           		 <a href="/addbeneficiary/{{$wallet->id}}" class="btn btn-dark ">Add Beneficiary</a>
+			@endif
           </div>
 		</div>
 		

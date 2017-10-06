@@ -15,7 +15,7 @@
         <div class="single-beneficiary-holder col-md-6 col-sm-6">
             <div class="inner-holder">
                   <h4 class="intro text-center" >Add New Beneficiary</h4>
-                  <form action="/addbeneficiary/insertBeneficiary" method="POST" class="input-form">
+                  <form action="" method="POST" class="input-form">
                   {{csrf_field()}}
                   <div class="form-group">                  
                     <label>Beneficiary Name</label>

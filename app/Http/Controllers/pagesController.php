@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Beneficiary;
 use App\User;
 use App\Restriction;
+use App\Http\Controllers\RestrictionController as Restrict;
 use App\Http\Utilities\Wallet as UtilWallet;
 
 class pagesController extends Controller
@@ -40,8 +41,9 @@ class pagesController extends Controller
     {
         $wallets = Wallet::all();
         $transaction = \App\Http\Utilities\Wallet::all();
-        $user_id = Auth::user()->id;
-        return view('dashboard', compact('wallets', 'transaction', 'user_id'));
+        $permission = Restriction::where('uuid',Auth::user()->id)->get();
+        
+        return view('dashboard', compact('wallets', 'transaction', 'permission'));
     }
 
     public function about()
@@ -108,14 +110,15 @@ class pagesController extends Controller
         return view('otp');
     }
 
-    public function walletdetail($id)
+    public function walletdetail(Wallet $wallet)
     {
-        $permit = Restriction::where('wallet_id', $id)
+        $permit = Restriction::where('wallet_id', $wallet->id)
           ->where('uuid', Auth::user()->id)
-          ->get();
-
-        $wallet = Wallet::find($id);
-        return view('view-wallet', compact('wallet', 'permit'));
+          ->first();
+        $restrict = new Restrict($permit);
+        $rules = $restrict->canView();
+        if($permit == null) return back();
+        return view('view-wallet', compact('wallet','permit','rules'));
     }
 
     public function createWallet()
@@ -128,13 +131,27 @@ class pagesController extends Controller
         return view('create-beneficiary');
     }
 
-    public function addBeneficiary()
+    public function addBeneficiary(Wallet $wallet)
     {
+        // dd($wallet)
+        $permit = Restriction::where('wallet_id', $wallet->id)
+          ->where('uuid', Auth::user()->id)
+          ->first();
+        if($permit == null) return redirect('/dashboard');
+        $restrict = new Restrict($permit);
+        if(count($restrict->canAddBeneficiary()) > 0) return redirect('/dashboard');
         return view('createbeneficiary');
     }
 
-    public function insertBeneficiary()
-    {            
+    public function insertBeneficiary(Wallet $wallet)
+    {          
+        $permit = Restriction::where('wallet_id', $wallet->id)
+          ->where('uuid', Auth::user()->id)
+          ->first();
+        if($permit == null) return redirect('/dashboard');
+        $restrict = new Restrict($permit);
+        if(count($restrict->canAddBeneficiary()) > 0) return redirect('/dashboard');
+
         $beneficiary = new Beneficiary;
         $beneficiary->name = request('name');
         $beneficiary->account_number = request('account_number'); //->account_number;
@@ -144,7 +161,7 @@ class pagesController extends Controller
         $beneficiary->bank_name = request('bank_id');
         $beneficiary->uuid = Auth::user()->id;
         if ($beneficiary->save()) {
-            return redirect('wallet-view')->with('success', 'Beneficiary added');
+            return redirect("wallet/$wallet->id")->with('success', 'Beneficiary added');
         } else {
             return redirect()->back()->with('failure', 'Beneficiary could not be added');
         }

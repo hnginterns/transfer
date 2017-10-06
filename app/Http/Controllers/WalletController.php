@@ -14,6 +14,7 @@ use App\Beneficiary;
 use App\Rule;
 use App\Transaction;
 use URL;
+use RestrictionController;
 
 class WalletController extends Controller
 {
@@ -189,9 +190,7 @@ class WalletController extends Controller
             return redirect()->to(URL::previous())->withInput();
         } else {
             $beneficiary = Beneficiary::where('id', '=', $request->beneficiary_id)->get();
-            // We need to get the loack code of a wallet in order to make the transfer.
             $walletdata = Wallet::where('wallet_name', $request->wallet_name)->get();
-            //dd($wallet_data);
             if (!empty($beneficiary)) {
                 $token = $this->getToken();
                 $headers = array('content-type' => 'application/json', 'Authorization' => $token);
@@ -214,7 +213,6 @@ class WalletController extends Controller
                 $status = $response['status'];
                 if ($status == 'success') {
                     $data = $response;
-                    //return redirect()->action('pagesController@bank_transfer', $data);
                     return redirect()->action('pagesController@success', $response);
                 } else {
                     return redirect()->action('pagesController@failed', $response);
