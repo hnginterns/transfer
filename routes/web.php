@@ -33,6 +33,8 @@ Route::get('/welcome', function () {
 	return view('welcome');
 });
 
+Route::get('/otp', 'pagesController@otp');
+
 Route::get('/about', 'pagesController@about');
 
 Route::get('/forgot', 'pagesController@forgot');
@@ -114,7 +116,8 @@ Route::group(['middleware' => ['admin']], function () {
 
 	Route::get('/admin/addpermission', 'Admin\WalletController@addPermission');
 	Route::post('/admin/addpermission', 'Admin\WalletController@PostAddPermission');
-
+	Route::get('/admin/editpermission/{restriction}', 'Admin\WalletController@editPermission');
+	Route::post('/admin/editpermission/{restriction}', 'Admin\WalletController@PostEditPermission');
 	Route::get('/admin', 'AdminController@index')->name('admin.dashboard');
 	Route::get('/admin/managewallet', 'AdminController@managewallet');
 	Route::get('/admin/managebeneficiary', 'AdminController@managebeneficiary');
@@ -138,6 +141,7 @@ Route::group(['middleware' => ['admin']], function () {
 	//fund wallet
 	Route::get('/admin/fundwallet', 'AdminController@fundwallet');
 	Route::post('/admin/fundWallet', 'WalletController@cardWallet');
+	Route::post('/admin/otp', 'WalletController@otp');
 
 	// admin routes
 	Route::get('/view-accounts', 'pagesController@viewAccounts');

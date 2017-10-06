@@ -35,6 +35,15 @@ class WalletController  extends Controller
         return view('admin.permission', compact('user','wallet'));
     }
 
+
+    public function editPermission(Restriction $restriction){
+        
+        $wallet = Wallet::all();
+        $transferables = json_decode($restriction->can_transfer_to_wallets);
+        return view('admin.editpermission', compact('restriction', 'wallet', 'transferables'));
+    }
+
+
     public function PostAddPermission(Request $request){
         
         $validator = $this->validatePermission($request->all());
