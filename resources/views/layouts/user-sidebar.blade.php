@@ -18,11 +18,6 @@
                 </a>
               </li>  
                
-                <li>
-                <a href="clearingwallet">
-                <i class="fa fa-credit-card fa-lg"></i> Clearing Wallet
-                </a>
-              </li>
               <li>
                 <a href="/history">
                 <i class="fa fa-history fa-lg"></i> Transaction History

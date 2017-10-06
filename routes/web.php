@@ -67,7 +67,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/transfer-to-wallet', 'pagesController@wallet_transfer');
 	Route::get('/create-wallet', 'pagesController@createWallet');
 	Route::get('/walletview', 'pagesController@walletView');
-	Route::get('/clearingwallet', 'pagesController@mainwallet');
+	Route::get('/wallet-view', 'pagesController@walletView');
 	Route::get('/banks', 'BanksController@banks');
 	Route::get('/populatebank', 'BanksController@populateBanks');
 	Route::get('/success', 'pagesController@success');
@@ -114,6 +114,7 @@ Route::group(['middleware' => ['admin']], function () {
   	Route::post('admin/beneficiaries/update/{id}', 'Admin\BeneficiaryController@update')->name('beneficiaries.update');
   	Route::get('admin/beneficiaries/delete/{id}', 'Admin\BeneficiaryController@delete')->name('beneficiaries.delete');
 
+	Route::get('/admin/managePermission', 'AdminController@managePermission');
 	Route::get('/admin/addpermission', 'Admin\WalletController@addPermission');
 	Route::post('/admin/addpermission', 'Admin\WalletController@PostAddPermission');
 	Route::get('/admin/editpermission/{restriction}', 'Admin\WalletController@editPermission');

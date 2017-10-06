@@ -109,7 +109,7 @@ class pagesController extends Controller
 
     public function walletView()
     {
-        return view('wallet-view');
+        return view('view-wallet');
     }
 
     public function createWallet()

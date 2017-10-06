@@ -41,12 +41,13 @@ class AdminController extends WalletController
         // logic for saving the rules Lies Here
     }
 
-    public function viewRules()
+    public function managePermission()
     {
-        $name = Auth::user()->username;
+        $wallets = Wallet::all();
+     
+        $transaction = \App\Http\Utilities\Wallet::all();
 
-        $rules = Rule::all();
-        return view('admin.viewrules', compact('rules'))->with("name", $name);
+        return view('admin.managepermission', compact('wallets', 'transaction'));
     }
 
     public function createRule()
