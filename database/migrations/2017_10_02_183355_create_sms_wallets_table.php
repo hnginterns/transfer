@@ -17,6 +17,8 @@ class CreateSmsWalletsTable extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->string('username');
+            $table->string('bank_code');
+            $table->string('bank_account');
             $table->string('api_key');
             $table->timestamps();
         });
