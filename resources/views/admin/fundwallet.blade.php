@@ -98,9 +98,8 @@
             $('#myModal').modal();
         });
     </script>
-@endif
 
- <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
     
       <!-- Modal content-->
@@ -121,6 +120,8 @@
   </div>
 
 </div>
+@endif
+
 
 @endsection
 
