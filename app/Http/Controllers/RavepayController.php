@@ -68,11 +68,15 @@ class RavepayController extends Controller
 
             if (($chargeResponse == "00" || $chargeResponse == "0") && ($chargeAmount == $amount)  && ($chargeCurrency == $currency)) {
                 //Give Value and return to Success page
+
+                dd($chargeResponse);
+
+
                 return redirect('/success');
             } else {
                 //Dont Give Value and return to Failure page
                 $report = "An Error Occured, you can try again";
-                return redirect('/failure', compact('report'));
+                return redirect('/failed', compact('report'));
             }
         }
     }
