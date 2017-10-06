@@ -90,6 +90,14 @@
         </div>
       </div>
 
+      @if(!empty($transactionRef) && $transactionRef == $transRef)
+        <script>
+        $(function() {
+            $('#myModal').modal('show');
+        });
+        </script>
+        @endif
+
     </div>
 
 </div>
