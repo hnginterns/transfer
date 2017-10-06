@@ -14,7 +14,7 @@
                 <p class="dicon center-block">
                   <i class="fa fa-list-alt fa-5x"></i>
                 </p>
-                <a href="/walletView"><p class="dtext"> {{ $wallet->wallet_name }} - {{ $wallet->balance }}</p></a>
+                <a href="/wallet-view"><p class="dtext"> {{ $wallet->wallet_name }} - {{ $wallet->balance }}</p></a>
               </div>
             </div>
         @endforeach
