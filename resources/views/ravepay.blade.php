@@ -25,7 +25,7 @@
               <input type="text" name="wallet" id="wallet" class="form-control border-input" value="{{$wallet->id}}" placeholder="{$wallet->wallet_name}}"  style="margin-bottom: 30px;">
 
               <label for="">Amount</label>
-              <input type="text" name="amount" id="amount" class="form-control border-input" placeholder="Please Enter Amount to funt"  style="margin-bottom: 30px;">
+              <input type="text" name="amount" id="amount" class="form-control border-input" placeholder="Please Enter Amount to fund"  style="margin-bottom: 30px;">
             </div>
           </div>
 
