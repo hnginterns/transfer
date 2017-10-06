@@ -8,6 +8,7 @@ use App\Wallet;
 use Illuminate\Support\Facades\Auth;
 use App\Beneficiary;
 use App\User;
+use Auth;
 use App\Restriction;
 use App\Http\Utilities\Wallet as UtilWallet;
 
