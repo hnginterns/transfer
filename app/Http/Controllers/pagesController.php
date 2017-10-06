@@ -144,8 +144,12 @@ class pagesController extends Controller
           ->first();
         if($permit == null) return redirect('/dashboard');
         $restrict = new Restrict($permit);
+
+        $wallet = Wallet::find($wallet);
+
+
         if(count($restrict->canAddBeneficiary()) > 0) return redirect('/dashboard');
-        return view('createbeneficiary');
+        return view('createbeneficiary', compact('wallet'));
     }
 
     public function insertBeneficiary(Wallet $wallet)
