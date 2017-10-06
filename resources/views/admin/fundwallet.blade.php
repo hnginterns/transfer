@@ -83,7 +83,7 @@
                   <br><input type="number" name="expiry_month" class="form-control" placeholder="Expiry Month" required>
                   <br><input type="number" name="pin" class="form-control" placeholder="PIN" required>
                   <br><input type="number" name="amount" class="form-control" placeholder="Amount" required>
-                  <br><button type="submit" class="btn btn-info" id="myModal" name="button">Fund</button>
+                  <br><button type="submit" class="btn btn-info" name="button" data-toggle="modal" data-target="#myModal">Fund</button>
                   <button type="button" class="btn btn-danger" name="button">Cancel</button>
                 </form>                
             </div>
@@ -91,8 +91,29 @@
       </div>
 
 
+    </div>
+    <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
     
-@if(!empty($transMsg))
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <p>Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+</div>
+@if(!empty($trans) && $error_code == 5)
 <script>
 $(function() {
     $('#myModal').modal('show');
