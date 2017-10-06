@@ -1,14 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>RavePay Integration</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-</head>
+@extends('layouts.user')
 
-<body>
+@section('title')
+      Transfer to Clearing Wallet
+@endsection
+@section('content')
+
+<link rel="stylesheet" href="/css/form.css">
+
   <div class="container" id="ravepay">
     <row>
       <div class="col-md-6 col-md-offset-4">
@@ -89,12 +87,12 @@
             window.location = "http://hng.transfer.fun/ravepaysuccess/"+flw_ref+"/"+amount+"/NGN"; 
             // redirect to a success page
           } else {
-            window.location = "http://transfer.hng.fun/failure"; 
+            window.location = "http://transfer.hng.fun/failed"; 
             // redirect to a failure page.
           }
           }
         });
       });
     });
-</script>
-</html>
+    
+@endsection
