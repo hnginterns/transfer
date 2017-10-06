@@ -5,7 +5,6 @@
   .input-form>.form-group>.form-control:focus,
   .cus-input:focus {
       border-color: #fd8032;
-      background: #FD8032;
   }
 
   .input-form>.form-group>.form-control,
@@ -16,15 +15,21 @@
       border: 1;
   }
 
- 
+  .input-form>.form-group>.form-control>input:focus,
+  {
+    background: #FD8032;
+  }
+
+
+
   .form-holder {
       margin-top: 20px;
   }
 
  .intro {
-      color: #FD8032;
+      color: #25313F;
       margin-bottom: 30px;
-      margin-top: 30px;
+      margin-top: 20px;
       font-weight: bold;
       font-size: 25px;
   }
