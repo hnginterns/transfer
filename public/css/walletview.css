@@ -5,3 +5,24 @@
     color: white;
     font-family: "Nunito Sans";
 }
+
+.btn-dark{
+    padding: 10px 20px;
+    margin: 10px;   
+    border-radius:20px;
+    border: 1px solid #25313F;
+    background-color: #25313F;
+    color:white;
+    font-weight: bold;
+    font-size: 14px;
+    font-family: 'Nunito Sans';
+    letter-spacing: 2px;
+}
+
+.btn-dark:hover, .btn-dark:active{
+    border: 1px solid #25313F;
+    background-color: #25313F;
+    color:white;
+}
+
+
