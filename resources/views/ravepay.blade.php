@@ -5,29 +5,30 @@
 @endsection
 @section('content')
 
+<link rel="stylesheet" href="/css/form.css">
+
       <div class="col-md-6 col-sm-6">
-        <form>
-                <br>
-                <h1>Pay with Rave</h1>
-                <br>
-                
+        <form  class="input-form" >
+              <h4 class="intro text-center">Pay with Rave</h4>
               <input type="hidden" name="wallet_id" value="{{$wallet->id}}">
-              <div class="form-control">  
+              <div class="form-group">  
                 <label for="">Email address</label>
-                <input type="text" name="email" id="email" class="form-control" value="user@example.com" placeholder="Enter email address" style="margin-bottom: 30px;">
+                <input type="text" name="email" id="email" class="form-control" value="user@example.com" placeholder="Enter email address" >
               </div>
 
-              <div class="form-control"> 
+              <div class="form-group"> 
                 <label for="">Wallet</label>
-                <input type="text" name="wallet" id="wallet" class="form-control" value="{{$wallet->wallet_name}}"  style="margin-bottom: 30px;">
+                <input type="text" name="wallet" id="wallet" class="form-control" value="{{$wallet->wallet_name}}"  >
               </div>
 
-              <div class="form-control"> 
+              <div class="form-group"> 
                 <label for="">Amount</label>
-                <input type="text" name="amount" id="amount" class="form-control" placeholder="Please Enter Amount to fund"  style="margin-bottom: 30px;">
+                <input type="text" name="amount" id="amount" class="form-control" placeholder="Please Enter Amount to fund"  >
               </div>
-
-          <button class="btn btn-primary" id="submit" type="button">Pay Now</button>
+              
+              <div class="form-group">
+                <button class="btn btn-primary" id="submit" type="button">Pay Now</button>
+              </div>
       </form>
 
   </div>
