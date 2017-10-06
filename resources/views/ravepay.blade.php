@@ -20,6 +20,12 @@
                 <br>
               <label for="">Email address</label>
               <input type="text" name="email" id="email" class="form-control border-input" value="user@example.com" placeholder="Enter email address" style="margin-bottom: 30px;">
+
+              <label for="">Wallet</label>
+              <input type="text" name="wallet" id="wallet" class="form-control border-input" value="{{$wallet}}"  style="margin-bottom: 30px;">
+
+              <label for="">Amount</label>
+              <input type="text" name="amount" id="amount" class="form-control border-input" placeholder="Please Enter Amount to funt"  style="margin-bottom: 30px;">
             </div>
           </div>
 

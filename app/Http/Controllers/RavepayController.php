@@ -25,7 +25,9 @@ class RavepayController extends Controller
           ->where('uuid', Auth::user()->id)
           ->get();
 
-        return view('ravepay', compact('permit', ''));
+        $wallet = Wallet::find($id)->first();
+
+        return view('ravepay', compact('permit', 'wallet'));
     }
 
     public function success($ref, $amount, $currency)
