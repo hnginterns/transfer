@@ -14,17 +14,17 @@
                 <br>
                 
               <input type="hidden" name="wallet_id" value="{{$wallet->id}}">
-              <div class="form-control">  
+              <div class="form-group">  
                 <label for="">Email address</label>
                 <input type="text" name="email" id="email" class="form-control" value="user@example.com" placeholder="Enter email address" >
               </div>
 
-              <div class="form-control"> 
+              <div class="form-group"> 
                 <label for="">Wallet</label>
                 <input type="text" name="wallet" id="wallet" class="form-control" value="{{$wallet->wallet_name}}"  >
               </div>
 
-              <div class="form-control"> 
+              <div class="form-group"> 
                 <label for="">Amount</label>
                 <input type="text" name="amount" id="amount" class="form-control" placeholder="Please Enter Amount to fund"  >
               </div>
