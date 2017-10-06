@@ -110,9 +110,15 @@ class pagesController extends Controller
         return view('otp');
     }
 
-    public function walletView()
+    public function walletdetail(Wallet $wallet)
     {
-        return view('view-wallet');
+        $permit = Restriction::where('wallet_id', $wallet->id)
+          ->where('uuid', Auth::user()->id)
+          ->first();
+        $restrict = new Restrict($permit);
+        $rules = $restrict->canView();
+        if($permit == null) return back();
+        return view('view-wallet', compact('wallet','permit','rules'));
     }
 
     public function createWallet()
@@ -125,9 +131,40 @@ class pagesController extends Controller
         return view('create-beneficiary');
     }
 
-    public function viewBeneficiary()
+    public function addBeneficiary(Wallet $wallet)
     {
-        return view('beneficiary-view');
+        // dd($wallet)
+        $permit = Restriction::where('wallet_id', $wallet->id)
+          ->where('uuid', Auth::user()->id)
+          ->first();
+        if($permit == null) return redirect('/dashboard');
+        $restrict = new Restrict($permit);
+        if(count($restrict->canAddBeneficiary()) > 0) return redirect('/dashboard');
+        return view('createbeneficiary');
+    }
+
+    public function insertBeneficiary(Wallet $wallet)
+    {          
+        $permit = Restriction::where('wallet_id', $wallet->id)
+          ->where('uuid', Auth::user()->id)
+          ->first();
+        if($permit == null) return redirect('/dashboard');
+        $restrict = new Restrict($permit);
+        if(count($restrict->canAddBeneficiary()) > 0) return redirect('/dashboard');
+
+        $beneficiary = new Beneficiary;
+        $beneficiary->name = request('name');
+        $beneficiary->account_number = request('account_number'); //->account_number;
+        //list($bank_id, $bank_name) = explode('||', request('bank_id'));
+        $beneficiary->wallet_id = '000';
+        $beneficiary->bank_id = '058';
+        $beneficiary->bank_name = request('bank_id');
+        $beneficiary->uuid = Auth::user()->id;
+        if ($beneficiary->save()) {
+            return redirect("wallet/$wallet->id")->with('success', 'Beneficiary added');
+        } else {
+            return redirect()->back()->with('failure', 'Beneficiary could not be added');
+        }
     }
 
 

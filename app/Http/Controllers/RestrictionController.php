@@ -37,25 +37,27 @@ class RestrictionController extends Controller
     public function canTransferFromWallet(){
 
         if(!$this->restriction->can_transfer_from_wallet){
-            $this->failed_rules['transfer_from_wallet'] = 'Cant transfer from this wallet';
+            $this->failed_rules['can_transfer_from_wallet'] = 'Cant transfer from this wallet';
         }
-
+        return $this->failed_rules;
     }
 
     public function canFundWallet(){
 
         if(!$this->restriction->can_fund_wallet){
-            $this->failed_rules['fund_wallet'] = 'Cant fund this wallet';
+            $this->failed_rules['can_fund_wallet'] = 'Cant fund this wallet';
         }
+
+        return $this->failed_rules;
 
     }
 
     public function canAddBeneficiary(){
 
         if(!$this->restriction->can_add_beneficiary){
-            $this->failed_rules['beneficiary'] = 'Cant add a beneficiary';
+            $this->failed_rules['can_add_beneficiary'] = 'Cant add a beneficiary';
         }
-
+        return $this->failed_rules;
     }
 
     public function canTransferToWallet(){
@@ -83,7 +85,7 @@ class RestrictionController extends Controller
         if($this->transfer_details->amount > $this->restriction->max_amount){
             $this->failed_rules['max_amount'] = "Transfer limit is ".$this->restriction->max_amount;
         }
-
+        return $this->failed_rules;
     }
 
     public function minAmount(){
@@ -91,7 +93,7 @@ class RestrictionController extends Controller
         if($this->transfer_details->amount < $this->restriction->min_amount){
             $this->failed_rules['min-amount'] = "Cant transfer lower than ".$this->restriction->min_amount;
         }
-
+            return $this->failed_rules;
     }
 
     public function fails(){

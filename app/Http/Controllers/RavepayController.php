@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Unirest;
+use App\Restriction;
+
+use Auth;
+
+use App\Wallet;
 
 class RavepayController extends Controller
 {
@@ -16,9 +21,15 @@ class RavepayController extends Controller
         //
     }
 
-    public function index()
+    public function index($id)
     {
-        return view('ravepay');
+        $permit = Restriction::where('wallet_id', $id)
+          ->where('uuid', Auth::user()->id)
+          ->get();
+
+        $wallet = Wallet::find($id)->first();
+
+        return view('ravepay', compact('permit', 'wallet'));
     }
 
     public function success($ref, $amount, $currency)

@@ -68,7 +68,7 @@ class WalletController extends Controller
             "amount" => $request->amount,
             "fee" => 0,
             "medium" => "web",
-            "redirecturl" => "https://google.com"
+            //"redirecturl" => "https://google.com"
         );
         $body = \Unirest\Request\Body::json($query);
 
@@ -113,24 +113,7 @@ class WalletController extends Controller
             return redirect('admin')->with('status', $response);
     }
 
-    public function createWallet()
-    {
-        $token = $this->getToken();
-        $headers = array('content-type' => 'application/json', 'Authorization' => $token);
-        $query = array(
-            "sourceWallet" => "932405db53",
-            "recipientWallet" => "aacafb2209",
-            "amount" => "20000",
-            "currency" => "NGN",
-            "lock" => "12345"
-        );
-        $body = \Unirest\Request\Body::json($query);
-        $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/wallet', $headers, $body);
-        // var_dump($response);
-        $response = json_decode($response->raw_body, true);
-        var_dump($response);
-    }
-
+   
     //transfer from wallet to wallet
     public function transfer(Request $request, WalletTransaction $transaction) {
         $input = $request->all();
@@ -239,17 +222,17 @@ class WalletController extends Controller
     }
 
     //get wallet balance
-    public function walletBalance()
+    public function walletBalance(Wallet $wallet)
     {
         $token = $this->getToken();
         $headers = array('content-type' => 'application/json', 'Authorization' => $token);
         $response = \Unirest\Request::get('https://moneywave.herokuapp.com/v1/wallet', $headers);
         $data = json_decode($response->raw_body, true);
         $walletBalance = $data['data'];
-
-        var_dump($walletBalance);
-        die();
-        //return view('walletBalance', compact('walletBalance'));
+        $wallet = Wallet::where('wallet_code', $walletBalance[0]['uref'])
+                    ->update(['wallet_name' => 'name']);
+        var_dump($wallet);
+          //return view('walletBalance', compact('walletBalance'));
     }
 
     //

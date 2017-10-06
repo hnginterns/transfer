@@ -63,10 +63,10 @@ Route::get('/404', 'pagesController@pagenotfound');
 Route::group(['middleware' => 'auth'], function () {
 	//User routes
 	Route::get('/dashboard', 'pagesController@userdashboard');
+	Route::get('/wallet/{wallet}', 'pagesController@walletdetail')->name('user.wallet.detail');
 	Route::get('/transfer-to-bank', 'pagesController@bank_transfer');
 	Route::get('/transfer-to-wallet', 'pagesController@wallet_transfer');
 	Route::get('/create-wallet', 'pagesController@createWallet');
-	Route::get('/walletview', 'pagesController@walletView');
 	Route::get('/banks', 'BanksController@banks');
 	Route::get('/populatebank', 'BanksController@populateBanks');
 	Route::get('/success', 'pagesController@success');
@@ -74,9 +74,11 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::get('/transfer', 'pagesController@transfer');
 	Route::get('/balance', 'pagesController@balance');
-	Route::get('/ravepay', 'RavepayController@index');
+	Route::get('/ravepay/{id}', 'RavepayController@index')->name('ravepay.pay');
 	Route::get('/integrity/{txRef}/{email}', 'RavepayController@checkSum');
-	Route::get('/ravepaysuccess/{ref}/{amount}/{currency}', 'RavepayController@success');
+	Route::get('/ravepaysuccess/{ref}/{amount}/{currency}', 'RavepayController@success');	
+	Route::get('/addbeneficiary/{wallet}', 'pagesController@addBeneficiary');
+	Route::post('/addbeneficiary/{wallet}', 'pagesController@insertBeneficiary')->name('beneficiaries.insert');
 
 });
 
@@ -167,15 +169,6 @@ Route::group(['middleware' => ['admin']], function () {
 	Route::get('admin/viewwallet/{walletId}', 'AdminController@show')->name('view-wallet');
 	Route::get('admin/wallet-details', 'AdminController@walletdetails');
 
-
-	/*
-	Route::resource('admin/users', 'Admin\UsersController');
-	Route::post('admin/users/store', 'Admin\UsersController@store');
-	Route::post('admin/users/banUser/{id}', 'Admin\UsersController@banUser');
-	Route::post('admin/users/unbanUser/{id}', 'Admin\UsersController@unbanUser');
-	Route::post('admin/users/makeAdmin/{id}', 'Admin\UsersController@makeAdmin');
-	Route::post('admin/users/removeAdmin/{id}', 'Admin\UsersController@removeAdmin');
-	*/
 
 	Route::resource('admin/users', 'UsermgtController');
 	Route::post('admin/users/banUser/{id}', 'UsermgtController@banUser');
