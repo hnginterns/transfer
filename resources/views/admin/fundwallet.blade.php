@@ -92,41 +92,7 @@
 
 
     </div>
-   @if (session('status'))
-   <script type="text/javascript">
-        $(document).ready(function() {
-            $('#myModal').modal();
-        });
-    </script>
-
-    <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Otp</h4>
-        </div>
-        <div class="modal-body">
-          <p>{{session('status', 'transRef')}}</p>
-
-          <form action="" method="POST">
-            <input type="hidden" value="{{session('transactionreference')}}">
-
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-
-</div>
-@endif
-
+   
 
 @endsection
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
