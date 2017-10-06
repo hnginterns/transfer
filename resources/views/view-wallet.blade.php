@@ -90,6 +90,7 @@
                   <th>Name</th>
                   <th>Bank</th>
                   <th>Account Number</th>
+                   <th>Wallet</th>
                   <th>Date</th>
                 </tr>
               </thead>
@@ -100,6 +101,7 @@
                   <td>{{ $beneficiary->name }}</td>
                   <td>{{ $beneficiary->bank_name }}</td>
                   <td>{{ $beneficiary->account_number }}</td>
+                  <td>{{ $beneficiary->wallet_id }}</td>
                   <td>{{ $beneficiary->created_at }}</td>
                 </tr>
               @endforeach
