@@ -133,7 +133,7 @@
                   @endforeach
 
                   <br><button type="submit" class="btn btn-info" name="button">Update Permissions</button>
-                  <button type="button" class="btn btn-danger" name="button">Cancel</button>
+                  <a type="button" href="{{config('app.url')}}/admin/managePermission" class="btn btn-danger">Cancel</a>
                 </form>                
             </div>
         </div>
