@@ -83,7 +83,7 @@
                   <br><input type="number" name="expiry_month" class="form-control" placeholder="Expiry Month" required>
                   <br><input type="number" name="pin" class="form-control" placeholder="PIN" required>
                   <br><input type="number" name="amount" class="form-control" placeholder="Amount" required>
-                  <br><button type="submit" class="btn btn-info" name="button" data-toggle="modal" data-target="#myModal">Fund</button>
+                  <br><button type="submit" class="btn btn-info" name="button">Fund</button>
                   <button type="button" class="btn btn-danger" name="button">Cancel</button>
                 </form>                
             </div>
@@ -113,7 +113,7 @@
   </div>
 
 </div>
-@if(!empty($trans) && $error_code == 5)
+@if(!empty($transMsg))
 <script>
 $(function() {
     $('#myModal').modal('show');
