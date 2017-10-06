@@ -8,11 +8,8 @@
 <link rel="stylesheet" href="/css/form.css">
 
       <div class="col-md-6 col-sm-6">
-        <form>
-                <br>
-                <h1>Pay with Rave</h1>
-                <br>
-                
+        <form  class="input-form" >
+              <h4 class="intro text-center">Pay with Rave</h4>
               <input type="hidden" name="wallet_id" value="{{$wallet->id}}">
               <div class="form-group">  
                 <label for="">Email address</label>
