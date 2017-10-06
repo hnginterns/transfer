@@ -20,7 +20,7 @@ class RavepayController extends Controller
     public function index($id)
     {
         $permit = Restriction::where('wallet_id', $id)
-          ->where('uuid', 'San Diego')
+          ->where('uuid', Auth::user()->id)
           ->get();
 
         return view('ravepay', compact('permit', ''));
