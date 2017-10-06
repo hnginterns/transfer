@@ -294,6 +294,12 @@ class AdminController extends WalletController
         return view('admin/analytics');
     }
 
+    public function cardTransaction(CardWallet $cardWallet)
+    {
+        $cardWallets = CardWallet::paginate(10);
+        return view('admin/fundhistory', compact('cardWallets'));
+    }
+
     public function ViewBeneficiary()
     {
         $beneficiaries = Beneficiary::all();

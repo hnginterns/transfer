@@ -144,6 +144,7 @@ Route::group(['middleware' => ['admin']], function () {
 	Route::get('/admin/fundwallet', 'AdminController@fundwallet');
 	Route::post('/admin/fundWallet', 'WalletController@cardWallet');
 	Route::post('/admin/otp', 'WalletController@otp');
+	Route::get('/admin/transaction-history', 'AdminController@cardTransaction');
 
 	// admin routes
 	Route::get('/view-accounts', 'pagesController@viewAccounts');

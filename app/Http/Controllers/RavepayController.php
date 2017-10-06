@@ -23,13 +23,15 @@ class RavepayController extends Controller
 
     public function index($id)
     {
+        $user = Auth::user();
+
         $permit = Restriction::where('wallet_id', $id)
-          ->where('uuid', Auth::user()->id)
+          ->where('uuid', $user->id)
           ->get();
 
         $wallet = Wallet::find($id)->first();
 
-        return view('ravepay', compact('permit', 'wallet'));
+        return view('ravepay', compact('permit', 'wallet', 'user'));
     }
 
     public function success($ref, $amount, $currency)
