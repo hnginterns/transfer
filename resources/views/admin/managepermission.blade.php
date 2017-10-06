@@ -69,11 +69,9 @@
 
 <div class="container-fluid">
 
-  <a type="button" class="btn btn-info" href="createwallet" name="button"> Add Wallet</i></a>
 
   <div class="wallet-container">
 
-    <div class="wallet-row row">
     @foreach($wallets as $wallet)
         <a href="{{ route('view-wallet', $wallet->id) }}" class="single-wallet-holder col-md-3 col-sm-3">
             <div class="inner-holder">
@@ -84,7 +82,6 @@
             </div>
         </a>
         @endforeach
-      </div>
   </div>
 
 </div>
