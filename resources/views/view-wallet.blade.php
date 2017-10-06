@@ -101,7 +101,7 @@
           <div class="col-sm-12">    
             <a href="/ravepay" class="btn btn-dark">Fund</a>
 
-            <a href="/transfer-to-wallet" class="btn btn-dark ">Transfer</a>
+            <a href="/transfer-to-bank" class="btn btn-dark ">Transfer</a>
               
             <a href="/addbeneficiary" class="btn btn-dark ">Add Beneficiary</a>
           </div>
