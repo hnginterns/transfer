@@ -115,7 +115,7 @@ class pagesController extends Controller
           ->get();
 
         $wallet = Wallet::find($id);
-        return view('view-wallet', compact('wallet'));
+        return view('view-wallet', compact('wallet', 'permit'));
     }
 
     public function createWallet()
