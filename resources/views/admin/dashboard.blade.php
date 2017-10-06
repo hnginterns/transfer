@@ -12,6 +12,11 @@ $totalwallets = count($wallets);
 ?>
 
 	<section class="content">
+    @if (session('status'))
+    <div class="alert alert-warning alert-dismissible" role="alert">
+        {{ session('status') }}
+    </div>
+  @endif
       <!-- Small boxes (Stat box) -->
       <div class="row">
         <div class="col-lg-3 col-xs-6">

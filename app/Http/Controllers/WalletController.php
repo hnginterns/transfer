@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Restriction;
+use App\CardWallet;
 use App\Beneficiary;
 use App\Rule;
 use App\Transaction;
@@ -73,22 +74,42 @@ class WalletController extends Controller
         $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer', $headers, $body);
         $response = json_decode($response->raw_body, TRUE);
         if($response['status'] == 'success') {
-            $response = $response['data'];
-            $response = $response['transfer']['meta'];
-            $response = json_decode($response, TRUE);
-            $transMsg = $response['processor']['responsemessage'];
-            $transRef = $response['processor']['transactionreference'];
-            return redirect('otp');
-            $headers = array('content-type' => 'application/json');
-            $query = array('transactionRef'=>$transRef,'otp' => '123456');
-            $body = \Unirest\Request\Body::json($query);
+            $response = $response['data']['transfer'];
+            $meta = $response['meta'];
+            $meta = json_decode($meta, TRUE);
+            $transMsg = $meta['processor']['responsemessage'];
+            $transRef = $meta['processor']['transactionreference'];
+            
+            $transaction = new CardWallet;
+            $transaction->firstName = $response['firstName'];
+            $transaction->lastName = $response['lastName'];
+            $transaction->phoneNumber = $response['phoneNumber'];
+            $transaction->amount = $response['amountToSend'];
+            $transaction->ref = $transRef;
 
-            $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer/charge/auth/card', $headers, $body);
-
-            var_dump($response);
+            $transaction->save();
+            
+            return back()->with('status', $transMsg);
 
         }
         
+    }
+
+    public function otp(Request $request)
+    {
+        \Unirest\Request::verifyPeer(false);
+
+            $headers = array('content-type' => 'application/json');
+            $query = array(
+                'transactionRef'=>$request->ref,
+                'otp' => $request->otp
+            );
+            $body = \Unirest\Request\Body::json($query);
+
+            $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer/charge/auth/card', $headers, $body);
+            $response = json_decode($response->raw_body, true);
+            $response = $response['data']['flutterChargeResponseMessage'];
+            return redirect('admin')->with('status', $response);
     }
 
     public function createWallet()
