@@ -28,7 +28,6 @@
               </div>
 
           <button class="btn btn-primary" id="submit" type="button">Pay Now</button>
-          <div class="clearfix"></div>
       </div>
       </form>
 
