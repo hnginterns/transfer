@@ -9,7 +9,7 @@
 
             <div class="col-md-4 col-sm-4">
               
-              @if (!empty($permit))
+              @if (empty($permit))
                   <div class="col-sm-12 text-center">
                       <p>Wallet Name</p>
                       <h2>{{ $wallet->wallet_name }}</h2>
