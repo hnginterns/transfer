@@ -90,16 +90,6 @@
         </div>
       </div>
 
-      BootstrapDialog.show({
-  title: 'Example',
-    message: 'Write your example here.',
-    buttons: [{
-      label: 'Close',
-        action: function(dialog) {
-          dialog.close();
-        }
-    }]
-});
 
     </div>
 
@@ -107,21 +97,3 @@
 
 @endsection
 
-<script type="text/javascript">
-  $(document).ready(function(){
-    $('#fund').click(function(e){
-        e.preventDefault();
-        url = $(this).attr('href');
-        BootstrapDialog.show({
-            title: $(this).data('title'),
-            message: $('<div></div>').load(url),
-            buttons: [{
-                label: 'Update',
-                action: function(dialogRef) {
-                    $('form').submit();
-                }
-            }]
-        });
-    });
-});
-</script>
