@@ -103,7 +103,7 @@
 
             <a href="/transfer-to-wallet" class="btn btn-dark ">Transfer</a>
               
-            <a href="/transfer-to-wallet" class="btn btn-dark ">Add Beneficiary</a>
+            <a href="/addbeneficiary" class="btn btn-dark ">Add Beneficiary</a>
           </div>
 		</div>
 		
