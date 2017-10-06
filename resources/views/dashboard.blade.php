@@ -15,7 +15,7 @@
                 <a href="{{route('user.wallet.detail', $wallet->id)}}"><p class="dtext"> {{ $wallet->wallet_name }} - {{ $wallet->balance }}</p></a>
               </div>
             </div>
-        @endforeach
+          @endforeach
 
            
         </div>

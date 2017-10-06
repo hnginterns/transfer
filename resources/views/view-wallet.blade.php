@@ -30,29 +30,29 @@
               <br>
               <div class="col-sm-12 text-center">
                   <p>Wallets S/N</p>
-                  <h2>0001</h2>
+                  <h2>{{ $wallet->wallet_name }}</h2>
               </div>   
                <br>
                <div class="col-sm-12 text-center">
                   <p>Wallet ID</p>
-                  <h2>id 2334556</h2>
+                  <h2>{{ $wallet->lock_code }}</h2>
                </div> 
               </br>
                <div class="col-sm-12 text-center">
                     <p>Currency Type</p>
-                    <h2>NGN</h2>
+                    <h2>{{ $wallet->currency }}</h2>
                </div>
                 <br><br>
                <div class="col-sm-12 text-center">
                     <p>Balance</p>
-                    <h2>134,455,667.78</h2>
+                    <h2>{{ $wallet->balance }}</h2>
                </div>
                                  
 
             </div>
 
           <div class="col-md-8 col-sm-8">
-					<div class="orange-box"><h4 class="title" align="center">TRANSACTION HISTORY</h4></div><br>
+					<div class="orange-box"><h4 class="title" align="center"> {{ $wallet->wallet_name }} TRANSACTION HISTORY</h4></div><br>
           <div class="table-responsive">
 						<table class="table">
 							<thead>
