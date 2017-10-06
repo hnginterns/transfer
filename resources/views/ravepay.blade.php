@@ -46,7 +46,7 @@
           url: "/integrity/"+txRef+"/"+email, // this is an endpoint that sends the hashed values and transaction reference to the client.
           headers: { contentType: "application/json" },
           dataType: "json",
-          type: "POST",
+          type: "GET",
           cache: false,
           success: function(response) {
             console.log(response);
