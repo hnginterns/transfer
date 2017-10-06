@@ -8,13 +8,13 @@
 <link rel="stylesheet" href="/css/walletview.css">
 
             <div class="col-md-5 col-sm-5">
+
+                  
                   
                   <div class="row">    
-                    <button id="" type="submit" class="btn btn-primary center-block">Transfer</button>
-                  </div>
-
-                  <div class="row">    
-                    <button id="" type="submit" class="btn btn-primary center-block">Transfer</button>
+                    <button id="" type="submit" class="btn btn-primary center-block">Fund</button>
+                     
+                    <button id="" type="submit" class="btn btn-primary center-block">Add Beneficiary</button>
                   </div>
 
             </div>

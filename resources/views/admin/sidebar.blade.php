@@ -25,14 +25,12 @@
       <li>
         <a href="{{ url('/admin/users') }}"><i class="fa fa-group"></i> <span>Manage Users</span></a>
       </li>
-
        <li>
-        <a href="{{ url('/admin/view-rules') }}"><i class="fa fa-plus"></i> <span>Manage Rules</span></a>
+        <a href="{{ url('/admin/addpermission') }}"><i class="fa fa-plus"></i> <span>Manage Permission</span></a>
       </li>
       <li><a href="{{ url('/admin/managewallet') }}"><i class="fa fa-briefcase"></i> <span>Manage Wallet</span></a></li>
-      <li><a href="{{ url('/admin/beneficiary') }}"><i class="fa fa-dollar"></i> <span>Beneficiary</span></a></li>
       <li><a href="{{ url('/admin/fundwallet') }}"><i class="fa fa-money"></i> <span>Fund Wallet<span></a></li>
-      <li><a href="{{ url('/admin/analytics') }}"><i class="fa fa-line-chart"></i> <span>Transaction Analytics<span></a></li>
+      <!--<li><a href="{{ url('/admin/analytics') }}"><i class="fa fa-line-chart"></i> <span>Transaction Analytics<span></a></li>-->
       <li><a href="{{ url('/admin/smswallet') }}"><i class="fa fa-envelope"></i> <span>SMS Wallet</span></a></a></li>
       <li>
         <li>
