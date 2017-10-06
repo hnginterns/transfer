@@ -320,7 +320,7 @@ class WalletController extends Controller
     protected function validatebeneficiary(array $data)
     {
         return Validator::make($data, [
-            'wallet_name' => 'required|string',
+            'wallet_id' => 'required|numeric',
             'amount' => 'required|numeric',
             'beneficiary_id' => 'required|numeric',
         ]);

@@ -115,9 +115,9 @@ class pagesController extends Controller
         $permit = Restriction::where('wallet_id', $wallet->id)
           ->where('uuid', Auth::user()->id)
           ->first();
+        if($permit == null) return redirect('/dashboard');
         $restrict = new Restrict($permit);
         $rules = $restrict->canView();
-        if($permit == null) return back();
         return view('view-wallet', compact('wallet','permit','rules'));
     }
 
@@ -133,7 +133,6 @@ class pagesController extends Controller
 
     public function addBeneficiary(Wallet $wallet)
     {
-        // dd($wallet)
         $permit = Restriction::where('wallet_id', $wallet->id)
           ->where('uuid', Auth::user()->id)
           ->first();
