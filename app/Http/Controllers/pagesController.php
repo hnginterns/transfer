@@ -8,6 +8,7 @@ use App\Wallet;
 use Illuminate\Support\Facades\Auth;
 use App\Beneficiary;
 use App\User;
+use App\Restriction;
 use App\Http\Utilities\Wallet as UtilWallet;
 
 class pagesController extends Controller
@@ -109,6 +110,10 @@ class pagesController extends Controller
 
     public function walletdetail($id)
     {
+        $permit = Restriction::where('wallet_id', $id)
+          ->where('uuid', Auth::user()->id)
+          ->get();
+
         $wallet = Wallet::find($id);
         return view('view-wallet', compact('wallet'));
     }
