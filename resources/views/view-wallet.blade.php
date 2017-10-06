@@ -99,9 +99,9 @@
 					</div>
           
           <div class="col-sm-12">    
-            <a href="/transfer-to-wallet" class="btn btn-dark">Fund</a>
+            <a href="/ravepay" class="btn btn-dark">Fund</a>
 
-            <a href="/" class="btn btn-dark ">Transfer</a>
+            <a href="/transfer-to-wallet" class="btn btn-dark ">Transfer</a>
               
             <a href="/transfer-to-wallet" class="btn btn-dark ">Add Beneficiary</a>
           </div>
