@@ -5,6 +5,8 @@
 @endsection
 @section('content')
 
+<link rel="stylesheet" href="/css/form.css">
+
       <div class="col-md-6 col-sm-6">
         <form>
                 <br>
