@@ -66,11 +66,11 @@ function toWallet(){
     $headers = array('content-type' => 'application/json', 'Authorization' => $token);
 
     $query = array(
-        "sourceWallet" => '0',
-        "recipientWallet" => 'aacafb2209',
-        "amount" => '5038',
+        "sourceWallet" => 'aacafb2209',
+        "recipientWallet" => '0',
+        "amount" => '9652',
         "currency" => "NGN",
-        "lock" =>'123456'
+        "lock" =>'1234'
     );
 
     $body = \Unirest\Request\Body::json($query);
@@ -78,8 +78,8 @@ function toWallet(){
     $response_arr = json_decode($response->raw_body, TRUE);
     $status = $response_arr['status'];
     // dd($response_arr);a few chan
-    return redirect()->action('pagesController@failed', ['response'=> $response_arr]);
-    //dd($response_arr);
+    //return redirect()->action('pagesController@failed', ['response'=> $response_arr]);
+    dd($response_arr);
 }
 
 //echo walletBalance().'<br>';

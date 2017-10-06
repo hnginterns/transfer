@@ -29,12 +29,12 @@
                           </div>
 
                             <div class="form-group">
-                              <select class="form-control cus-input" name="wallet_name" id="wallet_name">
-                                <option value=""> Select Wallet</option>
-                                @forelse($wallets as $wallet)
-                                  <option value="{{ $wallet->wallet_name }}">{{ $wallet->wallet_name }}</option>
+                              <select class="form-control cus-input" name="wallet_id" id="wallet_id">
+                                <option>--Select Wallet--</option>
+                                @foreach($wallets as $key => $wallet)
+                                  <option value="{{ $wallet->id }}">{{ $wallet->wallet_name }}</option>
                                 @empty
-                                @endforelse
+                                @endforeach
                               </select>
                             </div>
                             
