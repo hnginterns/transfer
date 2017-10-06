@@ -137,7 +137,7 @@ class pagesController extends Controller
         return view('create-beneficiary');
     }
 
-    public function addBeneficiary(Wallet $wallet)
+    public function addBeneficiary($wallet)
     {
         $permit = Restriction::where('wallet_id', $wallet->id)
           ->where('uuid', Auth::user()->id)
