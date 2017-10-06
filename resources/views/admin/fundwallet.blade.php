@@ -112,7 +112,7 @@
           <p>{{session('status')}}</p>
 
           <form action="" method="POST">
-            <input type="hidden" value="{{session('transactionreference')}}">
+            <input type="hidden" value="{{$transRef}}">
           </form>
         </div>
         <div class="modal-footer">
