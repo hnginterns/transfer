@@ -79,8 +79,8 @@
             <div class="inner-holder">
                   <h5 class="wallet-name"><b>Wallet Name:</b> {{ $wallet->wallet_name }}</h5>
                   <h5 class="wallet-name"><b>Balance:</b> {{ $wallet->balance }}</h5>                  
-                  <a href="addpermission" class="btn btn-danger pull-right" name="button">Add Permission</a>
-                  <a href="editpermission/{id}" class="btn btn-danger pull-right" name="button">Edit Permission</a>
+                  <a href="{{ url('/admin/addpermission') }}" class="btn btn-danger pull-right" name="button">Add Permission</a>
+                  <a href="{{ url('/admin/editpermission') }}" class="btn btn-danger pull-right" name="button">Edit Permission</a>
             </div>
         </a>
         @endforeach

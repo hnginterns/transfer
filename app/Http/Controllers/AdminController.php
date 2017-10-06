@@ -41,7 +41,7 @@ class AdminController extends WalletController
         // logic for saving the rules Lies Here
     }
 
-    public function viewRules()
+    public function managePermission()
     {
         $wallets = Wallet::all();
      
