@@ -1,8 +1,6 @@
 @extends('layouts.user')
+@section('title', 'Dashboard')
 
-@section('title')
-      Dashboard
-@endsection
 @section('content')
 
       <div class="col-md-12 col-sm-12">
@@ -14,10 +12,10 @@
                 <p class="dicon center-block">
                   <i class="fa fa-list-alt fa-5x"></i>
                 </p>
-                <a href="/wallet-view"><p class="dtext"> {{ $wallet->wallet_name }} - {{ $wallet->balance }}</p></a>
+                <a href="{{route('user.wallet.detail', $wallet->id)}}"><p class="dtext"> {{ $wallet->wallet_name }} - {{ $wallet->balance }}</p></a>
               </div>
             </div>
-        @endforeach
+          @endforeach
 
            
         </div>

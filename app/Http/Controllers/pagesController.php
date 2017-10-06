@@ -107,9 +107,10 @@ class pagesController extends Controller
         return view('otp');
     }
 
-    public function walletView()
+    public function walletdetail($id)
     {
-        return view('view-wallet');
+        $wallet = Wallet::find($id);
+        return view('view-wallet', compact('wallet'));
     }
 
     public function createWallet()
