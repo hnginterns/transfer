@@ -29,11 +29,7 @@
                         <p>Balance</p>
                         <h2>{{ $wallet->balance }}</h2>
                    </div>
-              @else
-
-              <p> You do not have permission to view this wallet</p>
-
-              @endif
+              
                                  
 
             </div>
@@ -84,7 +80,36 @@
 							</tbody>
 						</table>
 					</div>
+
+          <div class="orange-box"><h4 class="title" align="center"> {{ $wallet->wallet_name }} Beneficiaries</h4></div>
+
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Bank</th>
+                  <th>Account Number</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+              @foreach ($beneficiaries as $beneficiary)
+                <tr>
+                  <td>{{ $beneficiary->name }}</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              @endforeach
+                </tr>               
+              </tbody>
+            </table>
+
+            {{ $beneficiaries->links() }}
+          </div>
           
+
           <div class="col-sm-12">  
 		  	@if(!array_key_exists('can_fund_wallet', $rules))  
             	<a href="{{ route('ravepay.pay', $wallet->id)}}" class="btn btn-dark">Fund</a>
@@ -98,6 +123,12 @@
 			@endif
           </div>
 		</div>
+
+    @else
+
+              <p> You do not have permission to view this wallet</p>
+
+     @endif
 		
     
   @endsection

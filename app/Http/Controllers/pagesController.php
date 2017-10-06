@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Beneficiary;
 use App\User;
 use App\Restriction;
+
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\RestrictionController as Restrict;
 use App\Http\Utilities\Wallet as UtilWallet;
 
@@ -118,7 +120,11 @@ class pagesController extends Controller
         if($permit == null) return redirect('/dashboard');
         $restrict = new Restrict($permit);
         $rules = $restrict->canView();
-        return view('view-wallet', compact('wallet','permit','rules'));
+        if($permit == null) return back();
+
+        $beneficiaries = Beneficiary::where('wallet_id', $wallet->id)->paginate(15);
+         
+        return view('view-wallet', compact('wallet','permit','rules','beneficiaries'));
     }
 
     public function createWallet()
