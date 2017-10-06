@@ -75,12 +75,12 @@
 
     <div class="wallet-row row">
     @foreach($wallets as $wallet)
-        <a href="{{ route('view-wallet', $wallet->id) }}" class="single-wallet-holder col-md-3">
+        <a href="{{ route('view-wallet', $wallet->id) }}" class="single-wallet-holder col-md-3 col-sm-3">
             <div class="inner-holder">
                   <h5 class="wallet-name"><b>Wallet Name:</b> {{ $wallet->wallet_name }}</h5>
                   <h5 class="wallet-name"><b>Balance:</b> {{ $wallet->balance }}</h5>                  
-                  <a href="{{ url('/admin/addpermission') }}" class="btn btn-danger pull-right" name="button">Add Permission</a>
-                  <a href="{{ url('/admin/editpermission') }}" class="btn btn-danger pull-right" name="button">Edit Permission</a>
+                  <a href="{{ url('/admin/addpermission') }}" class="btn btn-info " name="button">Add Permission</a>
+                  <a href="{{ url('/admin/editpermission') }}" class="btn btn-info" name="button">Edit Permission</a>
             </div>
         </a>
         @endforeach
