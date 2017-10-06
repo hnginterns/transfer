@@ -77,10 +77,12 @@
              flw_ref = response.tx.flwRef;// collect flwRef returned and pass to a                  server page to complete status check.
           console.log("This is the response returned after a charge", response);
           if(response.tx.chargeResponse =='00' || response.tx.chargeResponse == '0') {
-            window.location = "http://transfer.hng.fun/ravepaysuccess/"+flw_ref+"/"+amount+"/NGN"; 
+            console.log("This is the response returned after a charge", response);
+            //window.location = "http://transfer.hng.fun/ravepaysuccess/"+flw_ref+"/"+amount+"/NGN"; 
             // redirect to a success page
           } else {
-            window.location = "http://transfer.hng.fun/failed"; 
+            console.log(response);
+            //window.location = "http://transfer.hng.fun/failed/"+response+; 
             // redirect to a failure page.
           }
           }

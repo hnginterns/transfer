@@ -70,7 +70,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/banks', 'BanksController@banks');
 	Route::get('/populatebank', 'BanksController@populateBanks');
 	Route::get('/success', 'pagesController@success');
-	Route::get('/failed', 'pagesController@failed')->name('failed');
+	Route::get('/failed/{response}', 'pagesController@failed')->name('failed');
 
 	Route::get('/transfer', 'pagesController@transfer');
 	Route::get('/balance', 'pagesController@balance');
