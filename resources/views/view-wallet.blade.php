@@ -1,7 +1,7 @@
 @extends('layouts.user')
 
 @section('title')
-      Transfer to Clearing Wallet
+      View Wallet
 @endsection
 @section('content')
 
