@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Session;
 use App\User;
 use App\Wallet;
 use App\CardWallet;
+use App\Restriction;
 use App\Rule;
 use App\Beneficiary;
 use Carbon\Carbon;
@@ -43,11 +44,9 @@ class AdminController extends WalletController
 
     public function managePermission()
     {
-        $wallets = Wallet::all();
-     
-        $transaction = \App\Http\Utilities\Wallet::all();
+        $restriction = Restriction::all();
 
-        return view('admin.managepermission', compact('wallets', 'transaction'));
+        return view('admin.managepermission', compact('restriction'));
     }
 
     public function createRule()

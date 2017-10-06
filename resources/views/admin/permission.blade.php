@@ -86,6 +86,7 @@
                   <div class="form-group">
                    <!-- <label>Add wallet</label> -->
                     <select id="" name="wallet_id" class="form-control">
+                     <option value="none"> Select Wallet</option>
                       @foreach($wallet as $key => $wallets)
                       <option value="{{$wallets->id}}">{{$wallets->wallet_name}}</option>
                       @endforeach
@@ -128,8 +129,8 @@
                   @endforeach
 
                   <br><button type="submit" class="btn btn-info" name="button">Add Permissions</button>
-                  <button type="button" class="btn btn-danger" name="button">Cancel</button>
-                </form>                
+                  <a type="button" href="{{config('app.url')}}/admin/managePermission" class="btn btn-danger">Cancel</a>
+                 </form>                
             </div>
         </div>
       </div>
