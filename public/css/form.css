@@ -15,7 +15,7 @@
       border: 1;
   }
 
-  .input-form>.form-group>.form-control>input:focus,
+  .input-form>.form-group>.form-control:focus,
   {
     background: #FD8032;
   }
