@@ -218,12 +218,11 @@ class WalletController extends Controller
                 $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/disburse', $headers, $body);
                 $response = json_decode($response->raw_body, true);
                 $status = $response['status'];
-                // dd($response);
                 if ($status == 'success') {
                     $data = $response;
-                    return redirect()->action('pagesController@success', $response);
+                    return redirect('success')->with('success',$data);
                 } else {
-                    return redirect()->action('pagesController@failed', $response);
+                    return redirect()->with('failed',$data);
                 }
         }
     }
