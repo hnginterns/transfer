@@ -122,7 +122,7 @@ class pagesController extends Controller
         $rules = $restrict->canView();
         if($permit == null) return back();
 
-        $beneficiaries = Beneficiary::where('wallet_id', $wallet)->paginate(15);
+        $beneficiaries = Beneficiary::where('wallet_id', $wallet->id)->paginate(15);
          
         return view('view-wallet', compact('wallet','permit','rules','beneficiaries'));
     }
