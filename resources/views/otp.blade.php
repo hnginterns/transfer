@@ -22,7 +22,7 @@
           <h4 class="modal-title">Otp</h4>
         </div>
         <div class="modal-body">
-          <p>{{session('status', 'transRef')}}</p>
+          <p>welcome</p>
 
           <form action="" method="POST">
             <input type="hidden" value="{{session('transactionreference')}}">
