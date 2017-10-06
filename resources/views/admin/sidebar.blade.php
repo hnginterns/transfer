@@ -26,7 +26,7 @@
         <a href="{{ url('/admin/users') }}"><i class="fa fa-group"></i> <span>Manage Users</span></a>
       </li>
        <li>
-        <a href="{{ url('/admin/addpermission') }}"><i class="fa fa-plus"></i> <span>Manage Permission</span></a>
+        <a href="{{ url('/admin/permission') }}"><i class="fa fa-plus"></i> <span>Manage Permission</span></a>
       </li>
       <li><a href="{{ url('/admin/managewallet') }}"><i class="fa fa-briefcase"></i> <span>Manage Wallet</span></a></li>
       <li><a href="{{ url('/admin/fundwallet') }}"><i class="fa fa-money"></i> <span>Fund Wallet<span></a></li>
