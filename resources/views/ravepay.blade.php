@@ -25,8 +25,10 @@
                 <label for="">Amount</label>
                 <input type="text" name="amount" id="amount" class="form-control" placeholder="Please Enter Amount to fund"  >
               </div>
-
-          <button class="btn btn-primary" id="submit" type="button">Pay Now</button>
+              
+              <div class="form-group">
+                <button class="btn btn-primary" id="submit" type="button">Pay Now</button>
+              </div>
       </form>
 
   </div>
