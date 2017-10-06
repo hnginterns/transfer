@@ -9,7 +9,7 @@
 
             <div class="col-md-4 col-sm-4">
               
-              @if (empty($permit))
+              @if (!empty($permit))
                   <div class="col-sm-12 text-center">
                       <p>Wallet Name</p>
                       <h2>{{ $wallet->wallet_name }}</h2>
@@ -29,11 +29,7 @@
                         <p>Balance</p>
                         <h2>{{ $wallet->balance }}</h2>
                    </div>
-              @else
-
-              <p> You do not have permission to view this wallet</p>
-
-              @endif
+              
                                  
 
             </div>
@@ -98,6 +94,12 @@
 			@endif
           </div>
 		</div>
+
+    @else
+
+              <p> You do not have permission to view this wallet</p>
+
+     @endif
 		
     
   @endsection
