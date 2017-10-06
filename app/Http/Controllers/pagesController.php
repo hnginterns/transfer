@@ -122,9 +122,26 @@ class pagesController extends Controller
         return view('create-beneficiary');
     }
 
-    public function viewBeneficiary()
+    public function addBeneficiary()
     {
-        return view('beneficiary-view');
+        return view('createbeneficiary');
+    }
+
+    public function insertBeneficiary()
+    {            
+        $beneficiary = new Beneficiary;
+        $beneficiary->name = request('name');
+        $beneficiary->account_number = request('account_number'); //->account_number;
+        //list($bank_id, $bank_name) = explode('||', request('bank_id'));
+        $beneficiary->wallet_id = '000';
+        $beneficiary->bank_id = '058';
+        $beneficiary->bank_name = request('bank_id');
+        $beneficiary->uuid = Auth::user()->id;
+        if ($beneficiary->save()) {
+            return redirect('wallet-view')->with('success', 'Beneficiary added');
+        } else {
+            return redirect()->back()->with('failure', 'Beneficiary could not be added');
+        }
     }
 
 

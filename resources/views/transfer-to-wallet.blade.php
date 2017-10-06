@@ -12,13 +12,9 @@
                     <form id="trform" class="input-form">
                         <div class="form-group">
                             <select class="form-control cus-input" name="sourceWallet">
-
-
                                 <option value="">Select sender Wallet</option>
                                     @foreach($wallets as $wallet)
-                                       @if($wallet->uuid == $user_id)
-                                          <option value="{{ $wallet->wallet_code }}">{{ $wallet->wallet_name}}</option>
-                                        @endif
+                                          <option value="{{ $wallet->wallet_code }}">{{ $wallet->wallet_name}}</option>                                      
                                     @endforeach
                             </select>
                         </div>
@@ -28,9 +24,7 @@
                             <select class="form-control cus-input" name="recipientWallet">
                                 <option value="">Select recipient wallet</option>
                                     @foreach($wallets as $wallet)
-                                      @if($wallet->uuid !== $user_id)
                                           <option value="{{ $wallet->wallet_code }}">{{ $wallet->wallet_name}}</option>
-                                      @endif
                                     @endforeach
                             </select>
                         </div>
