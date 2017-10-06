@@ -212,7 +212,6 @@ class WalletController extends Controller
                      $restrict = new Restrict($permit, $request);
                      $errors = $restrict->transferToBank();
                 if(count($errors) != 0){
-                    // dd($errors);
                      return back()->with('multiple-error', $errors);
                 }
 
@@ -220,6 +219,7 @@ class WalletController extends Controller
                 $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/disburse', $headers, $body);
                 $response = json_decode($response->raw_body, true);
                 $status = $response['status'];
+                dd($response);
                 if ($status == 'success') {
                     $data = $response;
                     return redirect()->action('pagesController@success', $response);
