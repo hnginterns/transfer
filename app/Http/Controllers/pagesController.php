@@ -155,7 +155,7 @@ class pagesController extends Controller
     public function insertBeneficiary(Wallet $wallet)
     {    
           
-        $permit = Restriction::where('wallet_id', $wallet)
+        $permit = Restriction::where('wallet_id', $wallet->id)
           ->where('uuid', Auth::user()->id)
           ->first();
         if($permit == null) return redirect('/dashboard');
@@ -166,7 +166,7 @@ class pagesController extends Controller
         $beneficiary->name = request('name');
         $beneficiary->account_number = request('account_number'); //->account_number;
         //list($bank_id, $bank_name) = explode('||', request('bank_id'));
-        $beneficiary->wallet_id = $wallet;
+        $beneficiary->wallet_id = $wallet->id;
         $beneficiary->bank_id = '058';
         $beneficiary->bank_name = request('bank_id');
         $beneficiary->uuid = Auth::user()->id;
