@@ -92,7 +92,15 @@
 
 
     </div>
-    <div class="modal fade" id="myModal" role="dialog">
+   @if (session('status'))
+   <script type="text/javascript">
+        $(document).ready(function() {
+            $('#myModal').modal();
+        });
+    </script>
+@endif
+
+ <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
     
       <!-- Modal content-->
@@ -113,11 +121,6 @@
   </div>
 
 </div>
-@if (session('status'))
-    <div class="alert alert-success">
-        {{ session('status') }}
-    </div>
-@endif
 
 @endsection
 
