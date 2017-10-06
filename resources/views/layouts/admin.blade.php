@@ -98,7 +98,7 @@
   })
 </script>
 
-
+@yield('added_js')
 
 </body>
 </html>

@@ -182,6 +182,8 @@ Route::group(['middleware' => ['admin']], function () {
 	//Route::get('/manager/setting', 'AdminController@settings');
 
 	Route::get('/admin/smswallet', 'SmsWalletController@smsWalletBalance');
+	Route::post('/admin/smswallet-topup', 'SmsWalletController@smsWalletTopup');	
+	Route::post('/admin/get-user-details', 'SmsWalletController@getUserDetails');
 
 	// admin routes
 	Route::get('/view-accounts', 'pagesController@viewAccounts');
