@@ -14,7 +14,7 @@
       <div class="beneficiary-row row">
         <div class="single-beneficiary-holder col-md-6 col-sm-6">
             <div class="inner-holder">
-                  <h4 class="intro text-center" >Add New Beneficiary to {{$wallet->id}}</h4>
+                  <h4 class="intro text-center" >Add New Beneficiary to {{$wallet}}</h4>
                   <form action="" method="POST" class="input-form">
                   {{csrf_field()}}
                 
