@@ -92,7 +92,7 @@
 
 
     </div>
-   @if(!empty($transMsg))
+   @if (session('status'))
    <script type="text/javascript">
         $(document).ready(function() {
             $('#myModal').modal();
@@ -109,11 +109,11 @@
           <h4 class="modal-title">Otp</h4>
         </div>
         <div class="modal-body">
-          <p>{{$transMsg}}</p>
+          <p>{{session('status', 'transRef')}}</p>
 
           <form action="" method="POST">
-            <input type="hidden" value="{{$transRef}}">
-          </form>
+            <input type="hidden" value="{{session('transactionreference')}}">
+
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
