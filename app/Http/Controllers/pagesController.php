@@ -84,15 +84,16 @@ class pagesController extends Controller
         return view('transfer');
     }
 
-    public function bank_transfer()
+    public function bank_transfer(Wallet $wallet)
     {
-        $beneficiary = Beneficiary::all();
-        $wallets = Wallet::where('uuid', '=', Auth::user()->id)->get();
-        if (!empty($wallet)) {
-            //$wallet = $wallet[0];
-        }
+        $permit = Restriction::where('wallet_id', $wallet->id)
+          ->where('uuid', Auth::user()->id)
+          ->first();
+        if($permit == null) return redirect('/dashboard');
+        $restrict = new Restrict($permit);
+        if(count($restrict->canTransferFromWallet()) != 0) return redirect('/dashboard');
 
-        return view('transfer-to-bank', compact('beneficiary', 'wallets', 'data'));
+        return view('transfer-to-bank', compact('wallet'));
     }
 
     public function wallet_transfer()

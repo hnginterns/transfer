@@ -34,6 +34,13 @@ class RestrictionController extends Controller
         return $this->failed_rules;
     }
 
+    public function transferToBank(){
+        $this->canTransferFromWallet();
+        $this->maxAmount();
+        $this->minAmount();
+        return $this->failed_rules;
+    }
+
     public function canTransferFromWallet(){
 
         if(!$this->restriction->can_transfer_from_wallet){
