@@ -92,7 +92,7 @@
 
 
     </div>
-   @if (session('status'))
+   @if(!empty($transMsg))
    <script type="text/javascript">
         $(document).ready(function() {
             $('#myModal').modal();
@@ -109,7 +109,7 @@
           <h4 class="modal-title">Otp</h4>
         </div>
         <div class="modal-body">
-          <p>{{session('status')}}</p>
+          <p>{{$transMsg}}</p>
 
           <form action="" method="POST">
             <input type="hidden" value="{{$transRef}}">

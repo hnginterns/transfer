@@ -78,7 +78,7 @@ class WalletController extends Controller
             $response = json_decode($response, TRUE);
             $transMsg = $response['processor']['responsemessage'];
             $transRef = $response['processor']['transactionreference'];
-            return back()->with(['transRef' => $transRef], 'status', $transMsg);
+            return redirect('/admin/fundwallet')->with(['transRef'=> $transRef, 'transMsg', $transMsg]);
             $headers = array('content-type' => 'application/json');
             $query = array('transactionRef'=>$transRef,'otp' => '123456');
             $body = \Unirest\Request\Body::json($query);
