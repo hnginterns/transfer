@@ -220,7 +220,7 @@ class WalletController extends Controller
                 $status = $response['status'];
                 if ($status == 'success') {
                     $data = $response;
-                    return redirect('success')->with('success',$data);
+                    return redirect('success')->with('status',$data);
                 } else {
                     return redirect()->with('failed',$data);
                 }
