@@ -7,6 +7,8 @@ use App\Restriction;
 
 use Auth;
 
+use App\Wallet;
+
 class RavepayController extends Controller
 {
     /**
