@@ -210,8 +210,10 @@ class WalletController extends Controller
                         ->first();
                 if($permit == null) return redirect('/dashboard');
                      $restrict = new Restrict($permit, $request);
-                if(count($restrict->transferToBank()) != 0){
-                     return redirect('/dashboard');
+                     $errors = $restrict->transferToBank();
+                if(count($errors) != 0){
+                    // dd($errors);
+                     return back()->with('multiple-error', $errors);
                 }
 
                 $body = \Unirest\Request\Body::json($query);
