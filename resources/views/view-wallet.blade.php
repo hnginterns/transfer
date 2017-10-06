@@ -21,7 +21,7 @@
               </br>
                <div class="col-sm-12 text-center">
                     <p>Currency Type</p>
-                    <h2>{{ $wallet->currency }}</h2>
+                    <h2>Nigeria Naira</h2>
                </div>
                 <br><br>
                <div class="col-sm-12 text-center">
