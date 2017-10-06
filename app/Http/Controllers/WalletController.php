@@ -76,10 +76,9 @@ class WalletController extends Controller
             $response = $response['data'];
             $response = $response['transfer']['meta'];
             $response = json_decode($response, TRUE);
-            var_dump($response);
-            die();
+            $transMsg = $response['processor']['responsemessage'];
             $transRef = $response['processor']['transactionreference'];
-            return redirect('otp');
+            return redirect('otp')->with(compact('transMsg', 'transRef'));
             $headers = array('content-type' => 'application/json');
             $query = array('transactionRef'=>$transRef,'otp' => '123456');
             $body = \Unirest\Request\Body::json($query);
