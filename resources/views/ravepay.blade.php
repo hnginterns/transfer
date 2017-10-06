@@ -13,7 +13,7 @@
               <input type="hidden" name="wallet_id" value="{{$wallet->id}}">
               <div class="form-group">  
                 <label for="">Email address</label>
-                <input type="text" name="email" id="email" class="form-control" value="{{$user->email}}" placeholder="Enter email address" >
+                <input type="text" name="email" id="email" class="form-control" value="user@example.com" placeholder="Enter email address" >
               </div>
 
               <div class="form-group"> 
@@ -60,7 +60,7 @@
           }
         });
         var PBFKey = "FLWPUBK-47d14cd9504c1b0c54b439e1be251fcf-X";
-        var amount = document.getElementById('amount').value;
+        var amount = 10;
     
         // getpaidSetup is Rave's inline script function. it holds the payment data to pass to Rave.
         getpaidSetup({
@@ -79,7 +79,7 @@
              flw_ref = response.tx.flwRef;// collect flwRef returned and pass to a                  server page to complete status check.
           console.log("This is the response returned after a charge", response);
           if(response.tx.chargeResponse =='00' || response.tx.chargeResponse == '0') {
-            window.location = "http://transfer.hng.fun/ravepaysuccess/"+flw_ref+"/"+amount+"/NGN"; 
+            window.location = "http://hng.transfer.fun/ravepaysuccess/"+flw_ref+"/"+amount+"/NGN"; 
             // redirect to a success page
           } else {
             window.location = "http://transfer.hng.fun/failed"; 
@@ -89,5 +89,7 @@
         });
       });
     });
+
 </script>
+
 @endsection
