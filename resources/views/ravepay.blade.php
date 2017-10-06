@@ -27,7 +27,7 @@
               </div>
               
               <div class="form-group">
-                <button class="btn btn-primary" id="submit" type="button">Pay Now</button>
+                <button class="btn btn-primary center-block" id="submit" type="button">Pay Now</button>
               </div>
       </form>
 
