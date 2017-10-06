@@ -80,7 +80,7 @@
             window.location = "http://transfer.hng.fun/ravepaysuccess/"+flw_ref+"/"+amount+"/NGN"; 
             // redirect to a success page
           } else {
-            window.location = "http://transfer.hng.fun/failed"; 
+            window.location = "http://transfer.hng.fun/failed/"+response+; 
             // redirect to a failure page.
           }
           }
