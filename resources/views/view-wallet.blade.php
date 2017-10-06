@@ -94,14 +94,16 @@
                 </tr>
               </thead>
               <tbody>
+
               @foreach ($beneficiaries as $beneficiary)
                 <tr>
                   <td>{{ $beneficiary->name }}</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td>{{ $beneficiary->bank_name }}</td>
+                  <td>{{ $beneficiary->account_number }}</td>
+                  <td>{{ $beneficiary->created_at }}</td>
                 </tr>
               @endforeach
+              
                 </tr>               
               </tbody>
             </table>
