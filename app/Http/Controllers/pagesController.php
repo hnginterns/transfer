@@ -102,9 +102,9 @@ class pagesController extends Controller
         return view('view-accounts');
     }
 
-    public function otp()
+    public function otp($transMsg, $transRef)
     {
-        return view('otp');
+        return view('otp', compact('transMsg', 'transRef'));
     }
 
     public function walletView()
