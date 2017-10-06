@@ -55,7 +55,7 @@ Route::get('/gettoken', 'WalletController@getToken');
 
 Route::get('/transferWallet', 'WalletController@transfer');
 
-Route::post('/transferAccount', 'WalletController@transferAccount');
+Route::post('/transfer-to-bank/{wallet}', 'WalletController@transferAccount');
 
 Route::get('/404', 'pagesController@pagenotfound');
 
@@ -64,7 +64,7 @@ Route::group(['middleware' => 'auth'], function () {
 	//User routes
 	Route::get('/dashboard', 'pagesController@userdashboard');
 	Route::get('/wallet/{wallet}', 'pagesController@walletdetail')->name('user.wallet.detail');
-	Route::get('/transfer-to-bank', 'pagesController@bank_transfer');
+	Route::get('/transfer-to-bank/{wallet}', 'pagesController@bank_transfer');
 	Route::get('/transfer-to-wallet', 'pagesController@wallet_transfer');
 	Route::get('/create-wallet', 'pagesController@createWallet');
 	Route::get('/banks', 'BanksController@banks');

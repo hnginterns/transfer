@@ -37,6 +37,15 @@ class Wallet extends Model
         return $this->hasOne(Restriction::class);
     }
 
+     /**
+     * Get Wallet restriction
+     *
+     * @return void
+     */
+    public function beneficiary() {
+        return $this->hasMany(Beneficiary::class);
+    }
+
 		/**
 		 * Archive wallet
 		 *
