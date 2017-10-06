@@ -91,11 +91,7 @@
       </div>
 
       @if(!empty($transactionRef) && $transactionRef == $transRef)
-        <script>
-        $(function() {
-            $('#myModal').modal('show');
-        });
-        </script>
+        Bootstrap.alert('Emeka');
         @endif
 
     </div>
