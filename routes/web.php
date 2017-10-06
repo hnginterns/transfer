@@ -63,10 +63,10 @@ Route::get('/404', 'pagesController@pagenotfound');
 Route::group(['middleware' => 'auth'], function () {
 	//User routes
 	Route::get('/dashboard', 'pagesController@userdashboard');
+	Route::get('/wallet/{wallet}', 'pagesController@walletdetail')->name('user.wallet.detail');
 	Route::get('/transfer-to-bank', 'pagesController@bank_transfer');
 	Route::get('/transfer-to-wallet', 'pagesController@wallet_transfer');
 	Route::get('/create-wallet', 'pagesController@createWallet');
-	Route::get('/wallet-view', 'pagesController@walletView');
 	Route::get('/banks', 'BanksController@banks');
 	Route::get('/populatebank', 'BanksController@populateBanks');
 	Route::get('/success', 'pagesController@success');
