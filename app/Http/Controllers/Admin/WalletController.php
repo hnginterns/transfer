@@ -95,7 +95,7 @@ class WalletController  extends Controller
             $restriction->updated_by = Auth::user()->id;
             $restriction->can_transfer_to_wallets = json_encode($request->can_transfer_to_wallets);
             if($restriction->save()){
-                return redirect('admin/view-rules');
+                return redirect('admin/managePermission');
             }else{
                 return back();
             }
