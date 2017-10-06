@@ -83,7 +83,7 @@
                   <br><input type="number" name="expiry_month" class="form-control" placeholder="Expiry Month" required>
                   <br><input type="number" name="pin" class="form-control" placeholder="PIN" required>
                   <br><input type="number" name="amount" class="form-control" placeholder="Amount" required>
-                  <br><button type="submit" class="btn btn-info" name="button">Fund</button>
+                  <br><button type="submit" class="btn btn-info" id="fund" name="button">Fund</button>
                   <button type="button" class="btn btn-danger" name="button">Cancel</button>
                 </form>                
             </div>
@@ -91,7 +91,11 @@
       </div>
 
       @if(!empty($transactionRef) && $transactionRef == $transRef)
-        Bootstrap.alert('Emeka');
+        <script>
+        $(function() {
+            $('#myModal').modal('show');
+        });
+        </script>
         @endif
 
     </div>
@@ -99,3 +103,22 @@
 </div>
 
 @endsection
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#fund').click(function(e){
+        e.preventDefault();
+        url = $(this).attr('href');
+        BootstrapDialog.show({
+            title: $(this).data('title'),
+            message: $('<div></div>').load(url),
+            buttons: [{
+                label: 'Update',
+                action: function(dialogRef) {
+                    $('form').submit();
+                }
+            }]
+        });
+    });
+});
+</script>
