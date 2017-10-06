@@ -8,6 +8,8 @@ use App\Wallet;
 use Illuminate\Support\Facades\Auth;
 use App\Beneficiary;
 use App\User;
+use App\Restriction;
+use App\Http\Controllers\RestrictionController as Restrict;
 use App\Http\Utilities\Wallet as UtilWallet;
 
 class pagesController extends Controller
@@ -39,8 +41,9 @@ class pagesController extends Controller
     {
         $wallets = Wallet::all();
         $transaction = \App\Http\Utilities\Wallet::all();
-        $user_id = Auth::user()->id;
-        return view('dashboard', compact('wallets', 'transaction', 'user_id'));
+        $permission = Restriction::where('uuid',Auth::user()->id)->get();
+        
+        return view('dashboard', compact('wallets', 'transaction', 'permission'));
     }
 
     public function about()

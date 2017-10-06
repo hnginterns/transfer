@@ -25,7 +25,7 @@ return array(
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
     'App\\Http\\Controllers\\PaymentController' => $baseDir . '/app/Http/Controllers/PaymentController.php',
     'App\\Http\\Controllers\\RavepayController' => $baseDir . '/app/Http/Controllers/RavepayController.php',
-    'App\\Http\\Controllers\\RestrictionValidationController' => $baseDir . '/app/Http/Controllers/RestrictionValidationController.php',
+    'App\\Http\\Controllers\\RestrictionController' => $baseDir . '/app/Http/Controllers/RestrictionController.php',
     'App\\Http\\Controllers\\SmsWalletController' => $baseDir . '/app/Http/Controllers/SmsWalletController.php',
     'App\\Http\\Controllers\\UsermgtController' => $baseDir . '/app/Http/Controllers/UsermgtController.php',
     'App\\Http\\Controllers\\UsersController' => $baseDir . '/app/Http/Controllers/UsersController.php',
