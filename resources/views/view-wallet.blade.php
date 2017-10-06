@@ -8,7 +8,6 @@
 <link rel="stylesheet" href="/css/walletview.css">
 
             <div class="col-md-4 col-sm-4">
-              <div class="col-md-4 col-sm-4">
               <div class="col-sm-12 center-block">
                <svg class=" center-block" width="160" height="160" viewBox="0 0 285 288" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
               <title></title>
@@ -28,7 +27,6 @@
               </svg>
 
               </div>
-              
               <div class="col-sm-12 text-center">
                   <p>Wallet Name</p>
                   <h2>{{ $wallet->wallet_name }}</h2>
