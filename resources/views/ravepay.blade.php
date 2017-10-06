@@ -1,7 +1,7 @@
 @extends('layouts.user')
 
 @section('title')
-      Transfer to Clearing Wallet
+      Fund Wallet
 @endsection
 @section('content')
 
@@ -28,7 +28,6 @@
               </div>
 
           <button class="btn btn-primary" id="submit" type="button">Pay Now</button>
-      </div>
       </form>
 
   </div>
