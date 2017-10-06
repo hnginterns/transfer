@@ -56,9 +56,11 @@ class RestrictionValidationController extends Controller
         $raw_wallets = $this->restrictions->can_transfer_to_wallets;
         $wallets = json_decode($raw_wallets, true);
         $state = false;
-        foreach($wallets as $key){
-            if($key == $this->transfer_details->beneficiary_wallet_id){
-                $state = true;
+        if($this->restrictions->can_transfer_to_wallets != null){
+            foreach($wallets as $key => $value){
+                if($value == $this->transfer_details->beneficiary_wallet_id){
+                    $state = true;
+                }
             }
         }
 

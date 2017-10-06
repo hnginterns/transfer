@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
 use App\User;
 use App\Wallet;
+use App\CardWallet;
 use App\Rule;
 use App\Beneficiary;
 use Carbon\Carbon;
@@ -156,7 +157,6 @@ class AdminController extends WalletController
             if (!is_bool($wallet_data)) {
                 $this->storeWalletDetailsToDB(
                     $wallet_data,
-                    $request->uuid,
                     $request->lock_code,
                     $request->wallet_name
                 );
@@ -283,9 +283,10 @@ class AdminController extends WalletController
         return redirect('/admin/viewwallet/'.$id)->with('message', 'Wallet Activated successfully.');
     }
 
-    public function fundWallet()
+    public function fundWallet(CardWallet $cardWallet)
     {
-        return View('admin/fundwallet');
+        $cardWallet = CardWallet::latest()->first();
+        return View('admin/fundwallet', compact('cardWallet'));
     }
 
     public function webAnalytics()

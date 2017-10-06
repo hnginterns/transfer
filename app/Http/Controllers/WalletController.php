@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Restriction;
+use App\CardWallet;
 use App\Beneficiary;
 use App\Rule;
 use App\Transaction;
@@ -71,7 +72,44 @@ class WalletController extends Controller
         $body = \Unirest\Request\Body::json($query);
 
         $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer', $headers, $body);
-        var_dump($response);
+        $response = json_decode($response->raw_body, TRUE);
+        if($response['status'] == 'success') {
+            $response = $response['data']['transfer'];
+            $meta = $response['meta'];
+            $meta = json_decode($meta, TRUE);
+            $transMsg = $meta['processor']['responsemessage'];
+            $transRef = $meta['processor']['transactionreference'];
+            
+            $transaction = new CardWallet;
+            $transaction->firstName = $response['firstName'];
+            $transaction->lastName = $response['lastName'];
+            $transaction->phoneNumber = $response['phoneNumber'];
+            $transaction->amount = $response['amountToSend'];
+            $transaction->ref = $transRef;
+
+            $transaction->save();
+            
+            return back()->with('status', $transMsg);
+
+        }
+        
+    }
+
+    public function otp(Request $request)
+    {
+        \Unirest\Request::verifyPeer(false);
+
+            $headers = array('content-type' => 'application/json');
+            $query = array(
+                'transactionRef'=>$request->ref,
+                'otp' => $request->otp
+            );
+            $body = \Unirest\Request\Body::json($query);
+
+            $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer/charge/auth/card', $headers, $body);
+            $response = json_decode($response->raw_body, true);
+            $response = $response['data']['flutterChargeResponseMessage'];
+            return redirect('admin')->with('status', $response);
     }
 
     public function createWallet()
@@ -228,7 +266,7 @@ class WalletController extends Controller
         $walletCharge = var_dump($data['data']);
     }
 
-    public function storeWalletDetailsToDB($wallet_data, $uuid, $lock_code, $wallet_name)
+    public function storeWalletDetailsToDB($wallet_data, $lock_code, $wallet_name)
     {
         $wallet = new Wallet;
         $moneywave_wallet_id = $wallet_data['id'];
@@ -248,7 +286,7 @@ class WalletController extends Controller
         $wallet->enabled = $enabled;
         $wallet->lock_code = $lock_code;
         $wallet->wallet_code = $wallet_code;
-        $wallet->uuid = $uuid;
+        $wallet->uuid = Auth::user()->id;
         $wallet->wallet_name = $wallet_name;;
 
         if ($wallet->save()) {
@@ -288,7 +326,6 @@ class WalletController extends Controller
         return Validator::make($data, [
             'wallet_name' => 'required|string|max:255',
             'lock_code' => 'required|string|max:100',
-            'uuid' => 'required|numeric',
             'currency_id' => 'required|numeric',
         ]);
     }
