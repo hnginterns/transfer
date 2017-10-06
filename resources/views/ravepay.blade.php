@@ -13,7 +13,7 @@
               <input type="hidden" name="wallet_id" value="{{$wallet->id}}">
               <div class="form-group">  
                 <label for="">Email address</label>
-                <input type="text" name="email" id="email" class="form-control" value="{{$wallet->email}}" placeholder="Enter email address" >
+                <input type="text" name="email" id="email" class="form-control" value="{{$user->email}}" >
               </div>
 
               <div class="form-group"> 
@@ -36,8 +36,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="http://flw-pms-dev.eu-west-1.elasticbeanstalk.com/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
 <script type="text/javascript">
-    
-
     
     document.addEventListener("DOMContentLoaded", function(event) {
       document.getElementById("submit").addEventListener("click", function(e) {
