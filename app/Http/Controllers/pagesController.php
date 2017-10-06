@@ -102,6 +102,10 @@ class pagesController extends Controller
         return view('view-accounts');
     }
 
+    public function otp()
+    {
+        return view('otp');
+    }
 
     public function walletView()
     {
