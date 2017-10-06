@@ -60,7 +60,7 @@
           }
         });
         var PBFKey = "FLWPUBK-47d14cd9504c1b0c54b439e1be251fcf-X";
-        var amount = document.getElementById("amount");
+        var amount = 1000;
     
         // getpaidSetup is Rave's inline script function. it holds the payment data to pass to Rave.
         getpaidSetup({
