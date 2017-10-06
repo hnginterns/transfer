@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Unirest;
 use App\Restriction;
 
+use Auth;
+
 class RavepayController extends Controller
 {
     /**
