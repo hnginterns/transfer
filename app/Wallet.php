@@ -17,8 +17,7 @@ class Wallet extends Model
      *
      * @var array
      */
-   // protected $fillable = ['uuid', 'balance', 'wallet_code'];
-    protected $guarded = [];
+    protected $fillable = ['uuid', 'balance', 'wallet_code'];
     
     /**
      * Get the owner of this wallet
