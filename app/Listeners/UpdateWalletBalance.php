@@ -35,9 +35,9 @@ class UpdateWalletBalance
         {
             $this->wallet = $event->bank;
 
-             $this->wallet = Wallet::where('wallet_code', $wallets['uref'])
-                ->update(['balance'=> $wallets['balance']]);
-            
+             return $this->wallet(Wallet::where('wallet_code', $wallets['uref'])
+                ->update(['balance'=> $wallets['balance']]));
+    
             
         }
         
