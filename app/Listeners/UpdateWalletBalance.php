@@ -33,11 +33,12 @@ class UpdateWalletBalance
 
          foreach($walletBalance as $wallets)
         {
-            
-             $wallet = Wallet::where('wallet_code', $wallets['uref'])
+            $this->wallet = $event->bank;
+
+             $this->wallet = Wallet::where('wallet_code', $wallets['uref'])
                 ->update(['balance'=> $wallets['balance']]);
             
-            return $event->bank = $wallet;
+            
         }
         
     }
