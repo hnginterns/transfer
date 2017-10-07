@@ -250,7 +250,7 @@ class WalletController extends Controller
                     $transaction->save();
                     //end of logic for saving transactions
 
-                    $walletBalance = $this->walletBalance();
+                    $walletBalance = \App\Http\Utilities\Wallet::all();
 
                     foreach($walletBalance as $wallets)
                         {
