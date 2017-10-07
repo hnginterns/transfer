@@ -214,8 +214,8 @@
                  					    
 					</select><br>
 					<div class="form-group">
-					<label for="sel1">Bank Codes</label>
-					<select class="form-control" id="sel1">
+					<label for="bank_id">Bank Codes</label>
+					<select class="form-control" id="bank_code">
 					<option>214</option>
                     			<option>215</option>
                    			<option>221</option>
@@ -256,7 +256,7 @@
   </div>
   
 </div>
-<----./modal---->
+<!-- /.modal -->
        
         <hr />
         <div class="row">
