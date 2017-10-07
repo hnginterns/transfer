@@ -41,7 +41,7 @@
 
     <!-- Main content -->
     <section class="content container" id="bulksms">
- <a class="btn btn-primary" href="createsmswallet" role="button">Create New</a>
+ 
         <button class="btn btn-success">Create New</button>
        
         <hr />
