@@ -109,7 +109,56 @@
           </div>
           <!-- /.modal-dialog -->
         </div>
-        <!-- /.modal -->		
+        <!-- /.modal -->	
+        
+        <!--modal for add sms account -->
+        <div class="container">
+  <h3>Add SMS account</h3>
+  <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">ADD SMS ACCOUNT</button>
+
+  <!--Add sms Account  Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">ADD SMS ACCOUNT</h4>
+        </div>
+        <div class="modal-body">
+          <p>Please fill out your details</p>
+          <form role="form" class="submit-add_sms_account">
+                {{ csrf_field() }}
+                <!-- text input -->
+				<div class="form-group">
+                  <label>Name</label>
+                  <input class="form-control email" name="email" type="email">
+                </div>
+                <div class="form-group">
+                  <label>Email</label>
+                  <input class="form-control email" name="email" type="email">
+                </div>
+                <div class="form-group">
+                  <label>Password</label>
+                  <input class="form-control app_id" name="password" type="text">
+                </div>
+                 <div class="form-group">
+                  <label>Account Amount</label>
+                  <input class="form-control amount" type="text" name="amount">
+                </div>
+                <input type="button" class="btn btn-block btn-success btn-top-up" name="" value="ADD SMS ACCOUNT">
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <!-- /.modal -->
       
     <!-- /.content -->
   </div>
