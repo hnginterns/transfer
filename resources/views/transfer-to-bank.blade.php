@@ -9,7 +9,7 @@
 
             <div class="col-md-6 col-sm-6">
                   <div class="center-block">
-                      <svg width="200" height="106" viewBox="0 0 270 176" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                      <svg class="center-block" width="200" height="106" viewBox="0 0 270 176" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                       <title>bank_finance_cash_dollar_purchase_money_transfer_buy_v2_euro_euro2pean-512 2</title>
                       <desc></desc>
                       <g id="Canvas" transform="translate(-34176 3631)">
