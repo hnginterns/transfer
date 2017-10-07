@@ -32,7 +32,7 @@
         <h2 id="balance">Balance: <span id="wallet-balance"></span></h2>
         <div>
         <button type="button" class="btn btn-primary" id="topup"><!--data-toggle="modal" data-target="#walletTopUp">-->
-          Top up
+          Fund Wallet
         </button>
         </div>
         </div>
