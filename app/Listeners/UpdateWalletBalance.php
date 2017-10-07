@@ -28,15 +28,16 @@ class UpdateWalletBalance
     public function handle(TransferToBank $event)
     {
 
-        $event->bank=
+        
         $walletBalance = \App\Http\Utilities\Wallet::all();
 
          foreach($walletBalance as $wallets)
         {
             
-             return Wallet::where('wallet_code', $wallets['uref'])
+             $wallet = Wallet::where('wallet_code', $wallets['uref'])
                 ->update(['balance'=> $wallets['balance']]);
-    
+            
+            return $event->bank = $wallet;
         }
         
     }
