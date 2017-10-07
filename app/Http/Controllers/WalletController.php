@@ -250,6 +250,17 @@ class WalletController extends Controller
                     $transaction->save();
                     //end of logic for saving transactions
 
+                    $walletBalance = App\Http\Utilities\Wallet::all();
+                    foreach($walletBalance as $wallet)
+                    {
+                        if($wallet['uref'] == $wallet->wallet_code)
+                        {
+                            Wallet::where('wallet_code', $wallet->wallet_code)
+                                        ->update(['balance' => $wallet['balance']]);
+                        }
+                    }
+
+
                     return redirect('success')->with('status',$data);
                 } else {
                     return redirect()->with('failed',$data);
