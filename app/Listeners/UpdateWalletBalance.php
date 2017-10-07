@@ -27,6 +27,8 @@ class UpdateWalletBalance
      */
     public function handle(TransferToBank $event)
     {
+
+        $event->bank=
         $walletBalance = \App\Http\Utilities\Wallet::all();
 
          foreach($walletBalance as $wallets)
