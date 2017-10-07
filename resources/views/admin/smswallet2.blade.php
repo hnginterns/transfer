@@ -23,7 +23,7 @@
 	}
 	 #balRefre img {width:100% }
      #walletTopUp .modal-header {
-       background-color: #03123a;
+       background-color: #222d32;
        color: #fff;
      }
      #walletTopUp input, #walletTopUp select{
