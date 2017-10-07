@@ -269,8 +269,8 @@ class WalletController extends Controller
         //die();
         foreach($walletBalance as $wallets)
         {
-            if($wallets['uref'] == 'eb475a036c') {
-                Wallet::where('wallet_code', 'eb475a036c')
+            if($wallets['uref'] == 'c6e1e5d10e') {
+                Wallet::where('wallet_code', 'c6e1e5d10e')
                         ->update(['balance'=> $wallets['balance']]);
             }
           //return view('walletBalance', compact('walletBalance'));
