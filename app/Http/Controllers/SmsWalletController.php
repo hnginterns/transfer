@@ -32,14 +32,17 @@ class SmsWalletController extends Controller
             $response = Unirest\Request::get($url, $headers);
 
             $detail  = [
+                    'id' => $wallet['id'],
                     'username' => $wallet['username'],
-                    'balance' => NULL // $response->raw_body
-                ];
+                    'bank_code' => $wallet['bank_code'],
+                    'bank_account' => $wallet['bank_account'],
+                    'balance' => $response->raw_body,
+                    ];
 
             array_push($smswalletdetails, $detail);
         }
 
-        return view('admin.smswallet', compact('smswalletdetails'));
+        return view('admin.smswallet2', compact('smswalletdetails'));
     }
 
     public function getUserDetails(Request $request)

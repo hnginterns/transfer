@@ -9,10 +9,12 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Restriction;
+use App\CardWallet;
 use App\Beneficiary;
 use App\Rule;
 use App\Transaction;
 use URL;
+use RestrictionController;
 
 class WalletController extends Controller
 {
@@ -66,32 +68,52 @@ class WalletController extends Controller
             "amount" => $request->amount,
             "fee" => 0,
             "medium" => "web",
-            "redirecturl" => "https://google.com"
+            //"redirecturl" => "https://google.com"
         );
         $body = \Unirest\Request\Body::json($query);
 
         $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer', $headers, $body);
-        var_dump($response);
+        $response = json_decode($response->raw_body, TRUE);
+        if($response['status'] == 'success') {
+            $response = $response['data']['transfer'];
+            $meta = $response['meta'];
+            $meta = json_decode($meta, TRUE);
+            $transMsg = $meta['processor']['responsemessage'];
+            $transRef = $meta['processor']['transactionreference'];
+            
+            $transaction = new CardWallet;
+            $transaction->firstName = $response['firstName'];
+            $transaction->lastName = $response['lastName'];
+            $transaction->phoneNumber = $response['phoneNumber'];
+            $transaction->amount = $response['amountToSend'];
+            $transaction->ref = $transRef;
+
+            $transaction->save();
+            
+            return back()->with('status', $transMsg);
+
+        }
+        
     }
 
-    public function createWallet()
+    public function otp(Request $request)
     {
-        $token = $this->getToken();
-        $headers = array('content-type' => 'application/json', 'Authorization' => $token);
-        $query = array(
-            "sourceWallet" => "932405db53",
-            "recipientWallet" => "aacafb2209",
-            "amount" => "20000",
-            "currency" => "NGN",
-            "lock" => "12345"
-        );
-        $body = \Unirest\Request\Body::json($query);
-        $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/wallet', $headers, $body);
-        // var_dump($response);
-        $response = json_decode($response->raw_body, true);
-        var_dump($response);
+        \Unirest\Request::verifyPeer(false);
+
+            $headers = array('content-type' => 'application/json');
+            $query = array(
+                'transactionRef'=>$request->ref,
+                'otp' => $request->otp
+            );
+            $body = \Unirest\Request\Body::json($query);
+
+            $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer/charge/auth/card', $headers, $body);
+            $response = json_decode($response->raw_body, true);
+            $response = $response['data']['flutterChargeResponseMessage'];
+            return redirect('admin')->with('status', $response);
     }
 
+   
     //transfer from wallet to wallet
     public function transfer(Request $request, WalletTransaction $transaction) {
         $input = $request->all();
@@ -168,9 +190,7 @@ class WalletController extends Controller
             return redirect()->to(URL::previous())->withInput();
         } else {
             $beneficiary = Beneficiary::where('id', '=', $request->beneficiary_id)->get();
-            // We need to get the loack code of a wallet in order to make the transfer.
             $walletdata = Wallet::where('wallet_name', $request->wallet_name)->get();
-            //dd($wallet_data);
             if (!empty($beneficiary)) {
                 $token = $this->getToken();
                 $headers = array('content-type' => 'application/json', 'Authorization' => $token);
@@ -193,7 +213,6 @@ class WalletController extends Controller
                 $status = $response['status'];
                 if ($status == 'success') {
                     $data = $response;
-                    //return redirect()->action('pagesController@bank_transfer', $data);
                     return redirect()->action('pagesController@success', $response);
                 } else {
                     return redirect()->action('pagesController@failed', $response);
@@ -203,17 +222,17 @@ class WalletController extends Controller
     }
 
     //get wallet balance
-    public function walletBalance()
+    public function walletBalance(Wallet $wallet)
     {
         $token = $this->getToken();
         $headers = array('content-type' => 'application/json', 'Authorization' => $token);
         $response = \Unirest\Request::get('https://moneywave.herokuapp.com/v1/wallet', $headers);
         $data = json_decode($response->raw_body, true);
         $walletBalance = $data['data'];
-
-        var_dump($walletBalance);
-        die();
-        //return view('walletBalance', compact('walletBalance'));
+        $wallet = Wallet::where('wallet_code', $walletBalance[0]['uref'])
+                    ->update(['wallet_name' => 'name']);
+        var_dump($wallet);
+          //return view('walletBalance', compact('walletBalance'));
     }
 
     //
@@ -301,7 +320,7 @@ class WalletController extends Controller
     protected function validatebeneficiary(array $data)
     {
         return Validator::make($data, [
-            'wallet_name' => 'required|string',
+            'wallet_id' => 'required|numeric',
             'amount' => 'required|numeric',
             'beneficiary_id' => 'required|numeric',
         ]);

@@ -33,6 +33,8 @@ Route::get('/welcome', function () {
 	return view('welcome');
 });
 
+Route::get('/otp', 'pagesController@otp');
+
 Route::get('/about', 'pagesController@about');
 
 Route::get('/forgot', 'pagesController@forgot');
@@ -61,11 +63,10 @@ Route::get('/404', 'pagesController@pagenotfound');
 Route::group(['middleware' => 'auth'], function () {
 	//User routes
 	Route::get('/dashboard', 'pagesController@userdashboard');
+	Route::get('/wallet/{wallet}', 'pagesController@walletdetail')->name('user.wallet.detail');
 	Route::get('/transfer-to-bank', 'pagesController@bank_transfer');
 	Route::get('/transfer-to-wallet', 'pagesController@wallet_transfer');
 	Route::get('/create-wallet', 'pagesController@createWallet');
-	Route::get('/walletview', 'pagesController@walletView');
-	Route::get('/clearingwallet', 'pagesController@mainwallet');
 	Route::get('/banks', 'BanksController@banks');
 	Route::get('/populatebank', 'BanksController@populateBanks');
 	Route::get('/success', 'pagesController@success');
@@ -73,9 +74,11 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::get('/transfer', 'pagesController@transfer');
 	Route::get('/balance', 'pagesController@balance');
-	Route::get('/ravepay', 'RavepayController@index');
+	Route::get('/ravepay/{id}', 'RavepayController@index')->name('ravepay.pay');
 	Route::get('/integrity/{txRef}/{email}', 'RavepayController@checkSum');
-	Route::get('/ravepaysuccess/{ref}/{amount}/{currency}', 'RavepayController@success');
+	Route::get('/ravepaysuccess/{ref}/{amount}/{currency}', 'RavepayController@success');	
+	Route::get('/addbeneficiary/{wallet}', 'pagesController@addBeneficiary');
+	Route::post('/addbeneficiary/{wallet}', 'pagesController@insertBeneficiary')->name('beneficiaries.insert');
 
 });
 
@@ -112,9 +115,11 @@ Route::group(['middleware' => ['admin']], function () {
   	Route::post('admin/beneficiaries/update/{id}', 'Admin\BeneficiaryController@update')->name('beneficiaries.update');
   	Route::get('admin/beneficiaries/delete/{id}', 'Admin\BeneficiaryController@delete')->name('beneficiaries.delete');
 
-	  Route::get('/admin/addpermission', 'Admin\WalletController@addPermission');
-
-
+	Route::get('/admin/managePermission', 'AdminController@managePermission');
+	Route::get('/admin/addpermission', 'Admin\WalletController@addPermission');
+	Route::post('/admin/addpermission', 'Admin\WalletController@PostAddPermission');
+	Route::get('/admin/editpermission/{restriction}', 'Admin\WalletController@editPermission');
+	Route::post('/admin/editpermission/{restriction}', 'Admin\WalletController@PostEditPermission');
 	Route::get('/admin', 'AdminController@index')->name('admin.dashboard');
 	Route::get('/admin/managewallet', 'AdminController@managewallet');
 	Route::get('/admin/managebeneficiary', 'AdminController@managebeneficiary');
@@ -138,6 +143,8 @@ Route::group(['middleware' => ['admin']], function () {
 	//fund wallet
 	Route::get('/admin/fundwallet', 'AdminController@fundwallet');
 	Route::post('/admin/fundWallet', 'WalletController@cardWallet');
+	Route::post('/admin/otp', 'WalletController@otp');
+	Route::get('/admin/transaction-history', 'AdminController@cardTransaction');
 
 	// admin routes
 	Route::get('/view-accounts', 'pagesController@viewAccounts');
@@ -163,15 +170,6 @@ Route::group(['middleware' => ['admin']], function () {
 	Route::get('admin/viewwallet/{walletId}', 'AdminController@show')->name('view-wallet');
 	Route::get('admin/wallet-details', 'AdminController@walletdetails');
 
-
-	/*
-	Route::resource('admin/users', 'Admin\UsersController');
-	Route::post('admin/users/store', 'Admin\UsersController@store');
-	Route::post('admin/users/banUser/{id}', 'Admin\UsersController@banUser');
-	Route::post('admin/users/unbanUser/{id}', 'Admin\UsersController@unbanUser');
-	Route::post('admin/users/makeAdmin/{id}', 'Admin\UsersController@makeAdmin');
-	Route::post('admin/users/removeAdmin/{id}', 'Admin\UsersController@removeAdmin');
-	*/
 
 	Route::resource('admin/users', 'UsermgtController');
 	Route::post('admin/users/banUser/{id}', 'UsermgtController@banUser');

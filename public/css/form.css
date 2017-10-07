@@ -58,3 +58,7 @@
       border-width: 2px;
   }
 
+  .form-group>label{
+      color:#555;
+  }
+

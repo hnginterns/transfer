@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
 use App\User;
 use App\Wallet;
+use App\CardWallet;
+use App\Restriction;
 use App\Rule;
 use App\Beneficiary;
 use Carbon\Carbon;
@@ -40,12 +42,11 @@ class AdminController extends WalletController
         // logic for saving the rules Lies Here
     }
 
-    public function viewRules()
+    public function managePermission()
     {
-        $name = Auth::user()->username;
+        $restriction = Restriction::all();
 
-        $rules = Rule::all();
-        return view('admin.viewrules', compact('rules'))->with("name", $name);
+        return view('admin.managepermission', compact('restriction'));
     }
 
     public function createRule()
@@ -282,14 +283,21 @@ class AdminController extends WalletController
         return redirect('/admin/viewwallet/'.$id)->with('message', 'Wallet Activated successfully.');
     }
 
-    public function fundWallet()
+    public function fundWallet(CardWallet $cardWallet)
     {
-        return View('admin/fundwallet');
+        $cardWallet = CardWallet::latest()->first();
+        return View('admin/fundwallet', compact('cardWallet'));
     }
 
     public function webAnalytics()
     {
         return view('admin/analytics');
+    }
+
+    public function cardTransaction(CardWallet $cardWallet)
+    {
+        $cardWallets = CardWallet::paginate(10);
+        return view('admin/fundhistory', compact('cardWallets'));
     }
 
     public function ViewBeneficiary()

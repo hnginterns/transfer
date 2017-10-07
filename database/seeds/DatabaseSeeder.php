@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
     {
     	$faker = Faker::create();
 
-    	
+
 
 	      $dt = Carbon::now();
         $dateNow = $dt->toDateTimeString();
@@ -60,7 +60,7 @@ class DatabaseSeeder extends Seeder
             'updated_by' => 0,
 	          'created_at' => $dateNow
         ]);
-        
+
 
     //   ]);
 
@@ -69,13 +69,17 @@ class DatabaseSeeder extends Seeder
       SmsWallet::create([
           'username' => 'profchydon@gmail.com',
           'api_key' => 'aedf4ca62fa26b9aa501ba3bd83af5e7ac9c45f8',
-          'user_id' => "11"
+          'user_id' => "11",
+          'bank_code' => "044",
+          'bank_account' => "0690000004"
       ]),
 
       SmsWallet::create([
           'username' => 'joseph.mbassey2@gmail.com',
           'api_key' => 'a28c39088ccb2b9a72502dbefdc546d0011b0418',
-          'user_id' => "12"
+          'user_id' => "12",
+          'bank_code' => "058",
+          'bank_account' => "0921318712"
       ])
 
     ]);

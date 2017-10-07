@@ -1,38 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>RavePay Integration</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-</head>
+@extends('layouts.user')
 
-<body>
-  <div class="container" id="ravepay">
-    <row>
-      <div class="col-md-6 col-md-offset-4">
-        <form>
-          <div class="row">
-            <div class="col-md-8">
-                <br>
-                <h1>Pay with Rave</h1>
-                <br>
-              <label for="">Email address</label>
-              <input type="text" name="email" id="email" class="form-control border-input" value="user@example.com" placeholder="Enter email address" style="margin-bottom: 30px;">
-            </div>
-          </div>
+@section('title')
+      Fund Wallet
+@endsection
+@section('content')
 
-          <button class="btn btn-primary" id="submit" type="button">Pay Now</button>
-          <div class="clearfix"></div>
-      </div>
+<link rel="stylesheet" href="/css/form.css">
+
+      <div class="col-md-6 col-sm-6">
+        <form  class="input-form" >
+              <h4 class="intro text-center">Pay with Rave</h4>
+              <input type="hidden" name="wallet_id" value="{{$wallet->id}}">
+              <div class="form-group">  
+                <label for="">Email address</label>
+                <input type="text" name="email" id="email" class="form-control" value="user@example.com" placeholder="Enter email address" >
+              </div>
+
+              <div class="form-group"> 
+                <label for="">Wallet</label>
+                <input type="text" name="wallet" id="wallet" class="form-control" value="{{$wallet->wallet_name}}"  >
+              </div>
+
+              <div class="form-group"> 
+                <label for="">Amount</label>
+                <input type="text" name="amount" id="amount" class="form-control" placeholder="Please Enter Amount to fund"  >
+              </div>
+              
+              <div class="form-group">
+                <button class="btn btn-primary center-block" id="submit" type="button">Pay Now</button>
+              </div>
       </form>
 
   </div>
-  </row>
-  </div>
  
-</body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="http://flw-pms-dev.eu-west-1.elasticbeanstalk.com/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
 <script type="text/javascript">
@@ -82,12 +82,12 @@
             window.location = "http://hng.transfer.fun/ravepaysuccess/"+flw_ref+"/"+amount+"/NGN"; 
             // redirect to a success page
           } else {
-            window.location = "http://transfer.hng.fun/failure"; 
+            window.location = "http://transfer.hng.fun/failed"; 
             // redirect to a failure page.
           }
           }
         });
       });
     });
-</script>
-</html>
+
+@endsection
