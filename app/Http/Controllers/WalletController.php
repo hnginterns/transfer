@@ -251,7 +251,7 @@ class WalletController extends Controller
                     $transaction->save();
                     //end of logic for saving transactions
 
-                    //event(new TransferToBank($bank));
+                    event(new TransferToBank($bank));
 
 
                     return redirect('success')->with('status',$data);
