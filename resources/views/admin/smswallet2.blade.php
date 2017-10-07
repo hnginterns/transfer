@@ -165,21 +165,85 @@
                 {{ csrf_field() }}
                 <!-- text input -->
 				<div class="form-group">
-                  <label>Name</label>
-                  <input class="form-control email" name="email" type="email">
+                  <div class="form-group">
+                  <label>Username</label>
+                  <input class="form-control email" name="username" type="email">
                 </div>
                 <div class="form-group">
-                  <label>Email</label>
-                  <input class="form-control email" name="email" type="email">
+                  <label>API Key</label>
+                  <input class="form-control email" name="api_id" type="email">
                 </div>
                 <div class="form-group">
                   <label>Password</label>
                   <input class="form-control app_id" name="password" type="text">
+                </div><br>
+				 <div class="form-group">
+				  <label> Bank Name</label>
+				  <select name="currency_id" class="form-control input-defaulted" >
+				    <option value="1">FIRST CITY MONUMENT BANK PLC</option>
+                    			<option value="2">UNITY BANK PLC</option>
+                    			<option value="3">STANBIC IBTC BANK PLC</option>
+                    			<option value="4">STERLING BANK PLC</option>
+					<option value="5">Stanbic Mobile</option>
+                    			<option value="6">PAYCOM</option>
+                    			<option value="7">Ecobank Mobile</option>
+                    			<option value="8">FBN MOBILE</option>
+					<option value="9">Parkway</option>
+					<option value="10">GTBank Mobile Money</option>
+					<option value="11">ZENITH Mobile</option>
+					<option value="12">ACCESS MOBILE</option>
+					<option value="13">Aso Savings and Loans</option>
+					<option value="14">ACCESS BANK NIGERIA</option>
+					<option value="15">AFRIBANK NIGERIA PLC</option>
+					<option value="16">DIAMOND BANK PLC</option>
+					<option value="17">ECOBANK NIGERIA PLC</option>
+					<option value="18">ENTERPRISE BANK LIMITED</option>
+					<option value="19">FIDELITY BANK PLC</option>
+					<option value="20">FIRST BANK PLC</option>
+					<option value="21">GTBANK PLC</option>
+					<option value="22">HERITAGE BANK</option>
+					<option value="23">KEYSTONE BANK PLC</option>
+					<option value="24">SKYE BANK PLC</option>
+					<option value="25">STANDARD CHARTERED BANK NIGERIA LIMITED</option>
+					<option value="26">NION BANK OF NIGERIA PLC</option>
+					<option value="27">UNITED BANK FOR AFRICA PLC</option>
+					<option value="28">WEMA BANK PLC</option>
+					<option value="29">ENITH BANK PLC</option>
+					
+                </div><br>
+                 					    
+					</select><br>
+					<div class="form-group">
+					<label for="sel1">Bank Codes</label>
+					<select class="form-control" id="sel1">
+					<option>214</option>
+                    			<option>215</option>
+                   			<option>221</option>
+                    			<option>232</option>
+					<option>304</option>
+                    			<option>305</option>
+                    			<option>307</option>
+                    			<option>309</option>
+					<option>311</option>
+					<option>315</option>
+					<option>322</option>
+					<option>323</option>
+					<option>401</option>
+					<option>044</option>
+					<option>014</option>
+					<option>063</option>
+					<option>050</option>
+					<option>084</option>
+					<option>070</option>
+					<option>011</option>
+					
+					
+					</select>
+					</div>
+					
                 </div>
-                 <div class="form-group">
-                  <label>Account Amount</label>
-                  <input class="form-control amount" type="text" name="amount">
-                </div>
+				
+				
                 <input type="button" class="btn btn-block btn-success btn-top-up" name="" value="ADD SMS ACCOUNT">
               </form>
         </div>
@@ -190,7 +254,9 @@
       
     </div>
   </div>
-  <!-- /.modal -->
+  
+</div>
+<----./modal---->
        
         <hr />
         <div class="row">
