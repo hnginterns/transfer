@@ -33,8 +33,8 @@
                             <input type="number" class="form-control cus-input" name="amount" id="amount" placeholder="Amount">
                         </div>
                         
-                        <div class="form-group center-block">    
-                          <button id="transferbt" type="submit" class="btn btn-primary center-block">Transfer</button>
+                        <div class="form-group ">    
+                          <button id="transferbt" type="submit" class="btn btn-primary pull-right">Transfer</button>
                         </div>
                     </form>
             </div>
