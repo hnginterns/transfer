@@ -23,14 +23,13 @@
 	}
 	 #balRefre img {width:100% }
      #walletTopUp .modal-header {
-       background-color: #03123a;
+       background-color: #222d32;
        color: #fff;
      }
      #walletTopUp input, #walletTopUp select{
       border: 1px solid #cccccc;
       border-radius: 5px;
       height: 50px;
-      font-size: 25px;
      }
      #walletTopUp #amount {
        border-radius: 0px;
@@ -105,8 +104,6 @@
                               </div>
                           </div>
                         </div>
-
-
                     </div>
                     <div class="form-group">
                         <label>Card Number</label>
@@ -165,7 +162,7 @@
                         <label></label>
                         <div class="controls">
                             <button type="submit" class="btn btn-primary">Top up</button>
-                            <button type="button" class="btn btn-default">Cancel</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                         </div>
                     </div>
                 </fieldset>
@@ -180,10 +177,7 @@
         </div>
         <!-- /.modal -->
     </section>
-      
     
-    </section>
-
     <!-- Main content -->
     <section class="content container" id="bulksms">
  
@@ -313,8 +307,8 @@
 			<div class="icon">
 			    <i class="fa fa-envelope"></i>
 			</div>	
-			<a href="#" class="btn-success btn" type="button"  data-toggle="modal" data-target="#top-up-modal">Top up <i class="fa fa-arrow-circle-right"></i></a>
-			</div>
+			<a href="#" class="btn-success btn pull-right" type="button"  data-toggle="modal" data-target="#top-up-modal">Top up <i class="fa fa-arrow-circle-right"></i></a>
+			
                 </div>
             </div>
 
