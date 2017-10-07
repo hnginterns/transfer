@@ -9,7 +9,7 @@
                                 
                 <li>
                 <a href="{{ url('/logout') }}">
-                <i class="fa fa-dashboard fa-lg"></i> Logout
+                <i class="fa fa-logout fa-lg"></i> Logout
                 </a>
               </li> 
 

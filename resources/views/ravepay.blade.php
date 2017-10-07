@@ -9,7 +9,8 @@
 
       <div class="col-md-6 col-sm-6">
         <form  class="input-form" >
-              <h4 class="intro text-center">Pay with Rave</h4>
+        
+              <h4 class="intro text-left">Fund Wallet with Rave</h4>
               <input type="hidden" name="wallet_id" value="{{$wallet->id}}">
               <div class="form-group">  
                 <label for="">Email address</label>
@@ -27,7 +28,7 @@
               </div>
               
               <div class="form-group">
-                <button class="btn btn-primary center-block" id="submit" type="button">Pay Now</button>
+                <button class="btn btn-primary pull-right" id="submit" type="button">Pay Now</button>
               </div>
       </form>
 

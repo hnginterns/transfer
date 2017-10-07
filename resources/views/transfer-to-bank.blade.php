@@ -8,10 +8,10 @@
 <link rel="stylesheet" href="/css/form.css">
 
             <div class="col-md-6 col-sm-6">
-                  <div class="col-md-12 col-sm-12">
-                      <svg width="270" height="176" viewBox="0 0 270 176" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                  <div class="center-block">
+                      <svg class="center-block" width="200" height="106" viewBox="0 0 270 176" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                       <title>bank_finance_cash_dollar_purchase_money_transfer_buy_v2_euro_euro2pean-512 2</title>
-                      <desc>Created using Figma</desc>
+                      <desc></desc>
                       <g id="Canvas" transform="translate(-34176 3631)">
                       <g id="bank_finance_cash_dollar_purchase_money_transfer_buy_v2_euro_euro2pean-512 2">
                       <use xlink:href="#path0_fill" fill="url(#pattern0)" transform="translate(34176 -3631)"/>
@@ -32,7 +32,6 @@
                   {{csrf_field()}}
 
                     <div class="form-group">
-                      <label>Beneficiary</label>
                         <select class="form-control cus-input" name="beneficiary_id">
                           <option>Select Beneficiary</option>
                             @foreach($wallet->beneficiary as $key => $beneficiaries)
@@ -58,7 +57,7 @@
                             </div>
                             
                         <div class="form-group center-block">    
-                          <button id="" type="submit" class="btn btn-primary center-block">Transfer</button>
+                          <button id="" type="submit" class="btn btn-primary pull-right">Transfer</button>
                         </div>
 
 

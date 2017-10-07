@@ -66,11 +66,11 @@ function toWallet(){
     $headers = array('content-type' => 'application/json', 'Authorization' => $token);
 
     $query = array(
-        "sourceWallet" => 'aacafb2209',
-        "recipientWallet" => '0',
-        "amount" => '9652',
+        "sourceWallet" => '0',
+        "recipientWallet" => 'c6e1e5d10e',
+        "amount" => '50000',
         "currency" => "NGN",
-        "lock" =>'1234'
+        "lock" =>'123456'
     );
 
     $body = \Unirest\Request\Body::json($query);

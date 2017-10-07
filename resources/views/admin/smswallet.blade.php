@@ -1,5 +1,17 @@
 @extends('layouts.admin')
 
+@section('added_css')
+<style type="text/css">
+  .units {
+  background:#222d32;
+  color: #fff;
+  margin:1%;
+  padding:2%;
+
+  } 
+</style>
+@endsection
+
 @section('content')
 
 <div class="container top-up" style="padding-left:30px;">
@@ -39,7 +51,7 @@
 
           @endforeach
 
-    </div>
+<!-- REQUIRED JS SCRIPTS -->
 
 </section>
 
@@ -82,9 +94,6 @@
       });
     });
   });
-  <!---->
-
-  <]
   </script>
   <script type="text/javascript">
 

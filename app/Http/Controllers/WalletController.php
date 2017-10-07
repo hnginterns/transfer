@@ -75,6 +75,7 @@ class WalletController extends Controller
 
         $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer', $headers, $body);
         $response = json_decode($response->raw_body, TRUE);
+        
         if($response['status'] == 'success') {
             $response = $response['data']['transfer'];
             $meta = $response['meta'];
@@ -237,10 +238,16 @@ class WalletController extends Controller
         $response = \Unirest\Request::get('https://moneywave.herokuapp.com/v1/wallet', $headers);
         $data = json_decode($response->raw_body, true);
         $walletBalance = $data['data'];
-        $wallet = Wallet::where('wallet_code', $walletBalance[0]['uref'])
-                    ->update(['wallet_name' => 'name']);
-        var_dump($wallet);
+        //var_dump($walletBalance);
+        //die();
+        foreach($walletBalance as $wallets)
+        {
+            if($wallets['uref'] == 'eb475a036c') {
+                Wallet::where('wallet_code', 'eb475a036c')
+                        ->update(['balance'=> $wallets['balance']]);
+            }
           //return view('walletBalance', compact('walletBalance'));
+        }
     }
 
     //
