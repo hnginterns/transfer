@@ -279,6 +279,14 @@ class WalletController extends Controller
         $walletBalance = $data['data'];
         //var_dump($walletBalance);
         //die();
+        foreach($walletBalance as $wallets)
+                        {
+            
+                        Wallet::where('wallet_code', $wallets['uref'])
+                        ->update(['balance'=> $wallets['balance']]);
+    
+                        //return view('walletBalance', compact('walletBalance'));
+                        }
         
     
     }
