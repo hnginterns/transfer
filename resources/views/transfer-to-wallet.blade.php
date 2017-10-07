@@ -7,8 +7,8 @@
 
 <link rel="stylesheet" href="/css/form.css">
 
- <div class="col-md-6 col-sm-6 col-md-offset-3 col-sm-offset-3">
-                    <h4 class="intro text-center" >Transfer to another Wallet account </h4>
+ <div class="col-md-6 col-sm-6">
+                    <h4 class="intro text-left" >Transfer to another Wallet account </h4>
                     <form id="trform" class="input-form">
                         <div class="form-group">
                             <select class="form-control cus-input" name="sourceWallet">
@@ -39,31 +39,7 @@
                     </form>
             </div>
 
-  <script type="text/javascript">
-      $(document).ready(function() {
-
-        $('#navb').click(function() {
-
-            $('#sidebar').animate({
-                left: "0px",
-                "z-index": 10000
-            }, 200).css(
-              "background-color" , "rgb(37, 49, 63)",
-              "height" , "200vh"
-            );
-
-            $('a.side-item').css(
-                "color" , "#fff"
-            );
-        });
-
-        $('#close').click(function() {
-
-            $('#sidebar').animate({
-                left: "-1000px",
-                "z-index": 10000
-            }, 200);
-        });
+  <script type="text/javascript">      
 
         $("#transferbt").click(function(e) {
           e.preventDefault();
