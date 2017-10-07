@@ -32,7 +32,7 @@ class UpdateWalletBalance
          foreach($walletBalance as $wallets)
         {
             
-             Wallet::where('wallet_code', $wallets['uref'])
+             return Wallet::where('wallet_code', $wallets['uref'])
                 ->update(['balance'=> $wallets['balance']]);
     
         }
