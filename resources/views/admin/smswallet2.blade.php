@@ -42,14 +42,7 @@
       </div><!--row ends-->
       
       
-      //Balance Refresh Button to get new Balance
-var refBut = document.getElementById("balRefre");
-refBut.addEventListener('click', function(){
-        //calling the get balance function to refresh the wallet balance with current balance
-        var token = getToken("ts_Q8PES8G6QJFI2RI1THN1","ts_AM2PIJ8VTPYLBK1K6EJDEXD9STLC6G");
-        var bal = getWalletBalance(token);
-        document.getElementById('balance').innerHTML = "Balance:"+bal;
-});
+    
     </section>
 
     <!-- Main content -->
@@ -410,7 +403,14 @@ refBut.addEventListener('click', function(){
     }
     
  
-    
+      //Balance Refresh Button to get new Balance
+var refBut = document.getElementById("balRefre");
+refBut.addEventListener('click', function(){
+        //calling the get balance function to refresh the wallet balance with current balance
+        var token = getToken("ts_Q8PES8G6QJFI2RI1THN1","ts_AM2PIJ8VTPYLBK1K6EJDEXD9STLC6G");
+        var bal = getWalletBalance(token);
+        document.getElementById('balance').innerHTML = "Balance:"+bal;
+});
     
   </script>
 @endsection
