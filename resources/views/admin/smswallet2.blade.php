@@ -43,6 +43,7 @@
     <section class="content container" id="bulksms">
 
         <button class="btn btn-success">Create New</button>
+        <a class="btn btn-success"> <href="createsmswallet.blade.php"Create New</a>
         <hr />
         <div class="row">
 
