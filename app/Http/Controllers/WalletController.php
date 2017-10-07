@@ -272,8 +272,8 @@ class WalletController extends Controller
         $response = \Unirest\Request::get('https://moneywave.herokuapp.com/v1/wallet', $headers);
         $data = json_decode($response->raw_body, true);
         $walletBalance = $data['data'];
-        //var_dump($walletBalance);
-        //die();
+        var_dump($walletBalance);
+        die();
         foreach($walletBalance as $wallets)
                         {
             
