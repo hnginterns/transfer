@@ -70,51 +70,7 @@
 <h3>Add SMS account</h3>
   <!-- Trigger the modal with a button -->
   <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">ADD SMS ACCOUNT</button>
-
-    </section>
-    <!---Modal for Jonesky-->
-    <div class="modal fade" id="top-up-modal">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">SMS Unit Top Up</h4>
-              </div>
-              <div class="modal-body">
-              <div class="box-header with-border">
-                <h3 class="box-title">EbulkSms Details</h3>
-              </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <form role="form" class="submit-topup">
-                {{ csrf_field() }}
-                <!-- text input -->
-                <div class="form-group">
-                  <label>Email</label>
-                  <input class="form-control email" name="email" type="email" readonly>
-                </div>
-                <div class="form-group">
-                  <label>Api Id</label>
-                  <input class="form-control app_id" name="app_id" type="text" readonly>
-                </div>
-                 <div class="form-group">
-                  <label>Top-Up Amount</label>
-                  <input class="form-control amount" type="text" name="amount">
-                </div>
-                <input type="button" class="btn btn-block btn-success btn-top-up" name="" value="Top-Up">
-              </form>
-
-              </div>
-              
-            </div>
-            <!-- /.modal-content -->
-          </div>
-          <!-- /.modal-dialog -->
-        </div>
-        <!-- /.modal -->	
-        
-        <!--modal for add sms account -->
+<!--modal for add sms account -->
         <div class="container">
     <!--Add sms Account  Modal -->
   <div class="modal fade" id="myModal" role="dialog">
@@ -158,6 +114,50 @@
     </div>
   </div>
   <!-- /.modal -->
+    </section>
+    <!---Modal for Jonesky-->
+    <div class="modal fade" id="top-up-modal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">SMS Unit Top Up</h4>
+              </div>
+              <div class="modal-body">
+              <div class="box-header with-border">
+                <h3 class="box-title">EbulkSms Details</h3>
+              </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <form role="form" class="submit-topup">
+                {{ csrf_field() }}
+                <!-- text input -->
+                <div class="form-group">
+                  <label>Email</label>
+                  <input class="form-control email" name="email" type="email" readonly>
+                </div>
+                <div class="form-group">
+                  <label>Api Id</label>
+                  <input class="form-control app_id" name="app_id" type="text" readonly>
+                </div>
+                 <div class="form-group">
+                  <label>Top-Up Amount</label>
+                  <input class="form-control amount" type="text" name="amount">
+                </div>
+                <input type="button" class="btn btn-block btn-success btn-top-up" name="" value="Top-Up">
+              </form>
+
+              </div>
+              
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->	
+        
+        
       
     <!-- /.content -->
   </div>
