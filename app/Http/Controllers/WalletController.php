@@ -250,7 +250,7 @@ class WalletController extends Controller
                     $transaction->save();
                     //end of logic for saving transactions
 
-                    $walletBalance = App\Http\Utilities\Wallet::all();
+                    $walletBalance = \App\Http\Utilities\Wallet::all();
                     foreach($walletBalance as $wallet)
                     {
                         if($wallet['uref'] == $wallet->wallet_code)
