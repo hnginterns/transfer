@@ -14,13 +14,6 @@
           color: #fff;
           margin:1%;
           padding:2%;}
-	#balRefre {
-	float:left;
-	width:20px;
-	margin-right:0px;
-	height: 20px;
-     	line-height: 70px;
-	}
 	 #balRefre img {width:100% }
      #walletTopUp .modal-header {
        background-color: #222d32;
@@ -59,12 +52,14 @@
         <div class="col-lg-3 col-lg-offset-3">
         <h2 id="balance">Balance: <span id="wallet-balance"></span></h2>
         <div>
+        <div class="btn-group">
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#walletTopUp">
           Fund Wallet
         </button>
-	<button type="button" class="btn btn-primary" id="balRefre">
-          refresh
+	        <button type="button" class="btn btn-success" id="balRefre">
+          Refresh Balance
         </button>
+        </div>
         </div>
         </div>
       </div><!--row ends-->
