@@ -137,7 +137,7 @@
                   <input class="form-control email" name="email" type="email" readonly>
                 </div>
                 <div class="form-group">
-                  <label>Api Id</label>
+                  <label>SMS Unit</label>
                   <input class="form-control app_id" name="app_id" type="text" readonly>
                 </div>
                  <div class="form-group">
