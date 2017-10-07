@@ -35,7 +35,7 @@
   }
 
   .input-form>.form-group>label {
-      color: white;
+      color: #25313F;
   }
 
   .input-form>.form-group {
@@ -50,7 +50,7 @@
 
   .input-form>.form-group>button {
       background: #FD8032;
-      padding: 10px 80px;
+      padding: 10px 40px;
       border-radius: 63px;
       border-color: #FD8032;
       box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
