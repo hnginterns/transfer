@@ -9,8 +9,8 @@
 
       <div class="col-md-6 col-sm-6">
         <form  class="input-form" >
-        <div>
-              <svg width="100" height="100" viewBox="0 0 194 194" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <div class="">
+              <svg class="pull-left" width="100" height="100" viewBox="0 0 194 194" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
               <title>Bank_Icon 2</title>
               <desc>Created using Figma</desc>
               <g id="Canvas" transform="translate(-11743 -8641)">
@@ -27,7 +27,7 @@
               </defs>
               </svg>
         </div>
-              <h4 class="intro text-center">Fund Wallet with Rave</h4>
+              <h4 class="intro text-left">Fund Wallet with Rave</h4>
               <input type="hidden" name="wallet_id" value="{{$wallet->id}}">
               <div class="form-group">  
                 <label for="">Email address</label>
