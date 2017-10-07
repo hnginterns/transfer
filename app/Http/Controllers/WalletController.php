@@ -271,7 +271,7 @@ class WalletController extends Controller
         foreach($walletBalance as $wallets)
         {
             if($wallets['uref'] == $wallet->wallet_code) {
-                Wallet::where('wallet_code', $wallet_code)
+                Wallet::where('wallet_code', $wallet->wallet_code)
                         ->update(['balance'=> $wallets['balance']]);
             }
           //return view('walletBalance', compact('walletBalance'));
