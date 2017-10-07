@@ -283,10 +283,11 @@ class AdminController extends WalletController
         return redirect('/admin/viewwallet/'.$id)->with('message', 'Wallet Activated successfully.');
     }
 
-    public function fundWallet(CardWallet $cardWallet)
+    public function fundWallet(CardWallet $cardWallet, $id)
     {
+        $wallet = Wallet::findOrFail($id);
         $cardWallet = CardWallet::latest()->first();
-        return View('admin/fundwallet', compact('cardWallet'));
+        return View('admin/fundwallet', compact('cardWallet', 'wallet'));
     }
 
     public function webAnalytics()
