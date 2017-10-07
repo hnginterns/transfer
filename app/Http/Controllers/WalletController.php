@@ -269,6 +269,8 @@ class WalletController extends Controller
         //var_dump($walletBalance);
         //die();
         $wallet = Wallet::get(['wallet_code']);
+        var_dump($wallet->wallet_code);
+        die();
 
         foreach($walletBalance as $wallets)
         {
