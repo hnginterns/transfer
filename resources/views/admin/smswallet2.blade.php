@@ -98,7 +98,7 @@
                 <!-- small box -->
                 <div class="small-box bg-aqua">
                 <div class="inner">
-                    <h3>SMS Wallet</h3>
+                    <h3>SMS Account</h3>
                     <p>Account Name: <span class="username">{{ $smswalletdetail['username'] }}</span></p>
                     <p>Sms Unit: <span class="unit-balance">{{ number_format($smswalletdetail['balance'], 2) }}</span></p>
                 </div>
@@ -393,31 +393,10 @@
     }
     //function to generate reference key 
     function getReferKey(){
-      return "Rf"+ Math.random(1000,9999);
+      return "Rf"+ Math.random()*1000;
     }
     
-    //function to get api key 
-    function getSmsApiKey(username, password){
-      var xmlHttp = new XMLHttpRequest();
-      try{
-      
-      xmlHttp.open( "post",'http://api.ebulksms.com:8080/getapikey.json', true ); // false for synchronous request
-      //xmlHttp.setRequestHeader("Accept", "");
-      xmlHttp.setRequestHeader('Content-type', 'application/json');
-      xmlHttp.send(JSON.stringify({
-            "auth": {
-              "username":"samfield4sure@gmail.com",
-              "password":"samfield"
-              }
-            }));
-            
-          alert(xmlHttp.responseText);
-          }catch(e){
-            alert(e);
-          }
-          
-    }
-  //	getSmsApiKey("samfield4sure@gmail.com","samfield");
+ 
     
     
   </script>
