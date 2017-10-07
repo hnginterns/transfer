@@ -3,7 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\TransferToBank;
-use App\Http\Utilities\Wallet;
+use App\Wallet;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
@@ -27,7 +27,7 @@ class UpdateWalletBalance
      */
     public function handle(TransferToBank $event)
     {
-        $walletBalance = Wallet::all();
+        $walletBalance = \App\Http\Utilities\Wallet::all();
 
          foreach($walletBalance as $wallets)
         {
