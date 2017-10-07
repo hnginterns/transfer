@@ -22,7 +22,7 @@
             SMS Wallet
             
           </h1>
-          <h2>Id:X846945532</h2>
+        
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
             <li class="active">Sms wallet</li>
