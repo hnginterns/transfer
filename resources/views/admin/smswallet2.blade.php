@@ -143,12 +143,7 @@
                                     <input class="form-control" autocomplete="off" maxlength="3" pattern="\d{3}" title="Three digits at back of your card" required="" type="text">
                                 </div>
                          </div>
-			 <div class="col-md-3">
-                               <label>OTP</label>
-                                <div class="controls">
-                                    <input class="form-control" autocomplete="off" maxlength="10" pattern="\d{3}"  required="" type="text">
-                                </div>
-                         </div>
+			
                           <div class="col-md-8">
                                   <label>Amount</label>
                                   <div class="input-group">
@@ -171,6 +166,16 @@
               </div>
               
             </div>
+	       <!-- /.modal-OTP -->
+
+	    <form action="" method="POST">
+		 <div class="col-md-3">
+		 <label>OTP</label>
+			<div class="controls">
+			    <input class="form-control" autocomplete="off" maxlength="10"required="" type="text">
+			</div>
+		 </div>
+	    </form>
             <!-- /.modal-content -->
           </div>
           <!-- /.modal-dialog -->
@@ -188,6 +193,7 @@
     <!--Add sms Account  Modal -->
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
+    
     
       <!-- Modal content-->
       <div class="modal-content">
