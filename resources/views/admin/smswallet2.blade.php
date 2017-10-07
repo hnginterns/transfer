@@ -30,7 +30,6 @@
       border: 1px solid #cccccc;
       border-radius: 5px;
       height: 50px;
-      font-size: 25px;
      }
      #walletTopUp #amount {
        border-radius: 0px;
@@ -105,8 +104,6 @@
                               </div>
                           </div>
                         </div>
-
-
                     </div>
                     <div class="form-group">
                         <label>Card Number</label>
@@ -165,7 +162,7 @@
                         <label></label>
                         <div class="controls">
                             <button type="submit" class="btn btn-primary">Top up</button>
-                            <button type="button" class="btn btn-default">Cancel</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                         </div>
                     </div>
                 </fieldset>
