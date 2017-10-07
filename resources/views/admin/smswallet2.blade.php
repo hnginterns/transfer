@@ -67,6 +67,9 @@
 
           @endforeach
         </div>
+<h3>Add SMS account</h3>
+  <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">ADD SMS ACCOUNT</button>
 
     </section>
     <!---Modal for Jonesky-->
@@ -113,11 +116,7 @@
         
         <!--modal for add sms account -->
         <div class="container">
-  <h3>Add SMS account</h3>
-  <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">ADD SMS ACCOUNT</button>
-
-  <!--Add sms Account  Modal -->
+    <!--Add sms Account  Modal -->
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
     
