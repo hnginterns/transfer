@@ -17,6 +17,7 @@ use URL;
 use App\BankTransaction;
 use RestrictionController;
 use App\Http\Controllers\RestrictionController as Restrict;
+use App\Events\TransferToBank;
 
 class WalletController extends Controller
 {
@@ -184,7 +185,7 @@ class WalletController extends Controller
     }
 
     //transfer from wallet to bank
-    public function transferAccount(Request $request, Wallet $wallet)
+    public function transferAccount(Request $request, Wallet $wallet, BankTransaction $bank)
     {
         $validator = $this->validateBeneficiary($request->all());
         if ($validator->fails()) {
@@ -250,16 +251,7 @@ class WalletController extends Controller
                     $transaction->save();
                     //end of logic for saving transactions
 
-                    $walletBalance = \App\Http\Utilities\Wallet::all();
-
-                    foreach($walletBalance as $wallets)
-                        {
-            
-                        Wallet::where('wallet_code', $wallets['uref'])
-                        ->update(['balance'=> $wallets['balance']]);
-    
-                        //return view('walletBalance', compact('walletBalance'));
-                        }
+                    event(new TransferToBank($bank));
 
 
                     return redirect('success')->with('status',$data);
