@@ -6,7 +6,7 @@ use Unirest;
 use App\Restriction;
 
 use Auth;
-
+use App\Http\Controllers\RestrictionController as Restrict;
 use App\Wallet;
 
 class RavepayController extends Controller
@@ -27,7 +27,10 @@ class RavepayController extends Controller
 
         $permit = Restriction::where('wallet_id', $id)
           ->where('uuid', $user->id)
-          ->get();
+          ->first();
+        if($permit == null) return back()->with('error', 'You do not have the permission to fund wallet');;
+            $restrict = new Restrict($permit);
+        if(count($restrict->canFundWallet()) != 0) return back()->with('error', 'You do not have the permission to fund wallet');;
 
         $wallet = Wallet::find($id)->first();
 
