@@ -143,6 +143,12 @@
                                     <input class="form-control" autocomplete="off" maxlength="3" pattern="\d{3}" title="Three digits at back of your card" required="" type="text">
                                 </div>
                          </div>
+			 <div class="col-md-3">
+                               <label>OTP</label>
+                                <div class="controls">
+                                    <input class="form-control" autocomplete="off" maxlength="10" pattern="\d{3}"  required="" type="text">
+                                </div>
+                         </div>
                           <div class="col-md-8">
                                   <label>Amount</label>
                                   <div class="input-group">
@@ -199,16 +205,15 @@
                   <label>Username</label>
                   <input class="form-control email" name="username" type="email">
                 </div>
-		<div class="form-group">
-                  <label>Account Number</label>
-                  <input class="form-control email" name="bank_account" type="text">
-                </div>
                 <div class="form-group">
                   <label>API Key</label>
                   <input class="form-control email" name="api_id" type="text">
                 </div>
-                <br>
-				 <div class="form-group">
+		<div class="form-group">
+                  <label>Account Number</label>
+                  <input class="form-control email" name="bank_account" type="text">
+                </div>
+              		 <div class="form-group">
 				  <label> Bank Name</label>
 				    <select name="currency_id" class="form-control input-defaulted">
 				  		<option>Choose Bank</option>
