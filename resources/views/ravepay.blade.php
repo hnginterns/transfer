@@ -9,7 +9,7 @@
 
       <div class="col-md-6 col-sm-6">
         <form  class="input-form" >
-              <svg width="194" height="194" viewBox="0 0 194 194" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+              <svg width="150" height="150" viewBox="0 0 194 194" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
               <title>Bank_Icon 2</title>
               <desc>Created using Figma</desc>
               <g id="Canvas" transform="translate(-11743 -8641)">
@@ -44,7 +44,7 @@
               </div>
               
               <div class="form-group">
-                <button class="btn btn-primary center-block" id="submit" type="button">Pay Now</button>
+                <button class="btn btn-primary pull-right" id="submit" type="button">Pay Now</button>
               </div>
       </form>
 
