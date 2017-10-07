@@ -244,8 +244,9 @@ class WalletController extends Controller
                     $transaction->amount = $request->amount;
                     $transaction->uuid =  Auth::user()->id;
                     $transaction->beneficiary_id = $beneficiary->id;
-                    $transaction->transaction_reference = $data['ref'];
+                    $transaction->transaction_reference = $data['uniquereference'];
                     $transaction->transaction_status = true;
+                    $transaction->narration = $request->narration;
                     $transaction->save();
                     //end of logic for saving transactions
 

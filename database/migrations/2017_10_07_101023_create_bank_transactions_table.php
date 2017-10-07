@@ -19,6 +19,7 @@ class CreateBankTransactionsTable extends Migration
             $table->decimal('amount', 12,2);
             $table->boolean('transaction_status')->default(false);
             $table->integer('uuid')->unsigned();
+            $table->string('narration')->nullable();
             $table->integer('beneficiary_id')->unsigned();
             $table->string('transaction_reference', 100);
             $table->timestamps();
