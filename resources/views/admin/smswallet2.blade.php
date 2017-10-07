@@ -34,7 +34,7 @@
         <button type="button" class="btn btn-primary" id="topup"><!--data-toggle="modal" data-target="#walletTopUp">-->
           Fund Wallet
         </button>
-	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#walletTopUp">
+	<button type="button" class="btn btn-primary" id="balRefre">
           refresh
         </button>
         </div>
