@@ -34,8 +34,7 @@
 @endsection
 
 @section('content')
-<meta http-equiv="refresh" content="100">
-    <section class="col-md-12">
+   <section class="col-md-12">
       <!-- Content Wrapper. Contains page content -->
       <div class="row">
         <div class="col-lg-6">
@@ -195,14 +194,18 @@
           <form role="form" class="submit-add_sms_account">
                 {{ csrf_field() }}
                 <!-- text input -->
-				<div class="form-group">
+		<div class="form-group">
                   <div class="form-group">
                   <label>Username</label>
                   <input class="form-control email" name="username" type="email">
                 </div>
+		<div class="form-group">
+                  <label>Account Number</label>
+                  <input class="form-control email" name="bank_account" type="text">
+                </div>
                 <div class="form-group">
                   <label>API Key</label>
-                  <input class="form-control email" name="api_id" type="email">
+                  <input class="form-control email" name="api_id" type="text">
                 </div>
                 <br>
 				 <div class="form-group">
