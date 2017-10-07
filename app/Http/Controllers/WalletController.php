@@ -251,7 +251,7 @@ class WalletController extends Controller
                     $transaction->save();
                     //end of logic for saving transactions
 
-                    //event(new TransferToBank($bank));
+                    event(new TransferToBank($bank));
 
 
                     return redirect('success')->with('status',$data);
@@ -264,14 +264,21 @@ class WalletController extends Controller
     //get wallet balance
     public function walletBalance(Wallet $wallet)
     {
-    $walletBalance = \App\Http\Utilities\Wallet::all();
-
-         foreach($walletBalance as $wallets)
-        {
-            Wallet::where('wallet_code', $wallets['uref'])
-                ->update(['balance'=> $wallets['balance']]);
+        $token = $this->getToken();
+        $headers = array('content-type' => 'application/json', 'Authorization' => $token);
+        $response = \Unirest\Request::get('https://moneywave.herokuapp.com/v1/wallet', $headers);
+        $data = json_decode($response->raw_body, true);
+        $walletBalance = $data['data'];
+        //var_dump($walletBalance);
+        //die();
+        foreach($walletBalance as $wallets)
+                        {
             
-        }
+                        Wallet::where('wallet_code', $wallets['uref'])
+                        ->update(['balance'=> $wallets['balance']]);
+    
+                        //return view('walletBalance', compact('walletBalance'));
+                        }
         
     
     }
