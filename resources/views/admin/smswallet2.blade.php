@@ -51,14 +51,14 @@
         <div class="col-lg-3 col-lg-offset-3">
         <h2 id="balance">Balance: <span id="wallet-balance"></span></h2>
         <div>
+	<div class="icon"id="balRefre" >
+				<i class="fa fa-refresh fa-2x" aria-hidden="true"></i>			
+			</div>
         <div class="btn-group">
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#walletTopUp">
           Fund Wallet
         </button>
-			<div class="icon"id="balRefre" >
-				<i class="fa fa-envelope"></i>
-			</div>         
-			</div>
+	</div>
         </div>
         </div>
       </div><!--row ends-->
