@@ -34,13 +34,110 @@
         <button type="button" class="btn btn-primary" id="topup"><!--data-toggle="modal" data-target="#walletTopUp">-->
           Fund Wallet
         </button>
-	<button type="button" class="btn btn-primary" id="balRefre"><!--data-toggle="modal" data-target="#walletTopUp">-->
+	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#walletTopUp">
           refresh
         </button>
         </div>
         </div>
       </div><!--row ends-->
-      
+      <!---Modal for wallet top Up-->
+    <div class="modal fade" id="walletTopUp">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title text-center">Wallet Top Up</h4>
+              </div>
+              <div class="modal-body">
+              <div class="box-header with-border">
+                <h3 class="box-title">Card Details</h3>
+              </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <form role="form form-horizontal">
+                <!-- text input -->
+               <div class="container-fluid">
+                <fieldset>
+                    <div class="form-group">
+                        <label for="cc_name">Card Holder's Name</label>
+                        <div class="controls">
+                            <input class="form-control" id="cc_name" pattern="\w+ \w+.*" title="First and last name" required="required" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Card Number</label>
+                        <div class="controls">
+                              <input class="form-control" autocomplete="off" maxlength="20" pattern="\d{20}"  required="" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Card Expiry Date</label>
+                        <div class="controls">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <select class="form-control" name="cc_exp_mo">
+                                        <option value="01">January</option>
+                                        <option value="02">February</option>
+                                        <option value="03">March</option>
+                                        <option value="04">April</option>
+                                        <option value="05">May</option>
+                                        <option value="06">June</option>
+                                        <option value="07">July</option>
+                                        <option value="08">August</option>
+                                        <option value="09">September</option>
+                                        <option value="10">October</option>
+                                        <option value="11">November</option>
+                                        <option value="12">December</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <select class="form-control" name="cc_exp_yr">
+                                        <option>2014</option>
+                                        <option>2015</option>
+                                        <option>2016</option>
+                                        <option>2017</option>
+                                        <option>2018</option>
+                                        <option>2019</option>
+                                        <option>2020</option>
+                                        <option>2021</option>
+                                        <option>2022</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Card CVV</label>
+                        <div class="controls">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <input class="form-control" autocomplete="off" maxlength="3" pattern="\d{3}" title="Three digits at back of your card" required="" type="text">
+                                </div>
+                                <div class="col-md-8"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label></label>
+                        <div class="controls">
+                            <button type="submit" class="btn btn-primary">Top up</button>
+                            <button type="button" class="btn btn-default">Cancel</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+              </form>
+
+              </div>
+              
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+    </section>
       
     
     </section>
