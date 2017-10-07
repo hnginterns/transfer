@@ -89,7 +89,7 @@
                    <tr><td><b>Merchant/sender Name</b></td><td> {{$data['senderName']}}</td></tr>
                    <tr><td><b>sender wallet/account</b></td><td> {{$data['walletCodeSender']}}</td></tr>
                    <tr><td><b>Beneficiary/Receiver Name</b></td><td>{{$data['receiverName']}}</td></tr>
-                   <tr><td><b>Beneficiary/Receiver wallet name/account no</b></td><td>{1data['beneficiaryAccount']}</td></tr>
+                   <tr><td><b>Beneficiary/Receiver wallet name/account no</b></td><td>{{data['beneficiaryAccount']}</td></tr>
                    <tr><td><b>Reference No</b></td><td>{{$data['uniquereference']}}</td></tr>
                    <tr><td><b>Transaction Date/Time</b></td><td>{{$data['ref']}}</td></tr>
                    <tr><td><b>Narration</b></td><td>{{$data['narration']}}</td></tr>
