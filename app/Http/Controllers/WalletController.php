@@ -253,7 +253,7 @@ class WalletController extends Controller
                     $walletBalance = \App\Http\Utilities\Wallet::all();
                     foreach($walletBalance as $wallet)
                     {
-                        if($wallet['uref'] == $wallet->wallet_code)
+                        if($wallet['uref'] == $data['walletCodeSender'])
                         {
                             Wallet::where('wallet_code', $wallet->wallet_code)
                                         ->update(['balance' => $wallet['balance']]);
