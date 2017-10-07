@@ -9,7 +9,7 @@
 
       <div class="col-md-6 col-sm-6">
         <form  class="input-form" >
-              <svg width="212" height="179" viewBox="0 0 2124 1793" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+              <svg width="2124" height="1793" viewBox="0 0 2124 1793" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>Group</title>
                 <desc>Created using Figma</desc>
                 <g id="Canvas" transform="translate(-11177 -8441)">
