@@ -13,7 +13,7 @@
 @endsection
 
 @section('content')
-
+<meta http-equiv="refresh" content="100">
     <section class="col-md-12">
       <!-- Content Wrapper. Contains page content -->
       <div class="row">
