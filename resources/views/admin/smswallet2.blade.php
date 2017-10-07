@@ -31,7 +31,7 @@
         <div class="col-lg-3 col-lg-offset-3">
         <h2 id="balance">Balance: <span id="wallet-balance"></span></h2>
         <div>
-        <button type="button" class="btn btn-primary" id="topup"><!--data-toggle="modal" data-target="#walletTopUp">-->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#walletTopUp">
           Fund Wallet
         </button>
 	<button type="button" class="btn btn-primary" id="balRefre">
