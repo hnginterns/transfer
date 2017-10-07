@@ -42,7 +42,6 @@
     <!-- Main content -->
     <section class="content container" id="bulksms">
  
-        <h3>Add SMS account</h3>
   <!-- Trigger the modal with a button -->
   <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">ADD SMS ACCOUNT</button>
 <!--modal for add sms account -->
