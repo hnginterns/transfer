@@ -215,10 +215,10 @@
                   <label>API Key</label>
                   <input class="form-control email" name="api_id" type="email">
                 </div>
-                ><br>
+                <br>
 				 <div class="form-group">
 				  <label> Bank Name</label>
-				  <select name="currency_id" class="form-control input-defaulted" >
+				  <select name="currency_id" class="form-control input-defaulted">
 				    <option value="1">FIRST CITY MONUMENT BANK PLC</option>
                     			<option value="2">UNITY BANK PLC</option>
                     			<option value="3">STANBIC IBTC BANK PLC</option>
