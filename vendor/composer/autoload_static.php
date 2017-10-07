@@ -320,13 +320,14 @@ class ComposerStaticInitcb56c8f99153a160391720319584c667
 
     public static $classMap = array (
         'App\\Bank' => __DIR__ . '/../..' . '/app/Bank.php',
+        'App\\BankTransaction' => __DIR__ . '/../..' . '/app/BankTransaction.php',
         'App\\Beneficiary' => __DIR__ . '/../..' . '/app/Beneficiary.php',
         'App\\CardWallet' => __DIR__ . '/../..' . '/app/CardWallet.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminController.php',
         'App\\Http\\Controllers\\AdminLoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminLoginController.php',
-        'App\\Http\\Controllers\\Admin\\BeneficiaryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/BeneficiaryController.php',
+        'App\\Http\\Controllers\\Admin\\BeneficiaryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/BeneficiaryController 2.php',
         'App\\Http\\Controllers\\Admin\\UsersController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/UsersController.php',
         'App\\Http\\Controllers\\Admin\\WalletController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/WalletController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -338,7 +339,6 @@ class ComposerStaticInitcb56c8f99153a160391720319584c667
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\PaymentController' => __DIR__ . '/../..' . '/app/Http/Controllers/PaymentController.php',
         'App\\Http\\Controllers\\RavepayController' => __DIR__ . '/../..' . '/app/Http/Controllers/RavepayController.php',
-        'App\\Http\\Controllers\\RestrictionValidationController' => __DIR__ . '/../..' . '/app/Http/Controllers/RestrictionValidationController.php',
         'App\\Http\\Controllers\\RestrictionController' => __DIR__ . '/../..' . '/app/Http/Controllers/RestrictionController.php',
         'App\\Http\\Controllers\\SmsWalletController' => __DIR__ . '/../..' . '/app/Http/Controllers/SmsWalletController.php',
         'App\\Http\\Controllers\\UsermgtController' => __DIR__ . '/../..' . '/app/Http/Controllers/UsermgtController.php',

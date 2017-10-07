@@ -14,8 +14,10 @@ use App\Beneficiary;
 use App\Rule;
 use App\Transaction;
 use URL;
+use App\BankTransaction;
 use RestrictionController;
 use App\Http\Controllers\RestrictionController as Restrict;
+use App\Events\TransferToBank;
 
 class WalletController extends Controller
 {
@@ -75,6 +77,7 @@ class WalletController extends Controller
 
         $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer', $headers, $body);
         $response = json_decode($response->raw_body, TRUE);
+        
         if($response['status'] == 'success') {
             $response = $response['data']['transfer'];
             $meta = $response['meta'];
@@ -182,7 +185,7 @@ class WalletController extends Controller
     }
 
     //transfer from wallet to bank
-    public function transferAccount(Request $request, Wallet $wallet)
+    public function transferAccount(Request $request, Wallet $wallet, BankTransaction $bank)
     {
         $validator = $this->validateBeneficiary($request->all());
         if ($validator->fails()) {
@@ -196,7 +199,7 @@ class WalletController extends Controller
                 $query = array(
                     "lock" => $wallet->lock_code,
                     "amount" => $request->amount,
-                    "bankcode" => $beneficiary->bank->bank_code,// Returns error
+                    "bankcode" => $beneficiary->bank->bank_code,
                     "accountNumber" => $beneficiary->account_number,
                     "currency" => "NGN",
                     "senderName" => Auth::user()->username,
@@ -204,6 +207,8 @@ class WalletController extends Controller
                     "ref" => $request->reference, // No Refrence from request
                     "walletUref" => $wallet->wallet_code
                 );
+
+                //checks for permissions
                 $permit = Restriction::where('wallet_id', $wallet->id)
                         ->where('uuid', Auth::user()->id)
                         ->first();
@@ -213,13 +218,42 @@ class WalletController extends Controller
                 if(count($errors) != 0){
                      return back()->with('multiple-error', $errors);
                 }
+                //end of permission checks
 
+                //Api call to moneywave for transaction
                 $body = \Unirest\Request\Body::json($query);
                 $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/disburse', $headers, $body);
                 $response = json_decode($response->raw_body, true);
                 $status = $response['status'];
+                //end of Api call
+
                 if ($status == 'success') {
-                    $data = $response;
+
+                    //data to be parsed to display transaction details
+                    $data = $response['data']['data'];
+                    $data['senderName'] = Auth::user()->username;
+                    $data['walletCodeSender'] = $wallet->wallet_code;
+                    $data['receiverName'] = $beneficiary->name;
+                    $data['beneficiaryAccount'] = $beneficiary->account_number;
+                    $data['amount'] = $request->amount;
+                    $data['narration'] = $request->narration;
+                    //end of data prep
+
+                    //logic to persist transaction details
+                    $transaction = new BankTransaction;
+                    $transaction->wallet_id = $wallet->id;
+                    $transaction->amount = $request->amount;
+                    $transaction->uuid =  Auth::user()->id;
+                    $transaction->beneficiary_id = $beneficiary->id;
+                    $transaction->transaction_reference = $data['uniquereference'];
+                    $transaction->transaction_status = true;
+                    $transaction->narration = $request->narration;
+                    $transaction->save();
+                    //end of logic for saving transactions
+
+                    event(new TransferToBank($bank));
+
+
                     return redirect('success')->with('status',$data);
                 } else {
                     return redirect()->with('failed',$data);
@@ -235,10 +269,18 @@ class WalletController extends Controller
         $response = \Unirest\Request::get('https://moneywave.herokuapp.com/v1/wallet', $headers);
         $data = json_decode($response->raw_body, true);
         $walletBalance = $data['data'];
-        $wallet = Wallet::where('wallet_code', $walletBalance[0]['uref'])
-                    ->update(['wallet_name' => 'name']);
-        var_dump($wallet);
-          //return view('walletBalance', compact('walletBalance'));
+        var_dump($walletBalance);
+        die();
+        foreach($walletBalance as $wallets)
+                        {
+            
+                        Wallet::where('wallet_code', $wallets['uref'])
+                        ->update(['balance'=> $wallets['balance']]);
+    
+                        //return view('walletBalance', compact('walletBalance'));
+                        }
+        
+    
     }
 
     //
@@ -277,9 +319,9 @@ class WalletController extends Controller
         $wallet->wallet_name = $wallet_name;;
 
         if ($wallet->save()) {
-            return back();
+            return back()->with('success', 'Wallet creation successful');
         } else {
-            return back();
+            return back()->with('error', 'Could not create wallet');
         }
     }
 
