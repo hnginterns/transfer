@@ -186,10 +186,7 @@
                   <label>API Key</label>
                   <input class="form-control email" name="api_id" type="email">
                 </div>
-                <div class="form-group">
-                  <label>Password</label>
-                  <input class="form-control app_id" name="password" type="text">
-                </div><br>
+                ><br>
 				 <div class="form-group">
 				  <label> Bank Name</label>
 				  <select name="currency_id" class="form-control input-defaulted" >
@@ -218,10 +215,10 @@
 					<option value="23">KEYSTONE BANK PLC</option>
 					<option value="24">SKYE BANK PLC</option>
 					<option value="25">STANDARD CHARTERED BANK NIGERIA LIMITED</option>
-					<option value="26">NION BANK OF NIGERIA PLC</option>
+					<option value="26">UNION BANK OF NIGERIA PLC</option>
 					<option value="27">UNITED BANK FOR AFRICA PLC</option>
 					<option value="28">WEMA BANK PLC</option>
-					<option value="29">ENITH BANK PLC</option>
+					<option value="29">ZENITH BANK PLC</option>
 					
                 </div><br>
                  					    
