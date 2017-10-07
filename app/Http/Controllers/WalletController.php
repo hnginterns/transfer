@@ -264,15 +264,15 @@ class WalletController extends Controller
     //get wallet balance
     public function walletBalance(Wallet $wallet)
     {
-                    
-       $walletBalance = \App\Http\Utilities\Wallet::all();
+    $walletBalance = \App\Http\Utilities\Wallet::all();
 
          foreach($walletBalance as $wallets)
         {
-            return Wallet::where('wallet_code', $wallets['uref'])
+            Wallet::where('wallet_code', $wallets['uref'])
                 ->update(['balance'=> $wallets['balance']]);
             
-        } 
+        }
+        
     
     }
 
