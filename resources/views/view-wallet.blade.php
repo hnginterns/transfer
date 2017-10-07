@@ -118,18 +118,6 @@
 		  	  
             	<a href="{{ route('ravepay.pay', $wallet->id)}}" class="btn btn-dark">Fund</a>
 			
-<<<<<<< HEAD
-			@if(!array_key_exists('can_transfer_from_wallet', $rules)) 
-            <a href="/transfer-to-bank/{{$wallet->id}}" class="btn btn-dark ">Transfer To Beneficiary</a>
-			@endif
-
-      <a href="/transfer-to-wallet" class="btn btn-dark ">Transfer to Another Wallet </a>
-
-      @if(!array_key_exists('can_add_beneficiary', $rules))
-       		 <a href="/addbeneficiary/{{$wallet->id}}" class="btn btn-dark ">Add Beneficiary</a>
-			@endif
-
-=======
 			
 			
             <a href="/transfer-to-bank/{{$wallet->id}}" class="btn btn-dark ">Transfer</a>
@@ -137,7 +125,6 @@
             
            		 <a href="/addbeneficiary/{{$wallet->id}}" class="btn btn-dark ">Add Beneficiary</a>
 			
->>>>>>> 5da98e4fb5f874694eaeef52bc751e3b8e870b86
           </div>
 		</div>
 
