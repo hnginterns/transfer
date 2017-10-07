@@ -296,7 +296,7 @@
 
           @foreach ($smswalletdetails as $smswalletdetail)
 
-            <div class="col-md-3 col-xs-6 units">
+            <div class="col-md-3 col-xs-12 units">
                 <!-- small box -->
                 <div class="small-box">
 			<div class="inner unit">
