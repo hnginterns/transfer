@@ -312,10 +312,9 @@
 			</div>
 			<div class="icon">
 			    <i class="fa fa-envelope"></i>
+			</div>	
+			<a href="#" class="btn-success btn" type="button"  data-toggle="modal" data-target="#top-up-modal">Top up <i class="fa fa-arrow-circle-right"></i></a>
 			</div>
-			<div class = "small-box-footer">
-				<a href="#" class="btn-success btn" type="button"  data-toggle="modal" data-target="#top-up-modal">Top up <i class="fa fa-arrow-circle-right"></i></a>
-			
                 </div>
             </div>
 
