@@ -55,10 +55,10 @@
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#walletTopUp">
           Fund Wallet
         </button>
-	        <button type="button" class="btn btn-success" id="balRefre">
-          Refresh Balance
-        </button>
-        </div>
+			<div class="icon"id="balRefre" >
+				<i class="fa fa-envelope"></i>
+			</div>         
+			</div>
         </div>
         </div>
       </div><!--row ends-->
@@ -210,7 +210,7 @@
                 <br>
 				 <div class="form-group">
 				  <label> Bank Name</label>
-				  <select name="currency_id" class="form-control input-defaulted">
+				    <select name="currency_id" class="form-control input-defaulted">
 				  		<option>Choose Bank</option>
 					<option value="214">FIRST CITY MONUMENT BANK PLC</option>
                     			<option value="215">UNITY BANK PLC</option>
@@ -242,6 +242,8 @@
 					<option value="035">WEMA BANK PLC</option>
 					<option value="057">ZENITH BANK PLC</option>
 					
+                </select>
+                
                 </div>
 					
                 </div>
