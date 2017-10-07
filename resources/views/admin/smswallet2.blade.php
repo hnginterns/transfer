@@ -42,32 +42,7 @@
     <!-- Main content -->
     <section class="content container" id="bulksms">
  
-        <button class="btn btn-success">Create New</button>
-       
-        <hr />
-        <div class="row">
-
-          @foreach ($smswalletdetails as $smswalletdetail)
-
-            <div class="col-md-3 col-xs-6 units">
-                <!-- small box -->
-                <div class="small-box bg-aqua">
-                <div class="inner">
-                    <h3>SMS Wallet</h3>
-                    <p>Account Name: <span class="username">{{ $smswalletdetail['username'] }}</span></p>
-                    <p>Sms Unit: <span class="unit-balance">{{ number_format($smswalletdetail['balance'], 2) }}</span></p>
-                </div>
-                <div class="icon">
-                    <i class="fa fa-envelope"></i>
-                </div>
-                <a href="#" class="small-box-footer" type="button"  data-toggle="modal" data-target="#top-up-modal">Top up <i class="fa fa-arrow-circle-right"></i></a>
-
-                </div>
-            </div>
-
-          @endforeach
-        </div>
-<h3>Add SMS account</h3>
+        <h3>Add SMS account</h3>
   <!-- Trigger the modal with a button -->
   <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">ADD SMS ACCOUNT</button>
 <!--modal for add sms account -->
@@ -114,6 +89,31 @@
     </div>
   </div>
   <!-- /.modal -->
+       
+        <hr />
+        <div class="row">
+
+          @foreach ($smswalletdetails as $smswalletdetail)
+
+            <div class="col-md-3 col-xs-6 units">
+                <!-- small box -->
+                <div class="small-box bg-aqua">
+                <div class="inner">
+                    <h3>SMS Wallet</h3>
+                    <p>Account Name: <span class="username">{{ $smswalletdetail['username'] }}</span></p>
+                    <p>Sms Unit: <span class="unit-balance">{{ number_format($smswalletdetail['balance'], 2) }}</span></p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-envelope"></i>
+                </div>
+                <a href="#" class="small-box-footer" type="button"  data-toggle="modal" data-target="#top-up-modal">Top up <i class="fa fa-arrow-circle-right"></i></a>
+
+                </div>
+            </div>
+
+          @endforeach
+        </div>
+
     </section>
     <!---Modal for Jonesky-->
     <div class="modal fade" id="top-up-modal">
