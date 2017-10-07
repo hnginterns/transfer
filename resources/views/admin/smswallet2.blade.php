@@ -186,7 +186,7 @@
                   <label>API Key</label>
                   <input class="form-control email" name="api_id" type="email">
                 </div>
-                ><br>
+                <br>
 				 <div class="form-group">
 				  <label> Bank Name</label>
 				  <select name="currency_id" class="form-control input-defaulted" >
