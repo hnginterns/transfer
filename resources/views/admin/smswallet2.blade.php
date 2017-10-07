@@ -1,5 +1,17 @@
 @extends('layouts.admin')
 
+@section('added_css')
+    <style type="text/css">
+        .modal-loading{display:none;position:fixed;z-index:10005;top:0;left:0;height:100%;width:100%;background: rgba( 255, 255, 255, .5 ) url('{{ asset("/img/ajax-loader.gif") }}') 50% 50% no-repeat;}
+        /* When the body has the loading class, we turn
+        the scrollbar off with overflow:hidden */
+        body.loading{overflow:hidden;}
+        /* Anytime the body has the loading class, our
+        modal element will be visible */
+        body.loading .modal-loading{display: block;}
+    </style>
+@endsection
+
 @section('content')
 
     <section class="col-md-12">
@@ -31,7 +43,7 @@
     <section class="content container" id="bulksms">
 
         <button class="btn btn-success">Create New</button>
-
+        <hr />
         <div class="row">
 
           @foreach ($smswalletdetails as $smswalletdetail)
@@ -101,6 +113,8 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+  <!-- for showing a Loading Modal during AJAX Request -->
+  <div class="modal-loading"><!-- Place at bottom of page --></div>
 
  
 
@@ -158,6 +172,14 @@
 @section('added_js')
   <script src="{{ asset('js/modal-alert.js') }}"></script>
   <script type="text/javascript">
+
+    // To show Loading GIF on ajax actions
+    $body = $("body");
+
+    $(document).on({
+        ajaxStart: function() { $body.addClass("loading"); },
+        ajaxStop: function() { $body.removeClass("loading"); }
+    });
 
     function getToken(apikey,apisecret)
     {
@@ -235,8 +257,9 @@
           $.alert('Account topped up successfully', {
               type: 'success',
               position: ['top-right', [0,0]],
-              closeTime: 5000,
-              minTop: 55
+              closeTime: 10000,
+              minTop: 55,
+              isOnly: false,
           });
           //get new wallet balance
           var newbal = getWalletBalance(token);
@@ -245,8 +268,9 @@
           $.alert('Wallet Balance Updated', {
               type: 'success',
               position: ['top-right', [0,0]],
-              // closeTime: 5000,
-              minTop: 55
+              closeTime: 10000,
+              minTop: 110,
+              isOnly: false,
           });
         },
         error: function (res) {
