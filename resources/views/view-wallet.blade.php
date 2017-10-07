@@ -117,15 +117,14 @@
           <div class="col-sm-12">  
 		  	  
             	<a href="{{ route('ravepay.pay', $wallet->id)}}" class="btn btn-dark">Fund</a>
+            
+           		 <a href="/addbeneficiary/{{$wallet->id}}" class="btn btn-dark ">Add Beneficiary</a>		
 			
 			
-			
-            <a href="/transfer-to-bank/{{$wallet->id}}" class="btn btn-dark ">Transfer to Beneficiary</a>
+              <a href="/transfer-to-bank/{{$wallet->id}}" class="btn btn-dark ">Transfer to Beneficiary</a>
 			
             
-            <a href="/transfer-to-wallet" class="btn btn-dark ">Transfer to Another Wallet </a>
-            
-           		 <a href="/addbeneficiary/{{$wallet->id}}" class="btn btn-dark ">Add Beneficiary</a>
+              <a href="/transfer-to-wallet" class="btn btn-dark ">Transfer to Another Wallet </a>
 			
           </div>
 		</div>
