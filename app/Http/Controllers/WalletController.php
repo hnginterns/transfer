@@ -15,6 +15,7 @@ use App\Rule;
 use App\Transaction;
 use URL;
 use RestrictionController;
+use App\Http\Controllers\RestrictionController as Restrict;
 
 class WalletController extends Controller
 {
@@ -182,7 +183,7 @@ class WalletController extends Controller
     }
 
     //transfer from wallet to bank
-    public function transferAccount(Request $request)
+    public function transferAccount(Request $request, Wallet $wallet)
     {
         $validator = $this->validateBeneficiary($request->all());
         if ($validator->fails()) {
@@ -190,23 +191,29 @@ class WalletController extends Controller
             Session::flash('messages', $this->formatMessages($messages, 'error'));
             return redirect()->to(URL::previous())->withInput();
         } else {
-            $beneficiary = Beneficiary::where('id', '=', $request->beneficiary_id)->get();
-            $walletdata = Wallet::where('wallet_name', $request->wallet_name)->get();
-            if (!empty($beneficiary)) {
                 $token = $this->getToken();
                 $headers = array('content-type' => 'application/json', 'Authorization' => $token);
-
+                $beneficiary = Beneficiary::find($request->beneficiary_id);
                 $query = array(
-                    "lock" => $walletdata[0]->lock_code,
+                    "lock" => $wallet->lock_code,
                     "amount" => $request->amount,
-                    "bankcode" => $beneficiary[0]->bank_id,// Returns error
-                    "accountNumber" => $beneficiary[0]->account_number,
+                    "bankcode" => $beneficiary->bank->bank_code,// Returns error
+                    "accountNumber" => $beneficiary->account_number,
                     "currency" => "NGN",
                     "senderName" => Auth::user()->username,
                     "narration" => $request->narration, //Optional
                     "ref" => $request->reference, // No Refrence from request
-                    "walletUref" => $walletdata[0]->wallet_code
-                ); // No Refrence from request
+                    "walletUref" => $wallet->wallet_code
+                );
+                $permit = Restriction::where('wallet_id', $wallet->id)
+                        ->where('uuid', Auth::user()->id)
+                        ->first();
+                if($permit == null) return redirect('/dashboard');
+                     $restrict = new Restrict($permit, $request);
+                     $errors = $restrict->transferToBank();
+                if(count($errors) != 0){
+                     return back()->with('multiple-error', $errors);
+                }
 
                 $body = \Unirest\Request\Body::json($query);
                 $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/disburse', $headers, $body);
@@ -214,11 +221,10 @@ class WalletController extends Controller
                 $status = $response['status'];
                 if ($status == 'success') {
                     $data = $response;
-                    return redirect()->action('pagesController@success', $response);
+                    return redirect('success')->with('status',$data);
                 } else {
-                    return redirect()->action('pagesController@failed', $response);
+                    return redirect()->with('failed',$data);
                 }
-            }
         }
     }
 

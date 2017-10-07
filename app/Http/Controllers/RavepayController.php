@@ -23,13 +23,15 @@ class RavepayController extends Controller
 
     public function index($id)
     {
+        $user = Auth::user();
+
         $permit = Restriction::where('wallet_id', $id)
-          ->where('uuid', Auth::user()->id)
+          ->where('uuid', $user->id)
           ->get();
 
         $wallet = Wallet::find($id)->first();
 
-        return view('ravepay', compact('permit', 'wallet'));
+        return view('ravepay', compact('permit', 'wallet', 'user'));
     }
 
     public function success($ref, $amount, $currency)
@@ -66,11 +68,15 @@ class RavepayController extends Controller
 
             if (($chargeResponse == "00" || $chargeResponse == "0") && ($chargeAmount == $amount)  && ($chargeCurrency == $currency)) {
                 //Give Value and return to Success page
+
+                dd($chargeResponse);
+
+
                 return redirect('/success');
             } else {
                 //Dont Give Value and return to Failure page
                 $report = "An Error Occured, you can try again";
-                return redirect('/failure', compact('report'));
+                return redirect('/failed', compact('report'));
             }
         }
     }

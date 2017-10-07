@@ -9,11 +9,12 @@
 
       <div class="col-md-6 col-sm-6">
         <form  class="input-form" >
-              <h4 class="intro text-center">Pay with Rave</h4>
+        
+              <h4 class="intro text-left">Fund Wallet with Rave</h4>
               <input type="hidden" name="wallet_id" value="{{$wallet->id}}">
               <div class="form-group">  
                 <label for="">Email address</label>
-                <input type="text" name="email" id="email" class="form-control" value="user@example.com" placeholder="Enter email address" >
+                <input type="text" name="email" id="email" class="form-control" value="{{$user->email}}" >
               </div>
 
               <div class="form-group"> 
@@ -27,7 +28,7 @@
               </div>
               
               <div class="form-group">
-                <button class="btn btn-primary center-block" id="submit" type="button">Pay Now</button>
+                <button class="btn btn-primary pull-right" id="submit" type="button">Pay Now</button>
               </div>
       </form>
 
@@ -36,8 +37,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="http://flw-pms-dev.eu-west-1.elasticbeanstalk.com/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
 <script type="text/javascript">
-    
-
     
     document.addEventListener("DOMContentLoaded", function(event) {
       document.getElementById("submit").addEventListener("click", function(e) {
@@ -48,7 +47,7 @@
           url: "/integrity/"+txRef+"/"+email, // this is an endpoint that sends the hashed values and transaction reference to the client.
           headers: { contentType: "application/json" },
           dataType: "json",
-          type: "POST",
+          type: "GET",
           cache: false,
           success: function(response) {
             console.log(response);
@@ -60,7 +59,7 @@
           }
         });
         var PBFKey = "FLWPUBK-47d14cd9504c1b0c54b439e1be251fcf-X";
-        var amount = 10;
+        var amount = document.getElementById('amount').value;
     
         // getpaidSetup is Rave's inline script function. it holds the payment data to pass to Rave.
         getpaidSetup({
@@ -79,15 +78,19 @@
              flw_ref = response.tx.flwRef;// collect flwRef returned and pass to a                  server page to complete status check.
           console.log("This is the response returned after a charge", response);
           if(response.tx.chargeResponse =='00' || response.tx.chargeResponse == '0') {
-            window.location = "http://hng.transfer.fun/ravepaysuccess/"+flw_ref+"/"+amount+"/NGN"; 
+            console.log("This is the response returned after a charge", response);
+            //window.location = "http://transfer.hng.fun/ravepaysuccess/"+flw_ref+"/"+amount+"/NGN"; 
             // redirect to a success page
           } else {
-            window.location = "http://transfer.hng.fun/failed"; 
+            console.log(response);
+            //window.location = "http://transfer.hng.fun/failed/"+response+; 
             // redirect to a failure page.
           }
           }
         });
       });
     });
+
+</script>
 
 @endsection
