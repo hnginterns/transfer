@@ -196,7 +196,7 @@ class WalletController extends Controller
                 $query = array(
                     "lock" => $wallet->lock_code,
                     "amount" => $request->amount,
-                    "bankcode" => $beneficiary->bank_id,// Returns error
+                    "bankcode" => $beneficiary->bank->bank_code,// Returns error
                     "accountNumber" => $beneficiary->account_number,
                     "currency" => "NGN",
                     "senderName" => Auth::user()->username,
@@ -204,7 +204,6 @@ class WalletController extends Controller
                     "ref" => $request->reference, // No Refrence from request
                     "walletUref" => $wallet->wallet_code
                 );
-
                 $permit = Restriction::where('wallet_id', $wallet->id)
                         ->where('uuid', Auth::user()->id)
                         ->first();
@@ -219,12 +218,11 @@ class WalletController extends Controller
                 $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/disburse', $headers, $body);
                 $response = json_decode($response->raw_body, true);
                 $status = $response['status'];
-                dd($response);
                 if ($status == 'success') {
                     $data = $response;
-                    return redirect()->action('pagesController@success', $response);
+                    return redirect('success')->with('status',$data);
                 } else {
-                    return redirect()->action('pagesController@failed', $response);
+                    return redirect()->with('failed',$data);
                 }
         }
     }

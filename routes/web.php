@@ -70,13 +70,13 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/banks', 'BanksController@banks');
 	Route::get('/populatebank', 'BanksController@populateBanks');
 	Route::get('/success', 'pagesController@success');
-	Route::get('/failed', 'pagesController@failed')->name('failed');
+	Route::get('/failed/{response}', 'pagesController@failed')->name('failed');
 
 	Route::get('/transfer', 'pagesController@transfer');
 	Route::get('/balance', 'pagesController@balance');
 	Route::get('/ravepay/{id}', 'RavepayController@index')->name('ravepay.pay');
 	Route::get('/integrity/{txRef}/{email}', 'RavepayController@checkSum');
-	Route::get('/ravepaysuccess/{ref}/{amount}/{currency}', 'RavepayController@success');	
+	Route::get('/ravepaysuccess/{ref}/{amount}/{currency}', 'RavepayController@success')->name('ravepay.success');	
 	Route::get('/addbeneficiary/{wallet}', 'pagesController@addBeneficiary');
 	Route::post('/addbeneficiary/{wallet}', 'pagesController@insertBeneficiary')->name('beneficiaries.insert');
 
@@ -180,11 +180,13 @@ Route::group(['middleware' => ['admin']], function () {
 	//Route::get('/manager/setting', 'AdminController@settings');
 
 	Route::get('/admin/smswallet', 'SmsWalletController@smsWalletBalance');
+	Route::post('/admin/smswallet-topup', 'SmsWalletController@smsWalletTopup');	
+	Route::post('/admin/get-user-details', 'SmsWalletController@getUserDetails');
 
 	// admin routes
 	Route::get('/view-accounts', 'pagesController@viewAccounts');
 	Route::get('/addaccount', 'AdminController@addaccount');
-	Route::get('/usermanagement', 'AdminController@usermanagement');
+	Route::get('/userwalment', 'AdminController@usermanagement');
 	Route::get('admin/analytics', 'AdminController@webAnalytics');
 
 });

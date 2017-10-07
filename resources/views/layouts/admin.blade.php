@@ -31,6 +31,8 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 
+  @yield('added_css')
+
   <!-- Google Font -->
  <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -77,8 +79,7 @@
   </div>
 <!-- ./wrapper -->
 
-<<!-- jQuery 3 -->
-
+<!-- jQuery 3 -->
 <script src="https://adminlte.io/themes/AdminLTE/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="https://adminlte.io/themes/AdminLTE/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -104,7 +105,7 @@
   })
 </script>
 
-
+@yield('added_js')
 
 </body>
 </html>
