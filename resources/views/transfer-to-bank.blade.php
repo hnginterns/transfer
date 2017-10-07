@@ -32,7 +32,6 @@
                   {{csrf_field()}}
 
                     <div class="form-group">
-                      <label>Beneficiary</label>
                         <select class="form-control cus-input" name="beneficiary_id">
                           <option>Select Beneficiary</option>
                             @foreach($wallet->beneficiary as $key => $beneficiaries)
