@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use App\Wallet;
 use App\Events\FundWallet;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
