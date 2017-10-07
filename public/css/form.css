@@ -10,19 +10,26 @@
   .input-form>.form-group>.form-control,
   .cus-input {
       border-radius: 0;
-      height: 45px;
+      height: 40px;
       background: #FFECE0;
       border: 1;
   }
+
+  .input-form>.form-group>.form-control>input:focus,
+  {
+    background: #FD8032;
+  }
+
+
 
   .form-holder {
       margin-top: 20px;
   }
 
  .intro {
-      color: #FD8032;
+      color: #25313F;
       margin-bottom: 30px;
-      margin-top: 30px;
+      margin-top: 20px;
       font-weight: bold;
       font-size: 25px;
   }
@@ -33,7 +40,7 @@
 
   .input-form>.form-group {
       text-align: left;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
   }
 
   .input-form {

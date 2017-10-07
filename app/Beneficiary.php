@@ -16,7 +16,7 @@ class Beneficiary extends Model
 
 
     public function bank(){
-        return $this->hasOne(Bank::class,'bank_code','bank_id');
+        return $this->belongsTo(Bank::class);
     }
 }
     

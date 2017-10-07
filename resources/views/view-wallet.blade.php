@@ -90,6 +90,7 @@
                   <th>Name</th>
                   <th>Bank</th>
                   <th>Account Number</th>
+                   <th>Wallet</th>
                   <th>Date</th>
                 </tr>
               </thead>
@@ -100,6 +101,7 @@
                   <td>{{ $beneficiary->name }}</td>
                   <td>{{ $beneficiary->bank_name }}</td>
                   <td>{{ $beneficiary->account_number }}</td>
+                  <td>{{ $beneficiary->wallet_id }}</td>
                   <td>{{ $beneficiary->created_at }}</td>
                 </tr>
               @endforeach
@@ -118,7 +120,7 @@
 			@endif
 			
 			@if(!array_key_exists('can_transfer_from_wallet', $rules)) 
-            <a href="/transfer-to-bank" class="btn btn-dark ">Transfer</a>
+            <a href="/transfer-to-bank/{{$wallet->id}}" class="btn btn-dark ">Transfer</a>
 			@endif
             @if(!array_key_exists('can_add_beneficiary', $rules))
            		 <a href="/addbeneficiary/{{$wallet->id}}" class="btn btn-dark ">Add Beneficiary</a>
