@@ -59,11 +59,25 @@
                 <!-- text input -->
                <div class="container-fluid">
                 <fieldset>
-                    <div class="form-group">
-                        <label for="cc_name">Card Holder's Name</label>
-                        <div class="controls">
-                            <input class="form-control" id="cc_name" pattern="\w+ \w+.*" title="First and last name" required="required" type="text">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="cc_name">First Name</label>
+                                <div class="controls">
+                                    <input class="form-control" id="cc_name" pattern="\w+ \w+.*" title="First and last name" required="required" type="text">
+                                </div>
+                            </div>
                         </div>
+                        <div class="col-lg-6">
+                          <div class="form-group">
+                              <label for="cc_name">Last Name</label>
+                              <div class="controls">
+                                  <input class="form-control" id="cc_name" pattern="\w+ \w+.*" title="First and last name" required="required" type="text">
+                              </div>
+                          </div>
+                        </div>
+
+
                     </div>
                     <div class="form-group">
                         <label>Card Number</label>
@@ -93,29 +107,29 @@
                                 </div>
                                 <div class="col-md-3">
                                     <select class="form-control" name="cc_exp_yr">
-                                        <option>2014</option>
-                                        <option>2015</option>
-                                        <option>2016</option>
-                                        <option>2017</option>
-                                        <option>2018</option>
-                                        <option>2019</option>
-                                        <option>2020</option>
-                                        <option>2021</option>
-                                        <option>2022</option>
+				    @for ($i = 2017;$i <2040;$i++)
+                                        <option>$i</option>
+                                     @endfor  
                                     </select>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Card CVV</label>
-                        <div class="controls">
-                            <div class="row">
-                                <div class="col-md-3">
+                      <div class="row">
+                        <div class="col-md-3">
+                               <label>Card CVV</label>
+                                <div class="controls">
                                     <input class="form-control" autocomplete="off" maxlength="3" pattern="\d{3}" title="Three digits at back of your card" required="" type="text">
                                 </div>
-                                <div class="col-md-8"></div>
-                            </div>
+                         </div>
+                          <div class="col-md-8">
+                                  <label>Amount</label>
+                                  <div class="input-group">
+                                      <div class="input-group-addon">₦</div>
+                                      <input type="text" class="form-control" id="Amount" placeholder="Amount">
+                                    </div>
+                          </div>
                         </div>
                     </div>
                     <div class="form-group">
@@ -128,7 +142,6 @@
                 </fieldset>
             </div>
               </form>
-
               </div>
               
             </div>
