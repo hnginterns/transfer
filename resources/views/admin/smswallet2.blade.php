@@ -304,9 +304,9 @@
 
             <div class="col-md-3 col-xs-6 units">
                 <!-- small box -->
-                <div class="small-box bg-aqua">
+                <div class="small-box">
                 <div class="unit">
-                    <h3>SMS Account</h3>
+                    <p>SMS Account</p>
                     <p>Account Name: <span class="username">{{ $smswalletdetail['username'] }}</span></p>
                     <p>Sms Unit: <span class="unit-balance">{{ number_format($smswalletdetail['balance'], 2) }}</span></p>
                 </div>
