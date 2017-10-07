@@ -91,6 +91,7 @@ class pagesController extends Controller
           ->first();
         if($permit == null) return redirect('/dashboard');
         $restrict = new Restrict($permit);
+        
         if(count($restrict->canTransferFromWallet()) != 0) return redirect('/dashboard');
 
         return view('transfer-to-bank', compact('wallet'));
