@@ -9,6 +9,35 @@
         /* Anytime the body has the loading class, our
         modal element will be visible */
         body.loading .modal-loading{display: block;}
+	.units {
+          background:#222d32;
+          color: #fff;
+          margin:1%;
+          padding:2%;}
+	#balRefre {
+	float:left;
+	width:20px;
+	margin-right:0px;
+	height: 20px;
+     	line-height: 70px;
+	}
+	 #balRefre img {width:100% }
+     #walletTopUp .modal-header {
+       background-color: #03123a;
+       color: #fff;
+     }
+     #walletTopUp input, #walletTopUp select{
+      border: 1px solid #cccccc;
+      border-radius: 5px;
+      height: 50px;
+      font-size: 25px;
+     }
+     #walletTopUp #amount {
+       border-radius: 0px;
+     }
+     #walletTopUp input:focus, #walletTopUp select:focus {
+       background-color: #cccccc;
+     } 
     </style>
 @endsection
 
@@ -186,7 +215,7 @@
                   <label>API Key</label>
                   <input class="form-control email" name="api_id" type="email">
                 </div>
-                <br>
+                ><br>
 				 <div class="form-group">
 				  <label> Bank Name</label>
 				  <select name="currency_id" class="form-control input-defaulted" >
@@ -276,7 +305,7 @@
             <div class="col-md-3 col-xs-6 units">
                 <!-- small box -->
                 <div class="small-box bg-aqua">
-                <div class="inner">
+                <div class="unit">
                     <h3>SMS Account</h3>
                     <p>Account Name: <span class="username">{{ $smswalletdetail['username'] }}</span></p>
                     <p>Sms Unit: <span class="unit-balance">{{ number_format($smswalletdetail['balance'], 2) }}</span></p>
