@@ -221,8 +221,13 @@ class WalletController extends Controller
                 //fix errors
                 $status = $response['status'];
                 if ($status == 'success') {
-                    $data = $response;
-                    dd($data);
+                    $data = $response['data']['data'];
+                    $data['senderName'] = Auth::user()->username;
+                    $data['walletCodeSender'] = $wallet->wallet_code;
+                    $data['receiverName'] = $beneficiary->name;
+                    $data['beneficiaryAccount'] = $beneficiary->account_number;
+                    $data['amount'] = $request->amount;
+                    $data['naration'] = $request->narration;
                     return redirect('success')->with('status',$data);
                 } else {
                     return redirect()->with('failed',$data);
