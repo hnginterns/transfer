@@ -305,16 +305,17 @@
             <div class="col-md-3 col-xs-6 units">
                 <!-- small box -->
                 <div class="small-box">
-                <div class="inner unit">
-                    <p>SMS Account</p>
-                    <p>Account Name: <span class="username">{{ $smswalletdetail['username'] }}</span></p>
-                    <p>Sms Unit: <span class="unit-balance">{{ number_format($smswalletdetail['balance'], 2) }}</span></p>
-                </div>
-                <div class="icon">
-                    <i class="fa fa-envelope"></i>
-                </div>
-                <a href="#" class="btn-success btn" type="button"  data-toggle="modal" data-target="#top-up-modal">Top up <i class="fa fa-arrow-circle-right"></i></a>
-
+			<div class="inner unit">
+			    <p>SMS Account</p>
+			    <p>Account Name: <span class="username">{{ $smswalletdetail['username'] }}</span></p>
+			    <p>Sms Unit: <span class="unit-balance">{{ number_format($smswalletdetail['balance'], 2) }}</span></p>
+			</div>
+			<div class="icon">
+			    <i class="fa fa-envelope"></i>
+			</div>
+			<div class = "small-box-footer">
+				<a href="#" class="btn-success btn" type="button"  data-toggle="modal" data-target="#top-up-modal">Top up <i class="fa fa-arrow-circle-right"></i></a>
+			</div
                 </div>
             </div>
 
