@@ -280,7 +280,7 @@ class WalletController extends Controller
         //var_dump($walletBalance);
         //die();
         
-        return $walletBalance;
+    
     }
 
     //
