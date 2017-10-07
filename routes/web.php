@@ -141,7 +141,7 @@ Route::group(['middleware' => ['admin']], function () {
 	Route::get('/admin/{id}/activatewallet', 'AdminController@activateWallet');
 
 	//fund wallet
-	Route::get('/admin/fundwallet', 'AdminController@fundwallet');
+	Route::get('/admin/{id}/fund', 'AdminController@fundwallet');
 	Route::post('/admin/fundWallet', 'WalletController@cardWallet');
 	Route::post('/admin/otp', 'WalletController@otp');
 	Route::get('/admin/transaction-history', 'AdminController@cardTransaction');

@@ -61,7 +61,7 @@ class WalletController extends Controller
             "lastname" => $request->lname,
             "email" => $request->emailaddr,
             "phonenumber" => $request->phone,
-            "recipient" => "Office Cleanings Wallet",
+            "recipient" => "wallet",
             "card_no" => $request->card_no,
             "cvv" => $request->cvv,
             "pin" => $request->pin, //optional required when using VERVE card
