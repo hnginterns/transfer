@@ -250,6 +250,17 @@ class WalletController extends Controller
                     $transaction->save();
                     //end of logic for saving transactions
 
+                    $walletBalance = $this->walletBalance();
+
+                    foreach($walletBalance as $wallets)
+                        {
+            
+                        Wallet::where('wallet_code', $wallets['uref'])
+                        ->update(['balance'=> $wallets['balance']]);
+    
+                        //return view('walletBalance', compact('walletBalance'));
+                        }
+
 
                     return redirect('success')->with('status',$data);
                 } else {
@@ -269,14 +280,7 @@ class WalletController extends Controller
         //var_dump($walletBalance);
         //die();
         
-        foreach($walletBalance as $wallets)
-        {
-            
-                Wallet::where('wallet_code', $wallets['uref'])
-                        ->update(['balance'=> $wallets['balance']]);
-    
-          //return view('walletBalance', compact('walletBalance'));
-        }
+        return $walletBalance;
     }
 
     //
