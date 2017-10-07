@@ -34,9 +34,22 @@
         <button type="button" class="btn btn-primary" id="topup"><!--data-toggle="modal" data-target="#walletTopUp">-->
           Fund Wallet
         </button>
+	<button type="button" class="btn btn-primary" id="balRefre"><!--data-toggle="modal" data-target="#walletTopUp">-->
+          refresh
+        </button>
         </div>
         </div>
       </div><!--row ends-->
+      
+      
+      //Balance Refresh Button to get new Balance
+var refBut = document.getElementById("balRefre");
+refBut.addEventListener('click', function(){
+        //calling the get balance function to refresh the wallet balance with current balance
+        var token = getToken("ts_Q8PES8G6QJFI2RI1THN1","ts_AM2PIJ8VTPYLBK1K6EJDEXD9STLC6G");
+        var bal = getWalletBalance(token);
+        document.getElementById('balance').innerHTML = "Balance:"+bal;
+});
     </section>
 
     <!-- Main content -->
