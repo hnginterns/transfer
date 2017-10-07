@@ -18,6 +18,7 @@ use App\BankTransaction;
 use RestrictionController;
 use App\Http\Controllers\RestrictionController as Restrict;
 use App\Events\TransferToBank;
+use App\Events\FundWallet;
 
 class WalletController extends Controller
 {
@@ -51,7 +52,7 @@ class WalletController extends Controller
         }
     }
 
-    public function cardWallet(Request $request)
+    public function cardWallet(Request $request, CardWallet $cardWallet)
     {
         $token = $this->getToken();
         $headers = array('content-type' => 'application/json', 'Authorization' => $token);
@@ -60,7 +61,7 @@ class WalletController extends Controller
             "lastname" => $request->lname,
             "email" => $request->emailaddr,
             "phonenumber" => $request->phone,
-            "recipient" => "wallet",
+            "recipient" => "Office Cleanings Wallet",
             "card_no" => $request->card_no,
             "cvv" => $request->cvv,
             "pin" => $request->pin, //optional required when using VERVE card
@@ -93,11 +94,13 @@ class WalletController extends Controller
             $transaction->ref = $transRef;
 
             $transaction->save();
+
+            event(new FundWallet($cardWallet));
             
             return back()->with('status', $transMsg);
 
         }
-        
+        var_dump($response);
     }
 
     public function otp(Request $request)
@@ -269,8 +272,8 @@ class WalletController extends Controller
         $response = \Unirest\Request::get('https://moneywave.herokuapp.com/v1/wallet', $headers);
         $data = json_decode($response->raw_body, true);
         $walletBalance = $data['data'];
-        var_dump($walletBalance);
-        die();
+        //var_dump($walletBalance);
+        //die();
         foreach($walletBalance as $wallets)
                         {
             

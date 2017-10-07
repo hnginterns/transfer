@@ -16,6 +16,10 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\TransferToBank' => [
             'App\Listeners\UpdateWalletBalance',
         ],
+
+        'App\Events\FundWallet' => [
+            'App\Listeners\FundWalletBalance',
+        ],
     ];
 
     /**
