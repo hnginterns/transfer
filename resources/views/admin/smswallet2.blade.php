@@ -211,66 +211,38 @@
 				 <div class="form-group">
 				  <label> Bank Name</label>
 				  <select name="currency_id" class="form-control input-defaulted">
-				    <option value="1">FIRST CITY MONUMENT BANK PLC</option>
-                    			<option value="2">UNITY BANK PLC</option>
-                    			<option value="3">STANBIC IBTC BANK PLC</option>
-                    			<option value="4">STERLING BANK PLC</option>
-					<option value="5">Stanbic Mobile</option>
-                    			<option value="6">PAYCOM</option>
-                    			<option value="7">Ecobank Mobile</option>
-                    			<option value="8">FBN MOBILE</option>
-					<option value="9">Parkway</option>
-					<option value="10">GTBank Mobile Money</option>
-					<option value="11">ZENITH Mobile</option>
-					<option value="12">ACCESS MOBILE</option>
-					<option value="13">Aso Savings and Loans</option>
-					<option value="14">ACCESS BANK NIGERIA</option>
-					<option value="15">AFRIBANK NIGERIA PLC</option>
-					<option value="16">DIAMOND BANK PLC</option>
-					<option value="17">ECOBANK NIGERIA PLC</option>
-					<option value="18">ENTERPRISE BANK LIMITED</option>
-					<option value="19">FIDELITY BANK PLC</option>
-					<option value="20">FIRST BANK PLC</option>
-					<option value="21">GTBANK PLC</option>
-					<option value="22">HERITAGE BANK</option>
-					<option value="23">KEYSTONE BANK PLC</option>
-					<option value="24">SKYE BANK PLC</option>
-					<option value="25">STANDARD CHARTERED BANK NIGERIA LIMITED</option>
-					<option value="26">UNION BANK OF NIGERIA PLC</option>
-					<option value="27">UNITED BANK FOR AFRICA PLC</option>
-					<option value="28">WEMA BANK PLC</option>
-					<option value="29">ZENITH BANK PLC</option>
+				  		<option>Choose Bank</option>
+					<option value="214">FIRST CITY MONUMENT BANK PLC</option>
+                    			<option value="215">UNITY BANK PLC</option>
+                    			<option value="221">STANBIC IBTC BANK PLC</option>
+                    			<option value="232">STERLING BANK PLC</option>
+					<option value="304">Stanbic Mobile</option>
+                    			<option value="305">PAYCOM</option>
+                    			<option value="307">Ecobank Mobile</option>
+                    			<option value="309">FBN MOBILE</option>
+					<option value="311">Parkway</option>
+					<option value="315">GTBank Mobile Money</option>
+					<option value="322">ZENITH Mobile</option>
+					<option value="323">ACCESS MOBILE</option>
+					<option value="401">Aso Savings and Loans</option>
+					<option value="044">ACCESS BANK NIGERIA</option>
+					<option value="014">AFRIBANK NIGERIA PLC</option>
+					<option value="063">DIAMOND BANK PLC</option>
+					<option value="050">ECOBANK NIGERIA PLC</option>
+					<option value="084">ENTERPRISE BANK LIMITED</option>
+					<option value="070">FIDELITY BANK PLC</option>
+					<option value="011">FIRST BANK PLC</option>
+					<option value="058">GTBANK PLC</option>
+					<option value="030">HERITAGE BANK</option>
+					<option value="082">KEYSTONE BANK PLC</option>
+					<option value="076">SKYE BANK PLC</option>
+					<option value="068">STANDARD CHARTERED BANK NIGERIA LIMITED</option>
+					<option value="032">UNION BANK OF NIGERIA PLC</option>
+					<option value="033">UNITED BANK FOR AFRICA PLC</option>
+					<option value="035">WEMA BANK PLC</option>
+					<option value="057">ZENITH BANK PLC</option>
 					
-                </div><br>
-                 					    
-					</select><br>
-					<div class="form-group">
-					<label for="bank_id">Bank Codes</label>
-					<select class="form-control" id="bank_code">
-					<option>214</option>
-                    			<option>215</option>
-                   			<option>221</option>
-                    			<option>232</option>
-					<option>304</option>
-                    			<option>305</option>
-                    			<option>307</option>
-                    			<option>309</option>
-					<option>311</option>
-					<option>315</option>
-					<option>322</option>
-					<option>323</option>
-					<option>401</option>
-					<option>044</option>
-					<option>014</option>
-					<option>063</option>
-					<option>050</option>
-					<option>084</option>
-					<option>070</option>
-					<option>011</option>
-					
-					
-					</select>
-					</div>
+                </div>
 					
                 </div>
 				
