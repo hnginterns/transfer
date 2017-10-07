@@ -227,7 +227,7 @@ class WalletController extends Controller
                     $data['receiverName'] = $beneficiary->name;
                     $data['beneficiaryAccount'] = $beneficiary->account_number;
                     $data['amount'] = $request->amount;
-                    $data['naration'] = $request->narration;
+                    $data['narration'] = $request->narration;
                     return redirect('success')->with('status',$data);
                 } else {
                     return redirect()->with('failed',$data);
