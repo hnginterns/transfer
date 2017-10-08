@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\SmsWallet;
+use App\SmsWalletFund;
 use Unirest;
 
 class SmsWalletController extends Controller
@@ -16,9 +17,11 @@ class SmsWalletController extends Controller
 
 
 
-    public function smsWalletBalance()
+    public function smsWalletBalance(SmsWalletFund $sms)
     {
         $smswalletdetails = array();
+
+        $sms = SmsWalletFund::latest()->first();
 
         $wallet = $this->index();
 
@@ -42,7 +45,7 @@ class SmsWalletController extends Controller
             array_push($smswalletdetails, $detail);
         }
 
-        return view('admin.smswallet2', compact('smswalletdetails'));
+        return view('admin.smswallet2', compact('smswalletdetails', $sms));
     }
 
     public function getUserDetails(Request $request)
@@ -90,4 +93,93 @@ class SmsWalletController extends Controller
     {
         return str_random(15);
     }
+
+    public function getToken()
+    {
+        $api_key = "ts_Q8PES8G6QJFI2RI1THN1";
+        $secret_key = "ts_AM2PIJ8VTPYLBK1K6EJDEXD9STLC6G";
+        \Unirest\Request::verifyPeer(false);
+        $headers = array('content-type' => 'application/json');
+        $query = array('apiKey' => $api_key, 'secret' => $secret_key);
+        $body = \Unirest\Request\Body::json($query);
+        $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/merchant/verify', $headers, $body);
+        $response = json_decode($response->raw_body, true);
+        $status = $response['status'];
+        if (!$status == 'success') {
+            echo 'INVALID TOKEN';
+        } else {
+            $token = $response['token'];
+            return $token;
+        }
+    }
+
+    public function smsWallet(Request $request)
+    {
+        $token = $this->getToken();
+        $headers = array('content-type' => 'application/json', 'Authorization' => $token);
+        $query = array(
+            "firstname" => $request->fname,
+            "lastname" => $request->lname,
+            "email" => $request->emailaddr,
+            "phonenumber" => $request->phone,
+            "recipient" => "wallet",
+            "card_no" => $request->card_no,
+            "cvv" => $request->cvv,
+            "pin" => $request->pin, //optional required when using VERVE card
+            "expiry_year" => $request->expiry_year,
+            "expiry_month" => $request->expiry_month,
+            "charge_auth" => "PIN", //optional required where card is a local Mastercard
+            "apiKey" => env('APP_KEY'),
+            "amount" => $request->amount,
+            "fee" => 0,
+            "medium" => "web",
+            //"redirecturl" => "https://google.com"
+        );
+        $body = \Unirest\Request\Body::json($query);
+
+        $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer', $headers, $body);
+        $response = json_decode($response->raw_body, TRUE);
+        //var_dump($response);
+        //die();
+        if($response['status'] == 'success') {
+            $response = $response['data']['transfer'];
+            $meta = $response['meta'];
+            $meta = json_decode($meta, TRUE);
+            $transMsg = $meta['processor']['responsemessage'];
+            $transRef = $meta['processor']['transactionreference'];
+            
+            $transaction = new SmsWalletFund;
+            $transaction->firstName = $response['firstName'];
+            $transaction->lastName = $response['lastName'];
+            $transaction->phoneNumber = $response['phoneNumber'];
+            $transaction->amount = $response['amountToSend'];
+            $transaction->ref = $transRef;
+
+            $transaction->save();
+
+
+            return back()->with('status', $transMsg);
+
+        }
+        var_dump($response);
+    }
+
+    public function Otp(Request $request)
+    {
+        \Unirest\Request::verifyPeer(false);
+
+            $headers = array('content-type' => 'application/json');
+            $query = array(
+                'transactionRef'=>$request->ref,
+                'otp' => $request->otp
+            );
+            $body = \Unirest\Request\Body::json($query);
+
+            $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer/charge/auth/card', $headers, $body);
+            $response = json_decode($response->raw_body, true);
+            $response = $response['data']['flutterChargeResponseMessage'];
+            return redirect('admin')->with('status', $response);
+    }
+    
+
 }

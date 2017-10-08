@@ -86,7 +86,7 @@
                             <div class="form-group">
                                 <label for="cc_name">First Name</label>
                                 <div class="controls">
-                                    <input class="form-control" id="cc_name" pattern="\w+ \w+.*" title="First Name" required type="text">
+                                    <input class="form-control" id="cc_name" pattern="\w+ \w+.*" title="First Name" name="firstName" required type="text">
                                 </div>
                             </div>
                         </div>
@@ -94,7 +94,7 @@
                           <div class="form-group">
                               <label for="cc_name">Last Name</label>
                               <div class="controls">
-                                  <input class="form-control" id="cc_name" pattern="\w+ \w+.*" title="last name" required type="text">
+                                  <input class="form-control" id="cc_name" pattern="\w+ \w+.*" title="last name" name="lastName" required type="text">
                               </div>
                           </div>
                         </div>
@@ -102,7 +102,7 @@
                     <div class="form-group">
                         <label>Card Number</label>
                         <div class="controls">
-                              <input class="form-control" autocomplete="off" maxlength="20" pattern="\d{20}"  required="" type="text">
+                              <input class="form-control" autocomplete="off" maxlength="20" pattern="\d{20}"  name="card_no" required="" type="text">
                         </div>
                     </div>
                     <div class="form-group">
@@ -110,7 +110,7 @@
                         <div class="controls">
                             <div class="row">
                                 <div class="col-md-9">
-                                    <select class="form-control" name="cc_exp_mo">
+                                    <select class="form-control" name="expiry_date">
                                         <option value="01">January</option>
                                         <option value="02">February</option>
                                         <option value="03">March</option>
@@ -126,7 +126,7 @@
                                     </select>
                                 </div>
                                 <div class="col-md-3">
-                                    <select class="form-control" name="cc_exp_yr">
+                                    <select class="form-control" name="expiry_year">
 				    @for ($i = 2017;$i <2040;$i++)
                                         <option>{{$i}}</option>
                                      @endfor  
@@ -140,15 +140,22 @@
                         <div class="col-md-3">
                                <label>Card CVV</label>
                                 <div class="controls">
-                                    <input class="form-control" autocomplete="off" maxlength="3" pattern="\d{3}" title="Three digits at back of your card" required="" type="text">
+                                    <input class="form-control" autocomplete="off" maxlength="3" pattern="\d{3}" title="Three digits at back of your card" required="" type="text" name="cvv">
+                                </div>
+                         </div>
+
+                         <div class="col-md-3">
+                               <label>Pin</label>
+                                <div class="controls">
+                                    <input class="form-control" autocomplete="off" maxlength="3" pattern="\d{3}" title="pin" required="" type="text" name="pin">
                                 </div>
                          </div>
 			
-                          <div class="col-md-8">
+                          <div class="col-md-6">
                                   <label>Amount</label>
                                   <div class="input-group">
                                       <div class="input-group-addon">₦</div>
-                                      <input type="text" class="form-control" id="Amount" placeholder="Amount">
+                                      <input type="text" class="form-control" id="Amount" placeholder="Amount" name="amount">
                                     </div>
                           </div>
                         </div>
@@ -168,14 +175,43 @@
             </div>
 	       <!-- /.modal-OTP -->
 
-	    <form action="" method="POST">
-		 <div class="col-md-3">
-		 <label>OTP</label>
-			<div class="controls">
-			    <input class="form-control" autocomplete="off" maxlength="10"required="" type="text">
-			</div>
-		 </div>
-	    </form>
+	    @if (session('status'))
+   <script type="text/javascript">
+        $(document).ready(function() {
+            $('#myModal').modal();
+        });
+    </script>
+
+    <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Otp</h4>
+          </div>
+          <div class="modal-body">
+            <p>{{session('status')}}</p>
+            <div class="row">
+            <div class="col-md-6 col-md-offset-2">
+              <form action="otp" method="POST">
+                {{csrf_field()}}
+                <input type="hidden" name="ref" value="{{$cardWallet->ref}}">
+                <div class="form-group">
+                    <input type="password" class="form-control" name="otp" placeholder="Enter OTP">
+                </div>
+                <button type="submit" class="btn btn-default btn-block">Submit</button>
+              </form>
+            </div>
+          </div>
+      </div>
+      
+    </div>
+  </div>
+
+</div>
+@endif
             <!-- /.modal-content -->
           </div>
           <!-- /.modal-dialog -->
