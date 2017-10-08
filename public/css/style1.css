@@ -1,0 +1,418 @@
+html {
+    font-family: 'Nunito Sans', sans-serif;
+    position: relative;
+    min-height: 100%;
+}
+
+:root {
+    --hue-color: #fd8032;
+}
+
+body {
+    margin-bottom: 60px;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.navbar {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+
+@media (min-width: 576px){
+    .modal-dialog{
+        max-width: 700px;
+    }
+}
+
+
+.bg-dark {
+    background-color: #333333 !important;
+}
+
+.navbar-dark .navbar-nav .active > .nav-link {
+    color: white;
+    border: 2px solid #FD8032;
+    border-radius: 64px;
+    padding: 2px 25px;
+    background: #fd8032;
+}
+
+.user-img {
+    border-radius: 25px;
+}
+
+.nav-link.active {
+    color: white;
+}
+
+.sidebar-toggle {
+    border: 1px solid white;
+    border-radius: 2px;
+    background: transparent;
+}
+
+.sidebar-toggle > span {
+    height: 1.7em;
+    width: 1.7em;
+}
+
+.search {
+    margin-right: 50px !important;
+}
+
+.header {
+    background: var(--hue-color);
+    padding: 10px 0;
+    width: 100%;
+}
+
+.header p {
+    color: white;
+    margin: 0;
+}
+
+.side-bar {
+    padding: 0;
+    background: whitesmoke;
+}
+
+.main-content {
+}
+
+.transfer-icon {
+    height: 100px;
+}
+
+.sidy {
+    padding: 50px 15px;
+}
+
+.nav-list {
+    list-style: none;
+}
+
+.side-items {
+    margin-bottom: 20px;
+}
+
+.side-item {
+    color: rgb(56, 53, 53);
+    font-weight: bold;
+    font-size: 16px;
+    opacity: 0.6;
+}
+
+.side-item:hover {
+    color: var(--hue-color);
+    text-decoration: none;
+}
+
+.upper {
+    text-transform: uppercase;
+}
+
+.side-item.active {
+    color: var(--hue-color);
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    border-top: 2px solid rgb(197, 195, 195);
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    line-height: 60px;
+    /* Vertically center the text there */
+    background-color: white;
+}
+
+.company {
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    padding: 5px 10px;
+}
+
+li.nav-item {
+    margin: 5px 10px;
+}
+
+.login-box {
+    margin: auto;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1%;
+    padding: 60px 0 80px;
+}
+
+.admin-login > .form-group > .form-control:focus,
+.cus-input:focus {
+    border-color: #fd8032;
+}
+
+.admin-login > .form-group > .form-control,
+.cus-input {
+    border-radius: 0;
+    border: none;
+    border-bottom: 2px solid grey;
+}
+
+.form-holder {
+    margin-top: 20px;
+}
+
+.sign-in {
+    color: #fd8032;
+    font-weight: bold;
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.promise {
+    font-size: 15px;
+    font-weight: 500;
+    opacity: 0.8;
+    letter-spacing: 0.02rem;
+    text-align: center;
+}
+
+.intro {
+    color: black;
+    margin-bottom: 25px;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.admin-login > .form-group > label {
+    color: white;
+}
+
+.admin-login > .form-group {
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+.admin-login {
+    text-align: center;
+    width: 70%;
+    margin: 20px auto 30px;
+}
+
+.tab-holder {
+    width: 80%;
+    margin: 20px auto 20px;
+}
+
+.nav-pills .nav-link.active {
+    background: var(--hue-color);
+}
+
+.tab-link {
+    color: var(--hue-color);
+}
+
+.tab-link:hover {
+    color: var(--hue-color);
+}
+
+.hide {
+    display: none !important;
+}
+
+.show {
+    display: block !important;
+}
+
+.top-up {
+    width: 60%;
+}
+
+.balance {
+    padding: 20px 0;
+    margin: 40px 0;
+}
+
+.admin-login > button {
+    background: #FD8032;
+    padding: 10px 80px;
+    border-radius: 63px;
+    border-color: #FD8032;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
+
+.admin-login.topUp {
+    width: 85%;
+}
+
+.providers-list {
+    list-style: none;
+    text-align: center;
+    padding-left: 0;
+}
+
+.provider {
+    display: inline-block;
+    margin: 10px 15px;
+}
+
+.provider > img {
+    /*border: 1px solid white;*/
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
+
+.provider:hover {
+    border: 2px solid var(--hue-color);
+    border-radius: 30px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.25);
+    transform: scale(1);
+}
+
+.img-selected {
+    border: 3px solid var(--hue-color);
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.25) !important;
+    transform: scale(1) !important;
+}
+
+
+.plans {
+    margin: 10px 0;
+}
+
+.custom-button.selected {
+    color: #fff !important;
+    background-color: #0069d9 !important;
+    border-color: #0062cc !important;
+}
+
+.data-plan {
+    display: inline-block;
+    margin: 10px 5px;
+    border: 1px solid grey;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 4px;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.25);
+}
+
+.data-plan.selected{
+    border: 1px solid var(--hue-color);
+    color: var(--hue-color);
+}
+
+.data-plan:hover {
+    border: 1px solid var(--hue-color);
+    color: var(--hue-color);
+}
+
+.data-plan > p {
+    margin: 4px 0;
+}
+
+.custom-button {
+    background: #FD8032;
+    padding: 10px 30px;
+    border-radius: 63px;
+    border-color: #FD8032;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    margin: 0 4px;
+}
+
+.button-row {
+    margin: 20px 0;
+}
+
+.admin-login > button:hover,
+.admin-login > button:focus {
+    background: rgb(252, 251, 250);
+    color: #FD8032;
+    border-color: #FD8032;
+    border-width: 2px;
+}
+
+.forgot-holder {
+    margin-top: 15px;
+}
+
+#emailHelp {
+    opacity: 0;
+}
+
+.forgot-holder {
+    margin-top: 15px;
+}
+
+.forgot-password {
+    color: black !important;
+    font-size: 12px;
+    margin-bottom: 0;
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 750px) {
+    .login-box {
+        width: 100%;
+        margin-top: 10%;
+        padding: 40px 0 60px;
+    }
+
+    .admin-login {
+        width: 80%;
+    }
+
+    .intro {
+        margin-bottom: 20px;
+    }
+
+    .sign-in {
+        font-size: 18px;
+    }
+
+    .company {
+        font-size: 14px
+    }
+
+    .promise {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .hidden-sm {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .custom-button{
+        padding: 10px;
+        margin: 0;
+    }
+    .provider{
+        margin: 10px;
+    }
+    .prov-img{
+        height: 40px !important;
+        width: 40px !important;
+        border-radius: 20px !important;
+    }
+    .sec{
+        padding: 0 !important;
+    }
+}
