@@ -71,7 +71,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/populatebank', 'BanksController@populateBanks');
 	Route::get('/success', 'pagesController@success');
 	Route::get('/failed/{response}', 'pagesController@failed')->name('failed');
-
+    Route::get('/phone-topup', pagesController@phoneTopup);
 	Route::get('/transfer', 'pagesController@transfer');
 	Route::get('/balance', 'pagesController@balance');
 	Route::get('/ravepay/{id}', 'RavepayController@index')->name('ravepay.pay');
