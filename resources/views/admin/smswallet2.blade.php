@@ -86,7 +86,7 @@
                             <div class="form-group">
                                 <label for="cc_name">First Name</label>
                                 <div class="controls">
-                                    <input class="form-control" id="cc_name" pattern="\w+ \w+.*" title="First and last name" required="required" type="text">
+                                    <input class="form-control" id="cc_name" pattern="\w+ \w+.*" title="First Name" required type="text">
                                 </div>
                             </div>
                         </div>
@@ -94,7 +94,7 @@
                           <div class="form-group">
                               <label for="cc_name">Last Name</label>
                               <div class="controls">
-                                  <input class="form-control" id="cc_name" pattern="\w+ \w+.*" title="First and last name" required="required" type="text">
+                                  <input class="form-control" id="cc_name" pattern="\w+ \w+.*" title="last name" required type="text">
                               </div>
                           </div>
                         </div>
