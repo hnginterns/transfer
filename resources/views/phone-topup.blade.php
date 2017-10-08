@@ -124,7 +124,7 @@
                     <input type="number" name="amount" class="hide">
                     <div>
                         <button class="btn btn-primary custom-button" type="submit">Top Up</button>
-                        <button class="btn btn-primary custom-button" type="button">History</button>
+                        <button class="btn btn-primary custom-button" type="button" data-toggle="modal" data-target=".bs-example-modal-lg">History</button>
                     </div>
                 </form>
             </div>
@@ -170,6 +170,72 @@
 
         </div>
     </div>
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title heading" id="gridSystemModalLabel">Top Up Details Page</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="subheading">
+                            This Week - September,2017
+                        </p>
+                    </div>
+                    <div class="col-md-1">
+
+                    </div>
+                    <div class="col-md-5">
+                        <p>
+                            <span class="subheading">Approved by:</span> Admin
+                        </p>
+                    </div>
+                </div>
+                <hr/>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Network Provider</th>
+                            <th>Amount</th>
+                            <th>TopUp description</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Thursday</td>
+                            <td>9:56pm</td>
+                            <td class="text-center"><img src="../images/call.png" alt="call"></td>
+                            <td>Amount</td>
+                            <td>TopUp description</td>
+                        </tr>
+                        <tr>
+                            <td>Thursday</td>
+                            <td>9:56pm</td>
+                            <td class="text-center"><img src="../images/call.png" alt="call"></td>
+                            <td>Amount</td>
+                            <td>TopUp description</td>
+                        </tr>
+                        <tr>
+                            <td>Thursday</td>
+                            <td>9:56pm</td>
+                            <td class="text-center"><img src="../images/call.png" alt="call"></td>
+                            <td>Amount</td>
+                            <td>TopUp description</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn buttone custom-button btn-primary" data-dismiss="modal">OK</button>
+            </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
