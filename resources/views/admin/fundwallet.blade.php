@@ -79,6 +79,7 @@
         <div class="single-beneficiary-holder col-md-6">
             <div class="inner-holder">
                 <div class="flex">
+                  <h4>Fund Main Wallet</h4>
                 <h5 class="beneficiary-name"><b>Fund: </b> Wallet Name</h5>
                 <span class="float"><a href="transaction-history"><button type="submit" class="btn btn-success btn-xs">view history</button></a></span>
               </div>
