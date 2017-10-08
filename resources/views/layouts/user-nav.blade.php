@@ -36,6 +36,23 @@
                 <i class="fa fa-dashboard fa-lg"></i> Logout
                 </a>
               </li>
+              @if(Auth::user())
+              </li>  
+                <li  class="hidden-lg hidden-lg-up">
+                <a href="{{ url('/dashboard') }}">
+                <i class="fa fa-dashboard fa-lg"></i> Dashboard
+                </a>
+              </li>
+              @endif
+
+              @if(Auth::user()->isAdmin())
+              </li>  
+                <li  class="hidden-lg hidden-lg-up">
+                <a href="{{ url('/admin') }}">
+                <i class="fa fa-dashboard fa-lg"></i> Dashboard
+                </a>
+              </li>
+              @endif
               <li><a href="#" style="color:white; font-size:18px;"><i class="fa fa-user"></i>  </a></li>
           </ul>
           <form class="navbar-form navbar-right">
