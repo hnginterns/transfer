@@ -480,7 +480,36 @@
                     <li class="{{ Request::segment(1) === 'features' ? 'active' : null }}"><a href="{{route('features')}}">Features</a></li>
                     <li><a href="{{url('#')}}">Demo</a></li>
                     <li class="{{ Request::segment(1) === 'about' ? 'active' : null }}"><a href="{{route('about')}}">About<span class="sr-only">(current)</span></a></li>
-                    <li id="sign-in"><a href="{{url('login')}}">SIGN IN</a></li>
+
+                    @if(Auth::guest())
+                        <li id="sign-in"><a href="{{url('/login')}}">SIGN IN</a></li>
+                    @else
+                        <li id="sign-in">
+                        <a href="{{ url('/logout') }}">
+                            Logout
+                        </a>
+                      </li>
+
+                      @if(Auth::user()->isAdmin())
+                      </li>  
+                        <li  class="hidden-lg hidden-lg-up">
+                        <a href="{{ url('/admin') }}">
+                        <i class="fa fa-dashboard fa-lg"></i> Dashboard
+                        </a>
+                      </li>
+                      @endif
+
+                      <li id="sign-in">
+                        <a href="{{ url('/dashboard') }}">
+                            Dashboard
+                        </a>
+                      </li>
+
+                    @endif
+
+
+
+
                 </ul>
             </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
