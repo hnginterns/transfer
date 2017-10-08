@@ -19,7 +19,7 @@ Route::get('/', 'pagesController@home')->name('home');
 //Route::get('/home', 'pagesController@home');
 // get signin page
 //Route::get('/signin', 'pagesController@signin');
-//Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/logout', function () {
 	Auth::logout();
