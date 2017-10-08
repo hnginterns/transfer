@@ -36,12 +36,12 @@ Route::get('/welcome', function () {
 
 
 Route::get('/about', 'pagesController@about')->name('about');
-Route::get('/contact', 'HomeController@contact')->name('contact');
-Route::get('/features', 'HomeController@features')->name('features');
-Route::get('/privacy', 'HomeController@privacy')->name('privacy');
-Route::get('/how-it-works', 'HomeController@how')->name('how');
-Route::get('/terms', 'HomeController@terms')->name('terms');
-Route::get('/help', 'HomeController@help')->name('help');
+Route::get('/contact', 'ContentController@contact')->name('contact');
+Route::get('/features', 'ContentController@features')->name('features');
+Route::get('/privacy', 'ContentController@privacy')->name('privacy');
+Route::get('/how-it-works', 'ContentController@how')->name('how');
+Route::get('/terms', 'ContentController@terms')->name('terms');
+Route::get('/help', 'ContentController@help')->name('help');
 
 
 Route::get('/otp', 'pagesController@otp');
