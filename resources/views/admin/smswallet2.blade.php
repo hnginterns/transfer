@@ -288,7 +288,7 @@
 			    <p>Account Name: <span class="username">{{ $smswalletdetail['username'] }}</span></p>
 			    <p>Sms Unit: <span class="unit-balance">{{ number_format($smswalletdetail['balance'], 2) }}</span>
 			    	@if($smswalletdetail['balance'] < 10)
-					<span class="text-danger">Balance is low, top up</span>
+					<p class="text-danger">Balance is low, top up</p>
 				@endif
 			    </p>
 			</div>
