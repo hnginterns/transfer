@@ -498,7 +498,7 @@
 
 <!-- SECTION ONE BEGINS -->
 
-@yiel('content')
+@yield('content')
 
 <!-- FOOTER -->
 
