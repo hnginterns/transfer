@@ -7,17 +7,16 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'App\\Bank' => $baseDir . '/app/Bank.php',
+    'App\\BankTransaction' => $baseDir . '/app/BankTransaction.php',
     'App\\Beneficiary' => $baseDir . '/app/Beneficiary.php',
     'App\\CardWallet' => $baseDir . '/app/CardWallet.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
+    'App\\Events\\FundWallet' => $baseDir . '/app/Events/FundWallet.php',
+    'App\\Events\\TransferToBank' => $baseDir . '/app/Events/TransferToBank.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\AdminController' => $baseDir . '/app/Http/Controllers/AdminController.php',
     'App\\Http\\Controllers\\AdminLoginController' => $baseDir . '/app/Http/Controllers/AdminLoginController.php',
-<<<<<<< HEAD
-    'App\\Http\\Controllers\\Admin\\BeneficiaryController' => $baseDir . '/app/Http/Controllers/Admin/BeneficiaryController.php',
-=======
     'App\\Http\\Controllers\\Admin\\BeneficiaryController' => $baseDir . '/app/Http/Controllers/Admin/BeneficiaryController 2.php',
->>>>>>> a1ec99f63b87bc8f95fe9e30b5c7113f88e40d0e
     'App\\Http\\Controllers\\Admin\\UsersController' => $baseDir . '/app/Http/Controllers/Admin/UsersController.php',
     'App\\Http\\Controllers\\Admin\\WalletController' => $baseDir . '/app/Http/Controllers/Admin/WalletController.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -27,13 +26,9 @@ return array(
     'App\\Http\\Controllers\\BanksController' => $baseDir . '/app/Http/Controllers/BanksController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
-    'App\\Http\\Controllers\\PaymentController' => $baseDir . '/app/Http/Controllers/PaymentController.php',
+    'App\\Http\\Controllers\\PaymentController' => $baseDir . '/app/Http/Controllers/paymentController.php',
     'App\\Http\\Controllers\\RavepayController' => $baseDir . '/app/Http/Controllers/RavepayController.php',
-<<<<<<< HEAD
-    'App\\Http\\Controllers\\RestrictionValidationController' => $baseDir . '/app/Http/Controllers/RestrictionValidationController.php',
-=======
     'App\\Http\\Controllers\\RestrictionController' => $baseDir . '/app/Http/Controllers/RestrictionController.php',
->>>>>>> a1ec99f63b87bc8f95fe9e30b5c7113f88e40d0e
     'App\\Http\\Controllers\\SmsWalletController' => $baseDir . '/app/Http/Controllers/SmsWalletController.php',
     'App\\Http\\Controllers\\UsermgtController' => $baseDir . '/app/Http/Controllers/UsermgtController.php',
     'App\\Http\\Controllers\\UsersController' => $baseDir . '/app/Http/Controllers/UsersController.php',
@@ -53,6 +48,8 @@ return array(
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\Http\\Utilities\\Bank' => $baseDir . '/app/Http/Utilities/Bank.php',
     'App\\Http\\Utilities\\Wallet' => $baseDir . '/app/Http/Utilities/Wallet.php',
+    'App\\Listeners\\FundWalletBalance' => $baseDir . '/app/Listeners/FundWalletBalance.php',
+    'App\\Listeners\\UpdateWalletBalance' => $baseDir . '/app/Listeners/UpdateWalletBalance.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',
     'App\\Providers\\BroadcastServiceProvider' => $baseDir . '/app/Providers/BroadcastServiceProvider.php',
@@ -62,6 +59,7 @@ return array(
     'App\\Role' => $baseDir . '/app/Role.php',
     'App\\Rule' => $baseDir . '/app/Rule.php',
     'App\\SmsWallet' => $baseDir . '/app/SmsWallet.php',
+    'App\\SmsWalletFund' => $baseDir . '/app/SmsWalletFund.php',
     'App\\Transaction' => $baseDir . '/app/Transaction.php',
     'App\\User' => $baseDir . '/app/User.php',
     'App\\Wallet' => $baseDir . '/app/Wallet.php',

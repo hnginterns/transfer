@@ -5,14 +5,14 @@
 
       <div class="col-md-12 col-sm-12">
         <div class="row">
-            @foreach($permission as $key => $permissions)
+            @foreach($wallet as $key => $wallets)
 
                 <div class="col-md-4 col-sm-4 ">
                   <div class="row dbackground">
                     <p class="dicon center-block">
                       <i class="fa fa-list-alt fa-5x"></i>
                     </p>
-                    <a href="{{route('user.wallet.detail', $permissions->wallet->id)}}"><p class="dtext"> {{ $permissions->wallet->wallet_name }} - {{ $permissions->wallet->balance }}</p></a>
+                    <a href="{{route('user.wallet.detail', $wallets->id)}}"><p class="dtext"> {{ $wallets->wallet_name }} - {{ $wallets->balance }}</p></a>
                   </div>
                 </div>
             @endforeach

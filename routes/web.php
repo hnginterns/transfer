@@ -142,7 +142,7 @@ Route::group(['middleware' => ['admin']], function () {
 
 	//fund wallet
 	Route::get('/admin/fundwallet', 'AdminController@fundwallet');
-	Route::post('/admin/fundWallet', 'WalletController@cardWallet');
+	Route::post('/admin/fund', 'WalletController@cardWallet');
 	Route::post('/admin/otp', 'WalletController@otp');
 	Route::get('/admin/transaction-history', 'AdminController@cardTransaction');
 
@@ -180,6 +180,9 @@ Route::group(['middleware' => ['admin']], function () {
 	//Route::get('/manager/setting', 'AdminController@settings');
 
 	Route::get('/admin/smswallet', 'SmsWalletController@smsWalletBalance');
+	Route::post('/admin/sms', 'SmsWalletController@smsWallet');
+	Route::post('/admin/Otp', 'SmsWalletController@Otp');
+	Route::post('/admin/smswallet', 'SmsWalletController@smsWallet');
 	Route::post('/admin/smswallet-topup', 'SmsWalletController@smsWalletTopup');	
 	Route::post('/admin/get-user-details', 'SmsWalletController@getUserDetails');
 
