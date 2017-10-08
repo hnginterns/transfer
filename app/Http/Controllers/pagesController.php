@@ -91,12 +91,10 @@ class pagesController extends Controller
           ->first();
         if($permit == null) return back()->with('error', 'You do not have the permission to transfer to bank');;
         $restrict = new Restrict($permit);
-<<<<<<< HEAD
-        
+
         if(count($restrict->canTransferFromWallet()) != 0) return redirect('/dashboard');
-=======
+
         if(count($restrict->canTransferFromWallet()) != 0) return back()->with('error', 'You do not have the permission to transfer to bank');;
->>>>>>> 82dc09acd5e140bd2611a69eae363df17461315a
 
         return view('transfer-to-bank', compact('wallet'));
     }
@@ -116,11 +114,6 @@ class pagesController extends Controller
     public function otp()
     {
         return view('otp');
-    }
-
-       public function phoneTopup()
-    {
-        return view('phone-topup');
     }
 
     public function walletdetail(Wallet $wallet)
