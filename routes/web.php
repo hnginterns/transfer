@@ -14,11 +14,12 @@
 Auth::routes();
 
 // get default home pages
-Route::get('/', 'pagesController@home')->name('transferrules');
+Route::get('/', 'pagesController@home')->name('home');
 
-Route::get('/home', 'pagesController@home');
+//Route::get('/home', 'pagesController@home');
 // get signin page
 //Route::get('/signin', 'pagesController@signin');
+//Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/logout', function () {
 	Auth::logout();
@@ -33,9 +34,17 @@ Route::get('/welcome', function () {
 	return view('welcome');
 });
 
-Route::get('/otp', 'pagesController@otp');
 
-Route::get('/about', 'pagesController@about');
+Route::get('/about', 'pagesController@about')->name('about');
+Route::get('/contact', 'HomeController@contact')->name('contact');
+Route::get('/features', 'HomeController@features')->name('features');
+Route::get('/privacy', 'HomeController@privacy')->name('privacy');
+Route::get('/how-it-works', 'HomeController@how')->name('how');
+Route::get('/terms', 'HomeController@terms')->name('terms');
+Route::get('/help', 'HomeController@help')->name('help');
+
+
+Route::get('/otp', 'pagesController@otp');
 
 Route::get('/forgot', 'pagesController@forgot');
 
@@ -194,6 +203,6 @@ Route::group(['middleware' => ['admin']], function () {
 
 });
 
-Route::get('/home', 'HomeController@index')->name('home');
+
 
 
