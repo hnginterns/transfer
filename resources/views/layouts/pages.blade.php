@@ -490,20 +490,24 @@
                         </a>
                       </li>
 
-                      @if(Auth::user()->isAdmin())
-                      </li>  
-                        <li  class="hidden-lg hidden-lg-up">
-                        <a href="{{ url('/admin') }}">
-                        <i class="fa fa-dashboard fa-lg"></i> Dashboard
-                        </a>
-                      </li>
-                      @endif
+                          @if(Auth::user()->isAdmin())
+                          </li>  
+                            <li  class="hidden-lg hidden-lg-up">
+                            <a href="{{ url('/admin') }}">
+                            <i class="fa fa-dashboard fa-lg"></i> Admin Dashboard
+                            </a>
+                          </li>
+                            @else
 
-                      <li id="sign-in">
-                        <a href="{{ url('/dashboard') }}">
-                            Dashboard
-                        </a>
-                      </li>
+                            <li id="sign-in">
+                            <a href="{{ url('/dashboard') }}">
+                                Dashboard
+                            </a>
+                          </li>
+
+                          @endif
+
+                      
 
                     @endif
 
