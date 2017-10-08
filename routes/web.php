@@ -23,7 +23,7 @@ Route::get('/home', 'pagesController@home');
 Route::get('/logout', function () {
 	Auth::logout();
 	Session::flush();
-	return redirect('/home');
+	return redirect('/login');
 });
 
 //Route::get('/fundWallet', 'WalletController@fundWallet');
