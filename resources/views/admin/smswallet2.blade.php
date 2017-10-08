@@ -77,7 +77,8 @@
               </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <form role="form form-horizontal">
+              <form action="sms" method="POST" role="form form-horizontal">
+                {{csrf_field()}}
                 <!-- text input -->
                <div class="container-fluid">
                 <fieldset>
@@ -100,9 +101,23 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label>Phone Number</label>
+                        <div class="controls">
+                              <input name="phone" class="form-control" autocomplete="off" maxlength="20"  required="" type="text">
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <div class="controls">
+                              <input name="emailaddr" class="form-control" autocomplete="off" required="" type="text">
+
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label>Card Number</label>
                         <div class="controls">
-                              <input name="card_num" class="form-control" autocomplete="off" maxlength="20"  required="" type="text">
+                              <input name="card_no" class="form-control" autocomplete="off" maxlength="20"  required="" type="text">
 
                         </div>
                     </div>
@@ -111,7 +126,7 @@
                         <div class="controls">
                             <div class="row">
                                 <div class="col-md-9">
-                                    <select class="form-control" name="expiry_date">
+                                    <select class="form-control" name="expiry_month">
                                         <option value="01">January</option>
                                         <option value="02">February</option>
                                         <option value="03">March</option>
@@ -148,7 +163,7 @@
                          <div class="col-md-3">
                                <label>Pin</label>
                                 <div class="controls">
-                                    <input class="form-control" autocomplete="off" maxlength="4" pattern="\d{3}" title="pin" required="" type="text" name="pin">
+                                    <input class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="pin" required="" type="text" name="pin">
                                 </div>
                          </div>
 			
@@ -156,7 +171,7 @@
                                   <label>Amount</label>
                                   <div class="input-group">
                                       <div class="input-group-addon">₦</div>
-                                      <input name="amount" type="text" class="form-control" id="Amount" placeholder="Amount">
+                                      <input name="amount" type="text" class="form-control" id="amount" placeholder="Amount">
                                     </div>
                           </div>
                         </div>
@@ -176,7 +191,15 @@
             </div>
 	       <!-- /.modal-OTP -->
 
-	    @if (session('status'))
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+    </section>
+
+
+      @if (session('status'))
    <script type="text/javascript">
         $(document).ready(function() {
             $('#myModal').modal();
@@ -196,9 +219,9 @@
             <p>{{session('status')}}</p>
             <div class="row">
             <div class="col-md-6 col-md-offset-2">
-              <form action="otp" method="POST">
+              <form action="Otp" method="POST">
                 {{csrf_field()}}
-                <input type="hidden" name="ref" value="{{$cardWallet->ref}}">
+                <input type="hidden" name="ref" value="{{$sms->ref}}">
                 <div class="form-group">
                     <input type="password" class="form-control" name="otp" placeholder="Enter OTP">
                 </div>
@@ -213,12 +236,6 @@
 
 </div>
 @endif
-            <!-- /.modal-content -->
-          </div>
-          <!-- /.modal-dialog -->
-        </div>
-        <!-- /.modal -->
-    </section>
     
     <!-- Main content -->
     <section class="content container" id="bulksms">
@@ -640,3 +657,6 @@ refBut.addEventListener('click', function(){
     
   </script>
 @endsection
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

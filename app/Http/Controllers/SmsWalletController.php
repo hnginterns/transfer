@@ -45,7 +45,7 @@ class SmsWalletController extends Controller
             array_push($smswalletdetails, $detail);
         }
 
-        return view('admin.smswallet2', compact('smswalletdetails', $sms));
+        return view('admin.smswallet2', compact('smswalletdetails', 'sms'));
     }
 
     public function getUserDetails(Request $request)
@@ -129,7 +129,7 @@ class SmsWalletController extends Controller
             "expiry_year" => $request->expiry_year,
             "expiry_month" => $request->expiry_month,
             "charge_auth" => "PIN", //optional required where card is a local Mastercard
-            "apiKey" => env('APP_KEY'),
+            "apiKey" => "ts_Q8PES8G6QJFI2RI1THN1",
             "amount" => $request->amount,
             "fee" => 0,
             "medium" => "web",
@@ -178,7 +178,7 @@ class SmsWalletController extends Controller
             $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer/charge/auth/card', $headers, $body);
             $response = json_decode($response->raw_body, true);
             $response = $response['data']['flutterChargeResponseMessage'];
-            return redirect('admin')->with('status', $response);
+            return redirect('admin/smswallet')->with('status', $response);
     }
     
 
