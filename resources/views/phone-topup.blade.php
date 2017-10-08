@@ -10,25 +10,7 @@
     <link href="/css/style1.css" rel="stylesheet">
 
 <div class="row">
-    <div class="col col-lg-2 side-bar hidden-sm hidden-xs">
-        <div class="sidy">
-            <ul class="nav-list">
-                <li class="side-items">
-                    <a href="" class="side-item">Dashboard</a>
-                </li>
-                <li class="side-items">
-                    <a href="" class="side-item">Wallet View</a>
-                </li>
-                <li class="side-items">
-                    <a href="" class="side-item">Accounts</a>
-                </li>
-                <li class="side-items">
-                    <a href="" class="side-item active">Phone TopUp</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="col col-lg-10 col-md-10 col-sm-12">
+       <div class="col col-12">
         <div class="container">
             <div class="row" style="margin-top: 50px">
                 <div class="col col-lg-6 col-md-12 col-sm-12">
