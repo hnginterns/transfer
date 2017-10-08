@@ -118,7 +118,7 @@
                 @else
                   <a href="/admin/{{ $wallet->id }}/activatewallet" type="submit" class="btn btn-md btn-success">{{ 'Activate Wallet' }}</a>
                 @endif
-                <a href="/admin/{{ $wallet->moneywave_wallet_id }}/fund" type="submit" class="btn btn-md btn-success">Fund Wallet</a>
+                {{--<a href="/admin/{{ $wallet->moneywave_wallet_id }}/fund" type="submit" class="btn btn-md btn-success">Fund Wallet</a>--}}
             </div>
           </div>
 
