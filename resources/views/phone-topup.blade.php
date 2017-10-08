@@ -1,47 +1,14 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Phone</title>
+
+@extends('layouts.user')
+
+@section('title')
+      Phone TopUp
+@endsection
+@section('content')
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
     <link href="/css/style1.css" rel="stylesheet">
-</head>
-<body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-
-        <a class="navbar-brand" href="#">
-            <img src="images/logo.png" width="30" height="30" class="d-inline-block align-top" alt=""> TransferRules
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent"
-                aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">Phone TopUp</a>
-                </li>
-            </ul>
-            <ul class="navbar-nav">
-                <li class="nav-item search">
-                    <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                    </form>
-                </li>
-                <li class="nav-item">
-                    <img width="40" height="40" class="user-img" src="images/daniel.jpg">
-                </li>
-            </ul>
-        </div>
-    </div>
-
-</nav>
 <div class="row">
     <div class="col col-lg-2 side-bar hidden-sm hidden-xs">
         <div class="sidy">
@@ -288,5 +255,4 @@
     }
 
 </script>
-</body>
-</html>
+@endsection
