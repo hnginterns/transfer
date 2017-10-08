@@ -51,7 +51,7 @@
         <div class="col-lg-3 col-lg-offset-3">
         <h2 id="balance">Balance: <span id="wallet-balance"></span></h2>
         <div>
-	<div class="icon"id="balRefre" >
+	<div class="icon"id="balRefre" style="cursor:pointer">
 				<i class="fa fa-refresh fa-2x" aria-hidden="true"></i>			
 			</div>
         <div class="btn-group">
@@ -86,7 +86,7 @@
                             <div class="form-group">
                                 <label for="cc_name">First Name</label>
                                 <div class="controls">
-                                    <input class="form-control" id="cc_name" pattern="\w+ \w+.*" title="First Name" name="firstName" required type="text">
+                                    <input name="fname" class="form-control" id="cc_name" title="First Name" required type="text">
                                 </div>
                             </div>
                         </div>
@@ -94,7 +94,7 @@
                           <div class="form-group">
                               <label for="cc_name">Last Name</label>
                               <div class="controls">
-                                  <input class="form-control" id="cc_name" pattern="\w+ \w+.*" title="last name" name="lastName" required type="text">
+                                  <input name="lname" class="form-control" id="cc_name"  title="last name" required type="text">
                               </div>
                           </div>
                         </div>
@@ -102,7 +102,8 @@
                     <div class="form-group">
                         <label>Card Number</label>
                         <div class="controls">
-                              <input class="form-control" autocomplete="off" maxlength="20" pattern="\d{20}"  name="card_no" required="" type="text">
+                              <input name="card_num" class="form-control" autocomplete="off" maxlength="20"  required="" type="text">
+
                         </div>
                     </div>
                     <div class="form-group">
@@ -147,7 +148,7 @@
                          <div class="col-md-3">
                                <label>Pin</label>
                                 <div class="controls">
-                                    <input class="form-control" autocomplete="off" maxlength="3" pattern="\d{3}" title="pin" required="" type="text" name="pin">
+                                    <input class="form-control" autocomplete="off" maxlength="4" pattern="\d{3}" title="pin" required="" type="text" name="pin">
                                 </div>
                          </div>
 			
@@ -155,7 +156,7 @@
                                   <label>Amount</label>
                                   <div class="input-group">
                                       <div class="input-group-addon">₦</div>
-                                      <input type="text" class="form-control" id="Amount" placeholder="Amount" name="amount">
+                                      <input name="amount" type="text" class="form-control" id="Amount" placeholder="Amount">
                                     </div>
                           </div>
                         </div>
@@ -322,8 +323,17 @@
 			    <p>SMS Account</p>
 			    <hr/>
 			    <p>Account Name: <span class="username">{{ $smswalletdetail['username'] }}</span></p>
-			    <p>Sms Unit: <span class="unit-balance">{{ number_format($smswalletdetail['balance'], 2) }}</span></p>
+			    <p>Sms Unit: <span class="unit-balance">{{ number_format($smswalletdetail['balance'], 2) }}</span>
+			    	@if($smswalletdetail['balance'] < 50 && $smswalletdetail['balance'] >10)
+					<p class="text-warning">Balance is getting low</p>
+				@elseif($smswalletdetail['balance'] < 10) 
+					<p class="text-danger">Balance is low</p>
+				@else 
+					<p></p>
+				@endif
+			    </p>
 			</div>
+			
 			<div class="icon">
 			    <i class="fa fa-envelope"></i>
 			</div>	
