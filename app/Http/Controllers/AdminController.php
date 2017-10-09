@@ -14,6 +14,7 @@ use App\Restriction;
 use App\Rule;
 use App\Beneficiary;
 use Carbon\Carbon;
+use Trs;
 
 class AdminController extends WalletController
 {
@@ -247,6 +248,10 @@ class AdminController extends WalletController
         $user = $wallet->users()->get()->toArray();
 
         $userRef = substr(md5(Carbon::now()), 0, 10);
+
+        $beneficiaries = Beneficiary::where('wallet_id', $walletId)->get();
+        
+        $wt = WalletTransaction::where('source_wallet', $walletId)->orWhere('recipient_wallet', $walletId)->get();
 
         return view('admin/walletdetails', compact('wallet', 'user', 'transaction'));
     }

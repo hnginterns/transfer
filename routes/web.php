@@ -33,6 +33,8 @@ Route::get('/welcome', function () {
 	return view('welcome');
 });
 
+Route::get('/testo', 'AdminController@Test');
+
 Route::get('/otp', 'pagesController@otp');
 
 Route::get('/about', 'pagesController@about');
@@ -76,7 +78,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/balance', 'pagesController@balance');
 	Route::get('/ravepay/{id}', 'RavepayController@index')->name('ravepay.pay');
 	Route::get('/integrity/{txRef}/{email}', 'RavepayController@checkSum');
-	Route::get('/ravepaysuccess/{ref}/{amount}/{currency}', 'RavepayController@success');	
+	Route::get('/ravepaysuccess/{ref}/{amount}/{currency}', 'RavepayController@success');
 	Route::get('/addbeneficiary', 'pagesController@addBeneficiary');
 	Route::post('/addbeneficiary/insertBeneficiary', 'pagesController@insertBeneficiary')->name('beneficiaries.insert');
 
@@ -189,5 +191,3 @@ Route::group(['middleware' => ['admin']], function () {
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-
