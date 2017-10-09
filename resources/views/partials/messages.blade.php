@@ -32,3 +32,12 @@
 	Please check the form below for errors
 </div>
 @endif
+
+@if ($message = Session::get('multiple-error'))
+<div class="alert alert-danger alert-block">
+	<button type="button" class="close" data-dismiss="alert">×</button>
+	@foreach($message as $key => $messages)	
+        	<strong>{{ $messages }}</strong>
+	@endforeach
+</div>
+@endif

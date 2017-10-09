@@ -41,6 +41,14 @@
       color: #fff;
     }
 
+    .flex {
+      display: flex;
+    }
+
+    .float {
+      flex: 1;
+    }
+
     .beneficiary-row.row {
       margin-bottom: 30px;
     }
@@ -70,8 +78,12 @@
       <div class="beneficiary-row row">
         <div class="single-beneficiary-holder col-md-6">
             <div class="inner-holder">
+                <div class="flex">
+                  <h4>Fund Main Wallet</h4>
                 <h5 class="beneficiary-name"><b>Fund: </b> Wallet Name</h5>
-                <form action="fundWallet" method="POST">
+                <span class="float"><a href="transaction-history"><button type="submit" class="btn btn-success btn-xs">view history</button></a></span>
+              </div>
+                <form action="fund" method="POST">
                   {{ csrf_field() }}
                   <input type="text" name="fname"  class="form-control input-defaulted" placeholder="First Name" required>     
                   <br><input type="text" name="lname"  class="form-control" placeholder="Last Name" required>       

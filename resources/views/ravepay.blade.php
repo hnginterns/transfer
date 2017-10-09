@@ -1,50 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>RavePay Integration</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-</head>
+@extends('layouts.user')
 
-<body>
-  <div class="container" id="ravepay">
-    <row>
-      <div class="col-md-6 col-md-offset-4">
-        <form>
-          <input type="hidden" name="wallet_id" value="{{$wallet->id}}">
-          <div class="row">
-            <div class="col-md-8">
-                <br>
-                <h1>Pay with Rave</h1>
-                <br>
-              <label for="">Email address</label>
-              <input type="text" name="email" id="email" class="form-control border-input" value="user@example.com" placeholder="Enter email address" style="margin-bottom: 30px;">
+@section('title')
+      Fund Wallet
+@endsection
+@section('content')
 
-              <label for="">Wallet</label>
-              <input type="text" name="wallet" id="wallet" class="form-control border-input" value="{{$wallet->wallet_name}}"  style="margin-bottom: 30px;">
+<link rel="stylesheet" href="/css/form.css">
 
-              <label for="">Amount</label>
-              <input type="text" name="amount" id="amount" class="form-control border-input" placeholder="Please Enter Amount to fund"  style="margin-bottom: 30px;">
-            </div>
-          </div>
+      <div class="col-md-6 col-sm-6">
+        <form  class="input-form" >
+        
+              <h4 class="intro text-left">Fund Wallet with Rave</h4>
+              <input type="hidden" name="wallet_id" value="{{$wallet->id}}">
+              <div class="form-group">  
+                <label for="">Email address</label>
+                <input type="text" name="email" id="email" class="form-control" value="{{$user->email}}" >
+              </div>
 
-          <button class="btn btn-primary" id="submit" type="button">Pay Now</button>
-          <div class="clearfix"></div>
-      </div>
+              <div class="form-group"> 
+                <label for="">Wallet</label>
+                <input type="text" name="wallet" id="wallet" class="form-control" value="{{$wallet->wallet_name}}"  >
+              </div>
+
+              <div class="form-group"> 
+                <label for="">Amount</label>
+                <input type="text" name="amount" id="amount" class="form-control" placeholder="Please Enter Amount to fund"  >
+              </div>
+              
+              <div class="form-group">
+                <button class="btn btn-primary pull-right" id="submit" type="button">Pay Now</button>
+              </div>
       </form>
 
   </div>
-  </row>
-  </div>
  
-</body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="http://flw-pms-dev.eu-west-1.elasticbeanstalk.com/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
 <script type="text/javascript">
-    
-
     
     document.addEventListener("DOMContentLoaded", function(event) {
       document.getElementById("submit").addEventListener("click", function(e) {
@@ -55,7 +47,7 @@
           url: "/integrity/"+txRef+"/"+email, // this is an endpoint that sends the hashed values and transaction reference to the client.
           headers: { contentType: "application/json" },
           dataType: "json",
-          type: "POST",
+          type: "GET",
           cache: false,
           success: function(response) {
             console.log(response);
@@ -67,7 +59,7 @@
           }
         });
         var PBFKey = "FLWPUBK-47d14cd9504c1b0c54b439e1be251fcf-X";
-        var amount = 10;
+        var amount = document.getElementById('amount').value;
     
         // getpaidSetup is Rave's inline script function. it holds the payment data to pass to Rave.
         getpaidSetup({
@@ -86,15 +78,19 @@
              flw_ref = response.tx.flwRef;// collect flwRef returned and pass to a                  server page to complete status check.
           console.log("This is the response returned after a charge", response);
           if(response.tx.chargeResponse =='00' || response.tx.chargeResponse == '0') {
-            window.location = "http://hng.transfer.fun/ravepaysuccess/"+flw_ref+"/"+amount+"/NGN"; 
+            console.log("This is the response returned after a charge", response);
+            //window.location = "http://transfer.hng.fun/ravepaysuccess/"+flw_ref+"/"+amount+"/NGN"; 
             // redirect to a success page
           } else {
-            window.location = "http://transfer.hng.fun/failure"; 
+            console.log(response);
+            //window.location = "http://transfer.hng.fun/failed/"+response+; 
             // redirect to a failure page.
           }
           }
         });
       });
     });
+
 </script>
-</html>
+
+@endsection

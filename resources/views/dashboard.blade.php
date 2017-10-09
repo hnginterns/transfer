@@ -5,17 +5,17 @@
 
       <div class="col-md-12 col-sm-12">
         <div class="row">
-         
-         @foreach($wallets as $wallet)
-            <div class="col-md-4 col-sm-4 ">
-              <div class="row dbackground">
-                <p class="dicon center-block">
-                  <i class="fa fa-list-alt fa-5x"></i>
-                </p>
-                <a href="{{route('user.wallet.detail', $wallet->id)}}"><p class="dtext"> {{ $wallet->wallet_name }} - {{ $wallet->balance }}</p></a>
-              </div>
-            </div>
-          @endforeach
+            @foreach($wallet as $key => $wallets)
+
+                <div class="col-md-4 col-sm-4 ">
+                  <div class="row dbackground">
+                    <p class="dicon center-block">
+                      <i class="fa fa-list-alt fa-5x"></i>
+                    </p>
+                    <a href="{{route('user.wallet.detail', $wallets->id)}}"><p class="dtext"> {{ $wallets->wallet_name }} - {{ $wallets->balance }}</p></a>
+                  </div>
+                </div>
+            @endforeach
 
            
         </div>

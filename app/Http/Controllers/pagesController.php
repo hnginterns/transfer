@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Beneficiary;
 use App\User;
 use App\Restriction;
+
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\RestrictionController as Restrict;
 use App\Http\Utilities\Wallet as UtilWallet;
 
 class pagesController extends Controller
@@ -38,10 +41,11 @@ class pagesController extends Controller
 
     public function userdashboard()
     {
-        $wallets = Wallet::all();
+        $wallet = Wallet::all();
         $transaction = \App\Http\Utilities\Wallet::all();
-        $user_id = Auth::user()->id;
-        return view('dashboard', compact('wallets', 'transaction', 'user_id'));
+        // $permission = Restriction::where('uuid',Auth::user()->id)->get();
+        
+        return view('dashboard', compact('wallet', 'transaction'));
     }
 
     public function about()
@@ -60,9 +64,9 @@ class pagesController extends Controller
     }
 
 
-    public function success($response)
+    public function success()
     {
-        return view('success', compact('response'));
+        return view('success');
     }
 
     public function failed($response)
@@ -80,15 +84,19 @@ class pagesController extends Controller
         return view('transfer');
     }
 
-    public function bank_transfer()
+    public function bank_transfer(Wallet $wallet)
     {
-        $beneficiary = Beneficiary::all();
-        $wallets = Wallet::where('uuid', '=', Auth::user()->id)->get();
-        if (!empty($wallet)) {
-            //$wallet = $wallet[0];
-        }
+        $permit = Restriction::where('wallet_id', $wallet->id)
+          ->where('uuid', Auth::user()->id)
+          ->first();
+        if($permit == null) return back()->with('error', 'You do not have the permission to transfer to bank');;
+        $restrict = new Restrict($permit);
 
-        return view('transfer-to-bank', compact('beneficiary', 'wallets', 'data'));
+        if(count($restrict->canTransferFromWallet()) != 0) return redirect('/dashboard');
+
+        if(count($restrict->canTransferFromWallet()) != 0) return back()->with('error', 'You do not have the permission to transfer to bank');;
+
+        return view('transfer-to-bank', compact('wallet'));
     }
 
     public function wallet_transfer()
@@ -108,14 +116,16 @@ class pagesController extends Controller
         return view('otp');
     }
 
-    public function walletdetail($id)
+    public function walletdetail(Wallet $wallet)
     {
-        $permit = Restriction::where('wallet_id', $id)
+        $permit = Restriction::where('wallet_id', $wallet->id)
           ->where('uuid', Auth::user()->id)
-          ->get();
-
-        $wallet = Wallet::find($id);
-        return view('view-wallet', compact('wallet', 'permit'));
+          ->first();
+        if($permit == null) return redirect('/dashboard')->with('error', 'You do not have access to this wallet');
+        
+        $beneficiaries = Beneficiary::where('wallet_id', $wallet->id)->paginate(15);
+         
+        return view('view-wallet', compact('wallet','permit','rules','beneficiaries'));
     }
 
     public function createWallet()
@@ -128,25 +138,39 @@ class pagesController extends Controller
         return view('create-beneficiary');
     }
 
-    public function addBeneficiary()
+    public function addBeneficiary(Wallet $wallet)
     {
-        return view('createbeneficiary');
+        $permit = Restriction::where('wallet_id', $wallet->id)
+          ->where('uuid', Auth::user()->id)
+          ->first();
+        if($permit == null) return back()->with('error', 'You do not have the permission to add beneficiary');
+        $restrict = new Restrict($permit);
+        if(count($restrict->canAddBeneficiary()) > 0) return back()->with('error', 'You do not have the permission to add beneficiary');
+        return view('createbeneficiary', compact('wallet'));
     }
 
-    public function insertBeneficiary()
-    {            
+    public function insertBeneficiary(Wallet $wallet)
+    {    
+          
+        $permit = Restriction::where('wallet_id', $wallet->id)
+          ->where('uuid', Auth::user()->id)
+          ->first();
+        if($permit == null) return redirect('/dashboard')->with('error', 'You do not have the permission to add beneficiary');
+        $restrict = new Restrict($permit);
+        if(count($restrict->canAddBeneficiary()) > 0) return redirect('/dashboard')->with('error', 'You do not have the permission to add beneficiary');
+
         $beneficiary = new Beneficiary;
         $beneficiary->name = request('name');
         $beneficiary->account_number = request('account_number'); //->account_number;
-        //list($bank_id, $bank_name) = explode('||', request('bank_id'));
-        $beneficiary->wallet_id = '000';
-        $beneficiary->bank_id = '058';
-        $beneficiary->bank_name = request('bank_id');
+        $bank_detail = explode('||', request('bank_id'));
+        $beneficiary->wallet_id = $wallet->id;
+        $beneficiary->bank_id = $bank_detail[0];
+        $beneficiary->bank_name = $bank_detail[1];
         $beneficiary->uuid = Auth::user()->id;
         if ($beneficiary->save()) {
-            return redirect('wallet-view')->with('success', 'Beneficiary added');
+            return redirect("wallet/$wallet->id")->with('success', 'Beneficiary added');
         } else {
-            return redirect()->back()->with('failure', 'Beneficiary could not be added');
+            return redirect()->back()->with('error', 'Beneficiary could not be added');
         }
     }
 

@@ -14,11 +14,12 @@
 Auth::routes();
 
 // get default home pages
-Route::get('/', 'pagesController@home')->name('transferrules');
+Route::get('/', 'pagesController@home')->name('home');
 
-Route::get('/home', 'pagesController@home');
+//Route::get('/home', 'pagesController@home');
 // get signin page
 //Route::get('/signin', 'pagesController@signin');
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/logout', function () {
 	Auth::logout();
@@ -33,11 +34,23 @@ Route::get('/welcome', function () {
 	return view('welcome');
 });
 
+<<<<<<< HEAD
 Route::get('/testo', 'AdminController@Test');
 
 Route::get('/otp', 'pagesController@otp');
+=======
+>>>>>>> 8eaa58818b4409e29a695001a975087d432dfbc8
 
-Route::get('/about', 'pagesController@about');
+Route::get('/about', 'pagesController@about')->name('about');
+Route::get('/contact', 'ContentController@contact')->name('contact');
+Route::get('/features', 'ContentController@features')->name('features');
+Route::get('/privacy', 'ContentController@privacy')->name('privacy');
+Route::get('/how-it-works', 'ContentController@how')->name('how');
+Route::get('/terms', 'ContentController@terms')->name('terms');
+Route::get('/help', 'ContentController@help')->name('help');
+
+
+Route::get('/otp', 'pagesController@otp');
 
 Route::get('/forgot', 'pagesController@forgot');
 
@@ -57,7 +70,7 @@ Route::get('/gettoken', 'WalletController@getToken');
 
 Route::get('/transferWallet', 'WalletController@transfer');
 
-Route::post('/transferAccount', 'WalletController@transferAccount');
+Route::post('/transfer-to-bank/{wallet}', 'WalletController@transferAccount');
 
 Route::get('/404', 'pagesController@pagenotfound');
 
@@ -66,21 +79,27 @@ Route::group(['middleware' => 'auth'], function () {
 	//User routes
 	Route::get('/dashboard', 'pagesController@userdashboard');
 	Route::get('/wallet/{wallet}', 'pagesController@walletdetail')->name('user.wallet.detail');
-	Route::get('/transfer-to-bank', 'pagesController@bank_transfer');
+	Route::get('/transfer-to-bank/{wallet}', 'pagesController@bank_transfer');
 	Route::get('/transfer-to-wallet', 'pagesController@wallet_transfer');
 	Route::get('/create-wallet', 'pagesController@createWallet');
 	Route::get('/banks', 'BanksController@banks');
 	Route::get('/populatebank', 'BanksController@populateBanks');
 	Route::get('/success', 'pagesController@success');
-	Route::get('/failed', 'pagesController@failed')->name('failed');
-
+	Route::get('/failed/{response}', 'pagesController@failed')->name('failed');
+    Route::get('/phone-topup', 'pagesController@phoneTopup');
 	Route::get('/transfer', 'pagesController@transfer');
 	Route::get('/balance', 'pagesController@balance');
 	Route::get('/ravepay/{id}', 'RavepayController@index')->name('ravepay.pay');
 	Route::get('/integrity/{txRef}/{email}', 'RavepayController@checkSum');
+<<<<<<< HEAD
 	Route::get('/ravepaysuccess/{ref}/{amount}/{currency}', 'RavepayController@success');
 	Route::get('/addbeneficiary', 'pagesController@addBeneficiary');
 	Route::post('/addbeneficiary/insertBeneficiary', 'pagesController@insertBeneficiary')->name('beneficiaries.insert');
+=======
+	Route::get('/ravepaysuccess/{ref}/{amount}/{currency}', 'RavepayController@success')->name('ravepay.success');	
+	Route::get('/addbeneficiary/{wallet}', 'pagesController@addBeneficiary');
+	Route::post('/addbeneficiary/{wallet}', 'pagesController@insertBeneficiary')->name('beneficiaries.insert');
+>>>>>>> 8eaa58818b4409e29a695001a975087d432dfbc8
 
 });
 
@@ -144,8 +163,9 @@ Route::group(['middleware' => ['admin']], function () {
 
 	//fund wallet
 	Route::get('/admin/fundwallet', 'AdminController@fundwallet');
-	Route::post('/admin/fundWallet', 'WalletController@cardWallet');
+	Route::post('/admin/fund', 'WalletController@cardWallet');
 	Route::post('/admin/otp', 'WalletController@otp');
+	Route::get('/admin/transaction-history', 'AdminController@cardTransaction');
 
 	// admin routes
 	Route::get('/view-accounts', 'pagesController@viewAccounts');
@@ -181,13 +201,24 @@ Route::group(['middleware' => ['admin']], function () {
 	//Route::get('/manager/setting', 'AdminController@settings');
 
 	Route::get('/admin/smswallet', 'SmsWalletController@smsWalletBalance');
+	Route::post('/admin/sms', 'SmsWalletController@smsWallet');
+	Route::post('/admin/Otp', 'SmsWalletController@Otp');
+	Route::post('/admin/smswallet', 'SmsWalletController@smsWallet');
+	Route::post('/admin/smswallet-topup', 'SmsWalletController@smsWalletTopup');	
+	Route::post('/admin/get-user-details', 'SmsWalletController@getUserDetails');
 
 	// admin routes
 	Route::get('/view-accounts', 'pagesController@viewAccounts');
 	Route::get('/addaccount', 'AdminController@addaccount');
-	Route::get('/usermanagement', 'AdminController@usermanagement');
+	Route::get('/userwalment', 'AdminController@usermanagement');
 	Route::get('admin/analytics', 'AdminController@webAnalytics');
 
 });
 
+<<<<<<< HEAD
 Route::get('/home', 'HomeController@index')->name('home');
+=======
+
+
+
+>>>>>>> 8eaa58818b4409e29a695001a975087d432dfbc8

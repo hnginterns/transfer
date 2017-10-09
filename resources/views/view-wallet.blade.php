@@ -29,11 +29,7 @@
                         <p>Balance</p>
                         <h2>{{ $wallet->balance }}</h2>
                    </div>
-              @else
-
-              <p> You do not have permission to view this wallet</p>
-
-              @endif
+              
                                  
 
             </div>
@@ -84,15 +80,62 @@
 							</tbody>
 						</table>
 					</div>
-          
-          <div class="col-sm-12">    
-            <a href="{{ route('ravepay.pay', $wallet->id)}}" class="btn btn-dark">Fund</a>
 
-            <a href="/transfer-to-bank" class="btn btn-dark ">Transfer</a>
+          <div class="orange-box"><h4 class="title" align="center"> {{ $wallet->wallet_name }} Beneficiaries</h4></div>
+
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Bank</th>
+                  <th>Account Number</th>
+                   <th>Wallet</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+
+              @foreach ($beneficiaries as $beneficiary)
+                <tr>
+                  <td>{{ $beneficiary->name }}</td>
+                  <td>{{ $beneficiary->bank_name }}</td>
+                  <td>{{ $beneficiary->account_number }}</td>
+                  <td>{{ $beneficiary->wallet_id }}</td>
+                  <td>{{ $beneficiary->created_at }}</td>
+                </tr>
+              @endforeach
               
-            <a href="/addbeneficiary" class="btn btn-dark ">Add Beneficiary</a>
+                </tr>               
+              </tbody>
+            </table>
+
+            {{ $beneficiaries->links() }}
+          </div>
+          
+
+          <div class="col-sm-12">  
+		  	  
+            	<a href="{{ route('ravepay.pay', $wallet->id)}}" class="btn btn-dark">Fund</a>
+			
+ 
+            <a href="/transfer-to-bank/{{$wallet->id}}" class="btn btn-dark ">Transfer To Beneficiary</a>
+			
+
+      <a href="/transfer-to-wallet" class="btn btn-dark ">Transfer to Another Wallet </a>
+
+
+       		 <a href="/addbeneficiary/{{$wallet->id}}" class="btn btn-dark ">Add Beneficiary</a>
+			
+
           </div>
 		</div>
+
+    @else
+
+              <p> You do not have permission to view this wallet</p>
+
+     @endif
 		
     
   @endsection

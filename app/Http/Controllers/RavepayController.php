@@ -6,7 +6,7 @@ use Unirest;
 use App\Restriction;
 
 use Auth;
-
+use App\Http\Controllers\RestrictionController as Restrict;
 use App\Wallet;
 
 class RavepayController extends Controller
@@ -23,13 +23,18 @@ class RavepayController extends Controller
 
     public function index($id)
     {
+        $user = Auth::user();
+
         $permit = Restriction::where('wallet_id', $id)
-          ->where('uuid', Auth::user()->id)
-          ->get();
+          ->where('uuid', $user->id)
+          ->first();
+        if($permit == null) return back()->with('error', 'You do not have the permission to fund wallet');;
+            $restrict = new Restrict($permit);
+        if(count($restrict->canFundWallet()) != 0) return back()->with('error', 'You do not have the permission to fund wallet');;
 
         $wallet = Wallet::find($id)->first();
 
-        return view('ravepay', compact('permit', 'wallet'));
+        return view('ravepay', compact('permit', 'wallet', 'user'));
     }
 
     public function success($ref, $amount, $currency)
@@ -66,11 +71,15 @@ class RavepayController extends Controller
 
             if (($chargeResponse == "00" || $chargeResponse == "0") && ($chargeAmount == $amount)  && ($chargeCurrency == $currency)) {
                 //Give Value and return to Success page
+
+                dd($chargeResponse);
+
+
                 return redirect('/success');
             } else {
                 //Dont Give Value and return to Failure page
                 $report = "An Error Occured, you can try again";
-                return redirect('/failure', compact('report'));
+                return redirect('/failed', compact('report'));
             }
         }
     }

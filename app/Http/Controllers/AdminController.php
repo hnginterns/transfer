@@ -243,17 +243,24 @@ class AdminController extends WalletController
     public function show($walletId)
     {
         $wallet = Wallet::find($walletId);
+
+
+
+        $status = $wallet->archived == 0 ? 'Active' : 'Archived';
+
         $transaction = \App\Http\Utilities\Wallet::all();
 
         $user = $wallet->users()->get()->toArray();
 
         $userRef = substr(md5(Carbon::now()), 0, 10);
 
-        $beneficiaries = Beneficiary::where('wallet_id', $walletId)->get();
-        
-        $wt = WalletTransaction::where('source_wallet', $walletId)->orWhere('recipient_wallet', $walletId)->get();
+        $data['beneficiaries'] = Beneficiary::where('wallet_id', $walletId)->get();
 
-        return view('admin/walletdetails', compact('wallet', 'user', 'transaction'));
+        $data['wt'] = WalletTransaction::where('source_wallet', $walletId)->orWhere('recipient_wallet', $walletId)->get();
+
+        $data['wallet'] = $wallet;
+
+        return view('admin/walletdetails', $data); //compact('wallet', 'user', 'transaction'));
     }
 
     public function walletdetails()
@@ -297,6 +304,12 @@ class AdminController extends WalletController
     public function webAnalytics()
     {
         return view('admin/analytics');
+    }
+
+    public function cardTransaction(CardWallet $cardWallet)
+    {
+        $cardWallets = CardWallet::paginate(10);
+        return view('admin/fundhistory', compact('cardWallets'));
     }
 
     public function ViewBeneficiary()

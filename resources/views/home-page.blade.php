@@ -754,21 +754,29 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#"><img id="logo" src="img/logo.png" alt="Company logo" style="display: inline;"> </a>
+                <a class="navbar-brand" href="{{url('/')}}"><img id="logo" src="img/logo.png" alt="Company logo" style="display: inline;"> </a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="{{url("/")}}">Home <span class="sr-only">(current)</span></a></li>
-                    <li><a href="{{url("/")}}">FAQs</a></li>
-                    <li><a href="{{url("/")}}">Features</a></li>
-                    <li><a href="{{url("/")}}">Demo</a></li>
-                    <li><a href="{{url("/about")}}">About</a></li>
+
+                     <li class="{{ Request::segment(1) === '/' ? 'active' : null }}" ><a href="{{url('/')}}">Home</a></li>
+                    <li class="{{ Request::segment(1) === 'how' ? 'active' : null }}" ><a href="{{route('how')}}">FAQs</a></li>
+                    <li class="{{ Request::segment(1) === 'features' ? 'active' : null }}"><a href="{{route('features')}}">Features</a></li>
+                    <li><a href="{{url('#')}}">Demo</a></li>
+                    <li class="{{ Request::segment(1) === 'about' ? 'active' : null }}"><a href="{{route('about')}}">About<span class="sr-only">(current)</span></a></li>
+
                     @if(Auth::guest())
                         <li id="sign-in"><a href="{{url('/login')}}">SIGN IN</a></li>
                     @else
                         <li id="sign-in">
                         <a href="{{ url('/logout') }}">
                             Logout
+                        </a>
+                      </li>
+
+                      <li id="sign-in">
+                        <a href="{{ url('/dashboard') }}">
+                            Dashboard
                         </a>
                       </li>
                     @endif
@@ -882,19 +890,18 @@
 
 <div id="footer">
     <div id="footer-links">
-        <li><a href="/">Home</a></li>
-        <li><a href="/about">About Us</a></li>
-        <li><a href="/home">Privacy Policy</a></li>
+        <li><a href="{{url('/')}}">Home</a></li>
+        <li><a href="{{route('about')}}">About Us</a></li>
+        <li><a href="{{route('privacy')}}">Privacy Policy</a></li>
 
-        <li><a href="#">How it works</a></li>
-        <li><a href="#">Sign Up</a></li>
-        <li><a href="#">Contact Us</a></li>
+        <li><a href="{{route('how')}}">How it works</a></li>
+        <li><a href="{{route('contact')}}">Contact Us</a></li>
         <li><a href="#">Disclaimer</a></li>
 
-        <li><a href="#">Help & Support</a></li>
-        <li><a href="#">Sign In</a></li>
-        <li><a href="#">FAQs</a></li>
-        <li><a href="#">Terms & Condition</a></li>
+        <li><a href="{{route('help')}}">Help & Support</a></li>
+        <li><a href="{{url('login')}}">Sign In</a></li>
+        <li><a href="{{route('how')}}">FAQs</a></li>
+        <li><a href="{{route('terms')}}">Terms & Condition</a></li>
 
         <li><a href="#">Site Map</a></li>
     </div>
@@ -907,24 +914,24 @@
 <div id="mobile-footer">
     <table>
         <tr>
-            <td style="font-size: 17px; font-weight: bold;">Heading</td>
-            <td style="font-size: 17px; font-weight: bold;">Heading</td>
-            <td style="font-size: 17px; font-weight: bold;">Heading</td>
+            <td style="font-size: 17px; font-weight: bold;">Company</td>
+            <td style="font-size: 17px; font-weight: bold;">Support</td>
+            <td style="font-size: 17px; font-weight: bold;">Terms</td>
         </tr>
         <tr>
-            <td>Link</td>
-            <td>Link</td>
-            <td>Link</td>
+            <td><a href="{{url('/')}}">Home</a></td>
+            <td><a href="{{route('about')}}">About Us</a></td>
+            <td><a href="{{route('contact')}}">Contact Us</a></td>
         </tr>
         <tr>
-            <td>Link</td>
-            <td>Link</td>
-            <td>Link</td>
+            <td><a href="{{route('how')}}">How it works</a></td>
+            <td><a href="{{route('contact')}}">Contact Us</a></td>
+            <td><a href="{{route('help')}}">Help & Support</a></td>
         </tr>
         <tr>
-            <td>Link</td>
-            <td>Link</td>
-            <td>Link</td>
+            <td><a href="{{route('terms')}}">Terms & Condition</a></td>
+            <td><a href="{{route('privacy')}}">Privacy Policy</a></td>
+            <td><a href="#">Disclaimer</a></td>
         </tr>
     </table>
     <p id="line"> </p>
@@ -941,6 +948,9 @@
 </script> -->
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
+        integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+        crossorigin="anonymous"></script>
 <script src="js/script.js"></script>
 </body>
 </html>
