@@ -100,6 +100,9 @@
                 </li>
                 <li class="list-group-item">
                   <a href="" class="btn btn-info" >Add Fund Ravepay</a>
+                </li>                
+                <li class="list-group-item">
+                  <a href="" class="btn btn-info" >Add Permission</a>
                 </li>
               </ul>
 
@@ -118,6 +121,7 @@
             <ul class="nav nav-tabs">
               <li class="active"><a href="#beneficiaries" data-toggle="tab">Beneficiaries</a></li>
               <li><a href="#history" data-toggle="tab">Transaction History</a></li>
+              <li><a href="#users" data-toggle="tab">Users</a></li>
             </ul>
             <div class="tab-content">
               <div class="active tab-pane" id="beneficiaries">
@@ -141,9 +145,9 @@
                         <td>1</td>
                         <td>
                           <a href="" class="btn btn-success">Details</a>
-                                <a href="" class="btn btn-warning">Edit</a>
-                                <a href="" class="btn btn-danger" onclick="return confirm('Are you sure to archive this beneficiary?')">Archive</a>
-                            </td>
+                          <a href="" class="btn btn-warning">Edit</a>
+                          <a href="" class="btn btn-danger" onclick="return confirm('Are you sure to archive this beneficiary?')">Archive</a>
+                        </td>
                       </tr>
 
                        <tr>
@@ -153,9 +157,9 @@
                         <td>1</td>
                         <td>
                           <a href="" class="btn btn-success">Details</a>
-                                <a href="" class="btn btn-warning">Edit</a>
-                                <a href="" class="btn btn-danger" onclick="return confirm('Are you sure to archive this beneficiary?')">Archive</a>
-                            </td>
+                          <a href="" class="btn btn-warning">Edit</a>
+                          <a href="" class="btn btn-danger" onclick="return confirm('Are you sure to archive this beneficiary?')">Archive</a>
+                        </td>
                       </tr>
 
 
@@ -175,6 +179,23 @@
                           <th>Account Name</th>
                           <th>Bank</th>
                           <th colspan="2" >Action</th>
+                        </tr>
+                    </thead>
+                    
+                </table>
+                
+              </div>
+
+              <!-- /.tab-pane -->
+              <div class="tab-pane" id="users">
+
+               <table class="table">
+                    <thead>
+                        <tr>
+                          <th>First Name</th>
+                          <th>Last Name</th>
+                          <th>User Name</th>
+                          <th colspan="2">Email </th>
                         </tr>
                     </thead>
                     
