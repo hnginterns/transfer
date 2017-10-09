@@ -96,10 +96,10 @@
                 </li>
 
                 <li class="list-group-item">
-                 <a href="{{ route('wallets.manualfund', $wallet->id)}} " class="btn btn-warning">Manual Fund Wallet</a>
+                 <a href=" " class="btn btn-warning">Manual Fund Wallet</a>
                 </li>
                 <li class="list-group-item">
-                  <a href="{{ route('wallets.ravefund', $wallet->id)}}" class="btn btn-info" >Add Fund Ravepay</a>
+                  <a href="" class="btn btn-info" >Add Fund Ravepay</a>
                 </li>
               </ul>
 
@@ -140,9 +140,9 @@
                         <td>1</td>
                         <td>1</td>
                         <td>
-                          <a href="{{ route('beneficiaries.details', $beneficiary->id) }}" class="btn btn-success">Details</a>
-                                <a href="{{ route('beneficiaries.edit', $beneficiary->id) }}" class="btn btn-warning">Edit</a>
-                                <a href="{{ route('beneficiaries.delete', $beneficiary->id) }}" class="btn btn-danger" onclick="return confirm('Are you sure to archive this beneficiary?')">Archive</a>
+                          <a href="" class="btn btn-success">Details</a>
+                                <a href="" class="btn btn-warning">Edit</a>
+                                <a href="" class="btn btn-danger" onclick="return confirm('Are you sure to archive this beneficiary?')">Archive</a>
                             </td>
                       </tr>
 
@@ -152,9 +152,9 @@
                         <td>1</td>
                         <td>1</td>
                         <td>
-                          <a href="{{ route('beneficiaries.details', $beneficiary->id) }}" class="btn btn-success">Details</a>
-                                <a href="{{ route('beneficiaries.edit', $beneficiary->id) }}" class="btn btn-warning">Edit</a>
-                                <a href="{{ route('beneficiaries.delete', $beneficiary->id) }}" class="btn btn-danger" onclick="return confirm('Are you sure to archive this beneficiary?')">Archive</a>
+                          <a href="" class="btn btn-success">Details</a>
+                                <a href="" class="btn btn-warning">Edit</a>
+                                <a href="" class="btn btn-danger" onclick="return confirm('Are you sure to archive this beneficiary?')">Archive</a>
                             </td>
                       </tr>
 
