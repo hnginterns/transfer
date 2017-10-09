@@ -256,7 +256,7 @@ class AdminController extends WalletController
 
         $data['beneficiaries'] = Beneficiary::where('wallet_id', $walletId)->get();
 
-        $data['wt'] = WalletTransaction::where('source_wallet', $walletId)->orWhere('recipient_wallet', $walletId)->get();
+        //$data['wt'] = WalletTransaction::where('source_wallet', $walletId)->orWhere('recipient_wallet', $walletId)->get();
 
         $data['wallet'] = $wallet;
 
