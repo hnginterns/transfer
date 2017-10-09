@@ -70,59 +70,127 @@
   <button type="submit" class="btn btn-info" name="button">Back</button>
   </a>
   <br> <br>
-        <div class="single-wallet-holder col-sm-6">
-            <div class="inner-holder">
-                  <div class="box-body">
-                  <div class="table-responsive">
-                    <table class="table no-margin">
-                      <thead>
-                        <h4 class="wallet-name">{{ $wallet->wallet_name }} Details</h4>
-                      </thead>
-                      <tbody>
-                      <tr>
-                        <td>Wallet Name:</td>
-                        <td>{{ $wallet->wallet_name }}</td>
-                      </tr>
-                      <tr>
-                        <td>Wallet Lock Code:</td>
-                        <td>{{ $wallet->lock_code }}</td>
-                      </tr>
-                      <tr>
-                      <tr>
-                        @foreach($transaction as $transact)
-                       <!-- @if($transact['uref'] == $wallet->wallet_code) -->
-                        <td>User Balance:</td>
-                        <td>{{ $transact['balance'] }}</td>
-                         <!--  @endif -->
-                        @endforeach
+       
+        <div class="row">
+        <br>
 
-                      </tr>
-                      <tr>
-                        <td>User ref:</td>
-                        <td>{{ $wallet->wallet_code }}</td>
-                      </tr>
-                      <tr>
-                        <td>Currency:</td>
-                        <td>Nigerian Naira</td>
-                      </tr>
-                      <tr>
-                        <td></td>
-                        <td></td>
-                      </tr>
-                      </tbody>
-                    </table>
-                  </div>
-              <!-- /.table-responsive -->
-                @if($wallet->archived == 0)
-                  <a href="/admin/{{ $wallet->id }}/archivewallet" type="submit" class="btn btn-md btn-danger">{{ 'Archive Wallet' }}</a>
-                @else
-                  <a href="/admin/{{ $wallet->id }}/activatewallet" type="submit" class="btn btn-md btn-success">{{ 'Activate Wallet' }}</a>
-                @endif
-                {{--<a href="/admin/{{ $wallet->moneywave_wallet_id }}/fund" type="submit" class="btn btn-md btn-success">Fund Wallet</a>--}}
+        <div class="col-md-3 col-sm-3">
+
+          <!-- Profile Image -->
+          <div class="box box-primary">
+            <div class="box-body box-profile">
+              
+              <h3 class="profile-username text-center">Name: Wallet Name</h3>
+
+              <p class="text-muted text-center">Rule: 2 | Status: 1</p>
+
+              <ul class="list-group list-group-unbordered">
+                <li class="list-group-item">
+                  <b>Total Balance</b> <a class="pull-right">N1,000</a>
+                </li>
+                <li class="list-group-item">
+                  <b>Total Beneficiaries</b> <a class="pull-right"> 2 </a>
+                </li>
+                <li class="list-group-item">
+                  <b>Reference Code</b> <a class="pull-right">11</a>
+                </li>
+
+                <li class="list-group-item">
+                 <a href="{{ route('wallets.manualfund', $wallet->id)}} " class="btn btn-warning">Manual Fund Wallet</a>
+                </li>
+                <li class="list-group-item">
+                  <a href="{{ route('wallets.ravefund', $wallet->id)}}" class="btn btn-info" >Add Fund Ravepay</a>
+                </li>
+              </ul>
+
+              
+              <br>
+              
             </div>
+            <!-- /.box-body -->
           </div>
-
+          <!-- /.box -->
     </div>
+        
+        <!-- /.col -->
+        <div class="col-md-9 col-sm-9">
+          <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+              <li class="active"><a href="#beneficiaries" data-toggle="tab">Beneficiaries</a></li>
+              <li><a href="#history" data-toggle="tab">Transaction History</a></li>
+            </ul>
+            <div class="tab-content">
+              <div class="active tab-pane" id="beneficiaries">
+                
+                <table class="table">
+                    <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Account Number</th>
+                          <th>Bank</th>
+                          <th>Status</th>
+                          <th >Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                      <tr>
+                        <td>Mark Essien</td>
+                        <td>6578921302</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>
+                          <a href="{{ route('beneficiaries.details', $beneficiary->id) }}" class="btn btn-success">Details</a>
+                                <a href="{{ route('beneficiaries.edit', $beneficiary->id) }}" class="btn btn-warning">Edit</a>
+                                <a href="{{ route('beneficiaries.delete', $beneficiary->id) }}" class="btn btn-danger" onclick="return confirm('Are you sure to archive this beneficiary?')">Archive</a>
+                            </td>
+                      </tr>
+
+                       <tr>
+                        <td>Mark Essien</td>
+                        <td>6578921302</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>
+                          <a href="{{ route('beneficiaries.details', $beneficiary->id) }}" class="btn btn-success">Details</a>
+                                <a href="{{ route('beneficiaries.edit', $beneficiary->id) }}" class="btn btn-warning">Edit</a>
+                                <a href="{{ route('beneficiaries.delete', $beneficiary->id) }}" class="btn btn-danger" onclick="return confirm('Are you sure to archive this beneficiary?')">Archive</a>
+                            </td>
+                      </tr>
+
+
+                    </tbody>
+                    
+                </table>
+
+              </div>
+              <!-- /.tab-pane -->
+              <div class="tab-pane" id="history">
+
+               <table class="table">
+                    <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Account Number</th>
+                          <th>Account Name</th>
+                          <th>Bank</th>
+                          <th colspan="2" >Action</th>
+                        </tr>
+                    </thead>
+                    
+                </table>
+                
+              </div>
+              
+
+            
+              <!-- /.tab-pane -->
+            </div>
+            <!-- /.tab-content -->
+          </div>
+          <!-- /.nav-tabs-custom -->
+        </div>
+<!-- /.col -->
 
 </div>
 
