@@ -34,12 +34,9 @@ Route::get('/welcome', function () {
 	return view('welcome');
 });
 
-<<<<<<< HEAD
 Route::get('/testo', 'AdminController@Test');
 
 Route::get('/otp', 'pagesController@otp');
-=======
->>>>>>> 8eaa58818b4409e29a695001a975087d432dfbc8
 
 Route::get('/about', 'pagesController@about')->name('about');
 Route::get('/contact', 'ContentController@contact')->name('contact');
@@ -91,15 +88,14 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/balance', 'pagesController@balance');
 	Route::get('/ravepay/{id}', 'RavepayController@index')->name('ravepay.pay');
 	Route::get('/integrity/{txRef}/{email}', 'RavepayController@checkSum');
-<<<<<<< HEAD
+
 	Route::get('/ravepaysuccess/{ref}/{amount}/{currency}', 'RavepayController@success');
 	Route::get('/addbeneficiary', 'pagesController@addBeneficiary');
 	Route::post('/addbeneficiary/insertBeneficiary', 'pagesController@insertBeneficiary')->name('beneficiaries.insert');
-=======
-	Route::get('/ravepaysuccess/{ref}/{amount}/{currency}', 'RavepayController@success')->name('ravepay.success');	
+
+	Route::get('/ravepaysuccess/{ref}/{amount}/{currency}', 'RavepayController@success')->name('ravepay.success');
 	Route::get('/addbeneficiary/{wallet}', 'pagesController@addBeneficiary');
 	Route::post('/addbeneficiary/{wallet}', 'pagesController@insertBeneficiary')->name('beneficiaries.insert');
->>>>>>> 8eaa58818b4409e29a695001a975087d432dfbc8
 
 });
 
@@ -204,7 +200,7 @@ Route::group(['middleware' => ['admin']], function () {
 	Route::post('/admin/sms', 'SmsWalletController@smsWallet');
 	Route::post('/admin/Otp', 'SmsWalletController@Otp');
 	Route::post('/admin/smswallet', 'SmsWalletController@smsWallet');
-	Route::post('/admin/smswallet-topup', 'SmsWalletController@smsWalletTopup');	
+	Route::post('/admin/smswallet-topup', 'SmsWalletController@smsWalletTopup');
 	Route::post('/admin/get-user-details', 'SmsWalletController@getUserDetails');
 
 	// admin routes
@@ -215,10 +211,4 @@ Route::group(['middleware' => ['admin']], function () {
 
 });
 
-<<<<<<< HEAD
 Route::get('/home', 'HomeController@index')->name('home');
-=======
-
-
-
->>>>>>> 8eaa58818b4409e29a695001a975087d432dfbc8
