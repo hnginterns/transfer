@@ -18,45 +18,36 @@
     <link href="css/signin.css" rel="stylesheet">
 
     <style>
-        
-       
+              
         /* FOOTER STYLE */
         #mobile-footer {
             display: none;
         }
-
         #footer {
             text-align: center;
         }
-
         #footer-links,
         #footer-heading {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr 1fr;
         }
-
         #footer-links {
             grid-row-gap: 10px;
         }
-
         #footer-heading {
             margin-bottom: 20px;
         }
-
         #footer-heading a {
             text-transform: uppercase;
             font-weight: bold;
             color: #333333;
         }
-
         #footer-links a {
             color: #4F4F4F;
         }
-
         #footer li {
             list-style: none;
         }
-
         #line {
             height: 1px;
             width: 100%;
@@ -64,33 +55,28 @@
             background:  #BDBDBD ;
             margin: 30px 0px;
         }
-
-        /* FOOTER STYLE ENDS */
-        #footer {
+            #footer {
                 display: none;
             }
-
             #mobile-footer {
                 display: block;
                 margin-top: 100px;
                 text-align: center;
                 width: 100%;
             }
-
             #mobile-footer td {
                 padding: 0px 20px !important;
             }
-
             #mobile-footer tr {
                 width: 100%;
             }
-
             #footer-links,
             #footer-heading {
                 display: flex;
                 flex-direction: row;
                 flex-grow: 4;
             }
+
 
             /* #footer-links,
             #footer-heading {
