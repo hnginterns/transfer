@@ -102,7 +102,7 @@
                   <a href="{{ route('wallets.ravefund', $wallet->id)}}" class="btn btn-info" >Add Fund Ravepay</a>
                 </li>
                 <li class="list-group-item">
-                  <a href="" class="btn btn-info" >Add Permission</a>
+                  <a href="{{route('permission.create')}}" class="btn btn-info" >Add Permission</a>
                 </li>
               </ul>
 
