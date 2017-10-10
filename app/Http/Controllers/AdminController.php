@@ -250,7 +250,7 @@ class AdminController extends WalletController
 
         $data['users'] = Restriction::where('wallet_id', $walletId)->get()->toArray();
         
-        dd($data['users']);
+        //dd($data['users']);
 
         $data['userRef'] = substr(md5(Carbon::now()), 0, 10);
 
