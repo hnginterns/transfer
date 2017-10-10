@@ -268,7 +268,7 @@ class AdminController extends WalletController
 
         $data['wallet'] = $wallet;
 
-        $data['transactions'] = Transaction::all()->get();
+        $data['transactions'] = Transaction::all();
 
         dd($data['transactions']);
 
