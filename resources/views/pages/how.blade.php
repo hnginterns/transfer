@@ -4,6 +4,7 @@
 @section('content')
 
 <!-- SECTION ONE BEGINS -->
+<!---Content added by Samfield Hawb Bassey-->
   <div id="accordion" role="tablist" aria-multiselectable="true">
   <div class="card">
     <div class="card-header" role="tab" id="headingOne">
@@ -219,7 +220,7 @@
   <div class="card">
     <div class="card-header" role="tab" id="headingTwelve">
       <h5 class="mb-0">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseTwelve">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwelve" aria-expanded="true" aria-controls="collapseTwelve">
           Is there an finance.hotels.ng smartphone app?
         </a>
       </h5>
