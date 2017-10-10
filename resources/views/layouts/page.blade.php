@@ -91,65 +91,12 @@
         </div>
 
     </nav>
-
-
-
-    <main>
+<main>
 
         <div class="container">
 
-            <div class="login-box">
-
-                <h4 class="intro">Welcome </h4>
-
-                <h3 class="sign-in">Sign In to your PaysFund Account</h3>
-
-                <h6 class="promise">It is simple and easy to control your account -<br> Keep your password secret</h6>
-                @if (Session::has('messages'))
-                    {!! Session::get('messages') !!}
-                @endif
-                <form method="POST" action="{{ route('login') }}" class="admin-login">
-                    {{ csrf_field() }}
-                    <div class="form-group">
-
-                        <input value="{{ old('email') }}" name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                        
-                        @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-
-
-                    </div>
-
-                    <div class="form-group">
-
-                        <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-
-                         @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-
-                    </div>
-
-                    <button type="submit" class="btn btn-primary">Submit</button>
-
-                    <div class="forgot-holder">
-
-                        <a href="{{ route('password.request') }}" class="forgot-password">Forgot Password?</a>
-
-                    </div>
-                    
-
-
-                </form>
-
-            </div>
-
-
+        @yield('content')    
+        
 
         </div>
 
@@ -157,7 +104,32 @@
 
     </main>
 
-    <footer class="footer">
+<!--HEADER ENDS -->
+
+
+<!-- SECTION ONE BEGINS -->
+
+
+
+<!-- FOOTER -->
+<footer class="footer">
+
+    <div id="footer-links">
+        <li><a href="{{url('/')}}">Home</a></li>
+        <li><a href="{{route('about')}}">About Us</a></li>
+        <li><a href="{{route('privacy')}}">Privacy Policy</a></li>
+
+        <li><a href="{{route('how')}}">How it works</a></li>
+        <li><a href="{{route('contact')}}">Contact Us</a></li>
+        <li><a href="#">Disclaimer</a></li>
+
+        <li><a href="{{route('help')}}">Help & Support</a></li>
+        <li><a href="{{url('login')}}">Sign In</a></li>
+        <li><a href="{{route('how')}}">FAQs</a></li>
+        <li><a href="{{route('terms')}}">Terms & Condition</a></li>
+
+        <li><a href="#">Site Map</a></li>
+    </div>
 
         <div class="container" style="text-align:center">
 
@@ -176,3 +148,6 @@
 
 
 </html>
+
+
+
