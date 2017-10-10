@@ -1,4 +1,4 @@
-@extends('layouts.page')
+@extends('layouts.pages')
 @section('main-text', 'Features')
 @section('sub-text', 'TransferRules lets you receive payments locally and globally with no hassles and zero set up fees')
 @section('content')
@@ -35,48 +35,5 @@ Our clients range from large enterprise-sized financial institutions and busines
 
             </p>
 
-<style>
-        
-       
-        #footer {
-            margin-top: 90px;
-        }
-       
-        /* FOOTER STYLE */
-        #mobile-footer {
-            display: none;
-        }
-        #footer {
-            text-align: center;
-        }
-        #footer-links,
-        #footer-heading {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr;
-        }
-        #footer-links {
-            grid-row-gap: 10px;
-        }
-        #footer-heading {
-            margin-bottom: 20px;
-        }
-        #footer-heading a {
-            text-transform: uppercase;
-            font-weight: bold;
-            color: #333333;
-        }
-        #footer-links a {
-            color: #4F4F4F;
-        }
-        #footer li {
-            list-style: none;
-        }
-        #line {
-            height: 1px;
-            width: 100%;
-            padding: 0px 200px;
-            background:  #BDBDBD ;
-            margin: 30px 0px;
-        }
-        </style>
+
 @endsection

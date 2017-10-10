@@ -12,6 +12,7 @@ use App\Wallet;
 use App\CardWallet;
 use App\Restriction;
 use App\Rule;
+use DB;
 use App\Beneficiary;
 use Carbon\Carbon;
 use Trs;
@@ -246,8 +247,16 @@ class AdminController extends WalletController
 
         $status = $wallet->archived == 0 ? 'Active' : 'Archived';
 
-        $data['users'] = $wallet->users()->get()->toArray();
+        //$data['users'] = $wallet->users()->get()->toArray();
 
+        //$data['users'] = Restriction::where('wallet_id', $walletId)->get()->toArray();
+
+          $data['users'] =  DB::table('restrictions')
+                            ->join('users', 'restrictions.uuid', '=', 'users.id')
+                            ->where('restrictions.wallet_id', '=', $walletId)
+                            ->select('users.username', 'users.first_name', 'users.last_name', 'users.email')
+                            ->get()->toArray();
+        
         //dd($data['users']);
 
         $data['userRef'] = substr(md5(Carbon::now()), 0, 10);

@@ -111,7 +111,7 @@
                 width: calc(100% * (1/4) - 10px - 1px);
             } */
 
-        }
+        
     </style>
 
 </head>
