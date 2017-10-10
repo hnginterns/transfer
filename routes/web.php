@@ -28,7 +28,7 @@ Route::get('/logout', function () {
 });
 
 //Route::get('/fundWallet', 'WalletController@fundWallet');
-Route::get('/banks', 'WBanksController@getAllBanks');
+Route::get('/banks', 'BanksController@getAllBanks');
 
 
 
