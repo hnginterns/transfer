@@ -181,46 +181,15 @@
   <div class="card">
     <div class="card-header" role="tab" id="headingTen">
       <h5 class="mb-0">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseTen">
-          ow can i get my blocked account unblocked?
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTen" aria-expanded="true" aria-controls="collapseTen">
+          How can i get my blocked account unblocked?
         </a>
       </h5>
     </div>
 
-    <div id="collapseTen" class="collapse show" role="tabpanel" aria-labelledby="headingTen">
+    <div id="collapseTen" class="collapse" role="tabpanel" aria-labelledby="headingTen">
       <div class="card-block">
-        <p>Our website is best enjoyed while using Internet Explorer or Google Chrome. Please avoid using other web browsers like Firefox, Opera or UC browser. If the problem still persists, please raise a complaint with our Customer Service team by calling 000111 from your mobile number or send a mail via finance@hotels.ng </p>
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header" role="tab" id="headingTen">
-      <h5 class="mb-0">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-         How long will it take for my account to be reactivated?
-        </a>
-      </h5>
-    </div>
-
-    <div id="collapseTen" class="collapse show" role="tabpanel" aria-labelledby="headingTen">
-      <div class="card-block">
-        <p>If you use the activation form, the reactivation will be within the next 48 hours of submission, if it by email application , the activation process will be within the next 72 hours of submission.</p>
-        <p>You will receive a reply on your email from us regarding the reactivation process.</p>
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header" role="tab" id="headingEleven">
-      <h5 class="mb-0">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseEleven">
-          His there an eTopUpOnline.com smartphone app?
-        </a>
-      </h5>
-    </div>
-
-    <div id="collapseEleven" class="collapse show" role="tabpanel" aria-labelledby="headingEleven">
-      <div class="card-block">
-        <p>To get your account unblocked, you will need to send and email to the admin at admin@transfer.hng.fun stating the reason that led to your account being blocked, also why you want it to be reactivated.<p>
+          <p>To get your account unblocked, you will need to send and email to the admin at admin@transfer.hng.fun stating the reason that led to your account being blocked, also why you want it to be reactivated.<p>
         <p>OR</p> 
         <ul>
           <li>Login to your account.</li>
@@ -228,6 +197,22 @@
           <li>Fill in the reactivation request form.</li>
           <li>Submit</li>
         </ul>
+        </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab" id="headingEleven">
+      <h5 class="mb-0">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseEleven" aria-expanded="true" aria-controls="collapseEleven">
+         How long will it take for my account to be reactivated?
+        </a>
+      </h5>
+    </div>
+
+    <div id="collapseEleven" class="collapse" role="tabpanel" aria-labelledby="headingEleven">
+      <div class="card-block">
+        <p>If you use the activation form, the reactivation will be within the next 48 hours of submission, if it by email application , the activation process will be within the next 72 hours of submission.</p>
+        <p>You will receive a reply on your email from us regarding the reactivation process status.</p>
       </div>
     </div>
   </div>
@@ -235,11 +220,10 @@
     <div class="card-header" role="tab" id="headingTwelve">
       <h5 class="mb-0">
         <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseTwelve">
-          What happens when I am unable to top up online and the page gives an error?
+          Is there an finance.hotels.ng smartphone app?
         </a>
       </h5>
     </div>
-
     <div id="collapseTwelve" class="collapse show" role="tabpanel" aria-labelledby="headingTwelve">
       <div class="card-block">
         p>Mobile applications are currently under development for each of Android and iOS (Apple) smartphone devices. Additionally, transferrules.com. is already optimized for mobile devices in order to provide a positive user experience.</p>
