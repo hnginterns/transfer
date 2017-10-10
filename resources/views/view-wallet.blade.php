@@ -5,6 +5,36 @@
 @endsection
 @section('content')
 
+<style>
+
+i.can{
+        color: #00a65a;
+        
+    }
+
+    i.cannot{
+      color: #dd4b39;
+    }
+
+i.sent{
+        color: #00a65a;
+        filter: blur(10px);
+        -webkit-filter: blur(10px);
+        z-index:-1
+        
+    }
+
+    em.sent{
+        opacity: 0.5
+        z-index:-1
+        
+    }
+
+    i.received{
+      color: #dd4b39;
+    }
+</style>
+
 <link rel="stylesheet" href="/css/walletview.css">
 
             <div class="col-md-4 col-sm-4">
@@ -47,36 +77,14 @@
 								</tr>
 							</thead>
 							<tbody>
+              @foreach($history as $key => $hist)
 								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
+									<td>{{ $hist['transaction_type'] }} </td>
+									<td>{{ $hist['transaction_amount'] }} </td>
+									<td>{{ $hist['transaction_date'] }}</td>
+									<td><i class="fa {{ $hist['transaction_status'] ? 'fa-check-circle can' : 'fa-times-circle cannot' }}" aria-hidden="true"></i></td>
 								</tr>
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>								
+                @endforeach
 							</tbody>
 						</table>
 					</div>

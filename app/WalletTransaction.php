@@ -8,4 +8,6 @@ class WalletTransaction extends Model
 {
     protected $guarded = [];
 
+    protected $table = 'wallet_transaction';
+
 }
