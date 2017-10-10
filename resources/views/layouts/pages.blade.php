@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>About Us</title>
+    <title>Transfer Rules</title>
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!-- <link rel="stylesheet" href="css/style.css"> -->
@@ -26,7 +26,7 @@
             width: 100%;
             height: 650px;
              /* background-image: url("http://preview.ibb.co/iqedKQ/37158e6ed6bb6bbfb6a114f2810c6361_houston_usa_bank_of_america.jpg");   */
-            background-image: url("https://preview.ibb.co/n9dyok/Group.png");
+            background-image: url("");
             /* background: #333333;    */
             background-size: 100% 650px;
             background-repeat: no-repeat;
