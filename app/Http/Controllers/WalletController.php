@@ -143,7 +143,6 @@ class WalletController extends Controller
             return response()->json(['status' => 'failed', 'msg' => 'All fields are required']);
         } else {
             $lock_code = Wallet::where('uuid', Auth::user()->id)->get();
-            print_r($lock_code);
             $restriction = Restriction::where('wallet_id', $lock_code[0]['id'])->get();
             $rules = Rule::where('id', $restriction[0]['rule_id'])->get();
             $amount = $request->input('amount');
@@ -184,7 +183,6 @@ class WalletController extends Controller
                         $status = $response_arr['status'];
                         $r_data = $response['data']['data'];                             
                         $data['transaction_reference'] = $r_data['uniquereference'];
-                        print_r($response_arr);
                         if ($status == 'success') {
                             $data['transaction_status'] = true;
                             $this->logTransaction($data);
