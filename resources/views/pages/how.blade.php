@@ -1,5 +1,6 @@
 @extends('layouts.page')
-@section('main-text', 'Make money transfers sweet as pie')
+@section('main-text', 'FREQUENTLY ASKED QUESTION(FAQ)')
+)
 @section('sub-text', 'TransferRules lets you receive payments locally and globally with no hassles and zero set up fees')
 @section('content')
 
