@@ -123,7 +123,8 @@
             </ul>
             <div class="tab-content">
               <div class="active tab-pane" id="beneficiaries">
-
+              
+              @if(!empty($beneficiaries))
                 <table class="table">
                     <thead>
                         <tr>
@@ -151,6 +152,10 @@
                     </tbody>
 
                 </table>
+              @else
+              <h2> No user has been attached to this wallet yet </h2>
+            @endif
+
 
               </div>
               <!-- /.tab-pane -->
