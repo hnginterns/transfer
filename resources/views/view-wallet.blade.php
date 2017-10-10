@@ -67,7 +67,7 @@ i.sent{
           <div class="col-md-8 col-sm-8">
 					<div class="orange-box"><h4 class="title" align="center"> {{ $wallet->wallet_name }} TRANSACTION HISTORY</h4></div><br>
           <div class="table-responsive">
-						<table class="table">
+						<table class="table table-hover">
 							<thead>
 								<tr>
 									<th>Transaction Type</th>

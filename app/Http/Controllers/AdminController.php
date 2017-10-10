@@ -279,6 +279,8 @@ class AdminController extends WalletController
         dd($walletBalance);
     }
 
+    // There's already a method in wallet.php for archiving.
+    // You could use route model binding to inject the wallet
     public function archiveWallet($id)
     {
         $wallet = Wallet::findOrFail($id);
