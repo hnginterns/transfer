@@ -3,6 +3,10 @@
 @section('sub-text', 'TransferRules lets you receive payments locally and globally with no hassles and zero set up fees')
 @section('content')
 
+<html>
+
+<body>
+
 <div class="container">
 				
 		<form action="/action_page.php">
@@ -38,11 +42,8 @@
             
 </body> 
 
-
-		.container {
-			width: 50%;
-		            margin: auto;
-			}
+<style>
+									
 									
 									
  /* Style inputs with type="text", select elements and textareas */
@@ -66,7 +67,7 @@
                                         border: none;
                                         border-radius: 4px;
                                         cursor: pointer;
-										margin-left:
+										margin-left: 300px;
                                     }
 
                                     /* When moving the mouse over the submit button, add a darker green color */
@@ -79,9 +80,13 @@
                                         border-radius: 5px;
                                         background-color: #f2f2f2;
                                         padding: 20px;
+										width: 50%;
+										margin: auto;
                                     }
 
 </style>
+
+</html>
 
 
 @endsection
