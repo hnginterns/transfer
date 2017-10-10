@@ -259,6 +259,8 @@
 </div>
 
 <div id="footer" class="footer">
+    <div class="container" >
+
     <div id="footer-links">
         <li><a href="{{url('/')}}">Home</a></li>
         <li><a href="{{route('about')}}">About Us</a></li>
@@ -308,6 +310,7 @@
     <div id="lower-footer">
         <p>&#169; 2017 Transferrules.com. All rights reserved</p>
     </div>
+</div>
 </div>
 
 <!-- FOOTER ENDS -->
