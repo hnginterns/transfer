@@ -255,7 +255,7 @@ class AdminController extends WalletController
                             ->join('users', 'restrictions.uuid', '=', 'users.id')
                             ->where('restrictions.wallet_id', '=', $walletId)
                             ->select('users.username', 'users.first_name', 'users.last_name', 'users.email')
-                            ->get();
+                            ->get()->toArray();
         
         //dd($data['users']);
 
