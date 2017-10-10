@@ -98,9 +98,7 @@
                 <li class="list-group-item">
                  <a href="{{ route('wallets.manualfund', $wallet->id)}}" class="btn btn-warning">Manual Fund Wallet</a>
                 </li>
-                <li class="list-group-item">
-                  <a href="{{ route('wallets.ravefund', $wallet->id)}}" class="btn btn-info" >Add Fund Ravepay</a>
-                </li>
+                
                 <li class="list-group-item">
                   <a href="{{route('permission.create')}}" class="btn btn-info" >Add Permission</a>
                 </li>
