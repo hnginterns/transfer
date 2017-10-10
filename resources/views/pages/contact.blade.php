@@ -7,38 +7,32 @@
 
 <body>
 
-<div class="container">
-				
-		<form action="/action_page.php">
-
-			<label for="fname">First Name</label>
-			<input type="text" id="fname" name="firstname" placeholder="Your name..">
-
-			<label for="lname">Last Name</label>
-			<input type="text" id="lname" name="lastname" placeholder="Your last name..">
-
-			<label for="Email">Email</label>
-			<input type="text" id="email" name="lastname" placeholder="Your Email">
-			
-			<label for="country">Country</label>
-			<select id="country" name="country">
-			  <option value="australia">Nigeria</option>
-			  <option value="canada">Ghana</option>
-			  <option value="Kenya">Kenya</option>
-			  <option value="South Africa">South Africa</option>
-			  <option value="Germany">Germany</option>
-			  <option value="Togo">Togo</option>
-			</select>
-
-			
-			<label for="subject">Subject</label>
-			<textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
-
-			<input type="submit" value="Submit">
-
-		</form>
+<div class="container">  
+  <form id="contact" action="" method="post">
+    <h3>Quick Contact</h3>
+    <h4>Contact us today, and get reply with in 24 hours!</h4>
+    <fieldset>
+      <input placeholder="Your name" type="text" tabindex="1" required autofocus>
+    </fieldset>
+    <fieldset>
+      <input placeholder="Your Email Address" type="email" tabindex="2" required>
+    </fieldset>
+    <fieldset>
+      <input placeholder="Your Phone Number" type="tel" tabindex="3" required>
+    </fieldset>
+    <fieldset>
+      <input placeholder="Your Web Site starts with http://" type="url" tabindex="4" required>
+    </fieldset>
+    <fieldset>
+      <textarea placeholder="Type your Message Here...." tabindex="5" required></textarea>
+    </fieldset>
+    <fieldset>
+      <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+    </fieldset>
+  </form>
+ 
   
-	</div>
+</div>
             
 </body> 
 
@@ -46,47 +40,125 @@
 									
 									
 									
- /* Style inputs with type="text", select elements and textareas */
-                                    input[type=text], select, textarea {
-                                        width: 100%; 
-                                        padding: 12px; 
-                                        border: 1px solid #ff6347; 
-                                        border-radius: 4px; 
-                                        box-sizing: border-box; 
-                                        margin-top: 6px; 
-                                        margin-bottom: 16px; 
-                                        resize: vertical;
-										display: block;
-                                    }
+ * {
+	margin:0;
+	padding:0;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-font-smoothing:antialiased;
+	-moz-font-smoothing:antialiased;
+	-o-font-smoothing:antialiased;
+	font-smoothing:antialiased;
+	text-rendering:optimizeLegibility;
+}
 
-                                    /* Style the submit button with a specific background color etc */
-                                    input[type=submit] {
-                                        background-color: #4CAF50;
-                                        color: white;
-                                        padding: 12px 20px;
-                                        border: none;
-                                        border-radius: 4px;
-                                        cursor: pointer;
-										margin-left: 300px;
-                                    }
+body {
+	font-family:"Open Sans", Helvetica, Arial, sans-serif;
+	font-weight:300;
+	font-size: 12px;
+	line-height:30px;
+	color:#777;
+	background:#0CF;
+}
 
-                                    /* When moving the mouse over the submit button, add a darker green color */
-                                    input[type=submit]:hover {
-                                        background-color: #45a049;
-                                    }
+.container {
+	max-width:400px;
+	width:100%;
+	margin:0 auto;
+	position:relative;
+}
 
-                                    /* Add a background color and some padding around the form */
-                                    .container {
-                                        border-radius: 5px;
-                                        background-color: #f2f2f2;
-                                        padding: 20px;
-										width: 50%;
-										margin: auto;
-                                    }
+#contact input[type="text"], #contact input[type="email"], #contact input[type="tel"], #contact input[type="url"], #contact textarea, #contact button[type="submit"] { font:400 12px/16px "Open Sans", Helvetica, Arial, sans-serif; }
 
+#contact {
+	background:#F9F9F9;
+	padding:25px;
+	margin:50px 0;
+}
+
+#contact h3 {
+	color: #F96;
+	display: block;
+	font-size: 30px;
+	font-weight: 400;
+}
+
+#contact h4 {
+	margin:5px 0 15px;
+	display:block;
+	font-size:13px;
+}
+
+fieldset {
+	border: medium none !important;
+	margin: 0 0 10px;
+	min-width: 100%;
+	padding: 0;
+	width: 100%;
+}
+
+#contact input[type="text"], #contact input[type="email"], #contact input[type="tel"], #contact input[type="url"], #contact textarea {
+	width:100%;
+	border:1px solid #CCC;
+	background:#FFF;
+	margin:0 0 5px;
+	padding:10px;
+}
+
+#contact input[type="text"]:hover, #contact input[type="email"]:hover, #contact input[type="tel"]:hover, #contact input[type="url"]:hover, #contact textarea:hover {
+	-webkit-transition:border-color 0.3s ease-in-out;
+	-moz-transition:border-color 0.3s ease-in-out;
+	transition:border-color 0.3s ease-in-out;
+	border:1px solid #AAA;
+}
+
+#contact textarea {
+	height:100px;
+	max-width:100%;
+  resize:none;
+}
+
+#contact button[type="submit"] {
+	cursor:pointer;
+	width:100%;
+	border:none;
+	background:#0CF;
+	color:#FFF;
+	margin:0 0 5px;
+	padding:10px;
+	font-size:15px;
+}
+
+#contact button[type="submit"]:hover {
+	background:#09C;
+	-webkit-transition:background 0.3s ease-in-out;
+	-moz-transition:background 0.3s ease-in-out;
+	transition:background-color 0.3s ease-in-out;
+}
+
+#contact button[type="submit"]:active { box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.5); }
+
+#contact input:focus, #contact textarea:focus {
+	outline:0;
+	border:1px solid #999;
+}
+::-webkit-input-placeholder {
+ color:#888;
+}
+:-moz-placeholder {
+ color:#888;
+}
+::-moz-placeholder {
+ color:#888;
+}
+:-ms-input-placeholder {
+ color:#888;
+}
 </style>
 
 </html>
+
 
 
 @endsection
