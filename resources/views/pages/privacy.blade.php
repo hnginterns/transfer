@@ -24,7 +24,7 @@ TransferRule  may change this policy from time to time by updating this page. Yo
 <li>We may use the information to improve our products and services.    </li>
 <li>Payment purpose.</li>
 <li>Job funding.</li>
-<li>From time to time, we may also use your information to contact you for when needs arises. We may contact you by email, phone, or whatsapp. We may use the information to customise the website according to your interests.</li>
+<li>From time to time, we may also use your information to contact you the when needs arises. We may contact you by email, phone, or whatsapp. We may use the information to customise the website according to your interests.</li>
 </ul>
 <h2>Security</h2>
 <p>We are committed to ensuring that your information is secure. In order to prevent unauthorised access or disclosure, we have put in place suitable physical, electronic and managerial procedures to safeguard and secure the information we collect online.</p>
