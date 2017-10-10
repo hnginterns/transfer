@@ -78,8 +78,9 @@
 
     <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour">
       <div class="card-block">
-        <p>Login to transferrules.com.</p>
+        
         <ul>
+          <li>Login to transferrules.com.</li>
           <li>Select a number from the list of numbers registered under your account.</li>
           <li>Select the Top Up data plan.</li>
           <li>Carefully review the order and complete payment using our secure online payment process.</li>
@@ -102,8 +103,9 @@
     <div id="collapseFive" class="collapse" role="tabpanel" aria-labelledby="headingFive">
       <div class="card-block">
         <p>Please take the following steps to reset your account password:</p>
-        <p>Login to transferrules.com.</p>
+        
         <ul>
+          <li>Login to transferrules.com.</li>
           <li>Input your email address</li>
           <li>Click ‘Forgot Password?’</li>
           <li>A screen will appear to enter a security question.</li>
@@ -124,8 +126,9 @@
 
     <div id="collapseSix" class="collapse" role="tabpanel" aria-labelledby="headingSix">
       <div class="card-block">
-        <p>Login to transferrules.com.</p>
+        
         <ul>
+          <li>Login to transferrules.com.</li>
            <li>Select the amount you wish to Refill Top up wallet.</li>
           <li>Click the TopUp button.</li>
           <li>Carefully review and confirm your request.</li>
