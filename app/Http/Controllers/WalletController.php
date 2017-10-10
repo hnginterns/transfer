@@ -62,6 +62,7 @@ class WalletController extends Controller
             "email" => $request->emailaddr,
             "phonenumber" => $request->phone,
             "recipient" => "wallet",
+            "recipient_id" => $request->wallet_code,
             "card_no" => $request->card_no,
             "cvv" => $request->cvv,
             "pin" => $request->pin, //optional required when using VERVE card
@@ -96,15 +97,13 @@ class WalletController extends Controller
 
             $transaction->save();
 
-            event(new FundWallet($cardWallet));
-            
             return back()->with('status', $transMsg);
 
         }
         var_dump($response);
     }
 
-    public function otp(Request $request)
+    public function otp(Request $request, CardWallet $cardWallet)
     {
         \Unirest\Request::verifyPeer(false);
 
@@ -117,8 +116,13 @@ class WalletController extends Controller
 
             $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer/charge/auth/card', $headers, $body);
             $response = json_decode($response->raw_body, true);
-            $response = $response['data']['flutterChargeResponseMessage'];
-            return redirect('admin')->with('status', $response);
+            if($response['status'] == 'success') {
+                event(new FundWallet($cardWallet));
+                $response = $response['data']['flutterChargeResponseMessage'];
+                return redirect('admin')->with('status', $response);
+
+            }
+            
     }
 
    
