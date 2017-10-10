@@ -454,7 +454,7 @@
 </head>
 <body>
 <!-- HEADER BEGINS -->
-<div id="header">
+<div id="">
     <p id="background-text">FUNDS</p>
 
     <nav class="navbar navbar-default">
