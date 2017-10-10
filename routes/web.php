@@ -132,11 +132,11 @@ Route::group(['middleware' => ['admin']], function () {
   	Route::post('admin/beneficiaries/update/{id}', 'Admin\BeneficiaryController@update')->name('beneficiaries.update');
   	Route::get('admin/beneficiaries/delete/{id}', 'Admin\BeneficiaryController@delete')->name('beneficiaries.delete');
 
-	Route::get('/admin/managePermission', 'AdminController@managePermission');
-	Route::get('/admin/addpermission', 'Admin\WalletController@addPermission');
-	Route::post('/admin/addpermission', 'Admin\WalletController@PostAddPermission');
-	Route::get('/admin/editpermission/{restriction}', 'Admin\WalletController@editPermission');
-	Route::post('/admin/editpermission/{restriction}', 'Admin\WalletController@PostEditPermission');
+	Route::get('/admin/managePermission', 'AdminController@managePermission')->name('permission.manage');
+	Route::get('/admin/addpermission', 'Admin\WalletController@addPermission')->name('permission.create');
+	Route::post('/admin/addpermission', 'Admin\WalletController@PostAddPermission')->name('permission.store');
+	Route::get('/admin/editpermission/{restriction}', 'Admin\WalletController@editPermission')->name('permission.edit');
+	Route::post('/admin/editpermission/{restriction}', 'Admin\WalletController@PostEditPermission')->name('permission.update');
 	Route::get('/admin', 'AdminController@index')->name('admin.dashboard');
 	Route::get('/admin/managewallet', 'AdminController@managewallet');
 	Route::get('/admin/managebeneficiary', 'AdminController@managebeneficiary');
