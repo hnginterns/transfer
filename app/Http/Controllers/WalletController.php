@@ -62,7 +62,6 @@ class WalletController extends Controller
             "email" => $request->emailaddr,
             "phonenumber" => $request->phone,
             "recipient" => "wallet",
-            "recipient_id" => $request->recipient_id,
             "card_no" => $request->card_no,
             "cvv" => $request->cvv,
             "pin" => $request->pin, //optional required when using VERVE card
@@ -96,6 +95,8 @@ class WalletController extends Controller
             $transaction->ref = $transRef;
 
             $transaction->save();
+
+            event(new FundWallet($cardWallet));
             
             return back()->with('status', $transMsg);
 
@@ -103,7 +104,7 @@ class WalletController extends Controller
         var_dump($response);
     }
 
-    public function otp(Request $request, CardWallet $cardWallet)
+    public function otp(Request $request)
     {
         \Unirest\Request::verifyPeer(false);
 
@@ -116,12 +117,8 @@ class WalletController extends Controller
 
             $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer/charge/auth/card', $headers, $body);
             $response = json_decode($response->raw_body, true);
-            if($response['status'] == 'success') {
-                event(new FundWallet($cardWallet));
-                $response = $response['data']['flutterChargeResponseMessage'];
-                return redirect('admin')->with('status', $response);
-            }
-            var_dump($response);
+            $response = $response['data']['flutterChargeResponseMessage'];
+            return redirect('admin')->with('status', $response);
     }
 
    
@@ -149,6 +146,16 @@ class WalletController extends Controller
             $restriction = Restriction::where('wallet_id', $lock_code[0]['id'])->get();
             $rules = Rule::where('id', $restriction[0]['rule_id'])->get();
             $amount = $request->input('amount');
+            $data = new Array();
+            
+            $data['transaction_status'] = false;
+            $data['wallet_code'] = $request->sourceWallet;
+            $data['amount_transfered'] = $request->amount;
+            $data['payer_uuid'] = 0;
+            $data['payee_uuid'] = 0;
+            $data['payee_account_number'] = " ";
+            $data['bank_id'] = 0;
+            $data['payee_wallet_code'] = $request->recipientWallet;
 
             if ($rules[0]['can_transfer'] == 1) {
                 $date = new DateTime();
@@ -174,9 +181,14 @@ class WalletController extends Controller
                         $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/wallet/transfer', $headers, $body);
                         $response_arr = json_decode($response->raw_body, true);
                         $status = $response_arr['status'];
+                        $r_data = $response['data']['data'];                             
+                        $data['transaction_reference'] = $r_data['uniquereference'];
                         if ($status == 'success') {
+                            $data['transaction_status'] = true;
+                            $this->logTransaction($data);
                             return redirect()->action('pagesController@success', $response);
                         } else {
+                            $this->logTransaction($data);
                             return redirect()->action('pagesController@failed', $response);
                         }
                     } else {
@@ -349,6 +361,22 @@ class WalletController extends Controller
         $status = $response['status'];
         $data = $response['data'];
         return (!is_array($data)) ? true : $data;
+    }
+    
+    public function logTransaction($data){
+        $transaction = new Transaction;
+        $transaction->wallet_code = $data['wallet_code'];
+        $transaction->amount_transfered = $data['amount_transfered'];
+        $transaction->transaction_status = $data['transaction_status'];
+        $transaction->payer_uuid = $data['payer_uuid'];
+        $transaction->payee_uuid = $data['payee_uuid'];
+        $transaction->payee_account_number = $data['payee_account_number'];
+        $transaction->bank_id = $data['bank_id'];
+        $transaction->payee_wallet_code = $data['payee_wallet_code'];
+        $transaction->transaction_reference = $data['transaction_reference'];
+        $transaction->created_at = new DateTime();
+        
+        $transaction->save();
     }
 
     /**
