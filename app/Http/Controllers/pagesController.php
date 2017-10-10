@@ -12,6 +12,8 @@ use App\Restriction;
 use App\Transaction;
 use App\BankTransaction;
 
+use App\Bank;
+
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\RestrictionController as Restrict;
 use App\Http\Controllers\transactionController as Trans;
@@ -144,8 +146,10 @@ class pagesController extends Controller
     }
 
     public function createBeneficiary()
+
     {
-        return view('create-beneficiary');
+        $banks = Bank::all();
+        return view('create-beneficiary', compact('banks'));
     }
 
     public function addBeneficiary(Wallet $wallet)
