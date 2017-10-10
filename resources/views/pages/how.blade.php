@@ -226,7 +226,7 @@
     </div>
     <div id="collapseTwelve" class="collapse" role="tabpanel" aria-labelledby="headingTwelve">
       <div class="card-block">
-        p>Mobile applications are currently under development for each of Android and iOS (Apple) smartphone devices. Additionally, transferrules.com. is already optimized for mobile devices in order to provide a positive user experience.</p>
+        <p>Mobile applications are currently under development for each of Android and iOS (Apple) smartphone devices. Additionally, transferrules.com. is already optimized for mobile devices in order to provide a positive user experience.</p>
       </div>
     </div>
   </div>
