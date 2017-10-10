@@ -251,8 +251,11 @@ class AdminController extends WalletController
 
         //$data['users'] = Restriction::where('wallet_id', $walletId)->get()->toArray();
 
-          $data['users'] =  DB::table('restrictions')->join('users', 'restrictions.uuid', '=', 'users.id')
-            ->select('users.*')->get()->toArray();
+          $data['users'] =  DB::table('restrictions')
+                            ->join('users', 'restrictions.uuid', '=', 'users.id')
+                            ->where('restrictions.wallet_id', '=', $walletId)
+                            ->select('users.*')
+                            ->get()->toArray();
         
         //dd($data['users']);
 
