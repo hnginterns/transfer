@@ -96,7 +96,7 @@
                 </li>
 
                 <li class="list-group-item">
-                 <a href="{{ route('wallets.manualfund', $wallet->id)}}" class="btn btn-warning">Manual Fund Wallet</a>
+                 <a href="{{ route('wallets.manualfund', $wallet->id)}}" class="btn btn-warning">Fund Wallet</a>
                 </li>
                 
                 <li class="list-group-item">
