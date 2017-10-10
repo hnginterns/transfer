@@ -4,8 +4,7 @@
 @section('content')
 
 <!-- SECTION ONE BEGINS -->
-
-             <div class="panel-group" id="accordion">
+<div class="panel-group" id="accordion">
   <div class="panel panel-default">
     <div class="panel-heading">
       <h4 class="panel-title">
@@ -45,7 +44,7 @@
         How do I send Prepaid Mobile Credit to an existing customer?</a>
       </h4>
     </div>
-    <div id="collapse3" class="panel-collapse collapse in">
+    <div id="collapse3" class="panel-collapse collapse">
       <div class="panel-body">
     <ul>
       <li>Login to transferrules.com.</li>
@@ -113,7 +112,7 @@
           <li>A message will then be sent to your email address with a link to reset the account password.</li>
           <li>Check your email and follow the instructions in the email to reset your account password and proceed further.</li>
         </ul>
-    </div>
+</div>
     </div>
   </div>
   <div class="panel panel-default">
@@ -132,7 +131,7 @@
         <li>Carefully review and confirm your request.</li>
         <li>A confirmation email will be sent to your email address.</li>
       </ul>
-      </div>
+</div>
     </div>
   </div>
 <div class="panel panel-default">
@@ -145,7 +144,7 @@
     <div id="collapse8" class="panel-collapse collapse ">
       <div class="panel-body">
       <p>Yes, you can send credit or data top-up to more than one mobile number.</p>
-      </div>
+</div>
     </div>
   </div>
   <div class="panel panel-default">
@@ -158,7 +157,7 @@
     <div id="collapse9" class="panel-collapse collapse ">
       <div class="panel-body">
       <p>The cost of a Top Up transaction is based upon the denomination amount selected. During the checkout process the total amount due will be indicated. This amount includes the details of any additional charges (such as taxes or SMS fees) that affect the ultimate Top Up recharge amount that will be received by the transaction recipient.</p>
-      </div>
+</div>
     </div>
   </div>
    <div class="panel panel-default">
@@ -171,7 +170,7 @@
     <div id="collapse10" class="panel-collapse collapse ">
       <div class="panel-body">
       <p>If the Mobile Number is invalid and does not exist, the Top Up transaction will not be carried out and you will not be charged for the transaction.</p>
-      </div>
+</div>
     </div>
   </div>
    <div class="panel panel-default">
@@ -184,7 +183,7 @@
     <div id="collapse11" class="panel-collapse collapse ">
       <div class="panel-body">
       <p>Our website is best enjoyed while using Internet Explorer or Google Chrome. Please avoid using other web browsers like Firefox, Opera or UC browser. If the problem still persists, please raise a complaint with our Customer Service team by calling 000111 from your mobile number or send a mail via finance@hotels.ng </p>
-      </div>
+</div>
     </div>
   </div>
    <div class="panel panel-default">
@@ -201,10 +200,10 @@
         <ul>
           <li>Login to your account.</li>
           <li>Click on the unblock button.</li>
-          <li>Fill in the reactivation request form.</li>l
+          <li>Fill in the reactivation request form.</li>
           <li>Submit</li>
         </ul>
-      </div>
+</div>
     </div>
   </div>
   <div class="panel panel-default">
@@ -219,7 +218,7 @@
         <p>f you use the activation form, the reactivation will be within the next 48 hours of submission, if it by email application , the activation process will be within the next 72 hours of submission.
 You will receive a reply on your email from us regarding the reactivation process.</p>
         </ul>
-    </div>
+</div>
     </div>
   </div>
   <div class="panel panel-default">
@@ -232,8 +231,8 @@ You will receive a reply on your email from us regarding the reactivation proces
     <div id="collapse14" class="panel-collapse collapse ">
       <div class="panel-body">
         <p>Mobile applications are currently under development for each of Android and iOS (Apple) smartphone devices. Additionally, transferrules.com. is already optimized for mobile devices in order to provide a positive user experience.</p>
-    </div>
+</div>
     </div>
   </div>
- </div>
+</div>
 @endsection
