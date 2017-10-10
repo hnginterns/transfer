@@ -14,6 +14,7 @@ use App\Restriction;
 use App\Rule;
 use DB;
 use App\Beneficiary;
+use App\Transaction;
 use Carbon\Carbon;
 use Trs;
 
@@ -266,6 +267,10 @@ class AdminController extends WalletController
         //$data['wt'] = WalletTransaction::where('source_wallet', $walletId)->orWhere('recipient_wallet', $walletId)->get();
 
         $data['wallet'] = $wallet;
+
+        $data['transactions'] = Transaction::all()->get();
+
+        dd($data['transactions']);
 
         return view('admin/walletdetails', $data); //compact('wallet', 'user', 'transaction'));
     }
