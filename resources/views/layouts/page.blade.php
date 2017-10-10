@@ -9,7 +9,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>Sign In</title>
+    <title>Transfer Rules</title>
 
     <link href="css/bootstrap.css" rel="stylesheet">
 
@@ -18,7 +18,12 @@
     <link href="css/signin.css" rel="stylesheet">
 
     <style>
-              
+        
+       
+        #footer {
+            margin-top: 90px;
+        }
+       
         /* FOOTER STYLE */
         #mobile-footer {
             display: none;
@@ -55,39 +60,8 @@
             background:  #BDBDBD ;
             margin: 30px 0px;
         }
-            #footer {
-                display: none;
-            }
-            #mobile-footer {
-                display: block;
-                margin-top: 100px;
-                text-align: center;
-                width: 100%;
-            }
-            #mobile-footer td {
-                padding: 0px 20px !important;
-            }
-            #mobile-footer tr {
-                width: 100%;
-            }
-            #footer-links,
-            #footer-heading {
-                display: flex;
-                flex-direction: row;
-                flex-grow: 4;
-            }
-
-
-            /* #footer-links,
-            #footer-heading {
-                width: calc(100% * (1/4) - 10px - 1px);
-            } */
-
-        
-    </style>
-
-</head>
-
+        </style>
+       </head>
 
 
 <body>
@@ -217,10 +191,11 @@
     </main>
 
 
-<div id="footer" class="footer">
-
+<div id="footer">
     <div id="footer-links">
-        
+        <li><a href="{{url('/')}}">Home</a></li>
+        <li><a href="{{route('about')}}">About Us</a></li>
+        <li><a href="{{route('privacy')}}">Privacy Policy</a></li>
 
         <li><a href="{{route('how')}}">How it works</a></li>
         <li><a href="{{route('contact')}}">Contact Us</a></li>
@@ -268,17 +243,12 @@
     </div>
 </div>
 
-
 <!-- FOOTER ENDS -->
 
-
-<script src="js/jquery.js"></script>
-
-    <script src="js/bootstrap.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="js/script.js"></script>
 </body>
-
-
-
 </html>
 
 
