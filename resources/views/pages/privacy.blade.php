@@ -1,15 +1,9 @@
 @extends('layouts.page')
-@section('main-text', 'Make money transfers sweet as pie')
+@section('main-text', 'Privacy Policy')
 @section('sub-text', 'TransferRules lets you receive payments locally and globally with no hassles and zero set up fees')
 @section('content')
 
-<!-- SECTION ONE BEGINS -->
 
-
-
-<!-- SECTION ONE ENDS -->
-
-<!-- SPACER -->
         <h3>Privacy </h3>
 
             <p>
