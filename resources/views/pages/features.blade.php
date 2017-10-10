@@ -9,23 +9,23 @@ Crisp and clear UX designs and excellent workflow serves to foster customer inti
 
 <h3>WHAT FEATURE DO WE OFFER?</h3><br>
 <ul>
-<li>1.      Admin Interface <br></li>
-<li>2.      Credit Score <br> </li>
-<li>3.      Personal Finance <br></li> 
-<li>4.      Account tracking <br></li>
-<li>5.      User Interface <br></li>
-<li>6.      Multiple Wallet support <br></li>
-<li>7.      Wallet to Wallet Transaction <br></li>
-<li>8.      Wallet to Account Transactions <br></li>
-<li>9.      Account Balance check <br></li>
-<li>10.     Detailed Transaction History <br></li>
-<li>11.     Data Protection <br></li>
-<li>12.     Robust Financial Statistics and custom reports <br></li>
-<li>13.     Credit/Data Top-up <br></li>
-<li>14.     Bulk Sms Integration <br></li>
-<li>15.     Live Chat <br></li>
-<li>16.     Secured and Reliable Payment method <br></li>
-<li>17.     Easy usage with fewer clicks to make payments<br></li>
+<li>      Admin Interface <br></li>
+<li>      Credit Score <br> </li>
+<li>      Personal Finance <br></li> 
+<li>      Account tracking <br></li>
+<li>      User Interface <br></li>
+<li>     Multiple Wallet support <br></li>
+<li>     Wallet to Wallet Transaction <br></li>
+<li>      Wallet to Account Transactions <br></li>
+<li>      Account Balance check <br></li>
+<li>     Detailed Transaction History <br></li>
+<li>     Data Protection <br></li>
+<li>     Robust Financial Statistics and custom reports <br></li>
+<li>     Credit/Data Top-up <br></li>
+<li>     Bulk Sms Integration <br></li>
+<li>     Live Chat <br></li>
+<li>     Secured and Reliable Payment method <br></li>
+<li>     Easy usage with fewer clicks to make payments<br></li>
 <br>
 </ul>
  
