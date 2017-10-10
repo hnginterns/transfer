@@ -154,7 +154,7 @@
 
                     <li class="nav-item">
 
-                        <a class="nav-link" href="/home">Home
+                        <a class="nav-link" href="{{url('/')}}">Home
 
                             <span class="sr-only">(current)</span>
 
@@ -164,13 +164,13 @@
 
                     <li class="nav-item">
 
-                        <a class="nav-link" href="/about">About</a>
+                        <a class="nav-link" href="{{route('about')}}">About</a>
 
                     </li>
 
                     <li class="nav-item">
 
-                        <a class="nav-link" href="/home">Get Started</a>
+                        <a class="nav-link" href="{{route('how')}}">Get Started</a>
 
                     </li>
 
