@@ -136,7 +136,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                      @foreach ($beneficiaries as $beneficiary)
+                      @forelse ($beneficiaries as $beneficiary)
                       <tr>
                         <td>{{$beneficiary->name}}</td>
                         <td>{{$beneficiary->account_number}}</td>
@@ -148,7 +148,11 @@
                                 <a href="{{ route('beneficiaries.delete', $beneficiary->id) }}" class="btn btn-danger" onclick="return confirm('Are you sure to archive this beneficiary?')">Archive</a>
                             </td>
                       </tr>
-                      @endforeach
+
+                      @empty
+                        <p> No User has been attached to this wallet.</p>
+                      @endforelse
+                      
                     </tbody>
 
                 </table>
