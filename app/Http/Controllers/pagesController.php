@@ -129,10 +129,10 @@ class pagesController extends Controller
         $beneficiaries = Beneficiary::where('wallet_id', $wallet->id)->paginate(15);
 
         // get all wallet to wallet transactions, both sent and received
-        $walletTransactions = Transaction::where('wallet_code', $wallet->wallet_code)->orwhere('payee_wallet_code', $wallet->wallet_code)->get();
+        $walletTransactions = Transaction::where('wallet_code', $wallet->wallet_code)->orWhere('payee_wallet_code', $wallet->wallet_code)->get();
         $bankTransactions = BankTransaction::where('wallet_id', $wallet->id)->get();
 
-        $history = Trans::getTransactionsHistory($walletTransactions, $bankTransactions);
+        $history = Trans::getTransactionsHistory($walletTransactions, $bankTransactions, $wallet->wallet_code, $wallet->id);
         // dd($history->toArray());
          
         return view('view-wallet', compact('wallet','permit','rules','beneficiaries', 'history'));

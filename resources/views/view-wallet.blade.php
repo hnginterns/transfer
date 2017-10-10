@@ -71,6 +71,7 @@ i.sent{
 							<thead>
 								<tr>
 									<th>Transaction Type</th>
+                  <th>State</th>
 									<th>Transaction Amount</th>
 									<th>Transaction Date</th>
 									<th>Status</th>
@@ -80,6 +81,7 @@ i.sent{
               @foreach($history as $key => $hist)
 								<tr>
 									<td>{{ $hist['transaction_type'] }} </td>
+                  <td>{{ $hist['transaction_state'] }}</td>
 									<td>{{ $hist['transaction_amount'] }} </td>
 									<td>{{ $hist['transaction_date'] }}</td>
 									<td><i class="fa {{ $hist['transaction_status'] ? 'fa-check-circle can' : 'fa-times-circle cannot' }}" aria-hidden="true"></i></td>
