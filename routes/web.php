@@ -19,7 +19,7 @@ Route::get('/', 'pagesController@home')->name('home');
 //Route::get('/home', 'pagesController@home');
 // get signin page
 //Route::get('/signin', 'pagesController@signin');
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home.index');
 
 Route::get('/logout', function () {
 	Auth::logout();
@@ -28,6 +28,9 @@ Route::get('/logout', function () {
 });
 
 //Route::get('/fundWallet', 'WalletController@fundWallet');
+Route::get('/banks', 'WBanksController@getAllBanks');
+
+
 
 
 Route::get('/welcome', function () {
@@ -211,4 +214,4 @@ Route::group(['middleware' => ['admin']], function () {
 
 });
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');

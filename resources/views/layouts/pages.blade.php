@@ -25,12 +25,13 @@
         #header {
             width: 100%;
             height: 650px;
-            /* background-image: url("http://preview.ibb.co/iqedKQ/37158e6ed6bb6bbfb6a114f2810c6361_houston_usa_bank_of_america.jpg");   */
-            background-image: url("");
+             /* background-image: url("http://preview.ibb.co/iqedKQ/37158e6ed6bb6bbfb6a114f2810c6361_houston_usa_bank_of_america.jpg");   */
+            background-image: url("https://preview.ibb.co/n9dyok/Group.png");
             /* background: #333333;    */
             background-size: 100% 650px;
             background-repeat: no-repeat;
             /* background-size: 650px;  */
+           
         }
 
         #logo {
@@ -534,8 +535,6 @@
 @yield('content')
 
 <!-- FOOTER -->
-
-
 
 <div id="footer">
     <div id="footer-links">
