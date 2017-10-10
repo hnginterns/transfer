@@ -244,67 +244,34 @@
 
     </main>
 
+
+
+<div id="footer" class="footer">
 <div class="container">
   <div class="row">
   <hr>
+
     <div class="col-lg-12">
-      <div class="col-md-8">
-        <a href="#">Terms of Service</a> | <a href="#">Privacy</a>    
-      </div>
-      <div class="col-md-4">
-        <p class="muted pull-right">© 2013 Company Name. All rights reserved</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div id="footer" class="footer">
-
-    <div id="footer-links">
-        <li><a href="{{url('/')}}">Home</a></li>
-        <li><a href="{{route('about')}}">About Us</a></li>
-        <li><a href="{{route('privacy')}}">Privacy Policy</a></li>
-
+      <div class="col-md-3">
         <li><a href="{{route('how')}}">How it works</a></li>
         <li><a href="{{route('contact')}}">Contact Us</a></li>
         <li><a href="#">Disclaimer</a></li>
+      </div>
 
-        <li><a href="{{route('help')}}">Help & Support</a></li>
+       <div class="col-md-3">
+       <li><a href="{{route('help')}}">Help & Support</a></li>
         <li><a href="{{url('login')}}">Sign In</a></li>
         <li><a href="{{route('how')}}">FAQs</a></li>
         <li><a href="{{route('terms')}}">Terms & Condition</a></li>
+      </div>
 
-        <li><a href="#">Site Map</a></li>
+       <div class="col-md-3">
+       
+      </div>
+      
     </div>
-    <p id="line"> </p>
-    <div id="lower-footer">
-        <p>&#169; 2017 Transferrules.com. All rights reserved</p>
-    </div>
+  </div>
 </div>
-
-<div id="mobile-footer">
-    <table>
-        <tr>
-            <td style="font-size: 17px; font-weight: bold;">Company</td>
-            <td style="font-size: 17px; font-weight: bold;">Support</td>
-            <td style="font-size: 17px; font-weight: bold;">Terms</td>
-        </tr>
-        <tr>
-            <td><a href="{{url('/')}}">Home</a></td>
-            <td><a href="{{route('about')}}">About Us</a></td>
-            <td><a href="{{route('contact')}}">Contact Us</a></td>
-        </tr>
-        <tr>
-            <td><a href="{{route('how')}}">How it works</a></td>
-            <td><a href="{{route('contact')}}">Contact Us</a></td>
-            <td><a href="{{route('help')}}">Help & Support</a></td>
-        </tr>
-        <tr>
-            <td><a href="{{route('terms')}}">Terms & Condition</a></td>
-            <td><a href="{{route('privacy')}}">Privacy Policy</a></td>
-            <td><a href="#">Disclaimer</a></td>
-        </tr>
-    </table>
     <p id="line"> </p>
     <div id="lower-footer">
         <p>&#169; 2017 Transferrules.com. All rights reserved</p>
