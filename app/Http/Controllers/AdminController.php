@@ -257,7 +257,7 @@ class AdminController extends WalletController
                             ->select('users.username', 'users.first_name', 'users.last_name', 'users.email')
                             ->get()->toArray();
         
-        dd($data['users']);
+        //dd($data['users']);
 
         $data['userRef'] = substr(md5(Carbon::now()), 0, 10);
 
