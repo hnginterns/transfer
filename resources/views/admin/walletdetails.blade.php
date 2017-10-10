@@ -150,14 +150,14 @@
                       </tr>
 
                       @empty
-                        <p> No User has been attached to this wallet.</p>
+                        <p> No Beneficiaries has been added to this wallet.</p>
                       @endforelse
                       
                     </tbody>
 
                 </table>
               @else
-              <h2> No user has been attached to this wallet yet </h2>
+              <h2> No Beneficiaries has been added to this wallet yet </h2>
             @endif
 
 
