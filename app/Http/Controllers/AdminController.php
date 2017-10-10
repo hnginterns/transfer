@@ -251,10 +251,10 @@ class AdminController extends WalletController
 
         //$data['users'] = Restriction::where('wallet_id', $walletId)->get()->toArray();
 
-          $data['users'] =  DB::table('restriction')->join('users', 'restriction.uuid', '=', 'users.id')
+          $data['users'] =  DB::table('restrictions')->join('users', 'restriction.uuid', '=', 'users.id')
             ->select('users.*')->get()->toArray();
         
-        dd($data['users']);
+        //dd($data['users']);
 
         $data['userRef'] = substr(md5(Carbon::now()), 0, 10);
 
