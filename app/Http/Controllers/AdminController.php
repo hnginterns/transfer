@@ -246,8 +246,10 @@ class AdminController extends WalletController
 
         $status = $wallet->archived == 0 ? 'Active' : 'Archived';
 
-        $data['users'] = $wallet->users()->get()->toArray();
+        //$data['users'] = $wallet->users()->get()->toArray();
 
+        $data['users'] = Restriction::where('wallet_id', $walletId )->get()->toArray();
+        
         //dd($data['users']);
 
         $data['userRef'] = substr(md5(Carbon::now()), 0, 10);
