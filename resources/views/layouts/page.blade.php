@@ -20,12 +20,6 @@
     <style>
         
        
-        #footer {
-            margin-top: 90px;
-        }
-
-       
-
         /* FOOTER STYLE */
         #mobile-footer {
             display: none;
@@ -72,15 +66,7 @@
         }
 
         /* FOOTER STYLE ENDS */
-
-
-
-
-       
-
-           
-
-            #footer {
+        #footer {
                 display: none;
             }
 
