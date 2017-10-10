@@ -7,7 +7,7 @@
 <div id="section-1">
     <div id="about">
         <div id="about-text">
-            <p id="heading">about</p>
+            <p id="">about</p>
             <p>
                 Our mission is to get people who are ready to work in an environment where they have to tackle real work issues. With minimal guidance, instinct kicks and the best ones come out of the lot and start the second phase of the internship where the tasks get increasingly harder.
             </p>
