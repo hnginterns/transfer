@@ -188,10 +188,10 @@
                     <tbody style="color: #595757;">
                       @forelse($users as $user)
                       <tr>
-                        <td style="color: #595757;"> {{ $user['first_name'] }}</td>
-                        <td style="color: #595757;"> {{ $user['last_name'] }}</td>
-                        <td style="color: #595757;"> {{ $user['username'] }}</td>
-                        <td style="color: #595757;"> {{ $user['email'] }}</td>
+                        <td style="color: #595757;"> {{ $user->first_name }}</td>
+                        <td style="color: #595757;"> {{ $user->last_name }}</td>
+                        <td style="color: #595757;"> {{ $user->username }}</td>
+                        <td style="color: #595757;"> {{ $user->email }}</td>
                       </tr>
                       @empty
                         <p> No User has been attached to this wallet.</p>
