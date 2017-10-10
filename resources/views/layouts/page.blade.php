@@ -170,6 +170,19 @@
 
                     <li class="nav-item">
 
+                        <a class="nav-link" href="{{route('how')}}">FAQs</a>
+
+                    </li>
+
+                    <li class="nav-item">
+
+                        <a class="nav-link" href="{{route('features')}}">Features</a>
+
+                    </li>
+
+
+                    <li class="nav-item">
+
                         <a class="nav-link" href="{{route('how')}}">Get Started</a>
 
                     </li>
@@ -188,6 +201,7 @@
         </div>
 
     </nav>
+
 <main>
 
         <div class="container">
