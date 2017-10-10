@@ -32,10 +32,9 @@ $bank = App\Http\Controllers\BanksController::getAllBanks();
                     <label>Bank</label>
                     <select name="bank_id" required class="form-control input-defaulted" >
                       <option>Select Bank</option>
-
-                    @foreach(App\Http\Controllers\BanksController::getAllBanks() as $key => $bankcode)
-                    <option value="{{$bankcode->id}}||{{$bankcode->bank_name}}">{{ $bankcode->bank_name }}</option>
-                    @endforeach
+                    
+                    <option value="058">GTBANK PLC</option>
+                    
                     </select>
                   </div>
 
