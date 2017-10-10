@@ -146,7 +146,7 @@ class WalletController extends Controller
             $restriction = Restriction::where('wallet_id', $lock_code[0]['id'])->get();
             $rules = Rule::where('id', $restriction[0]['rule_id'])->get();
             $amount = $request->input('amount');
-            $data = new Array();
+            $data = [];
             
             $data['transaction_status'] = false;
             $data['wallet_code'] = $request->sourceWallet;
