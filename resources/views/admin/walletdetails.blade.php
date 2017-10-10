@@ -86,13 +86,13 @@
 
               <ul class="list-group list-group-unbordered">
                 <li class="list-group-item">
-                  <b>Total Balance</b> <a class="pull-right">N1,000</a>
+                  <b>Total Balance</b> <a class="pull-right">N{{ $wallet->balance }}</a>
                 </li>
                 <li class="list-group-item">
                   <b>Total Beneficiaries</b> <a class="pull-right">{{ count($beneficiaries) }} </a>
                 </li>
                 <li class="list-group-item">
-                  <b>Reference Code</b> <a class="pull-right">{{ $wallet->}}</a>
+                  <b>Reference Code</b> <a class="pull-right">{{ $userRef }}</a>
                 </li>
 
                 <li class="list-group-item">
@@ -137,32 +137,19 @@
                         </tr>
                     </thead>
                     <tbody>
-
+                      @foreach ($beneficiaries as $beneficiary)
                       <tr>
-                        <td>Mark Essien</td>
-                        <td>6578921302</td>
-                        <td>1</td>
-                        <td>1</td>
+                        <td>{{$beneficiary->name}}</td>
+                        <td>{{$beneficiary->account_number}}</td>
+                        <td>{{$beneficiary->bank_id}}</td>
+                        <td>{{$beneficiary->status}}</td>
                         <td>
-                          <a href="" class="btn btn-success">Details</a>
-                          <a href="" class="btn btn-warning">Edit</a>
-                          <a href="" class="btn btn-danger" onclick="return confirm('Are you sure to archive this beneficiary?')">Archive</a>
-                        </td>
+                          <a href="{{ route('beneficiaries.details', $beneficiary->id) }}" class="btn btn-success">Details</a>
+                                <a href="{{ route('beneficiaries.edit', $beneficiary->id) }}" class="btn btn-warning">Edit</a>
+                                <a href="{{ route('beneficiaries.delete', $beneficiary->id) }}" class="btn btn-danger" onclick="return confirm('Are you sure to archive this beneficiary?')">Archive</a>
+                            </td>
                       </tr>
-
-                       <tr>
-                        <td>Mark Essien</td>
-                        <td>6578921302</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>
-                          <a href="" class="btn btn-success">Details</a>
-                          <a href="" class="btn btn-warning">Edit</a>
-                          <a href="" class="btn btn-danger" onclick="return confirm('Are you sure to archive this beneficiary?')">Archive</a>
-                        </td>
-                      </tr>
-
-
+                      @endforeach
                     </tbody>
 
                 </table>
@@ -189,6 +176,7 @@
               <!-- /.tab-pane -->
               <div class="tab-pane" id="users">
 
+            @if(!empty($users))
                <table class="table">
                     <thead>
                         <tr>
@@ -199,7 +187,23 @@
                         </tr>
                     </thead>
 
+                    <tbody style="color: #595757;">
+                      @forelse($users as $user)
+                      <tr>
+                        <td style="color: #595757;"> {{ $user['first_name'] }}</td>
+                        <td style="color: #595757;"> {{ $user['last_name'] }}</td>
+                        <td style="color: #595757;"> {{ $user['username'] }}</td>
+                        <td style="color: #595757;"> {{ $user['email'] }}</td>
+                      </tr>
+                      @empty
+                        <p> No User has been attached to this wallet.</p>
+                      @endforelse
+                    </tbody>
+
                 </table>
+            @else
+              <h2> No user has been attached to this wallet yet </h2>
+            @endif
 
               </div>
 
