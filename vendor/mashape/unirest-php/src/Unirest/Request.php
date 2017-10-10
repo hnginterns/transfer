@@ -11,7 +11,7 @@ class Request
     private static $handle = null;
     private static $jsonOpts = array();
     private static $socketTimeout = null;
-    private static $verifyPeer = true;
+    private static $verifyPeer = false;
     private static $verifyHost = true;
 
     private static $auth = array (
