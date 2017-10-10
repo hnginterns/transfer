@@ -95,6 +95,9 @@
 
         <div class="container">
 
+                    <br>
+                    <br>
+
                 <h3 class="sign-in">@yield('main-text')</h3>
 
         @yield('content')    
