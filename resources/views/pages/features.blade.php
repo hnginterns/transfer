@@ -18,11 +18,11 @@ Crisp and clear UX designs and excellent workflow serves to foster customer inti
 8. Wallet to Account Transactions <br>
 9. Account Balance check <br>
 10.Detailed Transaction History <br>
-11.Data Protection <p><br>
+11.Data Protection <br>
 12.Robust Financial Statistics and custom reports <br>
 13.Credit/Data Top-up <br>
 14.Bulk Sms Integration <br>
-15.Live Chat <p><br>
+15.Live Chat <br>
 16.Secured and Reliable Payment method <br>
 17.Easy usage with fewer clicks to make payments<br>
 <br>
