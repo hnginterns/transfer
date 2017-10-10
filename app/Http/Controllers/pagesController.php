@@ -159,7 +159,9 @@ class pagesController extends Controller
         if($permit == null) return back()->with('error', 'You do not have the permission to add beneficiary');
         $restrict = new Restrict($permit);
         if(count($restrict->canAddBeneficiary()) > 0) return back()->with('error', 'You do not have the permission to add beneficiary');
+        
         $banks = Bank::all();
+
         return view('createbeneficiary', compact('wallet','banks'));
     }
 
