@@ -126,7 +126,7 @@
 
 
 
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="{{url('/')}}">
 
                 <img src="logo.png" width="30" height="30" class="d-inline-block align-top" alt=""> TransferRules
 
