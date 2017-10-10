@@ -71,7 +71,7 @@
 @section('content')
 
 
-<div class="container-fluid">
+<center><div class="container-fluid">
 
   <div class="beneficiary-container">
 
