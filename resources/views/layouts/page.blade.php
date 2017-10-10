@@ -189,7 +189,32 @@
 
                     <li class="nav-item active">
 
-                        <a href="{{ route('admin.login') }}"class="nav-link">Admin login</a>
+                    @if(Auth::guest())
+                        <a class="nav-link" href="{{url('/login')}}">SIGN IN</a>
+                    @else
+                        
+                        <a class="nav-link" href="{{ url('/logout') }}">
+                            Logout
+                        </a>
+                      
+
+                          @if(Auth::user()->isAdmin())
+                          
+                            <a class="nav-link" href="{{ url('/admin') }}"> Admin Dashboard </a>
+                           
+                            @else
+
+                            
+                            <a class="nav-link" href="{{ url('/dashboard') }}">
+                                Dashboard
+                            </a>
+                          
+
+                          @endif
+
+                      
+
+                    @endif
 
 
                     </li>
