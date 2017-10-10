@@ -12,6 +12,7 @@ use App\Wallet;
 use App\CardWallet;
 use App\Restriction;
 use App\Rule;
+use DB;
 use App\Beneficiary;
 use Carbon\Carbon;
 use Trs;
@@ -248,7 +249,12 @@ class AdminController extends WalletController
 
         //$data['users'] = $wallet->users()->get()->toArray();
 
-        $data['users'] = Restriction::where('wallet_id', $walletId)->get()->toArray();
+        //$data['users'] = Restriction::where('wallet_id', $walletId)->get()->toArray();
+
+          $data['users'] =  DB::table('restriction')
+            ->join('users', 'restriction.uuid', '=', 'users.id')
+            ->select('restriction.*', 'users.*')
+            ->get()->get()->toArray();
         
         //dd($data['users']);
 
