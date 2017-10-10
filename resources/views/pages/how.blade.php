@@ -1,56 +1,54 @@
-@extends('layouts.pages')
+@extends('layouts.page')
 @section('main-text', 'Make money transfers sweet as pie')
 @section('sub-text', 'TransferRules lets you receive payments locally and globally with no hassles and zero set up fees')
 @section('content')
 
 <!-- SECTION ONE BEGINS -->
 
-<div id="section-1">
-    <div id="about">
-        <div id="about-text">
-            <p id="heading">about</p>
-            <p>
-                Our mission is to get people who are ready to work in an environment where they have to tackle real work issues. With minimal guidance, instinct kicks and the best ones come out of the lot and start the second phase of the internship where the tasks get increasingly harder.
-            </p>
-        </div>
-        <img id="about-img" src="img/wallet.png">
+            <div id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="card">
+    <div class="card-header" role="tab" id="headingOne">
+      <h5 class="mb-0">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Question
+        </a>
+      </h5>
     </div>
-</div>
 
-<!-- SECTION ONE ENDS -->
-
-<!-- SPACER -->
-
-<div id="spacer">
-    <p id="heading">Our Sponsors</p>
-    <p id="sub-heading">
-        We're not in this alone. Transfer Rules is funded and advised by top venture capital firms and investors
-    </p>
-
-    <div id="sponsors">
-        <img src="img/sponsor1.png" alt="sponsor - hotelsng">
-        <img src="img/sponsor2.png" alt="sponsor - flutterwave">
-        <img src="img/sponsor3.png" alt="sponsor - rave">
+    <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+      <div class="card-block">
+            Answer
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      </div>
     </div>
-</div>
-
-<!-- SPACER ENDS-->
-
-<!-- SECTION 2 -->
-
-<div id="section-2">
-    <div>
-        <p id="heading">
-            Get started on TransferRules today
-        </p>
-        <p id="sub-heading">
-            It’s simple, no stress, no fuss.
-        </p>
-        <button id="get-started">GET STARTED</button>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab" id="headingTwo">
+      <h5 class="mb-0">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Collapsible Group Item #2
+        </a>
+      </h5>
     </div>
-    <img src="img/get-started.png" alt="get started image">
+    <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="card-block">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab" id="headingThree">
+      <h5 class="mb-0">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Collapsible Group Item #3
+        </a>
+      </h5>
+    </div>
+    <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+      <div class="card-block">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      </div>
+    </div>
+  </div>
 </div>
-
-<!-- SECTION 2 ENDS -->
-
 @endsection
