@@ -17,6 +17,103 @@
 
     <link href="css/signin.css" rel="stylesheet">
 
+    <style>
+        
+       
+        #footer {
+            margin-top: 90px;
+        }
+
+       
+
+        /* FOOTER STYLE */
+        #mobile-footer {
+            display: none;
+        }
+
+        #footer {
+            text-align: center;
+        }
+
+        #footer-links,
+        #footer-heading {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
+
+        #footer-links {
+            grid-row-gap: 10px;
+        }
+
+        #footer-heading {
+            margin-bottom: 20px;
+        }
+
+        #footer-heading a {
+            text-transform: uppercase;
+            font-weight: bold;
+            color: #333333;
+        }
+
+        #footer-links a {
+            color: #4F4F4F;
+        }
+
+        #footer li {
+            list-style: none;
+        }
+
+        #line {
+            height: 1px;
+            width: 100%;
+            padding: 0px 200px;
+            background:  #BDBDBD ;
+            margin: 30px 0px;
+        }
+
+        /* FOOTER STYLE ENDS */
+
+
+
+
+       
+
+           
+
+            #footer {
+                display: none;
+            }
+
+            #mobile-footer {
+                display: block;
+                margin-top: 100px;
+                text-align: center;
+                width: 100%;
+            }
+
+            #mobile-footer td {
+                padding: 0px 20px !important;
+            }
+
+            #mobile-footer tr {
+                width: 100%;
+            }
+
+            #footer-links,
+            #footer-heading {
+                display: flex;
+                flex-direction: row;
+                flex-grow: 4;
+            }
+
+            /* #footer-links,
+            #footer-heading {
+                width: calc(100% * (1/4) - 10px - 1px);
+            } */
+
+        }
+    </style>
+
 </head>
 
 
@@ -113,11 +210,58 @@
 
 <!-- SECTION ONE BEGINS -->
 
+<div class="container text-center">
+    <hr />
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="col-md-3">
+        <ul class="nav nav-pills nav-stacked">
+          <li><a href="#">About us</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <ul class="nav nav-pills nav-stacked">
+          <li><a href="#">Product for Mac</a></li>
+          <li><a href="#">Product for Windows</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <ul class="nav nav-pills nav-stacked">
+          <li><a href="#">Web analytics</a></li>
+          <li><a href="#">Presentations</a></li>          
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <ul class="nav nav-pills nav-stacked">
+          <li><a href="#">Product Help</a></li>
+          <li><a href="#">Developer API</a></li>
+        </ul>
+      </div>  
+    </div>
+  </div>
+  <hr>
+    <div class="row">
+        <div class="col-lg-12">
+            <ul class="nav nav-pills nav-justified">
+                <li><a href="/">© 2013 Company Name.</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Privacy</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
 
 
-<!-- FOOTER -->
-<footer class="footer">
 
+
+
+
+
+
+
+
+<div id="footer">
     <div id="footer-links">
         <li><a href="{{url('/')}}">Home</a></li>
         <li><a href="{{route('about')}}">About Us</a></li>
@@ -134,19 +278,47 @@
 
         <li><a href="#">Site Map</a></li>
     </div>
+    <p id="line"> </p>
+    <div id="lower-footer">
+        <p>&#169; 2017 Transferrules.com. All rights reserved</p>
+    </div>
+</div>
 
-        <div class="container" style="text-align:center">
+<div id="mobile-footer">
+    <table>
+        <tr>
+            <td style="font-size: 17px; font-weight: bold;">Company</td>
+            <td style="font-size: 17px; font-weight: bold;">Support</td>
+            <td style="font-size: 17px; font-weight: bold;">Terms</td>
+        </tr>
+        <tr>
+            <td><a href="{{url('/')}}">Home</a></td>
+            <td><a href="{{route('about')}}">About Us</a></td>
+            <td><a href="{{route('contact')}}">Contact Us</a></td>
+        </tr>
+        <tr>
+            <td><a href="{{route('how')}}">How it works</a></td>
+            <td><a href="{{route('contact')}}">Contact Us</a></td>
+            <td><a href="{{route('help')}}">Help & Support</a></td>
+        </tr>
+        <tr>
+            <td><a href="{{route('terms')}}">Terms & Condition</a></td>
+            <td><a href="{{route('privacy')}}">Privacy Policy</a></td>
+            <td><a href="#">Disclaimer</a></td>
+        </tr>
+    </table>
+    <p id="line"> </p>
+    <div id="lower-footer">
+        <p>&#169; 2017 Transferrules.com. All rights reserved</p>
+    </div>
+</div>
 
-            <span class="text-muted company">2017 TransferFunds - All Rights Reserved</span>
+<!-- FOOTER ENDS -->
 
-        </div>
 
-    </footer>
-
-    <script src="js/jquery.js"></script>
+<script src="js/jquery.js"></script>
 
     <script src="js/bootstrap.js"></script>
-
 </body>
 
 
