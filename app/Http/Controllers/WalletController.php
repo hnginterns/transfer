@@ -183,6 +183,7 @@ class WalletController extends Controller
                         $status = $response_arr['status'];
                         $r_data = $response['data']['data'];                             
                         $data['transaction_reference'] = $r_data['uniquereference'];
+                        print_r($response_arr);
                         if ($status == 'success') {
                             $data['transaction_status'] = true;
                             $this->logTransaction($data);
