@@ -5,6 +5,10 @@
 @endsection
 @section('content')
 
+<?php
+$bank = App\Http\Controllers\BanksController::getAllBanks();
+?>
+
 <link rel="stylesheet" href="/css/form.css">
 
 <div class="container-fluid">
@@ -28,8 +32,8 @@
                     <label>Bank</label>
                     <select name="bank_id" required class="form-control input-defaulted" >
                       <option>Select Bank</option>
-                      
-                      @foreach(App\Http\Controllers\BanksController::getAllBanks() as $bankcode)
+
+                      @foreach($banks as $bankcode)
                       <option value="{{$bankcode->id}}||{{$bankcode->bank_name}}">{{ $bankcode->bank_name }}</option>
                       @endforeach
                     </select>
