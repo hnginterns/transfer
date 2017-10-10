@@ -250,7 +250,9 @@ class AdminController extends WalletController
 
         $transaction = \App\Http\Utilities\Wallet::all();
 
-        $user = $wallet->users()->get()->toArray();
+        $data['users'] = $wallet->users()->get()->toArray();
+
+        //dd($data['users']);
 
         $data['userRef'] = substr(md5(Carbon::now()), 0, 10);
 
