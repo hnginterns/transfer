@@ -7,6 +7,7 @@
     }
     .beneficiary-container {
       padding: 30px;
+      align: center;
     }
 
     .btn-primary {
