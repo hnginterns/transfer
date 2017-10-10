@@ -140,9 +140,7 @@ class AdminController extends WalletController
         $wallets = Wallet::all();
         //return $wallets->toJson();
         //dd($wallets);
-        $transaction = \App\Http\Utilities\Wallet::all();
-
-        return view('admin.managewallet', compact('wallets', 'transaction'));
+        return view('admin.managewallet', compact('wallets'));
     }
 
     public function addWallet(Request $request)
@@ -247,8 +245,6 @@ class AdminController extends WalletController
 
 
         $status = $wallet->archived == 0 ? 'Active' : 'Archived';
-
-        $transaction = \App\Http\Utilities\Wallet::all();
 
         $data['users'] = $wallet->users()->get()->toArray();
 

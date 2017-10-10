@@ -61,7 +61,7 @@ Route::get('/walletCharge', 'WalletController@walletCharge');
 
 Route::get('/createWallet', 'WalletController@createWallet');
 
-Route::get('/walletTransfer', 'WalletController@transfer');
+Route::post('/walletTransfer', 'WalletController@transfer');
 
 Route::get('/gettoken', 'WalletController@getToken');
 
@@ -159,7 +159,7 @@ Route::group(['middleware' => ['admin']], function () {
 
 	//fund wallet
 	Route::get('/admin/fundwallet', 'AdminController@fundwallet');
-	Route::post('/admin/fund', 'WalletController@cardWallet');
+	Route::post('/admin/{wallet_code}/fund', 'WalletController@cardWallet');
 	Route::post('/admin/otp', 'WalletController@otp');
 	Route::get('/admin/transaction-history', 'AdminController@cardTransaction');
 

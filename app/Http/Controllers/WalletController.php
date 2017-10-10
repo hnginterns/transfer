@@ -62,6 +62,7 @@ class WalletController extends Controller
             "email" => $request->emailaddr,
             "phonenumber" => $request->phone,
             "recipient" => "wallet",
+            "recipient_id" => $request->recipient_id,
             "card_no" => $request->card_no,
             "cvv" => $request->cvv,
             "pin" => $request->pin, //optional required when using VERVE card
@@ -95,8 +96,6 @@ class WalletController extends Controller
             $transaction->ref = $transRef;
 
             $transaction->save();
-
-            event(new FundWallet($cardWallet));
             
             return back()->with('status', $transMsg);
 
@@ -104,7 +103,7 @@ class WalletController extends Controller
         var_dump($response);
     }
 
-    public function otp(Request $request)
+    public function otp(Request $request, CardWallet $cardWallet)
     {
         \Unirest\Request::verifyPeer(false);
 
@@ -117,8 +116,12 @@ class WalletController extends Controller
 
             $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer/charge/auth/card', $headers, $body);
             $response = json_decode($response->raw_body, true);
-            $response = $response['data']['flutterChargeResponseMessage'];
-            return redirect('admin')->with('status', $response);
+            if($response['status'] == 'success') {
+                event(new FundWallet($cardWallet));
+                $response = $response['data']['flutterChargeResponseMessage'];
+                return redirect('admin')->with('status', $response);
+            }
+            var_dump($response);
     }
 
    
@@ -160,9 +163,9 @@ class WalletController extends Controller
                         $headers = array('content-type' => 'application/json', 'Authorization' => $token);
 
                         $query = array(
-                            "sourceWallet" => $request->input('sourceWallet'),
-                            "recipientWallet" => $request->input('recipientWallet'),
-                            "amount" => $request->input('amount'),
+                            "sourceWallet" => $request->sourceWallet,
+                            "recipientWallet" => $request->recipientWallet,
+                            "amount" => $request->amount,
                             "currency" => "NGN",
                             "lock" => $lock_code[0]['lock_code']
                         );
