@@ -1,5 +1,5 @@
 @extends('layouts.page')
-@section('main-text', 'Contact Us')
+@section('main-text', '')
 @section('sub-text', 'TransferRules lets you receive payments locally and globally with no hassles and zero set up fees')
 @section('content')
 
@@ -33,7 +33,9 @@
  
   
 </div>
-            
+    
+		<div id="footer">
+		</div>
 </body> 
 
 <style>
@@ -59,7 +61,7 @@ body {
 	font-size: 12px;
 	line-height:30px;
 	color:#777;
-	background:#0CF;
+	background:#fff;
 }
 
 .container {
@@ -72,7 +74,7 @@ body {
 #contact input[type="text"], #contact input[type="email"], #contact input[type="tel"], #contact input[type="url"], #contact textarea, #contact button[type="submit"] { font:400 12px/16px "Open Sans", Helvetica, Arial, sans-serif; }
 
 #contact {
-	background:#F9F9F9;
+	background:#808080;
 	padding:25px;
 	margin:50px 0;
 }
@@ -82,12 +84,15 @@ body {
 	display: block;
 	font-size: 30px;
 	font-weight: 400;
+	text-align: center;
 }
 
 #contact h4 {
 	margin:5px 0 15px;
 	display:block;
 	font-size:13px;
+	color: #D3D3D3;
+	text-align: center;
 }
 
 fieldset {
