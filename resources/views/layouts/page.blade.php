@@ -247,7 +247,7 @@
 
 
 <div id="footer" class="footer">
-<div class="container">
+
   <div class="row">
   <hr>
 
@@ -271,7 +271,7 @@
       
     </div>
   </div>
-</div>
+
     <p id="line"> </p>
     <div id="lower-footer">
         <p>&#169; 2017 Transferrules.com. All rights reserved</p>
