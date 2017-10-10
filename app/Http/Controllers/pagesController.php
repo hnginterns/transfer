@@ -9,9 +9,12 @@ use Illuminate\Support\Facades\Auth;
 use App\Beneficiary;
 use App\User;
 use App\Restriction;
+use App\Transaction;
+use App\BankTransaction;
 
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\RestrictionController as Restrict;
+use App\Http\Controllers\transactionController as Trans;
 use App\Http\Utilities\Wallet as UtilWallet;
 
 class pagesController extends Controller
@@ -124,8 +127,15 @@ class pagesController extends Controller
         if($permit == null) return redirect('/dashboard')->with('error', 'You do not have access to this wallet');
         
         $beneficiaries = Beneficiary::where('wallet_id', $wallet->id)->paginate(15);
+
+        // get all wallet to wallet transactions, both sent and received
+        $walletTransactions = Transaction::where('wallet_code', $wallet->wallet_code)->orwhere('payee_wallet_code', $wallet->wallet_code)->get();
+        $bankTransactions = BankTransaction::where('wallet_id', $wallet->id)->get();
+
+        $history = Trans::getTransactionsHistory($walletTransactions, $bankTransactions);
+        // dd($history->toArray());
          
-        return view('view-wallet', compact('wallet','permit','rules','beneficiaries'));
+        return view('view-wallet', compact('wallet','permit','rules','beneficiaries', 'history'));
     }
 
     public function createWallet()
