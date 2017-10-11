@@ -197,6 +197,11 @@ class pagesController extends Controller
         return view('404');
     }
 
+    public function phoneTopup()
+    {
+        return view('phone-topup');
+    }
+
 
     //all other page functions can be added
 
