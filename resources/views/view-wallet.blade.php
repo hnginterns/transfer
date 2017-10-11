@@ -143,7 +143,7 @@ i.sent{
                   <td>{{ $beneficiary->bank_name }}</td>
                   <td>{{ $beneficiary->account_number }}</td>
                   <td>{{ $beneficiary->wallet_id }}</td>
-                  <td>{{ $beneficiary->created_at }}</td>
+                  <td>{{ $beneficiary->created_at->toFormattedDateString() }}</td>
                 </tr>
               @endforeach
               
