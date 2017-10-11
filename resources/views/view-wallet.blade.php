@@ -79,7 +79,7 @@ i.sent{
 							</thead>
 							<tbody>
               @foreach($history as $key => $hist)
-                <tr id="transaction" onclick="$('#modal-id{{$wallet->lock_code}}').modal('toggle')">
+                <tr id="transaction" onclick="$('#modal-id{{$key}}').modal('toggle')">
 									<td id="transction_type">{{ $hist['transaction_type'] }} </td>
                   <td id="transaction_state">{{ $hist['transaction_state'] }}</td>
 									<td id="transaction_amount">{{ $hist['transaction_amount'] }} </td>
@@ -87,7 +87,7 @@ i.sent{
 									<td id="transaction_status"><i class="fa {{ $hist['transaction_status'] ? 'fa-check-circle can' : 'fa-times-circle cannot' }}" aria-hidden="true"></i></td>
 								</tr>
                 
-                <div class="modal fade" id="modal-id{{$wallet->lock_code}}">
+                <div class="modal fade" id="modal-id{{$key}}">
                   <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
