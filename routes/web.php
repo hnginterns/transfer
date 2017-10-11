@@ -38,6 +38,8 @@ Route::get('/welcome', function () {
 });
 
 Route::get('/testo', 'AdminController@Test');
+Route::get('/card-to-wallet', 'UserWalletController@userWallet');
+
 
 Route::get('/otp', 'pagesController@otp');
 
