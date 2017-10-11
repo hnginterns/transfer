@@ -78,10 +78,16 @@
         #sign-in {
             margin-top: 9px;
             /* background: #E57679; */
-            background: #FF6200;
+
+            background: #FFFFFF !important;
+            color: #000000 !important;
+            border: 1px solid #00AEFF !important;
             border-radius: 63px;
             padding-left: 12px;
             padding-right: 12px;
+        }
+        #sign-in:hover {
+            color:#00AEFF
         }
 
         #sign-in a  {
@@ -790,7 +796,7 @@
         <img src="img/phone.png" alt="Transfer rules mobile app screenshot" id="mobile-app">
         <div id="content-text" class="clearfix">
                 <span id="heading-hd">
-                    TransferRules
+                    Create an account for your company with Finance @ hotels.ng
                 </span>
             <span id="text-hd">
                     Create an account for your company with TransferRules and gain full control over financial transactions, disbursement of funds and lot more services.

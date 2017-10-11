@@ -41,13 +41,9 @@
                         curl_close($curl);
 
                         if ($err) {
-                        <h5 class="balance-text">
-                        echo "cURL Error #:" . $err;
-                        </h5>
+                        echo "<h5 class='balance-text'> cURL Error #:" . $err . "</h5>";
                         } else {
-                        <h5 class="balance-text">
-                        echo $response;
-                        </h5>
+                        echo "<h5 class='balance-text'>" .$response . "</h5>";
                         }
                         ?>
                         </div>
@@ -181,7 +177,7 @@
                         <div class="text-center">
 
                             <button class="btn btn-primary custom-button topUp">Top Up All</button>
-                            <button class="btn btn-primary custom-button topUp" data-toggle="modal" data-target="bs-example-modal-lg">History</button>
+                            <button class="btn btn-primary custom-button topUp" type="button" data-toggle="modal" data-target=".bs-example-modal-lg">History</button>
                         </div>
                     </template>
                     <template v-else>
@@ -321,22 +317,22 @@
                 providers: [{
                         name: 'MTN',
                         code: 15,
-                        icon: "images/2.png"
+                        icon: "img/2.png"
                     },
                     {
                         name: 'Airtel',
                         code: 1,
-                        icon: "images/3.png"
+                        icon: "img/3.png"
                     },
                     {
                         name: '9Mobile',
                         code: 2,
-                        icon: "images/1.png"
+                        icon: "img/1.png"
                     },
                     {
                         name: 'GLO',
                         code: 6,
-                        icon: "images/4.png"
+                        icon: "img/4.png"
                     }
                 ],
                 dataPlans: {

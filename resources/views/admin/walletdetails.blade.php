@@ -131,21 +131,18 @@
                           <th>Name</th>
                           <th>Account Number</th>
                           <th>Bank</th>
-                          <th>Status</th>
                           <th >Action</th>
                         </tr>
                     </thead>
                     <tbody>
                       @forelse ($beneficiaries as $beneficiary)
                       <tr>
-                        <td>{{$beneficiary->name}}</td>
-                        <td>{{$beneficiary->account_number}}</td>
-                        <td>{{$beneficiary->bank_id}}</td>
-                        <td>{{$beneficiary->status}}</td>
+                        <td style="color: #595757;">{{ $beneficiary->name }}  {{$beneficiary->id}}</td>
+                        <td style="color: #595757;">{{ $beneficiary->bank_name }}</td>
+                        <td style="color: #595757;">{{ $beneficiary->account_number }}</td>
                         <td>
-                          <a href="{{ route('beneficiaries.details', $beneficiary->id) }}" class="btn btn-success">Details</a>
-                                <a href="{{ route('beneficiaries.edit', $beneficiary->id) }}" class="btn btn-warning">Edit</a>
-                                <a href="{{ route('beneficiaries.delete', $beneficiary->id) }}" class="btn btn-danger" onclick="return confirm('Are you sure to archive this beneficiary?')">Archive</a>
+                          
+                              <a href="{{ route('beneficiaries.delete', $beneficiary->id) }}" class="btn btn-danger" onclick="return confirm('Are you sure to archive this beneficiary?')">Archive</a>
                             </td>
                       </tr>
 
