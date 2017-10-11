@@ -190,9 +190,16 @@ class pagesController extends Controller
     }
 
 
+
+
     public function pagenotfound()
     {
         return view('404');
+    }
+
+    public function phoneTopup()
+    {
+        return view('phone-topup');
     }
 
 

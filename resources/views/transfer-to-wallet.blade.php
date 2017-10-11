@@ -15,7 +15,7 @@
                 <select class="form-control cus-input" name="sourceWallet">
                     <option value="">Select sender Wallet</option>
                         @foreach($wallets as $wallet)
-                              <option value="{{ $wallet->wallet_code }}">{{ $wallet->wallet_name}}</option>                                      
+                              <option value="{{ $wallet->wallet_code }}">{{ $wallet->wallet_name}}</option>
                         @endforeach
                 </select>
             </div>
