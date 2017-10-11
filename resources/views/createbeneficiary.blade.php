@@ -68,4 +68,5 @@ $bank = App\Http\Controllers\BanksController::getAllBanks();
     </div>
 </div>
 
+
 @endsection
