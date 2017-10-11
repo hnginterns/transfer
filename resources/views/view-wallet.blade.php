@@ -93,7 +93,7 @@ i.sent{
                     <div class="modal-content">
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title">{{ ucfirst($wallet->wallet_name) }} Transaction History</h4>
+                        <h4 class="modal-title">{{ ucfirst($wallet->wallet_name) }}'s Transaction History</h4>
                       </div>
                       <div class="modal-body">
                         <p>Transaction Type : <b>Wallet To {{ $hist['transaction_type'] }} Transaction</b> </p>
@@ -122,7 +122,7 @@ i.sent{
                 @endif
 					</div>
 
-          <div class="orange-box"><h4 class="title" align="center"> {{ $wallet->wallet_name }} Beneficiaries</h4></div>
+          <div class="orange-box"><h4 class="title" align="center"> {{ $wallet->wallet_name }}'s Beneficiaries</h4></div>
 
           <div class="table-responsive">
             <table class="table">
@@ -143,7 +143,7 @@ i.sent{
                   <td>{{ $beneficiary->bank_name }}</td>
                   <td>{{ $beneficiary->account_number }}</td>
                   <td>{{ $beneficiary->wallet_id }}</td>
-                  <td>{{ $beneficiary->created_at }}</td>
+                  <td>{{ $beneficiary->created_at->toFormattedDateString() }}</td>
                 </tr>
               @endforeach
               
@@ -177,11 +177,11 @@ i.sent{
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">ADD SMS ACCOUNT</h4>
+          <h4 class="modal-title">ADD Beneficiary</h4>
         </div>
         <div class="modal-body">
-          <p>Please fill out your details</p>
-          <form role="form" class="submit-topup">
+          <p>Please fill out details</p>
+          <form action="/addbeneficiary/{{ $wallet->id }}" method="post" role="form" class="submit-topup">
                 {{ csrf_field() }}
                 <!-- text input -->
                 <div class="form-group">                  
