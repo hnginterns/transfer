@@ -87,7 +87,7 @@
             padding-right: 12px;
         }
         #sign-in:hover {
-            color:00AEFF
+            color:#00AEFF
         }
 
         #sign-in a  {
