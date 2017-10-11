@@ -41,13 +41,9 @@
                         curl_close($curl);
 
                         if ($err) {
-                        <h5 class="balance-text">
-                        echo "cURL Error #:" . $err;
-                        </h5>
+                        echo "<h5 class='balance-text'> cURL Error #:" . $err . "</h5>";
                         } else {
-                        <h5 class="balance-text">
-                        echo $response;
-                        </h5>
+                        echo "<h5 class='balance-text'>" .$response . "</h5>";
                         }
                         ?>
                         </div>
