@@ -12,6 +12,8 @@ use App\Restriction;
 use App\Transaction;
 use App\BankTransaction;
 
+use App\Bank;
+
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\RestrictionController as Restrict;
 use App\Http\Controllers\transactionController as Trans;
@@ -45,10 +47,9 @@ class pagesController extends Controller
     public function userdashboard()
     {
         $wallet = Wallet::all();
-        $transaction = \App\Http\Utilities\Wallet::all();
         // $permission = Restriction::where('uuid',Auth::user()->id)->get();
         
-        return view('dashboard', compact('wallet', 'transaction'));
+        return view('dashboard', compact('wallet'));
     }
 
     public function about()
@@ -144,8 +145,10 @@ class pagesController extends Controller
     }
 
     public function createBeneficiary()
+
     {
-        return view('create-beneficiary');
+        $banks = Bank::all();
+        return view('create-beneficiary', compact('banks'));
     }
 
     public function addBeneficiary(Wallet $wallet)
@@ -156,7 +159,10 @@ class pagesController extends Controller
         if($permit == null) return back()->with('error', 'You do not have the permission to add beneficiary');
         $restrict = new Restrict($permit);
         if(count($restrict->canAddBeneficiary()) > 0) return back()->with('error', 'You do not have the permission to add beneficiary');
-        return view('createbeneficiary', compact('wallet'));
+        
+        $banks = Bank::all();
+
+        return view('createbeneficiary', compact('wallet','banks'));
     }
 
     public function insertBeneficiary(Wallet $wallet)

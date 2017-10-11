@@ -96,13 +96,11 @@
                 </li>
 
                 <li class="list-group-item">
-                 <a href="{{ route('wallets.manualfund', $wallet->id)}}" class="btn btn-warning">Manual Fund Wallet</a>
+                 <a href="{{ route('wallets.manualfund', $wallet->id)}}" class="btn btn-warning">Fund Wallet</a>
                 </li>
+                
                 <li class="list-group-item">
-                  <a href="{{ route('wallets.ravefund', $wallet->id)}}" class="btn btn-info" >Add Fund Ravepay</a>
-                </li>
-                <li class="list-group-item">
-                  <a href="" class="btn btn-info" >Add Permission</a>
+                  <a href="{{route('permission.create')}}" class="btn btn-info" >Add Permission</a>
                 </li>
               </ul>
 
@@ -125,7 +123,8 @@
             </ul>
             <div class="tab-content">
               <div class="active tab-pane" id="beneficiaries">
-
+              
+              @if(!empty($beneficiaries))
                 <table class="table">
                     <thead>
                         <tr>
@@ -137,7 +136,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                      @foreach ($beneficiaries as $beneficiary)
+                      @forelse ($beneficiaries as $beneficiary)
                       <tr>
                         <td>{{$beneficiary->name}}</td>
                         <td>{{$beneficiary->account_number}}</td>
@@ -149,10 +148,18 @@
                                 <a href="{{ route('beneficiaries.delete', $beneficiary->id) }}" class="btn btn-danger" onclick="return confirm('Are you sure to archive this beneficiary?')">Archive</a>
                             </td>
                       </tr>
-                      @endforeach
+
+                      @empty
+                        <p> No Beneficiaries has been added to this wallet.</p>
+                      @endforelse
+                      
                     </tbody>
 
                 </table>
+              @else
+              <h2> No Beneficiaries has been added to this wallet yet </h2>
+            @endif
+
 
               </div>
               <!-- /.tab-pane -->
@@ -190,10 +197,10 @@
                     <tbody style="color: #595757;">
                       @forelse($users as $user)
                       <tr>
-                        <td style="color: #595757;"> {{ $user['first_name'] }}</td>
-                        <td style="color: #595757;"> {{ $user['last_name'] }}</td>
-                        <td style="color: #595757;"> {{ $user['username'] }}</td>
-                        <td style="color: #595757;"> {{ $user['email'] }}</td>
+                        <td style="color: #595757;"> {{ $user->first_name }}</td>
+                        <td style="color: #595757;"> {{ $user->last_name }}</td>
+                        <td style="color: #595757;"> {{ $user->username }}</td>
+                        <td style="color: #595757;"> {{ $user->email }}</td>
                       </tr>
                       @empty
                         <p> No User has been attached to this wallet.</p>

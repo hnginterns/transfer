@@ -75,7 +75,7 @@
 
 <div class="container-fluid">
 
-  <a type="button" class="btn btn-info" href="{{config('app.url')}}/admin/addpermission" name="button"> Add Permission</i></a>
+  <a type="button" class="btn btn-info" href="{{ route('permission.create')}}" name="button"> Add Permission</i></a>
 
   <div class="wallet-container">
 

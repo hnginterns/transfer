@@ -19,7 +19,7 @@ Route::get('/', 'pagesController@home')->name('home');
 //Route::get('/home', 'pagesController@home');
 // get signin page
 //Route::get('/signin', 'pagesController@signin');
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home.index');
 
 Route::get('/logout', function () {
 	Auth::logout();
@@ -28,6 +28,9 @@ Route::get('/logout', function () {
 });
 
 //Route::get('/fundWallet', 'WalletController@fundWallet');
+Route::get('/testbanks', 'BanksController@getAllBanks');
+
+
 
 
 Route::get('/welcome', function () {
@@ -61,7 +64,7 @@ Route::get('/walletCharge', 'WalletController@walletCharge');
 
 Route::get('/createWallet', 'WalletController@createWallet');
 
-Route::get('/walletTransfer', 'WalletController@transfer');
+Route::post('/walletTransfer', 'WalletController@transfer');
 
 Route::get('/gettoken', 'WalletController@getToken');
 
@@ -132,11 +135,11 @@ Route::group(['middleware' => ['admin']], function () {
   	Route::post('admin/beneficiaries/update/{id}', 'Admin\BeneficiaryController@update')->name('beneficiaries.update');
   	Route::get('admin/beneficiaries/delete/{id}', 'Admin\BeneficiaryController@delete')->name('beneficiaries.delete');
 
-	Route::get('/admin/managePermission', 'AdminController@managePermission');
-	Route::get('/admin/addpermission', 'Admin\WalletController@addPermission');
-	Route::post('/admin/addpermission', 'Admin\WalletController@PostAddPermission');
-	Route::get('/admin/editpermission/{restriction}', 'Admin\WalletController@editPermission');
-	Route::post('/admin/editpermission/{restriction}', 'Admin\WalletController@PostEditPermission');
+	Route::get('/admin/managePermission', 'AdminController@managePermission')->name('permission.manage');
+	Route::get('/admin/addpermission', 'Admin\WalletController@addPermission')->name('permission.create');
+	Route::post('/admin/addpermission', 'Admin\WalletController@PostAddPermission')->name('permission.store');
+	Route::get('/admin/editpermission/{restriction}', 'Admin\WalletController@editPermission')->name('permission.edit');
+	Route::post('/admin/editpermission/{restriction}', 'Admin\WalletController@PostEditPermission')->name('permission.update');
 	Route::get('/admin', 'AdminController@index')->name('admin.dashboard');
 	Route::get('/admin/managewallet', 'AdminController@managewallet');
 	Route::get('/admin/managebeneficiary', 'AdminController@managebeneficiary');
@@ -159,7 +162,7 @@ Route::group(['middleware' => ['admin']], function () {
 
 	//fund wallet
 	Route::get('/admin/fundwallet', 'AdminController@fundwallet');
-	Route::post('/admin/fund', 'WalletController@cardWallet');
+	Route::post('/admin/{wallet_code}/fund', 'WalletController@cardWallet');
 	Route::post('/admin/otp', 'WalletController@otp');
 	Route::get('/admin/transaction-history', 'AdminController@cardTransaction');
 
@@ -211,4 +214,4 @@ Route::group(['middleware' => ['admin']], function () {
 
 });
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');

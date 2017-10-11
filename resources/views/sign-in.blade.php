@@ -79,8 +79,6 @@
 
                     <li class="nav-item active">
 
-
-
                         <a href="{{ route('admin.login') }}"class="nav-link">Admin login</a>
 
 

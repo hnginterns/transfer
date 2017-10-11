@@ -12,7 +12,9 @@ use App\Wallet;
 use App\CardWallet;
 use App\Restriction;
 use App\Rule;
+use DB;
 use App\Beneficiary;
+use App\Transaction;
 use Carbon\Carbon;
 use Trs;
 
@@ -140,9 +142,7 @@ class AdminController extends WalletController
         $wallets = Wallet::all();
         //return $wallets->toJson();
         //dd($wallets);
-        $transaction = \App\Http\Utilities\Wallet::all();
-
-        return view('admin.managewallet', compact('wallets', 'transaction'));
+        return view('admin.managewallet', compact('wallets'));
     }
 
     public function addWallet(Request $request)
@@ -248,10 +248,16 @@ class AdminController extends WalletController
 
         $status = $wallet->archived == 0 ? 'Active' : 'Archived';
 
-        $transaction = \App\Http\Utilities\Wallet::all();
+        //$data['users'] = $wallet->users()->get()->toArray();
 
-        $data['users'] = $wallet->users()->get()->toArray();
+        //$data['users'] = Restriction::where('wallet_id', $walletId)->get()->toArray();
 
+          $data['users'] =  DB::table('restrictions')
+                            ->join('users', 'restrictions.uuid', '=', 'users.id')
+                            ->where('restrictions.wallet_id', '=', $walletId)
+                            ->select('users.username', 'users.first_name', 'users.last_name', 'users.email')
+                            ->get()->toArray();
+        
         //dd($data['users']);
 
         $data['userRef'] = substr(md5(Carbon::now()), 0, 10);
@@ -261,6 +267,10 @@ class AdminController extends WalletController
         //$data['wt'] = WalletTransaction::where('source_wallet', $walletId)->orWhere('recipient_wallet', $walletId)->get();
 
         $data['wallet'] = $wallet;
+
+        $data['transactions'] = WalletTransaction::all();
+
+        dd($data['transactions']);
 
         return view('admin/walletdetails', $data); //compact('wallet', 'user', 'transaction'));
     }
