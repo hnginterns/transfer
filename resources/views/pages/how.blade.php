@@ -215,8 +215,8 @@
 
     <div id="collapseEleven" class="collapse" role="tabpanel" aria-labelledby="headingEleven">
       <div class="card-block">
-        <p>If you use the activation form, the reactivation will be within the next 48 hours of submission, if it by email application , the activation process will be within the next 72 hours of submission.</p>
-        <p>You will receive a reply on your email from us regarding the reactivation process status.</p>
+        <p>If you use the activation form, the reactivation will be within the next 48 hours of submission.</p>
+        <p>If it by email application , the activation process will be within the next 72 hours of submission, you will receive a reply on your email from us regarding the reactivation process status.</p>
       </div>
     </div>
   </div>
@@ -224,7 +224,7 @@
     <div class="card-header" role="tab" id="headingTwelve">
       <h5 class="mb-0">
         <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwelve" aria-controls="collapseTwelve">
-          Is there an finance.hotels.ng smartphone app?
+          Is there a finance.hotels.ng smartphone app?
         </a>
       </h5>
     </div>
