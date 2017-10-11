@@ -78,6 +78,7 @@
         #sign-in {
             margin-top: 9px;
             /* background: #E57679; */
+            color:#000000 !important;
             background: #FFFFFF !important;
             border: 1px solid #00AEFF !important;
             border-radius: 63px;
