@@ -260,7 +260,7 @@ class AdminController extends WalletController
         
         //dd($data['users']);
 
-        $data['transactions'] = Transaction::all();
+        $data['transactions'] = CardWallet::all();
 
         dd($data['transactions']);
 
