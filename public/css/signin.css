@@ -143,7 +143,7 @@ li.nav-item {
 
 .admin-login>.form-group>.form-control:focus,
 .cus-input:focus {
-    border-color: #fd8032;
+    border-color: #00AEFF;
 }
 
 .admin-login>.form-group>.form-control,
