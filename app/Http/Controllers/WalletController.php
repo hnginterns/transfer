@@ -150,7 +150,7 @@ class WalletController extends Controller
                 ->where('wallet_code', $request->sourceWallet)->get()->toArray();
             
             $restriction = Restriction::where('wallet_id', $lock_code[0]['id'])->get()->toArray();
-            $rules = Rule::where('id', $restriction[0]['rule_id'])->get()->toArray();
+            
             $amount = $request->input('amount');
             $data = [];
             
@@ -163,15 +163,13 @@ class WalletController extends Controller
             $data['bank_id'] = 0;
             $data['payee_wallet_code'] = $request->recipientWallet;
 
-            if ($rules[0]['can_transfer'] == 1) {
+            if ($restriction[0]['can_transfer_from_wallet'] == true) {
                 $date = new DateTime();
                 $date_string = date_format($date, "Y-m-d");
                 $wallet_transactions = Transaction::count();
                 $total_amount = Transaction::sum('amount_transfered');
 
-                if ($wallet_transactions < $rules[0]['max_transactions_per_day'] && $total_amount < $rules[0]['max_amount_transfer_per_day']) {
-
-                    if ($amount >= $rules[0]['min_amount'] && $amount <= $rules[0]['max_amount']) {
+                    if ($amount >= $restriction[0]['min_amount'] && $amount <= $restriction[0]['max_amount']) {
                         $token = $this->getToken();
                         $headers = array('content-type' => 'application/json', 'Authorization' => $token);
 
@@ -200,9 +198,6 @@ class WalletController extends Controller
                     } else {
                         return redirect()->action('pagesController@failed', $response);
                     }
-                } else {
-                    return redirect()->action('pagesController@failed', $response);
-                }
             } else {
                 return redirect()->action('pagesController@failed', $response);
             }
