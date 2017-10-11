@@ -43,7 +43,7 @@
                     <div class="form-group">
                         <label class="control-label col-sm-2" >Sender's Last Name</label>
                         <div class="col-sm-10">
-                            <input type="text" name="lname" id="lname" class="form-control" value="{{ $user->last_name}}>
+                            <input type="text" name="lname" id="lname" class="form-control" value="{{ $user->last_name}}">
 
                         </div>
                     </div>
