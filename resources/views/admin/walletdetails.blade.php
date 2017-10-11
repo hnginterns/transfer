@@ -175,9 +175,9 @@
                     <tbody>
                       @forelse ($transactions as $transaction)
                       <tr>
-                        <td style="color: #595757;">{{ transaction->firstName }}  {{transaction->lastName}}</td>
-                        <td style="color: #595757;">{{ transaction->amount }}</td>
-                        <td style="color: #595757;">{{ transaction->ref }}</td>
+                        <td style="color: #595757;">{{ $transaction->firstName }}  {{$transaction->lastName}}</td>
+                        <td style="color: #595757;">{{ $transaction->amount }}</td>
+                        <td style="color: #595757;">{{ $transaction->ref }}</td>
 
                       @empty
                         <p> No Transactions has been added to this wallet.</p>
