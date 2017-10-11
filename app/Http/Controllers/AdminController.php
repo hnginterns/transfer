@@ -262,7 +262,7 @@ class AdminController extends WalletController
 
         $data['transactions'] = CardWallet::all();
 
-        dd($data['transactions']);
+        //dd($data['transactions']);
 
         $data['userRef'] = substr(md5(Carbon::now()), 0, 10);
 
