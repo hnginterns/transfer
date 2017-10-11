@@ -90,6 +90,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/transfer', 'pagesController@transfer');
 	Route::get('/balance', 'pagesController@balance');
 	Route::get('/ravepay/{id}', 'RavepayController@index')->name('ravepay.pay');
+	Route::post('/wallet/{wallet_code}/fund', 'WalletController@cardWallet');
 	Route::get('/integrity/{txRef}/{email}', 'RavepayController@checkSum');
 
 	Route::get('/ravepaysuccess/{ref}/{amount}/{currency}', 'RavepayController@success');

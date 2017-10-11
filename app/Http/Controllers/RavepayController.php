@@ -7,6 +7,8 @@ use App\Restriction;
 
 use Auth;
 use App\Http\Controllers\RestrictionController as Restrict;
+
+use App\CardWallet;
 use App\Wallet;
 
 class RavepayController extends Controller
@@ -34,7 +36,9 @@ class RavepayController extends Controller
 
         $wallet = Wallet::find($id)->first();
 
-        return view('ravepay', compact('permit', 'wallet', 'user'));
+        $cardWallet = CardWallet::latest()->first();
+
+        return view('ravepay', compact('permit', 'wallet', 'cardWallet', 'user'));
     }
 
     public function success($ref, $amount, $currency)

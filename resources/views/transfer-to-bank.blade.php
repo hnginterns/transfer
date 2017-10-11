@@ -27,6 +27,21 @@
                       </svg>
 
                   </div>
+                  @if(session('failed'))
+                  
+                  <div class="alert alert-danger">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <strong>{{ session('failed') }}</strong> 
+                  </div>
+                  @elseif(session('status'))
+                  
+                  <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <strong>{{ session('status') }}</strong> Alert body ...
+                  </div>
+                  
+                  
+                  @endif
                   <h4 class="intro text-center">Transfer To Beneficiary </h4>
                   <form class="input-form" action="" method="POST">
                   {{csrf_field()}}
