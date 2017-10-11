@@ -134,9 +134,9 @@
         #button-hd {
             width: fit-content;
             /* color: #E57679; */
-            color: white;
+            color: #FFFFFF;
             border: none;
-            background: #FF5700;
+            background: #2CACF0;
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
             padding: 10px 15px;
             border-radius: 63px;
@@ -145,8 +145,8 @@
         }
 
         #button-hd:hover {
-            /* background: #E57679;
-            color: white; */
+            /* background: #2CACF0;
+            color: #FFFFFF; */
             color: #FF6200;
             background: white;
         }
@@ -170,7 +170,7 @@
         .section-header {
             font-size: 36px;
             /* color: #3D8BA8; */
-            color: #FF6200;
+            color: #2CACF0;
         }
 
         .section-sub {
@@ -215,12 +215,12 @@
             height: 60px;
             border-radius: 30px;
             /* background: linear-gradient(180deg, #358CAA 1.49%, #F87373 98.73%); */
-            background: linear-gradient(180deg, #FF6200 0%, #000000 98.9%);
+            background: linear-gradient(180deg, #FF6200 0%, #2CACF0 0.01%, #000000 98.9%);
         }
 
         #feature-heading {
             text-transform: uppercase;
-            color: #FF6200;
+            color: #2CACF0;
         }
 
         /* SECTION ONE STYLE ENDS */
@@ -299,8 +299,8 @@
             grid-row: 1/3;
             width: fit-content;
             height: fit-content;
-            background: #FF6200;
-            color: white;
+            background: #2AA6E8;
+            color: #FFFFFF;
             border: none;
             padding: 12px 16px;
             border-radius: 63px;
@@ -308,8 +308,8 @@
         }
 
         #divider-cta:hover {
-            color: #FF6200;
-            background: white;
+            color: #2AA6E8;
+            background: #FFFFFF;
         }
 
         #divider-text {
@@ -322,7 +322,7 @@
         }
 
         #divider-title {
-            color: #FF6200;
+            color: #2AA6E8;
             font-size: 20px;
             font-weight: bold;
             letter-spacing: 0.04em;
@@ -754,21 +754,29 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#"><img id="logo" src="img/logo.png" alt="Company logo" style="display: inline;"> </a>
+                <a class="navbar-brand" href="{{url('/')}}"><img id="logo" src="img/logo.png" alt="Company logo" style="display: inline;"> </a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="{{url("/")}}">Home <span class="sr-only">(current)</span></a></li>
-                    <li><a href="{{url("/")}}">FAQs</a></li>
-                    <li><a href="{{url("/")}}">Features</a></li>
-                    <li><a href="{{url("/")}}">Demo</a></li>
-                    <li><a href="{{url("/about")}}">About</a></li>
+
+                     <li class="{{ Request::segment(1) === '/' ? 'active' : null }}" ><a href="{{url('/')}}">Home</a></li>
+                    <li class="{{ Request::segment(1) === 'how' ? 'active' : null }}" ><a href="{{route('how')}}">FAQs</a></li>
+                    <li class="{{ Request::segment(1) === 'features' ? 'active' : null }}"><a href="{{route('features')}}">Features</a></li>
+                    <li><a href="{{url('#')}}">Demo</a></li>
+                    <li class="{{ Request::segment(1) === 'about' ? 'active' : null }}"><a href="{{route('about')}}">About<span class="sr-only">(current)</span></a></li>
+
                     @if(Auth::guest())
                         <li id="sign-in"><a href="{{url('/login')}}">SIGN IN</a></li>
                     @else
                         <li id="sign-in">
                         <a href="{{ url('/logout') }}">
                             Logout
+                        </a>
+                      </li>
+
+                      <li id="sign-in">
+                        <a href="{{ url('/dashboard') }}">
+                            Dashboard
                         </a>
                       </li>
                     @endif
@@ -882,19 +890,18 @@
 
 <div id="footer">
     <div id="footer-links">
-        <li><a href="/">Home</a></li>
-        <li><a href="/about">About Us</a></li>
-        <li><a href="/home">Privacy Policy</a></li>
+        <li><a href="{{url('/')}}">Home</a></li>
+        <li><a href="{{route('about')}}">About Us</a></li>
+        <li><a href="{{route('privacy')}}">Privacy Policy</a></li>
 
-        <li><a href="#">How it works</a></li>
-        <li><a href="#">Sign Up</a></li>
-        <li><a href="#">Contact Us</a></li>
+        <li><a href="{{route('how')}}">How it works</a></li>
+        <li><a href="{{route('contact')}}">Contact Us</a></li>
         <li><a href="#">Disclaimer</a></li>
 
-        <li><a href="#">Help & Support</a></li>
-        <li><a href="#">Sign In</a></li>
-        <li><a href="#">FAQs</a></li>
-        <li><a href="#">Terms & Condition</a></li>
+        <li><a href="{{route('help')}}">Help & Support</a></li>
+        <li><a href="{{url('login')}}">Sign In</a></li>
+        <li><a href="{{route('how')}}">FAQs</a></li>
+        <li><a href="{{route('terms')}}">Terms & Condition</a></li>
 
         <li><a href="#">Site Map</a></li>
     </div>
@@ -907,24 +914,24 @@
 <div id="mobile-footer">
     <table>
         <tr>
-            <td style="font-size: 17px; font-weight: bold;">Heading</td>
-            <td style="font-size: 17px; font-weight: bold;">Heading</td>
-            <td style="font-size: 17px; font-weight: bold;">Heading</td>
+            <td style="font-size: 17px; font-weight: bold;">Company</td>
+            <td style="font-size: 17px; font-weight: bold;">Support</td>
+            <td style="font-size: 17px; font-weight: bold;">Terms</td>
         </tr>
         <tr>
-            <td>Link</td>
-            <td>Link</td>
-            <td>Link</td>
+            <td><a href="{{url('/')}}">Home</a></td>
+            <td><a href="{{route('about')}}">About Us</a></td>
+            <td><a href="{{route('contact')}}">Contact Us</a></td>
         </tr>
         <tr>
-            <td>Link</td>
-            <td>Link</td>
-            <td>Link</td>
+            <td><a href="{{route('how')}}">How it works</a></td>
+            <td><a href="{{route('contact')}}">Contact Us</a></td>
+            <td><a href="{{route('help')}}">Help & Support</a></td>
         </tr>
         <tr>
-            <td>Link</td>
-            <td>Link</td>
-            <td>Link</td>
+            <td><a href="{{route('terms')}}">Terms & Condition</a></td>
+            <td><a href="{{route('privacy')}}">Privacy Policy</a></td>
+            <td><a href="#">Disclaimer</a></td>
         </tr>
     </table>
     <p id="line"> </p>

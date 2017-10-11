@@ -12,8 +12,11 @@ use App\Wallet;
 use App\CardWallet;
 use App\Restriction;
 use App\Rule;
+use DB;
 use App\Beneficiary;
+use App\Transaction;
 use Carbon\Carbon;
+use Trs;
 
 class AdminController extends WalletController
 {
@@ -139,9 +142,7 @@ class AdminController extends WalletController
         $wallets = Wallet::all();
         //return $wallets->toJson();
         //dd($wallets);
-        $transaction = \App\Http\Utilities\Wallet::all();
-
-        return view('admin.managewallet', compact('wallets', 'transaction'));
+        return view('admin.managewallet', compact('wallets'));
     }
 
     public function addWallet(Request $request)
@@ -242,13 +243,36 @@ class AdminController extends WalletController
     public function show($walletId)
     {
         $wallet = Wallet::find($walletId);
-        $transaction = \App\Http\Utilities\Wallet::all();
 
-        $user = $wallet->users()->get()->toArray();
 
-        $userRef = substr(md5(Carbon::now()), 0, 10);
 
-        return view('admin/walletdetails', compact('wallet', 'user', 'transaction'));
+        $status = $wallet->archived == 0 ? 'Active' : 'Archived';
+
+        //$data['users'] = $wallet->users()->get()->toArray();
+
+        //$data['users'] = Restriction::where('wallet_id', $walletId)->get()->toArray();
+
+          $data['users'] =  DB::table('restrictions')
+                            ->join('users', 'restrictions.uuid', '=', 'users.id')
+                            ->where('restrictions.wallet_id', '=', $walletId)
+                            ->select('users.username', 'users.first_name', 'users.last_name', 'users.email')
+                            ->get()->toArray();
+        
+        //dd($data['users']);
+
+        $data['userRef'] = substr(md5(Carbon::now()), 0, 10);
+
+        $data['beneficiaries'] = Beneficiary::where('wallet_id', $walletId)->get();
+
+        //$data['wt'] = WalletTransaction::where('source_wallet', $walletId)->orWhere('recipient_wallet', $walletId)->get();
+
+        $data['wallet'] = $wallet;
+
+        $data['transactions'] = WalletTransaction::all();
+
+        //dd($data['transactions']);
+
+        return view('admin/walletdetails', $data); //compact('wallet', 'user', 'transaction'));
     }
 
     public function walletdetails()
@@ -265,6 +289,8 @@ class AdminController extends WalletController
         dd($walletBalance);
     }
 
+    // There's already a method in wallet.php for archiving.
+    // You could use route model binding to inject the wallet
     public function archiveWallet($id)
     {
         $wallet = Wallet::findOrFail($id);

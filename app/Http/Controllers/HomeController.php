@@ -34,4 +34,5 @@ class HomeController extends Controller
         // return $wal->archive() ? "Wallet was Archived" : "Archiving Failed!";
         return $wal->canTransfer() ? "Transaction can Proceed" : "Transaction Failed! You have reached your Transaction Limit for the day";
     }
+
 }

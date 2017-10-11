@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Session;
-
+use App\CardWallet;
 use App\Wallet;
 use App\Beneficiary;
 use DB;
@@ -188,19 +188,21 @@ class WalletController  extends Controller
     }
 
 
-    public function manualfund($id){
+    public function manualfund($id, CardWallet $cardWallet){
         //get wallet data by id
         $wallet = Wallet::find($id);
+
+        $cardWallet = CardWallet::latest()->first();
         
         //load form view
-        return view('admin.wallets.manualfund', ['wallet' => $wallet]);
+        return view('admin.wallets.manualfund', compact('wallet', 'cardWallet'));
     }
 
 
     public function manualfundstore($id, Request $request){
 
         //validate wallet data
-        $this->validate($request, [
+        /**$this->validate($request, [
             'name' => 'required',
             'amount' => 'required',
             'user_id' => 'required',
@@ -223,7 +225,7 @@ class WalletController  extends Controller
         $wallet = Wallet::find($id);
         
         //load form view
-        return view('admin.wallets.ravefund', ['wallet' => $wallet]);
+        return view('admin.wallets.ravefund', ['wallet' => $wallet]);*/
     }
 
 

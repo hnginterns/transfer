@@ -7,7 +7,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="{{ route('transferrules') }}"> <span> <img src="/img/logo.png" alt=""></span> Transfer Rules</a>
+          <a class="navbar-brand" href="{{url('/')}}"> <span> <img src="/img/logo.png" alt=""></span> Transfer Rules</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -36,6 +36,23 @@
                 <i class="fa fa-dashboard fa-lg"></i> Logout
                 </a>
               </li>
+              @if(Auth::user())
+              </li>  
+                <li  class="hidden-lg hidden-lg-up">
+                <a href="{{ url('/dashboard') }}">
+                <i class="fa fa-dashboard fa-lg"></i> Dashboard
+                </a>
+              </li>
+              @endif
+
+              @if(Auth::user()->isAdmin())
+              </li>  
+                <li  class="hidden-lg hidden-lg-up">
+                <a href="{{ url('/admin') }}">
+                <i class="fa fa-dashboard fa-lg"></i> Dashboard
+                </a>
+              </li>
+              @endif
               <li><a href="#" style="color:white; font-size:18px;"><i class="fa fa-user"></i>  </a></li>
           </ul>
           <form class="navbar-form navbar-right">
