@@ -199,10 +199,10 @@ li.nav-item {
 }
 
 .admin-login>button {
-    background: #FD8032;
+    background: #00AEFF;
     padding: 10px 80px;
     border-radius: 63px;
-    border-color: #FD8032;
+    border-color: #00AEFF;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     cursor: pointer;
 }
@@ -210,8 +210,8 @@ li.nav-item {
 .admin-login>button:hover,
 .admin-login>button:focus {
     background: rgb(252, 251, 250);
-    color: #FD8032;
-    border-color: #FD8032;
+    color: #00AEFF;
+    border-color: #00AEFF;
     border-width: 2px;
 }
 
