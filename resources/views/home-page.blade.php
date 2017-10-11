@@ -134,7 +134,7 @@
         #button-hd {
             width: fit-content;
             /* color: #E57679; */
-            color: white;
+            color: #FFFFFF;
             border: none;
             background: #2CACF0;
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -145,8 +145,8 @@
         }
 
         #button-hd:hover {
-            /* background: #E57679;
-            color: white; */
+            /* background: #2CACF0;
+            color: #FFFFFF; */
             color: #FF6200;
             background: white;
         }
