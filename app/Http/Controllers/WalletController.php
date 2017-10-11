@@ -148,6 +148,7 @@ class WalletController extends Controller
         } else {
             $lock_code = Wallet::where('uuid', Auth::user()->id)->get();
             print_r($lock_code);
+            /*
             $restriction = Restriction::where('wallet_id', $lock_code['id'])->get();
             $rules = Rule::where('id', $restriction['rule_id'])->get();
             $amount = $request->input('amount');
@@ -201,7 +202,7 @@ class WalletController extends Controller
                     }
                 } else {
                     return redirect()->action('pagesController@failed', $response);
-                }
+                }*/
             } else {
                 return redirect()->action('pagesController@failed', $response);
             }
