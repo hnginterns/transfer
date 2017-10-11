@@ -147,8 +147,8 @@ class WalletController extends Controller
             return response()->json(['status' => 'failed', 'msg' => 'All fields are required']);
         } else {
             $lock_code = Wallet::where('uuid', Auth::user()->id)->get();
-            $restriction = Restriction::where('wallet_id', $lock_code[0]['id'])->get();
-            $rules = Rule::where('id', $restriction[0]['rule_id'])->get();
+            $restriction = Restriction::where('wallet_id', $lock_code['id'])->get();
+            $rules = Rule::where('id', $restriction['rule_id'])->get();
             $amount = $request->input('amount');
             $data = [];
             
@@ -178,7 +178,7 @@ class WalletController extends Controller
                             "recipientWallet" => $request->recipientWallet,
                             "amount" => $request->amount,
                             "currency" => "NGN",
-                            "lock" => $lock_code[0]['lock_code']
+                            "lock" => $lock_code['lock_code']
                         );
 
                         $body = \Unirest\Request\Body::json($query);
