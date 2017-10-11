@@ -215,7 +215,7 @@
             height: 60px;
             border-radius: 30px;
             /* background: linear-gradient(180deg, #358CAA 1.49%, #F87373 98.73%); */
-            background: linear-gradient(180deg, #FF6200 0%, #2CACF0 0.01%; #000000 98.9%);
+            background: linear-gradient(180deg, #FF6200 0%, #2CACF0 0.01%, #000000 98.9%);
         }
 
         #feature-heading {
