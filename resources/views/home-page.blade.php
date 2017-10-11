@@ -78,7 +78,9 @@
         #sign-in {
             margin-top: 9px;
             /* background: #E57679; */
-            background: #FF6200;
+            background: #FFF;
+            border:solid;
+            border-color:#1DB7FF;
             border-radius: 63px;
             padding-left: 12px;
             padding-right: 12px;
