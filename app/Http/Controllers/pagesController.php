@@ -134,8 +134,7 @@ class pagesController extends Controller
         $bankTransactions = BankTransaction::where('wallet_id', $wallet->id)->get();
 
         $history = Trans::getTransactionsHistory($walletTransactions, $bankTransactions, $wallet->wallet_code, $wallet->id);
-        // dd($history->toArray());
-         
+        
         return view('view-wallet', compact('wallet','permit','rules','beneficiaries', 'history'));
     }
 

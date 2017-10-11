@@ -78,6 +78,7 @@ i.sent{
 								</tr>
 							</thead>
 							<tbody>
+              @if(count($history))
               @foreach($history as $key => $hist)
                 <tr id="transaction" onclick="$('#modal-id{{$key}}').modal('toggle')">
 									<td id="transction_type">{{ $hist['transaction_type'] }} </td>
@@ -111,6 +112,11 @@ i.sent{
                 </div>
                 
                 @endforeach
+                @else
+                  <tr>
+                    <td>No Transactions at the moment</td>
+                  </tr>
+                @endif
 							</tbody>
 						</table>
 					</div>
