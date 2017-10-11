@@ -161,15 +161,15 @@ class WalletController extends Controller
             $data['bank_id'] = 0;
             $data['payee_wallet_code'] = $request->recipientWallet;
 
-            if ($rules[0]['can_transfer'] == 1) {
+            if ($rules['can_transfer'] == 1) {
                 $date = new DateTime();
                 $date_string = date_format($date, "Y-m-d");
                 $wallet_transactions = Transaction::count();
                 $total_amount = Transaction::sum('amount_transfered');
 
-                if ($wallet_transactions < $rules[0]['max_transactions_per_day'] && $total_amount < $rules[0]['max_amount_transfer_per_day']) {
+                if ($wallet_transactions < $rules['max_transactions_per_day'] && $total_amount < $rules['max_amount_transfer_per_day']) {
 
-                    if ($amount >= $rules[0]['min_amount'] && $amount <= $rules[0]['max_amount']) {
+                    if ($amount >= $rules['min_amount'] && $amount <= $rules['max_amount']) {
                         $token = $this->getToken();
                         $headers = array('content-type' => 'application/json', 'Authorization' => $token);
 
