@@ -41,23 +41,6 @@
                     </div>
 
             
-
-                    <div class="form-group">
-                        <label class="control-label col-sm-2" >Sender's Email Address</label>
-                        <div class="col-sm-10">
-                            <input type="text" name="emailaddr" id="emailaddr" class="form-control" value="{{ $user->email}}">
-
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label col-sm-2" >Sender's Phone Number</label>
-                        <div class="col-sm-10">
-                            <input type="text" name="phone" id="phone" class="form-control" v>
-
-                        </div>
-                    </div>
-
                     <div class="form-group">
                         <label class="control-label col-sm-2" >Amount</label>
                         <div class="col-sm-10">
