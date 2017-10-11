@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="row">
-    <div class="col-lg-12">
+    <div class="col-lg-6 col-sm-offset-2">
         <br>
         @if($errors->any())
             <div class="alert alert-danger">
@@ -24,6 +24,14 @@
                     {{ csrf_field() }}
                     <input type="hidden" name="method" value="Manual Funding">
                     <input type="hidden" name="status" value="Completed">
+
+                    <input type="hidden" name="fname" value="{{$user->first_name}}">
+                    <input type="hidden" name="lname" value="{{$user->last_name}}">
+                    <input type="hidden" name="email" value="{{$user->email}}">
+                    <input type="hidden" name="phone" value="+23470370383333">
+
+
+
                     <input type="hidden" name="recipient_id" value="{{$wallet->wallet_code}}">
                     <div class="form-group">
                         <label class="control-label col-sm-2" >Wallet Name</label>
@@ -33,41 +41,9 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-sm-2" >Sender's First Name</label>
-                        <div class="col-sm-10">
-                            <input type="text" name="fname" id="fname" class="form-control" value="{{ $user->first_name}}">
-
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label col-sm-2" >Sender's Last Name</label>
-                        <div class="col-sm-10">
-                            <input type="text" name="lname" id="lname" class="form-control" value="{{ $user->last_name}}">
-
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label col-sm-2" >Sender's Email Address</label>
-                        <div class="col-sm-10">
-                            <input type="text" name="emailaddr" id="emailaddr" class="form-control" value="{{ $user->email}}">
-
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label col-sm-2" >Sender's Phone Number</label>
-                        <div class="col-sm-10">
-                            <input type="text" name="phone" id="phone" class="form-control" v>
-
-                        </div>
-                    </div>
-
-                    <div class="form-group">
                         <label class="control-label col-sm-2" >Amount</label>
                         <div class="col-sm-10">
-                            <input type="text" name="amount" id="amount" class="form-control" v>
+                            <input type="text" name="amount" id="amount" class="form-control input-lg" >
 
                         </div>
                     </div>
