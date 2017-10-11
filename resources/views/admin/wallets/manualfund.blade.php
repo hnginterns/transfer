@@ -15,7 +15,7 @@
         @endif
         <div class="panel panel-default">
             <div class="panel-heading">
-                Fund <strong>{{ $wallet->wallet_name }} </strong>  Wallet Manually <a href="{{ route('wallets.details', $wallet->id) }}" class="label label-primary pull-right">Back</a>
+                Fund <strong>{{ $wallet->wallet_name }} </strong>  Wallet with Ravepay <a href="{{ route('wallets.details', $wallet->id) }}" class="label label-primary pull-right">Back</a>
             </div>
             
                 <div class="panel-body">
@@ -40,7 +40,6 @@
                         </div>
                     </div>
 
-            
                     <div class="form-group">
                         <label class="control-label col-sm-2" >Amount</label>
                         <div class="col-sm-10">
