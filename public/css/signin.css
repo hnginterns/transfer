@@ -18,10 +18,10 @@ body {
 }
 .navbar.navbar-expand-lg.navbar-dark.bg-dark {
     border-bottom: 3px solid #00AFF0;
+    background-color: white !important;
 }
-
-.bg-dark {
-    background-color: #FFFFFF !important;
+.navbar-dark .navbar-brand {
+    color: #00AFF0 !important;
 }
 
 .navbar-dark .navbar-nav .active>.nav-link {
