@@ -79,9 +79,9 @@
             margin-top: 9px;
             /* background: #E57679; */
 
-            background: #FFFFFF;
-            color: #000000;
-            border: 1px solid #00AEFF;
+            background: #FFFFFF !important;
+            color: #000000 !important;
+            border: 1px solid #00AEFF !important;
             border-radius: 63px;
             padding-left: 12px;
             padding-right: 12px;
