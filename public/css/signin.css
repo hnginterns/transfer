@@ -30,7 +30,7 @@ body {
 .navbar-dark .navbar-nav .nav-link:hover {
     color:#00AEFF !important;
 }
-navbar-dark .navbar-nav .header-btn > .nav-link {
+navbar-dark .navbar-nav .header-btn .nav-link {
     color: white;
     border: 2px solid #00AEFF;
     border-radius: 64px;
