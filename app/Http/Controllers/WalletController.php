@@ -146,7 +146,7 @@ class WalletController extends Controller
             $messages = $validator->messages()->toArray();
             return response()->json(['status' => 'failed', 'msg' => 'All fields are required']);
         } else {
-            $lock_code = Wallet::where('uuid', Auth::user()->id)->first();
+            $lock_code = Wallet::where('uuid', Auth::user()->id)->get()->toArray();
             print_r($lock_code);
             /*
             $restriction = Restriction::where('wallet_id', $lock_code['id'])->get();
