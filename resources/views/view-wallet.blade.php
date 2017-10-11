@@ -177,11 +177,11 @@ i.sent{
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">ADD SMS ACCOUNT</h4>
+          <h4 class="modal-title">ADD Beneficiary</h4>
         </div>
         <div class="modal-body">
-          <p>Please fill out your details</p>
-          <form role="form" class="submit-topup">
+          <p>Please fill out details</p>
+          <form action="/addbeneficiary/{{ $wallet->id }}" method="post" role="form" class="submit-topup">
                 {{ csrf_field() }}
                 <!-- text input -->
                 <div class="form-group">                  

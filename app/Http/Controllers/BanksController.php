@@ -7,7 +7,7 @@ use App\Bank;
 
 class BanksController extends Controller
 {
-    public static function getAllBanks()
+    public static function banks()
     {
         Unirest\Request::verifyPeer(false);
         $headers = array('content-type' => 'application/json');
@@ -36,7 +36,7 @@ class BanksController extends Controller
         return view('banks', compact('banks'));
     }
 
-    public static function banks()
+    public static function getAllBanks()
     {
         $banks = Bank::all();
 
