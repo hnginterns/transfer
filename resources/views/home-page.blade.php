@@ -796,7 +796,7 @@
         <img src="img/phone.png" alt="Transfer rules mobile app screenshot" id="mobile-app">
         <div id="content-text" class="clearfix">
                 <span id="heading-hd">
-                    TransferRules
+                    Create an account for your company with Finance @ hotels.ng
                 </span>
             <span id="text-hd">
                     Create an account for your company with TransferRules and gain full control over financial transactions, disbursement of funds and lot more services.
