@@ -15,7 +15,9 @@
                 <select class="form-control cus-input" name="sourceWallet">
                     <option value="">Select sender Wallet</option>
                         @foreach($wallets as $wallet)
-                              <option value="{{ $wallet->wallet_code }}">{{ $wallet->wallet_name}}</option>                                      
+                            @if($wallet->uuid == Auth::user()->id)
+                              <option value="{{ $wallet->wallet_code }}">{{ $wallet->wallet_name}}</option>      
+                            @endif
                         @endforeach
                 </select>
             </div>
@@ -25,7 +27,9 @@
                 <select class="form-control cus-input" name="recipientWallet">
                     <option value="">Select recipient wallet</option>
                         @foreach($wallets as $wallet)
+                           @if($wallet->uuid !== Auth::user()->id)
                               <option value="{{ $wallet->wallet_code }}">{{ $wallet->wallet_name}}</option>
+                           @endif
                         @endforeach
                 </select>
             </div>
