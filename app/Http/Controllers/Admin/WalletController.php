@@ -193,9 +193,11 @@ class WalletController  extends Controller
         $wallet = Wallet::find($id);
 
         $cardWallet = CardWallet::latest()->first();
+
+        $user = Auth::user();
         
         //load form view
-        return view('admin.wallets.manualfund', compact('wallet', 'cardWallet'));
+        return view('admin.wallets.manualfund', compact('wallet', 'cardWallet','user'));
     }
 
 

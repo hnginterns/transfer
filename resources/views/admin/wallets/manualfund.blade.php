@@ -35,7 +35,7 @@
                     <div class="form-group">
                         <label class="control-label col-sm-2" >Sender's First Name</label>
                         <div class="col-sm-10">
-                            <input type="text" name="fname" id="fname" class="form-control" v>
+                            <input type="text" name="fname" id="fname" class="form-control" value="{{ $user->first_name}}">
 
                         </div>
                     </div>
