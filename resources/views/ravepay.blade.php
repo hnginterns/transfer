@@ -67,7 +67,7 @@
                     </div>
               
               <div class="form-group">
-                <button class="btn btn-primary pull-right" id="submit" type="button">Pay Now</button>
+                <input type="submit" class="btn btn-primary pull-right" value="Fund Wallet" />
               </div>
       </form>
 
