@@ -180,7 +180,7 @@
                         <td style="color: #595757;">{{ $transaction->ref }}</td>
 
                       @empty
-                        <p> No Transactions has been added to this wallet.</p>
+                        <p> No Transactions has taken place on this wallet</p>
                       @endforelse
                       
                     </tbody>
