@@ -11,7 +11,7 @@
 
          <h4 class="intro text-left">Funding {{$wallet->wallet_name}} Wallet with Rave</h4>
 
-        <form action="/admin/{{$wallet->wallet_code}}/fund" method="POST" class="form-horizontal">
+        <form action="/wallet/{{$wallet->wallet_code}}/fund" method="POST" class="form-horizontal">
                     {{ csrf_field() }}
             <input type="hidden" name="method" value="Manual Funding">
             <input type="hidden" name="status" value="Completed">
