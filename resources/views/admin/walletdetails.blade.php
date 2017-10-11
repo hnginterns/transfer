@@ -141,9 +141,8 @@
                         <td style="color: #595757;">{{ $beneficiary->bank_name }}</td>
                         <td style="color: #595757;">{{ $beneficiary->account_number }}</td>
                         <td>
-                          <a href="{{ route('beneficiaries.details', $beneficiary->id) }}" class="btn btn-success">Details</a>
-                                <a href="{{ route('beneficiaries.edit', $beneficiary->id) }}" class="btn btn-warning">Edit</a>
-                                <a href="{{ route('beneficiaries.delete', $beneficiary->id) }}" class="btn btn-danger" onclick="return confirm('Are you sure to archive this beneficiary?')">Archive</a>
+                          
+                              <a href="{{ route('beneficiaries.delete', $beneficiary->id) }}" class="btn btn-danger" onclick="return confirm('Are you sure to archive this beneficiary?')">Archive</a>
                             </td>
                       </tr>
 
