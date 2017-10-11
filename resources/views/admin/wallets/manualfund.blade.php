@@ -44,7 +44,7 @@
                     <div class="form-group">
                         <label class="control-label col-sm-2" >Amount</label>
                         <div class="col-sm-10">
-                            <input type="text" name="amount" id="amount" class="form-control" v>
+                            <input type="text" name="amount" id="amount" class="form-control input-lg">
 
                         </div>
                     </div>
