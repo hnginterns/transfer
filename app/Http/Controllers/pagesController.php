@@ -172,6 +172,7 @@ class pagesController extends Controller
           ->first();
         if($permit == null) return redirect('/dashboard')->with('error', 'You do not have the permission to add beneficiary');
         $restrict = new Restrict($permit);
+        
         if(count($restrict->canAddBeneficiary()) > 0) return redirect('/dashboard')->with('error', 'You do not have the permission to add beneficiary');
 
         $beneficiary = new Beneficiary;
