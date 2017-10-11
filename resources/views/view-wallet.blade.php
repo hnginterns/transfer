@@ -67,6 +67,7 @@ i.sent{
           <div class="col-md-8 col-sm-8">
 					<div class="orange-box"><h4 class="title" align="center"> {{ ucfirst($wallet->wallet_name) }} TRANSACTION HISTORY</h4></div><br>
           <div class="table-responsive">
+              @if(count($history))          
 						<table class="table table-hover">
 							<thead>
 								<tr>
@@ -78,7 +79,6 @@ i.sent{
 								</tr>
 							</thead>
 							<tbody>
-              @if(count($history))
               @foreach($history as $key => $hist)
                 <tr id="transaction" onclick="$('#modal-id{{$key}}').modal('toggle')">
 									<td id="transction_type">{{ $hist['transaction_type'] }} </td>
@@ -112,13 +112,14 @@ i.sent{
                 </div>
                 
                 @endforeach
-                @else
-                  <tr>
-                    <td>No Transactions at the moment</td>
-                  </tr>
-                @endif
+                
 							</tbody>
 						</table>
+              @else
+                  
+                    <p class="text-center"><b>No Transactions at the moment</b></p>
+                  
+                @endif
 					</div>
 
           <div class="orange-box"><h4 class="title" align="center"> {{ $wallet->wallet_name }} Beneficiaries</h4></div>
