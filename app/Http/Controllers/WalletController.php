@@ -190,15 +190,18 @@ class WalletController extends Controller
                         if ($status == 'success') {
                             $data['transaction_status'] = true;
                             $this->logTransaction($data);
-                            return redirect()->action('pagesController@success', $response);
+                            return redirect()->action('pagesController@success');
                         } else {
                             $this->logTransaction($data);
+                            $response = 'Transaction was not successful';
                             return redirect()->action('pagesController@failed', $response);
                         }
                     } else {
+                        $response = 'Invalid amount entered for this account';
                         return redirect()->action('pagesController@failed', $response);
                     }
             } else {
+                $response = 'Wallet can not tranfer to another wallet';
                 return redirect()->action('pagesController@failed', $response);
             }
         }
