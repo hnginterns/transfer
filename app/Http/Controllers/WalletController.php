@@ -202,10 +202,10 @@ class WalletController extends Controller
                     }
                 } else {
                     return redirect()->action('pagesController@failed', $response);
-                }*/
+                }
             } else {
                 return redirect()->action('pagesController@failed', $response);
-            }
+            }*/
         }
     }
 
