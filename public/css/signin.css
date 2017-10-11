@@ -18,7 +18,7 @@ body {
 }
 
 .bg-dark {
-    background-color: #FFFFFF !important;
+    background-color: #FFFFFF ;!important;
 }
 
 .navbar-dark .navbar-nav .active>.nav-link {
@@ -27,6 +27,9 @@ body {
     border-radius: 64px;
     padding: 2px 25px;
     background: #fd8032;
+}
+.navbar-dark .navbar-nav .nav-link {
+    color:#000000 !important;
 }
 
 .user-img {
