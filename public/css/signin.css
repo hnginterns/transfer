@@ -5,7 +5,7 @@ html {
 }
 
 :root {
-    --hue-color: #fd8032;
+    --hue-color: #000000;
 }
 
 body {
@@ -18,7 +18,7 @@ body {
 }
 
 .bg-dark {
-    background-color: #333333 !important;
+    background-color: #FFFFFF !important;
 }
 
 .navbar-dark .navbar-nav .active>.nav-link {
@@ -34,7 +34,7 @@ body {
 }
 
 .nav-link.active {
-    color: white;
+    color: #CCCCCC;
 }
 
 .sidebar-toggle {
