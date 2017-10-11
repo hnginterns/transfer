@@ -147,10 +147,9 @@ class WalletController extends Controller
             return response()->json(['status' => 'failed', 'msg' => 'All fields are required']);
         } else {
             $lock_code = Wallet::where('uuid', Auth::user()->id)->get()->toArray();
-            print_r($lock_code);
-            /*
-            $restriction = Restriction::where('wallet_id', $lock_code['id'])->get();
-            $rules = Rule::where('id', $restriction['rule_id'])->get();
+            
+            $restriction = Restriction::where('wallet_id', $lock_code[0]['id'])->get()->toArray();
+            $rules = Rule::where('id', $restriction[0]['rule_id'])->get()->toArray();
             $amount = $request->input('amount');
             $data = [];
             
@@ -163,15 +162,15 @@ class WalletController extends Controller
             $data['bank_id'] = 0;
             $data['payee_wallet_code'] = $request->recipientWallet;
 
-            if ($rules['can_transfer'] == 1) {
+            if ($rules[0]['can_transfer'] == 1) {
                 $date = new DateTime();
                 $date_string = date_format($date, "Y-m-d");
                 $wallet_transactions = Transaction::count();
                 $total_amount = Transaction::sum('amount_transfered');
 
-                if ($wallet_transactions < $rules['max_transactions_per_day'] && $total_amount < $rules['max_amount_transfer_per_day']) {
+                if ($wallet_transactions < $rules[0]['max_transactions_per_day'] && $total_amount < $rules[0]['max_amount_transfer_per_day']) {
 
-                    if ($amount >= $rules['min_amount'] && $amount <= $rules['max_amount']) {
+                    if ($amount >= $rules[0]['min_amount'] && $amount <= $rules[0]['max_amount']) {
                         $token = $this->getToken();
                         $headers = array('content-type' => 'application/json', 'Authorization' => $token);
 
@@ -180,7 +179,7 @@ class WalletController extends Controller
                             "recipientWallet" => $request->recipientWallet,
                             "amount" => $request->amount,
                             "currency" => "NGN",
-                            "lock" => $lock_code['lock_code']
+                            "lock" => $lock_code[0]['lock_code']
                         );
 
                         $body = \Unirest\Request\Body::json($query);
@@ -205,7 +204,7 @@ class WalletController extends Controller
                 }
             } else {
                 return redirect()->action('pagesController@failed', $response);
-            }*/
+            }
         }
     }
 
