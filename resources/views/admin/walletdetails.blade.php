@@ -131,17 +131,15 @@
                           <th>Name</th>
                           <th>Account Number</th>
                           <th>Bank</th>
-                          <th>Status</th>
                           <th >Action</th>
                         </tr>
                     </thead>
                     <tbody>
                       @forelse ($beneficiaries as $beneficiary)
                       <tr>
-                        <td>{{$beneficiary->name}}</td>
-                        <td>{{$beneficiary->account_number}}</td>
-                        <td>{{$beneficiary->bank_id}}</td>
-                        <td>{{$beneficiary->status}}</td>
+                        <td>{{ $beneficiary->name }}  {{$beneficiary->id}}</td>
+                        <td>{{ $beneficiary->bank_name }}</td>
+                        <td>{{ $beneficiary->account_number }}</td>
                         <td>
                           <a href="{{ route('beneficiaries.details', $beneficiary->id) }}" class="btn btn-success">Details</a>
                                 <a href="{{ route('beneficiaries.edit', $beneficiary->id) }}" class="btn btn-warning">Edit</a>
