@@ -24,12 +24,14 @@ body {
     color: #00AFF0 !important;
 }
 
-.navbar-dark .navbar-nav .active>.nav-link {
+navbar-dark .navbar-nav .header-btn > .nav-link {
     color: white;
-    border: 2px solid #FD8032;
+    border: 2px solid #00AEFF;
     border-radius: 64px;
     padding: 2px 25px;
-    background: #fd8032;
+    background: #FFFFFF;
+    margin: 2px;
+    text-align: center;
 }
 .navbar-dark .navbar-nav .nav-link {
     color:#000000 !important;
