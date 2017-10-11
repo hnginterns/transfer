@@ -148,7 +148,7 @@ class WalletController extends Controller
         } else {
             $lock_code = Wallet::where('uuid', Auth::user()->id)
                 ->where('wallet_code', $request->sourceWallet)->get()->toArray();
-            pront_r($lock_code);
+            print_r($lock_code);
             /*
             $restriction = Restriction::where('wallet_id', $lock_code[0]['id'])->get()->toArray();
             
