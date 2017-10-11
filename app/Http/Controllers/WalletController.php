@@ -280,7 +280,7 @@ class WalletController extends Controller
 
                     return redirect('success')->with('status',$data);
                 } else {
-                    return redirect()->with('failed',$data);
+                    return redirect()->back()->with('failed',$data);
                 }
         }
     }
