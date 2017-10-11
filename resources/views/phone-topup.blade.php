@@ -91,9 +91,9 @@
                     <div class="list-group">
                         <a @click.prevent="selectNumber(beneficiary)" v-for="beneficiary of beneficiaries" class="list-group-item list-group-item-action ben-list flex-column align-items-start">
                             <div class="d-flex w-100 justify-content-between">
-                                <h5 class="mb-1">{{beneficiary.name}}</h5>
+                                <h5 class="mb-1">@{{beneficiary.name}}</h5>
                             </div>
-                            <p class="mb-1">{{beneficiary.number}}</p>
+                            <p class="mb-1">@{{beneficiary.number}}</p>
                             <button class="btn btn-warning btn-sm hue-bg">TopUp</button>
                         </a>
                     </div>
@@ -115,7 +115,7 @@
                             <div class="form-group" style="margin: 30px 0;">
                                 <!-- <select class="form-control" name="benNumber" id="benNumber" v-model="selected.provider">
                                 <option value="">Select Network Provider</option>
-                                <option v-for="line of providers" :value="line.code">{{line.name}}</option>
+                                <option v-for="line of providers" :value="line.code">@{{line.name}}</option>
                             </select> -->
                                 <ul class="providers-list">
                                     <li class="provider" @click="selectProvider(line.code, line.name)" v-for="line of providers">
@@ -153,7 +153,7 @@
                                         <template v-else>Select a plan</template>
                                     </option>
                                     <option value="" v-if="noPlan">Sorry we don't provide plans for that network</option>
-                                    <option v-if="!noPlan" v-for="plan of selectedPlan.plans" :value="plan.price">{{plan.data}}</option>
+                                    <option v-if="!noPlan" v-for="plan of selectedPlan.plans" :value="plan.price">@{{plan.data}}</option>
                                 </select>
                             </div>
                             <button class="btn btn-primary sub" type="submit">Finish</button>
@@ -165,13 +165,13 @@
                         <div class="list-group" style="margin: 15px 0">
                             <a href="#" @click.prevent="" class="list-group-item list-group-item-action flex-column align-items-start" v-for="(item, index) of topUpList">
                                 <div class="d-flex w-100 justify-content-between">
-                                    <h5 class="mb-1"> {{item.name}} </h5>
-                                    <span class="badge" :class="badgeColor(item.provider)">{{item.provider}}</span>
+                                    <h5 class="mb-1"> @{{item.name}} </h5>
+                                    <span class="badge" :class="badgeColor(item.provider)">@{{item.provider}}</span>
                                 </div>
-                                <p class="mb-1"> {{item.number}} </p>
+                                <p class="mb-1"> @{{item.number}} </p>
                                 <div>
-                                    <span class="badge badge-dark" v-if="item.amount">N{{item.amount}}</span>
-                                    <span class="badge badge-secondary" v-if="item.dataPlan">N{{item.dataPlan}}</span>
+                                    <span class="badge badge-dark" v-if="item.amount">N@{{item.amount}}</span>
+                                    <span class="badge badge-secondary" v-if="item.dataPlan">N@{{item.dataPlan}}</span>
                                 </div>
 
                                 <button class="btn btn-danger btn-sm" @click="remove(index)" style="border-radius: 23px; margin: 10px 0; cursor: pointer">Remove</button>
