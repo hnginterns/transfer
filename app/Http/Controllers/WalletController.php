@@ -119,7 +119,8 @@ class WalletController extends Controller
             if($response['status'] == 'success') {
                 event(new FundWallet($cardWallet));
                 $response = $response['data']['flutterChargeResponseMessage'];
-                return redirect('admin')->with('status', $response);
+                //return redirect('admin')->with('status', $response);
+                return back()->with('status', $response);
 
             }
             
