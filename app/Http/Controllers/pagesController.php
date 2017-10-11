@@ -113,11 +113,6 @@ class pagesController extends Controller
         return view('otp');
     }
 
-       public function phoneTopup()
-    {
-        return view('phone-topup');
-    }
-
     public function walletdetail(Wallet $wallet)
     {
         $permit = Restriction::where('wallet_id', $wallet->id)
@@ -175,6 +170,8 @@ class pagesController extends Controller
             return redirect()->back()->with('error', 'Beneficiary could not be added');
         }
     }
+
+
 
 
     public function pagenotfound()
