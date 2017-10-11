@@ -24,7 +24,7 @@
   <div class="card">
     <div class="card-header" role="tab" id="headingTwo">
       <h5 class="mb-0">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-controls="collapseTwo">
+        <a  class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-controls="collapseTwo">
           How do I register to use TransferRule?
         </a>
       </h5>
@@ -46,7 +46,7 @@
   <div class="card">
     <div class="card-header" role="tab" id="headingThree">
       <h5 class="mb-0">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-controls="collapseThree">
+        <a  class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-controls="collapseThree">
           How do I send Prepaid Mobile Credit to an existing customer?
         </a>
       </h5>
@@ -70,7 +70,7 @@
   <div class="card">
     <div class="card-header" role="tab" id="headingFour">
       <h5 class="mb-0">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-controls="collapseFour">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-controls="collapseFour">
           How do I send Data Plan to an existing customer?
         </a>
       </h5>
@@ -94,7 +94,7 @@
     <div class="card">
     <div class="card-header" role="tab" id="headingFive">
       <h5 class="mb-0">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-controls="collapseFive">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-controls="collapseFive">
           What should I do if have forgotten my password?
         </a>
       </h5>
@@ -118,7 +118,7 @@
     <div class="card">
     <div class="card-header" role="tab" id="headingSix">
       <h5 class="mb-0">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-controls="collapseSix">
+        <a  class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-controls="collapseSix">
           How do I credit my Top-Up Wallet?
         </a>
       </h5>
@@ -140,7 +140,7 @@
     <div class="card">
     <div class="card-header" role="tab" id="headingSeven">
       <h5 class="mb-0">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseSeven"  aria-controls="collapseSeven">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven"  aria-controls="collapseSeven">
            What is the cost to send a Top Up?
         </a>
       </h5>
@@ -155,7 +155,7 @@
     <div class="card">
     <div class="card-header" role="tab" id="headingEight">
       <h5 class="mb-0">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseEight" aria-controls="collapseEight">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseEight" aria-controls="collapseEight">
          What happens if I Top Up an invalid mobile number?
         </a>
       </h5>
@@ -170,7 +170,7 @@
     <div class="card">
     <div class="card-header" role="tab" id="headingNine">
       <h5 class="mb-0">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseNine" aria-controls="collapseNine">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseNine" aria-controls="collapseNine">
           What happens when I am unable to top up online and the page gives an error?
         </a>
       </h5>
@@ -185,7 +185,7 @@
   <div class="card">
     <div class="card-header" role="tab" id="headingTen">
       <h5 class="mb-0">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTen" aria-controls="collapseTen">
+        <a  class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTen" aria-controls="collapseTen">
           How can i get my blocked account unblocked?
         </a>
       </h5>
@@ -207,7 +207,7 @@
   <div class="card">
     <div class="card-header" role="tab" id="headingEleven">
       <h5 class="mb-0">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseEleven" aria-controls="collapseEleven">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseEleven" aria-controls="collapseEleven">
          How long will it take for my account to be reactivated?
         </a>
       </h5>
@@ -223,7 +223,7 @@
   <div class="card">
     <div class="card-header" role="tab" id="headingTwelve">
       <h5 class="mb-0">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwelve" aria-controls="collapseTwelve">
+        <a  class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwelve" aria-controls="collapseTwelve">
           Is there a finance.hotels.ng smartphone app?
         </a>
       </h5>
