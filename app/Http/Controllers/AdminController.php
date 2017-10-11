@@ -260,6 +260,8 @@ class AdminController extends WalletController
         
         //dd($data['users']);
 
+        $data['transactions'] = Transaction::all();
+
         $data['userRef'] = substr(md5(Carbon::now()), 0, 10);
 
         $data['beneficiaries'] = Beneficiary::where('wallet_id', $walletId)->get();
