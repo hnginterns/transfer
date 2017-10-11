@@ -78,12 +78,16 @@
         #sign-in {
             margin-top: 9px;
             /* background: #E57679; */
-            background: #FFF;
-            border:solid;
-            border-color:#1DB7FF;
+
+            background: #FFFFFF;
+            color: #000000;
+            border: 1px solid #00AEFF;
             border-radius: 63px;
             padding-left: 12px;
             padding-right: 12px;
+        }
+        #sign-in:hover {
+            color:00AEFF
         }
 
         #sign-in a  {
