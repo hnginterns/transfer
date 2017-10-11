@@ -16,8 +16,8 @@
                     <div class="col col-lg-6 col-md-12 col-sm-12">
                         <div class="balance text-center">
                             <h6>Available balance in wallet</h6>
-                            <h5 class="balance-text">157</h5>
-                            <!-- <?php
+
+                             <?php
                         $curl = curl_init();
 
                         curl_setopt_array($curl, array(
@@ -41,11 +41,15 @@
                         curl_close($curl);
 
                         if ($err) {
+                        <h5 class="balance-text">
                         echo "cURL Error #:" . $err;
+                        </h5>
                         } else {
+                        <h5 class="balance-text">
                         echo $response;
+                        </h5>
                         }
-                        ?> -->
+                        ?>
                         </div>
                     </div>
                     <div class="col col-lg-6 col-md-12 col-sm-12" style="border-left: 1px solid rgba(0,0,0,0.2); padding: 10px 15px;">
