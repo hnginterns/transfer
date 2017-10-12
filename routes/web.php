@@ -139,8 +139,8 @@ Route::group(['middleware' => ['admin']], function () {
 	Route::get('/admin/managePermission', 'AdminController@managePermission')->name('permission.manage');
 	Route::get('/admin/addpermission', 'Admin\WalletController@addPermission')->name('permission.create');
 	Route::post('/admin/addpermission', 'Admin\WalletController@PostAddPermission')->name('permission.store');
-	Route::get('/admin/editpermission/{id}', 'Admin\WalletController@editPermission')->name('permission.edit');
-	Route::post('/admin/editpermission/{id}', 'Admin\WalletController@PostEditPermission')->name('permission.update');
+	Route::get('/admin/editpermission/{restriction}', 'Admin\WalletController@editPermission')->name('permission.edit');
+	Route::post('/admin/editpermission/{restriction}', 'Admin\WalletController@PostEditPermission')->name('permission.update');
 	Route::get('/admin', 'AdminController@index')->name('admin.dashboard');
 	Route::get('/admin/managewallet', 'AdminController@managewallet');
 	Route::get('/admin/managebeneficiary', 'AdminController@managebeneficiary');
