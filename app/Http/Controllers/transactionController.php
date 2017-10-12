@@ -29,8 +29,8 @@ class transactionController extends Controller
                 'transaction_type' => 'Wallet',
                 'transaction_state' => $wallet->payee_wallet_code == $wallet_code ? 'Receiving' : 'Sending',
                 'transaction_date' => $wallet->created_at->toFormattedDateString(),
-                'transaction_amount' => $wallet->amount_transfered,
-                'transaction_status' => $wallet->transaction_status
+                'transaction_amount' => $wallet->amount,
+                'transaction_status' => $wallet->status
             ]));
         });
 

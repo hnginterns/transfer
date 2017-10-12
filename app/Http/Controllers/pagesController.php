@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Beneficiary;
 use App\User;
 use App\Restriction;
+use App\CardWallet;
 use App\Transaction;
 use App\BankTransaction;
 
@@ -130,7 +131,7 @@ class pagesController extends Controller
         $beneficiaries = Beneficiary::where('wallet_id', $wallet->id)->paginate(15);
 
         // get all wallet to wallet transactions, both sent and received
-        $walletTransactions = Transaction::where('wallet_code', $wallet->wallet_code)->orWhere('payee_wallet_code', $wallet->wallet_code)->get();
+        $walletTransactions = CardWallet::where('wallet_name', $wallet->wallet_name)->get();
         $bankTransactions = BankTransaction::where('wallet_id', $wallet->id)->get();
 
         $history = Trans::getTransactionsHistory($walletTransactions, $bankTransactions, $wallet->wallet_code, $wallet->id);
