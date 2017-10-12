@@ -79,27 +79,7 @@ i.sent{
 								</tr>
 							</thead>
 							<tbody>
-              @foreach($history as $key => $hist)
-                <tr id="transaction" onclick="$('#modal-id{{$key}}').modal('toggle')">
-									<td id="transction_type">{{ $hist['transaction_type'] }} </td>
-                  <td id="transaction_state">{{ $hist['transaction_state'] }}</td>
-									<td id="transaction_amount">{{ $hist['transaction_amount'] }} </td>
-									<td id="transaction_date">{{ $hist['transaction_date'] }}</td>
-									<td id="transaction_status"><i class="fa {{ $hist['transaction_status'] ? 'fa-check-circle can' : 'fa-times-circle cannot' }}" aria-hidden="true"></i></td>
-								</tr>
-                
-                
-                
-                @endforeach
-                
-							</tbody>
-						</table>
-              @else
-                  
-                    <p class="text-center"><b>No Transactions at the moment</b></p>
-                  
-                @endif
-					</div>
+              
 
           <div class="orange-box"><h4 class="title" align="center"> {{ $wallet->wallet_name }}'s Beneficiaries</h4></div>
 
