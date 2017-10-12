@@ -5,6 +5,7 @@
 @endsection
 @section('content')
 
+
 <style>
 
 i.can{
@@ -157,7 +158,152 @@ i.sent{
 
           <div class="col-sm-12">  
 		  	  
-            	<a href="/fund/{{$wallet->id}}" class="btn btn-dark">Fund</a>
+            	
+
+<div class="container">
+  
+  <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Fund</button>
+
+  <!--Add sms Account  Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="panel panel-default">
+            <div class="panel-heading">
+                Fund <strong>{{ $wallet->wallet_name }} </strong>  Wallet with Card <a href="{{ route('wallets.details', $wallet->id) }}" class="label label-primary pull-right">Back</a>
+            </div>
+			
+        <div class="modal-body">
+           
+		  
+		  
+                <!-- text input -->
+                
+				<form action="/fund/{{$wallet->id}}" method="POST" class="form-horizontal">
+                    {{ csrf_field() }}
+                    <input type="hidden" name="wallet_name" value="{{$wallet->wallet_name}}">
+                
+				<div class="container-fluid">
+                      <input type="hidden" name="wallet_code" value="{{$wallet->wallet_code}}">
+                    <div class="container-fluid">
+                <fieldset>
+                    
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-5">
+                                <label for="cc_name">First Name</label>
+                                <div class="controls">
+                                    <input name="fname" class="form-control" id="cc_name" title="First Name" required type="text">
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                              <div class="form-group">
+                                  <label for="cc_name">Last Name</label>
+                                  <div class="controls">
+                                      <input name="lname" class="form-control" id="cc_name"  title="last name" required type="text">
+                                  </div>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-5">
+                                <label>Phone Number</label>
+                                <div class="controls">
+                                      <input name="phone" class="form-control" autocomplete="off" maxlength="20"  required="" type="text">
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <label>Email Address</label>
+                                    <div class="controls">
+                                          <input type="email" name="emailaddr" class="form-control" autocomplete="off" required="" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-5">    
+                                <label>Card Number</label>
+                                    <div class="controls">
+                                          <input name="card_no" class="form-control" autocomplete="off" maxlength="20"  required="" type="text">
+                                    </div>
+                            </div>
+                            <div class="col-md-2">
+                                <label>Card Expiry Date</label>
+                                <div class="controls">
+                                    <select class="form-control" name="expiry_month">
+                                        <option value="01">January</option>
+                                        <option value="02">February</option>
+                                        <option value="03">March</option>
+                                        <option value="04">April</option>
+                                        <option value="05">May</option>
+                                        <option value="06">June</option>
+                                        <option value="07">July</option>
+                                        <option value="08">August</option>
+                                        <option value="09">September</option>
+                                        <option value="10">October</option>
+                                        <option value="11">November</option>
+                                        <option value="12">December</option>
+                                    </select>
+                                </div>  
+                            </div>
+    
+                            <div class="col-md-2">
+                                <label>Card Expiry Year</label>
+                                    <select class="form-control" name="expiry_year">
+                                            @for ($i = 2017;$i <= 2040;$i++)
+                                            <option>{{$i}}</option>
+                                            @endfor  
+                                    </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                   <label>Card CVV</label>
+                                    <div class="controls">
+                                        <input class="form-control" autocomplete="off" maxlength="3" pattern="\d{3}" title="Three digits at back of your card" required="" type="number" name="cvv">
+                                    </div>
+                             </div>
+
+                         <div class="col-md-3">
+                               <label>Pin</label>
+                                <div class="controls">
+                                    <input class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="pin" required="" type="password" name="pin">
+                                </div>
+                         </div>
+            
+                          <div class="col-md-4">
+                                  <label>Amount</label>
+                                  <div class="input-group">
+                                      <div class="input-group-addon">₦</div>
+                                      <input name="amount" type="text" class="form-control" id="amount" placeholder="Amount">
+                                    </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label></label>
+                        <div class="controls">
+                            <button type="submit" class="btn btn-primary">Fund Wallet</button>
+                            <a href="/admin/viewwallet/{{$wallet->id}}"><button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button></a>
+                        </div>
+                    </div>
+                </fieldset>
+                    </div>
+                </form>
+				
+           </div>
+      </div>
+    </div>
 			
  
             <a href="/transfer-to-bank/{{$wallet->id}}" class="btn btn-dark ">Transfer To Beneficiary</a>
