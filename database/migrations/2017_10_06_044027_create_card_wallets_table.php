@@ -18,6 +18,7 @@ class CreateCardWalletsTable extends Migration
             $table->string('firstName');
             $table->string('lastName');
             $table->string('phoneNumber');
+            $table->string('wallet_name');
             $table->integer('amount');
             $table->string('ref');
             $table->timestamps();

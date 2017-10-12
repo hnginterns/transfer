@@ -91,6 +91,7 @@ class WalletController extends Controller
             $transaction = new CardWallet;
             $transaction->firstName = $response['firstName'];
             $transaction->lastName = $response['lastName'];
+            $transaction->wallet_name = $request->wallet_name;
             $transaction->phoneNumber = $response['phoneNumber'];
             $transaction->amount = $response['amountToSend'];
             $transaction->ref = $transRef;

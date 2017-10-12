@@ -16,7 +16,7 @@
                 <label for="">Email address</label>
                 <input type="text" name="email" id="email" class="form-control" value="{{$user->email}}" >
               </div>
-
+ 
               <div class="form-group"> 
                 <label for="">Wallet</label>
                 <input type="text" name="wallet" id="wallet" class="form-control" value="{{$wallet->wallet_name}}"  >
