@@ -345,6 +345,7 @@ class ComposerStaticInitcb56c8f99153a160391720319584c667
         'App\\Http\\Controllers\\RavepayController' => __DIR__ . '/../..' . '/app/Http/Controllers/RavepayController.php',
         'App\\Http\\Controllers\\RestrictionController' => __DIR__ . '/../..' . '/app/Http/Controllers/RestrictionController.php',
         'App\\Http\\Controllers\\SmsWalletController' => __DIR__ . '/../..' . '/app/Http/Controllers/SmsWalletController.php',
+        'App\\Http\\Controllers\\UserWalletController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserWalletController.php',
         'App\\Http\\Controllers\\UsermgtController' => __DIR__ . '/../..' . '/app/Http/Controllers/UsermgtController.php',
         'App\\Http\\Controllers\\UsersController' => __DIR__ . '/../..' . '/app/Http/Controllers/UsersController.php',
         'App\\Http\\Controllers\\ValidateAccountController' => __DIR__ . '/../..' . '/app/Http/Controllers/ValidateAccountController.php',
