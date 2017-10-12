@@ -150,8 +150,8 @@ class WalletController extends Controller
             return redirect()->to(URL::previous());
         } else {
             $lock_code = Wallet::where('uuid', Auth::user()->id)
-                ->where('wallet_code', $request->sourceWallet)->get()->toArray();
-            $restriction = Restriction::where( 'wallet_id', $lock_code[0]->id )->get()->toArray();
+                ->where('wallet_code', $request->sourceWallet)->get();
+            $restriction = Restriction::where( 'wallet_id', $lock_code[0]->id )->get();
             $amount = $request->input('amount');
             $data = [];
             
