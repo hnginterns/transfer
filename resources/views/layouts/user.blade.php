@@ -18,7 +18,7 @@
 <body>
     @include('layouts.user-nav') 
 
-    <div class="container-fluid">
+    <div class="container-fluid" style="margin-top: 60px;">
       <div class="row">
       
         <div class="col-sm-3 col-md-2 sidebar">

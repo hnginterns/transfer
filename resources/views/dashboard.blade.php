@@ -1,6 +1,6 @@
 @extends('layouts.user')
 @section('title', 'Dashboard')
-
+@endsection
 @section('content')
 
       <div class="col-md-12 col-sm-12">
@@ -16,14 +16,12 @@
                   </div>
                 </div>
             @endforeach
-
-           
         </div>
       </div>
 
 <style>
   .dbackground{
-    background:#39689C;
+    background:#25313F;
     color:white;
     padding:10px 20px;
     margin:10px 4px;
@@ -36,6 +34,7 @@
 
   .dtext{
     font-size:18px;
+    color: white;
   }
 
 </style>
