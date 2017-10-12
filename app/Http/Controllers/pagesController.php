@@ -134,8 +134,7 @@ class pagesController extends Controller
         $bankTransactions = BankTransaction::where('wallet_id', $wallet->id)->get();
 
         $history = Trans::getTransactionsHistory($walletTransactions, $bankTransactions, $wallet->wallet_code, $wallet->id);
-        // dd($history->toArray());
-         
+
         return view('view-wallet', compact('wallet','permit','rules','beneficiaries', 'history'));
     }
 
@@ -159,7 +158,9 @@ class pagesController extends Controller
         if($permit == null) return back()->with('error', 'You do not have the permission to add beneficiary');
         $restrict = new Restrict($permit);
         if(count($restrict->canAddBeneficiary()) > 0) return back()->with('error', 'You do not have the permission to add beneficiary');
+        
         $banks = Bank::all();
+
         return view('createbeneficiary', compact('wallet','banks'));
     }
 
@@ -171,6 +172,7 @@ class pagesController extends Controller
           ->first();
         if($permit == null) return redirect('/dashboard')->with('error', 'You do not have the permission to add beneficiary');
         $restrict = new Restrict($permit);
+        
         if(count($restrict->canAddBeneficiary()) > 0) return redirect('/dashboard')->with('error', 'You do not have the permission to add beneficiary');
 
         $beneficiary = new Beneficiary;
@@ -189,9 +191,16 @@ class pagesController extends Controller
     }
 
 
+
+
     public function pagenotfound()
     {
         return view('404');
+    }
+
+    public function phoneTopup()
+    {
+        return view('phone-topup');
     }
 
 

@@ -260,6 +260,10 @@ class AdminController extends WalletController
         
         //dd($data['users']);
 
+        $data['transactions'] = CardWallet::all();
+
+        //dd($data['transactions']);
+
         $data['userRef'] = substr(md5(Carbon::now()), 0, 10);
 
         $data['beneficiaries'] = Beneficiary::where('wallet_id', $walletId)->get();
@@ -270,7 +274,7 @@ class AdminController extends WalletController
 
         $data['transactions'] = WalletTransaction::all();
 
-        dd($data['transactions']);
+        //dd($data['transactions']);
 
         return view('admin/walletdetails', $data); //compact('wallet', 'user', 'transaction'));
     }
@@ -289,6 +293,8 @@ class AdminController extends WalletController
         dd($walletBalance);
     }
 
+    // There's already a method in wallet.php for archiving.
+    // You could use route model binding to inject the wallet
     public function archiveWallet($id)
     {
         $wallet = Wallet::findOrFail($id);

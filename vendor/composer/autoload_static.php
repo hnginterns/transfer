@@ -379,6 +379,7 @@ class ComposerStaticInitcb56c8f99153a160391720319584c667
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
         'App\\Wallet' => __DIR__ . '/../..' . '/app/Wallet.php',
         'App\\WalletTransaction' => __DIR__ . '/../..' . '/app/WalletTransaction.php',
+        'BankTableSeeder' => __DIR__ . '/../..' . '/database/seeds/BankTableSeeder.php',
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
         'Carbon\\CarbonInterval' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
         'Carbon\\Exceptions\\InvalidDateException' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Exceptions/InvalidDateException.php',

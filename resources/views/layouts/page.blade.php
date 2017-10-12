@@ -133,7 +133,7 @@
 
                     </li>
 
-                    <li class="nav-item active">
+                    <li class="nav-item" id="header-btn">
 
                     @if(Auth::guest())
                         <a class="nav-link" href="{{url('/login')}}">SIGN IN</a>

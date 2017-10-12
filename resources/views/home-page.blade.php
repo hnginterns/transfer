@@ -78,14 +78,21 @@
         #sign-in {
             margin-top: 9px;
             /* background: #E57679; */
-            background: #FF6200;
+            color:#000000 !important;
+            background: #FFFFFF !important;
+            border: 1px solid #00AEFF !important;
             border-radius: 63px;
             padding-left: 12px;
             padding-right: 12px;
         }
-
+        
         #sign-in a  {
             padding: 7px 14px;
+            color: #000000 !important;
+            display: block;
+        }
+        #sign-in:hover a{
+            color:#00AEFF
         }
 
 
@@ -134,9 +141,9 @@
         #button-hd {
             width: fit-content;
             /* color: #E57679; */
-            color: white;
+            color: #FFFFFF;
             border: none;
-            background: #FF5700;
+            background: #2CACF0;
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
             padding: 10px 15px;
             border-radius: 63px;
@@ -145,8 +152,8 @@
         }
 
         #button-hd:hover {
-            /* background: #E57679;
-            color: white; */
+            /* background: #2CACF0;
+            color: #FFFFFF; */
             color: #FF6200;
             background: white;
         }
@@ -170,7 +177,7 @@
         .section-header {
             font-size: 36px;
             /* color: #3D8BA8; */
-            color: #FF6200;
+            color: #2CACF0;
         }
 
         .section-sub {
@@ -215,12 +222,12 @@
             height: 60px;
             border-radius: 30px;
             /* background: linear-gradient(180deg, #358CAA 1.49%, #F87373 98.73%); */
-            background: linear-gradient(180deg, #FF6200 0%, #000000 98.9%);
+            background: linear-gradient(180deg, #FF6200 0%, #2CACF0 0.01%, #000000 98.9%);
         }
 
         #feature-heading {
             text-transform: uppercase;
-            color: #FF6200;
+            color: #2CACF0;
         }
 
         /* SECTION ONE STYLE ENDS */
@@ -299,8 +306,8 @@
             grid-row: 1/3;
             width: fit-content;
             height: fit-content;
-            background: #FF6200;
-            color: white;
+            background: #2AA6E8;
+            color: #FFFFFF;
             border: none;
             padding: 12px 16px;
             border-radius: 63px;
@@ -308,8 +315,8 @@
         }
 
         #divider-cta:hover {
-            color: #FF6200;
-            background: white;
+            color: #2AA6E8;
+            background: #FFFFFF;
         }
 
         #divider-text {
@@ -322,7 +329,7 @@
         }
 
         #divider-title {
-            color: #FF6200;
+            color: #2AA6E8;
             font-size: 20px;
             font-weight: bold;
             letter-spacing: 0.04em;
@@ -766,10 +773,10 @@
                     <li class="{{ Request::segment(1) === 'about' ? 'active' : null }}"><a href="{{route('about')}}">About<span class="sr-only">(current)</span></a></li>
 
                     @if(Auth::guest())
-                        <li id="sign-in"><a href="{{url('/login')}}">SIGN IN</a></li>
+                        <li id="sign-in"><a style="color:black" href="{{url('/login')}}">SIGN IN</a></li>
                     @else
                         <li id="sign-in">
-                        <a href="{{ url('/logout') }}">
+                        <a style="color:black" href="{{ url('/logout') }}">
                             Logout
                         </a>
                       </li>
@@ -790,7 +797,7 @@
         <img src="img/phone.png" alt="Transfer rules mobile app screenshot" id="mobile-app">
         <div id="content-text" class="clearfix">
                 <span id="heading-hd">
-                    TransferRules
+                    Create an account for your company with Finance @ hotels.ng
                 </span>
             <span id="text-hd">
                     Create an account for your company with TransferRules and gain full control over financial transactions, disbursement of funds and lot more services.

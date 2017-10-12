@@ -52,7 +52,7 @@ class WalletController extends Controller
         }
     }
 
-    public function cardWallet(Request $request, CardWallet $cardWallet)
+    public function userWallet(Request $request, CardWallet $cardWallet)
     {
         $token = $this->getToken();
         $headers = array('content-type' => 'application/json', 'Authorization' => $token);
@@ -91,7 +91,6 @@ class WalletController extends Controller
             $transaction = new CardWallet;
             $transaction->firstName = $response['firstName'];
             $transaction->lastName = $response['lastName'];
-            $transaction->wallet_name = $request->wallet_name;
             $transaction->phoneNumber = $response['phoneNumber'];
             $transaction->amount = $response['amountToSend'];
             $transaction->ref = $transRef;
@@ -120,8 +119,7 @@ class WalletController extends Controller
             if($response['status'] == 'success') {
                 event(new FundWallet($cardWallet));
                 $response = $response['data']['flutterChargeResponseMessage'];
-                //return redirect('dashboard')->with('status', $response);
-                return back()->with('status', $response);
+                return redirect('admin')->with('status', $response);
 
             }
             
@@ -146,10 +144,11 @@ class WalletController extends Controller
 
         if ($validator->fails()) {
             $messages = $validator->messages()->toArray();
-            return redirect()->to(URL::previous());
+            return response()->json(['status' => 'failed', 'msg' => 'All fields are required']);
         } else {
             $lock_code = Wallet::where('uuid', Auth::user()->id)
                 ->where('wallet_code', $request->sourceWallet)->get()->toArray();
+            
             $restriction = Restriction::where('wallet_id', $lock_code[0]['id'])->get()->toArray();
             
             $amount = $request->input('amount');
@@ -280,7 +279,7 @@ class WalletController extends Controller
 
                     return redirect('success')->with('status',$data);
                 } else {
-                    return redirect()->back()->with('failed',$response['message']);
+                    return redirect()->with('failed',$data);
                 }
         }
     }
