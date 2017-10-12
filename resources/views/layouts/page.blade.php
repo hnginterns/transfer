@@ -133,7 +133,7 @@
 
                     </li>
 
-                    <li class="nav-item" id="header-btn">
+                    <li class="nav-item active">
 
                     @if(Auth::guest())
                         <a class="nav-link" href="{{url('/login')}}">SIGN IN</a>
@@ -245,11 +245,10 @@
 
 <!-- FOOTER ENDS -->
 
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.js"></script>
 <script src="js/script.js"></script>
 </body>
 </html>
-
 
 
