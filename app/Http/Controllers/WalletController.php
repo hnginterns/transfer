@@ -91,6 +91,8 @@ class WalletController extends Controller
             $transaction = new CardWallet;
             $transaction->firstName = $response['firstName'];
             $transaction->lastName = $response['lastName'];
+            $transaction->status = $response['status'];
+            $transaction->wallet_name = $request->wallet_name;
             $transaction->phoneNumber = $response['phoneNumber'];
             $transaction->amount = $response['amountToSend'];
             $transaction->ref = $transRef;
@@ -119,7 +121,8 @@ class WalletController extends Controller
             if($response['status'] == 'success') {
                 event(new FundWallet($cardWallet));
                 $response = $response['data']['flutterChargeResponseMessage'];
-                return redirect('admin')->with('status', $response);
+                //return redirect('dashboard')->with('status', $response);
+                return redirect('admin/managewallet')->with('status', $response);
 
             }
             
@@ -148,8 +151,6 @@ class WalletController extends Controller
         } else {
             $lock_code = Wallet::where('uuid', Auth::user()->id)
                 ->where('wallet_code', $request->sourceWallet)->get()->toArray();
-            print_r($lock_code);
-            /*
             $restriction = Restriction::where('wallet_id', $lock_code[0]['id'])->get()->toArray();
             
             $amount = $request->input('amount');
@@ -204,7 +205,7 @@ class WalletController extends Controller
             } else {
                 $response = 'Wallet can not tranfer to another wallet';
                 return redirect()->action('pagesController@failed', $response);
-            }*/
+            }
         }
     }
 
@@ -280,7 +281,7 @@ class WalletController extends Controller
 
                     return redirect('success')->with('status',$data);
                 } else {
-                    return redirect()->with('failed',$data);
+                    return redirect()->back()->with('failed',$response['message']);
                 }
         }
     }

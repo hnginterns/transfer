@@ -6,91 +6,174 @@
 @section('content')
 
 <link rel="stylesheet" href="/css/form.css">
+ <div class="panel panel-default">
+            <div class="panel-heading">
+                Fund <strong>{{ $wallet->wallet_name }} </strong>  Wallet with Card <a href="{{ route('wallets.details', $wallet->id) }}" class="label label-primary pull-right">Back</a>
+            </div>
+            
+                <div class="panel-body">
 
-      <div class="col-md-6 col-sm-6">
-        <form  class="input-form" >
-        
-              <h4 class="intro text-left">Fund Wallet with Rave</h4>
-              <input type="hidden" name="wallet_id" value="{{$wallet->id}}">
-              <div class="form-group">  
-                <label for="">Email address</label>
-                <input type="text" name="email" id="email" class="form-control" value="{{$user->email}}" >
-              </div>
+                <form action="/fund/{{$wallet->id}}" method="POST" class="form-horizontal">
+                    {{ csrf_field() }}
+                    <input type="hidden" name="wallet_name" value="{{$wallet->wallet_name}}">
+                    <div class="container-fluid">
+                      <input type="hidden" name="wallet_code" value="{{$wallet->wallet_code}}">
+                    <div class="container-fluid">
+                <fieldset>
+                    
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-5">
+                                <label for="cc_name">First Name</label>
+                                <div class="controls">
+                                    <input name="fname" class="form-control" id="cc_name" title="First Name" required type="text">
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                              <div class="form-group">
+                                  <label for="cc_name">Last Name</label>
+                                  <div class="controls">
+                                      <input name="lname" class="form-control" id="cc_name"  title="last name" required type="text">
+                                  </div>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-5">
+                                <label>Phone Number</label>
+                                <div class="controls">
+                                      <input name="phone" class="form-control" autocomplete="off" maxlength="20"  required="" type="text">
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <label>Email Address</label>
+                                    <div class="controls">
+                                          <input type="email" name="emailaddr" class="form-control" autocomplete="off" required="" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-5">    
+                                <label>Card Number</label>
+                                    <div class="controls">
+                                          <input name="card_no" class="form-control" autocomplete="off" maxlength="20"  required="" type="text">
+                                    </div>
+                            </div>
+                            <div class="col-md-2">
+                                <label>Card Expiry Date</label>
+                                <div class="controls">
+                                    <select class="form-control" name="expiry_month">
+                                        <option value="01">January</option>
+                                        <option value="02">February</option>
+                                        <option value="03">March</option>
+                                        <option value="04">April</option>
+                                        <option value="05">May</option>
+                                        <option value="06">June</option>
+                                        <option value="07">July</option>
+                                        <option value="08">August</option>
+                                        <option value="09">September</option>
+                                        <option value="10">October</option>
+                                        <option value="11">November</option>
+                                        <option value="12">December</option>
+                                    </select>
+                                </div>  
+                            </div>
+    
+                            <div class="col-md-2">
+                                <label>Card Expiry Year</label>
+                                    <select class="form-control" name="expiry_year">
+                                            @for ($i = 2017;$i <= 2040;$i++)
+                                            <option>{{$i}}</option>
+                                            @endfor  
+                                    </select>
+                            </div>
+                        </div>
+                    </div>
 
-              <div class="form-group"> 
-                <label for="">Wallet</label>
-                <input type="text" name="wallet" id="wallet" class="form-control" value="{{$wallet->wallet_name}}"  >
-              </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                   <label>Card CVV</label>
+                                    <div class="controls">
+                                        <input class="form-control" autocomplete="off" maxlength="3" pattern="\d{3}" title="Three digits at back of your card" required="" type="number" name="cvv">
+                                    </div>
+                             </div>
 
-              <div class="form-group"> 
-                <label for="">Amount</label>
-                <input type="text" name="amount" id="amount" class="form-control" placeholder="Please Enter Amount to fund"  >
-              </div>
-              
-              <div class="form-group">
-                <button class="btn btn-primary pull-right" id="submit" type="button">Pay Now</button>
-              </div>
-      </form>
+                         <div class="col-md-3">
+                               <label>Pin</label>
+                                <div class="controls">
+                                    <input class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="pin" required="" type="password" name="pin">
+                                </div>
+                         </div>
+            
+                          <div class="col-md-4">
+                                  <label>Amount</label>
+                                  <div class="input-group">
+                                      <div class="input-group-addon">₦</div>
+                                      <input name="amount" type="text" class="form-control" id="amount" placeholder="Amount">
+                                    </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label></label>
+                        <div class="controls">
+                            <button type="submit" class="btn btn-primary">Fund Wallet</button>
+                            <a href="/admin/viewwallet/{{$wallet->id}}"><button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button></a>
+                        </div>
+                    </div>
+                </fieldset>
+                    </div>
+                </form>
 
+            </div>
+        </div>
+    </div>
+</div>
+ @if (session('status'))
+   <script type="text/javascript">
+        $(document).ready(function() {
+            $('#myModal').modal();
+        });
+    </script>
+
+    <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Otp</h4>
+          </div>
+          <div class="modal-body">
+            <p>{{session('status')}}</p>
+            <div class="row">
+            <div class="col-md-6 col-md-offset-2">
+              <form action="/otp" method="POST">
+                {{csrf_field()}}
+                <input type="hidden" name="ref" value="{{$cardWallet->ref}}">
+                <div class="form-group">
+                    <input type="password" class="form-control" name="otp" placeholder="Enter OTP">
+                </div>
+                <button type="submit" class="btn btn-default btn-block">Submit</button>
+              </form>
+            </div>
+          </div>
+      </div>
+      
+    </div>
   </div>
- 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript" src="http://flw-pms-dev.eu-west-1.elasticbeanstalk.com/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
-<script type="text/javascript">
-    
-    document.addEventListener("DOMContentLoaded", function(event) {
-      document.getElementById("submit").addEventListener("click", function(e) {
-        var email = document.getElementById('email').value;
-        var hashedValue = ""; // this is a variable to hold the hashed value
-        var txRef = "MO-" + Date.now(); // this is variable to hold the unique transaction reference
-        $.ajax({
-          url: "/integrity/"+txRef+"/"+email, // this is an endpoint that sends the hashed values and transaction reference to the client.
-          headers: { contentType: "application/json" },
-          dataType: "json",
-          type: "GET",
-          cache: false,
-          success: function(response) {
-            console.log(response);
-            hashedValue = response.hash;
-            txRef = response.txref;
-          },
-          error: function(err) {
-            console.log(err);
-          }
-        });
-        var PBFKey = "FLWPUBK-47d14cd9504c1b0c54b439e1be251fcf-X";
-        var amount = document.getElementById('amount').value;
-    
-        // getpaidSetup is Rave's inline script function. it holds the payment data to pass to Rave.
-        getpaidSetup({
-          PBFPubKey: PBFKey,
-          customer_email: email,
-          customer_firstname: "Mofope",
-          customer_lastname: "Ojosh",
-          amount: amount,
-          customer_phone: "2348116631381",
-          country: "NG",
-          currency: "NGN",
-          txref: txRef, // Pass your UNIQUE TRANSACTION REFERENCE HERE.
-          integrity_hash: hashedValue, // pass the sha256 hashed value here.
-          onclose: function() {},
-          callback: function(response) {
-             flw_ref = response.tx.flwRef;// collect flwRef returned and pass to a                  server page to complete status check.
-          console.log("This is the response returned after a charge", response);
-          if(response.tx.chargeResponse =='00' || response.tx.chargeResponse == '0') {
-            console.log("This is the response returned after a charge", response);
-            //window.location = "http://transfer.hng.fun/ravepaysuccess/"+flw_ref+"/"+amount+"/NGN"; 
-            // redirect to a success page
-          } else {
-            console.log(response);
-            //window.location = "http://transfer.hng.fun/failed/"+response+; 
-            // redirect to a failure page.
-          }
-          }
-        });
-      });
-    });
 
-</script>
+</div>
+@endif
 
 @endsection
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

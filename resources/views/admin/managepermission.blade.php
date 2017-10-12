@@ -81,7 +81,7 @@
 
     <div class="wallet-row row">
     @foreach($restriction as $key => $restrictions)
-        <a href="{{ config('app.url') }}/admin/editpermission/{{$restrictions->id}}" class="single-wallet-holder col-md-3">
+        <a href="editpermission/{{$restrictions->id}}" class="single-wallet-holder col-md-3">
             <div class="inner-holder">
                   <h5 class="wallet-name"><b>Wallet Name : </b> {{ $restrictions->wallet->wallet_name }}</h5>
                   <h5 class="wallet-name"><b>User email : </b> {{ $restrictions->user->email }}</h5>   

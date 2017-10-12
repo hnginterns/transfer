@@ -41,8 +41,6 @@ Route::get('/testo', 'AdminController@Test');
 Route::get('/card-to-wallet', 'UserWalletController@userWallet');
 
 
-Route::get('/otp', 'pagesController@otp');
-
 Route::get('/about', 'pagesController@about')->name('about');
 Route::get('/contact', 'ContentController@contact')->name('contact');
 Route::get('/features', 'ContentController@features')->name('features');
@@ -51,8 +49,6 @@ Route::get('/how-it-works', 'ContentController@how')->name('how');
 Route::get('/terms', 'ContentController@terms')->name('terms');
 Route::get('/help', 'ContentController@help')->name('help');
 
-
-Route::get('/otp', 'pagesController@otp');
 
 Route::get('/forgot', 'pagesController@forgot');
 
@@ -91,7 +87,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/phone-topup', 'pagesController@phoneTopup');
 	Route::get('/transfer', 'pagesController@transfer');
 	Route::get('/balance', 'pagesController@balance');
-	Route::get('/ravepay/{id}', 'RavepayController@index')->name('ravepay.pay');
+	Route::get('/fund/{id}', 'RavepayController@index')->name('ravepay.pay');
+	Route::post('/fund/{id}', 'RavepayController@cardWallet')->name('ravepay.pay');
+	Route::post('/otp', 'RavepayController@otp')->name('ravepay.pay');
+	Route::post('/wallet/{wallet_code}/fund', 'WalletController@cardWallet');
 	Route::get('/integrity/{txRef}/{email}', 'RavepayController@checkSum');
 
 	Route::get('/ravepaysuccess/{ref}/{amount}/{currency}', 'RavepayController@success');
@@ -140,8 +139,8 @@ Route::group(['middleware' => ['admin']], function () {
 	Route::get('/admin/managePermission', 'AdminController@managePermission')->name('permission.manage');
 	Route::get('/admin/addpermission', 'Admin\WalletController@addPermission')->name('permission.create');
 	Route::post('/admin/addpermission', 'Admin\WalletController@PostAddPermission')->name('permission.store');
-	Route::get('/admin/editpermission/{restriction}', 'Admin\WalletController@editPermission')->name('permission.edit');
-	Route::post('/admin/editpermission/{restriction}', 'Admin\WalletController@PostEditPermission')->name('permission.update');
+	Route::get('/admin/editpermission/{id}', 'Admin\WalletController@editPermission')->name('permission.edit');
+	Route::post('/admin/editpermission/{id}', 'Admin\WalletController@PostEditPermission')->name('permission.update');
 	Route::get('/admin', 'AdminController@index')->name('admin.dashboard');
 	Route::get('/admin/managewallet', 'AdminController@managewallet');
 	Route::get('/admin/managebeneficiary', 'AdminController@managebeneficiary');

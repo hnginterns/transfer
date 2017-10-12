@@ -78,14 +78,21 @@
         #sign-in {
             margin-top: 9px;
             /* background: #E57679; */
-            background: #FF6200;
+            color:#000000 !important;
+            background: #FFFFFF !important;
+            border: 1px solid #00AEFF !important;
             border-radius: 63px;
             padding-left: 12px;
             padding-right: 12px;
         }
-
+        
         #sign-in a  {
             padding: 7px 14px;
+            color: #000000 !important;
+            display: block;
+        }
+        #sign-in:hover a{
+            color:#00AEFF
         }
 
 
@@ -766,10 +773,10 @@
                     <li class="{{ Request::segment(1) === 'about' ? 'active' : null }}"><a href="{{route('about')}}">About<span class="sr-only">(current)</span></a></li>
 
                     @if(Auth::guest())
-                        <li id="sign-in"><a href="{{url('/login')}}">SIGN IN</a></li>
+                        <li id="sign-in"><a style="color:black" href="{{url('/login')}}">SIGN IN</a></li>
                     @else
                         <li id="sign-in">
-                        <a href="{{ url('/logout') }}">
+                        <a style="color:black" href="{{ url('/logout') }}">
                             Logout
                         </a>
                       </li>
@@ -790,7 +797,7 @@
         <img src="img/phone.png" alt="Transfer rules mobile app screenshot" id="mobile-app">
         <div id="content-text" class="clearfix">
                 <span id="heading-hd">
-                    TransferRules
+                    Create an account for your company with Finance @ hotels.ng
                 </span>
             <span id="text-hd">
                     Create an account for your company with TransferRules and gain full control over financial transactions, disbursement of funds and lot more services.
