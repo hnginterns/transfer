@@ -51,7 +51,7 @@ background: #FFF;
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .main {
-  margin-top: 80px;
+  margin-top: 50px;
 }
 
 /*
@@ -75,6 +75,12 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
  */
 .navbar-fixed-top {
   border: 0;
+}
+#navbar li a {
+  color: #000000;
+}
+#navbar li:hover a{
+  color: #00aeff;
 }
 
 /*
