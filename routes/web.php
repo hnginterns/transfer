@@ -11,6 +11,8 @@
 |
  */
 
+use App\CardWallet;
+
 Auth::routes();
 
 // get default home pages
@@ -34,7 +36,10 @@ Route::get('/testbanks', 'BanksController@getAllBanks');
 
 
 Route::get('/welcome', function () {
-	return view('welcome');
+$cardWallet = CardWallet::all();
+	dd($cardWallet);
+
+	//return view('welcome');
 });
 
 Route::get('/testo', 'AdminController@Test');
