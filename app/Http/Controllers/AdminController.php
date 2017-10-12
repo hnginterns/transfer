@@ -240,11 +240,11 @@ class AdminController extends WalletController
         return view('admin/createwallet', compact('user', 'user_ref'));
     }
 
-    public function show($walletId)
+    public function show($walletId, CardWallet $cardWallet)
     {
         $wallet = Wallet::find($walletId);
 
-
+        $cardWallet = CardWallet::where('wallet_name', $wallet->wallet_name)->get();
 
         $status = $wallet->archived == 0 ? 'Active' : 'Archived';
 
@@ -260,7 +260,7 @@ class AdminController extends WalletController
         
         //dd($data['users']);
 
-        $data['transactions'] = CardWallet::all();
+        $data['transactions'] = $cardWallet;
 
         //dd($data['transactions']);
 
@@ -271,8 +271,6 @@ class AdminController extends WalletController
         //$data['wt'] = WalletTransaction::where('source_wallet', $walletId)->orWhere('recipient_wallet', $walletId)->get();
 
         $data['wallet'] = $wallet;
-
-        $data['transactions'] = WalletTransaction::all();
 
         //dd($data['transactions']);
 
