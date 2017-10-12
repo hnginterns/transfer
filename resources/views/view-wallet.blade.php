@@ -79,7 +79,48 @@ i.sent{
 								</tr>
 							</thead>
 							<tbody>
-              
+              @foreach($history as $key => $hist)
+                <tr id="transaction" onclick="$('#modal-id{{$key}}').modal('toggle')">
+									<td id="transction_type">{{ $hist['transaction_type'] }} </td>
+                  <td id="transaction_state">{{ $hist['transaction_state'] }}</td>
+									<td id="transaction_amount">{{ $hist['transaction_amount'] }} </td>
+									<td id="transaction_date">{{ $hist['transaction_date'] }}</td>
+									<td id="transaction_status"><i class="fa {{ $hist['transaction_status'] ? 'fa-check-circle can' : 'fa-times-circle cannot' }}" aria-hidden="true"></i></td>
+								</tr>
+                
+                <div class="modal fade" id="modal-id{{$key}}">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">{{ ucfirst($wallet->wallet_name) }}'s Transaction History</h4>
+                      </div>
+                      <div class="modal-body">
+                        <p>Transaction Type : <b>Wallet To {{ $hist['transaction_type'] }} Transaction</b> </p>
+                        <p>Transaction State : <b>{{ $hist['transaction_state'] }}</b>  </p>
+                        <p>Transaction Amount : <b>{{ $hist['transaction_amount'] }}</b> </p>
+                        <p>Transaction Date : <b>{{ $hist['transaction_date'] }} </b></p>
+                        <p>Transaction Status : <b>{{ $hist['transaction_status'] ? 'Successful' : 'Unsuccessful' }}</b></p>
+                        <p><button type="button" class="btn pull-right orange-box" style="padding-left:25px;padding-right:25px;" data-dismiss="modal">Ok</button></p><br><br>
+                      </div>
+                      {{--  <div class="modal-footer">  --}}
+                        {{--  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>  --}}
+                         {{--  <button type="button" class="btn btn-primary">Save changes</button>   --}}
+                      {{--  </div>  --}}
+                    </div>
+                  </div>
+                </div>
+                
+                @endforeach
+                
+							</tbody>
+						</table>
+              @else
+                  
+                    <p class="text-center"><b>No Transactions at the moment</b></p>
+                  
+                @endif
+					</div>
 
           <div class="orange-box"><h4 class="title" align="center"> {{ $wallet->wallet_name }}'s Beneficiaries</h4></div>
 
