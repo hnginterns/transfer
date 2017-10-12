@@ -20,7 +20,7 @@ use App\Http\Controllers\RestrictionController as Restrict;
 use App\Events\TransferToBank;
 use App\Events\FundWallet;
 
-class WalletController extends Controller
+class UserWalletController extends Controller
 {
     /**
      * Create a new controller instance.
