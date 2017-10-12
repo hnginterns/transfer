@@ -190,8 +190,7 @@ class RavepayController extends Controller
     public function otp(Request $request, CardWallet $cardWallet)
     {
 
-        $wallets = Wallet::all();
-        \Unirest\Request::verifyPeer(false);
+         \Unirest\Request::verifyPeer(false);
 
             $headers = array('content-type' => 'application/json');
             $query = array(
@@ -203,10 +202,6 @@ class RavepayController extends Controller
             $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer/charge/auth/card', $headers, $body);
             $response = json_decode($response->raw_body, true);
             if($response['status'] == 'success') {
-                foreach($wallets as $wallet) {
-                    CardWallet::where('wallet_name', $wallet->wallet_name)
-                        ->update(['status' => $response['status']]);
-                }
                 event(new FundWallet($cardWallet));
                 $response = $response['data']['flutterChargeResponseMessage'];
                 //return redirect('dashboard')->with('status', $response);
