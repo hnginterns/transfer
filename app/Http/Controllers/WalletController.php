@@ -151,6 +151,8 @@ class WalletController extends Controller
         } else {
             $lock_code = Wallet::where('uuid', Auth::user()->id)
                 ->where('wallet_code', $request->sourceWallet)->get()->toArray();
+            print_r($lock_code);
+            /*
             $restriction = Restriction::where('wallet_id', $lock_code[0]['id'])->get()->toArray();
             
             $amount = $request->input('amount');
@@ -206,6 +208,7 @@ class WalletController extends Controller
                 $response = 'Wallet can not tranfer to another wallet';
                 return redirect()->action('pagesController@failed', $response);
             }
+            */
         }
     }
 
