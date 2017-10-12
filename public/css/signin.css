@@ -262,4 +262,6 @@ li.nav-item {
     .hidden-sm {
         display: none;
     }
+    navbar-toggler-icon {
+        background:#00AEFF;
 }
