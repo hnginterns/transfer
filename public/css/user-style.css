@@ -23,12 +23,18 @@ font-style: normal;
 font-weight: 800;
 line-height: normal;
 font-size: 20px;
-color: #FFFFFF !important;
+color: #00aeff !important;
 }
 
 .navbar-header img {
 width: 24px;
 height: 24px;
+}
+#navbar li a {
+color:#000000;
+}
+#navbar li a:hover {
+color:#00aeff; 
 }
 
 #sidebar {
