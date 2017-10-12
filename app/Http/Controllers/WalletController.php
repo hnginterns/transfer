@@ -121,7 +121,7 @@ class WalletController extends Controller
                 event(new FundWallet($cardWallet));
                 $response = $response['data']['flutterChargeResponseMessage'];
                 //return redirect('dashboard')->with('status', $response);
-                return back()->with('status', $response);
+                return redirect('admin/managewallet')->with('status', $response);
 
             }
             
