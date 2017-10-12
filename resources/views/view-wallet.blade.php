@@ -47,7 +47,7 @@ i.sent{
                    <br>
                    <div class="col-sm-12 text-center">
                       <p>Wallet ID</p>
-                      <h2>{{ $wallet->lock_code }}</h2>
+                      <h2>{{ $wallet->wallet_code }}</h2>
                    </div> 
                   </br>
                    <div class="col-sm-12 text-center">
@@ -157,7 +157,7 @@ i.sent{
 
           <div class="col-sm-12">  
 		  	  
-            	<a href="{{ route('ravepay.pay', $wallet->id)}}" class="btn btn-dark">Fund</a>
+            	<a href="/fund/{{$wallet->id}}" class="btn btn-dark">Fund</a>
 			
  
             <a href="/transfer-to-bank/{{$wallet->id}}" class="btn btn-dark ">Transfer To Beneficiary</a>

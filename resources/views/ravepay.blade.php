@@ -6,90 +6,137 @@
 @section('content')
 
 <link rel="stylesheet" href="/css/form.css">
+ <div class="panel panel-default">
+            <div class="panel-heading">
+                Fund <strong>{{ $wallet->wallet_name }} </strong>  Wallet with Card <a href="{{ route('wallets.details', $wallet->id) }}" class="label label-primary pull-right">Back</a>
+            </div>
+            
+                <div class="panel-body">
 
-      <div class="col-md-6 col-sm-6">
-<<<<<<< HEAD
-        <form  class="input-form" >
-        
-              <h4 class="intro text-left">Fund Wallet with Rave</h4>
-              <input type="hidden" name="wallet_id" value="{{$wallet->id}}">
-              <div class="form-group">  
-                <label for="">Email address</label>
-                <input type="text" name="email" id="email" class="form-control" value="{{$user->email}}" >
-              </div>
- 
-              <div class="form-group"> 
-                <label for="">Wallet</label>
-                <input type="text" name="wallet" id="wallet" class="form-control" value="{{$wallet->wallet_name}}"  >
-              </div>
-=======
-
-         <h4 class="intro text-left">Funding {{$wallet->wallet_name}} Wallet with Rave</h4>
-
-        <form action="/wallet/{{$wallet->wallet_code}}/fund" method="POST" class="form-horizontal">
+                <form action="/fund/{{$wallet->id}}" method="POST" class="form-horizontal">
                     {{ csrf_field() }}
-            <input type="hidden" name="method" value="Manual Funding">
-            <input type="hidden" name="status" value="Completed">
->>>>>>> a9e1e76b942741aa3490fa78867df4a436a16408
-
-            <input type="hidden" name="fname" value="{{$user->first_name}}">
-            <input type="hidden" name="lname" value="{{$user->last_name}}">
-            <input type="hidden" name="emailaddr" value="{{$user->email}}">
-            <input type="hidden" name="phone" value="+23470370383333">
-
-          <div class="form-group"> 
-                <label for="">Amount</label>
-                <input type="text" name="amount" id="amount" class="form-control input-lg" placeholder="Please Enter Amount to fund"  >
-              </div>
-
-            <div class="form-group">
-                        <label class="control-label col-sm-2" >Card Number</label>
-                        <div class="col-sm-10">
-                            <input type="text" name="card_no" id="card_no" class="form-control" v>
-
+                    <input type="hidden" name="wallet_name" value="{{$wallet->wallet_name}}">
+                    <div class="container-fluid">
+                      <input type="hidden" name="wallet_code" value="{{$wallet->wallet_code}}">
+                    <div class="container-fluid">
+                <fieldset>
+                    
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-5">
+                                <label for="cc_name">First Name</label>
+                                <div class="controls">
+                                    <input name="fname" class="form-control" id="cc_name" title="First Name" required type="text">
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                              <div class="form-group">
+                                  <label for="cc_name">Last Name</label>
+                                  <div class="controls">
+                                      <input name="lname" class="form-control" id="cc_name"  title="last name" required type="text">
+                                  </div>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-5">
+                                <label>Phone Number</label>
+                                <div class="controls">
+                                      <input name="phone" class="form-control" autocomplete="off" maxlength="20"  required="" type="text">
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <label>Email Address</label>
+                                    <div class="controls">
+                                          <input type="email" name="emailaddr" class="form-control" autocomplete="off" required="" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-5">    
+                                <label>Card Number</label>
+                                    <div class="controls">
+                                          <input name="card_no" class="form-control" autocomplete="off" maxlength="20"  required="" type="text">
+                                    </div>
+                            </div>
+                            <div class="col-md-2">
+                                <label>Card Expiry Date</label>
+                                <div class="controls">
+                                    <select class="form-control" name="expiry_month">
+                                        <option value="01">January</option>
+                                        <option value="02">February</option>
+                                        <option value="03">March</option>
+                                        <option value="04">April</option>
+                                        <option value="05">May</option>
+                                        <option value="06">June</option>
+                                        <option value="07">July</option>
+                                        <option value="08">August</option>
+                                        <option value="09">September</option>
+                                        <option value="10">October</option>
+                                        <option value="11">November</option>
+                                        <option value="12">December</option>
+                                    </select>
+                                </div>  
+                            </div>
+    
+                            <div class="col-md-2">
+                                <label>Card Expiry Year</label>
+                                    <select class="form-control" name="expiry_year">
+                                            @for ($i = 2017;$i <= 2040;$i++)
+                                            <option>{{$i}}</option>
+                                            @endfor  
+                                    </select>
+                            </div>
                         </div>
                     </div>
 
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                   <label>Card CVV</label>
+                                    <div class="controls">
+                                        <input class="form-control" autocomplete="off" maxlength="3" pattern="\d{3}" title="Three digits at back of your card" required="" type="number" name="cvv">
+                                    </div>
+                             </div>
+
+                         <div class="col-md-3">
+                               <label>Pin</label>
+                                <div class="controls">
+                                    <input class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="pin" required="" type="password" name="pin">
+                                </div>
+                         </div>
+            
+                          <div class="col-md-4">
+                                  <label>Amount</label>
+                                  <div class="input-group">
+                                      <div class="input-group-addon">₦</div>
+                                      <input name="amount" type="text" class="form-control" id="amount" placeholder="Amount">
+                                    </div>
+                          </div>
+                        </div>
+                    </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-2" >CVV</label>
-                        <div class="col-sm-10">
-                            <input type="text" name="cvv" id="cvv" class="form-control" v>
-
+                        <label></label>
+                        <div class="controls">
+                            <button type="submit" class="btn btn-primary">Fund Wallet</button>
+                            <a href="/admin/viewwallet/{{$wallet->id}}"><button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button></a>
                         </div>
                     </div>
-
-                    <div class="form-group">
-                        <label class="control-label col-sm-2" >Expiry Month</label>
-                        <div class="col-sm-10">
-                            <input type="text" name="expiry_month" id="expiry_month" class="form-control" v>
-
-                        </div>
+                </fieldset>
                     </div>
+                </form>
 
-                    <div class="form-group">
-                        <label class="control-label col-sm-2" >Expiry Year</label>
-                        <div class="col-sm-10">
-                            <input type="text" name="expiry_year" id="expiry_year" class="form-control" v>
-
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label col-sm-2" >Pin</label>
-                        <div class="col-sm-10">
-                            <input type="text" name="pin" id="pin" class="form-control" v>
-
-                        </div>
-                    </div>
-              
-              <div class="form-group">
-                <input type="submit" class="btn btn-primary pull-right" value="Fund Wallet" />
-              </div>
-      </form>
-
-  </div>
- 
-@if (session('status'))
+            </div>
+        </div>
+    </div>
+</div>
+ @if (session('status'))
    <script type="text/javascript">
         $(document).ready(function() {
             $('#myModal').modal();
@@ -109,7 +156,7 @@
             <p>{{session('status')}}</p>
             <div class="row">
             <div class="col-md-6 col-md-offset-2">
-              <form action="/admin/otp" method="POST">
+              <form action="/otp" method="POST">
                 {{csrf_field()}}
                 <input type="hidden" name="ref" value="{{$cardWallet->ref}}">
                 <div class="form-group">
