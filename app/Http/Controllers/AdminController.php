@@ -244,7 +244,7 @@ class AdminController extends WalletController
     {
         $wallet = Wallet::find($walletId);
 
-        //$cardWallet = CardWallet::where('wallet_name', $wallet->wallet_name)->get();
+        $cardWallet = CardWallet::where('wallet_name', $wallet->wallet_name)->get();
 
         $status = $wallet->archived == 0 ? 'Active' : 'Archived';
 
@@ -260,7 +260,7 @@ class AdminController extends WalletController
         
         //dd($data['users']);
 
-        //$data['transactions'] = $cardWallet;
+        $data['transactions'] = $cardWallet;
 
         //dd($data['transactions']);
 
