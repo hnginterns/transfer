@@ -92,7 +92,7 @@
                   <b>Total Beneficiaries</b> <a class="pull-right">{{ count($beneficiaries) }} </a>
                 </li>
                 <li class="list-group-item">
-                  <b>Reference Code</b> <a class="pull-right">{{ $userRef }}</a>
+                  <b>Reference Code</b> <a class="pull-right">{{ $wallet->wallet_code }}</a>
                 </li>
 
                 <li class="list-group-item">
