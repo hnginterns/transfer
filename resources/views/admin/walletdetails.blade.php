@@ -173,7 +173,7 @@
                     </thead>
 
                     <tbody>
-                      @forelse ($transactions as $transaction)
+                      @forelse ($transaction as $transaction)
                       <tr>
                         <td style="color: #595757;">{{ $transaction->firstName }}  {{$transaction->lastName}}</td>
                         <td style="color: #595757;">{{ $transaction->amount }}</td>
