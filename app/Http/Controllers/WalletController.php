@@ -182,7 +182,7 @@ class WalletController extends Controller
                 $wallet_transactions = Transaction::count();
                 $total_amount = Transaction::sum('amount_transfered');
 
-                    if ($amount >= $restriction[0]->min_amount && $amount <= $restriction[0]->max_amount']) {
+                    if ($amount >= $restriction[0]->min_amount && $amount <= $restriction[0]->max_amount) {
                         $token = $this->getToken();
                         $headers = array('content-type' => 'application/json', 'Authorization' => $token);
 
