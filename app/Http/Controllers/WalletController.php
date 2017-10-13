@@ -20,6 +20,7 @@ use RestrictionController;
 use App\Http\Controllers\RestrictionController as Restrict;
 use App\Events\TransferToBank;
 use App\Events\FundWallet;
+use App\Events\WalletToWallet;
 
 class WalletController extends Controller
 {
@@ -160,7 +161,7 @@ class WalletController extends Controller
         } else {
             $lock_code = Wallet::where('uuid', Auth::user()->id)
                 ->where('wallet_code', $request->sourceWallet)->get()->toArray();
-            $restriction = Restriction::where('wallet_id', $lock_code[0]->id)->get()->toArray();
+            $restriction = Restriction::where('wallet_id', $w)->get()->toArray();
             
             $amount = $request->input('amount');
             $data = [];
@@ -174,13 +175,13 @@ class WalletController extends Controller
             $data['bank_id'] = 0;
             $data['payee_wallet_code'] = $request->recipientWallet;
 
-            if ($restriction[0]->can_transfer_from_wallet == true) {
+            if ($restriction[0]['can_transfer_from_wallet'] == true) {
                 $date = new DateTime();
                 $date_string = date_format($date, "Y-m-d");
                 $wallet_transactions = Transaction::count();
                 $total_amount = Transaction::sum('amount_transfered');
 
-                    if ($amount >= $restriction[0]->min_amount && $amount <= $restriction[0]->max_amount) {
+                    if ($amount >= $restriction[0]['min_amount'] && $amount <= $restriction[0]['max_amount']) {
                         $token = $this->getToken();
                         $headers = array('content-type' => 'application/json', 'Authorization' => $token);
 
@@ -189,7 +190,7 @@ class WalletController extends Controller
                             "recipientWallet" => $request->recipientWallet,
                             "amount" => $request->amount,
                             "currency" => "NGN",
-                            "lock" => $lock_code[0]->lock_code
+                            "lock" => $lock_code[0]['lock_code']
                         );
 
                         $body = \Unirest\Request\Body::json($query);
@@ -215,6 +216,68 @@ class WalletController extends Controller
                 $response = 'Wallet can not tranfer to another wallet';
                 return redirect()->action('pagesController@failed', $response);
             }
+        }
+    }
+    //transfer from wallet to bank
+    public function transferToWallet(Request $request, Wallet $wallet, WalletTransaction $transaction, WalletToWallet $transactions)
+    {
+     $validator = $this->validateTransfer($request->all());
+        if ($validator->fails()) {
+            $messages = $validator->messages()->toArray();
+            Session::flash('messages', $this->formatMessages($messages, 'error'));
+            return redirect()->to(URL::previous())->withInput();
+        } else {
+                $token = $this->getToken();
+                $headers = array('content-type' => 'application/json', 'Authorization' => $token);
+                $query = array(
+                    "lock" => $wallet->lock_code,
+                    "amount" => $request->amount,
+                    "currency" => "NGN",
+                    "sourceWallet" => $request->sourceWallet,
+                    "recipientWallet" => $request->recipientWallet,
+                    );
+
+                //checks for permissions
+              /**$permit = Restriction::where('wallet_id', $wallet->id)
+                        ->where('uuid', Auth::user()->id)
+                        ->first();
+                if($permit == null) return redirect('/dashboard');
+                     $restrict = new Restrict($permit, $request);
+                     $errors = $restrict->canTransferToWallet();
+                if(count($errors) != 0){
+                     return back()->with('multiple-error', $errors);
+                }**/
+                //end of permission checks
+
+                //Api call to moneywave for transaction
+                $body = \Unirest\Request\Body::json($query);
+                $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/wallet/transfer', $headers, $body);
+                $response = json_decode($response->raw_body, true);
+                $status = $response['status'];
+                //end of Api call
+
+                    if ($status == 'success') {
+
+                    //logic to persist transaction details
+                    $transaction = new WalletTransaction;
+                    $transaction->source_wallet = $request->sourceWallet;
+                    $transaction->amount = $request->amount;
+                    $transaction->recipient_wallet = $request->recipientWallet;
+                    $transaction->save();
+                    //end of logic for saving transactions
+                    
+                    //data to be parsed to display transaction details
+                    $data = [];
+                    $data['sourceWallet'] = $transaction->source_wallet;
+                    $data['recipientWallet'] = $transaction->recipient_wallet;
+                    $data['amount'] = $request->amount;
+                    //end of data prep
+                   // event(new TransferToBank($bank))
+                    event(new WalletToWallet($transactions));
+                    return redirect('wallet-transfer-success')->with('status',$data);
+                } else {
+                    return redirect()->back()->with('failed',$response['message']);
+                }
         }
     }
 
@@ -423,4 +486,21 @@ class WalletController extends Controller
             'beneficiary_id' => 'required|numeric',
         ]);
     }
+
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+
+    protected function validateTransfer(array $data)
+    {
+        return Validator::make($data, [
+            'sourceWallet' => 'required',
+            'recipientWallet' => 'required',
+            'amount' => 'required|numeric'
+        ]);
+    }
+    
 }
