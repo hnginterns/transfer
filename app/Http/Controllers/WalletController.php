@@ -151,7 +151,7 @@ class WalletController extends Controller
         } else {
             $lock_code = Wallet::where('uuid', Auth::user()->id)
                 ->where('wallet_code', $request->sourceWallet)->get();
-            $restriction = Restriction::where('wallet_id', $lock_code[0]->id)->get();
+            $restriction = Restriction::where('wallet_id', $lock_code->id)->get();
             
             $amount = $request->input('amount');
             $data = [];
@@ -165,13 +165,13 @@ class WalletController extends Controller
             $data['bank_id'] = 0;
             $data['payee_wallet_code'] = $request->recipientWallet;
 
-            if ($restriction[0]->can_transfer_from_wallet == true) {
+            if ($restriction->can_transfer_from_wallet == true) {
                 $date = new DateTime();
                 $date_string = date_format($date, "Y-m-d");
                 $wallet_transactions = Transaction::count();
                 $total_amount = Transaction::sum('amount_transfered');
 
-                    if ($amount >= $restriction[0]->min_amount && $amount <= $restriction[0]->max_amount) {
+                    if ($amount >= $restriction->min_amount && $amount <= $restriction->max_amount) {
                         $token = $this->getToken();
                         $headers = array('content-type' => 'application/json', 'Authorization' => $token);
 
