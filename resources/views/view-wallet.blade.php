@@ -309,7 +309,7 @@ i.sent{
             <a href="/transfer-to-bank/{{$wallet->id}}" class="btn btn-dark ">Transfer To Beneficiary</a>
 			
 
-      <a href="/transfer-to-wallet" class="btn btn-dark ">Transfer to Another Wallet </a>
+      <a href="/transfer-to-wallet/{{$wallet->id}}" class="btn btn-dark ">Transfer to Another Wallet </a>
 
 		 <div class="container">
     <!-- Trigger the modal with a button -->

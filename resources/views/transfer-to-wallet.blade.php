@@ -13,20 +13,16 @@
           {{csrf_field()}}
             <div class="form-group">
                 <select class="form-control cus-input" name="sourceWallet">
-                    <option value="">Select sender Wallet</option>
-                        @foreach($wallets as $wallet)
-                              <option value="{{ $wallet->wallet_code }}">{{ $wallet->wallet_name}}</option>
-                        @endforeach
+                  <option value="{{ $wallet->wallet_code }}">{{ $wallet->wallet_name}}</option>
                 </select>
             </div>
 
-            {{$wallet->id}}
             <div class="form-group">
                 <select class="form-control cus-input" name="recipientWallet">
                     <option value="">Select recipient wallet</option>
-                        @foreach($wallets as $wallet)
-                              <option value="{{ $wallet->wallet_code }}">{{ $wallet->wallet_name}}</option>
-                        @endforeach
+                      @foreach($wallets as $walletz)
+                              <option value="{{ $walletz->wallet_code }}">{{ $walletz->wallet_name}}</option>
+                      @endforeach
                 </select>
             </div>
 
