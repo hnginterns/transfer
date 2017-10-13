@@ -209,7 +209,10 @@ class pagesController extends Controller
     {
         return view('phone-topup');
     }
-
+ public function phoneTopupView()
+    {
+        return view('phonetopup');
+    }
 
     //all other page functions can be added
 

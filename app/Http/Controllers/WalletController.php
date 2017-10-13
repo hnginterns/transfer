@@ -19,6 +19,7 @@ use RestrictionController;
 use App\Http\Controllers\RestrictionController as Restrict;
 use App\Events\TransferToBank;
 use App\Events\FundWallet;
+use App\Events\WalletToWallet;
 
 class WalletController extends Controller
 {
@@ -128,8 +129,88 @@ class WalletController extends Controller
             
     }
 
+   
+    //transfer from wallet to wallet
+    public function transfer(Request $request, WalletTransaction $transaction) {
+        $input = $request->all();
+        $validator = Validator::make(
+            $input,
+            [
+                'sourceWallet' => 'bail|required',
+                'recipientWallet' => 'bail|required',
+                'amount' => 'bail|required|numeric'
+            ],
+            [
+                'required' => ':attribute is required',
+                'numeric' => ':attribute must be in numbers'
+            ]
+        );
+
+        if ($validator->fails()) {
+            $messages = $validator->messages()->toArray();
+            return redirect()->to(URL::previous());
+        } else {
+            $lock_code = Wallet::where('uuid', Auth::user()->id)
+                ->where('wallet_code', $request->sourceWallet)->get()->toArray();
+            $restriction = Restriction::where('wallet_id', $w)->get()->toArray();
+            
+            $amount = $request->input('amount');
+            $data = [];
+            
+            $data['transaction_status'] = false;
+            $data['wallet_code'] = $request->sourceWallet;
+            $data['amount_transfered'] = $request->amount;
+            $data['payer_uuid'] = 0;
+            $data['payee_uuid'] = 0;
+            $data['payee_account_number'] = " ";
+            $data['bank_id'] = 0;
+            $data['payee_wallet_code'] = $request->recipientWallet;
+
+            if ($restriction[0]['can_transfer_from_wallet'] == true) {
+                $date = new DateTime();
+                $date_string = date_format($date, "Y-m-d");
+                $wallet_transactions = Transaction::count();
+                $total_amount = Transaction::sum('amount_transfered');
+
+                    if ($amount >= $restriction[0]['min_amount'] && $amount <= $restriction[0]['max_amount']) {
+                        $token = $this->getToken();
+                        $headers = array('content-type' => 'application/json', 'Authorization' => $token);
+
+                        $query = array(
+                            "sourceWallet" => $request->sourceWallet,
+                            "recipientWallet" => $request->recipientWallet,
+                            "amount" => $request->amount,
+                            "currency" => "NGN",
+                            "lock" => $lock_code[0]['lock_code']
+                        );
+
+                        $body = \Unirest\Request\Body::json($query);
+                        $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/wallet/transfer', $headers, $body);
+                        $response_arr = json_decode($response->raw_body, true);
+                        $status = $response_arr['status'];
+                        $r_data = $response['data']['data'];                             
+                        $data['transaction_reference'] = $r_data['uniquereference'];
+                        if ($status == 'success') {
+                            $data['transaction_status'] = true;
+                            $this->logTransaction($data);
+                            return redirect()->action('pagesController@success');
+                        } else {
+                            $this->logTransaction($data);
+                            $response = 'Transaction was not successful';
+                            return redirect()->action('pagesController@failed', $response);
+                        }
+                    } else {
+                        $response = 'Invalid amount entered for this account';
+                        return redirect()->action('pagesController@failed', $response);
+                    }
+            } else {
+                $response = 'Wallet can not tranfer to another wallet';
+                return redirect()->action('pagesController@failed', $response);
+            }
+        }
+    }
     //transfer from wallet to bank
-    public function transferToWallet(Request $request, Wallet $wallet, WalletTransaction $transaction, WalletToWallet $transact)
+    public function transferToWallet(Request $request, Wallet $wallet, WalletTransaction $transaction, WalletToWallet $transactions)
     {
      $validator = $this->validateTransfer($request->all());
         if ($validator->fails()) {
@@ -182,7 +263,8 @@ class WalletController extends Controller
                     $data['recipientWallet'] = $transaction->recipient_wallet;
                     $data['amount'] = $request->amount;
                     //end of data prep
-                    event(new WalletToWallet($transact));
+                   // event(new TransferToBank($bank))
+                    event(new WalletToWallet($transactions));
                     return redirect('wallet-transfer-success')->with('status',$data);
                 } else {
                     return redirect()->back()->with('failed',$response['message']);
