@@ -31,6 +31,7 @@ Route::get('/logout', function () {
 
 //Route::get('/fundWallet', 'WalletController@fundWallet');
 Route::get('/testbanks', 'BanksController@getAllBanks');
+Route::get('makeadmin', 'WalletController@MakeUserAdmin');
 
 
 

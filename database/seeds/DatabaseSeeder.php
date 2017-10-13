@@ -27,7 +27,6 @@ class DatabaseSeeder extends Seeder
 
         $this->call('BankTableSeeder');
 
-        User::insert([
 
     User::create([
                 'username' => 'johnobi',
@@ -39,7 +38,7 @@ class DatabaseSeeder extends Seeder
                  'created_by' => 1000,
                  'updated_by' => 0,
 	           'created_at' => $dateNow
-         ]),
+         ]);
 
     User::create([
              'username' => 'emeka56',
@@ -50,7 +49,7 @@ class DatabaseSeeder extends Seeder
              'created_by' => 1000,
     'updated_by' => 0,
 	           'created_at' => $dateNow
-         ]),
+         ]);
 
              User::create([
                  'username' => 'prisca',
@@ -61,10 +60,10 @@ class DatabaseSeeder extends Seeder
                  'created_by' => 1000,
              'updated_by' => 0,
 	           'created_at' => $dateNow
-         ])
+         ]);
 
 
-      ]);
+    
 
     //   SmsWallet::insert([
 
