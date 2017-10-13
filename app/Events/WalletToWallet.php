@@ -20,9 +20,9 @@ class WalletToWallet
      *
      * @return void
      */
-    public function __construct(WalletTransaction $transact)
+    public function __construct()
     {
-        $this->transact = $transact;
+        //$this->transact = $transact;
     }
 
     /**
