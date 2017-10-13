@@ -20,7 +20,7 @@
                 </select>
             </div>
 
-
+            {{$wallet->id}}
             <div class="form-group">
                 <select class="form-control cus-input" name="recipientWallet">
                     <option value="">Select recipient wallet</option>
