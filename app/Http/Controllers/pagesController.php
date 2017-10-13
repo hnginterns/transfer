@@ -104,11 +104,12 @@ class pagesController extends Controller
         return view('transfer-to-bank', compact('wallet'));
     }
 
-    public function wallet_transfer()
+    public function wallet_transfer($id)
     {
+        $wallet = Wallet::find($id);
         $wallets = Wallet::all();
         $user_id = Auth::user()->id;
-        return view('transfer-to-wallet', compact('wallets'))->with('user_id', $user_id);
+        return view('transfer-to-wallet', compact('wallet', 'wallets'))->with('user_id', $user_id);
     }
 
     public function viewAccounts()
