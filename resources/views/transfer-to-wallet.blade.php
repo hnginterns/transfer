@@ -9,7 +9,7 @@
 
  <div class="col-md-6 col-sm-6">
         <h4 class="intro text-left" >Transfer to another Wallet account </h4>
-        <form action="{{url('/walletTransfer')}}" method="POST" id="trform" class="input-form">
+        <form action="/transfer-to-wallet/{{$wallet->id}}" method="POST" id="trform" class="input-form">
           {{csrf_field()}}
             <div class="form-group">
                 <select class="form-control cus-input" name="sourceWallet">

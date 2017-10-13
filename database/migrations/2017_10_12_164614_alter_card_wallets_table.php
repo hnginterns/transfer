@@ -13,10 +13,10 @@ class AlterCardWalletsTable extends Migration
      */
     public function up()
     {
-        Schema::table('card_wallets', function (Blueprint $table) {
+       /** Schema::table('card_wallets', function (Blueprint $table) {
             $table->string('wallet_name');
             $table->string('status');
-        });
+        });*/
     }
 
     /**

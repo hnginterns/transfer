@@ -74,6 +74,7 @@ Route::get('/gettoken', 'WalletController@getToken');
 Route::get('/transferWallet', 'WalletController@transfer');
 
 Route::post('/transfer-to-bank/{wallet}', 'WalletController@transferAccount');
+Route::post('/transfer-to-wallet/{wallet}', 'WalletController@transferToWallet');
 
 Route::get('/404', 'pagesController@pagenotfound');
 
@@ -88,6 +89,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/banks', 'BanksController@banks');
 	Route::get('/populatebank', 'BanksController@populateBanks');
 	Route::get('/success', 'pagesController@success');
+	Route::get('/wallet-transfer-success', 'pagesController@walletSuccess');
 	Route::get('/failed/{response}', 'pagesController@failed')->name('failed');
     Route::get('/phone-topup', 'pagesController@phoneTopup');
 	Route::get('/transfer', 'pagesController@transfer');
