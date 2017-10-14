@@ -140,7 +140,7 @@ class WalletController extends Controller
     }
 
    //transfer from wallet to wallet
-    public function transfer(Request $request, WalletTransaction $transaction) {
+    public function transfer(Request $request, WalletTransaction $transaction, WalletToWallet $transactions) {
         $input = $request->all();
         $validator = Validator::make(
             $input,
@@ -217,6 +217,7 @@ class WalletController extends Controller
                         } else {
                             $this->logTransaction($data);
                             $response = $r_data;
+                            event(new WalletToWallet($transactions));
                             return redirect()->action('pagesController@failed', $response);
                         }
                         
