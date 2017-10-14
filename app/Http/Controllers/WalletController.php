@@ -157,7 +157,7 @@ class WalletController extends Controller
 
         if ($validator->fails()) {
             $messages = $validator->messages()->toArray();
-            return redirect()->to(URL::previous());
+            return redirect()->to(URL::previous())->with('failed', $messages);
         } else {
             $lock_code = Wallet::where('wallet_code', $request->sourceWallet)->get();
             $restriction = Restriction::where('wallet_id', $lock_code[0]->id)
