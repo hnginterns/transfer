@@ -138,7 +138,7 @@ class pagesController extends Controller
         $beneficiaries = Beneficiary::where('wallet_id', $wallet->id)->paginate(15);
 
         // get all wallet to wallet transactions, both sent and received
-        $walletTransfer = walletTransaction::where('source_wallet', $wallet->wallet_code)->get();
+        $walletTransfer = WalletTransaction::where('source_wallet', $wallet->wallet_code)->get();
         $walletTransactions = CardWallet::where('wallet_name', $wallet->wallet_name)->get();
         $bankTransactions = BankTransaction::where('wallet_id', $wallet->id)->get();
 

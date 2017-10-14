@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateWalletTransactionTable extends Migration
+class AlterWalletTransactionTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateWalletTransactionTable extends Migration
      */
     public function up()
     {
-        Schema::table('wallet_transactions', function (Blueprint $table) {
-            //
-        });
+         Schema::table('wallet_transaction', function (Blueprint $table) {
+            $table->string('status');
+            });
     }
 
     /**
@@ -25,8 +25,6 @@ class CreateWalletTransactionTable extends Migration
      */
     public function down()
     {
-        Schema::table('wallet_transactions', function (Blueprint $table) {
-            //
-        });
+        //
     }
 }
