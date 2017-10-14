@@ -1,0 +1,34 @@
+{
+    "name": "hisorange/traits",
+    "description": "Useful PHP traits.",
+    "keywords": ["traits", "php"],
+    "license": "MIT",
+    "version": "1.0.0",
+
+    "authors": [
+        {
+            "name": "Varga Zsolt (hisorange)",
+            "email": "hisoranger@gmail.com"
+        }
+    ],
+
+    "require": {
+        "php": ">=5.4.0"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "hisorange\\Traits\\": "src/"
+        }
+    },
+
+    "extra": {
+
+        "branch-alias": {
+            "dev-master": "1.x-dev"
+        }
+
+    },
+
+    "minimum-stability": "dev"
+}

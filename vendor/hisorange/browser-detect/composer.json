@@ -1,0 +1,30 @@
+{
+    "name": "hisorange/browser-detect",
+    "description": "Browser & Mobile detection package for Laravel 4-5.",
+    "keywords": ["laravel", "user-agent", "browser", "mobile", "tablet", "user agent", "mobile", "tablet", "greenball", "hisorange"],
+    "license": "MIT",
+    "version": "2.0.6",
+
+    "authors": [
+        {
+            "name": "Varga Zsolt (hisorange)",
+            "email": "hisoranger@gmail.com"
+        }
+    ],
+
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "~5.0",
+        "garetjax/phpbrowscap": "2.*",
+        "mobiledetect/mobiledetectlib": "2.*",
+        "hisorange/traits": "1.*"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "hisorange\\BrowserDetect\\": "src/"
+        }
+    },
+
+    "minimum-stability": "stable"
+}

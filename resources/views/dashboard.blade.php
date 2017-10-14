@@ -17,7 +17,8 @@
             @endforeach
         </div>
       </div>
-      {{\Request::ip()}}
+
+      {{BrowserDetect::BrowserVersion()}}
 
 <style>
   .dbackground{

@@ -12,7 +12,8 @@
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
         "mashape/unirest-php": "^3.0",
-        "sarav/laravel-multiauth": "^0.0.7"
+        "sarav/laravel-multiauth": "^0.0.7",
+        "hisorange/browser-detect": "2.*"
     },
     "require-dev": {
         "filp/whoops": "~2.0",

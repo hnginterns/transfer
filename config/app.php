@@ -176,6 +176,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        'hisorange\BrowserDetect\Provider\BrowserDetectService',
+
 
     ],
 
@@ -226,6 +228,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Trs' => App\Facades\Trs::class,
+        'BrowserDetect' => 'hisorange\BrowserDetect\Facade\Parser',
 
     ],
 
