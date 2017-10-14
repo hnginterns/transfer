@@ -5,8 +5,7 @@
       Phone TopUp
 @endsection
 @section('content')
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"
-    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
+ 
     <link href="/css/style1.css" rel="stylesheet">
 
        <div >
