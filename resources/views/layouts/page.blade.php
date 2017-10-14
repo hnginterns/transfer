@@ -206,7 +206,7 @@
         <li><a href="{{route('how')}}">FAQs</a></li>
         <li><a href="{{route('terms')}}">Terms & Condition</a></li>
 
-        <li><a href="{{route('sitemap')}}">Site Map</a></li>
+        <li><a href="#">Site Map</a></li>
     </div>
     <p id="line"> </p>
     <div id="lower-footer">
