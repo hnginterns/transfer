@@ -36,37 +36,6 @@
         </form>
 </div>
 
-  <script type="text/javascript">      
-
-        $("#transferbt").click(function(e) {
-          e.preventDefault();
-          var data = $("#trform").serializeArray();
-          $.getJSON('/walletTransfer', data, function(resp) {
-            if(resp.status == 'failed') {
-              var options = {
-                  backdrop: false,
-                  keyboard: false,
-                  show: true,
-                  remote: false
-              }
-             $("#fmsg").html(resp.msg);
-             $("#fmodal").modal(options);
-            } else if(resp.status == 'success'){
-              $("[name=sourceWallet]").val('');
-              $("[name=recipientWallet]").val('');
-              $("[name=amount]").val('');
-              var options = {
-                  backdrop: false,
-                  keyboard: false,
-                  show: true,
-                  remote: false
-              }
-              $("#smodal").modal(options);
-            }
-          })
-        });
-      });
-  </script>
   
 @endsection
 

