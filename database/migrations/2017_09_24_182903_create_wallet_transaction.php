@@ -17,6 +17,7 @@ class CreateWalletTransaction extends Migration
             $table->increments('id');
             $table->string('source_wallet', 50)->change();
             $table->string('recipient_wallet', 50)->change();
+            $table->string('status');
             $table->integer('amount');
             $table->timestamps();
         });

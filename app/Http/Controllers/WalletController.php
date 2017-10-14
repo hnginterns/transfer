@@ -254,6 +254,7 @@ class WalletController extends Controller
                     $transaction->source_wallet = $request->sourceWallet;
                     $transaction->amount = $request->amount;
                     $transaction->recipient_wallet = $request->recipientWallet;
+                    $transaction->status = $response['status'];
                     $transaction->save();
                     //end of logic for saving transactions
                     
