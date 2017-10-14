@@ -232,7 +232,7 @@
         <tr>
             <td><a href="{{route('terms')}}">Terms & Condition</a></td>
             <td><a href="{{route('privacy')}}">Privacy Policy</a></td>
-            <td><a href="#">Disclaimer</a></td>
+            
         </tr>
     </table>
     <p id="line"> </p>
