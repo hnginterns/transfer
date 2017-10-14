@@ -7,7 +7,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="{{url('/')}}"> <span> <img src="/img/logo.png" alt=""></span> Transfer Rules</a>
+          <a class="navbar-brand" href="{{url('/')}}"> <span> <img src="/img/logo1.png" alt=""></span> Transfer Rules</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
