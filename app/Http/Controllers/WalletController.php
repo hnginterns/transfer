@@ -220,18 +220,17 @@ class WalletController extends Controller
                         } else {
                             $this->logTransaction($data);
                             $response = $r_data;
-                            
-                            return redirect()->action('pagesController@failed', $response);
+                            return redirect()->back()->with('failed',$response);
                         }
                         
                     } else {
                         $response = 'Invalid amount entered for this account';
-                        return redirect()->action('pagesController@failed', $response);
+                        return redirect()->back()->with('failed',$response);
                     }
 
             } else {
                 $response = 'Wallet can not tranfer to another wallet';
-                return redirect()->action('pagesController@failed', $response);
+                return redirect()->back()->with('failed',$response);
             }
         }
     }
