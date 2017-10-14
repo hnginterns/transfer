@@ -13,7 +13,7 @@
                 <div class="row">
                     <div class="col col-lg-6 col-md-12 col-sm-12">
                         <div class="balance text-center">
-                            <h6>Availables balance in wallet</h6>
+                            <h6>Available balance in wallet</h6>
 
                              <?php
                         $curl = curl_init();
