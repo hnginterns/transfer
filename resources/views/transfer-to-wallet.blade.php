@@ -21,7 +21,9 @@
                 <select class="form-control cus-input" name="recipientWallet">
                     <option value="">Select recipient wallet</option>
                       @foreach($wallets as $walletz)
+                      @if($wallet->wallet_code != $walletz->wallet_code)
                               <option value="{{ $walletz->wallet_code }}">{{ $walletz->wallet_name}}</option>
+                            @endif
                       @endforeach
                 </select>
             </div>
