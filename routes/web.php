@@ -75,7 +75,7 @@ Route::get('/gettoken', 'WalletController@getToken');
 Route::get('/transferWallet', 'WalletController@transfer');
 
 Route::post('/transfer-to-bank/{wallet}', 'WalletController@transferAccount');
-Route::post('/transfer-to-wallet/{wallet}', 'WalletController@transferToWallet');
+Route::post('/transfer-to-wallet/{wallet}', 'WalletController@transfer');
 
 Route::get('/404', 'pagesController@pagenotfound');
 
