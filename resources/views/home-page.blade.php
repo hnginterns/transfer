@@ -888,7 +888,7 @@
                 Create an account in less than 5 minutes. Login to your account and create wallets for your company
             </p>
         </div>
-        <button id="divider-cta">Sign Up Now</button>
+        <button id="divider-cta">Read More</button>
     </div>
 </div>
 <!-- DIVIDER ENDS-->
@@ -903,14 +903,12 @@
 
         <li><a href="{{route('how')}}">How it works</a></li>
         <li><a href="{{route('contact')}}">Contact Us</a></li>
-        <li><a href="#">Disclaimer</a></li>
+   
 
         <li><a href="{{route('help')}}">Help & Support</a></li>
         <li><a href="{{url('login')}}">Sign In</a></li>
         <li><a href="{{route('how')}}">FAQs</a></li>
         <li><a href="{{route('terms')}}">Terms & Condition</a></li>
-
-        <li><a href="#">Site Map</a></li>
     </div>
     <p id="line"> </p>
     <div id="lower-footer">
@@ -938,7 +936,7 @@
         <tr>
             <td><a href="{{route('terms')}}">Terms & Condition</a></td>
             <td><a href="{{route('privacy')}}">Privacy Policy</a></td>
-            <td><a href="#">Disclaimer</a></td>
+            
         </tr>
     </table>
     <p id="line"> </p>
@@ -947,7 +945,7 @@
     </div>
 </div>
 
-<!-- FOOTER BEGINS -->
+<!-- FOOTER ENDS -->
 <!--<script
     src="https://code.jquery.com/jquery-3.2.1.min.js"
     integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="

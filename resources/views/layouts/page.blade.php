@@ -199,14 +199,12 @@
 
         <li><a href="{{route('how')}}">How it works</a></li>
         <li><a href="{{route('contact')}}">Contact Us</a></li>
-        <li><a href="#">Disclaimer</a></li>
+        
 
         <li><a href="{{route('help')}}">Help & Support</a></li>
         <li><a href="{{url('login')}}">Sign In</a></li>
         <li><a href="{{route('how')}}">FAQs</a></li>
         <li><a href="{{route('terms')}}">Terms & Condition</a></li>
-
-        <li><a href="#">Site Map</a></li>
     </div>
     <p id="line"> </p>
     <div id="lower-footer">
@@ -234,7 +232,7 @@
         <tr>
             <td><a href="{{route('terms')}}">Terms & Condition</a></td>
             <td><a href="{{route('privacy')}}">Privacy Policy</a></td>
-            <td><a href="#">Disclaimer</a></td>
+            
         </tr>
     </table>
     <p id="line"> </p>

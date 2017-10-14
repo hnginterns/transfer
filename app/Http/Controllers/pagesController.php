@@ -118,10 +118,6 @@ class pagesController extends Controller
         return view('transfer-to-wallet', compact('wallet', 'wallets'))->with('user_id', $user_id);
     }
 
-    public function viewAccounts()
-    {
-        return view('view-accounts');
-    }
 
     public function otp()
     {
@@ -147,11 +143,6 @@ class pagesController extends Controller
         $history = Trans::getTransactionsHistory($walletTransactions, $bankTransactions, $wallet->wallet_code, $wallet->id, $walletTransfer);
 
         return view('view-wallet', compact('wallet','permit','rules','beneficiaries', 'history', 'cardWallet'));
-    }
-
-    public function createWallet()
-    {
-        return view('create-wallet');
     }
 
     public function createBeneficiary()
@@ -209,10 +200,7 @@ class pagesController extends Controller
         return view('404');
     }
 
-    public function phoneTopup()
-    {
-        return view('phone-topup');
-    }
+
  public function phoneTopupView()
     {
         return view('phonetopup');

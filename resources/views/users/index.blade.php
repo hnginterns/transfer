@@ -7,7 +7,7 @@
     <div class="box">
             <div class="box-header">
               <h3 class="box-title">Users List</h3>
-              <a href="{{action('UsermgtController@create')}}" class="btn btn-success pull-right">Add User </a>
+              <a href="{{action('User\UsermgtController@create')}}" class="btn btn-success pull-right">Add User </a>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -33,7 +33,7 @@
         <td>{{$user['email']}}</td>
         <td>{{$user['first_name']}}</td>
         <td>{{$user['last_name']}}</td>
-        <td><a href="{{ action('UsermgtController@edit', $user['id']) }}" class="btn btn-warning">Edit</a></td>
+        <td><a href="{{ action('User\UsermgtController@edit', $user['id']) }}" class="btn btn-warning">Edit</a></td>
         <td>
 
         @if( $user['deleted_at'] == null)

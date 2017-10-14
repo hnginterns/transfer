@@ -16,6 +16,7 @@ use App\Transaction;
 use URL;
 use App\BankTransaction;
 use RestrictionController;
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\RestrictionController as Restrict;
 use App\Events\TransferToBank;
 use App\Events\FundWallet;
