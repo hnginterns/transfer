@@ -165,6 +165,15 @@ i.sent{
   <!-- Trigger the modal with a button -->
   <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Fund</button>
 
+  <a href="/transfer-to-bank/{{$wallet->id}}" class="btn btn-dark ">Transfer To Beneficiary</a>
+      
+
+      <a href="/transfer-to-wallet/{{$wallet->id}}" class="btn btn-dark ">Transfer to Another Wallet </a>
+
+     <div class="container">
+    <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Beneficiary</button>
+
   <!--Add sms Account  Modal -->
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
@@ -306,14 +315,7 @@ i.sent{
     </div>
 			
  
-            <a href="/transfer-to-bank/{{$wallet->id}}" class="btn btn-dark ">Transfer To Beneficiary</a>
-			
-
-      <a href="/transfer-to-wallet/{{$wallet->id}}" class="btn btn-dark ">Transfer to Another Wallet </a>
-
-		 <div class="container">
-    <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Beneficiary</button>
+            
   
   <!--Add Beneficiary  Modal -->
   <div class="modal fade" id="myModal" role="dialog">
