@@ -9,12 +9,12 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
     <link href="/css/style1.css" rel="stylesheet">
 
-       <div class="col col-12">
+       <div >
          <div >
                 <div class="row">
                     <div class="col col-lg-6 col-md-12 col-sm-12">
                         <div class="balance text-center">
-                            <h6>Available balance in wallet</h6>
+                            <h6>Availables balance in wallet</h6>
 
                              <?php
                         $curl = curl_init();
