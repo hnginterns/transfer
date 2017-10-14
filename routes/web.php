@@ -156,7 +156,6 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
 	Route::post('/editpermission/{restriction}', 'Admin\WalletController@PostEditPermission')->name('permission.update');
 	//Permission ends
 	
-
 	Route::get('/', 'Admin\AdminController@index')->name('admin.dashboard');
 	
 	//admin user management starts
@@ -166,6 +165,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
 	Route::post('users/makeAdmin/{id}', 'User\UsermgtController@makeAdmin');
 	Route::post('users/removeAdmin/{id}', 'User\UsermgtController@removeAdmin');
 	//admin user management ends
+
 
 	//admin sms transaction starts
 	Route::get('/smswallet', 'SmsWalletController@smsWalletBalance');
