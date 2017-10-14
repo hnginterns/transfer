@@ -16,10 +16,13 @@ Auth::routes();
 Route::get('/', 'pagesController@home')->name('home');
 
 Route::get('/logout', function () {
+	\LogUserActivity::addToLog('User logged out successfully');
 	Auth::logout();
 	Session::flush();
 	return redirect('/login');
 });
+
+Route::get('logActivity', 'HomeController@logUserActivity');
 
 
 // Route::get('/testbanks', 'BanksController@getAllBanks');

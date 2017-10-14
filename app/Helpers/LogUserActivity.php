@@ -15,6 +15,14 @@ class LogUserActivity
 		$log['url'] = Request::fullUrl();
 		$log['method'] = Request::method();
 		$log['ip'] = Request::ip();
-		$log['os'] = BrowserDetect::osName();
+		$log['agent'] = Request::server('HTTP_USER_AGENT');
+		$log['user_id'] = auth()->check() ? auth()->user()->id : 1;
+		LogUserActivityModel::create($log);
+
+	}
+
+	public static function logUserActivityLists()
+	{
+		return LogUserActivityModel::latest()->get();
 	}
 }

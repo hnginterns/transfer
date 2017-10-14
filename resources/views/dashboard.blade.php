@@ -18,9 +18,7 @@
         </div>
       </div>
 
-      {{BrowserDetect::osName()}}
-
-<style>
+  <style>
   .dbackground{
     background:#25313F;
     color:white;

@@ -216,7 +216,10 @@ class WalletController extends Controller
                             $data['transaction_status'] = true;
                             $this->logTransaction($data);
                             event(new WalletToWallet($transactions));
-                            
+                            $transact = WalletTransaction::latest()->first();
+                            $wallet = Wallet::where('wallet_code', $transact->source_wallet);
+
+                            \LogUserActivity::addToLog($transact->source_wallet .' transferred '.$transact->amount .' to '.$transact->recipient_wallet);
                             return redirect()->action('pagesController@success');
                         } else {
                             $this->logTransaction($data);
