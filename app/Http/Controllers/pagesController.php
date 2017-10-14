@@ -12,7 +12,7 @@ use App\Restriction;
 use App\CardWallet;
 use App\Transaction;
 use App\BankTransaction;
-use App\walletTransaction;
+use App\WalletTransaction;
 
 use App\Bank;
 
