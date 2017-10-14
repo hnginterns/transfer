@@ -205,13 +205,14 @@ class WalletController extends Controller
                         
                         if ($status == 'success') {
                             //logic to persist wallet transaction details
-                            /*
+                            
                             $w_transaction = new WalletTransaction;
                             $w_transaction->source_wallet = $request->sourceWallet;
                             $w_transaction->amount = $request->amount;
                             $w_transaction->recipient_wallet = $request->recipientWallet;
+                            $w_transaction->status = 'true';
                             $w_transaction->save();
-                            */
+                            
                             $data['transaction_status'] = true;
                             $this->logTransaction($data);
                             event(new WalletToWallet($transactions));
