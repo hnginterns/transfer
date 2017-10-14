@@ -18,7 +18,7 @@
         </div>
       </div>
 
-      {{BrowserDetect::BrowserVersion()}}
+      {{BrowserDetect::osName()}}
 
 <style>
   .dbackground{

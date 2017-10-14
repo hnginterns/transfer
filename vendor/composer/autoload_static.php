@@ -376,6 +376,7 @@ class ComposerStaticInitcb56c8f99153a160391720319584c667
         'App\\Events\\WalletToWallet' => __DIR__ . '/../..' . '/app/Events/WalletToWallet.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Facades\\Trs' => __DIR__ . '/../..' . '/app/Facades/Trs.php',
+        'App\\Helpers\\LogUserActivity' => __DIR__ . '/../..' . '/app/Helpers/LogUserActivity.php',
         'App\\Http\\Controllers\\Admin\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/AdminController.php',
         'App\\Http\\Controllers\\Admin\\AdminLoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/AdminLoginController.php',
         'App\\Http\\Controllers\\Admin\\BeneficiaryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/BeneficiaryController 2.php',
@@ -389,18 +390,13 @@ class ComposerStaticInitcb56c8f99153a160391720319584c667
         'App\\Http\\Controllers\\ContentController' => __DIR__ . '/../..' . '/app/Http/Controllers/ContentController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
-        'App\\Http\\Controllers\\PaymentController' => __DIR__ . '/../..' . '/app/Http/Controllers/PaymentController.php',
+        'App\\Http\\Controllers\\PaymentController' => __DIR__ . '/../..' . '/app/Http/Controllers/paymentController.php',
         'App\\Http\\Controllers\\RavepayController' => __DIR__ . '/../..' . '/app/Http/Controllers/RavepayController.php',
         'App\\Http\\Controllers\\RestrictionController' => __DIR__ . '/../..' . '/app/Http/Controllers/RestrictionController.php',
         'App\\Http\\Controllers\\SmsWalletController' => __DIR__ . '/../..' . '/app/Http/Controllers/SmsWalletController.php',
         'App\\Http\\Controllers\\User\\UserWalletController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/UserWalletController.php',
-<<<<<<< HEAD
-        'App\\Http\\Controllers\\User\\UsersController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/UsersController.php',
-        'App\\Http\\Controllers\\UsermgtController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/UsermgtController.php',
-=======
         'App\\Http\\Controllers\\User\\UsermgtController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/UsermgtController.php',
         'App\\Http\\Controllers\\User\\UsersController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/UsersController.php',
->>>>>>> c6c16543fbefb9fd898be1b39c50fd0c9707e21c
         'App\\Http\\Controllers\\ValidateAccountController' => __DIR__ . '/../..' . '/app/Http/Controllers/ValidateAccountController.php',
         'App\\Http\\Controllers\\WalletController' => __DIR__ . '/../..' . '/app/Http/Controllers/WalletController.php',
         'App\\Http\\Controllers\\pagesController' => __DIR__ . '/../..' . '/app/Http/Controllers/pagesController.php',
@@ -420,10 +416,7 @@ class ComposerStaticInitcb56c8f99153a160391720319584c667
         'App\\Listeners\\FundWalletBalance' => __DIR__ . '/../..' . '/app/Listeners/FundWalletBalance.php',
         'App\\Listeners\\UpdateWalletBalance' => __DIR__ . '/../..' . '/app/Listeners/UpdateWalletBalance.php',
         'App\\Listeners\\WalletTransferBalance' => __DIR__ . '/../..' . '/app/Listeners/WalletTransferBalance.php',
-<<<<<<< HEAD
         'App\\LogUserActivity' => __DIR__ . '/../..' . '/app/LogUserActivity.php',
-=======
->>>>>>> c6c16543fbefb9fd898be1b39c50fd0c9707e21c
         'App\\Notifications\\WalletToWalletTransfer' => __DIR__ . '/../..' . '/app/Notifications/WalletToWalletTransfer.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
