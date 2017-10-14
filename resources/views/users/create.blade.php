@@ -7,7 +7,7 @@
   @if (Session::has('messages'))
       {!! Session::get('messages') !!}
   @endif
-  <form method="post" action="{{action('UsermgtController@store')}}">
+  <form method="post" action="{{action('User\UsermgtController@store')}}">
     
     <div class="form-group row">
       {{csrf_field()}}

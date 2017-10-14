@@ -69,12 +69,6 @@ class AdminController extends WalletController
         }
     }
 
-    public function usermanagement()
-    {
-        $name = Auth::user()->username;
-        return view('usermanagement')->with("name", $name);
-    }
-
     public function wallet()
     {
         $user = User::all();

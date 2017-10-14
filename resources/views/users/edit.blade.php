@@ -13,7 +13,7 @@
             <!-- /.box-header -->
             <div class="box-body">   
 
-  <form method="post" action="{{ action('UsermgtController@update', $id)}}">
+  <form method="post" action="{{ action('User\UsermgtController@update', $id)}}">
     <div class="form-group row">
       {{csrf_field()}}
        <input name="_method" type="hidden" value="PATCH">

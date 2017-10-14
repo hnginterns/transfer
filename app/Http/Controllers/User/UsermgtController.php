@@ -29,6 +29,8 @@ class UsermgtController extends Controller
         return view('users.index', compact('users'))->with("name", $name);
     }
 
+    
+
     /**
      * Show the form for creating a new resource.
      *

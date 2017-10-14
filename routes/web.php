@@ -10,18 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
  */
-
-use App\CardWallet;
-
 Auth::routes();
 
 // get default home pages
 Route::get('/', 'pagesController@home')->name('home');
-
-//Route::get('/home', 'pagesController@home');
-// get signin page
-//Route::get('/signin', 'pagesController@signin');
-Route::get('/home', 'HomeController@index')->name('home.index');
 
 Route::get('/logout', function () {
 	Auth::logout();
@@ -29,24 +21,11 @@ Route::get('/logout', function () {
 	return redirect('/login');
 });
 
-//Route::get('/fundWallet', 'WalletController@fundWallet');
-Route::get('/testbanks', 'BanksController@getAllBanks');
-Route::get('makeadmin', 'WalletController@MakeUserAdmin');
 
+// Route::get('/testbanks', 'BanksController@getAllBanks');
+// Route::get('makeadmin', 'WalletController@MakeUserAdmin'); 
 
-
-
-Route::get('/welcome', function () {
-$cardWallet = CardWallet::all();
-	dd($cardWallet);
-
-	//return view('welcome');
-});
-
-Route::get('/testo', 'Admin\AdminController@Test');
-Route::get('/card-to-wallet', 'User\UserWalletController@userWallet');
-
-
+//Content starts here
 Route::get('/about', 'pagesController@about')->name('about');
 Route::get('/contact', 'ContentController@contact')->name('contact');
 Route::get('/features', 'ContentController@features')->name('features');
@@ -54,27 +33,22 @@ Route::get('/privacy', 'ContentController@privacy')->name('privacy');
 Route::get('/how-it-works', 'ContentController@how')->name('how');
 Route::get('/terms', 'ContentController@terms')->name('terms');
 Route::get('/help', 'ContentController@help')->name('help');
-
+//Content ends here
 
 Route::get('/forgot', 'pagesController@forgot');
 
-Route::get('/manageWallet', 'pagesController@manageWallet');
-
+//Api calls to money wave starts here
+Route::get('/card-to-wallet', 'User\UserWalletController@userWallet');
 Route::get('/validate', 'ValidateAccountController@accountResolve');
-
 Route::get('/walletBalance', 'WalletController@walletBalance');
-
 Route::get('/walletCharge', 'WalletController@walletCharge');
-
 Route::get('/createWallet', 'WalletController@createWallet');
-
 Route::post('/walletTransfer', 'WalletController@transfer');
-
 Route::get('/gettoken', 'WalletController@getToken');
-
 Route::get('/transferWallet', 'WalletController@transfer');
-
 Route::get('/404', 'pagesController@pagenotfound');
+//Api calls to money wave ends here
+
 
 // authentications
 Route::group(['middleware' => 'auth'], function () {
@@ -132,82 +106,78 @@ Route::get('/admin/logout', 'Admin\AdminLoginController@logout')->name('admin.lo
 //end of admin auth
 
 
-Route::group(['middleware' => ['admin']], function () {
+Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
 	
 	//Admin wallet operation starts
-	Route::get('/admin/transaction-history', 'Admin\AdminController@cardTransaction');
-	Route::get('admin/createwallet', 'Admin\AdminController@wallet');
-	Route::post('admin/createwallet', 'Admin\AdminController@addwallet');
-	Route::get('admin/viewwallet/{walletId}', 'Admin\AdminController@show')->name('view-wallet');
-	Route::get('admin/wallet-details', 'Admin\AdminController@walletdetails');
-  	Route::get('admin/wallets', 'Admin\WalletController@index')->name('wallets.index');
-  	Route::get('admin/wallets/details/{id}', 'Admin\WalletController@details')->name('wallets.details');
-  	Route::get('admin/wallets/manualfund/{id}', 'Admin\WalletController@manualfund')->name('wallets.manualfund');
-  	Route::post('admin/wallets/manualfund/{id}', 'Admin\WalletController@manualfundstore')->name('wallets.manualfund.store');
-  	Route::get('admin/wallets/ravefund/{id}', 'Admin\WalletController@ravefund')->name('wallets.ravefund');
-  	Route::post('admin/wallets/ravefund/{id}', 'Admin\WalletController@ravefundstore')->name('wallets.ravefund.store');
-	Route::get('/admin/managewallet', 'Admin\AdminController@managewallet');
-	Route::get('/admin/{id}/archivewallet', 'Admin\AdminController@archiveWallet');
-	Route::get('/admin/{id}/activatewallet', 'Admin\AdminController@activateWallet');
+	Route::get('/transaction-history', 'Admin\AdminController@cardTransaction');
+	Route::get('createwallet', 'Admin\AdminController@wallet');
+	Route::post('createwallet', 'Admin\AdminController@addwallet');
+	Route::get('viewwallet/{walletId}', 'Admin\AdminController@show')->name('view-wallet');
+	Route::get('wallet-details', 'Admin\AdminController@walletdetails');
+  	Route::get('wallets', 'Admin\WalletController@index')->name('wallets.index');
+  	Route::get('wallets/details/{id}', 'Admin\WalletController@details')->name('wallets.details');
+  	Route::get('wallets/manualfund/{id}', 'Admin\WalletController@manualfund')->name('wallets.manualfund');
+  	Route::post('wallets/manualfund/{id}', 'Admin\WalletController@manualfundstore')->name('wallets.manualfund.store');
+  	Route::get('wallets/ravefund/{id}', 'Admin\WalletController@ravefund')->name('wallets.ravefund');
+  	Route::post('wallets/ravefund/{id}', 'Admin\WalletController@ravefundstore')->name('wallets.ravefund.store');
+	Route::get('/managewallet', 'Admin\AdminController@managewallet');
+	Route::get('/{id}/archivewallet', 'Admin\AdminController@archiveWallet');
+	Route::get('/{id}/activatewallet', 'Admin\AdminController@activateWallet');
 
 	//wallet fund starts
-	Route::get('/admin/fundwallet', 'Admin\AdminController@fundwallet');
-	Route::post('/admin/{wallet_code}/fund', 'WalletController@cardWallet');
-	Route::post('/admin/otp', 'WalletController@otp');
+	Route::get('/fundwallet', 'Admin\AdminController@fundwallet');
+	Route::post('/{wallet_code}/fund', 'WalletController@cardWallet');
+	Route::post('/otp', 'WalletController@otp');
 	//Wallet fund ends
 
-	Route::get('/admin/fundwallet', 'Admin\AdminController@fundwallet');
-	Route::post('/admin/{wallet_code}/fund', 'WalletController@cardWallet');
-	Route::post('/admin/otp', 'WalletController@otp');
+	Route::get('/fundwallet', 'Admin\AdminController@fundwallet');
+	Route::post('/{wallet_code}/fund', 'WalletController@cardWallet');
+	Route::post('/otp', 'WalletController@otp');
 	//Admin wallet operations ends
 
 
   	//Beneficiaries Route starts
-  	Route::get('admin/beneficiaries', 'Admin\BeneficiaryController@index')->name('beneficiaries.index');
-  	Route::get('admin/beneficiaries/details/{id}', 'Admin\BeneficiaryController@details')->name('beneficiaries.details');
-  	Route::get('admin/beneficiaries/add', 'Admin\BeneficiaryController@add')->name('beneficiaries.add');
-  	Route::post('admin/beneficiaries/insert', 'Admin\BeneficiaryController@insert')->name('beneficiaries.insert');
-  	Route::get('admin/beneficiaries/edit/{id}', 'Admin\BeneficiaryController@edit')->name('beneficiaries.edit');
-  	Route::post('admin/beneficiaries/update/{id}', 'Admin\BeneficiaryController@update')->name('beneficiaries.update');
-  	Route::get('admin/beneficiaries/delete/{id}', 'Admin\BeneficiaryController@delete')->name('beneficiaries.delete');
-	Route::get('/admin/managebeneficiary', 'Admin\AdminController@managebeneficiary');
+  	Route::get('beneficiaries', 'Admin\BeneficiaryController@index')->name('beneficiaries.index');
+  	Route::get('beneficiaries/details/{id}', 'Admin\BeneficiaryController@details')->name('beneficiaries.details');
+  	Route::get('beneficiaries/add', 'Admin\BeneficiaryController@add')->name('beneficiaries.add');
+  	Route::post('beneficiaries/insert', 'Admin\BeneficiaryController@insert')->name('beneficiaries.insert');
+  	Route::get('beneficiaries/edit/{id}', 'Admin\BeneficiaryController@edit')->name('beneficiaries.edit');
+  	Route::post('beneficiaries/update/{id}', 'Admin\BeneficiaryController@update')->name('beneficiaries.update');
+  	Route::get('beneficiaries/delete/{id}', 'Admin\BeneficiaryController@delete')->name('beneficiaries.delete');
+	Route::get('/managebeneficiary', 'Admin\AdminController@managebeneficiary');
 	// Beneficiary route ends
 
 
 	//Permissions start
-	Route::get('/admin/managePermission', 'Admin\AdminController@managePermission')->name('permission.manage');
-	Route::get('/admin/addpermission', 'Admin\WalletController@addPermission')->name('permission.create');
-	Route::get('/admin/editpermission/{restriction}', 'Admin\WalletController@editPermission')->name('permission.edit');
-	Route::post('/admin/addpermission', 'Admin\WalletController@PostAddPermission')->name('permission.store');
-	Route::post('/admin/editpermission/{restriction}', 'Admin\WalletController@PostEditPermission')->name('permission.update');
+	Route::get('/managePermission', 'Admin\AdminController@managePermission')->name('permission.manage');
+	Route::get('/addpermission', 'Admin\WalletController@addPermission')->name('permission.create');
+	Route::get('/editpermission/{restriction}', 'Admin\WalletController@editPermission')->name('permission.edit');
+	Route::post('/addpermission', 'Admin\WalletController@PostAddPermission')->name('permission.store');
+	Route::post('/editpermission/{restriction}', 'Admin\WalletController@PostEditPermission')->name('permission.update');
 	//Permission ends
 	
 
-	Route::get('/admin', 'Admin\AdminController@index')->name('admin.dashboard');
+	Route::get('/', 'Admin\AdminController@index')->name('admin.dashboard');
 	
-	
-	Route::get('/admin/adduser', 'Admin\AdminController@addaccount');
+	//admin user management starts
+	Route::resource('users', 'User\UsermgtController');
+	Route::post('users/banUser/{id}', 'User\UsermgtController@banUser');
+	Route::post('users/unbanUser/{id}', 'User\UsermgtController@unbanUser');
+	Route::post('users/makeAdmin/{id}', 'User\UsermgtController@makeAdmin');
+	Route::post('users/removeAdmin/{id}', 'User\UsermgtController@removeAdmin');
+	//admin user management ends
 
-	Route::resource('admin/users', 'User\UsermgtController');
-	Route::post('admin/users/banUser/{id}', 'User\UsermgtController@banUser');
-	Route::post('admin/users/unbanUser/{id}', 'User\UsermgtController@unbanUser');
-	Route::post('admin/users/makeAdmin/{id}', 'User\UsermgtController@makeAdmin');
-	Route::post('admin/users/removeAdmin/{id}', 'User\UsermgtController@removeAdmin');
+	//admin sms transaction starts
+	Route::get('/smswallet', 'SmsWalletController@smsWalletBalance');
+	Route::post('/sms', 'SmsWalletController@smsWallet');
+	Route::post('/Otp', 'SmsWalletController@Otp');
+	Route::post('/smswallet', 'SmsWalletController@smsWallet');
+	Route::post('/smswallet-topup', 'SmsWalletController@smsWalletTopup');
+	Route::post('/get-user-details', 'SmsWalletController@getUserDetails');
+	//admin sms transaction ends here
 
 
-	Route::get('/admin/smswallet', 'SmsWalletController@smsWalletBalance');
-	Route::post('/admin/sms', 'SmsWalletController@smsWallet');
-	Route::post('/admin/Otp', 'SmsWalletController@Otp');
-	Route::post('/admin/smswallet', 'SmsWalletController@smsWallet');
-	Route::post('/admin/smswallet-topup', 'SmsWalletController@smsWalletTopup');
-	Route::post('/admin/get-user-details', 'SmsWalletController@getUserDetails');
-
-	// admin routes
-	Route::get('/view-accounts', 'pagesController@viewAccounts');
-	Route::get('/addaccount', 'Admin\AdminController@addaccount');
-	Route::get('/userwalment', 'Admin\AdminController@usermanagement');
-	Route::get('admin/analytics', 'Admin\AdminController@webAnalytics');
+	Route::get('analytics', 'Admin\AdminController@webAnalytics');
 
 });
 
-//Route::get('/home', 'HomeController@index')->name('home');
