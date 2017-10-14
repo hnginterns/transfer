@@ -773,7 +773,7 @@
                     <li class="{{ Request::segment(1) === 'about' ? 'active' : null }}"><a href="{{route('about')}}">About<span class="sr-only">(current)</span></a></li>
 
                     @if(Auth::guest())
-                        li id="sign-in"><a style="color:black" href="{{url('/login')}}">Sign In</a></li>
+
                     @else
                         <li id="sign-in">
                         <a style="color:black" href="{{ url('/logout') }}">

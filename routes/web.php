@@ -74,9 +74,6 @@ Route::get('/gettoken', 'WalletController@getToken');
 
 Route::get('/transferWallet', 'WalletController@transfer');
 
-Route::post('/transfer-to-bank/{wallet}', 'WalletController@transferAccount');
-Route::post('/transfer-to-wallet/{wallet}', 'WalletController@transferToWallet');
-
 Route::get('/404', 'pagesController@pagenotfound');
 
 // authentications
@@ -84,15 +81,20 @@ Route::group(['middleware' => 'auth'], function () {
 	//User routes
 	Route::get('/dashboard', 'pagesController@userdashboard');
 	Route::get('/wallet/{wallet}', 'pagesController@walletdetail')->name('user.wallet.detail');
+	
 	Route::get('/transfer-to-bank/{wallet}', 'pagesController@bank_transfer');
+	Route::post('/transfer-to-bank/{wallet}', 'WalletController@transferAccount');
+	
 	Route::get('/transfer-to-wallet/{id}', 'pagesController@wallet_transfer');
+	Route::post('/transfer-to-wallet/{wallet}', 'WalletController@transfer');
+	
 	Route::get('/create-wallet', 'pagesController@createWallet');
 	Route::get('/banks', 'BanksController@banks');
 	Route::get('/populatebank', 'BanksController@populateBanks');
 	Route::get('/success', 'pagesController@success');
 	Route::get('/wallet-transfer-success', 'pagesController@walletSuccess');
 	Route::get('/failed/{response}', 'pagesController@failed')->name('failed');
-    Route::get('/phone-topup', 'pagesController@phoneTopup');
+        Route::get('/phone-topup', 'pagesController@phoneTopup');
 	Route::get('/phonetopup', 'pagesController@phoneTopupView');
 	Route::get('/transfer', 'pagesController@transfer');
 	Route::get('/balance', 'pagesController@balance');
