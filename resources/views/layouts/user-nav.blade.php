@@ -53,7 +53,7 @@
                 </a>
               </li>
               @endif
-              <li><a href="#" style="color:white; font-size:18px;"><i class="fa fa-user"></i>  </a></li>
+              <li><a href="#" style="color:black; font-size:18px;"><i class="fa fa-user"></i>  </a></li>
           </ul>
           <form class="navbar-form navbar-right">
             <input type="text" class="form-control" placeholder="Search...">
