@@ -304,8 +304,6 @@ class WalletController extends Controller
                     //end of logic for saving transactions
 
                     event(new TransferToBank($bank));
-
-
                     return redirect('success')->with('status',$data);
                 } else {
                     return redirect()->back()->with('failed',$response['message']);
