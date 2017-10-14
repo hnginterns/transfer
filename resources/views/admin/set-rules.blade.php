@@ -1,1 +1,0 @@
-<h1> You want to set some rules  Because You are an Admin</h1>
