@@ -43,8 +43,8 @@ $cardWallet = CardWallet::all();
 	//return view('welcome');
 });
 
-Route::get('/testo', 'AdminController@Test');
-Route::get('/card-to-wallet', 'UserWalletController@userWallet');
+Route::get('/testo', 'Admin\AdminController@Test');
+Route::get('/card-to-wallet', 'User\UserWalletController@userWallet');
 
 
 Route::get('/about', 'pagesController@about')->name('about');
@@ -115,9 +115,9 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 // auth admin
-Route::get('/admin/login', 'AdminLoginController@showLoginForm');
-Route::post('/admin/login', 'AdminLoginController@login')->name('admin.login');
-Route::get('/admin/logout', 'AdminLoginController@logout')->name('admin.logout');
+Route::get('/admin/login', 'Admin\AdminLoginController@showLoginForm');
+Route::post('/admin/login', 'Admin\AdminLoginController@login')->name('admin.login');
+Route::get('/admin/logout', 'Admin\AdminLoginController@logout')->name('admin.logout');
 
 Route::group(['middleware' => ['admin']], function () {
 
@@ -147,69 +147,69 @@ Route::group(['middleware' => ['admin']], function () {
   	Route::post('admin/beneficiaries/update/{id}', 'Admin\BeneficiaryController@update')->name('beneficiaries.update');
   	Route::get('admin/beneficiaries/delete/{id}', 'Admin\BeneficiaryController@delete')->name('beneficiaries.delete');
 
-	Route::get('/admin/managePermission', 'AdminController@managePermission')->name('permission.manage');
+	Route::get('/admin/managePermission', 'Admin\AdminController@managePermission')->name('permission.manage');
 	Route::get('/admin/addpermission', 'Admin\WalletController@addPermission')->name('permission.create');
 	Route::post('/admin/addpermission', 'Admin\WalletController@PostAddPermission')->name('permission.store');
 	Route::get('/admin/editpermission/{restriction}', 'Admin\WalletController@editPermission')->name('permission.edit');
 	Route::post('/admin/editpermission/{restriction}', 'Admin\WalletController@PostEditPermission')->name('permission.update');
-	Route::get('/admin', 'AdminController@index')->name('admin.dashboard');
-	Route::get('/admin/managewallet', 'AdminController@managewallet');
-	Route::get('/admin/managebeneficiary', 'AdminController@managebeneficiary');
-	Route::get('/admin/adduser', 'AdminController@addaccount');
+	Route::get('/admin', 'Admin\AdminController@index')->name('admin.dashboard');
+	Route::get('/admin/managewallet', 'Admin\AdminController@managewallet');
+	Route::get('/admin/managebeneficiary', 'Admin\AdminController@managebeneficiary');
+	Route::get('/admin/adduser', 'Admin\AdminController@addaccount');
 	// Set rules that users will transfer with
-	Route::get('/admin/setrule', 'AdminController@setRule')->name('admin.setrule');
-	Route::post('/admin/setrule', 'AdminController@saveRule')->name('admin.setrule.submit');
+	Route::get('/admin/setrule', 'Admin\AdminController@setRule')->name('admin.setrule');
+	Route::post('/admin/setrule', 'Admin\AdminController@saveRule')->name('admin.setrule.submit');
 
 	// New Rule <Creati></Creati>on
-	Route::get('/admin/createrule', 'AdminController@createRule')->name('admin.createrule');
-	Route::post('/admin/createrule', 'AdminController@saveNewRule')->name('admin.setrule.submit');
+	Route::get('/admin/createrule', 'Admin\AdminController@createRule')->name('admin.createrule');
+	Route::post('/admin/createrule', 'Admin\AdminController@saveNewRule')->name('admin.setrule.submit');
 
-	Route::get('admin/view-rules', 'AdminController@viewRules');
-	Route::post('admin/update-rule', 'AdminController@updateRule')->name('update-rule');
-	Route::get('admin/edit-rule/{ruleId}', 'AdminController@editRules')->name('edit-rule');
-	Route::get('admin/delete-rule/{ruleId}', 'AdminController@deleteRule')->name('delete-rule');
+	Route::get('admin/view-rules', 'Admin\AdminController@viewRules');
+	Route::post('admin/update-rule', 'Admin\AdminController@updateRule')->name('update-rule');
+	Route::get('admin/edit-rule/{ruleId}', 'Admin\AdminController@editRules')->name('edit-rule');
+	Route::get('admin/delete-rule/{ruleId}', 'Admin\AdminController@deleteRule')->name('delete-rule');
 
-	Route::get('/admin/{id}/archivewallet', 'AdminController@archiveWallet');
-	Route::get('/admin/{id}/activatewallet', 'AdminController@activateWallet');
+	Route::get('/admin/{id}/archivewallet', 'Admin\AdminController@archiveWallet');
+	Route::get('/admin/{id}/activatewallet', 'Admin\AdminController@activateWallet');
 
 	//fund wallet
-	Route::get('/admin/fundwallet', 'AdminController@fundwallet');
+	Route::get('/admin/fundwallet', 'Admin\AdminController@fundwallet');
 	Route::post('/admin/{wallet_code}/fund', 'WalletController@cardWallet');
 	Route::post('/admin/otp', 'WalletController@otp');
-	Route::get('/admin/transaction-history', 'AdminController@cardTransaction');
+	Route::get('/admin/transaction-history', 'Admin\AdminController@cardTransaction');
 
 	// admin routes
 	Route::get('/view-accounts', 'pagesController@viewAccounts');
-	//Route::get('/usermanagement', 'AdminController@usermanagement');
+	//Route::get('/usermanagement', 'Admin\AdminController@usermanagement');
 
-	Route::get('/addaccount', 'AdminController@addaccount');
+	Route::get('/addaccount', 'Admin\AdminController@addaccount');
 
 
 	//beneficiary
-	Route::get('admin/addBeneficiary', 'AdminController@addBeneficiary');
-	Route::get('admin/beneficiary', 'AdminController@ViewBeneficiary')->name('beneficiary');
-	Route::get('admin/addbeneficiary', 'AdminController@beneficiary');
-	Route::get('admin/editbeneficiary/{beneficiary}', 'AdminController@editbeneficiary');
-	Route::get('admin/deletebeneficiary/{beneficiary}', 'AdminController@deletebeneficiary');
-	Route::get('admin/beneficiarydetails/{id}', 'AdminController@BeneficiaryDetails');
-	Route::post('admin/addbeneficiary', 'AdminController@addbeneficiary');
-	Route::post('admin/editbeneficiary/{beneficiary}', 'AdminController@postEditbeneficiary');
+	Route::get('admin/addBeneficiary', 'Admin\AdminController@addBeneficiary');
+	Route::get('admin/beneficiary', 'Admin\AdminController@ViewBeneficiary')->name('beneficiary');
+	Route::get('admin/addbeneficiary', 'Admin\AdminController@beneficiary');
+	Route::get('admin/editbeneficiary/{beneficiary}', 'Admin\AdminController@editbeneficiary');
+	Route::get('admin/deletebeneficiary/{beneficiary}', 'Admin\AdminController@deletebeneficiary');
+	Route::get('admin/beneficiarydetails/{id}', 'Admin\AdminController@BeneficiaryDetails');
+	Route::post('admin/addbeneficiary', 'Admin\AdminController@addbeneficiary');
+	Route::post('admin/editbeneficiary/{beneficiary}', 'Admin\AdminController@postEditbeneficiary');
 
 	Route::get('/web-analytics', 'pagesController@webAnalytics');
 
-	Route::get('admin/createwallet', 'AdminController@wallet');
-	Route::post('admin/createwallet', 'AdminController@addwallet');
-	Route::get('admin/viewwallet/{walletId}', 'AdminController@show')->name('view-wallet');
-	Route::get('admin/wallet-details', 'AdminController@walletdetails');
+	Route::get('admin/createwallet', 'Admin\AdminController@wallet');
+	Route::post('admin/createwallet', 'Admin\AdminController@addwallet');
+	Route::get('admin/viewwallet/{walletId}', 'Admin\AdminController@show')->name('view-wallet');
+	Route::get('admin/wallet-details', 'Admin\AdminController@walletdetails');
 
 
-	Route::resource('admin/users', 'UsermgtController');
-	Route::post('admin/users/banUser/{id}', 'UsermgtController@banUser');
-	Route::post('admin/users/unbanUser/{id}', 'UsermgtController@unbanUser');
-	Route::post('admin/users/makeAdmin/{id}', 'UsermgtController@makeAdmin');
-	Route::post('admin/users/removeAdmin/{id}', 'UsermgtController@removeAdmin');
+	Route::resource('admin/users', 'User\UsermgtController');
+	Route::post('admin/users/banUser/{id}', 'User\UsermgtController@banUser');
+	Route::post('admin/users/unbanUser/{id}', 'User\UsermgtController@unbanUser');
+	Route::post('admin/users/makeAdmin/{id}', 'User\UsermgtController@makeAdmin');
+	Route::post('admin/users/removeAdmin/{id}', 'User\UsermgtController@removeAdmin');
 
-	//Route::get('/manager/setting', 'AdminController@settings');
+	//Route::get('/manager/setting', 'Admin\AdminController@settings');
 
 	Route::get('/admin/smswallet', 'SmsWalletController@smsWalletBalance');
 	Route::post('/admin/sms', 'SmsWalletController@smsWallet');
@@ -220,9 +220,9 @@ Route::group(['middleware' => ['admin']], function () {
 
 	// admin routes
 	Route::get('/view-accounts', 'pagesController@viewAccounts');
-	Route::get('/addaccount', 'AdminController@addaccount');
-	Route::get('/userwalment', 'AdminController@usermanagement');
-	Route::get('admin/analytics', 'AdminController@webAnalytics');
+	Route::get('/addaccount', 'Admin\AdminController@addaccount');
+	Route::get('/userwalment', 'Admin\AdminController@usermanagement');
+	Route::get('admin/analytics', 'Admin\AdminController@webAnalytics');
 
 });
 
