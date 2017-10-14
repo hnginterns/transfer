@@ -9,6 +9,18 @@
 
  <div class="col-md-6 col-sm-6">
         <h4 class="intro text-left" >Transfer to another Wallet account </h4>
+        @if(session('failed')) 
+            <div class="alert alert-danger">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+              <strong>{{ session('failed') }}</strong> 
+            </div>
+            @elseif(session('status'))
+
+            <div class="alert alert-success">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+              <strong>{{ session('status') }}</strong> Alert body ...
+            </div>  
+        @endif
         <form action="/transfer-to-wallet/{{$wallet->id}}" method="POST" id="trform" class="input-form">
           {{csrf_field()}}
             <div class="form-group">
