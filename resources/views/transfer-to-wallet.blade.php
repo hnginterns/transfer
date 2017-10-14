@@ -9,7 +9,7 @@
 
  <div class="col-md-6 col-sm-6">
         <h4 class="intro text-left" >Transfer to another Wallet account </h4>
-        @if($failed)) 
+       {{-- @if($failed)) 
             <div class="alert alert-danger">
               <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
               <strong>{{ $failed }}</strong> 
@@ -19,7 +19,7 @@
               <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
               <strong>{{ $status }}</strong> Alert body ...
             </div>  
-        @endif
+        @endif--}}
         <form action="/transfer-to-wallet/{{$wallet->id}}" method="POST" id="trform" class="input-form">
           {{csrf_field()}}
             <div class="form-group">

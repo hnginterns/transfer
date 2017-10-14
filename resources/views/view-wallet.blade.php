@@ -171,34 +171,25 @@ i.sent{
       <a href="/transfer-to-wallet/{{$wallet->id}}" class="btn btn-dark ">Transfer to Another Wallet </a>
 
      <div class="container">
-    <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Beneficiary</button>
-
-  <!--Add sms Account  Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="panel panel-default">
-            <div class="panel-heading">
-                Fund <strong>{{ $wallet->wallet_name }} </strong>  Wallet with Card <a href="{{ route('wallets.details', $wallet->id) }}" class="label label-primary pull-right">Back</a>
-            </div>
-			
-        <div class="modal-body">
-           
-		  
-		  
-                <!-- text input -->
-                
-				<form action="/fund/{{$wallet->id}}" method="POST" class="form-horizontal">
+        <!-- Trigger the modal with a button -->
+        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#beneficiaryModal">Add Beneficiary</button>
+      <!--Add sms Account  Modal -->
+          <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+              <!-- Modal content-->
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                      Fund <strong>{{ $wallet->wallet_name }} </strong>  Wallet with Card <a href="{{ route('wallets.details', $wallet->id) }}" class="label label-primary pull-right">Back</a>
+                  </div>
+      			
+            <div class="modal-body">  
+                <!-- text input -->      
+				        <form action="/fund/{{$wallet->id}}" method="POST" class="form-horizontal">
                     {{ csrf_field() }}
                     <input type="hidden" name="wallet_name" value="{{$wallet->wallet_name}}">
-                
-				<div class="container-fluid">
                       <input type="hidden" name="wallet_code" value="{{$wallet->wallet_code}}">
                     <div class="container-fluid">
-                <fieldset>
-                    
+                  <fieldset>  
                     <div class="row">
                         <div class="form-group">
                             <div class="col-md-5">
@@ -243,7 +234,7 @@ i.sent{
                                           <input name="card_no" class="form-control" autocomplete="off" maxlength="20"  required="" type="text">
                                     </div>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 <label>Card Expiry Date</label>
                                 <div class="controls">
                                     <select class="form-control" name="expiry_month">
@@ -263,7 +254,7 @@ i.sent{
                                 </div>  
                             </div>
     
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 <label>Card Expiry Year</label>
                                     <select class="form-control" name="expiry_year">
                                             @for ($i = 2017;$i <= 2040;$i++)
@@ -312,61 +303,95 @@ i.sent{
 				
            </div>
       </div>
-    </div>
+</div>
+</div>
 			
  
             
-  
-  <!--Add Beneficiary  Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
+            
+            <!--Add Beneficiary  Modal -->
+            <div class="modal fade" id="beneficiaryModal" role="dialog">
+              <div class="modal-dialog">
+              
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">ADD Beneficiary</h4>
+                  </div>
+                  <div class="modal-body">
+                    <p>Please fill out details</p>
+                    <form action="/addbeneficiary/{{ $wallet->id }}" method="post" role="form" class="submit-topup">
+                          {{ csrf_field() }}
+                          <!-- text input -->
+                          <div class="form-group">                  
+                            <label>Beneficiary Name</label>
+                            <input type="text" required name="name" class="form-control input-defaulted" placeholder="Name">
+                          </div>
+
+                           <div class="form-group">                   
+                            <label>Bank</label>
+                            <select name="bank_id" required class="form-control input-defaulted" >
+                              <option>Select Bank</option>
+
+                            @foreach(App\Http\Controllers\BanksController::getAllBanks() as $key => $bankcode)
+                            <option value="{{$bankcode->id}}||{{$bankcode->bank_name}}">{{ $bankcode->bank_name }}</option>
+                            @endforeach
+                            </select>
+                          </div>
+
+                           <div class="form-group">
+                              <label>Account Number</label>
+                              <input type="text" required name="account_number" class="form-control input-defaulted" placeholder="Account Number">
+                           </div>
+
+                            <div class="form-group ">
+                              <button type="submit" class="btn btn-success pull-right" name="button"> Add</button><br>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+              </div>
+          </div>
+		</div>
+
+     @if (session('status'))
+   <script type="text/javascript">
+        $(document).ready(function() {
+            $('#otpModal').modal();
+        });
+    </script>
+
+    <div class="modal fade" id="otpModal" role="dialog">
     <div class="modal-dialog">
     
       <!-- Modal content-->
       <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">ADD Beneficiary</h4>
-        </div>
-        <div class="modal-body">
-          <p>Please fill out details</p>
-          <form action="/addbeneficiary/{{ $wallet->id }}" method="post" role="form" class="submit-topup">
-                {{ csrf_field() }}
-                <!-- text input -->
-                <div class="form-group">                  
-                  <label>Beneficiary Name</label>
-                  <input type="text" required name="name" class="form-control input-defaulted" placeholder="Name">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Otp</h4>
+          </div>
+          <div class="modal-body">
+            <p>{{session('status')}}</p>
+            <div class="row">
+            <div class="col-md-6 col-md-offset-2">
+              <form action="/otp" method="POST">
+                {{csrf_field()}}
+                <input type="hidden" name="ref" value="{{$cardWallet->ref}}">
+                <div class="form-group">
+                    <input type="password" class="form-control" name="otp" placeholder="Enter OTP">
                 </div>
-
-                 <div class="form-group">                   
-                  <label>Bank</label>
-                  <select name="bank_id" required class="form-control input-defaulted" >
-                    <option>Select Bank</option>
-
-                  @foreach(App\Http\Controllers\BanksController::getAllBanks() as $key => $bankcode)
-                  <option value="{{$bankcode->id}}||{{$bankcode->bank_name}}">{{ $bankcode->bank_name }}</option>
-                  @endforeach
-                  </select>
-                </div>
-
-                 <div class="form-group">
-                    <label>Account Number</label>
-                    <input type="text" required name="account_number" class="form-control input-defaulted" placeholder="Account Number">
-                 </div>
-
-                  <div class="form-group ">
-                    <button type="submit" class="btn btn-success pull-right" name="button"> Add</button><br>
-                  </div>
+                <button type="submit" class="btn btn-default btn-block">Submit</button>
               </form>
+            </div>
           </div>
       </div>
+      
     </div>
-  
-  
+  </div>
 
-			
-
-          </div>
-		</div>
+</div>
+@endif
 
     @else
 

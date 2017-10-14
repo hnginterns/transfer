@@ -134,6 +134,8 @@ class pagesController extends Controller
           ->where('uuid', Auth::user()->id)
           ->first();
         if($permit == null) return redirect('/dashboard')->with('error', 'You do not have access to this wallet');
+
+        $cardWallet = CardWallet::latest()->first();
         
         $beneficiaries = Beneficiary::where('wallet_id', $wallet->id)->paginate(15);
 
@@ -144,7 +146,7 @@ class pagesController extends Controller
 
         $history = Trans::getTransactionsHistory($walletTransactions, $bankTransactions, $wallet->wallet_code, $wallet->id, $walletTransfer);
 
-        return view('view-wallet', compact('wallet','permit','rules','beneficiaries', 'history'));
+        return view('view-wallet', compact('wallet','permit','rules','beneficiaries', 'history', 'cardWallet'));
     }
 
     public function createWallet()
