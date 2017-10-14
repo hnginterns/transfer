@@ -136,7 +136,7 @@
                     <li class="nav-item active">
 
                     @if(Auth::guest())
-                        <a class="nav-link" href="{{url('/login')}}">SIGN IN</a>
+                        <a class="nav-link" href="{{url('/login')}}">Sign In</a>
                     @else
                         
                         <a class="nav-link" href="{{ url('/logout') }}">
