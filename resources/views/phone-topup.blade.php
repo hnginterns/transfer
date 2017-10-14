@@ -5,12 +5,11 @@
       Phone TopUp
 @endsection
 @section('content')
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"
-    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
+ 
     <link href="/css/style1.css" rel="stylesheet">
 
-       <div class="col col-12">
-         <div class="container">
+       <div >
+         <div >
                 <div class="row">
                     <div class="col col-lg-6 col-md-12 col-sm-12">
                         <div class="balance text-center">
