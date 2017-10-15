@@ -13,7 +13,7 @@
 
               <li>
                 <a href="/phonetopup">
-                <i class="fa fa-phone fa-lg"></i> Phone TopUp
+                <i class="fa fa-mobile"></i> Phone TopUp
                 </a>
               </li> <br>
               
@@ -25,7 +25,7 @@
                                 
               <li>
                 <a href="{{ url('/logout') }}">
-                <i class="fa fa-logout fa-lg"></i> Logout
+                <i class="fa fa-sign-out"></i> Logout
                 </a>
               </li> 
 
