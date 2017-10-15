@@ -25,9 +25,9 @@ margin-left: auto;
 }
 
 .skin-blue .wrapper, .skin-blue .main-sidebar, .skin-blue .left-side {
-	background: #39689C ;
+	background: #39689C;
         color: #222d32;
-        padding: 13px 15px;
+        padding: 5px 10px;
         border-radius: 3px;
 
 }
