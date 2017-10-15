@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,105 +6,72 @@
   <title>{{ config('app.name', 'TransferRules') }} - Hotels.ng 2017 Remote Software Intership Project</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <link rel="stylesheet" href="https://adminlte.io/themes/AdminLTE/bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/css/bootstrap-dialog.min.css">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://adminlte.io/themes/AdminLTE/bower_components/Ionicons/css/ionicons.min.css">
-
-  <!-- Datatables -->
-  <link rel="stylesheet" href="https://adminlte.io/themes/AdminLTE/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-
-  <!-- Theme style -->
-  <link rel="stylesheet" href="https://adminlte.io/themes/AdminLTE/dist/css/AdminLTE.min.css">
-  <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
-        page. However, you can choose any other skin. Make sure you
-        apply the skin class to the body tag so the changes take effect. -->
-  <link rel="stylesheet" href="https://adminlte.io/themes/AdminLTE/dist/css/skins/skin-blue.min.css">
-
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
+  
+  <!-- Stylesheets -->      
+  <link rel="stylesheet" id="css-main" href="assests/css/codebase.min.css">
 
   @yield('added_css')
 
-  <!-- Google Font -->
- <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<style>
-.input-group.topup-input {
-    margin: 20px;
-}
-</style>
-<body class="hold-transition skin-blue sidebar-mini">
-<div class="wrapper">
 
-@include('admin.partials.head')
-@include('admin.sidebar')
+<div id="page-container" class="sidebar-inverse side-scroll page-header-fixed main-content-boxed">
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+          @include('admin.partials.header')
 
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-        {{ Auth::user()->itle }} @yield('title')
-        <small>@yield('subtitle')</small>
-      </h1>
+             <!-- Main Container -->
+            <main id="main-container">
+                <!-- Page Content -->
+                <div class="content content-full">
 
-    </section>
+                  @yield('content')
+
+                </div>
+                <!-- END Page Content -->
+            </main>
+            <!-- END Main Container -->
 
 
-    @include('partials.messages')
+             <!-- Footer -->
+            <footer id="page-footer" class="opacity-0">
+                <div class="content py-20 font-size-xs clearfix">
+                    <div class="float-right">
+                        Crafted with <i class="fa fa-heart text-pulse"></i> by <a class="font-w600" href="http://hng.fun" target="_blank">Hotels.ng Remote Software Developer Interns </a>
+                    </div>
+                    <div class="float-left">
+                        <a class="font-w600" href="https://goo.gl/po9Usv" target="_blank">TransferRules 0.7</a> &copy; <span class="js-year-copy">2017</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- END Footer -->
+        </div>
+        <!-- END Page Container -->
 
-<section class="content">
+        <!-- Codebase Core JS -->
+        <script src="assests/js/core/jquery.min.js"></script>
+        <script src="assests/js/core/popper.min.js"></script>
+        <script src="assests/js/core/bootstrap.min.js"></script>
+        <script src="assests/js/core/jquery.slimscroll.min.js"></script>
+        <script src="assests/js/core/jquery.scrollLock.min.js"></script>
+        <script src="assests/js/core/jquery.appear.min.js"></script>
+        <script src="assests/js/core/jquery.countTo.min.js"></script>
+        <script src="assests/js/core/js.cookie.min.js"></script>
+        <script src="assests/js/codebase.js"></script>
 
-      <div class="row">
-
-        @yield('content')
-
-      </div>
-</section>
-
-  </div>
-
-@include('admin.partials.footer')
-
-  </div>
-<!-- ./wrapper -->
-
-<!-- jQuery 3 -->
-<script src="https://adminlte.io/themes/AdminLTE/bower_components/jquery/dist/jquery.min.js"></script>
-<!-- Bootstrap 3.3.7 -->
-<script src="https://adminlte.io/themes/AdminLTE/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- AdminLTE App -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.0/js/adminlte.min.js"></script>
-<!-- AdminLTE App -->
-<script src="https://adminlte.io/themes/AdminLTE/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="https://adminlte.io/themes/AdminLTE/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/js/bootstrap-dialog.min.js"></script>
-
-<!-- page script -->
-<script>
-  $(function () {
-    $('#datatable').DataTable()
-    $('#example2').DataTable({
-      'paging'      : true,
-      'lengthChange': false,
-      'searching'   : false,
-      'ordering'    : true,
-      'info'        : true,
-      'autoWidth'   : false
-    })
-  })
-</script>
+                  <!-- page script -->
+          <script>
+            $(function () {
+              $('#datatable').DataTable()
+              $('#example2').DataTable({
+                'paging'      : true,
+                'lengthChange': false,
+                'searching'   : false,
+                'ordering'    : true,
+                'info'        : true,
+                'autoWidth'   : false
+              })
+            })
+          </script>
 
 @yield('added_js')
-
-</body>
+    </body>
 </html>
