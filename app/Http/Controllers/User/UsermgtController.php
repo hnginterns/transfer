@@ -94,7 +94,12 @@ class UsermgtController extends Controller
               "role_id" => 0,
               "created_at" => $dateNow
             ]);
-            return redirect()->to('/admin/users');
+
+            $notification = array(
+                'message' => 'User created successfully.', 
+                'alert-type' => 'success'
+            );
+            return redirect()->to('/admin/users')->with($notification);
         }
     }
 
@@ -184,8 +189,13 @@ class UsermgtController extends Controller
         $dateNow = $dt->toDateTimeString();
 
         $user = User::where('id', $id)->update(["deleted_at" => $dateNow]);
+
+        $notification = array(
+                'message' => 'User banned successfully.', 
+                'alert-type' => 'success'
+        );
         
-        return back();
+        return back()->with($notification);
 
     }
 
@@ -194,7 +204,12 @@ class UsermgtController extends Controller
         $user = User::withTrashed()->where('id', $id);
         $user->restore();
 
-        return back();
+        $notification = array(
+                'message' => 'User unbanned successfully.', 
+                'alert-type' => 'success'
+        );
+        
+        return back()->with($notification);
 
     }
 
@@ -202,7 +217,12 @@ class UsermgtController extends Controller
 
         $user = User::where('id', $id)->update(["is_admin" => 1]);
 
-        return back();
+        $notification = array(
+                'message' => 'User granted Admin rights successfully.', 
+                'alert-type' => 'success'
+        );
+        
+        return back()->with($notification);
 
     }
 
@@ -210,7 +230,12 @@ class UsermgtController extends Controller
 
         $user = User::where('id', $id)->update(["is_admin" => 0]);
 
-        return back();
+        $notification = array(
+                'message' => 'Admin removed successfully.', 
+                'alert-type' => 'success'
+        );
+        
+        return back()->with($notification);
 
     }
 

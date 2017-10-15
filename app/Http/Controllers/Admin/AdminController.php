@@ -133,6 +133,11 @@ class AdminController extends WalletController
 
         Wallet::where('id', $id)->update(['archived' => 1]);
 
+        $notification = array(
+            'message' => 'Wallet Archived successfully.', 
+            'alert-type' => 'success'
+        );
+
         return redirect('/admin/viewwallet/'.$id)->with('message', 'Wallet Archived successfully.');
     }
 
