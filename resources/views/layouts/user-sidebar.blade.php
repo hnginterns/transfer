@@ -1,6 +1,6 @@
 
 
-          <ul class="nav nav-sidebar">
+          <ul class="w3-sidebar w3-bar-block">
                
               <li>
                 <a href="/dashboard">
