@@ -1,6 +1,6 @@
 
 
-          <ul class="main-sidebar">
+          <ul class="nav nav-sidebar">
                
               <li>
                 <a href="/dashboard">
