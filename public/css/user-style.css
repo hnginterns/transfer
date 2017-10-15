@@ -24,6 +24,10 @@ margin-right: auto;
 margin-left: auto;
 }
 
+.skin-blue .wrapper, .skin-blue .main-sidebar, .skin-blue .left-side {
+	background-color:#39689C;
+}
+
 .navbar-brand {
 font-family: Nunito Sans;
 font-style: normal;
