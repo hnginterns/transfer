@@ -17,7 +17,7 @@
 
 <div id="page-container" class="sidebar-inverse side-scroll page-header-fixed main-content-boxed">
 
-            <!-- Sidebar -->
+           <!-- Sidebar -->
             <nav id="sidebar">
                 <!-- Sidebar Scroll Container -->
                 <div id="sidebar-scroll">
@@ -54,25 +54,24 @@
                             -->
                             <ul class="nav-main">
                                 <li>
-                                    <a class="active" href="bd_dashboard.html"><i class="si si-compass"></i>Dashboard</a>
-                                </li>
-                                <li>
-                                    <a href="be_pages_dashboard.html"><i class="si si-action-undo"></i>Wallets</a>
-                                </li>
+                                <a class="active" href="bd_dashboard.html"><i class="si si-compass"></i>Dashboard</a>
+                            </li>
+                          
+                            <li>
+                                <a href="#"><i class="si si-wallet"></i>Wallets</a>
+                            </li>
 
-                                <li>
-                                    <a href="be_pages_dashboard.html"><i class="si si-action-undo"></i>Users</a>
-                                </li>
+                            <li>
+                                <a href="#"><i class="si si-users"></i>Users</a>
+                            </li>
 
-                                <li>
-                                    <a href="be_pages_dashboard.html"><i class="si si-action-undo"></i>Permissions</a>
-                                </li>
+                            <li>
+                                <a href="#"><i class="si si-key"></i>Permissions</a>
+                            </li>
 
-                                <li>
-                                    <a href="be_pages_dashboard.html"><i class="si si-action-undo"></i>SMS Wallet</a>
-                                </li>
-
-
+                            <li>
+                                <a href="#"><i class="si si-envelope"></i>SMS Wallet</a>
+                            </li>
                             </ul>
                         </div>
                         <!-- END Side Main Navigation -->
@@ -116,20 +115,21 @@
                             </li>
                           
                             <li>
-                                <a href="#"><i class="si si-action-undo"></i>Wallets</a>
-
-                                <li>
-                                <a href="#"><i class="si si-action-undo"></i>Users</a>
+                                <a href="#"><i class="si si-wallet"></i>Wallets</a>
                             </li>
 
                             <li>
-                                <a href="#"><i class="si si-action-undo"></i>Permissions</a>
+                                <a href="#"><i class="si si-users"></i>Users</a>
                             </li>
 
                             <li>
-                                <a href="#"><i class="si si-action-undo"></i>SMS Wallet</a>
+                                <a href="#"><i class="si si-key"></i>Permissions</a>
                             </li>
+
+                            <li>
+                                <a href="#"><i class="si si-envelope"></i>SMS Wallet</a>
                             </li>
+                            
                         </ul>
                         <!-- END Header Navigation -->
                     </div>
@@ -159,6 +159,13 @@
                             </div>
                         </div>
                         <!-- END User Dropdown -->
+
+                        <!-- Toggle Sidebar -->
+                        <!-- Layout API, functionality initialized in Codebase() -> uiApiLayout() -->
+                        <button type="button" class="btn btn-circle btn-dual-secondary d-lg-none" data-toggle="layout" data-action="sidebar_toggle">
+                            <i class="fa fa-navicon"></i>
+                        </button>
+                        <!-- END Toggle Sidebar -->
                         
                     </div>
                     <!-- END Right Section -->

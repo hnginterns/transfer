@@ -7,6 +7,14 @@ nav {
 border-radius: 0 !important;
 }
 
+
+.nav-nav-sidebar {
+background-color: #39689C;
+color: #fff;
+height: 100%;
+}
+
+
 .active-sidebar {
 background-color: #39689C;
 }
@@ -14,6 +22,10 @@ background-color: #39689C;
 .nav-search {
 margin-right: auto;
 margin-left: auto;
+}
+
+.skin-blue .wrapper, .skin-blue .main-sidebar, .skin-blue .left-side {
+	background-color:#39689C;
 }
 
 .navbar-brand {
@@ -26,9 +38,9 @@ color: #00aeff !important;
 }
 
 .navbar-header img {
-width: 130px;
-height: 30px;
-margin-left: 2px;
+width: 150px;
+height: 40px;
+margin-top: -10px;
 }
 #navbar li a {
 color:#000000;
@@ -40,9 +52,10 @@ color:#00aeff;
 #sidebar {
 /* margin: 0 !important; */
 text-align: left;
-border-right: 1px solid rgb(192, 190, 190);
+border-right: 1px #39689C;
 margin-top: 0px;
 padding: 0;
+background-color:#39689C;
 }
 
 .navbar {

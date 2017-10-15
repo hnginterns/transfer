@@ -1,7 +1,9 @@
 
 
           <ul class="nav nav-sidebar">
-               
+          <input type="text" class="form-control" placeholder="Search...">
+     
+             
               <li>
                 <a href="/dashboard">
                 <i class="fa fa-dashboard fa-lg"></i> Dashboard

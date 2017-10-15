@@ -1,6 +1,5 @@
-
 .orange-box{
-    background: #FF6200;
+    background: #39689C;
     padding: 5px;
     color: white;
     font-family: "Nunito Sans";
@@ -10,8 +9,8 @@
     padding: 10px 20px;
     margin: 10px;   
     border-radius:20px;
-    border: 1px solid #25313F;
-    background-color: #25313F;
+    border: 1px solid #39689C;
+    background-color: #39689C;
     color:white;
     font-weight: bold;
     font-size: 14px;
@@ -20,9 +19,7 @@
 }
 
 .btn-dark:hover, .btn-dark:active{
-    border: 1px solid #25313F;
-    background-color: #25313F;
+    border: 1px solid #39689C;
+    background-color: #39689C;
     color:white;
     }
-
-

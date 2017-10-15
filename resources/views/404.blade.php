@@ -5,7 +5,7 @@
 	<title>404</title>
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 
-  <style>
+  <<style>
     body{
       font-family: lato;
       height: 100%;
@@ -17,7 +17,7 @@
     /* color: #E57679; */
     color: white;
     border: none;
-    background: #FF5700;
+    background: #39689C;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     padding: 10px 15px;
     border-radius: 63px;
@@ -37,7 +37,6 @@
     z-index: 100
     }
     .bg-coral:hover, .bg-blue:hover {
-
 box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.25);
     }
 		.main{
@@ -88,7 +87,6 @@ box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.25);
         margin-left: -16px;
         margin-right: 16px;
         margin-bottom: 35px;
-
 	}
   .main h2{
     margin-top: 0;
@@ -143,7 +141,6 @@ box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.25);
         font-size: 14px;
       }
     }
-
 	</style>
 </head>
 <body>
