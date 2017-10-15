@@ -159,6 +159,13 @@
                             </div>
                         </div>
                         <!-- END User Dropdown -->
+
+                        <!-- Toggle Sidebar -->
+                        <!-- Layout API, functionality initialized in Codebase() -> uiApiLayout() -->
+                        <button type="button" class="btn btn-circle btn-dual-secondary d-lg-none" data-toggle="layout" data-action="sidebar_toggle">
+                            <i class="fa fa-navicon"></i>
+                        </button>
+                        <!-- END Toggle Sidebar -->
                         
                     </div>
                     <!-- END Right Section -->
