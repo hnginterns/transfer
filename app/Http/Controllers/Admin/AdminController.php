@@ -65,7 +65,12 @@ class AdminController extends WalletController
                 );
             }
 
-            return redirect()->to('admin/managewallet');
+            $notification = array(
+                'message' => 'Wallet Created successfully.', 
+                'alert-type' => 'success'
+            );
+
+            return redirect()->to('admin/managewallet', compact('notification'));
         }
     }
 
@@ -133,7 +138,12 @@ class AdminController extends WalletController
 
         Wallet::where('id', $id)->update(['archived' => 1]);
 
-        return redirect('/admin/viewwallet/'.$id)->with('message', 'Wallet Archived successfully.');
+        $notification = array(
+            'message' => 'Wallet Archived successfully.', 
+            'alert-type' => 'success'
+        );
+
+        return redirect('/admin/viewwallet/'.$id)->with($notification);
     }
 
     public function activateWallet($id)
