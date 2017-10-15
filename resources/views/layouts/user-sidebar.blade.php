@@ -1,4 +1,4 @@
-<bg color="#39689C">
+<bg color="blue">
   <div class="main side bar">
           <ul class="nav nav-sidebar">
           <input type="text" class="form-control" placeholder="Search...">
@@ -8,20 +8,20 @@
                 <a href="/dashboard">
                 <i class="fa fa-dashboard fa-lg"></i> Dashboard
                 </a>
-              </li> <br><br>
+              </li> <br>
 
 
               <li>
                 <a href="/phonetopup">
                 <i class="fa fa-phone fa-lg"></i> Phone TopUp
                 </a>
-              </li> <br><br>
+              </li> <br>
               
               <li>
                 <a href="/admin/smswallet">
                 <i class="fa fa-envelope"></i> Sms Top up
                 </a>
-              </li> <br><br>
+              </li> <br>
                                 
               <li>
                 <a href="{{ url('/logout') }}">
