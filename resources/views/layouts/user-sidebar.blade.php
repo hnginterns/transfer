@@ -13,19 +13,19 @@
 
               <li>
                 <a href="/phonetopup">
-                <i class="fa fa-mobile"></i> Phone TopUp
+                <i class="fa fa-mobile fa-lg"></i> Phone TopUp
                 </a>
               </li> <br>
               
               <li>
                 <a href="/admin/smswallet">
-                <i class="fa fa-envelope"></i> Sms Top up
+                <i class="fa fa-envelope fa-lg"></i> Sms Top up
                 </a>
               </li> <br>
                                 
               <li>
                 <a href="{{ url('/logout') }}">
-                <i class="fa fa-sign-out"></i> Logout
+                <i class="fa fa-sign-out fa-lg"></i> Logout
                 </a>
               </li> 
 
