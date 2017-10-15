@@ -3648,6 +3648,13 @@ tbody.collapse.show {
   color: rgba(255, 255, 255, 0.5);
 }
 
+
+.mainBody {
+    margin:auto;
+    width: 80%;
+}
+
+
 .card {
   position: relative;
   display: -ms-flexbox;
@@ -3656,11 +3663,20 @@ tbody.collapse.show {
       flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: #fff;
+  background-color: #b8c7ce;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
+  margin-bottom: 10px;
+    
 }
+
+
+.card-block {
+    background-color: #39689c;
+    color: #000;
+}
+
 
 .card-body {
   -ms-flex: 1 1 auto;
