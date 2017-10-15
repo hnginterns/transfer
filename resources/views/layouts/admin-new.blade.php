@@ -119,7 +119,7 @@
                                 <a href="#"><i class="si si-action-undo"></i>Wallets</a>
 
                                 <li>
-                                <a href="#"><i class="si si-action-undo"></i>Users rt</a>
+                                <a href="#"><i class="si si-action-undo"></i>Users</a>
                             </li>
 
                             <li>
