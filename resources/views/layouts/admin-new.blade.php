@@ -147,6 +147,10 @@
                                 <a class="dropdown-item" href="be_pages_generic_profile.html">
                                     <i class="si si-user mr-5"></i> Profile
                                 </a>
+
+                                 <a class="dropdown-item" href="be_pages_generic_profile.html">
+                                    <i class="si si-user mr-5"></i> Help
+                                </a>
                                
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="op_auth_signin.html">
