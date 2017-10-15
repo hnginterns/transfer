@@ -7,6 +7,12 @@ nav {
 border-radius: 0 !important;
 }
 
+
+.nav-nav-sidebar {
+background-color: #39689C;
+}
+
+
 .active-sidebar {
 background-color: #39689C;
 }
