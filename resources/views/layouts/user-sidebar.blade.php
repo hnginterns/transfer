@@ -1,5 +1,5 @@
 
-
+          <div class="main side bar">
           <ul class="nav nav-sidebar">
           <input type="text" class="form-control" placeholder="Search...">
      
