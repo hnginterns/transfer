@@ -82,7 +82,7 @@
                                         </div>
                                         <div class="pt-20">
                                             <a class="btn btn-rounded btn-alt-primary" href="{{ url('/admin/managewallet') }}">
-                                                <i class="fa fa-cog mr-5"></i> Manage Wallet
+                                                <i class="fa fa-cog mr-5"></i> Manage Wallets
                                             </a>
                                         </div>
                                     </div>
