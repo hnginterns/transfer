@@ -25,4 +25,5 @@ class LogUserActivity
 	{
 		return LogUserActivityModel::latest()->get();
 	}
+	
 }

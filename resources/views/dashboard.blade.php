@@ -17,7 +17,7 @@
             @endforeach
         </div>
       </div>
-
+      
   <style>
   .dbackground{
     background:#39689C;
