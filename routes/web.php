@@ -22,6 +22,12 @@ Route::get('/logout', function () {
 	return redirect('/login');
 });
 
+Route::get('/adminnew', function () {
+	return view('layouts.admin-new');
+});
+
+
+
 Route::get('logActivity', 'HomeController@logUserActivity');
 
 
