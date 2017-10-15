@@ -18,6 +18,8 @@ use App\User;
 use App\BankTransaction;
 use RestrictionController;
 use App\Http\Controllers\RestrictionController as Restrict;
+use App\Notifications\WalletTransaction as WalletTransactionNotify;
+use App\Notifications\BankTransaction as BankTransactionNotify;
 use App\Events\TransferToBank;
 use App\Events\FundWallet;
 use App\Events\WalletToWallet;
@@ -215,6 +217,7 @@ class WalletController extends Controller
                             
                             $data['transaction_status'] = true;
                             $this->logTransaction($data);
+                            $this->sendWalletTransactionNotifications($w_transaction);
                             event(new WalletToWallet($transactions));
                             $transact = WalletTransaction::latest()->first();
                             $wallet = Wallet::where('wallet_code', $transact->source_wallet);
@@ -305,6 +308,8 @@ class WalletController extends Controller
                     $transaction->narration = $request->narration;
                     $transaction->save();
                     //end of logic for saving transactions
+
+                    $this->sendBankTransactionNotifications($transaction);
 
                     event(new TransferToBank($bank));
                     return redirect('success')->with('status',$data);
@@ -411,6 +416,28 @@ class WalletController extends Controller
         $transaction->created_at = new DateTime();
         
         $transaction->save();
+    }
+
+    public function notifyMe(){
+        $transaction = BankTransaction::first();
+        // dd($transaction);
+        $this->sendBankTransactionNotifications($transaction);
+    }
+
+    public function sendBankTransactionNotifications($transaction){
+        Auth::user()->notify(new BankTransactionNotify($transaction));
+        $admins = User::where('is_admin', true)->get();
+        foreach($admins as $key => $admin){
+            $admin->notify(new BankTransactionNotify($transaction));
+        }
+    }
+
+    public function sendWalletTransactionNotifications($transaction){
+        Auth::user()->notify(new WalletTransactionNotify($transaction, Auth::user()));
+        $admins = User::where('is_admin', true)->get();
+        foreach($admins as $key => $admin){
+            $admin->notify(new WalletTransactionNotify($transaction, Auth::user()));
+        }
     }
 
     /**

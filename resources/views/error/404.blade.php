@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">   
-	<title>404</title>
-	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-  
-  <style>
+<style>
     body{
       font-family: lato;
       height: 100%;
@@ -79,7 +70,7 @@
 		  color: #686969:
 			  }
     .bg-coral{
-      background-color: #ff6200;
+      background-color: #39689c;
     }
 	 .bg-blue{
       background-color: #222c37;
@@ -125,25 +116,3 @@
       }
     } 
 	</style>
-</head>
-<body>
-	<div class="main">
-    <h2>WHOOPS!</h2>
-    
-    <img src="http://res.cloudinary.com/plushdeveloper/image/upload/v1506065231/4040_okxzn8.png" height="150px">
-    <!--<div class="error">4 <span class="ghost"> </span>4</div>
-    -->
-    <h2>ERROR</h2>
-
-		<p> Sorry the page you are looking for cannot be accessed.
-    <br> Check the options below or feel free to</p>
-    
-    <h4><a class="blue" href="#">REPORT THIS ISSUE</a></h4>
-    
-    <div class="navigate">
-      <a class="bg-coral" href="/dashboard">GO TO DASHBOARD</a>
-      <a class="bg-blue" href="/hvghcfgx">GO TO HOMEPAGE</a>
-    </div>
-	</div>
-</body>
-</html>

@@ -1,13 +1,14 @@
       <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
+        <a class="navbar-brand" href="{{url('/')}}">  <img src="/img/logo3.png" alt="Hotels.Ng"><span></span></a>
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="{{url('/')}}"> <span> <img src="/img/logo1.png" alt=""></span> Transfer Rules</a>
+          
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -53,7 +54,7 @@
                 </a>
               </li>
               @endif
-              <li><a href="#" style="color:black; font-size:18px;"><i class="fa fa-user"></i>  </a></li>
+              <li><a href="#" style="color:white; font-size:18px;"><i class="fa fa-user"></i>  </a></li>
           </ul>
           <form class="navbar-form navbar-right">
             <input type="text" class="form-control" placeholder="Search...">

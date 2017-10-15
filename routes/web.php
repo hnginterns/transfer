@@ -11,7 +11,7 @@
 |
  */
 Auth::routes();
-
+Route::get('notify','WalletController@notifyme');
 // get default home pages
 Route::get('/', 'pagesController@home')->name('home');
 
@@ -22,8 +22,15 @@ Route::get('/logout', function () {
 	return redirect('/login');
 });
 
+<<<<<<< HEAD
 Route::get('logActivity', 'HomeController@logUserActivity');
 
+=======
+// Please do not remove
+Route::get('/adminnew', function () {
+	return view('layouts.admin-new');
+});
+>>>>>>> dcd1813ddc4ed2dfdebfdfe62119c02bf4807399
 
 // Route::get('/testbanks', 'BanksController@getAllBanks');
 // Route::get('makeadmin', 'WalletController@MakeUserAdmin'); 
