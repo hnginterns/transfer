@@ -116,10 +116,10 @@
                             </li>
                           
                             <li>
-                                <a href="#"><i class="si si-action-undo"></i>Wallets</a>
+                                <a href="#"><i class="si si-wallet"></i>Wallets</a>
 
                                 <li>
-                                <a href="#"><i class="si si-action-undo"></i>Users</a>
+                                <a href="#"><i class="si si-users"></i>Users</a>
                             </li>
 
                             <li>
