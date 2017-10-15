@@ -123,11 +123,11 @@
                             </li>
 
                             <li>
-                                <a href="#"><i class="si si-action-undo"></i>Permissions</a>
+                                <a href="#"><i class="si si-cog"></i>Permissions</a>
                             </li>
 
                             <li>
-                                <a href="#"><i class="si si-action-undo"></i>SMS Wallet</a>
+                                <a href="#"><i class="si si-envelope"></i>SMS Wallet</a>
                             </li>
                             </li>
                         </ul>
