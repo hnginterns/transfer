@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Wallet;
 
 class RestrictionController extends Controller
 {
@@ -17,13 +18,12 @@ class RestrictionController extends Controller
         $this->transfer_details = $transfer_details;
     }
 
-    public function validateRule(){
+    public function transferToWallet(){
         $this->canTransferFromWallet();
-        $this->canFundWallet();
-        $this->canAddBeneficiary();
         $this->canTransferToWallet();
         $this->maxAmount();
         $this->minAmount();
+        $this->checkWalletBallance();
         return $this->failed_rules;
     }
 
@@ -38,6 +38,15 @@ class RestrictionController extends Controller
         $this->canTransferFromWallet();
         $this->maxAmount();
         $this->minAmount();
+        $this->checkWalletBallance();
+        return $this->failed_rules;
+    }
+
+    public function checkWalletBallance(){
+        $wallet = Wallet::find($this->transfer_details->source_wallet);
+        if($wallet->balance < $this->transfer_details->amount){
+            $this->failed_rules['low_balance'] = 'You do not have sufficient fund';
+        }
         return $this->failed_rules;
     }
 

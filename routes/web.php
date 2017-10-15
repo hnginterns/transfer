@@ -65,7 +65,7 @@ Route::group(['middleware' => 'auth'], function () {
 	//Wallet operations start
 	Route::get('/wallet/{wallet}', 'pagesController@walletdetail')->name('user.wallet.detail');
 	Route::get('/transfer-to-bank/{wallet}', 'pagesController@bank_transfer');
-	Route::get('/transfer-to-wallet/{id}', 'pagesController@wallet_transfer');
+	Route::get('/transfer-to-wallet/{wallet}', 'pagesController@wallet_transfer');
 	Route::post('/transfer-to-wallet/{wallet}', 'WalletController@transfer');
 	Route::post('/transfer-to-bank/{wallet}', 'WalletController@transferAccount');
 	//wallet operations end
