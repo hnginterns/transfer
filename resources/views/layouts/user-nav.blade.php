@@ -1,7 +1,7 @@
      <nav class="navbar navbar-inverse">
     <div class="container">
       <div class="navbar-header">
-        <a class="navbar-brand" href="{{ route('transferrules') }}"> <span> <img src="/img/logo.png" alt=""></span> Transfer Rules</a>
+        <a class="navbar-brand" href="{{ route('transferrules') }}"> <span> <img src="/img/logo3.png" alt=""></span></a>
         <button type="button" id="navb" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
           aria-controls="navbar">
           <span class="sr-only">Toggle navigation</span>
