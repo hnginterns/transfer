@@ -1,7 +1,7 @@
       <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-        <a class="navbar-brand" href="{{url('/')}}"> <span> <img src="/img/logo3.png" alt="Hotels.Ng"></span></a>
+        <a class="navbar-brand" href="{{url('/')}}">  <img src="/img/logo3.png" alt="Hotels.Ng"><span>Hotes.ng</span></a>
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
