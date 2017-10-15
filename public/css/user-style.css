@@ -8,7 +8,7 @@ border-radius: 0 !important;
 }
 
 .active-sidebar {
-background-color: #00aeff;
+background-color: #39689C;
 }
 
 .nav-search {
@@ -124,7 +124,7 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 .nav-sidebar > .active > a:hover,
 .nav-sidebar > .active > a:focus {
   color: #fff;
-  background-color: #00aeff;
+  background-color: #39689C;
 }
 
 
