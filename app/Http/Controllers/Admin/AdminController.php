@@ -138,7 +138,7 @@ class AdminController extends WalletController
             'alert-type' => 'success'
         );
 
-        return redirect('/admin/viewwallet/'.$id)->with('message', 'Wallet Archived successfully.');
+        return redirect('/admin/viewwallet/'.$id)->with($notification);
     }
 
     public function activateWallet($id)
