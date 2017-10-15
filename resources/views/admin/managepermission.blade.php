@@ -1,6 +1,6 @@
 <style media="screen">
     .inner-holder {
-        background: #222d32;
+        background: #39689C ;
         color: #b8c7ce;
         padding: 13px 15px;
         border-radius: 3px;
