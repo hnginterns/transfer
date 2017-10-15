@@ -1,6 +1,6 @@
 <style media="screen">
     .inner-holder {
-        background: #222d32;
+        background: #39689C;
         color: #b8c7ce;
         padding: 13px 15px;
         border-radius: 3px;
@@ -12,7 +12,6 @@
     .wallet-container {
       padding: 30px;
     }
-
     .btn-primary {
         color: #b8c7ce;
         background-color: transparent !important;
@@ -20,47 +19,39 @@
         border: none !important;
         font-size: 12.5px;
     }
-
     i.fa.fa-plus {
       color: white;
       font-weight: 500;
     }
-
     .btn-success {
         background-color: #00a65a;
         border-color: #04864a;
         margin-left: 30px;
         padding: 10px !important;
     }
-
     i.fa {
       color: #b8c7ce;
     }
-
     .fa-trash-o:hover {
-      color: #b32913;
+      color: #39689C;
     }
-
     .fa-eye:hover {
       color: #fff;
     }
-
     .wallet-row.row {
       margin-bottom: 30px;
     }
-
     h5.wallet-name {
       margin-bottom: 20px;
     }
-
     @media screen and (max-width:768px) {
-
       .single-wallet-holder.col-md-3 {
           margin-bottom: 20px;
           padding: 0px;
       }
     }
 </style>
+
 
 @extends('layouts.admin')
 
