@@ -1,4 +1,5 @@
-<!-- Sidebar -->
+
+ <!-- Sidebar -->
             <nav id="sidebar">
                 <!-- Sidebar Scroll Container -->
                 <div id="sidebar-scroll">
@@ -30,6 +31,7 @@
                         <div class="content-side content-side-full">
                             <!--
                             Mobile navigation, desktop navigation can be found in #page-header
+
                             If you would like to use the same navigation in both mobiles and desktops, you can use exactly the same markup inside sidebar and header navigation ul lists
                             -->
                             <ul class="nav-main">
@@ -84,6 +86,7 @@
                         <!-- Header Navigation -->
                         <!--
                         Desktop Navigation, mobile navigation can be found in #sidebar
+
                         If you would like to use the same navigation in both mobiles and desktops, you can use exactly the same markup inside sidebar and header navigation ul lists
                         If your sidebar menu includes headings, they won't be visible in your header navigation by default
                         If your sidebar menu includes icons and you would like to hide them, you can add the class 'nav-main-header-no-icons'
