@@ -84,7 +84,7 @@
         <a href="editpermission/{{$restrictions->id}}" class="single-wallet-holder col-md-3">
             <div class="inner-holder">
                   <h5 class="wallet-name"><b>Wallet Name : </b> {{ $restrictions->wallet->wallet_name }}</h5>
-                 <!-- <h5 class="wallet-name"><b>User email : </b> {{ $restrictions->user->email }}</h5>   -->
+                 
                   <h5 class="wallet-name"><b>Can fund Wallet:&nbsp; </b> <i class="fa {{$restrictions->can_fund_wallet ? 'fa-check-circle can' : 'fa-times-circle cannot'}}"></i></h5> 
                   <h5 class="wallet-name"><b>Can Add Beneficiary :&nbsp; </b> <i class="fa {{$restrictions->can_add_beneficiary ? 'fa-check-circle can' : 'fa-times-circle cannot'}}"></i></h5> 
                   <h5 class="wallet-name"><b>Can Transfer From Wallet :&nbsp; </b> <i class="fa {{$restrictions->can_transfer_from_wallet ? 'fa-check-circle can' : 'fa-times-circle cannot'}}"></i></h5> 
