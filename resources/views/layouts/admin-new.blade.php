@@ -15,7 +15,7 @@
 
 </head>
 
-<div id="page-container" class="sidebar side-scroll page-header-fixed main-content-boxed">
+<div id="page-container" class="sidebar-inverse side-scroll page-header-fixed main-content-boxed">
 
            <!-- Sidebar -->
             <nav id="sidebar">
