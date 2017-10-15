@@ -26,7 +26,7 @@ Route::get('/adminnew', function () {
 	$users = App\User::all();
 	$restr = App\Restriction::all();
 	$wallets = App\Wallet::all();
-	$cardw = App\CardWallet::all()''
+	$cardw = App\CardWallet::all();
 	return view('layouts.admin-new', compact('users', 'restr', 'wallets', 'cardw'));
 });
 
