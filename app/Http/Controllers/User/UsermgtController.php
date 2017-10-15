@@ -10,6 +10,8 @@ use URL;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
+
 
 use App\User;
 
@@ -99,7 +101,9 @@ class UsermgtController extends Controller
                 'message' => 'User created successfully.', 
                 'alert-type' => 'success'
             );
-            return redirect()->to('/admin/users')->with($notification);
+
+            session()->set('success','User created successfully.');
+            return redirect()->to('/admin/users');
         }
     }
 
@@ -164,6 +168,7 @@ class UsermgtController extends Controller
             $user->last_name = $input['last_name'];
             $user->save();
             $name = Auth::user()->username;
+            session()->set('success','User updated successfully.');
             return redirect('/admin/users')->with("name", $name);
         }
     }
@@ -190,12 +195,8 @@ class UsermgtController extends Controller
 
         $user = User::where('id', $id)->update(["deleted_at" => $dateNow]);
 
-        $notification = array(
-                'message' => 'User banned successfully.', 
-                'alert-type' => 'success'
-        );
-        
-        return back()->with($notification);
+         session()->set('success','User banned successfully.');
+        return back();
 
     }
 
@@ -204,12 +205,9 @@ class UsermgtController extends Controller
         $user = User::withTrashed()->where('id', $id);
         $user->restore();
 
-        $notification = array(
-                'message' => 'User unbanned successfully.', 
-                'alert-type' => 'success'
-        );
+    session()->set('success','User unbanned successfully.');
         
-        return back()->with($notification);
+        return back();
 
     }
 
@@ -217,12 +215,9 @@ class UsermgtController extends Controller
 
         $user = User::where('id', $id)->update(["is_admin" => 1]);
 
-        $notification = array(
-                'message' => 'User granted Admin rights successfully.', 
-                'alert-type' => 'success'
-        );
+        session()->set('success','User made admin');
         
-        return back()->with($notification);
+        return back();
 
     }
 
@@ -230,12 +225,9 @@ class UsermgtController extends Controller
 
         $user = User::where('id', $id)->update(["is_admin" => 0]);
 
-        $notification = array(
-                'message' => 'Admin removed successfully.', 
-                'alert-type' => 'success'
-        );
         
-        return back()->with($notification);
+        session()->set('success','Admin Permission revoked');
+        return back();
 
     }
 

@@ -65,12 +65,8 @@ class AdminController extends WalletController
                 );
             }
 
-            $notification = array(
-                'message' => 'Wallet Created successfully.', 
-                'alert-type' => 'success'
-            );
-
-            return redirect()->to('admin/managewallet', compact('notification'));
+            Session::flash('messages','Wallet Create successfully');
+            return redirect()->to('admin/managewallet');
         }
     }
 
@@ -151,6 +147,8 @@ class AdminController extends WalletController
         $wallet = Wallet::findOrFail($id);
 
         Wallet::where('id', $id)->update(['archived' => 0]);
+
+        Session::flash('messages','Wallet Activated successfully.');
 
         return redirect('/admin/viewwallet/'.$id)->with('message', 'Wallet Activated successfully.');
     }
