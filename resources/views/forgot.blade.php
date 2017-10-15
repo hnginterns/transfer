@@ -51,10 +51,16 @@
             <div class="login-box">
                 <h4 class="intro-sub">Forgot Password</h4>
                 <p class="writeup">Enter you email address and we will send you a link to reset your password shortly</p>
-                <form class="admin-login">
+                <form class="admin-login"  method="POST" action="{{ route('password.email') }}">
+                {{ csrf_field() }}
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email / Username">
+                        <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email / Username">
+                        @if ($errors->has('email'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('email') }}</strong>
+                            </span>
+                        @endif
                     </div>
                     <button type="submit" class="btn btn-primary">Reset Password</button>
 
