@@ -1,31 +1,37 @@
 @extends('layouts.page')
-@section('main-text', 'FREQUENTLY ASKED QUESTION(FAQ)')
+@section('main-text', 'FREQUENTLY ASKED QUESTION(FAQs)')
 @section('sub-text', 'TransferRules lets you receive payments locally and globally with no hassles and zero set up fees')
 @section('content')
 
 <!-- SECTION ONE BEGINS -->
-<!---Content added by Samfield Hawb Bassey-->
+<!---Content added by mercyikpe-->
+
+    
+<div class="mainBody">
+    
   <div id="accordion" role="tablist" aria-multiselectable="true">
   <div class="card">
     <div class="card-header" role="tab" id="headingOne">
       <h5 class="mb-0">
         <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          What is TransferRule?
+          What is Finance @ Hotels.ng?
         </a>
       </h5>
     </div>
 
     <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
       <div class="card-block">
-        <p>TransferRule is a secure online service that enables any user to instantly buy mobile credit, data top-up for a prepaid Mobile Phone in any part of the country. Our customers use transferrules.com to buy Mobile Airtime for either themselves, friends and family members.</p>
+        <p>Finance @ Hotels.ng is a secure online service that enables any user to instantly buy mobile credit, data top-up for a prepaid Mobile Phone in any part of the country. Our customers use transferrules.com to buy Mobile Airtime for either themselves, friends and family members.</p>
       </div>
     </div>
   </div>
+    
+      
   <div class="card">
     <div class="card-header" role="tab" id="headingTwo">
       <h5 class="mb-0">
         <a  class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-controls="collapseTwo">
-          How do I register to use TransferRule?
+          How do I register to use Finance @ Hotels.ng?
         </a>
       </h5>
     </div>
@@ -33,7 +39,7 @@
     <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
       <div class="card-block">
         <ul>
-          <li>Create an account at transferrules.com.</li>
+          <li>At Finance @ Hotels.ng site </li>
           <li>Select ‘Register’ at the Top Left of the Page</li>
          <li>Enter your email address and password</li>
           <li>Click on ‘Register’ at the bottom right of the page.</li>
@@ -43,6 +49,8 @@
       </div>
     </div>
   </div>
+      
+      
   <div class="card">
     <div class="card-header" role="tab" id="headingThree">
       <h5 class="mb-0">
@@ -63,10 +71,12 @@
           <li>A confirmation message will appear on your screen with details on your completed transaction.</li>
           <li>A confirmation email will be sent to your email address.</li>
         </ul>
-    <p>NOTE: Recipients will also receive a transaction confirmation SMS message from their Mobile operator.</p>
+        <p>NOTE: Recipients will also receive a transaction confirmation SMS message from their Mobile operator.</p>
       </div>
     </div>
   </div>
+      
+      
   <div class="card">
     <div class="card-header" role="tab" id="headingFour">
       <h5 class="mb-0">
@@ -95,7 +105,7 @@
     <div class="card-header" role="tab" id="headingFive">
       <h5 class="mb-0">
         <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-controls="collapseFive">
-          What should I do if have forgotten my password?
+          What should I do if forgot my password?
         </a>
       </h5>
     </div>
@@ -204,35 +214,10 @@
         </div>
     </div>
   </div>
-  <div class="card">
-    <div class="card-header" role="tab" id="headingEleven">
-      <h5 class="mb-0">
-        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseEleven" aria-controls="collapseEleven">
-         How long will it take for my account to be reactivated?
-        </a>
-      </h5>
-    </div>
-
-    <div id="collapseEleven" class="collapse" role="tabpanel" aria-labelledby="headingEleven">
-      <div class="card-block">
-        <p>If you use the activation form, the reactivation will be within the next 48 hours of submission.</p>
-        <p>If it by email application , the activation process will be within the next 72 hours of submission, you will receive a reply on your email from us regarding the reactivation process status.</p>
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header" role="tab" id="headingTwelve">
-      <h5 class="mb-0">
-        <a  class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwelve" aria-controls="collapseTwelve">
-          Is there a finance.hotels.ng smartphone app?
-        </a>
-      </h5>
-    </div>
-    <div id="collapseTwelve" class="collapse" role="tabpanel" aria-labelledby="headingTwelve">
-      <div class="card-block">
-        <p>Mobile applications are currently under development for each of Android and iOS (Apple) smartphone devices. Additionally, transferrules.com. is already optimized for mobile devices in order to provide a positive user experience.</p>
-      </div>
-    </div>
-  </div>
-  <hr />
+      
+<hr />
+      
+</div>  
+    
+</div>    
 @endsection
