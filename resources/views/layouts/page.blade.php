@@ -9,7 +9,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>Transfer Rules</title>
+    <title>Finance@hotels.ng</title>
 
     <link href="css/bootstrap.css" rel="stylesheet">
 
@@ -74,7 +74,7 @@
 
             <a class="navbar-brand" href="{{url('/')}}">
 
-                <img src="logo.png" width="30" height="30" class="d-inline-block align-top" alt=""> TransferRules
+                <img src="logo3.png" width="30" height="30" class="d-inline-block align-top" alt=""> Finance@hotels.ng
 
             </a>
 
@@ -82,7 +82,7 @@
 
                 aria-expanded="false" aria-label="Toggle navigation">
 
-                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon">#</span>
 
             </button>
 
@@ -122,16 +122,10 @@
 
                     <li class="nav-item">
 
-                        <a class="nav-link" href="{{route('features')}}">Features</a>
+                        <a class="nav-link" href="{{route('dashboard')}}">Dashboard</a>
 
                     </li>
 
-
-                    <li class="nav-item">
-
-                        <a class="nav-link" href="{{route('how')}}">Get Started</a>
-
-                    </li>
 
                     <li class="nav-item active">
 
