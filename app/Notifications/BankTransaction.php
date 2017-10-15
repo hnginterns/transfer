@@ -7,18 +7,18 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class WalletToWalletTransfer extends Notification
+class BankTransaction extends Notification implements ShouldQueue
 {
     use Queueable;
-
+    protected $transaction;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($transaction)
     {
-        //
+        $this->transaction = $transaction;
     }
 
     /**
@@ -41,9 +41,14 @@ class WalletToWalletTransfer extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->success()
+                    ->subject('Bank Transaction Details')
+                    ->line('Your transfer to '.$this->transaction->beneficiary->name.'
+                            with account number '.$this->transaction->beneficiary->account_number.' was successful')
+                    ->line('Amount &#8358; '.$this->transaction->amount)
+                    ->line('Visit the link below to view the transaction on your dashboard')
+                    ->action('View Transaction', url("/wallet/".$this->transaction->wallet_id))
+                    ->line('Thank you for using transfer transfer rules!');
     }
 
     /**

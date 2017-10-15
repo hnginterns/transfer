@@ -11,7 +11,7 @@
 |
  */
 Auth::routes();
-
+Route::get('notify','WalletController@notifyme');
 // get default home pages
 Route::get('/', 'pagesController@home')->name('home');
 
