@@ -1,5 +1,5 @@
 
-@extends('layouts.head')
+@extends('layouts.page')
 
     @section('title')
         Forgot Password
