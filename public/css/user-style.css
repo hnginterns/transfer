@@ -26,9 +26,9 @@ color: #00aeff !important;
 }
 
 .navbar-header img {
-width: 130px;
-height: 30px;
-margin-left: 2px;
+width: 150px;
+height: 50px;
+margin-left: -10px;
 }
 #navbar li a {
 color:#000000;
