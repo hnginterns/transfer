@@ -1,7 +1,7 @@
-     <nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse">
     <div class="container">
       <div class="navbar-header">
-        <a class="navbar-brand" href="{{ route('transferrules') }}"> <span> <img src="/img/logo3.png" alt=""></span></a>
+        <a class="navbar-brand" href="{{ route('transferrules') }}"> <span> <img src="/img/logo.png" alt=""></span> Transfer Rules</a>
         <button type="button" id="navb" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
           aria-controls="navbar">
           <span class="sr-only">Toggle navigation</span>
@@ -42,10 +42,12 @@
               </li>  
                 <li  class="hidden-lg hidden-lg-up">
                 <a href="{{ url('/dashboard') }}">
-                <i class="fa fa-dashboard fa-lg"></i> Dashboard
+                <i class="fa fa-dashboard fa-lg">
+                    </i> Dashboard
                 </a>
               </li>
               @endif
+            
 
               @if(Auth::user()->isAdmin())
               </li>  
