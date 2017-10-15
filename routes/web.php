@@ -22,6 +22,10 @@ Route::get('/logout', function () {
 });
 
 
+Route::get('/adminnew', function () {
+	return view('layouts.admin-new')
+});
+
 // Route::get('/testbanks', 'BanksController@getAllBanks');
 // Route::get('makeadmin', 'WalletController@MakeUserAdmin'); 
 
