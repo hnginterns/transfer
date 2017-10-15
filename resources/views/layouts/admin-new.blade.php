@@ -102,75 +102,28 @@
 
   <!-- Middle Section -->
                     <div class="content-header-section d-none d-lg-block">
-                        <!-- Header Navigation -->
-                        <!--
-                        Desktop Navigation, mobile navigation can be found in #sidebar
+                        <ul class="nav-main">
+                                <li>
+                                    <a class="active" href="bd_dashboard.html"><i class="si si-compass"></i>Dashboard</a>
+                                </li>
+                                <li>
+                                    <a href="be_pages_dashboard.html"><i class="si si-action-undo"></i>Wallets</a>
+                                </li>
 
-                        If you would like to use the same navigation in both mobiles and desktops, you can use exactly the same markup inside sidebar and header navigation ul lists
-                        If your sidebar menu includes headings, they won't be visible in your header navigation by default
-                        If your sidebar menu includes icons and you would like to hide them, you can add the class 'nav-main-header-no-icons'
-                        -->
-                        <ul class="nav-main-header">
-                            <li>
-                                <a class="active" href="bd_dashboard.html"><i class="si si-compass"></i>Dashboard</a>
-                            </li>
-                            <li>
-                                <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-puzzle"></i>Variations</a>
-                                <ul>
-                                    <li>
-                                        <a href="bd_variations_hero_simple_1.html">Hero Simple 1</a>
-                                    </li>
-                                    <li>
-                                        <a href="bd_variations_hero_simple_2.html">Hero Simple 2</a>
-                                    </li>
-                                    <li>
-                                        <a href="bd_variations_hero_simple_3.html">Hero Simple 3</a>
-                                    </li>
-                                    <li>
-                                        <a href="bd_variations_hero_simple_4.html">Hero Simple 4</a>
-                                    </li>
-                                    <li>
-                                        <a href="bd_variations_hero_image_1.html">Hero Image 1</a>
-                                    </li>
-                                    <li>
-                                        <a href="bd_variations_hero_image_2.html">Hero Image 2</a>
-                                    </li>
-                                    <li>
-                                        <a href="bd_variations_hero_image_3.html">Hero Image 3</a>
-                                    </li>
-                                    <li>
-                                        <a href="bd_variations_hero_image_4.html">Hero Image 4</a>
-                                    </li>
-                                    <li>
-                                        <a href="bd_variations_hero_video_1.html">Hero Video 1</a>
-                                    </li>
-                                    <li>
-                                        <a href="bd_variations_hero_video_2.html">Hero Video 2</a>
-                                    </li>
-                                    <li>
-                                        <a class="nav-submenu" data-toggle="nav-submenu" href="#">More Options</a>
-                                        <ul>
-                                            <li>
-                                                <a href="javascript:void(0)">Another Link</a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:void(0)">Another Link</a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:void(0)">Another Link</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="bd_search.html"><i class="si si-magnifier"></i>Search</a>
-                            </li>
-                            <li>
-                                <a href="be_pages_dashboard.html"><i class="si si-action-undo"></i>Go Back</a>
-                            </li>
-                        </ul>
-                        <!-- END Header Navigation -->
+                                <li>
+                                    <a href="be_pages_dashboard.html"><i class="si si-action-undo"></i>Users</a>
+                                </li>
+
+                                <li>
+                                    <a href="be_pages_dashboard.html"><i class="si si-action-undo"></i>Permissions</a>
+                                </li>
+
+                                <li>
+                                    <a href="be_pages_dashboard.html"><i class="si si-action-undo"></i>SMS Wallet</a>
+                                </li>
+
+
+                            </ul>
                     </div>
                     <!-- END Middle Section -->
 
