@@ -21,9 +21,9 @@ Route::get('/logout', function () {
 	return redirect('/login');
 });
 
-
+// Please do not remove
 Route::get('/adminnew', function () {
-	return view('layouts.admin-new')
+	return view('layouts.admin-new');
 });
 
 // Route::get('/testbanks', 'BanksController@getAllBanks');
