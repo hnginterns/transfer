@@ -21,9 +21,13 @@ Route::get('/logout', function () {
 	return redirect('/login');
 });
 
-// Please do not remove
+// Please do not remove For testing purposes
 Route::get('/adminnew', function () {
-	return view('layouts.admin-new');
+	$users = App\User::all();
+	$restr = App\Restriction::all();
+	$wallets = App\Wallet::all();
+	$cardw = App\CardWallet::all()''
+	return view('layouts.admin-new', compact('users', 'restr', 'wallets', 'cardw'));
 });
 
 // Route::get('/testbanks', 'BanksController@getAllBanks');
