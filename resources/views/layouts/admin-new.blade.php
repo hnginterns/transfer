@@ -51,7 +51,7 @@
                             <a class="block block-link-rotate block-transparent text-right bg-primary-lighter" href="javascript:void(0)">
                                 <div class="block-content block-content-full clearfix">
                                     <div class="float-left mt-10 d-none d-sm-block">
-                                        <i class="si si-envelope-open fa-3x text-primary"></i>
+                                        <i class="si si-shuffle fa-3x text-primary"></i>
                                     </div>
                                     <div class="font-size-h3 font-w600 text-primary-darker" data-toggle="countTo" data-speed="1000" data-to="15">0</div>
                                     <div class="font-size-sm font-w600 text-uppercase text-primary-dark">Total Transfers</div>
