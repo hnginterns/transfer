@@ -17,7 +17,7 @@
 
 <div id="page-container" class="sidebar-inverse side-scroll page-header-fixed main-content-boxed">
 
-            <!-- Sidebar -->
+           <!-- Sidebar -->
             <nav id="sidebar">
                 <!-- Sidebar Scroll Container -->
                 <div id="sidebar-scroll">
@@ -37,7 +37,7 @@
                                 <div class="content-header-item">
                                     <a class="link-effect font-w700" href="index.html">
                                         <i class="si si-fire text-primary"></i>
-                                        <span class="font-size-xl text-dual-primary-dark">Transfer</span><span class="font-size-xl text-primary">Rules</span>
+                                        <span class="font-size-xl text-dual-primary-dark">code</span><span class="font-size-xl text-primary">base</span>
                                     </a>
                                 </div>
                                 <!-- END Logo -->
@@ -54,25 +54,24 @@
                             -->
                             <ul class="nav-main">
                                 <li>
-                                    <a class="active" href="bd_dashboard.html"><i class="si si-compass"></i>Dashboard</a>
-                                </li>
-                                <li>
-                                    <a href="be_pages_dashboard.html"><i class="si si-action-undo"></i>Wallets</a>
-                                </li>
+                                <a class="active" href="bd_dashboard.html"><i class="si si-compass"></i>Dashboard</a>
+                            </li>
+                          
+                            <li>
+                                <a href="#"><i class="si si-wallet"></i>Wallets</a>
+                            </li>
 
-                                <li>
-                                    <a href="be_pages_dashboard.html"><i class="si si-action-undo"></i>Users</a>
-                                </li>
+                            <li>
+                                <a href="#"><i class="si si-users"></i>Users</a>
+                            </li>
 
-                                <li>
-                                    <a href="be_pages_dashboard.html"><i class="si si-action-undo"></i>Permissions</a>
-                                </li>
+                            <li>
+                                <a href="#"><i class="si si-key"></i>Permissions</a>
+                            </li>
 
-                                <li>
-                                    <a href="be_pages_dashboard.html"><i class="si si-action-undo"></i>SMS Wallet</a>
-                                </li>
-
-
+                            <li>
+                                <a href="#"><i class="si si-envelope"></i>SMS Wallet</a>
+                            </li>
                             </ul>
                         </div>
                         <!-- END Side Main Navigation -->
@@ -117,19 +116,20 @@
                           
                             <li>
                                 <a href="#"><i class="si si-wallet"></i>Wallets</a>
+                            </li>
 
-                                <li>
+                            <li>
                                 <a href="#"><i class="si si-users"></i>Users</a>
                             </li>
 
                             <li>
-                                <a href="#"><i class="si si-cog"></i>Permissions</a>
+                                <a href="#"><i class="si si-key"></i>Permissions</a>
                             </li>
 
                             <li>
                                 <a href="#"><i class="si si-envelope"></i>SMS Wallet</a>
                             </li>
-                            </li>
+                            
                         </ul>
                         <!-- END Header Navigation -->
                     </div>
