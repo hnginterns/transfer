@@ -65,7 +65,12 @@ class AdminController extends WalletController
                 );
             }
 
-            return redirect()->to('admin/managewallet');
+            $notification = array(
+                'message' => 'Wallet Created successfully.', 
+                'alert-type' => 'success'
+            );
+
+            return redirect()->to('admin/managewallet', compact('notification'));
         }
     }
 
