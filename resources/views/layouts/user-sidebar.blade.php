@@ -14,6 +14,12 @@
                 <i class="fa fa-phone fa-lg"></i> Phone TopUp
                 </a>
               </li> 
+              
+              <li>
+                <a href="/admin/smswallet">
+                <i class="fa fa-phone fa-lg"></i> Phone TopUp
+                </a>
+              </li> 
                                 
               <li>
                 <a href="{{ url('/logout') }}">
