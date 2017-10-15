@@ -42,7 +42,7 @@
                                     <div class="float-left mt-10 d-none d-sm-block">
                                         <i class="si si-wallet fa-3x text-primary"></i>
                                     </div>
-                                    <div class="font-size-h3 font-w600 text-primary-darker">$<span data-toggle="countTo" data-speed="1000" data-to="{{$wallets->sum('balance')}}">0</span></div>
+                                    <div class="font-size-h3 font-w600 text-primary-darker">&#8358;<span data-toggle="countTo" data-speed="1000" data-to="{{$wallets->sum('balance')}}">0</span></div>
                                     <div class="font-size-sm font-w600 text-uppercase text-primary-dark">Total Balance</div>
                                 </div>
                             </a>
