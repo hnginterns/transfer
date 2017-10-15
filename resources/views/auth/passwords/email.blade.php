@@ -10,7 +10,7 @@
     @endsection
 
 
-@section('skin')
+@section('content')
     
     <main>
         <div class="container">
