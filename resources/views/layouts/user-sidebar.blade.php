@@ -17,7 +17,7 @@
               
               <li>
                 <a href="/admin/smswallet">
-                <i class="fa fa-phone fa-lg"></i> Phone TopUp
+                <i class="fa fa-phone fa-lg"></i> Sms Top up
                 </a>
               </li> 
                                 
