@@ -1,6 +1,6 @@
 @extends('layouts.page')
 @section('main-text', 'FREQUENTLY ASKED QUESTION (FAQs)')
-@section('sub-text', 'TransferRules lets you receive payments locally and globally with no hassles and zero set up fees')
+@section('sub-text', 'Finance@ Hotels.ng lets you receive payments locally and globally with no hassles and zero set up fees')
 @section('content')
 
 <!-- SECTION ONE BEGINS -->
@@ -21,7 +21,7 @@
 
     <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
       <div class="card-block">
-        <p>Finance @ Hotels.ng is a secure online service that enables any user to instantly buy mobile credit, data top-up for a prepaid Mobile Phone in any part of the country. Our customers use transferrules.com to buy Mobile Airtime for either themselves, friends and family members.</p>
+        <p>Finance@ Hotels.ng is a secure online service that enables any user to instantly buy mobile credit, data top-up for a prepaid Mobile Phone in any part of the country. Our customers use transferrules.com to buy Mobile Airtime for either themselves, friends and family members.</p>
       </div>
     </div>
   </div>
