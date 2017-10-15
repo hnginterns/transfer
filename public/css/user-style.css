@@ -24,7 +24,7 @@ margin-right: auto;
 margin-left: auto;
 }
 
-.skin-blue .wrapper, .skin-blue .main-sidebar, .skin-blue .left-side {
+.main-sidebar {
 	background-color:#39689C;
 }
 
