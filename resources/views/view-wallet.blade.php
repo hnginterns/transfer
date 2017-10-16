@@ -57,14 +57,14 @@ tr:nth-child(even) {
 
 <link rel="stylesheet" href="/css/walletview.css">
    <!-- Trigger the modal with a button -->
-        <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#beneficiaryModal">Add Beneficiary</button>
+        <center><button type="button" class="btn btn-dark" data-toggle="modal" data-target="#beneficiaryModal">Add Beneficiary</button>
 <!-- Trigger the modal with a button -->
   <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#myModal">Fund</button>
   
   <a href="{{ route('transfer.beneficiary', $wallet->id)}}" class="btn btn-dark ">Transfer To Beneficiary</a>
       
 
-      <a href="{{ route('transfer.wallet', $wallet->id)}}" class="btn btn-dark ">Transfer to Another Wallet </a>
+      <a href="{{ route('transfer.wallet', $wallet->id)}}" class="btn btn-dark ">Transfer to Another Wallet </a></center>
 
               <div class="">
               @if (!empty($permit))
@@ -83,10 +83,10 @@ tr:nth-child(even) {
     <td>{{ $wallet->balance }}</td>
   </tr>
   
-</table>
+</table><p>
 </div><br><br>
 
-          <div class="">
+          <br><div class="">
 	<div class="orange-box"><h4 class="title" align="center"> {{ ucfirst($wallet->wallet_name) }} TRANSACTION HISTORY</h4></div><br>
           <div class="table-responsive">
               @if(count($history))          
