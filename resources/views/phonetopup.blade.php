@@ -8,7 +8,7 @@
 
     <div class="container">
         <div class="col-md-10 border" id="body">
-            <div class="" id="balanceDiv">
+            <div class="row" id="balanceDiv">
                 <div class="col-md-6 balance">
                     <div class="balHolder">
                       <h2>Wallet</h2>
