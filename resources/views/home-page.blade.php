@@ -141,9 +141,9 @@
         #button-hd {
             width: fit-content;
             /* color: #E57679; */
-            color: #FFFFFF;
+            color: #39689C;
             border: none;
-            background: #2CACF0;
+            background: #fff;
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
             padding: 10px 15px;
             border-radius: 63px;
@@ -769,8 +769,8 @@
                      <li class="{{ Request::segment(1) === '/' ? 'active' : null }}" ><a href="{{url('/')}}">Home</a></li>
                     <li class="{{ Request::segment(1) === 'how' ? 'active' : null }}" ><a href="{{route('how')}}">FAQs</a></li>
                     <li class="{{ Request::segment(1) === 'features' ? 'active' : null }}"><a href="{{route('features')}}">Features</a></li>
-                   
-                    <li class="{{ Request::segment(1) === 'about' ? 'active' : null }}"><a href="{{route('about')}}">About<span class="sr-only">(current)</span></a></li>
+                   <li class="{{ Request::segment(1) === 'features' ? 'active' : null }}"><a href="{{route('features')}}">Demo</a></li>
+                   <li class="{{ Request::segment(1) === 'about' ? 'active' : null }}"><a href="{{route('about')}}">About<span class="sr-only">(current)</span></a></li>
 
                     @if(Auth::guest())
                     <li id="sign-in"><a href="{{url('login')}}">Sign In</a></li> 
@@ -794,16 +794,16 @@
     </nav>
 
     <div id="header-content">
-        <img src="img/phone.png" alt="Transfer rules mobile app screenshot" id="mobile-app">
-        <div id="content-text" class="clearfix">
+        Online payments made easy
+        <div id="content-text" class="clearfix" align="center">
                 <span id="heading-hd">
-                    Create an account for your company with Finance @ hotels.ng
+                   Payant is an easy way for you to pay and get paid any where
                 </span>
             <span id="text-hd">
                     Create an account for your company with TransferRules and gain full control over financial transactions, disbursement of funds and lot more services.
                 </span>
             <button id="button-hd">
-                DOWNLOAD APP
+                Get Started
             </button>
         </div>
     </div>
@@ -888,7 +888,7 @@
                 Create an account in less than 5 minutes. Login to your account and create wallets for your company
             </p>
         </div>
-        <button id="divider-cta">Read More</button>
+        <button id="divider-cta">Get Started</button>
     </div>
 </div>
 <!-- DIVIDER ENDS-->

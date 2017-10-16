@@ -281,6 +281,9 @@ class WalletController extends Controller
                     $transaction->save();
                     //end of logic for saving transactions
 
+                    $wallet->balance -= $request->amount;
+                    $wallet->save();
+
                     $this->sendBankTransactionNotifications($transaction);
 
                     event(new TransferToBank($bank));
