@@ -749,7 +749,7 @@
 </head>
 <body>
 <!-- HEADER BEGINS -->
-<div id="header" style="background: url('img/background.png');">
+<div id="header" style="background: url('img/backgroundnew.png');">
     <p id="background-text">FUNDS</p>
 
     <nav class="navbar navbar-default">
