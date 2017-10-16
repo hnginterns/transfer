@@ -901,7 +901,7 @@
         <li><a href="{{route('about')}}">About Us</a></li>
         <li><a href="{{route('privacy')}}">Privacy Policy</a></li>
 
-        <li><a href="{{route('how')}}">How it works</a></li>
+        <li><a href="{{route('features')}}">How it works</a></li>
         <li><a href="{{route('contact')}}">Contact Us</a></li>
    
 
