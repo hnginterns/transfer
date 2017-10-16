@@ -35,10 +35,4 @@
         </div>
     </main>
 
-    <footer class="footer">
-        <div class="container" style="text-align:center">
-            <span class="text-muted company">2017 TransferFunds - All Rights Reserved</span>
-        </div>
-    </footer>
-
 @endsection

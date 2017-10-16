@@ -11,8 +11,6 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-
-
 use App\User;
 
 use Illuminate\Support\Facades\Hash;
@@ -30,8 +28,6 @@ class UsermgtController extends Controller
         $name = Auth::user()->username;
         return view('users.index', compact('users'))->with("name", $name);
     }
-
-    
 
     /**
      * Show the form for creating a new resource.
