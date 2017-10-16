@@ -1,4 +1,5 @@
 
+
 @extends('layouts.user')
 @section('title', 'Dashboard')
 @section('content')
@@ -6,13 +7,8 @@
     
 
     <div class="container">
-      <!-- Example row of columns -->
-      <div class="row" >
-        <div class="col-md-2">
-          <!----------side bar goes here ---->
-        </div>
         <div class="col-md-10 border" id="body">
-            <div class="row" id="balanceDiv">
+            <div class="" id="balanceDiv">
                 <div class="col-md-6 balance">
                     <div class="balHolder">
                       <h2>Wallet</h2>
@@ -86,7 +82,7 @@
                 </div>            
             </div>
             <div class="container-fiuld">
-                <div class="container text-center topUpHeader">
+                <div class="text-center topUpHeader">
                     <h2 style="">Top Up Prepaid Mobile Phones</h2>
                 </div>
                  
@@ -707,9 +703,7 @@
         <!-- /.modal -->
       <hr>
 
-      <footer>
-        <p>&copy; Company 2017</p>
-      </footer>
+      
     </div> <!-- /container -->
 
 
