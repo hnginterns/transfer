@@ -82,7 +82,7 @@
                 </div>
                  
             </div>
-            <div class="container">
+            <div class="">
                 <div class="row">
                     <div class="col-md-7">
                         <div class="text-center benHeader">
