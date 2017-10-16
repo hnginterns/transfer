@@ -4,14 +4,19 @@
       View Wallet
 @endsection
 @section('content')
+
+
 <style>
+
 i.can{
         color: #00a65a;
         
     }
+
     i.cannot{
       color: #dd4b39;
     }
+
 i.sent{
         color: #00a65a;
         filter: blur(10px);
@@ -19,11 +24,13 @@ i.sent{
         z-index:-1
         
     }
+
     em.sent{
         opacity: 0.5
         z-index:-1
         
     }
+
     i.received{
       color: #dd4b39;
     }
@@ -57,82 +64,7 @@ i.sent{
                                  
 
             </div>
- 
-            
-            <!--Add Beneficiary  Modal -->
-            <div class="modal fade" id="beneficiaryModal" role="dialog">
-              <div class="modal-dialog">
-              
-                <!-- Modal content-->
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">ADD Beneficiary</h4>
-                  </div>
-                  <div class="modal-body">
-                    <p>Please fill out details</p>
-                    <form action="/addbeneficiary/{{ $wallet->id }}" method="post" role="form" class="submit-topup">
-                          {{ csrf_field() }}
-                          <!-- text input -->
-                          <div class="form-group">                  
-                            <label>Beneficiary Name</label>
-                            <input type="text" required name="name" class="form-control input-defaulted" placeholder="Name">
-                          </div>
 
-                           <div class="form-group">                   
-                            <label>Bank</label>
-                            <select name="bank_id" required class="form-control input-defaulted" >
-                              <option>Select Bank</option>
-
-                            @foreach(App\Http\Controllers\BanksController::getAllBanks() as $key => $bankcode)
-                            <option value="{{$bankcode->id}}||{{$bankcode->bank_name}}">{{ $bankcode->bank_name }}</option>
-                            @endforeach
-                            </select>
-                          </div>
-
-                           <div class="form-group">
-                              <label>Account Number</label>
-                              <input type="text" required name="account_number" class="form-control input-defaulted" placeholder="Account Number">
-                           </div>
-
-                            <div class="form-group ">
-                              <button type="submit" class="btn btn-success pull-right" name="button"> Add</button><br>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-              </div>
-          </div>
-		</div>
-<!--Add sms Account  Modal -->
-          <div class="modal fade" id="myModal" role="dialog">
-            <div class="modal-dialog">
-              <!-- Modal content-->
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                      Fund <strong>{{ $wallet->wallet_name }} </strong>  Wallet with Card <a href="{{ route('wallets.details', $wallet->id) }}" class="label label-primary pull-right">Back</a>
-                  </div>
-                    <div class="controls">
-                            <button type="submit" class="btn btn-primary">Fund Wallet</button>
-                            <a href="/admin/viewwallet/{{$wallet->id}}"><button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button></a>
-<div class="col-sm-12">  
-		  	  
-            	
-
-<div class="container">
-  
-  <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Fund</button>
-
-  <a href="{{ route('transfer.beneficiary', $wallet->id)}}" class="btn btn-dark ">Transfer To Beneficiary</a>
-      
-
-      <a href="{{ route('transfer.wallet', $wallet->id)}}" class="btn btn-dark ">Transfer to Another Wallet </a>
-
-     <div class="container">
-        <!-- Trigger the modal with a button -->
-        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#beneficiaryModal">Add Beneficiary</button>
-    </div>
           <div class="col-md-8 col-sm-8">
 					<div class="orange-box"><h4 class="title" align="center"> {{ ucfirst($wallet->wallet_name) }} TRANSACTION HISTORY</h4></div><br>
           <div class="table-responsive">
@@ -224,8 +156,31 @@ i.sent{
           </div>
           
 
-          
+          <div class="col-sm-12">  
+		  	  
+            	
+
+<div class="container">
+  
+  <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Fund</button>
+
+  <a href="{{ route('transfer.beneficiary', $wallet->id)}}" class="btn btn-dark ">Transfer To Beneficiary</a>
       
+
+      <a href="{{ route('transfer.wallet', $wallet->id)}}" class="btn btn-dark ">Transfer to Another Wallet </a>
+
+     <div class="container">
+        <!-- Trigger the modal with a button -->
+        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#beneficiaryModal">Add Beneficiary</button>
+      <!--Add sms Account  Modal -->
+          <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+              <!-- Modal content-->
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                      Fund <strong>{{ $wallet->wallet_name }} </strong>  Wallet with Card <a href="{{ route('wallets.details', $wallet->id) }}" class="label label-primary pull-right">Back</a>
+                  </div>
       			
             <div class="modal-body">  
                 <!-- text input -->      
@@ -337,7 +292,9 @@ i.sent{
                     </div>
                     <div class="form-group">
                         <label></label>
-                        
+                        <div class="controls">
+                            <button type="submit" class="btn btn-primary">Fund Wallet</button>
+                            <a href="/admin/viewwallet/{{$wallet->id}}"><button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button></a>
                         </div>
                     </div>
                 </fieldset>
@@ -350,7 +307,53 @@ i.sent{
 </div>
 			
  
-           
+            
+            
+            <!--Add Beneficiary  Modal -->
+            <div class="modal fade" id="beneficiaryModal" role="dialog">
+              <div class="modal-dialog">
+              
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">ADD Beneficiary</h4>
+                  </div>
+                  <div class="modal-body">
+                    <p>Please fill out details</p>
+                    <form action="/addbeneficiary/{{ $wallet->id }}" method="post" role="form" class="submit-topup">
+                          {{ csrf_field() }}
+                          <!-- text input -->
+                          <div class="form-group">                  
+                            <label>Beneficiary Name</label>
+                            <input type="text" required name="name" class="form-control input-defaulted" placeholder="Name">
+                          </div>
+
+                           <div class="form-group">                   
+                            <label>Bank</label>
+                            <select name="bank_id" required class="form-control input-defaulted" >
+                              <option>Select Bank</option>
+
+                            @foreach(App\Http\Controllers\BanksController::getAllBanks() as $key => $bankcode)
+                            <option value="{{$bankcode->id}}||{{$bankcode->bank_name}}">{{ $bankcode->bank_name }}</option>
+                            @endforeach
+                            </select>
+                          </div>
+
+                           <div class="form-group">
+                              <label>Account Number</label>
+                              <input type="text" required name="account_number" class="form-control input-defaulted" placeholder="Account Number">
+                           </div>
+
+                            <div class="form-group ">
+                              <button type="submit" class="btn btn-success pull-right" name="button"> Add</button><br>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+              </div>
+          </div>
+		</div>
 
      @if (session('status'))
    <script type="text/javascript">
@@ -383,7 +386,12 @@ i.sent{
             </div>
           </div>
       </div>
-      @endif
+      
+    </div>
+  </div>
+
+</div>
+@endif
 
     @else
 
@@ -392,4 +400,3 @@ i.sent{
      @endif
     
   @endsection
-      
