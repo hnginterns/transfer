@@ -98,7 +98,7 @@ class UsermgtController extends Controller
                 'alert-type' => 'success'
             );
 
-            session()->set('success','User created successfully.');
+            Session::flash('success', 'User created successfully.');
             return redirect()->to('/admin/users');
         }
     }
@@ -164,7 +164,8 @@ class UsermgtController extends Controller
             $user->last_name = $input['last_name'];
             $user->save();
             $name = Auth::user()->username;
-            session()->set('success','User updated successfully.');
+            
+            Session::flash('success', 'User updated successfully.');
             return redirect('/admin/users')->with("name", $name);
         }
     }
@@ -191,7 +192,7 @@ class UsermgtController extends Controller
 
         $user = User::where('id', $id)->update(["deleted_at" => $dateNow]);
 
-         session()->set('success','User banned successfully.');
+         Session::flash('success', 'User banned successfully.');
         return back();
 
     }
@@ -201,7 +202,8 @@ class UsermgtController extends Controller
         $user = User::withTrashed()->where('id', $id);
         $user->restore();
 
-    session()->set('success','User unbanned successfully.');
+    
+    Session::flash('success', 'User unbanned successfully.');
         
         return back();
 
@@ -211,7 +213,7 @@ class UsermgtController extends Controller
 
         $user = User::where('id', $id)->update(["is_admin" => 1]);
 
-        session()->set('success','User made admin');
+        Session::flash('success', 'User updated successfully.');
         
         return back();
 
@@ -222,7 +224,7 @@ class UsermgtController extends Controller
         $user = User::where('id', $id)->update(["is_admin" => 0]);
 
         
-        session()->set('success','Admin Permission revoked');
+        Session::flash('success', 'User updated successfully.');
         return back();
 
     }
