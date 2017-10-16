@@ -171,32 +171,7 @@ i.sent{
 <div class="container">
   
   
-<form action="/transfer/wallet/{{$wallet->id}}" method="POST" id="trform" class="input-form">
-          {{csrf_field()}}
-            <div class="form-group">
-                <select class="form-control cus-input" name="sourceWallet">
-                  <option value="{{ $wallet->id}}">{{ $wallet->wallet_name}}</option>
-                </select>
-            </div>
 
-            <div class="form-group">
-                <select class="form-control cus-input" name="recipientWallet">
-                    <option value="">Select recipient wallet</option>
-                      @foreach($wallets as $walletz)
-                      @if($wallet->id != $walletz->id)
-                              <option value="{{ $walletz->id }}">{{ $walletz->wallet_name}}</option>
-                            @endif
-                      @endforeach
-                </select>
-            </div>
-
-            <div class="form-group">
-                <input type="number" class="form-control cus-input" name="amount" id="amount" required placeholder="Amount">
-            </div>
-
-            <div class="form-group ">    
-              <button id="transfer" type="submit" class="btn btn-primary pull-right">Transfer</button>
-            </d>
   
 
      <div class="container">
