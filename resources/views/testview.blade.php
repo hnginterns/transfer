@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-
+@section('content')
     <link rel="stylesheet" href="/css/custom.css">
     
 
