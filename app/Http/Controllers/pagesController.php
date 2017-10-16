@@ -14,8 +14,6 @@ use App\Transaction;
 use App\BankTransaction;
 use App\WalletTransaction;
 
-use Session;
-
 use App\Bank;
 
 use Illuminate\Support\Facades\DB;
@@ -129,10 +127,7 @@ class pagesController extends Controller
         $permit = Restriction::where('wallet_id', $wallet->id)
           ->where('uuid', Auth::user()->id)
           ->first();
-        if($permit == null) 
-
-            Session::flash('error', 'You do not have access to this wallet');
-            return redirect('/dashboard');
+        if($permit == null) return redirect('/dashboard')->with('error', 'You do not have access to this wallet');
 
         $cardWallet = CardWallet::latest()->first();
         
