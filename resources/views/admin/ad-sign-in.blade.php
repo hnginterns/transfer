@@ -57,7 +57,7 @@
 
                     <li class="nav-item">
 
-                        <a class="nav-link" href="/home">Home
+                        <a class="nav-link" href="/">Home
 
                             <span class="sr-only">(current)</span>
 
