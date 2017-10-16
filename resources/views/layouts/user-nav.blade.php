@@ -13,7 +13,7 @@
        
                   </ul>
              </div>
-            {{ $first_name }} {{ $last_name }}
+            {{ $user }}
             <i class="fa fa-user-circle-o"></i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
            </form>
         </div>
