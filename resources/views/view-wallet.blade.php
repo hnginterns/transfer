@@ -165,10 +165,10 @@ i.sent{
   <!-- Trigger the modal with a button -->
   <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Fund</button>
 
-  <a href="/transfer-to-bank/{{$wallet->id}}" class="btn btn-dark ">Transfer To Beneficiary</a>
+  <a href="{{ route('transfer.beneficiary', $wallet->id)}}" class="btn btn-dark ">Transfer To Beneficiary</a>
       
 
-      <a href="/transfer-to-wallet/{{$wallet->id}}" class="btn btn-dark ">Transfer to Another Wallet </a>
+      <a href="{{ route('transfer.wallet', $wallet->id)}}" class="btn btn-dark ">Transfer to Another Wallet </a>
 
      <div class="container">
         <!-- Trigger the modal with a button -->
