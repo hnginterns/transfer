@@ -66,12 +66,11 @@ Route::group(['middleware' => 'auth'], function () {
 
 	//Wallet operations start
 	Route::get('/wallet/{wallet}', 'pagesController@walletdetail')->name('user.wallet.detail');
-	Route::get('/transfer-to-bank/{wallet}', 'pagesController@bank_transfer');
-	Route::get('/transfer-to-wallet/{id}', 'pagesController@wallet_transfer');
-	Route::post('/transfer-to-wallet/{wallet}', 'WalletController@transfer');
-	Route::post('/transfer-to-bank/{wallet}', 'WalletController@transferAccount');
+	Route::get('/transfer/beneficiary/{wallet}', 'pagesController@bank_transfer')->name('transfer.beneficiary');
+	Route::get('/transfer/wallet/{wallet}', 'pagesController@wallet_transfer')->name('transfer.wallet');
+	Route::post('/transfer/wallet/{wallet}', 'WalletController@transfer')->name('transfer.wallet.submit');
+	Route::post('/transfer/beneficiary/{wallet}', 'WalletController@transferAccount')->name('transfer.beneficiary.submit');
 	//wallet operations end
-
 
 	//state messages start
 	Route::get('/success', 'pagesController@success');
@@ -185,7 +184,6 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
 	Route::post('/smswallet-topup', 'SmsWalletController@smsWalletTopup');
 	Route::post('/get-user-details', 'SmsWalletController@getUserDetails');
 	//admin sms transaction ends here
-
 
 	Route::get('analytics', 'Admin\AdminController@webAnalytics');
 

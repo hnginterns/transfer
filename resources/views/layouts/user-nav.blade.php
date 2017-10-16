@@ -1,64 +1,21 @@
       <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-        <a class="navbar-brand" href="{{url('/')}}">  <img src="/img/logo3.png" alt="Hotels.Ng"><span></span></a>
+       <div class="navbar-header"><br>
+        &nbsp;&nbsp;&nbsp;<a href="{{url('/')}}">  <img src="/img/HNGlogo.png" alt=""></a>
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-          </button>
-          
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li class="hidden-lg hidden-lg-up">
-                <a href="/dashboard">
-                <i class="fa fa-dashboard fa-lg"></i> Dashboard
-                </a>
-              </li>  
-                <li  class="hidden-lg hidden-lg-up">
-                <a href="/wallet-view">
-                <i class="fa fa-tasks fa-lg"></i> Wallet View
-                </a>
-              </li>  
-                <li  class="hidden-lg hidden-lg-up">
-                <a href="/transfer-to-wallet">
-                <i class="fa fa-tasks fa-lg"></i> Wallet Transfer
-                </a>
-              </li>  
-                <li  class="hidden-lg hidden-lg-up">
-                <a href="transfer-to-bank">
-                <i class="fa fa-bank fa-lg"></i> Bank Transfer
-                </a>
-              </li>  
-                <li  class="hidden-lg hidden-lg-up">
-                <a href="{{ url('/logout') }}">
-                <i class="fa fa-dashboard fa-lg"></i> Logout
-                </a>
-              </li>
-              @if(Auth::user())
-              </li>  
-                <li  class="hidden-lg hidden-lg-up">
-                <a href="{{ url('/dashboard') }}">
-                <i class="fa fa-dashboard fa-lg"></i> Dashboard
-                </a>
-              </li>
-              @endif
-
-              @if(Auth::user()->isAdmin())
-              </li>  
-                <li  class="hidden-lg hidden-lg-up">
-                <a href="{{ url('/admin') }}">
-                <i class="fa fa-dashboard fa-lg"></i> Dashboard
-                </a>
-              </li>
-              @endif
-              <li><a href="#" style="color:white; font-size:18px;"><i class="fa fa-user"></i>  </a></li>
-          </ul>
+          </button>    
+          </div>
           <form class="navbar-form navbar-right">
             <input type="text" class="form-control" placeholder="Search...">
-          </form>
+       
+                  </ul>
+             </div>
+           Godfred Akpan
+            <i class="fa fa-user-circle-o"></i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           </form>
         </div>
       </div>
     </nav>

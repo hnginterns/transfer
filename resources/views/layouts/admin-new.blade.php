@@ -22,8 +22,8 @@
             <main id="main-container">
                 <!-- Page Content -->
                 <div class="content content-full">
-                    <div class="row gutters-tiny invisible" data-toggle="appear">
 
+<<<<<<< HEAD
                         <!-- Row #1 -->
                         <div class="col-6 col-xl-3">
                             <a class="block block-link-rotate block-transparent text-right bg-primary-lighter" href="{{ url('/admin/managewallets') }}">
@@ -137,6 +137,10 @@
                         
                         <!-- END Row #3 -->
                     </div>
+=======
+                  @yield('content')
+
+>>>>>>> b6ee4d596edb0b89b3c28df668f2df3f5f1d4b4a
                 </div>
                 <!-- END Page Content -->
             </main>

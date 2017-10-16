@@ -29,8 +29,6 @@ class UsermgtController extends Controller
         return view('users.index', compact('users'))->with("name", $name);
     }
 
-    
-
     /**
      * Show the form for creating a new resource.
      *
@@ -94,6 +92,8 @@ class UsermgtController extends Controller
               "role_id" => 0,
               "created_at" => $dateNow
             ]);
+
+            Session::flash('success', 'User created successfully.');
             return redirect()->to('/admin/users');
         }
     }
@@ -159,6 +159,8 @@ class UsermgtController extends Controller
             $user->last_name = $input['last_name'];
             $user->save();
             $name = Auth::user()->username;
+            
+            Session::flash('success', 'User updated successfully.');
             return redirect('/admin/users')->with("name", $name);
         }
     }
@@ -184,7 +186,8 @@ class UsermgtController extends Controller
         $dateNow = $dt->toDateTimeString();
 
         $user = User::where('id', $id)->update(["deleted_at" => $dateNow]);
-        
+
+         Session::flash('success', 'User banned successfully.');
         return back();
 
     }
@@ -194,6 +197,9 @@ class UsermgtController extends Controller
         $user = User::withTrashed()->where('id', $id);
         $user->restore();
 
+    
+    Session::flash('success', 'User unbanned successfully.');
+        
         return back();
 
     }
@@ -202,6 +208,8 @@ class UsermgtController extends Controller
 
         $user = User::where('id', $id)->update(["is_admin" => 1]);
 
+        Session::flash('success', 'User updated successfully.');
+        
         return back();
 
     }
@@ -210,6 +218,8 @@ class UsermgtController extends Controller
 
         $user = User::where('id', $id)->update(["is_admin" => 0]);
 
+        
+        Session::flash('success', 'User updated successfully.');
         return back();
 
     }

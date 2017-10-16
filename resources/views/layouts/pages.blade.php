@@ -32,7 +32,7 @@
            
         }
         #logo {
-            width: 40px;
+    
             height: 40px;
             margin-right: 15px;
             margin-left: 50px;
@@ -393,14 +393,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{url('/')}}"><img id="logo" src="img/logo.png" alt="TransferRules logo" style="display: inline;"> TransferRules</a>
+                <a class="navbar-brand" href="{{url('/')}}"><img id="logo" src="/img/HNGlogo.png" alt="TransferRules logo" style="display: inline;"> TransferRules</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li ><a href="{{url('/')}}">Home</a></li>
                     <li class="{{ Request::segment(1) === 'how' ? 'active' : null }}" ><a href="{{route('how')}}">FAQs</a></li>
                     <li class="{{ Request::segment(1) === 'features' ? 'active' : null }}"><a href="{{route('features')}}">Features</a></li>
-                    <li><a href="{{url('#')}}">Demo</a></li>
                     <li class="{{ Request::segment(1) === 'about' ? 'active' : null }}"><a href="{{route('about')}}">About<span class="sr-only">(current)</span></a></li>
 
                     @if(Auth::guest())
@@ -463,16 +462,14 @@
         <li><a href="{{route('about')}}">About Us</a></li>
         <li><a href="{{route('privacy')}}">Privacy Policy</a></li>
 
-        <li><a href="{{route('how')}}">How it works</a></li>
+        <li><a href="{{route('features')}}">How it works</a></li>
         <li><a href="{{route('contact')}}">Contact Us</a></li>
-        
+   
 
         <li><a href="{{route('help')}}">Help & Support</a></li>
         <li><a href="{{url('login')}}">Sign In</a></li>
         <li><a href="{{route('how')}}">FAQs</a></li>
         <li><a href="{{route('terms')}}">Terms & Condition</a></li>
-
-        
     </div>
     <p id="line"> </p>
     <div id="lower-footer">

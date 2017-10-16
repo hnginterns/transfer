@@ -38,7 +38,7 @@ class AdminController extends WalletController
     {
         $restriction = Restriction::all();
 
-        return view('admin.managepermission', compact('restriction'));
+        return view('admin.permit.managepermission', compact('restriction'));
     }
 
     public function managewallet()
@@ -65,6 +65,7 @@ class AdminController extends WalletController
                 );
             }
 
+            Session::flash('messages','Wallet Create successfully');
             return redirect()->to('admin/managewallet');
         }
     }
@@ -132,8 +133,7 @@ class AdminController extends WalletController
         $wallet = Wallet::findOrFail($id);
 
         Wallet::where('id', $id)->update(['archived' => 1]);
-
-        return redirect('/admin/viewwallet/'.$id)->with('message', 'Wallet Archived successfully.');
+        return redirect('/admin/viewwallet/'.$id);
     }
 
     public function activateWallet($id)
@@ -142,7 +142,9 @@ class AdminController extends WalletController
 
         Wallet::where('id', $id)->update(['archived' => 0]);
 
-        return redirect('/admin/viewwallet/'.$id)->with('message', 'Wallet Activated successfully.');
+        Session::flash('messages','Wallet Activated successfully.');
+
+        return redirect('/admin/viewwallet/'.$id);
     }
 
     public function fundWallet(CardWallet $cardWallet)

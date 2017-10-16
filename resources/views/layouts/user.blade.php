@@ -13,9 +13,12 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
   <link rel="stylesheet" type="text/css" href="/css/user-style.css">
+
+  <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
+
 </head>
 
-<body>
+<body style="background-color:#fff;">
     @include('layouts.user-nav') 
 
     <div class="container-fluid" style="margin-top: 60px;">
@@ -37,6 +40,28 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+<script>
+
+  @if(Session::has('success'))
+        toastr.success("{{ Session::get('success') }}");
+  @endif
+
+  @if(Session::has('info'))
+        toastr.info("{{ Session::get('info') }}");
+  @endif
+
+  @if(Session::has('warning'))
+        toastr.warning("{{ Session::get('warning') }}");
+  @endif
+
+  @if(Session::has('error'))
+        toastr.error("{{ Session::get('error') }}");
+  @endif
+
+</script>
   
 </body>
 

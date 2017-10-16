@@ -22,7 +22,9 @@
   <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
         page. However, you can choose any other skin. Make sure you
         apply the skin class to the body tag so the changes take effect. -->
-  <link rel="stylesheet" href="https://adminlte.io/themes/AdminLTE/dist/css/skins/skin-blue.min.css">
+<link rel="stylesheet" href="https://adminlte.io/themes/AdminLTE/dist/css/skins/skin-blue.min.css">
+
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -59,11 +61,11 @@
       </h1>
 
     </section>
-
-
-    @include('partials.messages')
+ 
 
 <section class="content">
+
+  @include('partials.messages')
 
       <div class="row">
 
@@ -90,6 +92,8 @@
 <script src="https://adminlte.io/themes/AdminLTE/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/js/bootstrap-dialog.min.js"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
 <!-- page script -->
 <script>
   $(function () {
@@ -104,6 +108,27 @@
     })
   })
 </script>
+
+<script>
+
+  @if(Session::has('success'))
+        toastr.success("{{ Session::get('success') }}");
+  @endif
+
+  @if(Session::has('info'))
+        toastr.info("{{ Session::get('info') }}");
+  @endif
+
+  @if(Session::has('warning'))
+        toastr.warning("{{ Session::get('warning') }}");
+  @endif
+
+  @if(Session::has('error'))
+        toastr.error("{{ Session::get('error') }}");
+  @endif
+
+</script>
+
 
 @yield('added_js')
 

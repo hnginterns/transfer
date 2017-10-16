@@ -104,8 +104,13 @@
 
              <!-- Modal Header -->
             <div class="modal-header">
-              <button>Print</button>
+              <button onclick="printPage()">Print</button>
             </div>
 </div>
+<script>
+            function printPage() {
+                window.print();
+            }
+            </script>
 @endif
 @endsection

@@ -9,7 +9,7 @@
                 <div class="col-md-4 col-sm-4 ">
                   <div class="row dbackground">
                     <p class="dicon center-block">
-                      <i class="fa fa-list-alt fa-5x"></i>
+                      <i class="fa fa-money fa-5x"></i>
                     </p>
                     <a href="{{route('user.wallet.detail', $wallets->id)}}"><p class="dtext"> {{ $wallets->wallet_name }} - {{ $wallets->balance }}</p></a>
                   </div>

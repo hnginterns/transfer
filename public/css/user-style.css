@@ -25,7 +25,10 @@ margin-left: auto;
 }
 
 .skin-blue .wrapper, .skin-blue .main-sidebar, .skin-blue .left-side {
-	background-color:#39689C;
+	background: #39689C;
+        color: #222d32;
+        border-radius: 2px;
+
 }
 
 .navbar-brand {
@@ -38,9 +41,10 @@ color: #00aeff !important;
 }
 
 .navbar-header img {
-width: 150px;
+
 height: 40px;
-margin-top: -10px;
+margin-top: -12px;
+
 }
 #navbar li a {
 color:#000000;
@@ -115,7 +119,7 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     padding: 20px;
     overflow-x: hidden;
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-    background-color: #f5f5f5;
+    background-color: #39689C;
     border-right: 1px solid #eee;
   }
 }
@@ -131,7 +135,7 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   padding-left: 18px;
   font-family: "Nunito Sans";
   padding-left: 20px;
-  color: #25313F;
+  color: #fff;
 }
 .nav-sidebar > .active > a,
 .nav-sidebar > .active > a:hover,
@@ -140,6 +144,10 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   background-color: #39689C;
 }
 
+.navbar-form navbar-right{
+   width:300;
+
+}
 
 /*
  * Main content

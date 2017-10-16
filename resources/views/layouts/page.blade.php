@@ -11,11 +11,11 @@
 
     <title>Finance@hotels.ng</title>
 
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
 
-    <link href="css/signin.css" rel="stylesheet">
+    <link href="{{asset('css/signin.css')}}" rel="stylesheet">
 
     <style>
         
@@ -185,9 +185,9 @@
         <li><a href="{{route('about')}}">About Us</a></li>
         <li><a href="{{route('privacy')}}">Privacy Policy</a></li>
 
-        <li><a href="{{route('how')}}">How it works</a></li>
+        <li><a href="{{route('features')}}">How it works</a></li>
         <li><a href="{{route('contact')}}">Contact Us</a></li>
-        
+   
 
         <li><a href="{{route('help')}}">Help & Support</a></li>
         <li><a href="{{url('login')}}">Sign In</a></li>

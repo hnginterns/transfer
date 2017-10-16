@@ -20,11 +20,11 @@
               <strong>{{ $status }}</strong> Alert body ...
             </div>  
         @endif--}}
-        <form action="/transfer-to-wallet/{{$wallet->id}}" method="POST" id="trform" class="input-form">
+        <form action="/transfer/wallet/{{$wallet->id}}" method="POST" id="trform" class="input-form">
           {{csrf_field()}}
             <div class="form-group">
                 <select class="form-control cus-input" name="sourceWallet">
-                  <option value="{{ $wallet->wallet_code }}">{{ $wallet->wallet_name}}</option>
+                  <option value="{{ $wallet->id}}">{{ $wallet->wallet_name}}</option>
                 </select>
             </div>
 
@@ -32,19 +32,19 @@
                 <select class="form-control cus-input" name="recipientWallet">
                     <option value="">Select recipient wallet</option>
                       @foreach($wallets as $walletz)
-                      @if($wallet->wallet_code != $walletz->wallet_code)
-                              <option value="{{ $walletz->wallet_code }}">{{ $walletz->wallet_name}}</option>
+                      @if($wallet->id != $walletz->id)
+                              <option value="{{ $walletz->id }}">{{ $walletz->wallet_name}}</option>
                             @endif
                       @endforeach
                 </select>
             </div>
 
             <div class="form-group">
-                <input type="number" class="form-control cus-input" name="amount" id="amount" placeholder="Amount">
+                <input type="number" class="form-control cus-input" name="amount" id="amount" required placeholder="Amount">
             </div>
 
             <div class="form-group ">    
-              <button id="transferbt" type="submit" class="btn btn-primary pull-right">Transfer</button>
+              <button id="transfer" type="submit" class="btn btn-primary pull-right">Transfer</button>
             </div>
         </form>
 </div>

@@ -1,6 +1,8 @@
 @extends('layouts.user')
 @section('title', 'Dashboard')
 @section('content')
+    <link rel="stylesheet" href="/css/style.1.css">
+    
 <div class="row">
         <div class="col-lg-12">
         <div class="content_two">
@@ -9,7 +11,7 @@
             <div class="balance"align="center"  >
                 <h5>Balance</h5>
                 <div class="box" align="center">
-                        <p>Available <br>in Wallet<br>
+                        <p>Available <br>in Wallets<br>
                         <strong>
                             <?php
                                   $curl = curl_init();
@@ -76,7 +78,7 @@
       <div class="row" >
       <div class="col-md-6">
       <p>Chef's Phone - <strong>417-873-60000</strong> </p>
-                        <button type="button" class="history" data-toggle="modal" data-target="#myModal">Transaction History</button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Transaction History</button>
       </div>
        <div class="col-md-6"> 
        <div class="selectamount">
@@ -85,12 +87,12 @@
                                 </div>
                                 <div class="reach">
                                     <form action="script.php" method="POST">
-                                            <input type="submit" name="load500" id="load500"  value="500"/>
-                                            <input type="submit" name="load1000" id="load1000" value="1000"/>
-                                            <input type="submit" name="load2000" id="load2000" value="2000"/>
-                                            <input type="submit" name="load3000" id="load3000" value="3000"/>
-                                            <input type="submit" name="load4000" id="load4000" value="4000"/>
-                                            <input type="submit" name="load5000" id="load5000 " value="5000"/>                                            
+                                            <input type="submit" name="load500" id="load500" class="btn .btn-default"  value="500"/>
+                                            <input type="submit" name="load1000" id="load1000" class="btn .btn-default"  value="1000"/>
+                                            <input type="submit" name="load2000" id="load2000" class="btn .btn-default"  value="2000"/>
+                                            <input type="submit" name="load3000" id="load3000" class="btn .btn-default"  value="3000"/>
+                                            <input type="submit" name="load4000" id="load4000" class="btn .btn-default" value="4000"/>
+                                            <input type="submit" name="load5000" id="load5000 " class="btn .btn-default" value="5000"/>                                            
                                     </form>
                                 </div>
                                
@@ -298,10 +300,10 @@
                         <h6>TopUp Data Plans</h6><hr>
                         <div class="panel-group" id="credit">
                         <ul>
-                            <li> <button type="button"  data-parent="#credit" data-toggle="collapse" data-target="#9mobile"><img src="images/1.png" width="40" height="40" alt="9mobile"> </button></li> 
-                            <li> <button type="button" data-parent="#credit"  data-toggle="collapse" data-target="#mtn"><img src="images/2.png" width="40" height="40" alt="mtn"> </button></li> 
-                            <li> <button  type="button" data-parent="#credit" data-toggle="collapse" data-target="#airtel"><img src="images/3.png" width="40" height="40" alt="airtel"></button> </li> 
-                            <li> <button  type="button" data-parent="#credit" data-toggle="collapse" data-target="#glo"><img src="images/4.png" width="40" height="40" alt="glo"> </button></li> <hr>
+                            <li> <button type="button"  data-parent="#credit" data-toggle="collapse" data-target="#9mobile"><img src="img/1.png" width="40" height="40" alt="9mobile"> </button></li> 
+                            <li> <button type="button" data-parent="#credit"  data-toggle="collapse" data-target="#mtn"><img src="img/2.png" width="40" height="40" alt="mtn"> </button></li> 
+                            <li> <button  type="button" data-parent="#credit" data-toggle="collapse" data-target="#airtel"><img src="img/3.png" width="40" height="40" alt="airtel"></button> </li> 
+                            <li> <button  type="button" data-parent="#credit" data-toggle="collapse" data-target="#glo"><img src="img/4.png" width="40" height="40" alt="glo"> </button></li> <hr>
                         </ul>
                         <div id="9mobile" class=" panel-collapse collapse in" >
                         <div class="panel">
@@ -375,5 +377,67 @@
            </div>
            
             </div>
+            <section>
+    <div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
 
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Transaction History</h4>
+      </div>
+      <div class="modal-body" >
+        <div align="center" >
+  <a href="#" data-toggle="popover" title="Popover Header" data-content="Some content inside the popover"></a>
+<table class="table table-size table-striped">
+  <tr>
+    <th class="modal-table">This Week - September, 2017</th>
+    <th class="modal-table">Number Approved by: Admin</th>
+  </tr>
+  <tr>
+    <td class="modal-table">Thursday    9:39pm</td>
+    <td class="modal-table">Phone Topup (N2000)</td>
+   </tr>
+  <tr>
+    <td class="modal-table">Tuesday 10:05pm </td>
+    <td class="modal-table">Data Topup (1.5GB - N1000) 30days</td>
+  </tr>
+  <tr>
+    <td class="modal-table">Tuesday 9:39am  </td>
+    <td class="modal-table">Phone Topup (N1000)</td>
+  </tr>
+  <tr>
+    <th class="modal-table" colspan="2">Previous Weeks - September, 2017</th>
+  </tr>
+  <tr>
+    <td class="modal-table">Thursday    9:39pm</td>
+    <td class="modal-table">Phone Topup (N2000)</td>
+  </tr>
+  <tr>
+    <td class="modal-table">Tuesday 10:05pm</td>
+    <td class="modal-table">Data Topup (1.5GB - N1000) 30days</td>
+  </tr>
+  <tr>
+    <td class="modal-table">Tuesday 9:39am </td>
+    <td class="modal-table">Phone Topup (N1000)</td>
+  </tr>
+  <tr>
+    <td class="modal-table">Thursday    9:39pm</td>
+    <td class="modal-table">Phone Topup (N1000)</td>
+  </tr>
+  <tr>
+    <td class="modal-table">Tuesday 10:05pm</td>
+    <td class="modal-table">Data Topup (1.5GB - N1000) 30days</td>
+  </tr>
+</table>
+</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+    </section>
+    <script type="text/javascript" src="http://flw-pms-dev.eu-west-1.elasticbeanstalk.com/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
+    <script type="text/javascript" src="js/wallet.js"></script>
 @endsection      

@@ -32,7 +32,7 @@
         }
 
         #logo {
-            width: 40px;
+            
             height: 40px;
             margin-right: 15px;
             margin-left: 50px;
@@ -749,7 +749,7 @@
 </head>
 <body>
 <!-- HEADER BEGINS -->
-<div id="header" style="background: url('img/background.png');">
+<div id="header" style="background: url('img/backgroundnew.png');">
     <p id="background-text">FUNDS</p>
 
     <nav class="navbar navbar-default">
@@ -761,7 +761,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{url('/')}}"><img id="logo" src="img/logo.png" alt="Company logo" style="display: inline;"> </a>
+                <a class="navbar-brand" href="{{url('/')}}"><img id="logo" src="img/HNGlogo.png" alt="Company logo" style="display: inline;"> </a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
@@ -769,7 +769,7 @@
                      <li class="{{ Request::segment(1) === '/' ? 'active' : null }}" ><a href="{{url('/')}}">Home</a></li>
                     <li class="{{ Request::segment(1) === 'how' ? 'active' : null }}" ><a href="{{route('how')}}">FAQs</a></li>
                     <li class="{{ Request::segment(1) === 'features' ? 'active' : null }}"><a href="{{route('features')}}">Features</a></li>
-                    <li><a href="{{url('#')}}">Demo</a></li>
+                   
                     <li class="{{ Request::segment(1) === 'about' ? 'active' : null }}"><a href="{{route('about')}}">About<span class="sr-only">(current)</span></a></li>
 
                     @if(Auth::guest())
@@ -901,7 +901,7 @@
         <li><a href="{{route('about')}}">About Us</a></li>
         <li><a href="{{route('privacy')}}">Privacy Policy</a></li>
 
-        <li><a href="{{route('how')}}">How it works</a></li>
+        <li><a href="{{route('features')}}">How it works</a></li>
         <li><a href="{{route('contact')}}">Contact Us</a></li>
    
 

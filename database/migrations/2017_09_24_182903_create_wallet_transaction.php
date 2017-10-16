@@ -15,10 +15,10 @@ class CreateWalletTransaction extends Migration
     {
         Schema::create('wallet_transaction', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('source_wallet', 50)->change();
-            $table->string('recipient_wallet', 50)->change();
-            $table->string('status');
-            $table->integer('amount');
+            $table->integer('source_wallet')->unsigned();
+            $table->integer('recipient_wallet')->unsigned();
+            $table->boolean('status')->default(false);
+            $table->decimal('amount', 12, 2);
             $table->timestamps();
         });
     }
