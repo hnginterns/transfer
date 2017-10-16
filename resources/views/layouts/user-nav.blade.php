@@ -6,8 +6,9 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-          </button>     
-           <form class="navbar-form navbar-right">
+          </button>    
+          </div>
+          <form class="navbar-form navbar-right">
             <input type="text" class="form-control" placeholder="Search...">
            </form>
         </div>
