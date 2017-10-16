@@ -30,7 +30,9 @@
             /* background: #333333; */
             background-size: 100% 650px !important;
         }
-
+        #header-content{
+            width:100% !important;
+        }
         #logo {
             
             height: 40px;
@@ -520,6 +522,7 @@
                 padding: 30px 100px;
                 background: #306B8E;
             }
+
         }
 
         @media only screen and (max-width: 800px) {
