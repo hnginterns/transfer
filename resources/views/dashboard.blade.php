@@ -17,7 +17,6 @@
             @endforeach
         </div>
       </div>
-      {{\Request::ip()}}
 
 <style>
   .dbackground{

@@ -1,3 +1,4 @@
+      <?php use Auth; ?>
       <nav class="navbar navbar-inverse navbar-fixed-top">
        <div class="navbar-header"><br>
         &nbsp;&nbsp;&nbsp;<a href="{{url('/')}}">  <img src="/img/HNGlogo.png" alt=""></a>
