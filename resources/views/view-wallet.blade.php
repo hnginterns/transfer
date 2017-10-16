@@ -47,28 +47,27 @@ i.sent{
 
       <a href="{{ route('transfer.wallet', $wallet->id)}}" class="btn btn-dark ">Transfer to Another Wallet </a>
 
-            <div class="">
               
               @if (!empty($permit))
-                  <div class="">
+                  
                       <font color="blue">Wallet Name</font>
                       <h4>{{ $wallet->wallet_name }}</h4>
-                  </div>   
                    
-                   <div class="">
+                   
+                   
                       <font color="blue">Wallet ID</font>
                       <h4>{{ $wallet->wallet_code }}</h4>
-                   </div> 
                   
-                   <div class="">
+                  
+                   
                        <font color="blue"> Currency Type</font>
                         <h4>Nigeria Naira</h4>
-                   </div>
+                  
                     
-                   <div class="">
+                  
                         <font color="blue">Balance</font>
                         <h4>{{ $wallet->balance }}</h4>
-                   </div><br>
+                   
                                              
 
             </div><p>
