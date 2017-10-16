@@ -1,5 +1,3 @@
-
-
 <script>
 
   @if(Session::has('success'))

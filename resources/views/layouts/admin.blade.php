@@ -22,7 +22,7 @@
   <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
         page. However, you can choose any other skin. Make sure you
         apply the skin class to the body tag so the changes take effect. -->
-  <link rel="stylesheet" href="https://adminlte.io/themes/AdminLTE/dist/css/skins/skin-blue.min.css">
+<link rel="stylesheet" href="https://adminlte.io/themes/AdminLTE/dist/css/skins/skin-blue.min.css">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
@@ -65,7 +65,7 @@
 
 
     @include('partials.messages')
-    @include('partials.alerts')
+    
 
 <section class="content">
 
@@ -107,6 +107,26 @@
       'autoWidth'   : false
     })
   })
+</script>
+
+<script>
+
+  @if(Session::has('success'))
+        toastr.success("{{ Session::get('success') }}");
+  @endif
+
+  @if(Session::has('info'))
+        toastr.info("{{ Session::get('info') }}");
+  @endif
+
+  @if(Session::has('warning'))
+        toastr.warning("{{ Session::get('warning') }}");
+  @endif
+
+  @if(Session::has('error'))
+        toastr.error("{{ Session::get('error') }}");
+  @endif
+
 </script>
 
 
