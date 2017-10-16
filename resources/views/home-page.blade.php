@@ -32,7 +32,7 @@
         }
 
         #logo {
-            width: 40px;
+            
             height: 40px;
             margin-right: 15px;
             margin-left: 50px;
