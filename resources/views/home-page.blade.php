@@ -109,6 +109,8 @@
 
         #header-content {
             z-index: 200;
+            width:100%;
+            padding:20px;
         }
 
         #content-text {
@@ -548,7 +550,7 @@
                 margin-bottom: 15px;
             }
             #heading-top-hd{
-                font-size: 22px;
+                font-size: 30px;
                 letter-spacing: 0.07em;
                 padding-right: 0px;
                 margin-bottom: 15px;
@@ -747,7 +749,7 @@
 </head>
 <body>
 <!-- HEADER BEGINS -->
-<div id="header" style="background: url('img/backgroundnew.png');">
+<div id="header" style="background: url('img/Group2.png');">
     <p id="background-text">FUNDS</p>
 
     <nav class="navbar navbar-default">
