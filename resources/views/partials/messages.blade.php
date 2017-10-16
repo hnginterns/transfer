@@ -37,7 +37,7 @@
 <div class="alert alert-danger alert-block">
 	<button type="button" class="close" data-dismiss="alert">×</button>
 	@foreach($message as $key => $messages)	
-        	<strong>{{ $messages }}</strong>
+        	<strong><p>{{ $messages }}</p></strong>
 	@endforeach
 </div>
 @endif

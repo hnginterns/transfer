@@ -38,7 +38,7 @@ class AdminController extends WalletController
     {
         $restriction = Restriction::all();
 
-        return view('admin.managepermission', compact('restriction'));
+        return view('admin.permit.managepermission', compact('restriction'));
     }
 
     public function managewallet()

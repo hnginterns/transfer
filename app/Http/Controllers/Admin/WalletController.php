@@ -32,7 +32,7 @@ class WalletController  extends Controller
         $user = User::all();
         $wallet = Wallet::all(); 
         
-        return view('admin.permission', compact('user','wallet'));
+        return view('admin.permit.permission', compact('user','wallet'));
     }
 
 
@@ -40,7 +40,7 @@ class WalletController  extends Controller
         
         $wallet = Wallet::all();
         $transferables = json_decode($restriction->can_transfer_to_wallets);
-        return view('admin.editpermission', compact('restriction', 'wallet', 'transferables'));
+        return view('admin.permit.editpermission', compact('restriction', 'wallet', 'transferables'));
     }
 
 

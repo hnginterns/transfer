@@ -131,6 +131,7 @@ class WalletController extends Controller
 
             $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer/charge/auth/card', $headers, $body);
             $response = json_decode($response->raw_body, true);
+            
             if($response['status'] == 'success') {
                 event(new FundWallet($cardWallet));
                 $response = $response['data']['flutterChargeResponseMessage'];
@@ -192,12 +193,21 @@ class WalletController extends Controller
                     $w_transaction->save();
                     //end of logic
 
+                    //update wallet balance
+                    $recipient_wallet->balance += $request->amount;
+                    $wallet->balance -= $request->amount;
+                    $wallet->save();
+                    $recipient_wallet->save();
+                    // end of update wallet balance
+
+
                     $this->sendWalletTransactionNotifications($w_transaction);
-                    event(new WalletToWallet($transactions));
+                    // event(new WalletToWallet($transactions));
                     return redirect()->action('pagesController@success');
                 } else {
                     $response = $r_data;
-                    return redirect()->back()->with('failed',$response);
+                    
+                    return back()->with('error',$response);
                 }
         }
     }
@@ -230,6 +240,7 @@ class WalletController extends Controller
                 $permit = Restriction::where('wallet_id', $wallet->id)
                         ->where('uuid', Auth::user()->id)
                         ->first();
+                
                 if($permit == null) return redirect('/dashboard');
                      $restrict = new Restrict($permit, $request);
                      $errors = $restrict->transferToBank();
@@ -287,8 +298,8 @@ class WalletController extends Controller
         $response = \Unirest\Request::get('https://moneywave.herokuapp.com/v1/wallet', $headers);
         $data = json_decode($response->raw_body, true);
         $walletBalance = $data['data'];
-        var_dump($walletBalance);
-        die();
+        dd($walletBalance);
+        
         foreach($walletBalance as $wallets)
                         {
             

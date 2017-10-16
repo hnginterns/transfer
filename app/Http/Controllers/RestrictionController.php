@@ -23,7 +23,7 @@ class RestrictionController extends Controller
         $this->canTransferToWallet();
         $this->maxAmount();
         $this->minAmount();
-        $this->checkWalletBallance();
+        $this->checkWalletBalance();
         return $this->failed_rules;
     }
 
@@ -38,12 +38,20 @@ class RestrictionController extends Controller
         $this->canTransferFromWallet();
         $this->maxAmount();
         $this->minAmount();
-        $this->checkWalletBallance();
+        $this->checkWalletBalanceBank();
         return $this->failed_rules;
     }
 
-    public function checkWalletBallance(){
-        $wallet = Wallet::find($this->transfer_details->source_wallet);
+    public function checkWalletBalance(){
+        $wallet = Wallet::find($this->transfer_details->sourceWallet);
+        if($wallet->balance < $this->transfer_details->amount){
+            $this->failed_rules['low_balance'] = 'You do not have sufficient fund';
+        }
+        return $this->failed_rules;
+    }
+
+    public function checkWalletBalanceBank(){
+        $wallet = Wallet::find($this->transfer_details->wallet_id);
         if($wallet->balance < $this->transfer_details->amount){
             $this->failed_rules['low_balance'] = 'You do not have sufficient fund';
         }
@@ -77,20 +85,21 @@ class RestrictionController extends Controller
     }
 
     public function canTransferToWallet(){
-
-        $raw_wallets = $this->restrictions->can_transfer_to_wallets;
+        
+        $raw_wallets = $this->restriction->can_transfer_to_wallets;
         $wallets = json_decode($raw_wallets, true);
-        $state = false;
-        if($this->restrictions->can_transfer_to_wallets != null){
+        $state = true;
+        if($wallets != null){
             foreach($wallets as $key => $value){
-                if($value == $this->transfer_details->beneficiary_wallet_id){
-                    $state = true;
+                if($value == $this->transfer_details->recipientWallet){
+                    $state = false;
                 }
             }
         }
 
         if($state){
-            $this->failed_rules['transfer_to_wallet'] = 'Cant transfer to this wallet';
+            return $this->failed_rules['transfer_to_wallet'] = 'Cant transfer to this wallet';
+            
         }   
 
     }

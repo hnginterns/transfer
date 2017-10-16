@@ -40,7 +40,7 @@
             </div>
 
             <div class="form-group">
-                <input type="number" class="form-control cus-input" name="amount" id="amount" placeholder="Amount">
+                <input type="number" class="form-control cus-input" name="amount" id="amount" required placeholder="Amount">
             </div>
 
             <div class="form-group ">    
