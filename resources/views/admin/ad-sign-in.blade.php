@@ -57,7 +57,7 @@
 
                     <li class="nav-item">
 
-                        <a class="nav-link" href="/home">Home
+                        <a class="nav-link" href="{{url('/')}}">Home
 
                             <span class="sr-only">(current)</span>
 
@@ -73,7 +73,7 @@
 
                     <li class="nav-item">
 
-                        <a class="nav-link" href="/home">Get Started</a>
+                        <a class="nav-link" href="{{url('/')}}">Get Started</a>
 
                     </li>
 
