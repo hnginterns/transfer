@@ -6,26 +6,26 @@
              
               <li>
                 <a href="/dashboard">
-                <i class="fa fa-dashboard fa-2x"></i> Dashboard
+                <i class="fa fa-dashboard fa-1x"></i> Dashboard
                 </a>
               </li> <br>
 
 
               <li>
                 <a href="/phonetopup">
-                <i class="fa fa-mobile fa-3x"></i> Phone TopUp
+                <i class="fa fa-mobile fa-2x"></i> Phone TopUp
                 </a>
               </li> <br>
               
               <li>
                 <a href="/admin/smswallet">
-                <i class="fa fa-envelope fa-2x"></i> Sms Top up
+                <i class="fa fa-envelope fa-1x"></i> Sms Top up
                 </a>
               </li> <br>
                                 
               <li>
                 <a href="{{ url('/logout') }}">
-                <i class="fa fa-sign-out fa-2x"></i> Logout
+                <i class="fa fa-sign-out fa-1x"></i> Logout
                 </a>
               </li> 
 
