@@ -2,8 +2,7 @@
 @section('title', 'Dashboard')
 @section('content')
     <link rel="stylesheet" href="/css/custom.css">
-
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"> 
     <div class="container">
       <!-- Example row of columns -->
       <div class="row" >
