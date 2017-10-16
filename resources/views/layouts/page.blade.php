@@ -33,7 +33,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="projects.html">About</a>
-                </li>
+                </li> 
                 <li class="nav-item">
                     <a class="nav-link" href="participants.html">FAQs</a>
                 </li>
