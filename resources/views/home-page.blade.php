@@ -843,9 +843,91 @@
 </div>
 
 <!--HEADER ENDS -->
+<section class="about">
+<div class="about-content">
+<div class="row">
+        <div class="col-lg-12">
+        <h5 class="about-title">How it works</h5>
+        <p class="about-paragraph">
+        Our custom built Transfer Rules is built with the aim to connect your business to clients, employer to employee etc in a more effcient way and simplify your financial
+        transactions. Crisp and clear UX design and excellent workflow serves to foster customer intimacy and user loyalty
+        </p>
+        </div>
+        
+</div>
+<div class="row">
+        <div class="col-lg-4">
+        <div class="icon"><i class="fa fa-clone" aria-hidden="true"></i></div>
+        <h5 class="about-title">How it works</h5>
+        <p class="about-paragraph">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate! Ab assumenda aliquam sint 
+        necessitatibus at pariatur quidem dolorem quaerat doloribus, similique repellendus porro temporibus modi et dolor impedit perferendis obcaecati aut tempore voluptate! Odio eum, quas tempore
+         culpa provident dicta numquam molestiae deleniti deserunt ratione! Quisquam cumque voluptate ad beatae minima et.
+        </p>
+        </div>
+        <div class="col-lg-4">
+        <div class="icon"><i class="fa fa-arrow-up" aria-hidden="true"></i></div>
+        <h5 class="about-title">How it works</h5>
+        <p class="about-paragraph">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate! Ab assumenda aliquam sint 
+        necessitatibus at pariatur quidem dolorem quaerat doloribus, similique repellendus porro temporibus modi et dolor impedit perferendis obcaecati aut tempore voluptate! Odio eum, quas tempore
+         culpa provident dicta numquam molestiae deleniti deserunt ratione! Quisquam cumque voluptate ad beatae minima et.
+        </p>
+        </div>
+        <div class="col-lg-4">
+        <div class="icon"><i class="fa fa-mobile" aria-hidden="true"></i></div>
+        <h5 class="about-title">How it works</h5>
+        <p class="about-paragraph">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate! Ab assumenda aliquam sint 
+        necessitatibus at pariatur quidem dolorem quaerat doloribus, similique repellendus porro temporibus modi et dolor impedit perferendis obcaecati aut tempore voluptate! Odio eum, quas tempore
+         culpa provident dicta numquam molestiae deleniti deserunt ratione! Quisquam cumque voluptate ad beatae minima et.
+        </p>
+        </div>
+</div>
+<div class="row">
+        <div class="col-lg-4">
+        <div class="icon"><i class="fa fa-comments" aria-hidden="true"></i></div>
+        <h5 class="about-title">How it works</h5>
+        <p class="about-paragraph">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate! Ab assumenda aliquam sint 
+        necessitatibus at pariatur quidem dolorem quaerat doloribus, similique repellendus porro temporibus modi et dolor impedit perferendis obcaecati aut tempore voluptate! Odio eum, quas tempore
+         culpa provident dicta numquam molestiae deleniti deserunt ratione! Quisquam cumque voluptate ad beatae minima et.
+        </p>
+        </div>
+        <div class="col-lg-4">
+        <div class="icon"><i class="fa fa-credit-card" aria-hidden="true"></i></div>
+        <h5 class="about-title">How it works</h5>
+        <p class="about-paragraph">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate! Ab assumenda aliquam sint 
+        necessitatibus at pariatur quidem dolorem quaerat doloribus, similique repellendus porro temporibus modi et dolor impedit perferendis obcaecati aut tempore voluptate! Odio eum, quas tempore
+         culpa provident dicta numquam molestiae deleniti deserunt ratione! Quisquam cumque voluptate ad beatae minima et.
+        </p>
+        </div>
+        <div class="col-lg-4">
+        <div class="icon"><i class="fa fa-connectdevelop" aria-hidden="true"></i></div>
+        <h5 class="about-title">How it works</h5>
+        <p class="about-paragraph">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate! Ab assumenda aliquam sint 
+        necessitatibus at pariatur quidem dolorem quaerat doloribus, similique repellendus porro temporibus modi et dolor impedit perferendis obcaecati aut tempore voluptate! Odio eum, quas tempore
+         culpa provident dicta numquam molestiae deleniti deserunt ratione! Quisquam cumque voluptate ad beatae minima et.
+        </p>
+        </div>
+    </div>
+</div>
 
-<!-- DIVIDER ENDS-->
-
+<!-- DIVIDER -->
+<div id="divider">
+    <div id="divider-content">
+        <div id="divider-text">
+            <p id="divider-title">Get Started in Five Minutes</p>
+            <p id="">
+                Create an account in less than 5 minutes. Login to your account and create wallets for your company
+            </p>
+        </div>
+        <button id="divider-cta">Read More</button>
+    </div>
+</div>
+</div>
 <!-- FOOTER -->
 
 <div id="footer">
@@ -897,6 +979,10 @@
         <p>&#169; 2017 Transferrules.com. All rights reserved</p>
     </div>
 </div>
+</section>
+<!-- DIVIDER ENDS-->
+
+
 
 <!-- FOOTER ENDS -->
 <!--<script
