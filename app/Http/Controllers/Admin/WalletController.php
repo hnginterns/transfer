@@ -45,7 +45,7 @@ class WalletController  extends Controller
 
     public function deletePermission(Request $request, Restriction $restriction){
         
-        if($restriction->delete()){
+        if($restriction->forceDelete()){
             Session::flash('success', 'Permission deleted');
             return redirect('admin/managePermission'); 
         }else{
