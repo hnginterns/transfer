@@ -25,7 +25,7 @@ class PhoneTopUpController extends Controller
     }
     public function topup()
     {
-        
+         return view('testview');
     }
 }
 
