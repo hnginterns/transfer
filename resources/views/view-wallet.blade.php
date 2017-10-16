@@ -37,6 +37,7 @@ i.sent{
 </style>
 
 <link rel="stylesheet" href="/css/walletview.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
             <div class="col-md-4 col-sm-4">
               
