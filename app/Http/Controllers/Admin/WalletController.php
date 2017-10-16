@@ -52,6 +52,13 @@ class WalletController  extends Controller
             Session::flash('messages', $this->formatMessages($messages, 'error'));
             return redirect()->to(URL::previous())->withInput();
         } else {
+            
+            $duplicate = Restriction::where('uuid',$request->uuid)
+                                    ->where('wallet_id', $request->wallet_id)
+                                    ->first();
+
+            if($duplicate != null) Session::flash('error', 'Permission already exists'); return back();
+
             $restriction = new Restriction;
             $restriction->uuid = $request->uuid;
             $restriction->wallet_id = $request->wallet_id;
@@ -64,8 +71,10 @@ class WalletController  extends Controller
             $restriction->updated_by = Auth::user()->id;
             $restriction->can_transfer_to_wallets = json_encode($request->can_transfer_to_wallets);
             if($restriction->save()){
+                flash('success', 'Permission created');
                 return redirect('admin/managePermission');
             }else{
+                flash('error', 'Permission not created');
                 return back();
             }
 
@@ -86,6 +95,7 @@ class WalletController  extends Controller
             Session::flash('messages', $this->formatMessages($messages, 'error'));
             return redirect()->to(URL::previous())->withInput();
         } else {
+
             $restriction->wallet_id = $request->wallet_id;
             $restriction->can_transfer_from_wallet = $request->has('can_transfer_from_wallet') ? true: false;
             $restriction->can_add_beneficiary = $request->has('can_add_beneficiary') ? true: false;
