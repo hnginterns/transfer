@@ -13,7 +13,7 @@
        
                   </ul>
              </div>
-           <?php echo ($user); ?>
+           Godfred Akpan
             <i class="fa fa-user-circle-o"></i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
            </form>
         </div>
