@@ -50,27 +50,22 @@ i.sent{
               <div class="">
               @if (!empty($permit))
                   
-                      <font color="blue">Wallet Name</font><br>
-                      {{ $wallet->wallet_name }}
-                   
-                   
-                   
-                      <font color="blue">Wallet ID</font>
-                      {{ $wallet->wallet_code }}
-                  
-                  
-                   
-                       <font color="blue"> Currency Type</font>
-                        Nigeria Naira
-                  
-                    
-                  
-                        <font color="blue">Balance</font>
-                        {{ $wallet->balance }}
-                   
-                                             
-
-            </div><p>
+           <table>
+  <tr>
+    <th><font color="blue">Wallet Name</font></th>
+    <th><font color="blue">Wallet ID</font></th>
+    <th><font color="blue"> Currency Type</font></th>
+    <th><font color="blue">Balance</font></th>
+  </tr>
+  <tr>
+    <td> {{ $wallet->wallet_name }}</td>
+    <td>{{ $wallet->wallet_code }}</td>
+    <td>Nigeria Naira</td>
+    <td>{{ $wallet->balance }}</td>
+  </tr>
+  
+</table>
+</div>
 
           <div class="">
 	<div class="orange-box"><h4 class="title" align="center"> {{ ucfirst($wallet->wallet_name) }} TRANSACTION HISTORY</h4></div><br>
