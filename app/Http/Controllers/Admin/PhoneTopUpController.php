@@ -17,11 +17,11 @@ use App\Beneficiary;
 use App\Transaction;
 use Carbon\Carbon;
 use Trs;
-class AdminController extends WalletController
+class PhoneTopUpController 
 {
     public function __construct()
     {
-        
+        $this->middleware('admin')->except('logout');
     }
     public function topup()
     {
