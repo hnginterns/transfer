@@ -51,7 +51,10 @@
             height:700px;
         }
         .about-content{
-            width:60%;
+            width:70%;
+            padding:20px;
+            margin-top:15px;
+            margin-bottom:15px;
             margin-left:auto;
             margin-right:auto;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -749,7 +752,7 @@
 
             /* FOOTER STYLES */
             #footer {
-                display: none;
+                
             }
 
             #mobile-footer {
@@ -880,8 +883,8 @@
          culpa provident dicta numquam molestiae deleniti deserunt ratione! Quisquam cumque voluptate ad beatae minima et.
         </p>
         </div>
-    </div>
-    <div class="row">
+</div>
+<div class="row">
         <div class="col-lg-4">
         <div class="icon"><i class="fa fa-comments" aria-hidden="true"></i></div>
         <h5 class="about-title">How it works</h5>
@@ -987,9 +990,9 @@
 </script> -->
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
+<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
         integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script> -->
 <script src="js/script.js"></script>
 </body>
 </html>
