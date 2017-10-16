@@ -110,6 +110,8 @@ Route::group(['middleware' => 'auth'], function () {
 Route::get('/admin/login', 'Admin\AdminLoginController@showLoginForm');
 Route::post('/admin/login', 'Admin\AdminLoginController@login')->name('admin.login');
 Route::get('/admin/logout', 'Admin\AdminLoginController@logout')->name('admin.logout');
+Route::get('/admin/topup/phone', 'Admin\PhoneTopUpController@topup');
+
 //end of admin auth
 
 

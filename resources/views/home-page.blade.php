@@ -30,7 +30,6 @@
             /* background: #333333; */
             background-size: 100% 650px !important;
         }
-
         #logo {
             
             height: 40px;
@@ -109,10 +108,9 @@
         }
 
         #header-content {
-            padding: 80px 200px;
-            display: grid;
-            grid-template-columns: 40% 60%;
             z-index: 200;
+            width:100%;
+            padding:20px;
         }
 
         #content-text {
@@ -124,10 +122,16 @@
         }
 
         #heading-hd {
-            font-size: 36px;
+            font-size: 23px;
             letter-spacing: 0.07em;
             padding-right: 100px;
         }
+        #heading-top-hd{
+                font-size: 64px;
+                letter-spacing: 0.07em;
+                padding-right: 0px;
+                text-align:0;
+            }
 
         #text-hd {
           padding-right: 100px;
@@ -393,8 +397,7 @@
             }
 
             #header-content {
-                padding: 80px 150px;
-                grid-template-columns: 40% 60%;
+               
             }
 
             #mobile-app {
@@ -457,9 +460,7 @@
             }
 
             #header-content {
-                padding: 80px 100px;
-                display: grid;
-                grid-template-columns: 40% 60%;
+                
             }
 
             #mobile-app {
@@ -520,6 +521,7 @@
                 padding: 30px 100px;
                 background: #306B8E;
             }
+
         }
 
         @media only screen and (max-width: 800px) {
@@ -535,9 +537,7 @@
             }
 
             #header-content {
-                padding: 50px 10px;
-                display: flex;
-                flex-direction: row;
+                
             }
 
             #content-text {
@@ -546,6 +546,7 @@
                 display: flex;
                 flex-direction: column;
                 height: fit-content;
+                width:100%;
             }
 
             #heading-hd {
@@ -555,7 +556,7 @@
                 margin-bottom: 15px;
             }
             #heading-top-hd{
-                font-size: 22px;
+                font-size: 30px;
                 letter-spacing: 0.07em;
                 padding-right: 0px;
                 margin-bottom: 15px;
@@ -754,7 +755,7 @@
 </head>
 <body>
 <!-- HEADER BEGINS -->
-<div id="header" style="background: url('img/backgroundnew.png');">
+<div id="header" style="background: url('img/Group2.png');">
     <p id="background-text">FUNDS</p>
 
     <nav class="navbar navbar-default">
@@ -798,7 +799,7 @@
         </div><!--/.container-fluid -->
     </nav>
 
-    <div id="header-content">
+    <div id="header-content" align="center">
         
         <div id="content-text" class="clearfix" align="center">
         <span id="heading-top-hd">

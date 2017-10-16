@@ -13,7 +13,11 @@
        
                   </ul>
              </div>
-           Godfred Akpan
+             @if(Auth::user()->first_name !== null || Auth::user()->last_name !== null)
+                  {{ Auth::user()->first_name.' '.Auth::User()->last_name }}
+             @else
+                  {{ Auth::user()->username }}
+             @endif
             <i class="fa fa-user-circle-o"></i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
            </form>
         </div>
