@@ -13,8 +13,8 @@
        
                   </ul>
              </div>
-            Godfred Akpan | Admin &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <i class="fa fa-user-circle-o"></i>
+            Godfred Akpan | Admin
+            <i class="fa fa-user-circle-o"></i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
            </form>
         </div>
       </div>
