@@ -1,5 +1,5 @@
 <body style="background-color:#E6E6FA">
-  <div class="main side bar">
+  
           <ul class="nav nav-sidebar">
           <input type="text" class="form-control" placeholder="Search..."><br>
      
