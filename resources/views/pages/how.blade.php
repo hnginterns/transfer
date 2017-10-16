@@ -23,32 +23,7 @@
         <p>Finance@ Hotels.ng is a secure online service that enables any user to instantly buy mobile credit, data top-up for a prepaid Mobile Phone in any part of the country. Our customers use transferrules.com to buy Mobile Airtime for either themselves, friends and family members.</p>
       </div>
     </div>
-  </div>
-    
-      
-  <div class="card">
-    <div class="card-header" role="tab" id="headingTwo">
-      <h5 class="mb-0">
-        <a  class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-controls="collapseTwo">
-          How do I register to use Finance @ Hotels.ng?
-        </a>
-      </h5>
-    </div>
-
-    <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
-      <div class="card-block">
-        <ul>
-          <li>At Finance @ Hotels.ng site </li>
-          <li>Select ‘Register’ at the Top Left of the Page</li>
-         <li>Enter your email address and password</li>
-          <li>Click on ‘Register’ at the bottom right of the page.</li>
-          <li>A Confirmation Code will be sent directly to your email.</li>
-          <li>Click on the code to verify your email address and continue to setting up your account</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-      
+  </div>      
       
   <div class="card">
     <div class="card-header" role="tab" id="headingThree">

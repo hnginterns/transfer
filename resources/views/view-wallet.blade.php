@@ -37,6 +37,13 @@ i.sent{
 </style>
 
 <link rel="stylesheet" href="/css/walletview.css">
+<!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#myModal">Fund</button>
+  
+  <a href="{{ route('transfer.beneficiary', $wallet->id)}}" class="btn btn-dark ">Transfer To Beneficiary</a>
+      
+
+      <a href="{{ route('transfer.wallet', $wallet->id)}}" class="btn btn-dark ">Transfer to Another Wallet </a>
 
             <div class="col-md-4 col-sm-4">
               
@@ -60,13 +67,12 @@ i.sent{
                         <p>Balance</p>
                         <h2>{{ $wallet->balance }}</h2>
                    </div>
-              
-                                 
+                                             
 
             </div>
 
           <div class="col-md-8 col-sm-8">
-					<div class="orange-box"><h4 class="title" align="center"> {{ ucfirst($wallet->wallet_name) }} TRANSACTION HISTORY</h4></div><br>
+	<div class="orange-box"><h4 class="title" align="center"> {{ ucfirst($wallet->wallet_name) }} TRANSACTION HISTORY</h4></div><br>
           <div class="table-responsive">
               @if(count($history))          
 						<table class="table table-hover">
@@ -162,13 +168,9 @@ i.sent{
 
 <div class="container">
   
-  <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Fund</button>
+  
 
-  <a href="{{ route('transfer.beneficiary', $wallet->id)}}" class="btn btn-dark ">Transfer To Beneficiary</a>
-      
-
-      <a href="{{ route('transfer.wallet', $wallet->id)}}" class="btn btn-dark ">Transfer to Another Wallet </a>
+  
 
      <div class="container">
         <!-- Trigger the modal with a button -->
