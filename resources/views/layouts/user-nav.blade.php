@@ -14,7 +14,7 @@
                   </ul>
              </div>
              @if(Auth::user()->first_name !== null || Auth::user()->last_name !== null)
-                  {{ Auth::user()->first_name Auth::User()->last_name }}
+                  {{ Auth::user()->first_name.' '.Auth::User()->last_name }}
              @else
                   {{ Auth::user()->username }}
              @endif
