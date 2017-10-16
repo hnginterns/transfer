@@ -47,7 +47,7 @@ i.sent{
 
       <a href="{{ route('transfer.wallet', $wallet->id)}}" class="btn btn-dark ">Transfer to Another Wallet </a>
 
-              
+              <div class="">
               @if (!empty($permit))
                   
                       <font color="blue">Wallet Name</font>
