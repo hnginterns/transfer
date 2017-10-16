@@ -81,8 +81,7 @@
                     <h2 style="">Top Up Prepaid Mobile Phones</h2>
                 </div>
                  
-            </div>
-            <div class="">
+            <div class="container-fiuld">
                 <div class="row">
                     <div class="col-md-7">
                         <div class="text-center benHeader">
@@ -119,7 +118,7 @@
                                                         </label>
                                                       </div>
                                                     </div>
-                                                    <div class="">
+                                                    <div class="c">
                                                       <div class="ck-button">
                                                         <label>
                                                           <input type="checkbox" name=""> <span>1000</span>
@@ -134,7 +133,7 @@
                                                       </div>
                                                     </div>
                                                 </div>
-                                                <div class="">
+                                                <div class="row">
                                                     <div class="">
                                                       <div class="ck-button">
                                                         <label>
@@ -185,52 +184,55 @@
                                             </div>
                                         </div>
                                          <div class="col-md-6">
-                                             <div class="top-up-btn">
-                                                <div class="">
-                                                    <div class="">
-                                                      <div class="ck-button">
-                                                        <label>
-                                                          <input type="checkbox" name=""> <span>500</span>
-                                                        </label>
+                                            <h4 class="border">Choose Amount</h4>
+                                            <form method="post">
+                                              <div class="top-up-btn">
+                                                  <div class="">
+                                                      <div class="">
+                                                        <div class="ck-button">
+                                                          <label>
+                                                            <input type="checkbox" name=""> <span>500</span>
+                                                          </label>
+                                                        </div>
                                                       </div>
-                                                    </div>
-                                                    <div class="">
-                                                      <div class="ck-button">
-                                                        <label>
-                                                          <input type="checkbox" name=""> <span>1000</span>
-                                                        </label>
+                                                      <div class="">
+                                                        <div class="ck-button">
+                                                          <label>
+                                                            <input type="checkbox" name=""> <span>1000</span>
+                                                          </label>
+                                                        </div>
                                                       </div>
-                                                    </div>
-                                                    <div class="">
-                                                      <div class="ck-button">
-                                                        <label>
-                                                          <input type="checkbox" name=""> <span>2000</span>
-                                                        </label>
+                                                      <div class="">
+                                                        <div class="ck-button">
+                                                          <label>
+                                                            <input type="checkbox" name=""> <span>2000</span>
+                                                          </label>
+                                                        </div>
                                                       </div>
-                                                    </div>
-                                                </div>
-                                                <div class="">
-                                                    <div class="">
-                                                      <div class="ck-button">
-                                                        <label>
-                                                          <input type="checkbox" name=""> <span>5000</span>
-                                                        </label>
+                                                  </div>
+                                                  <div class="row">
+                                                      <div class="">
+                                                        <div class="ck-button">
+                                                          <label>
+                                                            <input type="checkbox" name=""> <span>5000</span>
+                                                          </label>
+                                                        </div>
                                                       </div>
-                                                    </div>
-                                                    <div class="">
-                                                      <div class="ck-button">
-                                                        <label>
-                                                          <input type="checkbox" name=""> <span>10000</span>
-                                                        </label>
+                                                      <div class="">
+                                                        <div class="ck-button">
+                                                          <label>
+                                                            <input type="checkbox" name=""> <span>10000</span>
+                                                          </label>
+                                                        </div>
                                                       </div>
-                                                    </div>
-                                                    <div class="">
-                                                      <div class="ck-button">
-                                                        <label>
-                                                          <input type="checkbox" name=""> <span>100000</span>
-                                                        </label>
+                                                      <div class="col-md-4">
+                                                        <div class="ck-button">
+                                                          <label>
+                                                            <input type="checkbox" name=""> <span>100000</span>
+                                                          </label>
+                                                        </div>
                                                       </div>
-                                                    </div>
+                                                  </div>
                                                   <input class="network-type" type="hidden" name="network_type" value="">
                                                   <input class="data-type" type="hidden" name="data_type" value="">
                                               </div>
@@ -262,52 +264,53 @@
                                          <div class="col-md-6">
                                             <h4 class="border">Choose Amount</h4>
                                             <form method="post">
-                                               <div class="top-up-btn">
-                                                <div class="">
-                                                    <div class="">
-                                                      <div class="ck-button">
-                                                        <label>
-                                                          <input type="checkbox" name=""> <span>500</span>
-                                                        </label>
+                                              <div class="top-up-btn">
+                                                  <div class="">
+                                                      <div class="">
+                                                        <div class="ck-button">
+                                                          <label>
+                                                            <input type="checkbox" name=""> <span>500</span>
+                                                          </label>
+                                                        </div>
                                                       </div>
-                                                    </div>
-                                                    <div class="">
-                                                      <div class="ck-button">
-                                                        <label>
-                                                          <input type="checkbox" name=""> <span>1000</span>
-                                                        </label>
+                                                      <div class="">
+                                                        <div class="ck-button">
+                                                          <label>
+                                                            <input type="checkbox" name=""> <span>1000</span>
+                                                          </label>
+                                                        </div>
                                                       </div>
-                                                    </div>
-                                                    <div class="">
-                                                      <div class="ck-button">
-                                                        <label>
-                                                          <input type="checkbox" name=""> <span>2000</span>
-                                                        </label>
+                                                      <div class="">
+                                                        <div class="ck-button">
+                                                          <label>
+                                                            <input type="checkbox" name=""> <span>2000</span>
+                                                          </label>
+                                                        </div>
                                                       </div>
-                                                    </div>
-                                                </div>
-                                                <div class="">
-                                                    <div class="">
-                                                      <div class="ck-button">
-                                                        <label>
-                                                          <input type="checkbox" name=""> <span>5000</span>
-                                                        </label>
+                                                  </div>
+                                                  <div class="row">
+                                                      <div class="">
+                                                        <div class="ck-button">
+                                                          <label>
+                                                            <input type="checkbox" name=""> <span>5000</span>
+                                                          </label>
+                                                        </div>
                                                       </div>
-                                                    </div>
-                                                    <div class="">
-                                                      <div class="ck-button">
-                                                        <label>
-                                                          <input type="checkbox" name=""> <span>10000</span>
-                                                        </label>
+                                                      <div class="">
+                                                        <div class="ck-button">
+                                                          <label>
+                                                            <input type="checkbox" name=""> <span>10000</span>
+                                                          </label>
+                                                        </div>
                                                       </div>
-                                                    </div>
-                                                    <div class="">
-                                                      <div class="ck-button">
-                                                        <label>
-                                                          <input type="checkbox" name=""> <span>100000</span>
-                                                        </label>
+                                                      <div class="">
+                                                        <div class="ck-button">
+                                                          <label>
+                                                            <input type="checkbox" name=""> <span>100000</span>
+                                                          </label>
+                                                        </div>
                                                       </div>
-                                                    </div>
+                                                  </div>
                                                   <input class="network-type" type="hidden" name="network_type" value="">
                                                       <input class="data-type" type="hidden" name="data_type" value="">
                                               </div>
@@ -336,36 +339,15 @@
                                                 <button class="btn btn-primary">TopUp History <i class="fa fa-history" aria="hidden"></i></button>
                                             </div>
                                         </div>
-                                         <div class="col-md-6">
-                                             <div class="top-up-btn">
+                                         <div class="">
+                                            <h4 class="border">Choose Amount</h4>
+                                            <form method="post">
+                                            <div class="top-up-btn">
                                                 <div class="">
                                                     <div class="">
                                                       <div class="ck-button">
                                                         <label>
-                                                          <input type="checkbox" name=""> <span>500</span>
-                                                        </label>
-                                                      </div>
-                                                    </div>
-                                                    <div class="">
-                                                      <div class="ck-button">
-                                                        <label>
-                                                          <input type="checkbox" name=""> <span>1000</span>
-                                                        </label>
-                                                      </div>
-                                                    </div>
-                                                    <div class="">
-                                                      <div class="ck-button">
-                                                        <label>
-                                                          <input type="checkbox" name=""> <span>2000</span>
-                                                        </label>
-                                                      </div>
-                                                    </div>
-                                                </div>
-                                                <div class="">
-                                                    <div class="">
-                                                      <div class="ck-button">
-                                                        <label>
-                                                          <input type="checkbox" name=""> <span>5000</span>
+                                                          <input type="checkbox" name=""> <span>10000</span>
                                                         </label>
                                                       </div>
                                                     </div>
@@ -379,10 +361,34 @@
                                                     <div class="">
                                                       <div class="ck-button">
                                                         <label>
-                                                          <input type="checkbox" name=""> <span>100000</span>
+                                                          <input type="checkbox" name=""> <span>10000</span>
                                                         </label>
                                                       </div>
                                                     </div>
+                                                </div>
+                                                <div class="">
+                                                    <div class="">
+                                                      <div class="ck-button">
+                                                        <label>
+                                                          <input type="checkbox" name=""> <span>10000</span>
+                                                        </label>
+                                                      </div>
+                                                    </div>
+                                                    <div class="">
+                                                      <div class="ck-button">
+                                                        <label>
+                                                          <input type="checkbox" name=""> <span>10000</span>
+                                                        </label>
+                                                      </div>
+                                                    </div>
+                                                    <div class="">
+                                                      <div class="ck-button">
+                                                        <label>
+                                                          <input type="checkbox" name=""> <span>10000</span>
+                                                        </label>
+                                                      </div>
+                                                    </div>
+                                                </div>
                                                 <input class="network-type" type="hidden" name="network_type" value="">
                                                       <input class="data-type" type="hidden" name="data_type" value="">
                                             </div>
@@ -393,8 +399,8 @@
                             </div>
                           </div>
                         </div>
-                        </div>
-                        </div>
+                        
+                    </div>
                     <div class="col-md-5" id="dataTopUp">
                         <div class="text-center benHeader">
                              <h2>TopUp Data Balance</h2>
