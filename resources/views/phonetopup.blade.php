@@ -3,14 +3,7 @@
 @section('title', 'Dashboard')
 @section('content')
     <link rel="stylesheet" href="/css/custom.css">
-    
-
-    <div class="container">
-      <!-- Example row of columns -->
-      <div class="row" >
-        <div class="col-md-2">
-          <!----------side bar goes here ---->
-        </div>
+   
         <div class="col-md-10 border" id="body">
             <div class="row" id="balanceDiv">
                 <div class="col-md-6 balance">
@@ -705,12 +698,7 @@
           <!-- /.modal-dialog -->
         </div>
         <!-- /.modal -->
-      <hr>
-
-      <footer>
-        <p>&copy; Company 2017</p>
-      </footer>
-    </div> <!-- /container -->
+      
 
 
     <!-- Bootstrap core JavaScript
