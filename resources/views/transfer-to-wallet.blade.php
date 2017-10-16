@@ -20,7 +20,7 @@
               <strong>{{ $status }}</strong> Alert body ...
             </div>  
         @endif--}}
-        <form action="/transfer-to-wallet/{{$wallet->id}}" method="POST" id="trform" class="input-form">
+        <form action="/transfer/wallet/{{$wallet->id}}" method="POST" id="trform" class="input-form">
           {{csrf_field()}}
             <div class="form-group">
                 <select class="form-control cus-input" name="sourceWallet">
