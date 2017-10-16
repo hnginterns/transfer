@@ -51,22 +51,22 @@ i.sent{
               @if (!empty($permit))
                   
                       <font color="blue">Wallet Name</font>
-                      <h4>{{ $wallet->wallet_name }}</h4>
+                      {{ $wallet->wallet_name }}
                    
                    
                    
                       <font color="blue">Wallet ID</font>
-                      <h4>{{ $wallet->wallet_code }}</h4>
+                      {{ $wallet->wallet_code }}
                   
                   
                    
                        <font color="blue"> Currency Type</font>
-                        <h4>Nigeria Naira</h4>
+                        Nigeria Naira
                   
                     
                   
                         <font color="blue">Balance</font>
-                        <h4>{{ $wallet->balance }}</h4>
+                        {{ $wallet->balance }}
                    
                                              
 
