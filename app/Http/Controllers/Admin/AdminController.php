@@ -133,13 +133,7 @@ class AdminController extends WalletController
         $wallet = Wallet::findOrFail($id);
 
         Wallet::where('id', $id)->update(['archived' => 1]);
-
-        $notification = array(
-            'message' => 'Wallet Archived successfully.', 
-            'alert-type' => 'success'
-        );
-
-        return redirect('/admin/viewwallet/'.$id)->with($notification);
+        return redirect('/admin/viewwallet/'.$id);
     }
 
     public function activateWallet($id)
@@ -150,7 +144,7 @@ class AdminController extends WalletController
 
         Session::flash('messages','Wallet Activated successfully.');
 
-        return redirect('/admin/viewwallet/'.$id)->with('message', 'Wallet Activated successfully.');
+        return redirect('/admin/viewwallet/'.$id);
     }
 
     public function fundWallet(CardWallet $cardWallet)
