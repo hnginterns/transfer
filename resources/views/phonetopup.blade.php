@@ -78,7 +78,7 @@
       <div class="row" >
       <div class="col-md-6">
       <p>Chef's Phone - <strong>417-873-60000</strong> </p>
-                        <button type="button" class="history" data-toggle="modal" data-target="#myModal">Transaction History</button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Transaction History</button>
       </div>
        <div class="col-md-6"> 
        <div class="selectamount">
