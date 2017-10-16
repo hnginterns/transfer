@@ -6,7 +6,7 @@
     
 
   
-        <div class="col-md-10 border" id="body">
+        <div class="" id="body">
             <div class="row" id="balanceDiv">
                 <div class="col-md-6 balance">
                     <div class="balHolder">
