@@ -1,10 +1,11 @@
-@extends('layouts.admin')
+@extends('layouts.user')
+@section('title', 'Dashboard')
+@section('content')
     <link rel="stylesheet" href="/css/custom.css">
     
 
-    <div class="container">
-      <!-- Example row of columns -->
-        <div class="col-md-10 border" id="body">
+  
+
             <div class="row" id="balanceDiv">
                 <div class="col-md-6 balance">
                     <div class="balHolder">
@@ -78,13 +79,13 @@
                     
                 </div>            
             </div>
-            <div class="container-fiuld">
-                <div class=" container text-center topUpHeader">
+            <div class="">
+                <div class="text-center topUpHeader">
                     <h2 style="">Top Up Prepaid Mobile Phones</h2>
                 </div>
                  
             </div>
-            <div class="container">
+            <div class="">
                 <div class="row">
                     <div class="col-md-7">
                         <div class="text-center benHeader">
@@ -698,10 +699,6 @@
           <!-- /.modal-dialog -->
         </div>
         <!-- /.modal -->
-      <hr>
-
-      
-    </div> <!-- /container -->
 
 
     <!-- Bootstrap core JavaScript
@@ -717,5 +714,5 @@
 
    
     <script type="text/javascript" src="js/phonetopup.js"></script>
-          
+    @endsection      
  

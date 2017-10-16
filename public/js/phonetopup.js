@@ -114,5 +114,5 @@ $(document).ready(function(){
 		xmlHttp.open( "get", url, false ); // false for synchronous request
 		xmlHttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 		xmlHttp.send();
-		var res = xmlHttp.responseText; 
+		var res = xmlHttp.responseText;
 	}
