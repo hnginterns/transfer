@@ -14,6 +14,8 @@ use App\Transaction;
 use App\BankTransaction;
 use App\WalletTransaction;
 
+use Session;
+
 use App\Bank;
 
 use Illuminate\Support\Facades\DB;
