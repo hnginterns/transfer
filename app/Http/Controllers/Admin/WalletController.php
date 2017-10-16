@@ -43,9 +43,15 @@ class WalletController  extends Controller
         return view('admin.permit.editpermission', compact('restriction', 'wallet', 'transferables'));
     }
 
+    public function restorePermission(){
+        Restriction::withTrashed()->restore();
+        Session::flash('success', 'Permissions restored');
+        return redirect('admin/managePermission'); 
+    }
+
     public function deletePermission(Request $request, Restriction $restriction){
         
-        if($restriction->delete()){
+        if($restriction->forceDelete()){
             Session::flash('success', 'Permission deleted');
             return redirect('admin/managePermission'); 
         }else{

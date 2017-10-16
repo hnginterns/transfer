@@ -162,6 +162,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
 
 
 	//Permissions start
+	Route::get('/restorepermission', 'Admin\WalletController@restorePermission');
 	Route::get('/managePermission', 'Admin\AdminController@managePermission')->name('permission.manage');
 	Route::get('/addpermission', 'Admin\WalletController@addPermission')->name('permission.create');
 	Route::get('/editpermission/{restriction}', 'Admin\WalletController@editPermission')->name('permission.edit');
