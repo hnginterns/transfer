@@ -927,6 +927,7 @@
         <button id="divider-cta">Read More</button>
     </div>
 </div>
+</div>
 </section>
 <!-- DIVIDER ENDS-->
 
