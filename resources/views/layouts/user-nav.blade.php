@@ -10,7 +10,7 @@
           </button>
           
         </div>
-         <li><a href="#" style="color:#39689C; font-size:18px;"><i class="fa fa-user"></i>  </a></li>
+         
            <form class="navbar-form navbar-right">
             <input type="text" class="form-control" placeholder="Search...">
             
