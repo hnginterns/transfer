@@ -165,6 +165,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
 	Route::get('/managePermission', 'Admin\AdminController@managePermission')->name('permission.manage');
 	Route::get('/addpermission', 'Admin\WalletController@addPermission')->name('permission.create');
 	Route::get('/editpermission/{restriction}', 'Admin\WalletController@editPermission')->name('permission.edit');
+	Route::delete('/deletepermission/{restriction}', 'Admin\WalletController@deletePermission')->name('permission.delete');
 	Route::post('/addpermission', 'Admin\WalletController@PostAddPermission')->name('permission.store');
 	Route::post('/editpermission/{restriction}', 'Admin\WalletController@PostEditPermission')->name('permission.update');
 	//Permission ends
