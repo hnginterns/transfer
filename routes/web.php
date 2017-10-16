@@ -83,6 +83,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 	//phone top up
 	Route::get('/phonetopup', 'pagesController@phoneTopupView');
+	Route::get('/topup/phone', 'User/PhoneTopUpController@phoneTopUp');
 	//end of phone top
 
 	Route::get('/transfer', 'pagesController@transfer');
@@ -110,7 +111,7 @@ Route::group(['middleware' => 'auth'], function () {
 Route::get('/admin/login', 'Admin\AdminLoginController@showLoginForm');
 Route::post('/admin/login', 'Admin\AdminLoginController@login')->name('admin.login');
 Route::get('/admin/logout', 'Admin\AdminLoginController@logout')->name('admin.logout');
-Route::get('/admin/topup/phone', 'Admin\PhoneTopUpController@topup');
+
 
 //end of admin auth
 
@@ -186,6 +187,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
 	//admin sms transaction ends here
 
 	Route::get('analytics', 'Admin\AdminController@webAnalytics');
+	Route::get('/topup/phone', 'Admin\PhoneTopUpController@topup');
 
 });
 
