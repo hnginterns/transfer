@@ -51,22 +51,22 @@ i.sent{
               
               @if (!empty($permit))
                   <div class="">
-                      <p>Wallet Name</p>
+                      <font color="blue">Wallet Name</font>
                       <h4>{{ $wallet->wallet_name }}</h4>
                   </div>   
                    <br>
                    <div class="">
-                      <p>Wallet ID</p>
+                      <font color="blue">Wallet ID</font>
                       <h4>{{ $wallet->wallet_code }}</h4>
                    </div> 
                   </br>
                    <div class="">
-                        <p>Currency Type</p>
+                       <font color="blue"> Currency Type</font>
                         <h4>Nigeria Naira</h4>
                    </div>
                     <br><br>
                    <div class="">
-                        <p>Balance</p>
+                        <font color="blue">Balance</font>
                         <h4>{{ $wallet->balance }}</h4>
                    </div><br>
                                              
@@ -171,7 +171,32 @@ i.sent{
 <div class="container">
   
   
+<form action="/transfer/wallet/{{$wallet->id}}" method="POST" id="trform" class="input-form">
+          {{csrf_field()}}
+            <div class="form-group">
+                <select class="form-control cus-input" name="sourceWallet">
+                  <option value="{{ $wallet->id}}">{{ $wallet->wallet_name}}</option>
+                </select>
+            </div>
 
+            <div class="form-group">
+                <select class="form-control cus-input" name="recipientWallet">
+                    <option value="">Select recipient wallet</option>
+                      @foreach($wallets as $walletz)
+                      @if($wallet->id != $walletz->id)
+                              <option value="{{ $walletz->id }}">{{ $walletz->wallet_name}}</option>
+                            @endif
+                      @endforeach
+                </select>
+            </div>
+
+            <div class="form-group">
+                <input type="number" class="form-control cus-input" name="amount" id="amount" required placeholder="Amount">
+            </div>
+
+            <div class="form-group ">    
+              <button id="transfer" type="submit" class="btn btn-primary pull-right">Transfer</button>
+            </d>
   
 
      <div class="container">
@@ -187,7 +212,7 @@ i.sent{
       			
             <div class="modal-body">  
                 <!-- text input -->      
-				        <form action="/fund/{{$wallet->id}}" method="POST" class="form-horizontal">
+	    <form action="/fund/{{$wallet->id}}" method="POST" class="form-horizontal">
                     {{ csrf_field() }}
                     <input type="hidden" name="wallet_name" value="{{$wallet->wallet_name}}">
                       <input type="hidden" name="wallet_code" value="{{$wallet->wallet_code}}">
