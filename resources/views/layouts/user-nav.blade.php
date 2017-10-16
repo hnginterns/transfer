@@ -1,4 +1,3 @@
-      <?php use Auth; ?>
       <nav class="navbar navbar-inverse navbar-fixed-top">
        <div class="navbar-header"><br>
         &nbsp;&nbsp;&nbsp;<a href="{{url('/')}}">  <img src="/img/HNGlogo.png" alt=""></a>
@@ -14,11 +13,7 @@
        
                   </ul>
              </div>
-             @if(Auth::user()->first_name !== null || Auth::user()->last_name !== null)
-                  {{ Auth::user()->first_name Auth::user()->last_name }}
-             @else
-                  {{ Auth::user()->username }}
-             @endif
+             G
             <i class="fa fa-user-circle-o"></i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
            </form>
         </div>
