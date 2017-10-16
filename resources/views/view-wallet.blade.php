@@ -47,33 +47,33 @@ i.sent{
 
       <a href="{{ route('transfer.wallet', $wallet->id)}}" class="btn btn-dark ">Transfer to Another Wallet </a>
 
-            <div class="col-md-4 col-sm-4">
+            <div class="">
               
               @if (!empty($permit))
-                  <div class="col-sm-12 text-center">
+                  <div class="">
                       <p>Wallet Name</p>
-                      <h2>{{ $wallet->wallet_name }}</h2>
+                      <h4>{{ $wallet->wallet_name }}</h4>
                   </div>   
                    <br>
-                   <div class="col-sm-12 text-center">
+                   <div class="">
                       <p>Wallet ID</p>
-                      <h2>{{ $wallet->wallet_code }}</h2>
+                      <h4>{{ $wallet->wallet_code }}</h4>
                    </div> 
                   </br>
-                   <div class="col-sm-12 text-center">
+                   <div class="">
                         <p>Currency Type</p>
-                        <h2>Nigeria Naira</h2>
+                        <h4>Nigeria Naira</h4>
                    </div>
                     <br><br>
-                   <div class="col-sm-12 text-center">
+                   <div class="">
                         <p>Balance</p>
-                        <h2>{{ $wallet->balance }}</h2>
-                   </div>
+                        <h4>{{ $wallet->balance }}</h4>
+                   </div><br>
                                              
 
-            </div>
+            </div><p>
 
-          <div class="col-md-8 col-sm-8">
+          <div class="">
 	<div class="orange-box"><h4 class="title" align="center"> {{ ucfirst($wallet->wallet_name) }} TRANSACTION HISTORY</h4></div><br>
           <div class="table-responsive">
               @if(count($history))          
@@ -81,7 +81,7 @@ i.sent{
 							<thead>
 								<tr>
 									<th>Transaction Type</th>
-                  <th>State</th>
+                  							<th>State</th>
 									<th>Transaction Amount</th>
 									<th>Transaction Date</th>
 									<th>Status</th>
@@ -123,7 +123,7 @@ i.sent{
                 @endforeach
                 
 							</tbody>
-						</table>
+						</table><br>
               @else
                   
                     <p class="text-center"><b>No Transactions at the moment</b></p>
