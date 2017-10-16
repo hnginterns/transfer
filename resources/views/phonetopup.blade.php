@@ -12,7 +12,7 @@
             <div class="balance"align="center"  >
                 <h5>Balance</h5>
                 <div class="box" align="center">
-                        <p>Available <br>in Wallet<br>
+                        <p>Available <br>in Wallets<br>
                         <strong>
                             <?php
                                   $curl = curl_init();
