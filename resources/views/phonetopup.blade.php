@@ -98,12 +98,12 @@ div class="container">
                 </div>            
             </div>
             <div class="container-fiuld">
-                <div class="container text-center topUpHeader">
+                <div class=" container text-center topUpHeader">
                     <h2 style="">Top Up Prepaid Mobile Phones</h2>
                 </div>
                  
             </div>
-            <div class="container-fiuld">
+            <div class="container">
                 <div class="row">
                     <div class="col-md-7">
                         <div class="text-center benHeader">

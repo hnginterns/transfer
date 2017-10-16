@@ -30,7 +30,6 @@
             /* background: #333333; */
             background-size: 100% 650px !important;
         }
-
         #logo {
             
             height: 40px;
@@ -109,9 +108,6 @@
         }
 
         #header-content {
-            padding: 80px 200px;
-            display: grid;
-            grid-template-columns: 40% 60%;
             z-index: 200;
         }
 
@@ -393,8 +389,7 @@
             }
 
             #header-content {
-                padding: 80px 150px;
-                grid-template-columns: 40% 60%;
+               
             }
 
             #mobile-app {
@@ -457,9 +452,7 @@
             }
 
             #header-content {
-                padding: 80px 100px;
-                display: grid;
-                grid-template-columns: 40% 60%;
+                
             }
 
             #mobile-app {
@@ -520,6 +513,7 @@
                 padding: 30px 100px;
                 background: #306B8E;
             }
+
         }
 
         @media only screen and (max-width: 800px) {
@@ -535,9 +529,7 @@
             }
 
             #header-content {
-                padding: 50px 10px;
-                display: flex;
-                flex-direction: row;
+                
             }
 
             #content-text {
@@ -546,6 +538,7 @@
                 display: flex;
                 flex-direction: column;
                 height: fit-content;
+                width:100%;
             }
 
             #heading-hd {
@@ -798,7 +791,7 @@
         </div><!--/.container-fluid -->
     </nav>
 
-    <div id="header-content">
+    <div id="header-content" align="center">
         
         <div id="content-text" class="clearfix" align="center">
         <span id="heading-top-hd">
