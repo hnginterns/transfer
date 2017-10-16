@@ -50,7 +50,7 @@ i.sent{
               <div class="">
               @if (!empty($permit))
                   
-                      <font color="blue">Wallet Name</font>
+                      <font color="blue">Wallet Name</font><br>
                       {{ $wallet->wallet_name }}
                    
                    
