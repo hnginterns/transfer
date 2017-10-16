@@ -31,7 +31,7 @@
 
             <a class="navbar-brand" href="#">
 
-                <img src="logo.png" width="30" height="30" class="d-inline-block align-top" alt=""> TransferRules
+                <a href="{{url('/')}}">  <img src="/img/HNGlogo.png" width="120" height="40"alt=""></a>
 
             </a>
 
