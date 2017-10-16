@@ -393,6 +393,8 @@
                             </div>
                           </div>
                         </div>
+                        </div>
+                        </div>
                     <div class="col-md-5" id="dataTopUp">
                         <div class="text-center benHeader">
                              <h2>TopUp Data Balance</h2>
