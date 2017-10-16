@@ -383,4 +383,13 @@ i.sent{
             </div>
           </div>
       </div>
+      @endif
+
+    @else
+
+              <p> You do not have permission to view this wallet</p>
+
+     @endif
+    
+  @endsection
       
