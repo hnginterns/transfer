@@ -17,9 +17,8 @@
             @endforeach
         </div>
       </div>
-      {{\Request::ip()}}
-
-<style>
+      
+  <style>
   .dbackground{
     background:#39689C;
     color:white;

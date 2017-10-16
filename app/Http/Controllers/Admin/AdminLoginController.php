@@ -21,6 +21,7 @@ class AdminLoginController extends Controller
     public function showLoginForm()
     {
         if (Auth::check() && Auth::user()->is_admin == 1) {
+            \LogUserActivity::addToLog(' logged in successfully');
             return redirect('/admin');
         }
         
@@ -32,6 +33,7 @@ class AdminLoginController extends Controller
     protected function attemptLogin(Request $request)
     {
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'is_admin' => 1])) {
+            \LogUserActivity::addToLog(' logged in successfully');
             return true;
         }
 

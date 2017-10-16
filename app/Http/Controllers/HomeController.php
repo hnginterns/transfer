@@ -35,4 +35,16 @@ class HomeController extends Controller
         return $wal->canTransfer() ? "Transaction can Proceed" : "Transaction Failed! You have reached your Transaction Limit for the day";
     }
 
+    public function myTestAddToLog()
+    {
+        \LogUserActivity::addToLog('My Testing Add to Log');
+        dd('log insert successfully');
+    }
+
+    public function LogUserActivity()
+    {
+        $logs = \LogUserActivity::logUserActivityLists();
+        return view('logActivity', compact('logs'));
+    }
+
 }

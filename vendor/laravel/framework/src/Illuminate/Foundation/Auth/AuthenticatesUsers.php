@@ -17,7 +17,7 @@ trait AuthenticatesUsers
      */
     public function showLoginForm()
     {
-        return view('sign-in');
+        return view('auth.login');
     }
 
     /**
@@ -72,7 +72,7 @@ trait AuthenticatesUsers
      * @return bool
      */
     protected function attemptLogin(Request $request)
-    {   
+    {
         return $this->guard()->attempt(
             $this->credentials($request), $request->filled('remember')
         );
@@ -154,7 +154,7 @@ trait AuthenticatesUsers
 
         $request->session()->invalidate();
 
-        return isset($request->rdr) ? redirect($request->rdr) : redirect('/');
+        return redirect('/');
     }
 
     /**

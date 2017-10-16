@@ -143,14 +143,13 @@ class WalletController extends Controller
     }
 
    //transfer from wallet to wallet
-    public function transfer(Request $request, Wallet $wallet) {
+    public function transfer(Request $request, Wallet $wallet, WalletToWallet $walletTransfer) {
         $validator = $this->validateWalletTransfer($request->all());
 
         if ($validator->fails()) {
             $messages = $validator->messages()->toArray();
             return redirect()->to(URL::previous())->with('failed', $messages);
         } else {
-
            //checks for permissions
                 $permit = Restriction::where('wallet_id', $wallet->id)
                         ->where('uuid', Auth::user()->id)
@@ -194,15 +193,17 @@ class WalletController extends Controller
                     //end of logic
 
                     //update wallet balance
-                    $recipient_wallet->balance += $request->amount;
-                    $wallet->balance -= $request->amount;
-                    $wallet->save();
-                    $recipient_wallet->save();
+                    
+                    //$recipient_wallet->balance += $request->amount;
+                    //$wallet->balance -= $request->amount;
+                    //$wallet->save();
+                    //$recipient_wallet->save();
                     // end of update wallet balance
-
-
+                    event(new WalletToWallet($walletTransfer));
                     $this->sendWalletTransactionNotifications($w_transaction);
                     // event(new WalletToWallet($transactions));
+                    $transact = WalletTransaction::latest()->first();
+                    \LogUserActivity::addToLog($transact->source_wallet .' transferred '.$transact->amount .' to '.$transact->recipient_wallet);
                     return redirect()->action('pagesController@success');
                 } else {
                     $response = $r_data;

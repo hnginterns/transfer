@@ -896,7 +896,7 @@
                 Create an account in less than 5 minutes. Login to your account and create wallets for your company
             </p>
         </div>
-        <button id="divider-cta">Read More</button>
+        <button id="divider-cta">Get Started</button>
     </div>
 </div>
 <!-- DIVIDER ENDS-->

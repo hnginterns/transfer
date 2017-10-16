@@ -16,11 +16,14 @@ Route::get('notify','WalletController@notifyme');
 Route::get('/', 'pagesController@home')->name('home');
 
 Route::get('/logout', function () {
+	\LogUserActivity::addToLog('User logged out successfully');
 	Auth::logout();
 	Session::flush();
 	return redirect('/login');
 });
 
+Route::get('logActivity', 'HomeController@logUserActivity');
+// Please do not remove
 // Please do not remove For testing purposes
 Route::get('/adminnew', function () {
 	$users = App\User::all();
@@ -29,7 +32,6 @@ Route::get('/adminnew', function () {
 	$cardw = App\CardWallet::all();
 	return view('layouts.admin-new', compact('users', 'restr', 'wallets', 'cardw'));
 });
-
 // Route::get('/testbanks', 'BanksController@getAllBanks');
 // Route::get('makeadmin', 'WalletController@MakeUserAdmin'); 
 
