@@ -14,7 +14,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <script type="text/javascript" src="js/jquery.js"></script>
     <!-- Custom styles for this template -->
-    <link href="css/faqs.css" rel="stylesheet">
+    <link href="css/custom2.css" rel="stylesheet">
     <!-- <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
 </head>
 
