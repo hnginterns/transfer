@@ -554,7 +554,12 @@
                 padding-right: 0px;
                 margin-bottom: 15px;
             }
-
+            #heading-top-hd{
+                font-size: 22px;
+                letter-spacing: 0.07em;
+                padding-right: 0px;
+                margin-bottom: 15px;
+            }
             #text-hd {
                 padding-right: 0px;
                 word-spacing: 0.09em;
@@ -794,8 +799,11 @@
     </nav>
 
     <div id="header-content">
-        Online payments made easy
+        
         <div id="content-text" class="clearfix" align="center">
+        <span id="heading-top-hd">
+        Online payments made easy
+                </span>
                 <span id="heading-hd">
                    Payant is an easy way for you to pay and get paid any where
                 </span>
