@@ -47,7 +47,16 @@
             border: none;
             color: white;
         }
+        .about{
+            height:700px;
+        }
+        .about-content{
+            width:60%;
+            margin-left:auto;
+            margin-right:auto;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
+        }
         .navbar-brand,
         .navbar-nav a {
             color: white !important;
@@ -339,6 +348,21 @@
             letter-spacing: 0.04em;
             margin: 0px;
             padding: 0px;
+        }
+        .icon{
+            color:#39689C;
+            font-size:70px;
+            text-align:center;
+        }
+        .about-title{
+            color:#39689C;
+            font-size:24px;
+            text-align:center;
+        }
+        .about-paragraph{
+            color:#404040;
+            font-size:18px;
+            text-align:center;
         }
         /* DIVIDER STYLE ENDS */
 
@@ -808,9 +832,6 @@
                 <span id="heading-hd">
                    Payant is an easy way for you to pay and get paid any where
                 </span>
-            <span id="text-hd">
-                    Create an account for your company with TransferRules and gain full control over financial transactions, disbursement of funds and lot more services.
-                </span>
             <button id="button-hd">
                 Get Started
             </button>
@@ -819,74 +840,77 @@
 </div>
 
 <!--HEADER ENDS -->
-
-<!-- SECTION ONE - (AMAZING FEATURES) -->
-<div id="section1">
-    <p class="section-header">
-        Amazing Features
-    </p>
-      <!-- <p class="section-sub">
-          Enjoy our great and amazing features
-      </p> -->
-    <div id="features">
-        <img src="img/screenshots.png" alt="site screenshot" id="screenshots">
-        <div id="features-list">
-            <div class="feature">
-                <span class="feature-img"></span>
-                <span id="feature-heading">Get Payment <span class="fa fa-money features-icons"></span></span>
-                <span class="feature-text">You can trust transferrules with fast and secure online payment.</span>
-            </div>
-            <div class="feature">
-                <span class="feature-img"></span>
-                <span id="feature-heading">Manage Funds <span class="fa fa-money features-icons"></span></span>
-                <span class="feature-text">Transferrules gives you full control to manage and track your company funds.</span>
-            </div>
-            <div class="feature">
-                <span class="feature-img"></span>
-                <span id="feature-heading">Access Wallet <span class="fa fa-shopping-bag features-icons"></span></span>
-                <span class="feature-text">Create, access and manage unlimited number of wallets for every staff.</span>
-            </div>
+<section class="about">
+<div class="about-content">
+<div class="row">
+        <div class="col-lg-12">
+        <h5 class="about-title">How it works</h5>
+        <p class="about-paragraph">
+        Our custom built Transfer Rules is built with the aim to connect your business to clients, employer to employee etc in a more effcient way and simplify your financial
+        transactions. Crisp and clear UX design and excellent workflow serves to foster customer intimacy and user loyalty
+        </p>
+        </div>
+        
+</div>
+<div class="row">
+        <div class="col-lg-4">
+        <div class="icon"><i class="fa fa-clone" aria-hidden="true"></i></div>
+        <h5 class="about-title">How it works</h5>
+        <p class="about-paragraph">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate! Ab assumenda aliquam sint 
+        necessitatibus at pariatur quidem dolorem quaerat doloribus, similique repellendus porro temporibus modi et dolor impedit perferendis obcaecati aut tempore voluptate! Odio eum, quas tempore
+         culpa provident dicta numquam molestiae deleniti deserunt ratione! Quisquam cumque voluptate ad beatae minima et.
+        </p>
+        </div>
+        <div class="col-lg-4">
+        <div class="icon"><i class="fa fa-arrow-up" aria-hidden="true"></i></div>
+        <h5 class="about-title">How it works</h5>
+        <p class="about-paragraph">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate! Ab assumenda aliquam sint 
+        necessitatibus at pariatur quidem dolorem quaerat doloribus, similique repellendus porro temporibus modi et dolor impedit perferendis obcaecati aut tempore voluptate! Odio eum, quas tempore
+         culpa provident dicta numquam molestiae deleniti deserunt ratione! Quisquam cumque voluptate ad beatae minima et.
+        </p>
+        </div>
+        <div class="col-lg-4">
+        <div class="icon"><i class="fa fa-mobile" aria-hidden="true"></i></div>
+        <h5 class="about-title">How it works</h5>
+        <p class="about-paragraph">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate! Ab assumenda aliquam sint 
+        necessitatibus at pariatur quidem dolorem quaerat doloribus, similique repellendus porro temporibus modi et dolor impedit perferendis obcaecati aut tempore voluptate! Odio eum, quas tempore
+         culpa provident dicta numquam molestiae deleniti deserunt ratione! Quisquam cumque voluptate ad beatae minima et.
+        </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+        <div class="icon"><i class="fa fa-comments" aria-hidden="true"></i></div>
+        <h5 class="about-title">How it works</h5>
+        <p class="about-paragraph">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate! Ab assumenda aliquam sint 
+        necessitatibus at pariatur quidem dolorem quaerat doloribus, similique repellendus porro temporibus modi et dolor impedit perferendis obcaecati aut tempore voluptate! Odio eum, quas tempore
+         culpa provident dicta numquam molestiae deleniti deserunt ratione! Quisquam cumque voluptate ad beatae minima et.
+        </p>
+        </div>
+        <div class="col-lg-4">
+        <div class="icon"><i class="fa fa-credit-card" aria-hidden="true"></i></div>
+        <h5 class="about-title">How it works</h5>
+        <p class="about-paragraph">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate! Ab assumenda aliquam sint 
+        necessitatibus at pariatur quidem dolorem quaerat doloribus, similique repellendus porro temporibus modi et dolor impedit perferendis obcaecati aut tempore voluptate! Odio eum, quas tempore
+         culpa provident dicta numquam molestiae deleniti deserunt ratione! Quisquam cumque voluptate ad beatae minima et.
+        </p>
+        </div>
+        <div class="col-lg-4">
+        <div class="icon"><i class="fa fa-connectdevelop" aria-hidden="true"></i></div>
+        <h5 class="about-title">How it works</h5>
+        <p class="about-paragraph">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate! Ab assumenda aliquam sint 
+        necessitatibus at pariatur quidem dolorem quaerat doloribus, similique repellendus porro temporibus modi et dolor impedit perferendis obcaecati aut tempore voluptate! Odio eum, quas tempore
+         culpa provident dicta numquam molestiae deleniti deserunt ratione! Quisquam cumque voluptate ad beatae minima et.
+        </p>
         </div>
     </div>
 </div>
-<!-- SECTION ONE ENDS -->
-
-
-<!-- SECTION TWO - (TESTIMONIES) -->
-<div id="section2">
-    <p class="section-header">
-        Testimonies
-    </p>
-    <p class="section-sub">
-        Our Users are passionate about us because we are passionate about them. Hear what they say about us!
-    </p>
-
-    <div id="t-container">
-        <div class="row">
-            <div class="media col-md-6" id="media1">
-                <a class="pull-left" href="#">
-                    <img src="img/man.jpg" alt="man" class="testimony-img">
-                </a>
-                <div class="media-body">
-                    <h4 class="media-heading name">Mr. Musa Abubakar</h4>
-                    <p class="testimony">It has been more than 2 years my company started using TRANSFERRULES for fund disbursement and i must confess it has been great, fast and secure. </p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="media col-md-12 pull-right" id="media2">
-                <a class="pull-right" href="#">
-                    <img src="img/woman.jpg" alt="man" class="testimony-img">
-                </a>
-                <div class="media-body">
-                    <h4 class="media-heading name">Miss Natasha Paul</h4>
-                    <p class="testimony">Thank you TRANSFERRULES for providing a secure, friendly and trusted way for we to manage funds in my company.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- SECTION TWO ENDS -->
 
 <!-- DIVIDER -->
 <div id="divider">
@@ -900,6 +924,7 @@
         <button id="divider-cta">Read More</button>
     </div>
 </div>
+</section>
 <!-- DIVIDER ENDS-->
 
 <!-- FOOTER -->

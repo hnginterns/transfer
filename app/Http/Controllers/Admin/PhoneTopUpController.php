@@ -6,7 +6,7 @@ use App\WalletTransaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
-use App\Http\Controllers\WalletController;
+use App\Http\Controllers\Controller;
 use App\User;
 use App\Wallet;
 use App\CardWallet;
@@ -25,7 +25,7 @@ class PhoneTopUpController extends Controller
     }
     public function topup()
     {
-        
+        return view('phonetopup');
     }
 }
 

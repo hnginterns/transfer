@@ -31,6 +31,8 @@
       <li><a href="{{ url('/admin/managewallet') }}"><i class="fa fa-briefcase"></i> <span>Manage Wallet</span></a></li>
       <!--<li><a href="{{ url('/admin/analytics') }}"><i class="fa fa-line-chart"></i> <span>Transaction Analytics<span></a></li>-->
       <li><a href="{{ url('/admin/smswallet') }}"><i class="fa fa-envelope"></i> <span>SMS Wallet</span></a></a></li>
+      <li><a href="{{ url('/phonetopup') }}"><i class="fa fa-mobile-phone"></i> <span>Phone Top-up Wallet</span></a></a></li>
+      
       <li>
         <li>
         <a href="{{ url('/logout') }}">

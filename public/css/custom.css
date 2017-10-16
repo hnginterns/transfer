@@ -9,6 +9,7 @@ h4 {
 }
 #balanceDiv {
 	padding:1%;
+	margin-top:-80;
 	
 }
 #balanceDiv h2 {
@@ -112,8 +113,8 @@ h4 {
 }
 /*---------check button styling -------*/
 .top-up-btn div div {
-	width: 100px;
-	margin: 2% -2%;
+	width: 80px;
+	margin: 1%;
 }
 .top-up-btn div {
 	padding: 0;
@@ -230,9 +231,6 @@ h4 {
   overflow: hidden;
   width: 100%;
   margin: 0 auto;
-}
-.data-bundles {
-	margin-left: 8%;
 }
 .data-bundles input {
     position: absolute !important;

@@ -43,10 +43,22 @@ class WalletController  extends Controller
         return view('admin.permit.editpermission', compact('restriction', 'wallet', 'transferables'));
     }
 
+    public function deletePermission(Request $request, Restriction $restriction){
+        
+        if($restriction->forceDelete()){
+            Session::flash('success', 'Permission deleted');
+            return redirect('admin/managePermission'); 
+        }else{
+            Session::flash('error', 'Permission not deleted');
+            return redirect('admin/managePermission');
+        }
+    }
+
 
     public function PostAddPermission(Request $request){
         
         $validator = $this->validatePermission($request->all());
+        
         if ($validator->fails()) {
             $messages = $validator->messages()->toArray();
             Session::flash('messages', $this->formatMessages($messages, 'error'));
@@ -57,7 +69,10 @@ class WalletController  extends Controller
                                     ->where('wallet_id', $request->wallet_id)
                                     ->first();
 
-            if($duplicate != null) Session::flash('error', 'Permission already exists'); return back();
+            if($duplicate != null){
+                Session::flash('error', 'Permission already exists'); 
+                return back();
+            }
 
             $restriction = new Restriction;
             $restriction->uuid = $request->uuid;
@@ -71,10 +86,10 @@ class WalletController  extends Controller
             $restriction->updated_by = Auth::user()->id;
             $restriction->can_transfer_to_wallets = json_encode($request->can_transfer_to_wallets);
             if($restriction->save()){
-                flash('success', 'Permission created');
+                Session::flash('success', 'Permission created');
                 return redirect('admin/managePermission');
             }else{
-                flash('error', 'Permission not created');
+                Session::flash('error', 'Permission not created');
                 return back();
             }
 
@@ -105,8 +120,10 @@ class WalletController  extends Controller
             $restriction->updated_by = Auth::user()->id;
             $restriction->can_transfer_to_wallets = json_encode($request->can_transfer_to_wallets);
             if($restriction->save()){
+                Session::flash('success', 'Permission updated');
                 return redirect('admin/managePermission');
             }else{
+                Session::flash('error', 'Permission not updated');
                 return back();
             }
 
