@@ -13,7 +13,7 @@
        
                   </ul>
              </div>
-            {{ $user }}
+           <?php echo ($user); ?>
             <i class="fa fa-user-circle-o"></i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
            </form>
         </div>
