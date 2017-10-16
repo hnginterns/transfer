@@ -10,6 +10,7 @@
           </div>
           <form class="navbar-form navbar-right">
             <input type="text" class="form-control" placeholder="Search...">
+            Godfred Akpan | Admin
            </form>
         </div>
       </div>
