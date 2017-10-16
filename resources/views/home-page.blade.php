@@ -546,6 +546,7 @@
                 display: flex;
                 flex-direction: column;
                 height: fit-content;
+                width:100%;
             }
 
             #heading-hd {
@@ -798,7 +799,7 @@
         </div><!--/.container-fluid -->
     </nav>
 
-    <div id="header-content">
+    <div id="header-content" align="center">
         
         <div id="content-text" class="clearfix" align="center">
         <span id="heading-top-hd">
