@@ -13,7 +13,7 @@
        
                   </ul>
              </div>
-            Godfred Akpan | Admin
+            {{ $first_name }} {{ $last_name }}
             <i class="fa fa-user-circle-o"></i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
            </form>
         </div>
