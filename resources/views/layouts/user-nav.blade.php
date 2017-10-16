@@ -13,10 +13,10 @@
        
                   </ul>
              </div>
-             @if($user->first_name !== null || $user->last_name !== null)
-                  {{ $user->first_name $user->last_name }}
+             @if(Auth::User()->first_name !== null || Auth::User()->last_name !== null)
+                  {{ Auth::User()->first_name Auth::User()->last_name }}
              @else
-                  {{ $user->username }}
+                  {{ Auth::User()->username }}
              @endif
             <i class="fa fa-user-circle-o"></i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
            </form>
