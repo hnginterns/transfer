@@ -41,7 +41,7 @@ h4 {
 	padding: 1%;
 }
 #wallet-topUpBtn {
-	padding:1%;
+	padding:8%;
 }
 #wallet-topUpBtn h3 {
 	color: #39689C;
@@ -112,7 +112,7 @@ h4 {
 }
 /*---------check button styling -------*/
 .top-up-btn div div {
-	width: 80%;
+	width: 100px;
 	margin: 2% -2%;
 }
 .top-up-btn div {
