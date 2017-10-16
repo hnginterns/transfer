@@ -30,9 +30,6 @@
             /* background: #333333; */
             background-size: 100% 650px !important;
         }
-        #header-content{
-            width:100% !important;
-        }
         #logo {
             
             height: 40px;
@@ -111,9 +108,6 @@
         }
 
         #header-content {
-            padding: 80px 200px;
-            display: grid;
-            grid-template-columns: 40% 60%;
             z-index: 200;
         }
 
@@ -395,8 +389,7 @@
             }
 
             #header-content {
-                padding: 80px 150px;
-                grid-template-columns: 40% 60%;
+               
             }
 
             #mobile-app {
@@ -459,9 +452,7 @@
             }
 
             #header-content {
-                padding: 80px 100px;
-                display: grid;
-                grid-template-columns: 40% 60%;
+                
             }
 
             #mobile-app {
@@ -538,9 +529,7 @@
             }
 
             #header-content {
-                padding: 50px 10px;
-                display: flex;
-                flex-direction: row;
+                
             }
 
             #content-text {
