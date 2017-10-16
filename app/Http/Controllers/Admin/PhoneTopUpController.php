@@ -17,7 +17,7 @@ use App\Beneficiary;
 use App\Transaction;
 use Carbon\Carbon;
 use Trs;
-class PhoneTopUpController 
+class PhoneTopUpController extends Controller
 {
     public function __construct()
     {
