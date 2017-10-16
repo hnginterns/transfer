@@ -761,7 +761,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{url('/')}}"><img id="logo" src="img/logo.png" alt="Company logo" style="display: inline;"> </a>
+                <a class="navbar-brand" href="{{url('/')}}"><img id="logo" src="img/HNGlogo.png" alt="Company logo" style="display: inline;"> </a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
