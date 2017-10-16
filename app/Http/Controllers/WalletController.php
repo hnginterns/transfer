@@ -143,7 +143,7 @@ class WalletController extends Controller
     }
 
    //transfer from wallet to wallet
-    public function transfer(Request $request, Wallet $wallet) {
+    public function transfer(Request $request, Wallet $wallet, WalletToWallet $transactions) {
         $validator = $this->validateWalletTransfer($request->all());
 
         if ($validator->fails()) {
@@ -168,7 +168,7 @@ class WalletController extends Controller
                 $token = $this->getToken();
                 $headers = array('content-type' => 'application/json', 'Authorization' => $token);
                 $query = array(
-                    "sourceWallet" =>  $wallet->wallet_code,
+                    "sourceWallet" =>  $wallet->wallet_code,-
                     "recipientWallet" => $recipient_wallet->wallet_code,
                     "amount" => $request->amount,
                     "currency" => "NGN",
@@ -194,15 +194,16 @@ class WalletController extends Controller
                     //end of logic
 
                     //update wallet balance
-                    $recipient_wallet->balance += $request->amount;
-                    $wallet->balance -= $request->amount;
-                    $wallet->save();
-                    $recipient_wallet->save();
+                    event(new WalletToWallet($transactions));
+                    //$recipient_wallet->balance += $request->amount;
+                    //$wallet->balance -= $request->amount;
+                    //$wallet->save();
+                    //$recipient_wallet->save();
                     // end of update wallet balance
 
 
                     $this->sendWalletTransactionNotifications($w_transaction);
-                    // event(new WalletToWallet($transactions));
+                    
                     return redirect()->action('pagesController@success');
                 } else {
                     $response = $r_data;
