@@ -2,14 +2,6 @@
 @section('title', 'Dashboard')
 @section('content')
     <link rel="stylesheet" href="/css/custom.css">
-
-
-    <div class="container">
-      <!-- Example row of columns -->
-      <div class="row" >
-        <div class="col-md-2">
-          <!----------side bar goes here ---->
-        </div>
         <div class="col-md-10 border" id="body">
             <div class="row" id="balanceDiv">
                 <div class="col-md-6 balance">
@@ -84,7 +76,7 @@
                     
                 </div>            
             </div>
-            <div class="container-fiuld">
+            <div class="container">
                 <div class="container text-center topUpHeader">
                     <h2 style="">Top Up Prepaid Mobile Phones</h2>
                 </div>
@@ -641,8 +633,10 @@
                 
             </div>
         </div>
+          </div>
+            
+            
 
-      </div>
         <!---Modal for transaction history-->
     <div class="modal fade" id="transaction-history">
           <div class="modal-dialog">
@@ -721,3 +715,4 @@
    
     <script type="text/javascript" src="js/phonetopup.js"></script>
     @endsection      
+ 
