@@ -101,7 +101,7 @@
 
                 <h4 class="intro">Welcome Administrator</h4>
 
-                <h3 class="sign-in">Sign In to your PaysFund Account</h3>
+                <h3 class="sign-in">Sign In to hotels.ng finance Account</h3>
 
                 <h6 class="promise">It is simple and easy to control your account -<br> Keep your password secret</h6>
 
