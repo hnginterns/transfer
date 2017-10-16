@@ -31,7 +31,7 @@
 
             <a class="navbar-brand" href="#">
 
-        <a href="{{url('/')}}">  <img src="/img/HNGlogo.png" width="150" height="60"alt=""></a>
+        <a href="{{url('/')}}">  <img src="/img/HNGlogo.png" width="120" height="40"alt=""></a>
                
 
             </a>

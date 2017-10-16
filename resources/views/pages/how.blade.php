@@ -1,6 +1,6 @@
 @extends('layouts.page')
 @section('main-text', 'FREQUENTLY ASKED QUESTION (FAQs)')
-@section('sub-text', 'Finance@ Hotels.ng lets you receive payments locally and globally with no hassles and zero set up fees')
+@section('sub-text', 'Finance@ Hotels.ng lets an admin manage bills and fund disbursement')
 @section('content')
 
 <!-- SECTION ONE BEGINS -->
@@ -20,7 +20,7 @@
 
     <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
       <div class="card-block">
-        <p>Finance@ Hotels.ng is a secure online service that enables any user to instantly buy mobile credit, data top-up for a prepaid Mobile Phone in any part of the country. Our customers use transferrules.com to buy Mobile Airtime for either themselves, friends and family members.</p>
+        <p>Finance@ Hotels.ng is a secure online service that enables an admin to manage the disbursement of funds within a company.</p>
       </div>
     </div>
   </div>      
@@ -29,23 +29,14 @@
     <div class="card-header" role="tab" id="headingThree">
       <h5 class="mb-0">
         <a  class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-controls="collapseThree">
-          How do I send Prepaid Mobile Credit to an existing customer?
+          Who can add beneficiary?
         </a>
       </h5>
     </div>
 
     <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
       <div class="card-block">
-        <ul>
-          <li>Login to transferrules.com.</li>
-          <li>Select a number from the list of numbers registered under your account</li>
-          <li>Select the Top Up recharge amount.</li>
-          <li>Click the Top Up button.</li>
-          <li>Carefully review the order and complete payment using our secure online payment process.</li>
-          <li>A confirmation message will appear on your screen with details on your completed transaction.</li>
-          <li>A confirmation email will be sent to your email address.</li>
-        </ul>
-        <p>NOTE: Recipients will also receive a transaction confirmation SMS message from their Mobile operator.</p>
+        <p> It is only admin that can add beneficiary</p>
       </div>
     </div>
   </div>
@@ -63,15 +54,7 @@
     <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour">
       <div class="card-block">
         
-        <ul>
-          <li>Login to transferrules.com.</li>
-          <li>Select a number from the list of numbers registered under your account.</li>
-          <li>Select the Top Up data plan.</li>
-          <li>Carefully review the order and complete payment using our secure online payment process.</li>
-          <li>A confirmation message will appear on your screen with details on your completed transaction.</li>
-          <li>A confirmation email will be sent to your email address.</li>
-        </ul>
-        <p>NOTE: Recipients will also receive a transaction confirmation SMS message from their Mobile operator.</p>
+        <p>Select beneficiary and send data plan.</p>
       </div>
     </div>
   </div>
@@ -162,7 +145,7 @@
 
     <div id="collapseNine" class="collapse" role="tabpanel" aria-labelledby="headingNine">
       <div class="card-block">
-        <p>Our website is best enjoyed while using Internet Explorer or Google Chrome. Please avoid using other web browsers like Firefox, Opera or UC browser. If the problem still persists, please raise a complaint with our Customer Service team by calling 000111 from your mobile number or send a mail via finance@hotels.ng </p>
+        <p>  If face difficulty in toping up, reload the page </p>
       </div>
     </div>
   </div>
