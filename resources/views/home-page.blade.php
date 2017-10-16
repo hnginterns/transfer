@@ -122,10 +122,16 @@
         }
 
         #heading-hd {
-            font-size: 36px;
+            font-size: 23px;
             letter-spacing: 0.07em;
             padding-right: 100px;
         }
+        #heading-top-hd{
+                font-size: 64px;
+                letter-spacing: 0.07em;
+                padding-right: 0px;
+                text-align:0;
+            }
 
         #text-hd {
           padding-right: 100px;
