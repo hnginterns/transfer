@@ -11,11 +11,11 @@
 
     <title>Finance@hotels.ng</title>
 
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
 
-    <link href="css/signin.css" rel="stylesheet">
+    <link href="{{asset('css/signin.css')}}" rel="stylesheet">
 
     <style>
         
