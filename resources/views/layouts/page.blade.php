@@ -17,6 +17,8 @@
 
     <link href="{{asset('css/signin.css')}}" rel="stylesheet">
 
+    <link href="{{asset('css/custom2.css')}}"
+
     <style>
         
        
