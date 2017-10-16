@@ -32,7 +32,7 @@
            
         }
         #logo {
-            width: 40px;
+    
             height: 40px;
             margin-right: 15px;
             margin-left: 50px;
@@ -393,7 +393,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{url('/')}}"><img id="logo" src="img/logo.png" alt="TransferRules logo" style="display: inline;"> TransferRules</a>
+                <a class="navbar-brand" href="{{url('/')}}"><img id="logo" src="/img/HNGlogo.png" alt="TransferRules logo" style="display: inline;"> TransferRules</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
