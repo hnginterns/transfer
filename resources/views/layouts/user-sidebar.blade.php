@@ -13,7 +13,7 @@
 
               <li>
                 <a href="/phonetopup">
-                <i class="fa fa-mobile fa-2x"></i> Phone TopUp
+                <i class="fa fa-mobile fa-3x"></i> Phone TopUp
                 </a>
               </li> <br>
               
