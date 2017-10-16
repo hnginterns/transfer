@@ -6,14 +6,10 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-          </button>
-          
-        </div>
-         
+          </button>     
            <form class="navbar-form navbar-right">
             <input type="text" class="form-control" placeholder="Search...">
-            
-          </form>
+           </form>
         </div>
       </div>
     </nav>
