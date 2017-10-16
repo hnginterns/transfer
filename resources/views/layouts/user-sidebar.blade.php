@@ -6,7 +6,7 @@
              
               <li>
                 <a href="/dashboard">
-                <i class="fa fa-dashboard fa-3x"></i> Dashboard
+                <i class="fa fa-dashboard fa-2x"></i> Dashboard
                 </a>
               </li> <br>
 
@@ -19,13 +19,13 @@
               
               <li>
                 <a href="/admin/smswallet">
-                <i class="fa fa-envelope fa-3x"></i> Sms Top up
+                <i class="fa fa-envelope fa-2x"></i> Sms Top up
                 </a>
               </li> <br>
                                 
               <li>
                 <a href="{{ url('/logout') }}">
-                <i class="fa fa-sign-out fa-3x"></i> Logout
+                <i class="fa fa-sign-out fa-2x"></i> Logout
                 </a>
               </li> 
 
