@@ -300,10 +300,10 @@
                         <h6>TopUp Data Plans</h6><hr>
                         <div class="panel-group" id="credit">
                         <ul>
-                            <li> <button type="button"  data-parent="#credit" data-toggle="collapse" data-target="#9mobile"><img src="images/1.png" width="40" height="40" alt="9mobile"> </button></li> 
-                            <li> <button type="button" data-parent="#credit"  data-toggle="collapse" data-target="#mtn"><img src="images/2.png" width="40" height="40" alt="mtn"> </button></li> 
-                            <li> <button  type="button" data-parent="#credit" data-toggle="collapse" data-target="#airtel"><img src="images/3.png" width="40" height="40" alt="airtel"></button> </li> 
-                            <li> <button  type="button" data-parent="#credit" data-toggle="collapse" data-target="#glo"><img src="images/4.png" width="40" height="40" alt="glo"> </button></li> <hr>
+                            <li> <button type="button"  data-parent="#credit" data-toggle="collapse" data-target="#9mobile"><img src="img/1.png" width="40" height="40" alt="9mobile"> </button></li> 
+                            <li> <button type="button" data-parent="#credit"  data-toggle="collapse" data-target="#mtn"><img src="img/2.png" width="40" height="40" alt="mtn"> </button></li> 
+                            <li> <button  type="button" data-parent="#credit" data-toggle="collapse" data-target="#airtel"><img src="img/3.png" width="40" height="40" alt="airtel"></button> </li> 
+                            <li> <button  type="button" data-parent="#credit" data-toggle="collapse" data-target="#glo"><img src="img/4.png" width="40" height="40" alt="glo"> </button></li> <hr>
                         </ul>
                         <div id="9mobile" class=" panel-collapse collapse in" >
                         <div class="panel">
