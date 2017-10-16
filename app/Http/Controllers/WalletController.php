@@ -168,7 +168,7 @@ class WalletController extends Controller
                 $token = $this->getToken();
                 $headers = array('content-type' => 'application/json', 'Authorization' => $token);
                 $query = array(
-                    "sourceWallet" =>  $wallet->wallet_code,-
+                    "sourceWallet" =>  $wallet->wallet_code,
                     "recipientWallet" => $recipient_wallet->wallet_code,
                     "amount" => $request->amount,
                     "currency" => "NGN",
