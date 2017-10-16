@@ -33,6 +33,8 @@ i.sent{
 
     i.received{
       color: #dd4b39;
+      
+ }
     
     table {
     font-family: arial, sans-serif;
