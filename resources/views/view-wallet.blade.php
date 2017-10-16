@@ -84,7 +84,7 @@ tr:nth-child(even) {
   </tr>
   
 </table>
-</div>
+</div><br><br>
 
           <div class="">
 	<div class="orange-box"><h4 class="title" align="center"> {{ ucfirst($wallet->wallet_name) }} TRANSACTION HISTORY</h4></div><br>
