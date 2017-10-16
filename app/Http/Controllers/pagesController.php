@@ -127,7 +127,10 @@ class pagesController extends Controller
         $permit = Restriction::where('wallet_id', $wallet->id)
           ->where('uuid', Auth::user()->id)
           ->first();
-        if($permit == null) return redirect('/dashboard')->with('error', 'You do not have access to this wallet');
+        if($permit == null) 
+
+            Session::flash('error', 'You do not have access to this wallet');
+            return redirect('/dashboard');
 
         $cardWallet = CardWallet::latest()->first();
         

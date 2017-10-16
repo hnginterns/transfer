@@ -93,11 +93,6 @@ class UsermgtController extends Controller
               "created_at" => $dateNow
             ]);
 
-            $notification = array(
-                'message' => 'User created successfully.', 
-                'alert-type' => 'success'
-            );
-
             Session::flash('success', 'User created successfully.');
             return redirect()->to('/admin/users');
         }
