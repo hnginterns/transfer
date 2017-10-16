@@ -633,8 +633,10 @@
                 
             </div>
         </div>
+          </div>
+            
+            
 
-      </div>
         <!---Modal for transaction history-->
     <div class="modal fade" id="transaction-history">
           <div class="modal-dialog">
@@ -713,3 +715,4 @@
    
     <script type="text/javascript" src="js/phonetopup.js"></script>
     @endsection      
+ 
