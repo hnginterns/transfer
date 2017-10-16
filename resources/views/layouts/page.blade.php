@@ -116,7 +116,7 @@
                     
                      <li class="nav-item">
 
-                        <a class="nav-link" href="{{route('#')}}">Demo</a>
+                        <a class="nav-link" href="{{route('features')}}">Demo</a>
 
                     </li>
 
