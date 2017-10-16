@@ -2,7 +2,7 @@
 @section('title', 'Dashboard')
 @section('content')
     <link rel="stylesheet" href="/css/style.1.css">
-    <link rel="stylesheet" href="/css/main.css">
+    
 <div class="row">
         <div class="col-lg-12">
         <div class="content_two">
