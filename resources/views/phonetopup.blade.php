@@ -1,443 +1,723 @@
 @extends('layouts.user')
 @section('title', 'Dashboard')
 @section('content')
-    <link rel="stylesheet" href="/css/style.1.css">
-    
-<div class="row">
-        <div class="col-lg-12">
-        <div class="content_two">
-        <div class="row">
-        <div class="col-md-6" align="center" >
-            <div class="balance"align="center"  >
-                <h5>Balance</h5>
-                <div class="box" align="center">
-                        <p>Available <br>in Wallets<br>
-                        <strong>
-                            <?php
-                                  $curl = curl_init();
-                                  curl_setopt_array($curl, array(
-                                    CURLOPT_URL => "https://mobileairtimeng.com/httpapi/balance.php?userid=%2008189115870&pass=dbcc49ee2fba9f150c5e82",
-                                    CURLOPT_RETURNTRANSFER => true,
-                                    CURLOPT_ENCODING => "",
-                                    CURLOPT_MAXREDIRS => 10,
-                                    CURLOPT_TIMEOUT => 30,
-                                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                                    CURLOPT_CUSTOMREQUEST => "GET",
-                                    CURLOPT_HTTPHEADER => array(
-                                      "cache-control: no-cache",
-                                      "postman-token: 28c061c4-a48c-629f-3aa2-3e4cad0641ff"
-                                    ),
-                                  ));
-                                  $response = curl_exec($curl);
-                                  $err = curl_error($curl);
-                                  curl_close($curl);
-                                  if ($err) {
-                                    echo "cURL Error #:" . $err;
-                                  } else {
-                                    echo $response;
-                                  }
-                            ?>
-                            </strong></p>
-                </div>
-            </div>
-            </div>
-            <div class="col-md-6" align="center">
-            <div class="wallet">
-                    <h5>Refill Topup Wallet</h5>
-                    <p>Select Amount</p>
-                    <div class="button" align="center">
-                         <form>
-                            <button class="submit-amount" type="button" data-amount="500" value="500" id="submit">&nbsp; N500</button>
-                            <button class="submit-amount" type="button" data-amount="1000" value="1000" id="submit">&nbsp; N1000</button>
-                            <button class="submit-amount" type="button" data-amount="2000" value="2000" id="submit">&nbsp; N2000</button><br>
-                            <button class="submit-amount" type="button" data-amount="3000" value="3000" id="submit">&nbsp; N3000</button>
-                            <button class="submit-amount" type="button" data-amount="4000" value="4000" id="submit">&nbsp; N4000</button>
-                            <button class="submit-amount" type="button" data-amount="5000" value="5000" id="submit">&nbsp; N5000</button>
-                        </form>
+    <link rel="stylesheet" href="/css/custom.css">
+
+
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row" >
+        <div class="col-md-2">
+          <!----------side bar goes here ---->
+        </div>
+        <div class="col-md-10 border" id="body">
+            <div class="row" id="balanceDiv">
+                <div class="col-md-6 balance">
+                    <div class="balHolder">
+                      <h2>Wallet</h2>
+                      <div class="text-center" >
+                          <h3>Available Balance</h3>
+                          <p id="wallet-balance">#1,000,000</p>
+                      </div>
                     </div>
+                    <div class="balHolder">
+                      <h2>Phone Top Up</h2>
+                      <div class="text-center">
+                          <h3>Available Balance</h3>
+                          <p>#1,000,000</p>
+                      </div>
+                    </div>
+                </div> 
+                <div class="col-md-6">
+                    <h2>Refill Top Up Wallet</h2>
+                    <div id="wallet-topUpBtn" class="text-center">
+                        <h3>Select Amount</h3>
+                            <div class="row">
+                                  <div class="col-md-4">
+                                    <div class="ck-button">
+                                        <label>
+                                          <input type="checkbox" name=""> <span>500</span>
+                                        </label>
+                                     </div>
+                                  </div>
+                                  <div class="col-md-4">
+                                    <div class="ck-button">
+                                      <label>
+                                         <input type="checkbox" name=""> <span>1000</span>
+                                      </label>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4">
+                                    <div class="ck-button">
+                                      <label>
+                                        <input type="checkbox" name=""> <span>2000</span>
+                                      </label>
+                                    </div>
+                                  </div>
+                                </div>
+                                 <div class="row">
+                                     <div class="col-md-4">
+                                        <div class="ck-button">
+                                            <label>
+                                              <input type="checkbox" name=""> <span>5000</span>
+                                            </label>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-4">
+                                         <div class="ck-button">
+                                            <label>
+                                              <input type="checkbox" name=""> <span>10000</span>
+                                             </label>
+                                          </div>
+                                        </div>
+                                      <div class="col-md-4">
+                                          <div class="ck-button">
+                                              <label>
+                                                 <input type="checkbox" name=""> <span>100000</span>
+                                              </label>
+                                           </div>
+                                          </div>
+                                         </div>
+                         <button class="btn btn-primary btn-block">TOP UP WALLET</button>
+                    </div>
+                    
+                    
+                </div>            
             </div>
+            <div class="container-fiuld">
+                <div class="container text-center topUpHeader">
+                    <h2 style="">Top Up Prepaid Mobile Phones</h2>
+                </div>
+                 
             </div>
+            <div class="container-fiuld">
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="text-center benHeader">
+                            <h2>Select beneficiaries number</h2>
+                        </div>
+                        <div id="accordion" role="tablist" aria-multiselectable="true">
+                          <div class="card">
+                            <div class="card-header" role="tab" id="headingOne">
+                              <h5 class="mb-0">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                 Chef's okon Phone
+                                </a>
+                              </h5>
+                            </div>
+
+                            <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+                              <div class="row text-center">
+                                        <div class="col-md-6">
+                                            <div class="benName">
+                                                <h4>Chef<span>-417-879-60000</span></h4>
+                                            </div>
+                                            <div>
+                                                <button class="btn btn-primary history-btn" data-toggle="modal" data-target="#transaction-history">TopUp History <i class="fa fa-history" aria="hidden"></i></button>
+                                            </div>
+                                        </div>
+                                         <div class="col-md-6">
+                                            <h4 class="border">Choose Amount</h4>
+                                            <div class="top-up-btn">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                      <div class="ck-button">
+                                                        <label>
+                                                          <input type="checkbox" name=""> <span>500</span>
+                                                        </label>
+                                                      </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                      <div class="ck-button">
+                                                        <label>
+                                                          <input type="checkbox" name=""> <span>1000</span>
+                                                        </label>
+                                                      </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                      <div class="ck-button">
+                                                        <label>
+                                                          <input type="checkbox" name=""> <span>2000</span>
+                                                        </label>
+                                                      </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                      <div class="ck-button">
+                                                        <label>
+                                                          <input type="checkbox" name=""> <span>5000</span>
+                                                        </label>
+                                                      </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                      <div class="ck-button">
+                                                        <label>
+                                                          <input type="checkbox" name=""> <span>10000</span>
+                                                        </label>
+                                                      </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                      <div class="ck-button">
+                                                        <label>
+                                                          <input type="checkbox" name=""> <span>100000</span>
+                                                        </label>
+                                                      </div>
+                                                    </div>
+                                                    <!-- hidden input element to save network type and data selection-->
+                                                    <input class="network-type" type="hidden" name="network_type" value="">
+                                                    <input class="data-type" type="hidden" name="data_type" value="">
+                                                </div>
+                                            </div>
+                                        </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="card">
+                            <div class="card-header" role="tab" id="headingTwo">
+                              <h5 class="mb-0">
+                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                  CTO's Phone
+                                </a>
+                              </h5>
+                            </div>
+                            <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+                              <div class="card-block">
+                               <div class="row text-center">
+                                        <div class="col-md-6">
+                                            <div class="benName">
+                                                <h4>CTO<span>-417-879-60000</span></h4>
+                                            </div>
+                                            <div>
+                                                <button class="btn btn-primary">TopUp History <i class="fa fa-history" aria="hidden"></i></button>
+                                            </div>
+                                        </div>
+                                         <div class="col-md-6">
+                                            <h4 class="border">Choose Amount</h4>
+                                            <form method="post">
+                                              <div class="top-up-btn">
+                                                  <div class="row">
+                                                      <div class="col-md-4">
+                                                        <div class="ck-button">
+                                                          <label>
+                                                            <input type="checkbox" name=""> <span>500</span>
+                                                          </label>
+                                                        </div>
+                                                      </div>
+                                                      <div class="col-md-4">
+                                                        <div class="ck-button">
+                                                          <label>
+                                                            <input type="checkbox" name=""> <span>1000</span>
+                                                          </label>
+                                                        </div>
+                                                      </div>
+                                                      <div class="col-md-4">
+                                                        <div class="ck-button">
+                                                          <label>
+                                                            <input type="checkbox" name=""> <span>2000</span>
+                                                          </label>
+                                                        </div>
+                                                      </div>
+                                                  </div>
+                                                  <div class="row">
+                                                      <div class="col-md-4">
+                                                        <div class="ck-button">
+                                                          <label>
+                                                            <input type="checkbox" name=""> <span>5000</span>
+                                                          </label>
+                                                        </div>
+                                                      </div>
+                                                      <div class="col-md-4">
+                                                        <div class="ck-button">
+                                                          <label>
+                                                            <input type="checkbox" name=""> <span>10000</span>
+                                                          </label>
+                                                        </div>
+                                                      </div>
+                                                      <div class="col-md-4">
+                                                        <div class="ck-button">
+                                                          <label>
+                                                            <input type="checkbox" name=""> <span>100000</span>
+                                                          </label>
+                                                        </div>
+                                                      </div>
+                                                  </div>
+                                                  <input class="network-type" type="hidden" name="network_type" value="">
+                                                  <input class="data-type" type="hidden" name="data_type" value="">
+                                              </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="card">
+                            <div class="card-header" role="tab" id="headingThree">
+                              <h5 class="mb-0">
+                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                  Chairman's Phone
+                                </a>
+                              </h5>
+                            </div>
+                            <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+                              <div class="card-block">
+                               <div class="row text-center">
+                                        <div class="col-md-6">
+                                            <div class="benName">
+                                                <h4>Chairman<span>-417-879-60000</span></h4>
+                                            </div>
+                                            <div>
+                                                <button class="btn histoty-btn">TopUp History <i class="fa fa-history" aria="hidden"></i></button>
+                                            </div>
+                                        </div>
+                                         <div class="col-md-6">
+                                            <h4 class="border">Choose Amount</h4>
+                                            <form method="post">
+                                              <div class="top-up-btn">
+                                                  <div class="row">
+                                                      <div class="col-md-4">
+                                                        <div class="ck-button">
+                                                          <label>
+                                                            <input type="checkbox" name=""> <span>500</span>
+                                                          </label>
+                                                        </div>
+                                                      </div>
+                                                      <div class="col-md-4">
+                                                        <div class="ck-button">
+                                                          <label>
+                                                            <input type="checkbox" name=""> <span>1000</span>
+                                                          </label>
+                                                        </div>
+                                                      </div>
+                                                      <div class="col-md-4">
+                                                        <div class="ck-button">
+                                                          <label>
+                                                            <input type="checkbox" name=""> <span>2000</span>
+                                                          </label>
+                                                        </div>
+                                                      </div>
+                                                  </div>
+                                                  <div class="row">
+                                                      <div class="col-md-4">
+                                                        <div class="ck-button">
+                                                          <label>
+                                                            <input type="checkbox" name=""> <span>5000</span>
+                                                          </label>
+                                                        </div>
+                                                      </div>
+                                                      <div class="col-md-4">
+                                                        <div class="ck-button">
+                                                          <label>
+                                                            <input type="checkbox" name=""> <span>10000</span>
+                                                          </label>
+                                                        </div>
+                                                      </div>
+                                                      <div class="col-md-4">
+                                                        <div class="ck-button">
+                                                          <label>
+                                                            <input type="checkbox" name=""> <span>100000</span>
+                                                          </label>
+                                                        </div>
+                                                      </div>
+                                                  </div>
+                                                  <input class="network-type" type="hidden" name="network_type" value="">
+                                                      <input class="data-type" type="hidden" name="data_type" value="">
+                                              </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                              </div>
+                            </div>
+                          </div>
+                           <div class="card">
+                            <div class="card-header" role="tab" id="headingFour">
+                              <h5 class="mb-0">
+                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                  Chef's Phone
+                                </a>
+                              </h5>
+                            </div>
+                            <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour">
+                              <div class="card-block">
+                                <div class="row text-center">
+                                        <div class="col-md-6">
+                                            <div class="benName">
+                                                <h4>Chef<span>-417-879-60000</span></h4>
+                                            </div>
+                                            <div>
+                                                <button class="btn btn-primary">TopUp History <i class="fa fa-history" aria="hidden"></i></button>
+                                            </div>
+                                        </div>
+                                         <div class="col-md-6">
+                                            <h4 class="border">Choose Amount</h4>
+                                            <form method="post">
+                                            <div class="top-up-btn">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                      <div class="ck-button">
+                                                        <label>
+                                                          <input type="checkbox" name=""> <span>10000</span>
+                                                        </label>
+                                                      </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                      <div class="ck-button">
+                                                        <label>
+                                                          <input type="checkbox" name=""> <span>10000</span>
+                                                        </label>
+                                                      </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                      <div class="ck-button">
+                                                        <label>
+                                                          <input type="checkbox" name=""> <span>10000</span>
+                                                        </label>
+                                                      </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                      <div class="ck-button">
+                                                        <label>
+                                                          <input type="checkbox" name=""> <span>10000</span>
+                                                        </label>
+                                                      </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                      <div class="ck-button">
+                                                        <label>
+                                                          <input type="checkbox" name=""> <span>10000</span>
+                                                        </label>
+                                                      </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                      <div class="ck-button">
+                                                        <label>
+                                                          <input type="checkbox" name=""> <span>10000</span>
+                                                        </label>
+                                                      </div>
+                                                    </div>
+                                                </div>
+                                                <input class="network-type" type="hidden" name="network_type" value="">
+                                                      <input class="data-type" type="hidden" name="data_type" value="">
+                                            </div>
+                                          </form>
+                                        </div>
+                                    </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        
+                    </div>
+                    <div class="col-md-5" id="dataTopUp">
+                        <div class="text-center benHeader">
+                             <h2>TopUp Data Balance</h2>
+                        </div>
+                        <div class="row">
+                            <div class="switch-field">
+                              <input type="radio" id="switch_mtn" name="network" value="mtn" checked/>
+                              <label for="switch_mtn"><img src="img/mtn.png"></label>
+                              <input type="radio" id="switch_airtel" name="network" value="airtel" />
+                              <label for="switch_airtel"><img src="img/airtel.png"></label>
+                              <input type="radio" id="switch_9mobile" name="network" value="9mobile" />
+                              <label for="switch_9mobile"><img src="img/9mobile.png"></label>
+                              <input type="radio" id="switch_glo" name="network" value="glo" />
+                              <label for="switch_glo"><img src="img/glo.png"></label>
+                            </div>
+                        </div>
+                        <div class="data-bundles">
+                        <!-------------------------- MTN Bundle ---------------->
+                          <div class="box mtn">
+                            <div class="data-buddles-field">
+                              <input type="radio" id="switch_mtn_100" name="dataPlan" value="100" />
+                              <label for="switch_mtn_100">
+                                <div>
+                                  <p class="data-allocated">30mb</p>
+                                  <p class="data-bundle-duration">1 day</p>
+                                  <p class="data-amount">100</p>
+                                </div>
+                              </label>
+                              <input type="radio" id="switch_mtn_500" name="dataPlan" value="500" />
+                              <label for="switch_mtn_500">
+                                <div>
+                                  <p class="data-allocated">750mb</p>
+                                  <p class="data-bundle-duration">7 days</p>
+                                  <p class="data-amount">500</p>
+                                </div>
+                              </label>
+                              <input type="radio" id="switch_mtn_1000" name="dataPlan" value="1000" />
+                              <label for="switch_mtn_1000">
+                                <div>
+                                  <p class="data-allocated">1.5gb</p>
+                                  <p class="data-bundle-duration">30 days</p>
+                                  <p class="data-amount">1000</p>
+                                </div>
+                              </label>
+                              <input type="radio" id="switch_mtn_2000" name="dataPlan" value="2000" />
+                              <label for="switch_mtn_2000">
+                                <div>
+                                  <p class="data-allocated">3.5gb</p>
+                                  <p class="data-bundle-duration">30 days</p>
+                                  <p class="data-amount">2000</p>
+                                </div>
+                              </label>
+                            </div>
+                          </div>
+                          <!-------------  Airtel Data ---------------->
+                          <div class="box airtel">
+                            <div class="data-buddles-field">
+                              <input type="radio" id="switch_airtel_100" name="dataPlan" value="100" />
+                              <label for="switch_airtel_100">
+                                <div>
+                                  <p class="data-allocated">30mb</p>
+                                  <p class="data-bundle-duration">1 day</p>
+                                  <p class="data-amount">100</p>
+                                </div>
+                              </label>
+                              <input type="radio" id="switch_airtel_500" name="dataPlan" value="500" />
+                              <label for="switch_airtel_500">
+                                <div>
+                                  <p class="data-allocated">750mb</p>
+                                  <p class="data-bundle-duration">7 days</p>
+                                  <p class="data-amount">500</p>
+                                </div>
+                              </label>
+                              <input type="radio" id="switch_airtel_1000" name="dataPlan" value="1000" />
+                              <label for="switch_airtel_1000">
+                                <div>
+                                  <p class="data-allocated">1.5gb</p>
+                                  <p class="data-bundle-duration">30 days</p>
+                                  <p class="data-amount">1000</p>
+                                </div>
+                              </label>
+                              <input type="radio" id="switch_airtel_2000" name="dataPlan" value="2000" />
+                              <label for="switch_airtel_2000">
+                                <div>
+                                  <p class="data-allocated">3.5gb</p>
+                                  <p class="data-bundle-duration">30 days</p>
+                                  <p class="data-amount">2000</p>
+                                </div>
+                              </label>
+                              <input type="radio" id="switch_airtel_2500" name="dataPlan" value="2500" checked/>
+                              <label for="switch_airtel_2500">
+                                <div>
+                                  <p class="data-allocated">5gb</p>
+                                  <p class="data-bundle-duration">30 days</p>
+                                  <p class="data-amount">2500</p>
+                                </div>
+                              </label>
+                            </div>
+                          </div>
+                          <!-----------------  9mobile data plans ------------------>
+                          <div class="box 9mobile">
+                            <div class="data-buddles-field">
+                                <input type="radio" id="switch_9mobile_200" name="dataPlan" value="200" checked/>
+                                <label for="switch_9mobile_200">
+                                  <div>
+                                    <p class="data-allocated">200mb</p>
+                                    <p class="data-bundle-duration">7 days</p>
+                                    <p class="data-amount">500</p>
+                                  </div>
+                                </label>
+                                <input type="radio" id="switch_9mobile_1000" name="dataPlan" value="1000" checked/>
+                                <label for="switch_9mobile_1000">
+                                  <div>
+                                    <p class="data-allocated">1gb</p>
+                                    <p class="data-bundle-duration">30 days</p>
+                                    <p class="data-amount">1000</p>
+                                  </div>
+                                </label>
+                                <input type="radio" id="switch_9mobile_2000" name="dataPlan" value="2000" checked/>
+                                <label for="switch_9mobile_2000">
+                                  <div>
+                                    <p class="data-allocated">2.5gb</p>
+                                    <p class="data-bundle-duration">30 days</p>
+                                    <p class="data-amount">2000</p>
+                                  </div>
+                                </label>
+                                <input type="radio" id="switch_9mobile_2500" name="dataPlan" value="2500" checked/>
+                                <label for="switch_9mobile_2500">
+                                  <div>
+                                    <p class="data-allocated">3.5gb</p>
+                                    <p class="data-bundle-duration">30 days</p>
+                                    <p class="data-amount">2500</p>
+                                  </div>
+                                </label>
+                              </div>
+                            </div>
+                            <!------------------ glo bundle ------------>
+                            <div class="box glo">
+                              <!--
+                              <div class="data-buddles-field">
+                                <input type="radio" id="switch_glo_3200" name="dataPlan" value="3200" checked/>
+                                <label for="switch_glo_3200">
+                                  <div>
+                                    <p class="data-allocated">3.2gb</p>
+                                    <p class="data-bundle-duration">30 days</p>
+                                    <p class="data-amount">1000</p>
+                                  </div>
+                                </label>
+                                <input type="radio" id="switch_glo_7500" name="dataPlan" value="7500" checked/>
+                                <label for="switch_glo_7500">
+                                  <div>
+                                    <p class="data-allocated">7.5gb</p>
+                                    <p class="data-bundle-duration">30 days</p>
+                                    <p class="data-amount">2000</p>
+                                  </div>
+                                </label>
+                                <input type="radio" id="switch_glo_10000" name="dataPlan" value="10000" checked/>
+                                <label for="switch_glo_10000">
+                                  <div>
+                                    <p class="data-allocated">10gb</p>
+                                    <p class="data-bundle-duration">30 days</p>
+                                    <p class="data-amount">2500</p>
+                                  </div>
+                                </label>
+                                <input type="radio" id="switch_glo_12000" name="dataPlan" value="12000" checked/>
+                                <label for="switch_glo_12000">
+                                  <div>
+                                    <p class="data-allocated">12gb</p>
+                                    <p class="data-bundle-duration">30 days</p>
+                                    <p class="data-amount">3000</p>
+                                  </div>
+                                </label>
+                                <input type="radio" id="switch_glo_16000" name="dataPlan" value="6000" checked/>
+                                <label for="switch_glo_16000">
+                                  <div>
+                                    <p class="data-allocated">16gb</p>
+                                    <p class="data-bundle-duration">60 days</p>
+                                    <p class="data-amount">4000</p>
+                                  </div>
+                                </label>
+                                <input type="radio" id="switch_glo_24000" name="dataPlan" value="24000" checked/>
+                                <label for="switch_glo_24000">
+                                  <div>
+                                    <p class="data-allocated">24gb</p>
+                                    <p class="data-bundle-duration">30 days</p>
+                                    <p class="data-amount">5000</p>
+                                  </div>
+                                </label>
+                                <input type="radio" id="switch_glo_32gb" name="dataPlan" value="32000" checked/>
+                                <label for="switch_glo_32000">
+                                  <div>
+                                    <p class="data-allocated">32gb</p>
+                                    <p class="data-bundle-duration">30 days</p>
+                                    <p class="data-amount">8000</p>
+                                  </div>
+                                </label>
+                                <input type="radio" id="switch_glo_46000" name="dataPlan" value="46000" checked/>
+                                <label for="switch_glo_46000">
+                                  <div>
+                                    <p class="data-allocated">46gb</p>
+                                    <p class="data-bundle-duration">30 days</p>
+                                    <p class="data-amount">10000</p>
+                                  </div>
+                                </label>
+                                <input type="radio" id="switch_glo_60000" name="dataPlan" value="60000" checked/>
+                                <label for="switch_glo_60gb">
+                                  <div>
+                                    <p class="data-allocated">60gb</p>
+                                    <p class="data-bundle-duration">30 days</p>
+                                    <p class="data-amount">15000</p>
+                                  </div>
+                                </label>
+                                <input type="radio" id="switch_glo_90000" name="dataPlan" value="90000" checked/>
+                                <label for="switch_glo_90gb">
+                                  <div>
+                                    <p class="data-allocated">90gb</p>
+                                    <p class="data-bundle-duration">30 days</p>
+                                    <p class="data-amount">18000</p>
+                                  </div>
+                                </label>
+                              </div>
+                            </div>-->
+                        </div>
+                        <button class="btn btn-primary btn-block">TOP ALL</button>
+                       
+
+                    </div>
+                </div>
+                
             </div>
         </div>
-        <br />
-            <div class="thirdblock">
-            <div class="row">
-            <div class="col-lg-6">
-                    <h5>Top Up Prepaid Mobile Phone</h5>
-                    <div class="details">
-                       <div class="panel-group" id="accordion">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-        Chef's Phone </a>
-      </h4>
-    </div>
-    <div id="collapse1" class="panel-collapse collapse in">
-      <div class="panel-body">
-      <div class="row" >
-      <div class="col-md-6">
-      <p>Chef's Phone - <strong>417-873-60000</strong> </p>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Transaction History</button>
-      </div>
-       <div class="col-md-6"> 
-       <div class="selectamount">
-                                <div class="selecttopup"><h6>Select Amount <img src="images/naira.png" alt="naira" width="25px" height="25px" ></h6>
-                                    
-                                </div>
-                                <div class="reach">
-                                    <form action="script.php" method="POST">
-                                            <input type="submit" name="load500" id="load500" class="btn .btn-default"  value="500"/>
-                                            <input type="submit" name="load1000" id="load1000" class="btn .btn-default"  value="1000"/>
-                                            <input type="submit" name="load2000" id="load2000" class="btn .btn-default"  value="2000"/>
-                                            <input type="submit" name="load3000" id="load3000" class="btn .btn-default"  value="3000"/>
-                                            <input type="submit" name="load4000" id="load4000" class="btn .btn-default" value="4000"/>
-                                            <input type="submit" name="load5000" id="load5000 " class="btn .btn-default" value="5000"/>                                            
-                                    </form>
-                                </div>
-                               
-                            </div>
-       </div>
-      </div>
-                        
-                            
 
-      
       </div>
-    </div>
-  </div>
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-        CTO's Phone</a>
-      </h4>
-    </div>
-    <div id="collapse2" class="panel-collapse collapse">
-      <div class="panel-body">
-       <div class="row" >
-      <div class="col-md-6">
-      <p>CTO's Phone - <strong>417-873-60000</strong> </p>
-                        <button type="button" class="history" data-toggle="modal" data-target="#myModal">Transaction History</button>
-      </div>
-       <div class="col-md-6"> 
-       <div class="selectamount">
-                                <div class="selecttopup"><h6>Select Amount <img src="images/naira.png" alt="naira" width="25px" height="25px" ></h6>
-                                    
-                                </div>
-                                <div class="reach">
-                                    <form action="script.php" method="POST">
-                                            <input type="submit" name="load500" id="load500"  value="500"/>
-                                            <input type="submit" name="load1000" id="load1000" value="1000"/>
-                                            <input type="submit" name="load2000" id="load2000" value="2000"/>
-                                            <input type="submit" name="load3000" id="load3000" value="3000"/>
-                                            <input type="submit" name="load4000" id="load4000" value="4000"/>
-                                            <input type="submit" name="load5000" id="load5000 " value="5000"/>                                            
-                                    </form>
-                                </div>
-                               
-                            </div>
-       </div>
-      </div>
-      </div>
-    </div>
-  </div>
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-        HRM's Phone</a>
-      </h4>
-    </div>
-    <div id="collapse3" class="panel-collapse collapse">
-      <div class="panel-body">
-      <div class="row" >
-      <div class="col-md-6">
-      <p>HRM's Phone - <strong>417-873-60000</strong> </p>
-                        <button type="button" class="history" data-toggle="modal" data-target="#myModal">Transaction History</button>
-      </div>
-       <div class="col-md-6"> 
-       <div class="selectamount">
-                                <div class="selecttopup"><h6>Select Amount <img src="images/naira.png" alt="naira" width="25px" height="25px" ></h6>
-                                    
-                                </div>
-                                <div class="reach">
-                                    <form action="script.php" method="POST">
-                                            <input type="submit" name="load500" id="load500"  value="500"/>
-                                            <input type="submit" name="load1000" id="load1000" value="1000"/>
-                                            <input type="submit" name="load2000" id="load2000" value="2000"/>
-                                            <input type="submit" name="load3000" id="load3000" value="3000"/>
-                                            <input type="submit" name="load4000" id="load4000" value="4000"/>
-                                            <input type="submit" name="load5000" id="load5000 " value="5000"/>                                            
-                                    </form>
-                                </div>
-                               
-                            </div>
-       </div>
-      </div>
-      </div>
-      
-    </div>
-  </div>
-   <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
-        MD's Phone</a>
-      </h4>
-    </div>
-    <div id="collapse4" class="panel-collapse collapse">
-      <div class="panel-body">
-      <div class="row" >
-      <div class="col-md-6">
-      <p>MD's Phone - <strong>417-873-60000</strong> </p>
-                        <button type="button" class="history" data-toggle="modal" data-target="#myModal">Transaction History</button>
-      </div>
-       <div class="col-md-6"> 
-       <div class="selectamount">
-                                <div class="selecttopup"><h6>Select Amount <img src="images/naira.png" alt="naira" width="25px" height="25px" ></h6>
-                                    
-                                </div>
-                                <div class="reach">
-                                    <form action="script.php" method="POST">
-                                            <input type="submit" name="load500" id="load500"  value="500"/>
-                                            <input type="submit" name="load1000" id="load1000" value="1000"/>
-                                            <input type="submit" name="load2000" id="load2000" value="2000"/>
-                                            <input type="submit" name="load3000" id="load3000" value="3000"/>
-                                            <input type="submit" name="load4000" id="load4000" value="4000"/>
-                                            <input type="submit" name="load5000" id="load5000 " value="5000"/>                                            
-                                    </form>
-                                </div>
-                               
-                            </div>
-       </div>
-      </div>
-      </div>
-      
-    </div>
-  </div>
-   <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">
-        CSO's Phone</a>
-      </h4>
-    </div>
-    <div id="collapse5" class="panel-collapse collapse">
-      <div class="panel-body">
-      <div class="row" >
-      <div class="col-md-6">
-      <p>CSO's Phone - <strong>417-873-60000</strong> </p>
-                        <button type="button" class="history" data-toggle="modal" data-target="#myModal">Transaction History</button>
-      </div>
-       <div class="col-md-6"> 
-       <div class="selectamount">
-                                <div class="selecttopup"><h6>Select Amount <img src="images/naira.png" alt="naira" width="25px" height="25px" ></h6>
-                                    
-                                </div>
-                                <div class="reach">
-                                    <form action="script.php" method="POST">
-                                            <input type="submit" name="load500" id="load500"  value="500"/>
-                                            <input type="submit" name="load1000" id="load1000" value="1000"/>
-                                            <input type="submit" name="load2000" id="load2000" value="2000"/>
-                                            <input type="submit" name="load3000" id="load3000" value="3000"/>
-                                            <input type="submit" name="load4000" id="load4000" value="4000"/>
-                                            <input type="submit" name="load5000" id="load5000 " value="5000"/>                                            
-                                    </form>
-                                </div>
-                               
-                            </div>
-       </div>
-      </div>
-      </div>
-      
-    </div>
-  </div>
-   <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapse6">
-        DOCTOR's Phone</a>
-      </h4>
-    </div>
-    <div id="collapse6" class="panel-collapse collapse">
-      <div class="panel-body">
-      <div class="row" >
-      <div class="col-md-6">
-      <p>DOCTOR's Phone - <strong>417-873-60000</strong> </p>
-                        <button type="button" class="history" data-toggle="modal" data-target="#myModal">Transaction History</button>
-      </div>
-       <div class="col-md-6"> 
-       <div class="selectamount">
-                                <div class="selecttopup"><h6>Select Amount <img src="images/naira.png" alt="naira" width="25px" height="25px" ></h6>
-                                    
-                                </div>
-                                <div class="reach">
-                                    <form action="script.php" method="POST">
-                                            <input type="submit" name="load500" id="load500"  value="500"/>
-                                            <input type="submit" name="load1000" id="load1000" value="1000"/>
-                                            <input type="submit" name="load2000" id="load2000" value="2000"/>
-                                            <input type="submit" name="load3000" id="load3000" value="3000"/>
-                                            <input type="submit" name="load4000" id="load4000" value="4000"/>
-                                            <input type="submit" name="load5000" id="load5000 " value="5000"/>                                            
-                                    </form>
-                                </div>
-                               
-                            </div>
-       </div>
-      </div>
-      </div>
-      
-    </div>
-  </div>
-</div>
-                           
-                           
-                    </div>
-                    </div>
-                    <div class="col-lg-6" align="center">
-                    <div class="details2">
-                        <h6>TopUp Data Plans</h6><hr>
-                        <div class="panel-group" id="credit">
-                        <ul>
-                            <li> <button type="button"  data-parent="#credit" data-toggle="collapse" data-target="#9mobile"><img src="img/1.png" width="40" height="40" alt="9mobile"> </button></li> 
-                            <li> <button type="button" data-parent="#credit"  data-toggle="collapse" data-target="#mtn"><img src="img/2.png" width="40" height="40" alt="mtn"> </button></li> 
-                            <li> <button  type="button" data-parent="#credit" data-toggle="collapse" data-target="#airtel"><img src="img/3.png" width="40" height="40" alt="airtel"></button> </li> 
-                            <li> <button  type="button" data-parent="#credit" data-toggle="collapse" data-target="#glo"><img src="img/4.png" width="40" height="40" alt="glo"> </button></li> <hr>
-                        </ul>
-                        <div id="9mobile" class=" panel-collapse collapse in" >
-                        <div class="panel">
-                        <div class="data">
-                            <form action="datascript.php" method="POST">
-                               <button type="submit" name="data1000" id="data1000"  value="1000">1.5Gb <br> 30days<br> <strong>N1,000</strong></button>
-                               <button type="submit" name="data2000" id="data2000"  value="2000">3.5Gb <br> 30days<br> <strong>N2,000</strong> </button>
-                               <button type="submit" name="data3000" id="data3000"  value="3000">5Gb <br> 30days<br> <strong>N2,500</strong> </button>
-                               <br>
-                               <button type="submit" name="data4000" id="data4000"  value="4000">7Gb <br> 30days<br> <strong>N3,500</strong> </button>
-                               <button type="submit" name="data5000" id="data5000"  value="5000">9Gb <br> 30days<br> <strong>N4,000</strong> </button>
-                               <button type="submit" name="data6000" id="data6000"  value="6000">10Gb <br> 30days<br> <strong>N5,000</strong> </button>
-                            </form>
-                           </div>
-                           </div>
-                        </div>
-                        <div id="mtn" class="panel-collapse collapse" >
-                        <div class="data">
-                        <form action="datascript.php" method="POST">
-                               <button type="submit" name="data1000" id="data1000"  value="1000">1.5Gb <br> 30days<br> <strong>N1,000</strong></button>
-                               <button type="submit" name="data2000" id="data2000"  value="2000">3.5Gb <br> 30days<br> <strong>N2,000</strong> </button>
-                               <button type="submit" name="data3000" id="data3000"  value="3000">5Gb <br> 30days<br> <strong>N2,500</strong> </button>
-                               <br>
-                               <button type="submit" name="data4000" id="data4000"  value="4000">7Gb <br> 30days<br> <strong>N3,500</strong> </button>
-                               <button type="submit" name="data5000" id="data5000"  value="5000">9Gb <br> 30days<br> <strong>N4,000</strong> </button>
-                               <button type="submit" name="data6000" id="data6000"  value="6000">10Gb <br> 30days<br> <strong>N5,000</strong> </button>
-                            </form>
-                        </div>
-                        </div>
-                        <div id="airtel" class="panel-collapse collapse" >
-                        <div class="data">
-                       <form action="datascript.php" method="POST">
-                               <button type="submit" name="data1000" id="data1000"  value="1000">1.5Gb <br> 30days<br> <strong>N1,000</strong></button>
-                               <button type="submit" name="data2000" id="data2000"  value="2000">3.5Gb <br> 30days<br> <strong>N2,000</strong> </button>
-                               <button type="submit" name="data3000" id="data3000"  value="3000">5Gb <br> 30days<br> <strong>N2,500</strong> </button>
-                               <br>
-                               <button type="submit" name="data4000" id="data4000"  value="4000">7Gb <br> 30days<br> <strong>N3,500</strong> </button>
-                               <button type="submit" name="data5000" id="data5000"  value="5000">9Gb <br> 30days<br> <strong>N4,000</strong> </button>
-                               <button type="submit" name="data6000" id="data6000"  value="6000">10Gb <br> 30days<br> <strong>N5,000</strong> </button>
-                            </form>
-                        </div>
-                        </div>
-                        <div id="glo" class="panel-collapse collapse" >
-                        <div class="data">
-                       <form action="datascript.php" method="POST">
-                               <button type="submit" name="data1000" id="data1000"  value="1000">1.5Gb <br> 30days<br> <strong>N1,000</strong></button>
-                               <button type="submit" name="data2000" id="data2000"  value="2000">3.5Gb <br> 30days<br> <strong>N2,000</strong> </button>
-                               <button type="submit" name="data3000" id="data3000"  value="3000">5Gb <br> 30days<br> <strong>N2,500</strong> </button>
-                               <br>
-                               <button type="submit" name="data4000" id="data4000"  value="4000">7Gb <br> 30days<br> <strong>N3,500</strong> </button>
-                               <button type="submit" name="data5000" id="data5000"  value="5000">9Gb <br> 30days<br> <strong>N4,000</strong> </button>
-                               <button type="submit" name="data6000" id="data6000"  value="6000">10Gb <br> 30days<br> <strong>N5,000</strong> </button>
-                            </form>
-                        </div>
-                        </div>
-                        <br />
-                        <br />
+        <!---Modal for transaction history-->
+    <div class="modal fade" id="transaction-history">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Transaction History</h4>
+              </div>
+              <div class="modal-body">
+              <div class="box-header with-border">
+                <h3 class="box-title"> Details</h3>
+              </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <form role="form">
+                <!-- text input -->
+                <div class="form-group">
+                  <label>Email</label>
+                  <input class="form-control" value="johseph.mbassey2@gmail.com"  type="Email" disabled>
+                </div>
+                <div class="form-group">
+                  <label>Username</label>
+                  <input class="form-control" value="Jonesky"  type="text" disabled>
+                </div>
+                <div class="form-group">
+                  <label>Password</label>
+                  <input class="form-control" value="***********"  type="Password" disabled>
+                </div>
 
+                <div class="form-group">
+                  <label>Api Id</label>
+                  <input class="form-control" value="jjdcjf68fv25s8dxe4cvvrf8r8frf"  type="text" disabled>
+                </div>
+                 <div class="form-group">
+                  <label>Top-Up Amount</label>
+                  <input class="form-control"  type="text" >
+                </div>
+                <div class="pagination">
+                    <ul>
+                      <i><a href="">previous</a></li>
+                      <li class="active"><a href="">1</a></li>
+                      <li><a href="">2</a></li>
+                      <li><a href="">3</a></li>
+                      <li><a href="">4</a></li>
+                      <i><a href="">last</a></li>
+                    </ul>
+                </div>
+                <div class="controls">
+                   <button type="button" class="btn btn-default">Cancel</button>
+                </div>
+              </form>
 
-                        </div>
-                    </div>
-                     
-                    <input type="button" class="topupbutton" value="TOP ALL">
+              </div>
+              
             </div>
-            
-            
-            </div>
-            </div>
-            
-            
-           </div>
-           
-            </div>
-            <section>
-    <div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog modal-lg">
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+     
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Transaction History</h4>
-      </div>
-      <div class="modal-body" >
-        <div align="center" >
-  <a href="#" data-toggle="popover" title="Popover Header" data-content="Some content inside the popover"></a>
-<table class="table table-size table-striped">
-  <tr>
-    <th class="modal-table">This Week - September, 2017</th>
-    <th class="modal-table">Number Approved by: Admin</th>
-  </tr>
-  <tr>
-    <td class="modal-table">Thursday    9:39pm</td>
-    <td class="modal-table">Phone Topup (N2000)</td>
-   </tr>
-  <tr>
-    <td class="modal-table">Tuesday 10:05pm </td>
-    <td class="modal-table">Data Topup (1.5GB - N1000) 30days</td>
-  </tr>
-  <tr>
-    <td class="modal-table">Tuesday 9:39am  </td>
-    <td class="modal-table">Phone Topup (N1000)</td>
-  </tr>
-  <tr>
-    <th class="modal-table" colspan="2">Previous Weeks - September, 2017</th>
-  </tr>
-  <tr>
-    <td class="modal-table">Thursday    9:39pm</td>
-    <td class="modal-table">Phone Topup (N2000)</td>
-  </tr>
-  <tr>
-    <td class="modal-table">Tuesday 10:05pm</td>
-    <td class="modal-table">Data Topup (1.5GB - N1000) 30days</td>
-  </tr>
-  <tr>
-    <td class="modal-table">Tuesday 9:39am </td>
-    <td class="modal-table">Phone Topup (N1000)</td>
-  </tr>
-  <tr>
-    <td class="modal-table">Thursday    9:39pm</td>
-    <td class="modal-table">Phone Topup (N1000)</td>
-  </tr>
-  <tr>
-    <td class="modal-table">Tuesday 10:05pm</td>
-    <td class="modal-table">Data Topup (1.5GB - N1000) 30days</td>
-  </tr>
-</table>
-</div>
-      </div>
-    </div>
 
-  </div>
-</div>
-    </section>
-    <script type="text/javascript" src="http://flw-pms-dev.eu-west-1.elasticbeanstalk.com/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
-    <script type="text/javascript" src="js/wallet.js"></script>
-@endsection      
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery.min.js"><\/script>')</script>-->
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+    <!--Customize javascript -->
+
+   
+    <script type="text/javascript" src="js/phonetopup.js"></script>
+    @endsection      
