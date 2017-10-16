@@ -71,10 +71,10 @@ tr:nth-child(even) {
                   
            <table>
   <tr>
-    <th><font color="blue">Wallet Name</font></th>
-    <th><font color="blue">Wallet ID</font></th>
-    <th><font color="blue"> Currency Type</font></th>
-    <th><font color="blue">Balance</font></th>
+    <th><font color="#39689C">Wallet Name</font></th>
+    <th><font color="#39689C">Wallet ID</font></th>
+    <th><font color="#39689C"> Currency Type</font></th>
+    <th><font color="#39689C">Balance</font></th>
   </tr>
   <tr>
     <td> {{ $wallet->wallet_name }}</td>
