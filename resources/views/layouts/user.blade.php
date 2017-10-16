@@ -18,7 +18,7 @@
 
 </head>
 
-<body>
+<body style="background-color:#fff;">
     @include('layouts.user-nav') 
 
     <div class="container-fluid" style="margin-top: 60px;">
