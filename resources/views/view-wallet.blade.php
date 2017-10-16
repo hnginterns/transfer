@@ -37,6 +37,8 @@ i.sent{
 </style>
 
 <link rel="stylesheet" href="/css/walletview.css">
+   <!-- Trigger the modal with a button -->
+        <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#beneficiaryModal">Add Beneficiary</button>
 <!-- Trigger the modal with a button -->
   <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#myModal">Fund</button>
   
@@ -173,8 +175,7 @@ i.sent{
   
 
      <div class="container">
-        <!-- Trigger the modal with a button -->
-        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#beneficiaryModal">Add Beneficiary</button>
+     
       <!--Add sms Account  Modal -->
           <div class="modal fade" id="myModal" role="dialog">
             <div class="modal-dialog">
