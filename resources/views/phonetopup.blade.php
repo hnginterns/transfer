@@ -87,12 +87,12 @@
                                 </div>
                                 <div class="reach">
                                     <form action="script.php" method="POST">
-                                            <input type="submit" name="load500" id="load500"  value="500"/>
-                                            <input type="submit" name="load1000" id="load1000" value="1000"/>
-                                            <input type="submit" name="load2000" id="load2000" value="2000"/>
-                                            <input type="submit" name="load3000" id="load3000" value="3000"/>
-                                            <input type="submit" name="load4000" id="load4000" value="4000"/>
-                                            <input type="submit" name="load5000" id="load5000 " value="5000"/>                                            
+                                            <input type="submit" name="load500" id="load500" class="btn .btn-default"  value="500"/>
+                                            <input type="submit" name="load1000" id="load1000" class="btn .btn-default"  value="1000"/>
+                                            <input type="submit" name="load2000" id="load2000" class="btn .btn-default"  value="2000"/>
+                                            <input type="submit" name="load3000" id="load3000" class="btn .btn-default"  value="3000"/>
+                                            <input type="submit" name="load4000" id="load4000" class="btn .btn-default" value="4000"/>
+                                            <input type="submit" name="load5000" id="load5000 " class="btn .btn-default" value="5000"/>                                            
                                     </form>
                                 </div>
                                
