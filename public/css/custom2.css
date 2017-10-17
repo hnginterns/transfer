@@ -1,6 +1,5 @@
 .navbar {
 	background-color: #ffffff;
-	color: #000;
     border-radius: 0px;
     height: 80px;
     width: 100%;
@@ -55,7 +54,6 @@
 	background: #F7F7F7;
 	color: #333333;
 }
-
 .content {
 	margin-top: 80px;
 	}

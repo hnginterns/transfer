@@ -53,7 +53,7 @@
         }
         .about-content{
             width:70%;
-            padding:30px;
+            padding:20px;
             margin-top:20px;
             margin-bottom:-200px;
             margin-left:auto;
@@ -901,7 +901,7 @@
         </div>
         <div class="col-lg-4">
         <div class="icon"><img src="img/maze.png" alt="icon" /></div>
-        <h5 class="about-title">How it works</h5>
+        <h5 class="about-title">Easy Usage</h5>
         <p class="about-paragraph">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate! Ab assumenda aliquam sint 
         necessitatibus at pariatur quidem dolorem quaerat doloribus, 
