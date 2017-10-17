@@ -55,9 +55,10 @@
             width:70%;
             padding:20px;
             margin-top:20px;
-            margin-bottom:-40px;
+            margin-bottom:-70px;
             margin-left:auto;
             margin-right:auto;
+            background:#fff;
             z-index:1000 !important;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
