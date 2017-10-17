@@ -951,7 +951,7 @@
         <p>&#169; 2017 Transferrules.com. All rights reserved</p>
     </div>
 </div>
-
+<br><br>
 <div id="mobile-footer">
     <table>
         <tr>
