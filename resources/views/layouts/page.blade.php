@@ -9,15 +9,14 @@
 
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>Finance@hotels.ng</title>
+    <title>FAQs</title>
 
-    <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet">
-
-    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
-
-    <link href="{{asset('css/signin.css')}}" rel="stylesheet">
-
-    <link href="{{asset('css/custom2.css')}}"
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <!-- Custom styles for this template -->
+    <link href="css/custom2.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
 
     </head>
 
