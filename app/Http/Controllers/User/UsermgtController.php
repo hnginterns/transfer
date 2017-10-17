@@ -229,6 +229,7 @@ class UsermgtController extends Controller
     public function deleteUser(Request $request, User $user){
         $user->forceDelete();
         Session::flash('success', 'User deleted successfully.');
+        //returns back
         return back();
     }
 
