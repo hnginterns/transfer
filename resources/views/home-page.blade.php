@@ -307,10 +307,11 @@
         }
         #divider-top{
             width: 125%;
-            height: 150px;
+            height: 200px;
             background: #39689C;
             margin-bottom:-40px;
             margin-right:-20px;
+            z-index:-1;
             -webkit-transform-origin: 100% 0;
   -ms-transform-origin:0 100%;
   transform-origin: 0 100% ;
