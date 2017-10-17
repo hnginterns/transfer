@@ -330,7 +330,7 @@
             grid-template-columns: 70% 30%;
             padding: 30px 30px;
             background: white;
-            text-align: left;
+            text-align: center;
         }
 
         #divider-cta {
@@ -340,7 +340,7 @@
             grid-row: 1/3;
             width: fit-content;
             height: fit-content;
-            background: #2AA6E8;
+            background: #39689C;
             color: #FFFFFF;
             border: none;
             padding: 12px 16px;
@@ -363,8 +363,9 @@
         }
 
         #divider-title {
-            color: #2AA6E8;
-            font-size: 20px;
+            color: #39689C;
+            text-align:center;
+            font-size: 30px;
             font-weight: bold;
             letter-spacing: 0.04em;
             margin: 0px;
@@ -931,13 +932,14 @@
 <!-- DIVIDER -->
 <div id="divider-top"></div>
 <div id="divider">
-    <div id="divider-content">
+    <div id="divider-content" align="center">
         <div id="divider-text">
-            <p id="divider-title">Get Started in Five Minutes</p>
+            <p align="center" id="divider-title">Get Started in Five Minutes</p>
             <p id="">
                 Create an account in less than 5 minutes. Login to your account and create wallets for your company
             </p>
         </div>
+        <br />
         <button id="divider-cta">Read More</button>
     </div>
 </div><br><br><p>
