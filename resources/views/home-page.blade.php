@@ -50,7 +50,6 @@
         }
         .about{
             height:700px;
-            z-index:100 !important;
         }
         .about-content{
             width:70%;
@@ -313,7 +312,8 @@
             background: #39689C;
             margin-bottom:-50px;
             margin-left:-20px;
-            z-index:1;
+            position:relative;
+            z-index:-1;
             -webkit-transform-origin: 100% 0;
   -ms-transform-origin:0 100%;
   transform-origin: 0 100% ;
