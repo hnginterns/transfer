@@ -11,7 +11,7 @@
     <title>FAQs</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstraps.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <script type="text/javascript" src="js/jquery.js"></script>
     <!-- Custom styles for this template -->
     <link href="css/custom2.css" rel="stylesheet">
