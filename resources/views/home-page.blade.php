@@ -873,24 +873,21 @@
         <div class="icon"><img src="img/multiple-shots.png" alt="icon" /> </div>
         <h5 class="about-title">Multiple Wallet Support</h5>
         <p class="about-paragraph">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate! Ab assumenda aliquam sint 
-        necessitatibus at pariatur quidem dolorem quaerat doloribus, similique 
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate 
         </p>
         </div>
         <div class="col-lg-4">
         <div class="icon"><img src="img/Group.png" alt="icon" /></div>
         <h5 class="about-title">Credit/Data Top Up</h5>
         <p class="about-paragraph">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate! Ab assumenda aliquam sint 
-        necessitatibus at pariatur quidem dolorem quaerat doloribus, similique 
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate
         </p>
         </div>
         <div class="col-lg-4">
         <div class="icon"><img src="img/smartphone-chat.png" alt="icon" /></div>
         <h5 class="about-title">Bulk SMS Integration</h5>
         <p class="about-paragraph">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate! Ab assumenda aliquam sint 
-        necessitatibus at pariatur quidem dolorem quaerat doloribus, similique 
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate
         </div>
 </div>
 <div class="row" style="z-index:1001;">
@@ -898,24 +895,21 @@
         <div class="icon"><img src="img/live-chat.png" alt="icon" /></div>
         <h5 class="about-title">Live Chat</h5>
         <p class="about-paragraph">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate! Ab assumenda aliquam sint 
-        necessitatibus at pariatur quidem dolorem quaerat doloribus,
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate
         </p>
         </div>
         <div class="col-lg-4">
         <div class="icon"><img src="img/credit-card.png" alt="icon" /></div>
         <h5 class="about-title">Reliable Payment Method</h5>
         <p class="about-paragraph">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate! Ab assumenda aliquam sint 
-        necessitatibus at pariatur quidem dolorem quaerat doloribus, 
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate
         </p>
         </div>
         <div class="col-lg-4">
         <div class="icon"><img src="img/maze.png" alt="icon" /></div>
         <h5 class="about-title">How it works</h5>
         <p class="about-paragraph">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate! Ab assumenda aliquam sint 
-        necessitatibus at pariatur quidem dolorem quaerat doloribus, 
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate 
         </p>
         </div>
     </div>
