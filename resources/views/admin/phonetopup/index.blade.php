@@ -83,12 +83,12 @@
                                                 <div class="modal-body" style="padding: 5px;">
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                                                            <input class="form-control" name="first_name" placeholder="Name" type="text" required />
+                                                            <input class="form-control" name="first_name" placeholder="First Name" type="text" required />
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                                                            <input class="form-control" name="last_name" placeholder="Name" type="text" required />
+                                                            <input class="form-control" name="last_name" placeholder="Last Name" type="text" required />
                                                         </div>
                                                     </div>
                                                     <div class="row">
