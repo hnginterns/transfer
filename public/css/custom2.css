@@ -1,6 +1,5 @@
 .navbar {
 	background-color: #ffffff;
-	color: #000;
     border-radius: 0px;
     height: 80px;
     width: 100%;
@@ -19,8 +18,7 @@
 	
 }
 .navbar-brand img{
-	
-	 height: 50px;
+    height: 50px;
     margin-left: 20px;
     margin-bottom: 2%;
     transition: all ease 0.8s;
@@ -55,7 +53,6 @@
 	background: #F7F7F7;
 	color: #333333;
 }
-
 .content {
 	margin-top: 80px;
 	}
