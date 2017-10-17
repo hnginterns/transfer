@@ -55,7 +55,7 @@ class PhoneTopUpController extends Controller
             $phone = new SmsWalletFund();
             $phone->firstName = $input['first_name'];
             $phone->lastName = $input['first_name'];
-            $phone->phone = $input['phone'];
+            $phone->phoneNumber = $input['phone'];
             $phone->amount = 0;
             $phone->ref = $input['network'];
             
