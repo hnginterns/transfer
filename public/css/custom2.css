@@ -18,8 +18,7 @@
 	
 }
 .navbar-brand img{
-	
-	 height: 50px;
+    height: 50px;
     margin-left: 20px;
     margin-bottom: 2%;
     transition: all ease 0.8s;
@@ -49,15 +48,93 @@
 .userId {
 	margin: 8%;
 }
+
+.navbar-nav ml-auto {
+color: #000 !important;
+}
 #navbars-nav .form-inline .form-control {
 	width: 20em;
 	background: #F7F7F7;
 	color: #333333;
 }
+
+.nav-item active {
+	color: #000;
+	
+}
+
 .content {
 	margin-top: 80px;
-	height: 500px;
+	}
+
+
+
+/* main body styles */
+
+
+ <!-- content starts  -->
+
+
+.content {
+    
+    width: 60%;
+    width: 60%;
+    margin: auto;
+    font-family: lato;
+    font-size: 16px;
 }
+
+.mainBody {
+    width: 60%;
+    margin: auto;
+    font-family: lato;
+    font-size: 16px;
+}
+
+#header {
+    Font-Family: Nunito Sans;
+    Font-Style: SemiBold;
+    color: #2CACF0;
+    text-transform: uppercase;
+    margin-top: 100px;
+    font-family: nato;
+}
+
+button.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+button.accordion.active, button.accordion:hover {
+    background-color: #ccc;
+}
+
+div.panel {
+    padding: 0 18px;
+    background-color: #2CACF0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    line-height: 30px;
+    font-size: 18px;
+}
+
+
+/* content ends */
+
+
+
+
 #footer .footer-link-header{
 	color: #BDBDBD;
 	border-bottom: 1px solid #BDBDBD;
