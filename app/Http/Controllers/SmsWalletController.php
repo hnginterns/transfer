@@ -141,8 +141,7 @@ class SmsWalletController extends Controller
 
         $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer', $headers, $body);
         $response = json_decode($response->raw_body, TRUE);
-        //var_dump($response);
-        //die();
+        
         if($response['status'] == 'success') {
             $response = $response['data']['transfer'];
             $meta = $response['meta'];
@@ -159,11 +158,10 @@ class SmsWalletController extends Controller
 
             $transaction->save();
 
-
             return back()->with('status', $transMsg);
-
+        }else{
+            return back()->with('status', 'Transaction Failed');
         }
-        var_dump($response);
     }
 
     public function Otp(Request $request)
