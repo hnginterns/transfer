@@ -54,8 +54,8 @@
         .about-content{
             width:70%;
             padding:20px;
-            margin-top:15px;
-            margin-bottom:15px;
+            margin-top:20px;
+            margin-bottom:25px;
             margin-left:auto;
             margin-right:auto;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
