@@ -843,10 +843,10 @@
         
         <div id="content-text" class="clearfix" align="center">
         <span id="heading-top-hd">
-        Online payments made easy
+        Online Payments Made Easy
                 </span>
                 <span id="heading-hd">
-                   Payant is an easy way for you to pay and get paid any where
+                This Finance tool is an easy way for you to pay and get paid anywhere
                 </span>
             <button id="button-hd">
                 Get Started
