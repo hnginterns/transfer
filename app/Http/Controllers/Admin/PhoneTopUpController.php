@@ -13,7 +13,6 @@ use App\SmsWalletFund;
 use App\CardWallet;
 use App\Restriction;
 use App\Rule;
-use DB;
 use App\Beneficiary;
 use App\Transaction;
 use Carbon\Carbon;
