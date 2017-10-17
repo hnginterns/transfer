@@ -26,7 +26,7 @@
 
         #header {
             width: 100%;
-            height: 100%; 
+            height: 850px; 
 
     /* Center and scale the image nicely */
     background-position: center !important;
@@ -433,7 +433,7 @@
         @media only screen and (max-width: 1250px) {
             /* HEADER BODY STYLE */
             #header {
-                width: 100%;
+                width: 850px;
                                /* Full height */
     height: 100%; 
 
@@ -505,7 +505,7 @@
             #header {
                 width: 100%;
                 /* Full height */
-    height: 100%; 
+    height: 800px; 
 
     /* Center and scale the image nicely */
     background-position: center !important;
@@ -581,7 +581,7 @@
         @media only screen and (max-width: 800px) {
             #header {
                 /* Full height */
-                height: 100%; 
+                height: 650px; 
                 width:100%;
     /* Center and scale the image nicely */
     background-position: center !important;
