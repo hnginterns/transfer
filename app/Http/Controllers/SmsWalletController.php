@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use URL;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\SmsWallet;
@@ -86,7 +87,8 @@ class SmsWalletController extends Controller
         ];
         $body = Unirest\Request\Body::form($data);
         $response = Unirest\Request::post($url, $headers, $data);
-        echo json_encode($response->body);
+        
+        return redirect()->to(URL::previous())->with('response', $response->body);
     }
 
     public function generate_ref()
