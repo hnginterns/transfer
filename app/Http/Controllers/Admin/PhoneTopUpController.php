@@ -35,8 +35,15 @@ class PhoneTopUpController extends Controller
             [
             'first_name' => 'required|string',
             'last_name' => 'required|string',
-            'phone' => 'required|numeric|unique',
+            'phone' => 'required|numeric',
             'network' => 'required',
+            ],
+                                     [
+            'first_name.required' => 'First name is required',
+            'last_name.required' => 'Last name is required',
+            'phone.required' => 'Phone Number is required',
+            'phone.numeric' => 'Phone Number must be in numbers',
+            'network.required' => 'Please select a network',
             ]
          );
         
