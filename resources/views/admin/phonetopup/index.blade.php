@@ -55,7 +55,7 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            <h4 class="modal-title">Add New Phone NUmber</h4>
+                                            <h4 class="modal-title">Add New Phone Number</h4>
                                         </div>
                                         <div class="modal-body">
                                             <form action="{{ url('admin/add-phone') }}" method="post" accept-charset="utf-8">
@@ -197,14 +197,12 @@
                                                                     <input class="form-control" autocomplete="off" maxlength="3" pattern="\d{3}" title="Three digits at back of your card" required="" type="text" name="cvv">
                                                                 </div>
                                                             </div>
-
                                                             <div class="col-md-3">
                                                                 <label>Pin</label>
                                                                 <div class="controls">
                                                                     <input class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="pin" required="" type="text" name="pin">
                                                                 </div>
                                                             </div>
-
                                                             <div class="col-md-6">
                                                                 <label>Amount</label>
                                                                 <div class="input-group">
@@ -283,51 +281,27 @@
                                 <td>Name</td>
                                 <td>phone Number</td>
                                 <td>Network</td>
+                                <td>Amount Left</td>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>John Doe</td>
-                                <td>07061926206</td>
-                                <td>MTN</td>
-
-                            </tr>
-                            <tr>
-                                <td>Joseph Bassey</td>
-                                <td>07061926206</td>
-                                <td>GLO</td>
-
-
-                            </tr>
-                            <tr>
-                                <td>Miracle Usen</td>
-                                <td>07061926206</td>
-                                <td>MTN</td>
-
-
-                            </tr>
-                            <tr>
-                                <td>Joy shalom</td>
-                                <td>07061926206</td>
-                                <td>9Mobile</td>
-
-
-                            </tr>
-                            <tr>
-                                <td>Agnes Obudi</td>
-                                <td>07061926206</td>
-                                <td>Airtel</td>
-
-
-                            </tr>
-                            <tr>
-                                <td>Augustine Bassey</td>
-                                <td>07061926206</td>
-                                <td>MTN</td>
-
-
-                            </tr>
-                            </tr>
+                            @if(count($phones) > 0)
+                              @foreach($phones as $phone)
+                                <tr>
+                                    <td>{{ $phone->firstName }} {{ $phone->lastName }}</td>
+                                    <td>{{ $phone->phone }}</td>
+                                    <td>{{ $phone->ref }}</td>
+                                    <td>{{ $phone->amount }}</td>
+                                </tr>
+                              @endforeach
+                            @else
+                               <tr>
+                                  <td></td>
+                                  <td>No Phone Number Added</td>
+                                  <td></td>
+                                  <td></td>
+                              </tr>
+                            @endif
                         </tbody>
                     </table>
                     <hr>
