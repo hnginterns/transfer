@@ -59,10 +59,6 @@ class pagesController extends Controller
         return view('about');
     }
 
-    public function forgot()
-    {
-        return view('forgot');
-    }
 
     public function signout()
     {

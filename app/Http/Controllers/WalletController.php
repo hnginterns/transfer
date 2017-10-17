@@ -181,7 +181,8 @@ class WalletController extends Controller
                 // print_r($response_arr);
                 
                 $status = $response_arr['status'];
-                $r_data = $response_arr['data'];  
+                dd($response);
+                // $r_data = $response_arr['data'];  
 
                 if ($status == 'success') {
                     
