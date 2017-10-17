@@ -9,6 +9,7 @@
           </button>    
           </div>
           <form class="navbar-form navbar-right">
+          <div cass="nav-search">
             <input type="text" class="form-control" placeholder="Search...">
        
                   </ul>
