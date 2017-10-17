@@ -176,7 +176,6 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
 	//Permission ends
 	
 	Route::get('/', 'Admin\AdminController@index')->name('admin.dashboard');
-	Route::get('/phonetopup', 'Admin\AdminController@phoneTopupView');
 	//admin user management starts
 	Route::resource('users', 'User\UsermgtController');
 	Route::post('users/banUser/{id}', 'User\UsermgtController@banUser');
@@ -196,7 +195,10 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
 	//admin sms transaction ends here
 
 	Route::get('analytics', 'Admin\AdminController@webAnalytics');
+	
+	//Phone topup starts here
+	Route::get('/phonetopup', 'Admin\AdminController@phoneTopupView');
 	Route::get('/topup/phone', 'Admin\PhoneTopUpController@topup');
-
+	Route::post('/add-phone', 'Admin\PhoneTopUpController@addPhone');
 });
 
