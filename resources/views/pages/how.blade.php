@@ -1,4 +1,4 @@
-@extends('layouts.page')
+@extends('layouts.pages')
 @section('main-text', 'FREQUENTLY ASKED QUESTION (FAQs)')
 @section('sub-text', 'Finance@ Hotels.ng lets an admin manage bills and fund disbursement')
 @section('content')
