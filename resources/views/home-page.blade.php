@@ -928,7 +928,7 @@
         </div>
         <button id="divider-cta">Read More</button>
     </div>
-</div>
+</div><br><br><p>
 <!-- FOOTER -->
 
 <div id="footer">
