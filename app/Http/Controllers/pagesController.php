@@ -77,7 +77,7 @@ class pagesController extends Controller
 
     public function walletSuccess()
     {
-        return view('wallet-transfer-success');
+        return view('successWallet');
     }
 
     public function failed($response)

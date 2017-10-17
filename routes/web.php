@@ -15,6 +15,8 @@ Route::get('notify','WalletController@notifyme');
 Route::get('freq',function(){
 	return view('faq');
 });
+
+Route::get('/mypdf', 'HomeController@pdf');
 // get default home pages
 Route::get('/', 'pagesController@home')->name('home');
 
