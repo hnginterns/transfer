@@ -881,7 +881,7 @@
         necessitatibus at pariatur quidem dolorem quaerat doloribus, similique 
         </div>
 </div>
-<div class="row">
+<div class="row" style="z-index:1001;">
         <div class="col-lg-4">
         <div class="icon"><img src="img/live-chat.png" alt="icon" /></div>
         <h5 class="about-title">How it works</h5>
