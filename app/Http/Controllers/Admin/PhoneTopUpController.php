@@ -52,8 +52,8 @@ class PhoneTopUpController extends Controller
             return redirect()->to(URL::previous())->with('failed', $messages);
         } else {
             $phone = new SmsWalletFund();
-            $phone->first_name = $input['first_name'];
-            $phone->last_name = $input['first_name'];
+            $phone->firstName = $input['first_name'];
+            $phone->lastName = $input['first_name'];
             $phone->phone = $input['phone'];
             $phone->amount = 0;
             $phone->ref = $input['network'];
