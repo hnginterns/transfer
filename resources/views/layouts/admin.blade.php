@@ -65,7 +65,7 @@
 
 <section class="content">
 
-  @include('partials.messages')
+
 
       <div class="row">
 
