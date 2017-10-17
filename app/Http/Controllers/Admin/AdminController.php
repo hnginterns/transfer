@@ -13,6 +13,7 @@ use App\Wallet;
 use App\CardWallet;
 use App\Restriction;
 use App\Rule;
+use App\SmsWalletFund;
 use DB;
 use App\Beneficiary;
 use App\Transaction;
@@ -29,7 +30,8 @@ class AdminController extends WalletController
 
     public function phoneTopupView()
     {
-        return view('admin.phonetopup.index');
+        $phones = SmsWalletFund::all();
+        return view('admin.phonetopup.index')->with('phones', $phones);
     }
 
     public function index()
