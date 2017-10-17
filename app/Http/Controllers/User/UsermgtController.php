@@ -173,9 +173,8 @@ class UsermgtController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        $user = User::find($id);
         $user->forceDelete();
         Session::flash('success', 'User deleted successfully.');     
         return back();
