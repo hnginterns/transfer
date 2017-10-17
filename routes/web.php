@@ -176,7 +176,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
 	//Permission ends
 	
 	Route::get('/', 'Admin\AdminController@index')->name('admin.dashboard');
-	
+	Route::get('/phonetopup', 'Admin\AdminController@phoneTopupView');
 	//admin user management starts
 	Route::resource('users', 'User\UsermgtController');
 	Route::post('users/banUser/{id}', 'User\UsermgtController@banUser');
