@@ -176,9 +176,9 @@ class UsermgtController extends Controller
     public function destroy($id)
     {
         $user = User::find($id);
-        $user->delete();
-        $name = Auth::user()->username;
-        return redirect('/admin/users')->with("name", $name);
+        $user->forceDelete();
+        Session::flash('success', 'User deleted successfully.');     
+        return back();
     }
 
 
@@ -226,11 +226,5 @@ class UsermgtController extends Controller
 
     }
 
-    public function forceDeleteUser(Request $request, User $user){
-        $user->forceDelete();
-        Session::flash('success', 'User deleted successfully.');
-        //returns back
-        return back();
-    }
 
 }

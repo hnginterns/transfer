@@ -62,9 +62,9 @@
                 @endif
                 </td>
                   <td>
-                <form action="{{config('app.url')}}/admin/users/delete/{{ $user['id'] }}" onsubmit="return confirm('Are you sure you want to delete this user permanently?')" method="post">
+                <form action="{{config('app.url')}}/admin/users/{{$user['id']}}" onsubmit="return confirm('Are you sure you want to delete this user permanently?')" method="post">
                     {{csrf_field()}}
-                    
+                    {{method_field('DELETE')}}
                     <button class="btn btn-danger" type="submit">Delete User</button>
                 </form>
                 </td>
