@@ -21,7 +21,7 @@
 <body>
 
     <nav class="navbar navbar-expand-md navbar-light fixed-top">
-        <a class="navbar-brand" href="#"><img src="img/logo3.png" alt="logo"></a>
+        <a class="navbar-brand" href="https://finance.hotels.ng/"><img src="img/logo.png" alt="logo"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" 
 			data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" 
 			aria-expanded="false" aria-label="Toggle navigation">
@@ -29,7 +29,7 @@
       </button>
 
         <div class="collapse navbar-collapse pull-right" id="navbarsExampleDefault">
-            <ul class="navbar-nav mr-auto ">
+            <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                     <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
                 </li>
