@@ -201,9 +201,10 @@ class WalletController extends Controller
                     //$recipient_wallet->save();
                     // end of update wallet balance
 
-
-                    $this->sendWalletTransactionNotifications($w_transaction);
                     
+                    $this->sendWalletTransactionNotifications($w_transaction);
+                    $transaction = WalletTransaction::latest()->first();
+                    \LogUserActivity::addToLog($transaction->source->wallet_name.' transferred '.$transaction->amount.' to '.$transaction->destination->wallet_name);
                     return redirect()->action('pagesController@success');
                 } else {
                     $response = $r_data;
@@ -281,12 +282,14 @@ class WalletController extends Controller
                     $transaction->save();
                     //end of logic for saving transactions
 
-                    $wallet->balance -= $request->amount;
-                    $wallet->save();
+                    //$wallet->balance -= $request->amount;
+                    //$wallet->save();
 
                     $this->sendBankTransactionNotifications($transaction);
 
                     event(new TransferToBank($bank));
+                    $transactions = BankTransaction::latest()->first();
+                    \LogUserActivity::addToLog(auth()->user()->name.'transferred '.$transactions->amount.' from '. $transactions->source->wallet_name.' to '.$transactions->beneficiary->name);
                     return redirect('success')->with('status',$data);
                 } else {
                     return redirect()->back()->with('failed',$response['message']);

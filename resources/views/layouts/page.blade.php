@@ -20,31 +20,60 @@
 
 <body>
 
-  <nav class="navbar navbar-expand-md navbar-light fixed-top">
-      <a class="navbar-brand" href="https://finance.hotels.ng/"><img src="img/logo.png" alt="logo"></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+<nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{url('/')}}"><img id="logo" src="/img/HNGlogo.png" alt="TransferRules logo" style="display: inline;"> TransferRules</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li ><a href="{{url('/')}}">Home</a></li>
+                    <li class="{{ Request::segment(1) === 'how' ? 'active' : null }}" ><a href="{{route('how')}}">FAQs</a></li>
+                    <li class="{{ Request::segment(1) === 'features' ? 'active' : null }}"><a href="{{route('features')}}">Features</a></li>
+                    <li class="{{ Request::segment(1) === 'about' ? 'active' : null }}"><a href="{{route('about')}}">About<span class="sr-only">(current)</span></a></li>
 
-      <div class="collapse navbar-collapse pull-right" id="navbarsExampleDefault">
-        <ul class="navbar-nav ml-auto ">
-          <li class="nav-item active">
-            <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="projects.html">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{route('how')}}">FAQ</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="blog.html">Dashboard</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link btn nav-btn" href="blogpage.html">Sign in</a>
-          </li>
-        </ul>
-      </div>
+                    @if(Auth::guest())
+                        <li id="sign-in"><a href="{{url('/login')}}">Sign In</a></li>
+                    @else
+                        <li id="sign-in">
+                        <a href="{{ url('/logout') }}">
+                            Logout
+                        </a>
+                      </li>
+
+                          @if(Auth::user()->isAdmin())
+                          </li>  
+                            <li  class="hidden-lg hidden-lg-up">
+                            <a href="{{ url('/admin') }}">
+                            <i class="fa fa-dashboard fa-lg"></i> Admin Dashboard
+                            </a>
+                          </li>
+                            @else
+
+                            <li id="sign-in">
+                            <a href="{{ url('/dashboard') }}">
+                                Dashboard
+                            </a>
+                          </li>
+
+                          @endif
+
+                      
+
+                    @endif
+
+
+
+
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
     </nav>
 
 
