@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Admin;
 use Auth;
 use URL;
+use Redirect;
 use App\WalletTransaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -50,7 +51,6 @@ class PhoneTopUpController extends Controller
             $messages = $validator->messages()->toArray();
             return redirect()->to(URL::previous())->with('failed', $messages);
         } else {
-            /*
             $phone = new SmsWalletFund();
             $phone->firstName = $input['first_name'];
             $phone->lastName = $input['first_name'];
@@ -59,7 +59,6 @@ class PhoneTopUpController extends Controller
             $phone->ref = $input['network'];
             
             return redirect()->to('admin/phonetopup');
-            */
         }
     }
 }
