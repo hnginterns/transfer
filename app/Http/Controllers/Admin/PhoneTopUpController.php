@@ -32,17 +32,10 @@ class PhoneTopUpController extends Controller
         $input = $request->all();
         
         $validator = Validator::make($input, [
-            'first_name' => 'required',
-            'last_name' => 'required',
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
             'phone' => 'required|numeric|unique',
             'network' => 'required'
-            ],
-            [
-                'first_name.required' => 'First Name is required',
-                'last_name.required' => 'Last Name is required',
-                'phone.required' => 'Phone Number is required',
-                'phone.numeric' => 'Phone Number must be in numbers',
-                'network.required' => 'Please select a network'
             ]
          );
         
