@@ -936,7 +936,7 @@
         </div>
         <button id="divider-cta">Read More</button>
     </div>
-</div>
+</div><br><br><p>
 <!-- FOOTER -->
 
 <div id="footer">
@@ -959,7 +959,7 @@
         <p>&#169; 2017 Transferrules.com. All rights reserved</p>
     </div>
 </div>
-
+<br><br><p>
 <div id="mobile-footer">
     <table>
         <tr>
