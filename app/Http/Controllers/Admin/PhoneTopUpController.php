@@ -58,7 +58,7 @@ class PhoneTopUpController extends Controller
             $phone->amount = 0;
             $phone->ref = $input['network'];
             
-            return redirect()->to(URL::previous())->with('success', "Phone number added successfully");
+            return redirect()->to('admin/phonetopup');
         }
     }
 }
