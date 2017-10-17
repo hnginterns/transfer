@@ -55,7 +55,7 @@
             width:70%;
             padding:20px;
             margin-top:20px;
-            margin-bottom:-160px;
+            margin-bottom:-200px;
             margin-left:auto;
             margin-right:auto;
             background:#fff;
@@ -355,7 +355,7 @@
         #divider-title {
             color: #39689C;
             text-align:center;
-            font-size: 30px;
+            font-size: 40px;
             font-weight: bold;
             letter-spacing: 0.04em;
             margin: 0px;
