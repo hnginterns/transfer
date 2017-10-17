@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Transfer Rules</title>
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- <link rel="stylesheet" href="css/style.css"> -->
@@ -301,7 +302,13 @@
             width: 100%;
             height: 300px;
             padding: 70px 170px;
-            background: #333333;
+            background: #39689C;
+            -webkit-transform-origin: 100% 0;
+  -ms-transform-origin: 100% 0;
+  transform-origin: 100% 0;
+  -webkit-transform: rotate(-2deg);
+  -ms-transform: rotate(-2deg);
+  transform: rotate(-2deg);
         }
 
         #divider-content {
@@ -361,11 +368,13 @@
             color:#39689C;
             font-size:24px;
             text-align:center;
+            font-family: 'Nunito Sans', sans-serif;
         }
         .about-paragraph{
             color:#404040;
-            font-size:18px;
+            font-size:16px;
             text-align:center;
+            font-family: Lato-Regular,sans-serif!important;
         }
         /* DIVIDER STYLE ENDS */
 
@@ -546,7 +555,7 @@
                 width: 100%;
                 height: 300px;
                 padding: 30px 100px;
-                background: #306B8E;
+                background: #39689C;
             }
 
         }
@@ -702,7 +711,7 @@
                 width: 100%;
                 height: fit-content;
                 padding: 70px 30px;
-                background: #333333;
+                background: #39689C;
             }
 
             #divider-content {
