@@ -860,7 +860,7 @@
                 This Finance tool is an easy way for you to pay and get paid anywhere
                 </span>
             <button id="button-hd">
-                Sign In
+                <a href="{{url('login')}}">Sign In</a>
             </button>
         </div>
     </div>
