@@ -267,7 +267,7 @@
             </section>
 
             <!-- Main content -->
-            <section class="content container" id="bulksms" style="margin-right: 0px;margin-left: 0px;padding-left: 0px;padding-right: 0px;">
+            <section class="content container" id="bulksms" style="margin-right: 0px;margin-left: 0px;">
                 <div class="container">
                     <hr>
                     <p>
