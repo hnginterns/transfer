@@ -55,7 +55,7 @@
             width:70%;
             padding:20px;
             margin-top:20px;
-            margin-bottom:-70px;
+            margin-bottom:-130px;
             margin-left:auto;
             margin-right:auto;
             background:#fff;
