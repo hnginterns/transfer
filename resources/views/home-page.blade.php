@@ -26,10 +26,12 @@
 
         #header {
             width: 100%;
-            height: 650px;
-            /* background: linear-gradient(180deg, #358CAA 1.49%, #F87373 98.73%); */
-            /* background: #333333; */
-            background-size: 100% 650px !important;
+            height: 100%; 
+
+    /* Center and scale the image nicely */
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
         }
         #logo {
             
@@ -431,7 +433,14 @@
         @media only screen and (max-width: 1250px) {
             /* HEADER BODY STYLE */
             #header {
-                height: 650px;
+                width: 100%;
+                               /* Full height */
+    height: 100%; 
+
+    /* Center and scale the image nicely */
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
             }
 
             #header-content {
@@ -494,13 +503,14 @@
         @media only screen and (max-width: 1090px) {
             /* HEADER BODY STYLE */
             #header {
+                width: 100%;
                 /* Full height */
     height: 100%; 
 
     /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
             }
 
             #header-content {
@@ -571,12 +581,12 @@
         @media only screen and (max-width: 800px) {
             #header {
                 /* Full height */
-    height: 100%; 
-
+                height: 100%; 
+                width:100%;
     /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
             }
             .features-icons {
                 display: inline;
@@ -849,7 +859,7 @@
                 This Finance tool is an easy way for you to pay and get paid anywhere
                 </span>
             <button id="button-hd">
-                Get Started
+                Sign In
             </button>
         </div>
     </div>
