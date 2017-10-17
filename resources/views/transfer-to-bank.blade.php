@@ -7,7 +7,7 @@
 
 <link rel="stylesheet" href="/css/form.css">
 
-            <img src="https://cdn2.iconfinder.com/data/icons/euro-corporative/512/bank_finance_cash_dollar_purchase_money_transfer_buy_v2_euro_european-512.png" width="200" height="100">
+            <img src="https://cdn2.iconfinder.com/data/icons/euro-corporative/512/bank_finance_cash_dollar_purchase_money_transfer_buy_v2_euro_european-512.png" width="400" height="400">
                   @if(session('failed'))
                   
                   <div class="alert alert-danger">
