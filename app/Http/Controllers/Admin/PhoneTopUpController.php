@@ -2,7 +2,6 @@
 namespace App\Http\Controllers\Admin;
 use Auth;
 use URL;
-use Redirect;
 use App\WalletTransaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
