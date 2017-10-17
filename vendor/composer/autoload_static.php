@@ -423,7 +423,6 @@ class ComposerStaticInitcb56c8f99153a160391720319584c667
         'App\\Listeners\\FundWalletBalance' => __DIR__ . '/../..' . '/app/Listeners/FundWalletBalance.php',
         'App\\Listeners\\UpdateWalletBalance' => __DIR__ . '/../..' . '/app/Listeners/UpdateWalletBalance.php',
         'App\\Listeners\\WalletTransferBalance' => __DIR__ . '/../..' . '/app/Listeners/WalletTransferBalance.php',
-        'App\\LogUserActivity' => __DIR__ . '/../..' . '/app/LogUserActivity.php',
         'App\\Notifications\\BankTransaction' => __DIR__ . '/../..' . '/app/Notifications/BankTransaction.php',
         'App\\Notifications\\PasswordReset' => __DIR__ . '/../..' . '/app/Notifications/PasswordReset.php',
         'App\\Notifications\\WalletTransaction' => __DIR__ . '/../..' . '/app/Notifications/WalletTransaction.php',
