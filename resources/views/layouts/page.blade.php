@@ -29,7 +29,7 @@
       </button>
 
         <div class="collapse navbar-collapse pull-right" id="navbarsExampleDefault">
-            <ul class="navbar-nav ml-auto ">
+            <ul class="navbar-nav mr-auto ">
                 <li class="nav-item active">
                     <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
                 </li>
