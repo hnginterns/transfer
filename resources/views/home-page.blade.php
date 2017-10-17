@@ -920,7 +920,7 @@
 <div id="divider">
     <div id="divider-content" align="center">
         <div id="divider-text">
-            <p align="center" id="divider-title">Get Started in Five Minutes</p>
+            <p align="center" id="divider-title">Sign up in Five Minutes</p>
             <p id="">
                 Create an account in less than 5 minutes. Login to your account and create wallets for your company
             </p>
