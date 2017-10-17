@@ -35,8 +35,15 @@ class PhoneTopUpController extends Controller
             [
             'first_name' => 'required|string',
             'last_name' => 'required|string',
-            'phone' => 'required|numeric|unique',
+            'phone' => 'required|numeric',
             'network' => 'required',
+            ],
+                                     [
+            'first_name.required' => 'First name is required',
+            'last_name.required' => 'Last name is required',
+            'phone.required' => 'Phone Number is required',
+            'phone.numeric' => 'Phone Number must be in numbers',
+            'network.required' => 'Please select a network',
             ]
          );
         
@@ -47,8 +54,8 @@ class PhoneTopUpController extends Controller
             
             $phone = new SmsWalletFund();
             $phone->firstName = $input['first_name'];
-            $phone->lastName = $input['first_name'];
-            $phone->phone = $input['phone'];
+            $phone->lastName = $input['last_name'];
+            $phone->phoneNumber = $input['phone'];
             $phone->amount = 0;
             $phone->ref = $input['network'];
             
