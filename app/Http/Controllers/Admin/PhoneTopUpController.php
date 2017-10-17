@@ -27,6 +27,10 @@ class PhoneTopUpController extends Controller
     {
         return view('phonetopup');
     }
+    
+    public function addPhone(Request $request){
+        
+    }
 }
 
     
