@@ -1,41 +1,21 @@
 
 @extends('layouts.admin')
-<style>
-   .content-wrapper{
-       margin: 0px;
-   }
-   .content-header{
-       padding: 30px;
-   }
-   .content {
-       margin-right: 0px;
-       margin-left: 0px;
-       padding-left: 0px;
-       padding-right: 0px;
-   }
-   .table {
-       width: 70%;
-   }
-</style>
 @section('content')
  <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
+        <div class="content-wrapper" style="margin:0px;">
             <!-- Content Header (Page header) -->
-            <section class="content-header">
+            <section class="content-header" style="padding: 30px;">
                 <div class="row">
                     <div class="col-lg-6">
                         <h4 id="balance">Top-up Balance: ₦ 20,520</h4>
                         <div>
                             <button type="button" class="btn btn-info" data-toggle="modal" data-target="#PurchaseTopUp">Purchase</button>
-
                         </div>
                         <div class="container">
                             <!-- Trigger the modal with a button -->
-
                             <!-- Modal -->
                             <div class="modal fade" id="PurchaseTopUp" role="dialog">
                                 <div class="modal-dialog">
-
                                     <!-- Modal content-->
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -43,10 +23,8 @@
                                             <h4 class="modal-title">Transfer To Service Provider</h4>
                                         </div>
                                         <div class="modal-body">
-
                                             <form action="#" method="post" accept-charset="utf-8">
                                                 <div class="modal-body" style="padding: 5px;">
-
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
                                                             <input class="form-control" name="text" placeholder="Account number" type="text" required />
@@ -58,36 +36,21 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                
                                                 <div class="panel-footer" style="margin-bottom:-14px;">
                                                     <input type="submit" class="btn btn-success" value="Save" />
-                                                    <button style="float: right;" type="button" class="btn btn-default btn-close" data-dismiss="modal">Close
-                    
-                                                    </button>
+                                                    <button style="float: right;" type="button" class="btn btn-default btn-close" data-dismiss="modal">Close</button>
                                                 </div>
                                             </form>
-
                                         </div>
-
                                     </div>
-
                                 </div>
                             </div>
-
                         </div>
-
-
-
-
-
-
                         <div class="container">
                             <!-- Trigger the modal with a button -->
-
                             <!-- Modal -->
                             <div class="modal fade" id="myModal" role="dialog">
                                 <div class="modal-dialog">
-
                                     <!-- Modal content-->
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -130,34 +93,24 @@
                                                     </button>
                                                 </div>
                                             </form>
-
-
                                         </div>
-
                                     </div>
-
                                 </div>
                             </div>
-
                         </div>
-
-
                     </div>
                     <div class="col-lg-3 ">
                         <h4 id="balance">Wallet Balance: ₦ 20,520</h4>
                         <div>
                             <button type="button" class="btn btn-info" data-toggle="modal" data-target="#walletTopUp">Top Up Wallet</button>
-
                         </div>
                     </div>
-
                     <!---Modal for wallet top Up-->
                     <div class="modal fade" id="walletTopUp">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span></button>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                     <h4 class="modal-title text-center">Phone Wallet Top Up</h4>
                                 </div>
                                 <div class="modal-body">
@@ -192,21 +145,18 @@
                                                         <label>Phone Number</label>
                                                         <div class="controls">
                                                             <input name="phone" class="form-control" autocomplete="off" maxlength="20" required="" type="text">
-
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Email Address</label>
                                                         <div class="controls">
                                                             <input name="emailaddr" class="form-control" autocomplete="off" required="" type="text">
-
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Card Number</label>
                                                         <div class="controls">
                                                             <input name="card_no" class="form-control" autocomplete="off" maxlength="20" required="" type="text">
-
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
@@ -215,26 +165,26 @@
                                                             <div class="row">
                                                                 <div class="col-md-9">
                                                                     <select class="form-control" name="expiry_month">
-                                      <option value="01">January</option>
-                                      <option value="02">February</option>
-                                      <option value="03">March</option>
-                                      <option value="04">April</option>
-                                      <option value="05">May</option>
-                                      <option value="06">June</option>
-                                      <option value="07">July</option>
-                                      <option value="08">August</option>
-                                      <option value="09">September</option>
-                                      <option value="10">October</option>
-                                      <option value="11">November</option>
-                                      <option value="12">December</option>
-                                  </select>
+                                                                       <option value="01">January</option>
+                                                                       <option value="02">February</option>
+                                                                       <option value="03">March</option>
+                                                                       <option value="04">April</option>
+                                                                       <option value="05">May</option>
+                                                                       <option value="06">June</option>
+                                                                       <option value="07">July</option>
+                                                                       <option value="08">August</option>
+                                                                       <option value="09">September</option>
+                                                                       <option value="10">October</option>
+                                                                       <option value="11">November</option>
+                                                                       <option value="12">December</option>
+                                                                   </select>
                                                                 </div>
                                                                 <div class="col-md-3">
-                                                                    <select class="form-control" name="expiry_year">
-                                   @for ($i = 2017;$i <2040;$i++)
-                                      <option>{{$i}}</option>
-                                   @endfor  
-                                  </select>
+                                                                  <select class="form-control" name="expiry_year">
+                                                                    @for ($i = 2017;$i <2040;$i++)
+                                                                       <option>{{$i}}</option>
+                                                                    @endfor  
+                                                                   </select>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -284,8 +234,7 @@
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span></button>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                             <h4 class="modal-title text-center">Wallet Top Up</h4>
                                         </div>
                                         <div class="modal-body">
@@ -310,9 +259,7 @@
                                                     </div>
                                                     <input type="button" class="btn btn-block btn-success" name="" id="topu1p" value="Top-Up">
                                                 </form>
-
                                             </div>
-
                                         </div>
                                         <!-- /.modal-content -->
                                     </div>
@@ -322,23 +269,15 @@
             </section>
 
             <!-- Main content -->
-            <section class="content container" id="bulksms">
+            <section class="content container" id="bulksms" style="margin-right: 0px;margin-left: 0px;padding-left: 0px;padding-right: 0px;">
                 <!--<h3 class="text-center">EbulkSMS Account</h3>
-
-      <!--------------------------
-        | Your Page Content Here |
-        -------------------------->
-
-
                 <div class="container">
                     <hr>
-
                     <p>
                         <h3>Phone Numbers </h3>
                         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Add New Phone</button>
                     </p>
-
-                    <table class="table">
+                    <table class="table" style="width:70%;">
                         <thead>
                             <tr>
                                 <td>Name</td>
