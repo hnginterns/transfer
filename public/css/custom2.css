@@ -48,11 +48,21 @@
 .userId {
 	margin: 8%;
 }
+
+.navbar-nav ml-auto {
+color: #000 !important;
+}
 #navbars-nav .form-inline .form-control {
 	width: 20em;
 	background: #F7F7F7;
 	color: #333333;
 }
+
+.nav-item active {
+	color: #000;
+	
+}
+
 .content {
 	margin-top: 80px;
 	}
