@@ -98,7 +98,7 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                                                           <select class="form-control" name="Network">
+                                                           <select class="form-control" name="network">
                                                             <option selected value="">Choose Network</option>
                                                             <option value="MTN">MTN</option>
                                                             <option value="GLO">GLO</option>
