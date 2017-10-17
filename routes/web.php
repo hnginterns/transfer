@@ -15,10 +15,13 @@ Route::get('notify','WalletController@notifyme');
 Route::get('freq',function(){
 	return view('faq');
 });
+
+Route::get('/mypdf', 'HomeController@pdf');
 // get default home pages
 Route::get('/', 'pagesController@home')->name('home');
 
 Route::get('/logout', function () {
+	\LogUserActivity::addToLog(Auth::user()->username.' logged out successfully');
 	Auth::logout();
 	Session::flush();
 	return redirect('/login');
@@ -142,6 +145,8 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
 	Route::post('/{wallet_code}/fund', 'WalletController@cardWallet');
 	Route::post('/otp', 'WalletController@otp');
 	//Wallet fund ends
+
+	Route::get('logActivity', 'Admin\AdminController@logActivity');
 
 	Route::get('/fundwallet', 'Admin\AdminController@fundwallet');
 	Route::post('/{wallet_code}/fund', 'WalletController@cardWallet');

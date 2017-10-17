@@ -35,4 +35,11 @@ class HomeController extends Controller
         return $wal->canTransfer() ? "Transaction can Proceed" : "Transaction Failed! You have reached your Transaction Limit for the day";
     }
 
+    public function pdf()
+    {
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML('<h1>Test</h1>');
+        return $pdf->stream();
+    }
+
 }

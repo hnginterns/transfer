@@ -1,156 +1,66 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs</title>
 
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <title>Finance@hotels.ng</title>
-
-    <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet">
-
-    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
-
-    <link href="{{asset('css/signin.css')}}" rel="stylesheet">
-
-    <link href="{{asset('css/custom2.css')}}"
-
-    <style>
-        
-       
-        #footer {
-            margin-top: 90px;
-        }
-       
-        /* FOOTER STYLE */
-        #mobile-footer {
-            display: none;
-        }
-        #footer {
-            text-align: center;
-        }
-        #footer-links,
-        #footer-heading {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr;
-        }
-        #footer-links {
-            grid-row-gap: 10px;
-        }
-        #footer-heading {
-            margin-bottom: 20px;
-        }
-        #footer-heading a {
-            text-transform: uppercase;
-            font-weight: bold;
-            color: #333333;
-        }
-        #footer-links a {
-            color: #4F4F4F;
-        }
-        #footer li {
-            list-style: none;
-        }
-        #line {
-            height: 1px;
-            width: 100%;
-            padding: 0px 200px;
-            background:  #BDBDBD ;
-            margin: 30px 0px;
-        }
-        </style>
-       </head>
-
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <!-- Custom styles for this template -->
+    <link href="css/custom2.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
+</head>
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-
+<nav class="navbar navbar-default">
         <div class="container-fluid">
-
-
-
-            <a class="navbar-brand" href="{{url('/')}}">
-
-                <img src="logo3.png" width="30" height="30" class="d-inline-block align-top" alt=""> Finance@hotels.ng
-
-            </a>
-
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-
-                aria-expanded="false" aria-label="Toggle navigation">
-
-                <span class="navbar-toggler-icon">#</span>
-
-            </button>
-
-
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-                <ul class="navbar-nav mr-auto">
-
-
-
-                </ul>
-
-                <ul class="navbar-nav">
-
-                    <li class="nav-item">
-
-                        <a class="nav-link" href="{{url('/')}}">Home
-
-                            <span class="sr-only">(current)</span>
-
-                        </a>
-
-                    </li>
-
-                    <li class="nav-item">
-
-                        <a class="nav-link" href="{{route('about')}}">About</a>
-
-                    </li>
-                    
-                     <li class="nav-item">
-
-                        <a class="nav-link" href="{{route('features')}}">Demo</a>
-
-                    </li>
-
-                    <li class="nav-item">
-
-                        <a class="nav-link" href="{{route('how')}}">FAQs</a>
-
-                    </li>
-
-                    
-                    <li class="nav-item active">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{url('/')}}"><img id="logo" src="/img/HNGlogo.png" alt="TransferRules logo" style="display: inline;"> TransferRules</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li ><a href="{{url('/')}}">Home</a></li>
+                    <li class="{{ Request::segment(1) === 'how' ? 'active' : null }}" ><a href="{{route('how')}}">FAQs</a></li>
+                    <li class="{{ Request::segment(1) === 'features' ? 'active' : null }}"><a href="{{route('features')}}">Features</a></li>
+                    <li class="{{ Request::segment(1) === 'about' ? 'active' : null }}"><a href="{{route('about')}}">About<span class="sr-only">(current)</span></a></li>
 
                     @if(Auth::guest())
-                        <a class="nav-link" href="{{url('/login')}}">Sign In</a>
+                        <li id="sign-in"><a href="{{url('/login')}}">Sign In</a></li>
                     @else
-                        
-                        <a class="nav-link" href="{{ url('/logout') }}">
+                        <li id="sign-in">
+                        <a href="{{ url('/logout') }}">
                             Logout
                         </a>
-                      
+                      </li>
 
                           @if(Auth::user()->isAdmin())
-                          
-                            <a class="nav-link" href="{{ url('/admin') }}"> Admin Dashboard </a>
-                           
+                          </li>  
+                            <li  class="hidden-lg hidden-lg-up">
+                            <a href="{{ url('/admin') }}">
+                            <i class="fa fa-dashboard fa-lg"></i> Admin Dashboard
+                            </a>
+                          </li>
                             @else
 
-                            
-                            <a class="nav-link" href="{{ url('/dashboard') }}">
+                            <li id="sign-in">
+                            <a href="{{ url('/dashboard') }}">
                                 Dashboard
                             </a>
-                          
+                          </li>
 
                           @endif
 
@@ -159,90 +69,237 @@
                     @endif
 
 
-                    </li>
+
 
                 </ul>
+            </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+    </nav>
+
+
+    <!--   main content-->
+    
+    
+<div class="content">
+    
+    
+    
+               
+    <div class="mainBody">
+        
+            <h2 id="header">Frequently Asked Questions (FAQs)</h2>
+            
+        <button class="accordion"> What does Finance@Hotels.ng do?</button>
+            <div class="panel">
+                <p>Finance@ Hotels.ng is a secure online service that enables any user to instantly buy mobile credit, data top-up for a prepaid Mobile Phone in any part of the country. Our customers use transferrules.com to buy Mobile Airtime for either themselves, friends and family members.</p>
+            </div>
+        
+            
+        
+            <button class="accordion"> How do I register to use Finance @ Hotels.ng?</button>
+            <div class="panel">
+                
+                 At Finance @ Hotels.ng site
+                 Select ‘Register’ at the Top Left of the Page</br>
+                 Enter your email address and password</br>
+                 Click on ‘Register’ at the bottom right of the page.</br>
+                 A Confirmation Code will be sent directly to your email.</br>
+                 Click on the code to verify your email address and continue to setting up your account</br>
+                </p>
+                <p>NOTE: Recipients will also receive a transaction confirmation SMS message from their Mobile operator.</p>
+            </div>
+        
+        
+            <button class="accordion"> How do I send Prepaid Mobile Credit to an existing customer?</button>
+            <div class="panel">
+                <p>
+                  Login to transferrules.com.</br>
+                  Select a number from the list of numbers registered under your account</br>
+                  Select the Top Up recharge amount.</br>
+                  Click the Top Up button.</br>
+                  Carefully review the order and complete payment using our secure online payment process.</br>
+                  A confirmation message will appear on your screen with details on your completed transaction.</br>
+                  A confirmation email will be sent to your email address.</br>
+                </p>
+                <p>NOTE: Recipients will also receive a transaction confirmation SMS message from their Mobile operator.</p>
+            </div>
+        
+        
+            <button class="accordion"> How do I send Data Plan to an existing customer?</button>
+            <div class="panel">
+                <p>
+                  Login to transferrules.com.</br>
+                  Select a number from the list of numbers registered under your account.</br>
+                  Select the Top Up data plan.</br>
+                  Carefully review the order and complete payment using our secure online payment process.</br>
+                  A confirmation message will appear on your screen with details on your completed transaction.</br>
+                  A confirmation email will be sent to your email address.</br>
+                </p>
+                <p>NOTE: Recipients will also receive a transaction confirmation SMS message from their Mobile operator.</p>
+            </div>
+        
+            <button class="accordion">What should I do if forgot my password?</button>
+            <div class="panel">
+              <p>
+                  Login to transferrules.com.</br>
+                  Input your email address</br>
+                  Click ‘Forgot Password?’</br>
+                  A screen will appear to enter a security question.</br>
+                  A message will then be sent to your email address with a link to reset the account password.</br>
+                  Check your email and follow the instructions in the email to reset your account password and proceed further.</br>
+            </p>
+            </div>
+
+            <button class="accordion">How do I credit my Top-Up Wallet?</button>
+            <div class="panel">
+              <p>
+                  Login to transferrules.com.</br>
+                  Select the amount you wish to Refill Top up wallet.</br>
+                  Click the TopUp button.</br>
+                  Carefully review and confirm your request.</br>
+                  A confirmation email will be sent to your email address.</br>
+                </p>
+            </div>
+            
+            <button class="accordion">What is the cost to send a Top Up?</button>
+            <div class="panel">
+              <p>The cost of a Top Up transaction is based upon the denomination amount selected. During the checkout process the total amount due will be indicated. This amount includes the details of any additional charges (such as taxes or SMS fees) that affect the ultimate Top Up recharge amount that will be received by the transaction recipient.</p>
+            </div>
+
+            <button class="accordion">What happens if I Top Up an invalid mobile number?</button>
+            <div class="panel">
+              <p>Our website is best enjoyed while using Internet Explorer or Google Chrome. Please avoid using other web browsers like Firefox, Opera or UC browser. If the problem still persists, please raise a complaint with our Customer Service team by calling 000111 from your mobile number or send a mail via finance@hotels.ng </p>
+            </div>
+            
+        
+            <button class="accordion">How can i get my blocked account unblocked?</button>
+            <div class="panel">
+              <p>To get your account unblocked, you will need to send and email to the admin at admin@transfer.hng.fun stating the reason that led to your account being blocked, also why you want it to be reactivated.<p>
+                <p>OR</p> 
+                <p>
+                  Login to your account.</br>
+                  Click on the unblock button.</br>
+                  Fill in the reactivation request form.</br>
+                  Submit</li>
+                </p>
+            </div>
+        
+   
+            <script>
+                    var acc = document.getElementsByClassName("accordion");
+                    var i;
+
+                    for (i = 0; i < acc.length; i++) {
+                      acc[i].onclick = function() {
+                        this.classList.toggle("active");
+                        var panel = this.nextElementSibling;
+                        if (panel.style.maxHeight){
+                          panel.style.maxHeight = null;
+                        } else {
+                          panel.style.maxHeight = panel.scrollHeight + "px";
+                        } 
+                      }
+                    }
+            </script>
+
+    </div> 
+</div>    
+
+        
+    
+    <!--      footer -->
+    <section class="container-fuild content">
+
+    </section>
+    <hr>
+
+    <footer id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 mx-auto">
+                    <div class="footer-link-header">
+                        <h3>Company</h3>
+                    </div>
+                    <ul class="footer-nav">
+                        <li><a href="">Blog</a></li>
+                        <li><a href="">About Us</a></li>
+                        <li><a href="">Press Page</a></li>
+                        <li><a href="">Job Opening</a></li>
+                        <li><a href="">Trade &amp; Advertising</a></li>
+                        <li><a href="">Terms &amp; Condition</a></li>
+                        <li><a href="">Privacy &amp; policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mx-auto">
+                    <div class="footer-link-header">
+                        <h3>Community</h3>
+                    </div>
+                    <ul class="footer-nav">
+                        <li><a href="">Twitter</a></li>
+                        <li><a href="">Instagram</a></li>
+                        <li><a href="">Google</a></li>
+                        <li><a href="">Pintrest</a></li>
+                        <li><a href="">Youtube</a></li>
+                        <li><a href="">Traveller's Blog</a></li>
+                        <li><a href="">Tourist Attractions</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 ">
+                    <div class="footer-link-header">
+                        <h3>Flights</h3>
+                    </div>
+                    <ul class="footer-nav">
+                        <li><a href="">Abuja to Lagos</a></li>
+                        <li><a href="">Fantastic Fligt Deals</a></li>
+                        <li><a href="">Cheap Flights to Lagos</a></li>
+                        <li><a href="">Chartered Flights</a></li>
+                        <li><a href="">Calabar to Lagos</a></li>
+                        <li><a href="">Flight to Lagos</a></li>
+                        <li><a href="">Best Prices</a></li>
+                        <li><a href="">Uyo to Lagos</a></li>
+                </div>
+
+            </div>
+        </div>
+        <hr>
+        <div class="bottom-footer">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>Copyright &copy; 2017 Hotels.ng All Rights Reserved.</p>
+                </div>
+                <div class="col-md-4  certify">
+                    <p>Certified by </p>
+                    <div class="cert-imgs">
+                        <img src="img/fi1.png">
+                        <img src="img/fi2.png">
+                        <img src="img/fi3.png">
+                    </div>
+                </div>
+            </div>
+            <div class="chat-box">
+                <p>Let's Chat! <img src="img/chat.png" class="pull-right"></p>
 
             </div>
 
         </div>
-
-    </nav>
-
-<main>
-
-        <div class="container">
-
-                    <br>
-                    <br>
-
-                <h3 class="sign-in">@yield('main-text')</h3>
-
-        @yield('content')    
-        
-
-        </div>
-
-
-    </main>
-
-
-<div id="footer">
-    <div id="footer-links">
-        <li><a href="{{url('/')}}">Home</a></li>
-        <li><a href="{{route('about')}}">About Us</a></li>
-        <li><a href="{{route('privacy')}}">Privacy Policy</a></li>
-
-        <li><a href="{{route('features')}}">How it works</a></li>
-        <li><a href="{{route('contact')}}">Contact Us</a></li>
-   
-
-        <li><a href="{{route('help')}}">Help & Support</a></li>
-        <li><a href="{{url('login')}}">Sign In</a></li>
-        <li><a href="{{route('how')}}">FAQs</a></li>
-        <li><a href="{{route('terms')}}">Terms & Condition</a></li>
+    </footer>
     </div>
-    <p id="line"> </p>
-    <div id="lower-footer">
-        <p>&#169; 2017 Transferrules.com. All rights reserved</p>
-    </div>
-</div>
+    <!-- /container -->
 
-<div id="mobile-footer">
-    <table>
-        <tr>
-            <td style="font-size: 17px; font-weight: bold;">Company</td>
-            <td style="font-size: 17px; font-weight: bold;">Support</td>
-            <td style="font-size: 17px; font-weight: bold;">Terms</td>
-        </tr>
-        <tr>
-            <td><a href="{{url('/')}}">Home</a></td>
-            <td><a href="{{route('about')}}">About Us</a></td>
-            <td><a href="{{route('contact')}}">Contact Us</a></td>
-        </tr>
-        <tr>
-            <td><a href="{{route('how')}}">How it works</a></td>
-            <td><a href="{{route('contact')}}">Contact Us</a></td>
-            <td><a href="{{route('help')}}">Help & Support</a></td>
-        </tr>
-        <tr>
-            <td><a href="{{route('terms')}}">Terms & Condition</a></td>
-            <td><a href="{{route('privacy')}}">Privacy Policy</a></td>
-            
-        </tr>
-    </table>
-    <p id="line"> </p>
-    <div id="lower-footer">
-        <p>&#169; 2017 Transferrules.com. All rights reserved</p>
-    </div>
-</div>
 
-<!-- FOOTER ENDS -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery.min.js"><\/script>')</script>-->
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+    <!--Customize javascript -->
 
-<script src="js/jquery.js"></script>
-<script src="js/bootstrap.js"></script>
-<script src="js/script.js"></script>
+
+    <script type="text/javascript" src="js/phonetopup.js"></script>
 </body>
+
 </html>
-
-

@@ -6,8 +6,10 @@
 @section('content')
 
 <link rel="stylesheet" href="/css/form.css">
-
+            
  <div class="col-md-6 col-sm-6">
+ <img src="https://cdn2.iconfinder.com/data/icons/euro-corporative/512/bank_finance_cash_dollar_purchase_money_transfer_buy_v2_euro_european-512.png" width="250" height="250">
+
         <h4 class="intro text-left" >Transfer to another Wallet account </h4>
        {{-- @if($failed)) 
             <div class="alert alert-danger">

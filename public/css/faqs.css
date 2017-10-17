@@ -1,0 +1,163 @@
+body {
+    font-family: lato;
+    Font-Style: Regular;
+    line-height: 75px;
+}
+
+
+<!-- Header starts -->
+
+.nav {
+    margin-top: 5px;
+    background-color: #FFFFFF;
+    width: 100%;
+    color: #333333;
+    height: 50px;
+    margin-bottom: 30px;
+}
+
+
+.leftNav {
+    float: left;
+    padding-left: 50px;
+    margin-top: 10px;
+}
+
+
+
+.rightNav {
+    float: right;
+    margin-bottom: 10px;
+}
+
+
+li {
+    display: inline-block;
+    margin-right: 20px;
+    font-size: 18px;
+}
+
+a {
+    text-decoration: none;
+    color: #333333;
+    
+}
+
+input[type=button] {
+    background-color: #007BCA;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 30px;
+    font-size: 16px;
+}
+
+
+div {
+    clear: left;
+}
+
+
+hr { 
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    height: 3px;
+    color: #39689C;
+    border-width: 1px;
+} 
+<!-- header ends -->
+
+
+
+
+
+
+
+
+ <!-- content starts  -->
+
+
+.content {
+    
+}
+
+
+.mainBody {
+    width: 60%;
+    margin: auto;
+    font-family: lato;
+    font-size: 16px;
+}
+
+#header {
+    color: #2CACF0;
+    text-transform: uppercase;
+    font-family: nato;
+}
+
+button.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+    font-size: 18px;
+}
+
+button.accordion.active, button.accordion:hover {
+    background-color: #ccc;
+}
+
+div.panel {
+    padding: 0 18px;
+    background-color: #39689C;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    line-height: 30px;
+    font-size: 16px;
+}
+
+
+<!-- content ends -->
+
+
+
+
+
+<!-- Footer starts -->
+
+hr {
+    height: 2px;
+    width: 100%;
+    padding: 0px 200px;
+    border-top: 2px solid #39689C ;
+    margin: 30px 0px;
+}
+
+
+footer {
+    Font-Family: Lato;
+    Font-Style: Regular;
+    Font Size: 14px;
+    text-align: center;
+    color: #000;
+    height: 50px;
+    margin-top: 10px; 
+}
+
+footer p {
+    margin-top: -20px;
+}
+
+<!-- Footer ends -->

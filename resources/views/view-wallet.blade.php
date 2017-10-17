@@ -33,47 +33,60 @@ i.sent{
 
     i.received{
       color: #dd4b39;
+      
+ }
+    
+    table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 5px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+    
     }
 </style>
 
 <link rel="stylesheet" href="/css/walletview.css">
    <!-- Trigger the modal with a button -->
-        <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#beneficiaryModal">Add Beneficiary</button>
+        <center><button type="button" class="btn btn-dark" data-toggle="modal" data-target="#beneficiaryModal">Add Beneficiary</button>
 <!-- Trigger the modal with a button -->
   <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#myModal">Fund</button>
   
   <a href="{{ route('transfer.beneficiary', $wallet->id)}}" class="btn btn-dark ">Transfer To Beneficiary</a>
       
 
-      <a href="{{ route('transfer.wallet', $wallet->id)}}" class="btn btn-dark ">Transfer to Another Wallet </a>
+      <a href="{{ route('transfer.wallet', $wallet->id)}}" class="btn btn-dark ">Transfer to Another Wallet </a></center><br>
 
-            <div class="">
-              
+              <div class="">
               @if (!empty($permit))
-                  <div class="">
-                      <font color="blue">Wallet Name</font>
-                      <h4>{{ $wallet->wallet_name }}</h4>
-                  </div>   
-                   
-                   <div class="">
-                      <font color="blue">Wallet ID</font>
-                      <h4>{{ $wallet->wallet_code }}</h4>
-                   </div> 
                   
-                   <div class="">
-                       <font color="blue"> Currency Type</font>
-                        <h4>Nigeria Naira</h4>
-                   </div>
-                    
-                   <div class="">
-                        <font color="blue">Balance</font>
-                        <h4>{{ $wallet->balance }}</h4>
-                   </div><br>
-                                             
+           <table>
+  <tr>
+    <th><font color="#39689C">Wallet Name</font></th>
+    <th><font color="#39689C">Wallet ID</font></th>
+    <th><font color="#39689C"> Currency Type</font></th>
+    <th><font color="#39689C">Balance</font></th>
+  </tr>
+  <tr>
+    <td> {{ $wallet->wallet_name }}</td>
+    <td>{{ $wallet->wallet_code }}</td>
+    <td>Nigeria Naira</td>
+    <td>{{ $wallet->balance }}</td>
+  </tr>
+  
+</table><p>
+</div><br><br>
 
-            </div><p>
-
-          <div class="">
+          <br><div class="">
 	<div class="orange-box"><h4 class="title" align="center"> {{ ucfirst($wallet->wallet_name) }} TRANSACTION HISTORY</h4></div><br>
           <div class="table-responsive">
               @if(count($history))          

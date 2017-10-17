@@ -43,6 +43,7 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, $user)
     {
+        \LogUserActivity::addToLog(auth()->user()->username.' signed in successfully');
         $this->redirectTo = (boolean) $user->is_admin ? '/admin' : '/dashboard';
     }
 }

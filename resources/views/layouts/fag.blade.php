@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Transfer Rules</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <!-- Custom styles for this template -->
+    <link href="css/custom2.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!-- <link rel="stylesheet" href="css/style.css"> -->
@@ -381,8 +387,8 @@
 </head>
 <body>
 <!-- HEADER BEGINS -->
-<div id="header">
-    <p id="background-text">FUNDS</p>
+<div id="">
+    
 
     <nav class="navbar navbar-default">
         <div class="container-fluid">
@@ -393,7 +399,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{url('/')}}"><img id="logo" src="/img/HNGlogo.png" alt="TransferRules logo" style="display: inline;"> TransferRules</a>
+                <a class="navbar-brand" href="{{url('/')}}"><img id="logo" src="/img/HNGlogo.png" alt="TransferRules logo" style="display: inline;"></a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">

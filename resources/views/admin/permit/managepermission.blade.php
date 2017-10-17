@@ -83,7 +83,6 @@
     @foreach($restriction as $key => $restrictions)
         <a href="editpermission/{{$restrictions->id}}" style="padding-bottom: 20px;" class="single-wallet-holder col-md-3 col-xs-12 col-sm-6">
             <div class="inner-holder">
-                  <h5 class="wallet-name"><b>Username: </b> {{ $restrictions->user->username }}</h5>     
                   <h5 class="wallet-name"><b>Wallet Name : </b> {{ $restrictions->wallet->wallet_name }}</h5>
                  
                   <h5 class="wallet-name"><b>Can fund Wallet:&nbsp; </b> <i class="fa {{$restrictions->can_fund_wallet ? 'fa-check-circle can' : 'fa-times-circle cannot'}}"></i></h5> 

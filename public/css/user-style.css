@@ -12,8 +12,12 @@ border-radius: 0 !important;
 background-color: #39689C;
 color: #fff;
 height: 100%;
+width: 300;
+	
 }
-
+form-control{
+width: 300;	
+}
 
 .active-sidebar {
 background-color: #39689C;
