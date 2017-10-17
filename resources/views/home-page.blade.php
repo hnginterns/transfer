@@ -303,6 +303,13 @@
             height: 300px;
             padding: 70px 170px;
             background: #39689C;
+           
+        }
+        #divider-top{
+            width: 100%;
+            height: 100px;
+            background: #39689C;
+            margin-bottom:-20px;
             -webkit-transform-origin: 100% 0;
   -ms-transform-origin: 100% 0;
   transform-origin: 100% 0;
@@ -866,7 +873,7 @@
 </div>
 <div class="row">
         <div class="col-lg-4">
-        <div class="icon"><i class="fa fa-clone" aria-hidden="true"></i></div>
+        <div class="icon"><img src="img/multiple-shots.png" alt="icon" /> </div>
         <h5 class="about-title">How it works</h5>
         <p class="about-paragraph">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate! Ab assumenda aliquam sint 
@@ -874,7 +881,7 @@
         </p>
         </div>
         <div class="col-lg-4">
-        <div class="icon"><i class="fa fa-arrow-up" aria-hidden="true"></i></div>
+        <div class="icon"><img src="img/Group.png" alt="icon" /></div>
         <h5 class="about-title">How it works</h5>
         <p class="about-paragraph">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate! Ab assumenda aliquam sint 
@@ -882,7 +889,7 @@
         </p>
         </div>
         <div class="col-lg-4">
-        <div class="icon"><i class="fa fa-mobile" aria-hidden="true"></i></div>
+        <div class="icon"><img src="img/smartphone-chat.png" alt="icon" /></div>
         <h5 class="about-title">How it works</h5>
         <p class="about-paragraph">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate! Ab assumenda aliquam sint 
@@ -891,7 +898,7 @@
 </div>
 <div class="row">
         <div class="col-lg-4">
-        <div class="icon"><i class="fa fa-comments" aria-hidden="true"></i></div>
+        <div class="icon"><img src="img/live-chat.png" alt="icon" /></div>
         <h5 class="about-title">How it works</h5>
         <p class="about-paragraph">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate! Ab assumenda aliquam sint 
@@ -899,7 +906,7 @@
         </p>
         </div>
         <div class="col-lg-4">
-        <div class="icon"><i class="fa fa-credit-card" aria-hidden="true"></i></div>
+        <div class="icon"><img src="img/credit-card.png" alt="icon" /></div>
         <h5 class="about-title">How it works</h5>
         <p class="about-paragraph">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate! Ab assumenda aliquam sint 
@@ -907,7 +914,7 @@
         </p>
         </div>
         <div class="col-lg-4">
-        <div class="icon"><i class="fa fa-connectdevelop" aria-hidden="true"></i></div>
+        <div class="icon"><img src="img/maze.png" alt="icon" /></div>
         <h5 class="about-title">How it works</h5>
         <p class="about-paragraph">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate! Ab assumenda aliquam sint 
@@ -918,6 +925,7 @@
 </div>
 
 <!-- DIVIDER -->
+<div id="divider-top"></div>
 <div id="divider">
     <div id="divider-content">
         <div id="divider-text">
