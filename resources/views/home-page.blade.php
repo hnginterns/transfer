@@ -494,7 +494,13 @@
         @media only screen and (max-width: 1090px) {
             /* HEADER BODY STYLE */
             #header {
-                height: 550px;
+                /* Full height */
+    height: 100%; 
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
             }
 
             #header-content {
@@ -564,7 +570,13 @@
 
         @media only screen and (max-width: 800px) {
             #header {
-                height: 620px;
+                /* Full height */
+    height: 100%; 
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
             }
             .features-icons {
                 display: inline;
@@ -802,10 +814,9 @@
                 <ul class="nav navbar-nav navbar-right">
 
                      <li class="{{ Request::segment(1) === '/' ? 'active' : null }}" ><a href="{{url('/')}}">Home</a></li>
+                     <li class="{{ Request::segment(1) === 'about' ? 'active' : null }}"><a href="{{route('about')}}">About<span class="sr-only">(current)</span></a></li>
                     <li class="{{ Request::segment(1) === 'how' ? 'active' : null }}" ><a href="{{route('how')}}">FAQs</a></li>
-                    <li class="{{ Request::segment(1) === 'features' ? 'active' : null }}"><a href="{{route('features')}}">Features</a></li>
-                   <li class="{{ Request::segment(1) === 'features' ? 'active' : null }}"><a href="{{route('features')}}">Demo</a></li>
-                   <li class="{{ Request::segment(1) === 'about' ? 'active' : null }}"><a href="{{route('about')}}">About<span class="sr-only">(current)</span></a></li>
+                  
 
                     @if(Auth::guest())
                     <li id="sign-in"><a href="{{url('login')}}">Sign In</a></li> 
