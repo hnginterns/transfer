@@ -41,10 +41,8 @@
                                                             <input class="form-control" name="Amount" placeholder="Amount" type="text" required />
                                                         </div>
                                                     </div>
-
-
-
                                                 </div>
+                                                
                                                 <div class="panel-footer" style="margin-bottom:-14px;">
                                                     <input type="submit" class="btn btn-success" value="Save" />
                                                     <button style="float: right;" type="button" class="btn btn-default btn-close" data-dismiss="modal">Close
@@ -81,42 +79,38 @@
                                             <h4 class="modal-title">Add New Phone NUmber</h4>
                                         </div>
                                         <div class="modal-body">
-
-                                            <form action="#" method="post" accept-charset="utf-8">
+                                            <form action="{{ url('admin/add-phone') }}" method="post" accept-charset="utf-8">
                                                 <div class="modal-body" style="padding: 5px;">
-
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                                                            <input class="form-control" name="text" placeholder="Name" type="text" required />
+                                                            <input class="form-control" name="first_name" placeholder="Name" type="text" required />
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                                                            <input class="form-control" name="Phone" placeholder="Phone Number" type="text" required />
+                                                            <input class="form-control" name="last_name" placeholder="Name" type="text" required />
                                                         </div>
                                                     </div>
                                                     <div class="row">
-
-
                                                         <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-
-                                                            <select class="form-control" name="Network">
+                                                            <input class="form-control" name="phone" placeholder="Phone Number" type="text" required />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
+                                                           <select class="form-control" name="Network">
                                                             <option selected>Choose Network</option>
                                                             <option value="1">MTN</option>
                                                             <option value="2">GLO</option>
                                                             <option value="3">AIRTEL</option>
                                                             <option value="3">9Mobile</option>
-                          
-                            </select>
+                                                           </select>
                                                         </div>
                                                     </div>
-
-
                                                 </div>
                                                 <div class="panel-footer" style="margin-bottom:-14px;">
                                                     <input type="submit" class="btn btn-success" value="Save" />
                                                     <button style="float: right;" type="button" class="btn btn-default btn-close" data-dismiss="modal">Close
-                    
                                                     </button>
                                                 </div>
                                             </form>
