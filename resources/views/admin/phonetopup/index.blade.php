@@ -1,6 +1,22 @@
 
 @extends('layouts.admin')
-
+<style>
+   .content-wrapper{
+       margin: 0px;
+   }
+   .content-header{
+       padding: 30px;
+   }
+   .content {
+       margin-right: 0px;
+       margin-left: 0px;
+       padding-left: 0px;
+       padding-right: 0px;
+   }
+   .table {
+       width: 70%;
+   }
+</style>
 @section('content')
  <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -328,7 +344,6 @@
                                 <td>Name</td>
                                 <td>phone Number</td>
                                 <td>Network</td>
-
                             </tr>
                         </thead>
                         <tbody>
