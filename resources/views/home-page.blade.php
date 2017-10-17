@@ -55,7 +55,7 @@
             width:70%;
             padding:20px;
             margin-top:20px;
-            margin-bottom:25px;
+            margin-bottom:-40px;
             margin-left:auto;
             margin-right:auto;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -307,7 +307,7 @@
         }
         #divider-top{
             width: 125%;
-            height: 100px;
+            height: 150px;
             background: #39689C;
             margin-bottom:-40px;
             margin-right:-20px;
