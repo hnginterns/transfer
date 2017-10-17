@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="css/custom2.css" rel="stylesheet">
     <!-- <link rel="stylesheet" href="css/style.css"> -->
     <style>
 
@@ -53,7 +54,7 @@
         }
         .about-content{
             width:70%;
-            padding:20px;
+            padding:30px;
             margin-top:20px;
             margin-bottom:-200px;
             margin-left:auto;
@@ -925,57 +926,77 @@
     </div>
 </div><br><br><p>
 <!-- FOOTER -->
-
-<div id="footer">
-    <div id="footer-links">
-        <li><a href="{{url('/')}}">Home</a></li>
-        <li><a href="{{route('about')}}">About Us</a></li>
-        <li><a href="{{route('privacy')}}">Privacy Policy</a></li>
-
-        <li><a href="{{route('features')}}">How it works</a></li>
-        <li><a href="{{route('contact')}}">Contact Us</a></li>
-   
-
-        <li><a href="{{route('help')}}">Help & Support</a></li>
-        <li><a href="{{url('login')}}">Sign In</a></li>
-        <li><a href="{{route('how')}}">FAQs</a></li>
-        <li><a href="{{route('terms')}}">Terms & Condition</a></li>
-    </div>
-    <p id="line"> </p>
-    <div id="lower-footer">
-        <p>&#169; 2017 Transferrules.com. All rights reserved</p>
-    </div>
-</div>
-<br><br><p>
-<div id="mobile-footer">
-    <table>
-        <tr>
-            <td style="font-size: 17px; font-weight: bold;">Company</td>
-            <td style="font-size: 17px; font-weight: bold;">Support</td>
-            <td style="font-size: 17px; font-weight: bold;">Terms</td>
-        </tr>
-        <tr>
-            <td><a href="{{url('/')}}">Home</a></td>
-            <td><a href="{{route('about')}}">About Us</a></td>
-            <td><a href="{{route('contact')}}">Contact Us</a></td>
-        </tr>
-        <tr>
-            <td><a href="{{route('how')}}">How it works</a></td>
-            <td><a href="{{route('contact')}}">Contact Us</a></td>
-            <td><a href="{{route('help')}}">Help & Support</a></td>
-        </tr>
-        <tr>
-            <td><a href="{{route('terms')}}">Terms & Condition</a></td>
-            <td><a href="{{route('privacy')}}">Privacy Policy</a></td>
-            
-        </tr>
-    </table>
-    <p id="line"> </p>
-    <div id="lower-footer">
-        <p>&#169; 2017 Transferrules.com. All rights reserved</p>
-    </div>
-</div>
 </section>
+<footer id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 mx-auto">
+                    <div class="footer-link-header">
+                        <h3>Company</h3>
+                    </div>
+                    <ul class="footer-nav">
+                        <li><a href="">Blog</a></li>
+                        <li><a href="">About Us</a></li>
+                        <li><a href="">Press Page</a></li>
+                        <li><a href="">Job Opening</a></li>
+                        <li><a href="">Trade &amp; Advertising</a></li>
+                        <li><a href="">Terms &amp; Condition</a></li>
+                        <li><a href="">Privacy &amp; policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mx-auto">
+                    <div class="footer-link-header">
+                        <h3>Community</h3>
+                    </div>
+                    <ul class="footer-nav">
+                        <li><a href="">Twitter</a></li>
+                        <li><a href="">Instagram</a></li>
+                        <li><a href="">Google</a></li>
+                        <li><a href="">Pintrest</a></li>
+                        <li><a href="">Youtube</a></li>
+                        <li><a href="">Traveller's Blog</a></li>
+                        <li><a href="">Tourist Attractions</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 ">
+                    <div class="footer-link-header">
+                        <h3>Flights</h3>
+                    </div>
+                    <ul class="footer-nav">
+                        <li><a href="">Abuja to Lagos</a></li>
+                        <li><a href="">Fantastic Fligt Deals</a></li>
+                        <li><a href="">Cheap Flights to Lagos</a></li>
+                        <li><a href="">Chartered Flights</a></li>
+                        <li><a href="">Calabar to Lagos</a></li>
+                        <li><a href="">Flight to Lagos</a></li>
+                        <li><a href="">Best Prices</a></li>
+                        <li><a href="">Uyo to Lagos</a></li>
+                </div>
+
+            </div>
+        </div>
+        <hr>
+        <div class="bottom-footer">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>Copyright &copy; 2017 Hotels.ng All Rights Reserved.</p>
+                </div>
+                <div class="col-md-4  certify">
+                    <p>Certified by </p>
+                    <div class="cert-imgs">
+                        <img src="img/fi1.png">
+                        <img src="img/fi2.png">
+                        <img src="img/fi3.png">
+                    </div>
+                </div>
+            </div>
+            <div class="chat-box">
+                <p>Let's Chat! <img src="img/chat.png" class="pull-right"></p>
+
+            </div>
+
+        </div>
+    </footer>
 <!-- DIVIDER ENDS-->
 
 
