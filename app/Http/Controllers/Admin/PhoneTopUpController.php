@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Wallet;
+use App\SmsWalletFund;
 use App\CardWallet;
 use App\Restriction;
 use App\Rule;
@@ -26,6 +27,39 @@ class PhoneTopUpController extends Controller
     public function topup()
     {
         return view('phonetopup');
+    }
+    
+    public function addPhone(Request $request){
+        $input = $request->all();
+        
+        $validator = Validator::make($input, [
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'phone' => 'required|numeric|unique',
+            'network' => 'required'
+            ],
+            [
+                'first_name.required' => 'First Name is required',
+                'last_name.required' => 'Last Name is required',
+                'phone.required' => 'Phone Number is required',
+                'phone.numeric' => 'Phone Number must be in numbers',
+                'network.required' => 'Please select a network'
+            ]
+         );
+        
+        if ($validator->fails()) {
+            $messages = $validator->messages()->toArray();
+            return redirect()->to(URL::previous())->with('failed', $messages);
+        } else {
+            $phone = new SmsWalletFund();
+            $phone->first_name = $input['first_name'];
+            $phone->last_name = $input['first_name'];
+            $phone->phone = $input['phone'];
+            $phone->amount = 0;
+            $phone->ref = $input['network'];
+            
+            return redirect()->to(URL::previous())->with('success', "Phone number added successfully");
+        }
     }
 }
 
