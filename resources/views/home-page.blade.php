@@ -50,6 +50,7 @@
         }
         .about{
             height:700px;
+            z-index:100 !important;
         }
         .about-content{
             width:70%;
