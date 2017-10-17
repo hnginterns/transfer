@@ -21,7 +21,7 @@ Route::get('/mypdf', 'HomeController@pdf');
 Route::get('/', 'pagesController@home')->name('home');
 
 Route::get('/logout', function () {
-	\LogUserActivity::addToLog(Auth::user()->username.' logged out successfully');
+	//\LogUserActivity::addToLog(Auth::user()->username.' logged out successfully');
 	Auth::logout();
 	Session::flush();
 	return redirect('/login');
