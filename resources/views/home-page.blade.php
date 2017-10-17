@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Transfer Rules</title>
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- <link rel="stylesheet" href="css/style.css"> -->
@@ -49,11 +50,16 @@
         }
         .about{
             height:700px;
+            z-index:100 !important;
         }
         .about-content{
-            width:60%;
+            width:70%;
+            padding:20px;
+            margin-top:20px;
+            margin-bottom:-40px;
             margin-left:auto;
             margin-right:auto;
+            z-index:1000 !important;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
         }
@@ -298,28 +304,35 @@
             width: 100%;
             height: 300px;
             padding: 70px 170px;
-            background: #333333;
+            background: #39689C;
+           
+        }
+        #divider-top{
+            width: 125%;
+            height: 200px;
+            background: #39689C;
+            margin-bottom:-50px;
+            margin-left:-20px;
+            z-index:1;
+            -webkit-transform-origin: 100% 0;
+  -ms-transform-origin:0 100%;
+  transform-origin: 0 100% ;
+  -webkit-transform: rotate(2deg);
+  -ms-transform: rotate(2deg);
+  transform: rotate(2deg);
         }
 
         #divider-content {
-            display: grid;
-            align-content: center;
-            justify-content: center;
-            align-items: center;
-            grid-template-columns: 70% 30%;
             padding: 30px 30px;
             background: white;
-            text-align: left;
+            text-align: center;
         }
 
         #divider-cta {
             transition: color 1s, background 1s;
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-            grid-column: 2/3;
-            grid-row: 1/3;
-            width: fit-content;
-            height: fit-content;
-            background: #2AA6E8;
+            padding:20px;
+            background: #39689C;
             color: #FFFFFF;
             border: none;
             padding: 12px 16px;
@@ -333,17 +346,15 @@
         }
 
         #divider-text {
-            display: grid;
-            grid-template-rows: 20% 80%;
-            grid-row-gap: 10px;
-            width: fit-content;
-            height: fit-content;
-            margin-right: 40px;
+           text-align:center;
+           color:#404040;
+           font-size: 18px
         }
 
         #divider-title {
-            color: #2AA6E8;
-            font-size: 20px;
+            color: #39689C;
+            text-align:center;
+            font-size: 30px;
             font-weight: bold;
             letter-spacing: 0.04em;
             margin: 0px;
@@ -358,11 +369,13 @@
             color:#39689C;
             font-size:24px;
             text-align:center;
+            font-family: 'Nunito Sans', sans-serif;
         }
         .about-paragraph{
             color:#404040;
-            font-size:18px;
+            font-size:16px;
             text-align:center;
+            font-family: Lato-Regular,sans-serif!important;
         }
         /* DIVIDER STYLE ENDS */
 
@@ -543,7 +556,7 @@
                 width: 100%;
                 height: 300px;
                 padding: 30px 100px;
-                background: #306B8E;
+                background: #39689C;
             }
 
         }
@@ -697,16 +710,13 @@
             /* DIVIDER STYLE */
             #divider {
                 width: 100%;
-                height: fit-content;
+                
                 padding: 70px 30px;
-                background: #333333;
+                background: #39689C;
             }
 
             #divider-content {
-                display: flex;
-                flex-direction: column;
-                align-content: center;
-                justify-content: center;
+             
                 align-items: center;
                 padding: 15px 15px;
                 background: white;
@@ -714,29 +724,23 @@
             }
 
             #divider-cta {
-                width: fit-content;
-                height: fit-content;
                 text-align: center !important;
-                background: #FF6200;
+                background:#39689C;
                 color: white;
                 border: none;
-                padding: 12px 60px;
+                padding:20px;
                 border-radius: 63px;
                 margin-right: 0px;
                 margin-top: 20px;
             }
 
             #divider-text {
-                display: flex;
-                flex-direction: column;
-                text-align: justify;
-                width: fit-content;
-                height: fit-content;
-                margin-right: 0px;
+                text-align: center;
+              
             }
 
             #divider-title {
-                color: #FF6200;
+                color: #39689C;
                 font-size: 16px;
                 font-weight: bold;
                 letter-spacing: 0.04em;
@@ -749,7 +753,7 @@
 
             /* FOOTER STYLES */
             #footer {
-                display: none;
+                
             }
 
             #mobile-footer {
@@ -854,79 +858,71 @@
 </div>
 <div class="row">
         <div class="col-lg-4">
-        <div class="icon"><i class="fa fa-clone" aria-hidden="true"></i></div>
+        <div class="icon"><img src="img/multiple-shots.png" alt="icon" /> </div>
         <h5 class="about-title">How it works</h5>
         <p class="about-paragraph">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate! Ab assumenda aliquam sint 
-        necessitatibus at pariatur quidem dolorem quaerat doloribus, similique repellendus porro temporibus modi et dolor impedit perferendis obcaecati aut tempore voluptate! Odio eum, quas tempore
-         culpa provident dicta numquam molestiae deleniti deserunt ratione! Quisquam cumque voluptate ad beatae minima et.
+        necessitatibus at pariatur quidem dolorem quaerat doloribus, similique 
         </p>
         </div>
         <div class="col-lg-4">
-        <div class="icon"><i class="fa fa-arrow-up" aria-hidden="true"></i></div>
+        <div class="icon"><img src="img/Group.png" alt="icon" /></div>
         <h5 class="about-title">How it works</h5>
         <p class="about-paragraph">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate! Ab assumenda aliquam sint 
-        necessitatibus at pariatur quidem dolorem quaerat doloribus, similique repellendus porro temporibus modi et dolor impedit perferendis obcaecati aut tempore voluptate! Odio eum, quas tempore
-         culpa provident dicta numquam molestiae deleniti deserunt ratione! Quisquam cumque voluptate ad beatae minima et.
+        necessitatibus at pariatur quidem dolorem quaerat doloribus, similique 
         </p>
         </div>
         <div class="col-lg-4">
-        <div class="icon"><i class="fa fa-mobile" aria-hidden="true"></i></div>
+        <div class="icon"><img src="img/smartphone-chat.png" alt="icon" /></div>
         <h5 class="about-title">How it works</h5>
         <p class="about-paragraph">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate! Ab assumenda aliquam sint 
-        necessitatibus at pariatur quidem dolorem quaerat doloribus, similique repellendus porro temporibus modi et dolor impedit perferendis obcaecati aut tempore voluptate! Odio eum, quas tempore
-         culpa provident dicta numquam molestiae deleniti deserunt ratione! Quisquam cumque voluptate ad beatae minima et.
-        </p>
+        necessitatibus at pariatur quidem dolorem quaerat doloribus, similique 
         </div>
-    </div>
-    <div class="row">
+</div>
+<div class="row" style="z-index:1001;">
         <div class="col-lg-4">
-        <div class="icon"><i class="fa fa-comments" aria-hidden="true"></i></div>
+        <div class="icon"><img src="img/live-chat.png" alt="icon" /></div>
         <h5 class="about-title">How it works</h5>
         <p class="about-paragraph">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate! Ab assumenda aliquam sint 
-        necessitatibus at pariatur quidem dolorem quaerat doloribus, similique repellendus porro temporibus modi et dolor impedit perferendis obcaecati aut tempore voluptate! Odio eum, quas tempore
-         culpa provident dicta numquam molestiae deleniti deserunt ratione! Quisquam cumque voluptate ad beatae minima et.
+        necessitatibus at pariatur quidem dolorem quaerat doloribus,
         </p>
         </div>
         <div class="col-lg-4">
-        <div class="icon"><i class="fa fa-credit-card" aria-hidden="true"></i></div>
+        <div class="icon"><img src="img/credit-card.png" alt="icon" /></div>
         <h5 class="about-title">How it works</h5>
         <p class="about-paragraph">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate! Ab assumenda aliquam sint 
-        necessitatibus at pariatur quidem dolorem quaerat doloribus, similique repellendus porro temporibus modi et dolor impedit perferendis obcaecati aut tempore voluptate! Odio eum, quas tempore
-         culpa provident dicta numquam molestiae deleniti deserunt ratione! Quisquam cumque voluptate ad beatae minima et.
+        necessitatibus at pariatur quidem dolorem quaerat doloribus, 
         </p>
         </div>
         <div class="col-lg-4">
-        <div class="icon"><i class="fa fa-connectdevelop" aria-hidden="true"></i></div>
+        <div class="icon"><img src="img/maze.png" alt="icon" /></div>
         <h5 class="about-title">How it works</h5>
         <p class="about-paragraph">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate! Ab assumenda aliquam sint 
-        necessitatibus at pariatur quidem dolorem quaerat doloribus, similique repellendus porro temporibus modi et dolor impedit perferendis obcaecati aut tempore voluptate! Odio eum, quas tempore
-         culpa provident dicta numquam molestiae deleniti deserunt ratione! Quisquam cumque voluptate ad beatae minima et.
+        necessitatibus at pariatur quidem dolorem quaerat doloribus, 
         </p>
         </div>
     </div>
 </div>
 
 <!-- DIVIDER -->
+<div id="divider-top"></div>
 <div id="divider">
-    <div id="divider-content">
+    <div id="divider-content" align="center">
         <div id="divider-text">
-            <p id="divider-title">Get Started in Five Minutes</p>
+            <p align="center" id="divider-title">Get Started in Five Minutes</p>
             <p id="">
                 Create an account in less than 5 minutes. Login to your account and create wallets for your company
             </p>
         </div>
+        <br />
         <button id="divider-cta">Read More</button>
     </div>
-</div>
-</section>
-<!-- DIVIDER ENDS-->
-
+</div><br><br><p>
 <!-- FOOTER -->
 
 <div id="footer">
@@ -949,7 +945,7 @@
         <p>&#169; 2017 Transferrules.com. All rights reserved</p>
     </div>
 </div>
-
+<br><br><p>
 <div id="mobile-footer">
     <table>
         <tr>
@@ -978,6 +974,10 @@
         <p>&#169; 2017 Transferrules.com. All rights reserved</p>
     </div>
 </div>
+</section>
+<!-- DIVIDER ENDS-->
+
+
 
 <!-- FOOTER ENDS -->
 <!--<script
@@ -987,9 +987,9 @@
 </script> -->
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
+<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
         integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script> -->
 <script src="js/script.js"></script>
 </body>
 </html>

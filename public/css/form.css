@@ -10,7 +10,7 @@
   .cus-input {
       border-radius: 0;
       height: 40px;
-      background: #FFECE0;
+      background: #999;
       border: 1;
   }
 
@@ -43,7 +43,7 @@
   }
 
   .input-form {
-      text-align: center;
+      text-align: left;
       margin-top: 20px;
   }
 
