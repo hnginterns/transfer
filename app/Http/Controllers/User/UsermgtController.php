@@ -23,6 +23,12 @@ class UsermgtController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct(){
+        $this->middleware('cache');
+    }
+
+
     public function index()
     {
         $users = User::withTrashed()->get();

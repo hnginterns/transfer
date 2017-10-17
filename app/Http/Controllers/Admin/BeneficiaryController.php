@@ -16,6 +16,12 @@ use Illuminate\Support\Facades\Hash;
 
 class BeneficiaryController extends Controller
 {
+
+
+    public function __construct(){
+        $this->middleware('cache');
+    }
+
     /**
      * Display a listing of the resource.
      *

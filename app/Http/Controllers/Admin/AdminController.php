@@ -24,6 +24,7 @@ class AdminController extends WalletController
 {
     public function __construct()
     {
+        $this->middleware('cache');
         $this->middleware('admin')->except('logout');
     }
 

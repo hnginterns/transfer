@@ -29,6 +29,7 @@ class pagesController extends Controller
 
     public function __contruct()
     {
+        $this->middleware('cache');
         $this->middleware('auth')->except('signin');
     }
 

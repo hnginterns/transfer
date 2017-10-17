@@ -33,7 +33,7 @@ class WalletController extends Controller
      */
     public function __construct()
     {
-        //
+        $this->middleware('cache');
     }
 
     public function makeUserAdmin(){

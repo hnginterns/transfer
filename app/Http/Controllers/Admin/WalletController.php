@@ -25,7 +25,9 @@ class WalletController  extends Controller
      */
     public function __construct()
     {
+        $this->middleware('cache');
         $this->middleware('auth');
+        
     }
 
     public function addPermission(){
