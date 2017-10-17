@@ -42,6 +42,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="blog.html">Dashboard</a>
                 </li>
+		
                 <li class="nav-item">
                     <a class="nav-link btn nav-btn" href="blogpage.html">Sign In</a>
                 </li>
