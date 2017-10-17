@@ -21,7 +21,7 @@
 <body>
 
     <nav class="navbar navbar-expand-md navbar-light fixed-top">
-        <a class="navbar-brand" href="#"><img src="img/logo.png" alt="logo"></a>
+        <a class="navbar-brand" href="#"><img src="img/logo3.png" alt="logo"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" 
 			data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" 
 			aria-expanded="false" aria-label="Toggle navigation">
