@@ -183,6 +183,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
 	Route::post('users/unbanUser/{id}', 'User\UsermgtController@unbanUser');
 	Route::post('users/makeAdmin/{id}', 'User\UsermgtController@makeAdmin');
 	Route::post('users/removeAdmin/{id}', 'User\UsermgtController@removeAdmin');
+	Route::delete('users/delete/{user}', 'User\UsermgtController@deleteUser');
 	//admin user management ends
 
 
