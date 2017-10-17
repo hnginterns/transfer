@@ -17,11 +17,7 @@
                 </a>
               </li> <br>
               
-              <li>
-                <a href="/admin/smswallet">
-                <i class="fa fa-envelope fa-1x"></i> Sms Top up
-                </a>
-              </li> <br>
+             
                                 
               <li>
                 <a href="{{ route('logout') }}"
