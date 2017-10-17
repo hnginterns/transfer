@@ -50,15 +50,15 @@
         }
         .about{
             height:700px;
-            z-index:100 !important;
         }
         .about-content{
             width:70%;
             padding:20px;
             margin-top:20px;
-            margin-bottom:-40px;
+            margin-bottom:-160px;
             margin-left:auto;
             margin-right:auto;
+            background:#fff;
             z-index:1000 !important;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
@@ -313,7 +313,8 @@
             background: #39689C;
             margin-bottom:-50px;
             margin-left:-20px;
-            z-index:1;
+            position:relative;
+            z-index:-1;
             -webkit-transform-origin: 100% 0;
   -ms-transform-origin:0 100%;
   transform-origin: 0 100% ;
