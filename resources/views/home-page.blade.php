@@ -306,10 +306,10 @@
            
         }
         #divider-top{
-            width: 100%;
+            width: 105%;
             height: 100px;
             background: #39689C;
-            margin-bottom:-20px;
+            margin-bottom:-30px;
             -webkit-transform-origin: 100% 0;
   -ms-transform-origin: 100% 0;
   transform-origin: 100% 0;
