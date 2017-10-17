@@ -31,11 +31,12 @@ class PhoneTopUpController extends Controller
     public function addPhone(Request $request){
         $input = $request->all();
         
-        $validator = Validator::make($input, [
+        $validator = Validator::make($input, 
+            [
             'first_name' => 'required|string',
             'last_name' => 'required|string',
             'phone' => 'required|numeric|unique',
-            'network' => 'required'
+            'network' => 'required',
             ]
          );
         
