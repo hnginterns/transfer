@@ -310,13 +310,13 @@
             height: 100px;
             background: #39689C;
             margin-bottom:-30px;
-            margin-left:-10px;
+            margin-right:-10px;
             -webkit-transform-origin: 100% 0;
-  -ms-transform-origin: 100% 0;
-  transform-origin: 100% 0;
-  -webkit-transform: rotate(-2deg);
-  -ms-transform: rotate(-2deg);
-  transform: rotate(-2deg);
+  -ms-transform-origin:0 100%
+  transform-origin: 0 100% ;
+  -webkit-transform: rotate(2deg);
+  -ms-transform: rotate(2deg);
+  transform: rotate(2deg);
         }
 
         #divider-content {
