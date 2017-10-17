@@ -88,7 +88,7 @@
                  <tbody>
                    <tr><td><b>Merchant/sender Name</b></td><td> {{$data['username']}}</td></tr>
                    <tr><td><b>sender wallet/account</b></td><td> {{$data['source_wallet']}}</td></tr>
-                   <tr><td><b>Beneficiary/Receiver Name</b></td><td>{{$data['recipient_wallet']}}</td></tr>
+                   <tr><td><b>Beneficiary/Receiver Wallet</b></td><td>{{$data['recipient_wallet']}}</td></tr>
                    <tr><td><b>Transaction Date/Time</b></td><td>{{$data['time']}}</td></tr>
                    <tr><td><b>Narration</b></td><td>Wallet Transfer</td></tr>
                    <tr><td><b>Amount</b></td><td>&#8358; {{$data['amount']}}</td></tr>

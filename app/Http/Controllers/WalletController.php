@@ -211,7 +211,7 @@ class WalletController extends Controller
                     $data['source_wallet'] = $transaction->source->wallet_name;
                     $data['recipient_wallet'] = $transaction->destination->wallet_name;
                     $data['amount'] = $transaction->amount;
-                    $data['time'] = $transaction->created_at->toDateString();
+                    $data['time'] = $transaction->created_at->toDateTimeString();
 
                     $this->sendWalletTransactionNotifications($w_transaction);
                     
