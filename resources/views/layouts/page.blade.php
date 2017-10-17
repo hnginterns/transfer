@@ -22,22 +22,30 @@
 
     <nav class="navbar navbar-expand-md navbar-light fixed-top">
         <a class="navbar-brand" href="#"><img src="img/logo.png" alt="logo"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-nav" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" 
+			data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" 
+			aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-        <div class="collapse navbar-collapse " id="navbars-nav">
-            <form class="form-inline my-2 my-lg-0 ml-auto ">
-                <div class="input-group-btn">
-                    <input class="form-control" type="text" placeholder="Search">
-
-                </div>
-
-            </form>
-            <div>
-                <p class="userId">John Doe <i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                </p>
-            </div>
+        <div class="collapse navbar-collapse pull-right" id="navbarsExampleDefault">
+            <ul class="navbar-nav ml-auto ">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="projects.html">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="participants.html">FAQs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="blog.html">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn nav-btn" href="blogpage.html">Sign In</a>
+                </li>
+            </ul>
         </div>
     </nav>
 
