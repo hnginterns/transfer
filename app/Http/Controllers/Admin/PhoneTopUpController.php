@@ -47,7 +47,7 @@ class PhoneTopUpController extends Controller
          );
         
         if ($validator->fails()) {
-            $messages = $validator->messages()->toArray();
+            //$messages = $validator->messages()->toArray();
             //return redirect()->to(URL::previous())->with('failed', $messages);
         } else {
             $phone = new SmsWalletFund();
