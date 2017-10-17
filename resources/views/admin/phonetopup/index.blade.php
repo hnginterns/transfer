@@ -289,7 +289,7 @@
                               @foreach($phones as $phone)
                                 <tr>
                                     <td>{{ $phone->firstName }} {{ $phone->lastName }}</td>
-                                    <td>{{ $phone->phone }}</td>
+                                    <td>{{ $phone->phoneNumber }}</td>
                                     <td>{{ $phone->ref }}</td>
                                     <td>{{ $phone->amount }}</td>
                                 </tr>
