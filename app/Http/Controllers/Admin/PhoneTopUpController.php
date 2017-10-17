@@ -35,9 +35,17 @@ class PhoneTopUpController extends Controller
         $validator = Validator::make($input, [
             'first_name' => 'required',
             'last_name' => 'required',
-            'phone' => 'required|unique',
+            'phone' => 'required|numeric|unique',
             'network' => 'required'
-        ]);
+            ],
+            [
+                'first_name.required' => 'First Name is required',
+                'last_name.required' => 'Last Name is required',
+                'phone.required' => 'Phone Number is required',
+                'phone.numeric' => 'Phone Number must be in numbers',
+                'network.required' => 'Please select a network'
+            ]
+         );
         
         if ($validator->fails()) {
             $messages = $validator->messages()->toArray();
