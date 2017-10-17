@@ -616,7 +616,8 @@
                 margin-bottom: 15px;
             }
             #heading-top-hd{
-                font-size: 30px;
+                margin-top:25px;
+                font-size: 40px;
                 letter-spacing: 0.07em;
                 padding-right: 0px;
                 margin-bottom: 15px;

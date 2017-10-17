@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Auth\Events\PasswordReset;
-use App\Notifications\PasswordReset as PasswordResetNotify;
 
 trait ResetsPasswords
 {
@@ -110,8 +109,8 @@ trait ResetsPasswords
         $user->save();
 
         event(new PasswordReset($user));
-        $user->notify(new PasswordResetNotify);
-        // $this->guard()->login($user);
+
+        $this->guard()->login($user);
     }
 
     /**

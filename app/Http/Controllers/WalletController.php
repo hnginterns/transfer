@@ -196,11 +196,6 @@ class WalletController extends Controller
 
                     //update wallet balance
                     event(new WalletToWallet($transactions));
-                    //$recipient_wallet->balance += $request->amount;
-                    //$wallet->balance -= $request->amount;
-                    //$wallet->save();
-                    //$recipient_wallet->save();
-                    // end of update wallet balance
 
                     $transaction = WalletTransaction::latest()->first();
                    // \LogUserActivity::addToLog($transaction->source->wallet_name.' transferred '.$transaction->amount.' to '.$transaction->destination->wallet_name);

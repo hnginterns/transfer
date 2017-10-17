@@ -10,6 +10,7 @@ use URL;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Notifications\UserCreated;
 
 use App\User;
 
@@ -75,25 +76,20 @@ class UsermgtController extends Controller
                 return redirect()->to(URL::previous())->withInput();
             }
 
-            $password = $request->get('password'); // password is form field
+            $password = $request->password; // password is form field
             $hashedpassword = Hash::make($password);
-
-            $dt = Carbon::now();
-            $dateNow = $dt->toDateTimeString();
-
-            User::insert([
-              'username' => $request->get('username'),
-              'first_name' => $request->get('first_name'),
-              'last_name' => $request->get('last_name'),
-              'email' => $request->get('email'),
-              'password' => $hashedpassword,
-              'is_admin' => 0,
-              "created_by" => Auth::user()->id,
-              "role_id" => 0,
-              "created_at" => $dateNow
-            ]);
-
+            $user = new User;
+            $user->username = $request->username;
+            $user->first_name = $request->first_name;
+            $user->last_name = $request->last_name;
+            $user->email = $request->email;
+            $user->password = $hashedpassword;
+            $user->is_admin = 0;
+            $user->role_id = 0;
+            $user->created_by = Auth::user()->id;
+            $user->save();
             Session::flash('success', 'User created successfully.');
+            $user->notify(new UserCreated($user,$password));
             return redirect()->to('/admin/users');
         }
     }
