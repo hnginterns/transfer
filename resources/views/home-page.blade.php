@@ -58,6 +58,7 @@
             margin-bottom:-40px;
             margin-left:auto;
             margin-right:auto;
+            z-index:1000 !important;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
         }
@@ -309,7 +310,7 @@
             width: 125%;
             height: 200px;
             background: #39689C;
-            margin-bottom:-40px;
+            margin-bottom:-50px;
             margin-right:-20px;
             z-index:-1;
             -webkit-transform-origin: 100% 0;
