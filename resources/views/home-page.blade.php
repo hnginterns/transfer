@@ -494,7 +494,13 @@
         @media only screen and (max-width: 1090px) {
             /* HEADER BODY STYLE */
             #header {
-                height: 550px;
+                /* Full height */
+    height: 100%; 
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
             }
 
             #header-content {
@@ -564,7 +570,13 @@
 
         @media only screen and (max-width: 800px) {
             #header {
-                height: 620px;
+                /* Full height */
+    height: 100%; 
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
             }
             .features-icons {
                 display: inline;
