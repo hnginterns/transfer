@@ -721,16 +721,13 @@
             /* DIVIDER STYLE */
             #divider {
                 width: 100%;
-                height: fit-content;
+                
                 padding: 70px 30px;
                 background: #39689C;
             }
 
             #divider-content {
-                display: flex;
-                flex-direction: column;
-                align-content: center;
-                justify-content: center;
+             
                 align-items: center;
                 padding: 15px 15px;
                 background: white;
@@ -738,25 +735,19 @@
             }
 
             #divider-cta {
-                width: fit-content;
-                height: fit-content;
                 text-align: center !important;
-                background: #FF6200;
+                background:#39689C;
                 color: white;
                 border: none;
-                padding: 12px 60px;
+                padding:20px;
                 border-radius: 63px;
                 margin-right: 0px;
                 margin-top: 20px;
             }
 
             #divider-text {
-                display: flex;
-                flex-direction: column;
-                text-align: justify;
-                width: fit-content;
-                height: fit-content;
-                margin-right: 0px;
+                text-align: center;
+              
             }
 
             #divider-title {
