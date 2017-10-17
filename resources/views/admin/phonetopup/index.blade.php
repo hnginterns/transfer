@@ -268,7 +268,6 @@
 
             <!-- Main content -->
             <section class="content container" id="bulksms" style="margin-right: 0px;margin-left: 0px;padding-left: 0px;padding-right: 0px;">
-                <!--<h3 class="text-center">EbulkSMS Account</h3>
                 <div class="container">
                     <hr>
                     <p>
@@ -306,8 +305,6 @@
                     </table>
                     <hr>
                 </div>
-
-
                 </div>
                 <!-- /.modal-content -->
                 </div>
