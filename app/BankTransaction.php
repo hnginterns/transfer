@@ -13,4 +13,9 @@ class BankTransaction extends Model
     public function beneficiary(){
         return $this->belongsTo(Beneficiary::class);
     }
+
+    public function source()
+    {
+    	return $this->belongsTo(Wallet::class, 'wallet_id');
+    }
 }

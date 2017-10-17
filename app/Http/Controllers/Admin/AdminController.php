@@ -19,6 +19,7 @@ use App\Transaction;
 use Carbon\Carbon;
 use Trs;
 
+
 class AdminController extends WalletController
 {
     public function __construct()
@@ -197,5 +198,16 @@ class AdminController extends WalletController
             //'bank_id' => 'required|string',
             'account_number' => 'required|string|max:10',
         ]);
+    }
+
+    /**
+    *   Log User activities to db
+    *
+    *@return \Illuminate\Http\response
+    */
+    public function logActivity()
+    {
+        $logs = \LogUserActivity::logUserActivityLists();
+        return view('admin/logActivity', compact('logs'));
     }
 }
