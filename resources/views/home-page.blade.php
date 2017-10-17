@@ -26,10 +26,12 @@
 
         #header {
             width: 100%;
-            height: 650px;
-            /* background: linear-gradient(180deg, #358CAA 1.49%, #F87373 98.73%); */
-            /* background: #333333; */
-            background-size: 100% 650px !important;
+            height: 100%; 
+
+    /* Center and scale the image nicely */
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
         }
         #logo {
             
@@ -431,7 +433,14 @@
         @media only screen and (max-width: 1250px) {
             /* HEADER BODY STYLE */
             #header {
-                height: 650px;
+                width: 100%;
+                               /* Full height */
+    height: 100%; 
+
+    /* Center and scale the image nicely */
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
             }
 
             #header-content {
@@ -494,13 +503,14 @@
         @media only screen and (max-width: 1090px) {
             /* HEADER BODY STYLE */
             #header {
+                width: 100%;
                 /* Full height */
     height: 100%; 
 
     /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
             }
 
             #header-content {
@@ -571,12 +581,12 @@
         @media only screen and (max-width: 800px) {
             #header {
                 /* Full height */
-    height: 100%; 
-
+                height: 100%; 
+                width:100%;
     /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
             }
             .features-icons {
                 display: inline;
@@ -843,13 +853,13 @@
         
         <div id="content-text" class="clearfix" align="center">
         <span id="heading-top-hd">
-        Online payments made easy
+        Online Payments Made Easy
                 </span>
                 <span id="heading-hd">
-                   Payant is an easy way for you to pay and get paid any where
+                This Finance tool is an easy way for you to pay and get paid anywhere
                 </span>
             <button id="button-hd">
-                Get Started
+                Sign In
             </button>
         </div>
     </div>
@@ -873,24 +883,21 @@
         <div class="icon"><img src="img/multiple-shots.png" alt="icon" /> </div>
         <h5 class="about-title">Multiple Wallet Support</h5>
         <p class="about-paragraph">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate! Ab assumenda aliquam sint 
-        necessitatibus at pariatur quidem dolorem quaerat doloribus, similique 
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate 
         </p>
         </div>
         <div class="col-lg-4">
         <div class="icon"><img src="img/Group.png" alt="icon" /></div>
         <h5 class="about-title">Credit/Data Top Up</h5>
         <p class="about-paragraph">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate! Ab assumenda aliquam sint 
-        necessitatibus at pariatur quidem dolorem quaerat doloribus, similique 
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate
         </p>
         </div>
         <div class="col-lg-4">
         <div class="icon"><img src="img/smartphone-chat.png" alt="icon" /></div>
         <h5 class="about-title">Bulk SMS Integration</h5>
         <p class="about-paragraph">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate! Ab assumenda aliquam sint 
-        necessitatibus at pariatur quidem dolorem quaerat doloribus, similique 
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate
         </div>
 </div>
 <div class="row" style="z-index:1001;">
@@ -898,24 +905,21 @@
         <div class="icon"><img src="img/live-chat.png" alt="icon" /></div>
         <h5 class="about-title">Live Chat</h5>
         <p class="about-paragraph">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate! Ab assumenda aliquam sint 
-        necessitatibus at pariatur quidem dolorem quaerat doloribus,
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate
         </p>
         </div>
         <div class="col-lg-4">
         <div class="icon"><img src="img/credit-card.png" alt="icon" /></div>
         <h5 class="about-title">Reliable Payment Method</h5>
         <p class="about-paragraph">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate! Ab assumenda aliquam sint 
-        necessitatibus at pariatur quidem dolorem quaerat doloribus, 
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate
         </p>
         </div>
         <div class="col-lg-4">
         <div class="icon"><img src="img/maze.png" alt="icon" /></div>
         <h5 class="about-title">Easy Usage</h5>
         <p class="about-paragraph">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate! Ab assumenda aliquam sint 
-        necessitatibus at pariatur quidem dolorem quaerat doloribus, 
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate 
         </p>
         </div>
     </div>
@@ -926,7 +930,7 @@
 <div id="divider">
     <div id="divider-content" align="center">
         <div id="divider-text">
-            <p align="center" id="divider-title">Get Started in Five Minutes</p>
+            <p align="center" id="divider-title">Sign up in Five Minutes</p>
             <p id="">
                 Create an account in less than 5 minutes. Login to your account and create wallets for your company
             </p>
