@@ -27,6 +27,11 @@ class AdminController extends WalletController
         $this->middleware('admin')->except('logout');
     }
 
+    public function phoneTopupView()
+    {
+        return view('admin.phonetopup.index');
+    }
+
     public function index()
     {
         $wallets = Wallet::all();
