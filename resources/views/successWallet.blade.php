@@ -11,7 +11,7 @@
         }
 
         .modal-header {
-            border-bottom: 2px solid #828282;
+             border-bottom: 2px solid #828282; 
         }
 
         .modal-body {
@@ -23,7 +23,7 @@
         }
 
         .modal-body h4 {
-            color: #FF6200;
+            color: #00AEFF;
             font-weight: bold;
             font-size: 16px;
         }
@@ -50,7 +50,7 @@
         }
 
         .text-orange{
-            color: #FF6200;
+            color: #00AEFF;
             text-align: left;
         }
 
@@ -60,14 +60,14 @@
             box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
             border-radius: 63px;
             padding:6px 15px;
-            background: #FF6200;
+            background: #00AEFF;
             color: white;
             border: none;
         }
 
         .modal-footer button:hover {
             background: white;
-            color: #FF6200;
+            color: #00AEFF;
         }
     </style>
 
@@ -101,9 +101,9 @@
             </div>
 
              <!-- Modal Header -->
-            <div class="modal-header">
+          
               <button onclick="printPage()">Print</button>
-            </div>
+          
 </div>
 <script>
             function printPage() {
