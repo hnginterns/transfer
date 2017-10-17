@@ -28,8 +28,8 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
-        <div class="collapse navbar-collapse pull-right" id="navbarsExampleDefault">
-            <ul class="navbar-nav mr-auto">
+        <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
+            <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
                     <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
                 </li>
