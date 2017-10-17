@@ -23,6 +23,6 @@ class LogUserActivity
 
  	public static function logUserActivityLists()
  	{
- 		return LogUserActivityModel::latest()->paginate(3);
+ 		return LogUserActivityModel::latest()->paginate(10);
  	}
 }

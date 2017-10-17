@@ -181,9 +181,10 @@ class WalletController extends Controller
                 // print_r($response_arr);
                 
                 $status = $response_arr['status'];
-                $r_data = $response_arr['data'];  
+                // $r_data = $response_arr['data'];  
 
                 if ($status == 'success') {
+                    
                     //logic to persist wallet transaction details
                     $w_transaction = new WalletTransaction;
                     $w_transaction->source_wallet = $request->sourceWallet;
@@ -201,11 +202,20 @@ class WalletController extends Controller
                     //$recipient_wallet->save();
                     // end of update wallet balance
 
-                    
-                    $this->sendWalletTransactionNotifications($w_transaction);
                     $transaction = WalletTransaction::latest()->first();
-                    \LogUserActivity::addToLog($transaction->source->wallet_name.' transferred '.$transaction->amount.' to '.$transaction->destination->wallet_name);
-                    return redirect()->action('pagesController@success');
+                   // \LogUserActivity::addToLog($transaction->source->wallet_name.' transferred '.$transaction->amount.' to '.$transaction->destination->wallet_name);
+
+                    //lgoic to display transaction details
+                    $data= [];
+                    $data['username'] = auth()->user()->username;
+                    $data['source_wallet'] = $transaction->source->wallet_name;
+                    $data['recipient_wallet'] = $transaction->destination->wallet_name;
+                    $data['amount'] = $transaction->amount;
+                    $data['time'] = $transaction->created_at->toDateTimeString();
+
+                    $this->sendWalletTransactionNotifications($w_transaction);
+                    
+                    return redirect('wallet-transfer-success')->with('status', $data);
                 } else {
                     $response = $r_data;
                     
@@ -289,7 +299,7 @@ class WalletController extends Controller
 
                     event(new TransferToBank($bank));
                     $transactions = BankTransaction::latest()->first();
-                    \LogUserActivity::addToLog(auth()->user()->name.'transferred '.$transactions->amount.' from '. $transactions->source->wallet_name.' to '.$transactions->beneficiary->name);
+                    //\LogUserActivity::addToLog(auth()->user()->name.'transferred '.$transactions->amount.' from '. $transactions->source->wallet_name.' to '.$transactions->beneficiary->name);
                     return redirect('success')->with('status',$data);
                 } else {
                     return redirect()->back()->with('failed',$response['message']);

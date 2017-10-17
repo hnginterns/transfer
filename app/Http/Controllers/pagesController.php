@@ -59,10 +59,6 @@ class pagesController extends Controller
         return view('about');
     }
 
-    public function forgot()
-    {
-        return view('forgot');
-    }
 
     public function signout()
     {
@@ -77,7 +73,7 @@ class pagesController extends Controller
 
     public function walletSuccess()
     {
-        return view('wallet-transfer-success');
+        return view('successWallet');
     }
 
     public function failed($response)

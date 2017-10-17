@@ -15,11 +15,13 @@ Route::get('notify','WalletController@notifyme');
 Route::get('freq',function(){
 	return view('faq');
 });
+
+Route::get('/mypdf', 'HomeController@pdf');
 // get default home pages
 Route::get('/', 'pagesController@home')->name('home');
 
 Route::get('/logout', function () {
-	\LogUserActivity::addToLog(Auth::user()->username.' logged out successfully');
+	//\LogUserActivity::addToLog(Auth::user()->username.' logged out successfully');
 	Auth::logout();
 	Session::flush();
 	return redirect('/login');
@@ -174,7 +176,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
 	//Permission ends
 	
 	Route::get('/', 'Admin\AdminController@index')->name('admin.dashboard');
-	
+	Route::get('/phonetopup', 'Admin\AdminController@phoneTopupView');
 	//admin user management starts
 	Route::resource('users', 'User\UsermgtController');
 	Route::post('users/banUser/{id}', 'User\UsermgtController@banUser');
