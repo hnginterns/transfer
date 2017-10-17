@@ -45,11 +45,12 @@ class PhoneTopUpController extends Controller
                 'network.required' => 'Please select a network'
             ]
          );
-        /*
+        
         if ($validator->fails()) {
             $messages = $validator->messages()->toArray();
             return redirect()->to(URL::previous())->with('failed', $messages);
         } else {
+            /*
             $phone = new SmsWalletFund();
             $phone->firstName = $input['first_name'];
             $phone->lastName = $input['first_name'];
@@ -58,7 +59,8 @@ class PhoneTopUpController extends Controller
             $phone->ref = $input['network'];
             
             return redirect()->to('admin/phonetopup');
-        }*/
+            */
+        }
     }
 }
 
