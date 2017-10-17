@@ -861,8 +861,7 @@
         <h5 class="about-title">How it works</h5>
         <p class="about-paragraph">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate! Ab assumenda aliquam sint 
-        necessitatibus at pariatur quidem dolorem quaerat doloribus, similique repellendus porro temporibus modi et dolor impedit perferendis obcaecati aut tempore voluptate! Odio eum, quas tempore
-         culpa provident dicta numquam molestiae deleniti deserunt ratione! Quisquam cumque voluptate ad beatae minima et.
+        necessitatibus at pariatur quidem dolorem quaerat doloribus, similique 
         </p>
         </div>
         <div class="col-lg-4">
@@ -870,8 +869,7 @@
         <h5 class="about-title">How it works</h5>
         <p class="about-paragraph">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate! Ab assumenda aliquam sint 
-        necessitatibus at pariatur quidem dolorem quaerat doloribus, similique repellendus porro temporibus modi et dolor impedit perferendis obcaecati aut tempore voluptate! Odio eum, quas tempore
-         culpa provident dicta numquam molestiae deleniti deserunt ratione! Quisquam cumque voluptate ad beatae minima et.
+        necessitatibus at pariatur quidem dolorem quaerat doloribus, similique 
         </p>
         </div>
         <div class="col-lg-4">
@@ -879,9 +877,7 @@
         <h5 class="about-title">How it works</h5>
         <p class="about-paragraph">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate! Ab assumenda aliquam sint 
-        necessitatibus at pariatur quidem dolorem quaerat doloribus, similique repellendus porro temporibus modi et dolor impedit perferendis obcaecati aut tempore voluptate! Odio eum, quas tempore
-         culpa provident dicta numquam molestiae deleniti deserunt ratione! Quisquam cumque voluptate ad beatae minima et.
-        </p>
+        necessitatibus at pariatur quidem dolorem quaerat doloribus, similique 
         </div>
 </div>
 <div class="row">
@@ -890,8 +886,7 @@
         <h5 class="about-title">How it works</h5>
         <p class="about-paragraph">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate! Ab assumenda aliquam sint 
-        necessitatibus at pariatur quidem dolorem quaerat doloribus, similique repellendus porro temporibus modi et dolor impedit perferendis obcaecati aut tempore voluptate! Odio eum, quas tempore
-         culpa provident dicta numquam molestiae deleniti deserunt ratione! Quisquam cumque voluptate ad beatae minima et.
+        necessitatibus at pariatur quidem dolorem quaerat doloribus,
         </p>
         </div>
         <div class="col-lg-4">
@@ -899,8 +894,7 @@
         <h5 class="about-title">How it works</h5>
         <p class="about-paragraph">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate! Ab assumenda aliquam sint 
-        necessitatibus at pariatur quidem dolorem quaerat doloribus, similique repellendus porro temporibus modi et dolor impedit perferendis obcaecati aut tempore voluptate! Odio eum, quas tempore
-         culpa provident dicta numquam molestiae deleniti deserunt ratione! Quisquam cumque voluptate ad beatae minima et.
+        necessitatibus at pariatur quidem dolorem quaerat doloribus, 
         </p>
         </div>
         <div class="col-lg-4">
@@ -908,8 +902,7 @@
         <h5 class="about-title">How it works</h5>
         <p class="about-paragraph">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate! Ab assumenda aliquam sint 
-        necessitatibus at pariatur quidem dolorem quaerat doloribus, similique repellendus porro temporibus modi et dolor impedit perferendis obcaecati aut tempore voluptate! Odio eum, quas tempore
-         culpa provident dicta numquam molestiae deleniti deserunt ratione! Quisquam cumque voluptate ad beatae minima et.
+        necessitatibus at pariatur quidem dolorem quaerat doloribus, 
         </p>
         </div>
     </div>
@@ -926,7 +919,6 @@
         </div>
         <button id="divider-cta">Read More</button>
     </div>
-</div>
 </div>
 <!-- FOOTER -->
 
