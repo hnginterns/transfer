@@ -323,11 +323,6 @@
         }
 
         #divider-content {
-            display: grid;
-            align-content: center;
-            justify-content: center;
-            align-items: center;
-            grid-template-columns: 70% 30%;
             padding: 30px 30px;
             background: white;
             text-align: center;
@@ -336,10 +331,7 @@
         #divider-cta {
             transition: color 1s, background 1s;
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-            grid-column: 2/3;
-            grid-row: 1/3;
-            width: fit-content;
-            height: fit-content;
+            padding:20px;
             background: #39689C;
             color: #FFFFFF;
             border: none;
@@ -354,12 +346,9 @@
         }
 
         #divider-text {
-            display: grid;
-            grid-template-rows: 20% 80%;
-            grid-row-gap: 10px;
-            width: fit-content;
-            height: fit-content;
-            margin-right: 40px;
+           text-align:center;
+           color:#404040;
+           font-size: 18px
         }
 
         #divider-title {
@@ -751,7 +740,7 @@
             }
 
             #divider-title {
-                color: #FF6200;
+                color: #39689C;
                 font-size: 16px;
                 font-weight: bold;
                 letter-spacing: 0.04em;
