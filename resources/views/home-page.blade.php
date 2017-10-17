@@ -313,7 +313,7 @@
             background: #39689C;
             margin-bottom:-50px;
             margin-right:-20px;
-            z-index:-1;
+            z-index:1;
             -webkit-transform-origin: 100% 0;
   -ms-transform-origin:0 100%;
   transform-origin: 0 100% ;
