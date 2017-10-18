@@ -45,7 +45,7 @@ form group {
     table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 100%;
+    width: 100;
 }
 td, th {
     border: px solid #dddddd;
@@ -54,14 +54,14 @@ td, th {
     padding: 5px;
 }
 tr:nth-child(even) {
-    width: 200;
+    width: 110;
     background-color: #dddddd;
 }
     
 
 <!--
 	#container {
-		width:100%;
+		width:100;
 	}
 	#box1	{
 		background:#fff; border:0px solid #000;
@@ -70,7 +70,7 @@ tr:nth-child(even) {
 	}
 	#box2 	{
 		background:#fff; border:0px solid #000;
-		float:left; min-height:230px; width:250px;
+		float:left; min-height:10px; width:10px;
 	}
 	-->  
     
