@@ -221,12 +221,7 @@ tr:nth-child(even) {
             </table>    <br><br>
 		</div>
 
-     @if (session('status'))
-   <script type="text/javascript">
-        $(document).ready(function() {
-            $('#otpModal').modal();
-        });
-    </script>
+    
 
     <div class="modal fade" id="otpModal" role="dialog">
     <div class="modal-dialog">
@@ -257,12 +252,4 @@ tr:nth-child(even) {
   </div>
 
 </div>
-@endif
 
-    @else
-
-              <p> You do not have permission to view this wallet</p>
-
-     @endif
-    
-  @endsection
