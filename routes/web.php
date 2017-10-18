@@ -70,8 +70,7 @@ Route::get('/404', 'pagesController@pagenotfound');
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/dashboard', 'pagesController@userdashboard');
 
-	//Test page for @jonesky
-	Route::get('/getTopupWalletBalance', 'AdminController@getTopupWalletBalance')->name('topupwallet.balance');
+	
 
 	//Wallet operations start
 	Route::get('/wallet/{wallet}', 'pagesController@walletdetail')->name('user.wallet.detail');
@@ -208,6 +207,9 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
 	Route::get('/phonetopup', 'Admin\AdminController@phoneTopupView');
 	Route::get('/topup/phone', 'Admin\PhoneTopUpController@topup');
 	Route::post('/addphone', 'Admin\PhoneTopUpController@addPhone');
+	
+	//Test page for @jonesky
+	Route::get('/getTopupWalletBalance', 'AdminController@getTopupWalletBalance')->name('topupwallet.balance');
 	
 	
 
