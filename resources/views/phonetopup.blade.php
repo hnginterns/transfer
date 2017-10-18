@@ -90,43 +90,47 @@ tr:nth-child(even) {
                 <table class="table">
               <thead>
                 <tr>
-                  <th>Select</th>
+                      <th>Select</th>
                   <th>Name</th>
                   <th>Department</th>
                    <th>Network</th>
                   <th>Phone number</th>
+                    <th>Amount</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                 <td><input type="checkbox" name="tick" />&nbsp;</td>
+                 <td><input type="radio" name="select" value=""><br></td>
                   <td>Godfred Akpan</td>
                   <td>Iron</td>
                   <td>MTN</td>
                   <td>09036709916</td>
+                <td><input type="text" name="amount" value="Amount"></td>
                 </tr>
                   <tr>
-                 <td><input type="checkbox" name="tick" />&nbsp;</td>
+                 <td><input type="radio" name="select" value=""><br></td>
                   <td>Godfred Akpan</td>
                   <td>Iron</td>
                   <td>MTN</td>
                   <td>09036709916</td>
+                <td><input type="text" name="amount" value="Amount"></td>
                 </tr>
                   <tr>
-                 <td><input type="checkbox" name="tick" />&nbsp;</td>
+                 <td><input type="radio" name="select" value=""><br></td>
                   <td>Godfred Akpan</td>
                   <td>Iron</td>
                   <td>MTN</td>
                   <td>09036709916</td>
+                <td><input type="text" name="amount" value="Amount"></td>
                 </tr>
                   <tr>
-                 <td><input type="checkbox" name="tick" />&nbsp;</td>
+                 <td><input type="radio" name="select" value=""><br></td>
                   <td>Godfred Akpan</td>
                   <td>Iron</td>
                   <td>MTN</td>
                   <td>09036709916</td>
+                <td><input type="text" name="amount" value="Amount" size="20px"></td>
                 </tr>
-             
               
                 </tr>               
               </tbody>
