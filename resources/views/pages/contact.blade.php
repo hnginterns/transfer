@@ -66,7 +66,7 @@ body {
 
 .container {
 	max-width:400px;
-	width:100%;
+	width:%;
 	margin:auto;
 	position:relative;
 }
