@@ -109,7 +109,7 @@ tr:nth-child(even) {
                         <td>{{ $phone->ref }}</td>
                         <td>{{ $phone->amount }}</td>
                         <td>{{ $phone->max_tops }}</td>
-                        <td><button id="" type="submit" class="btn btn-dark">Airtime</button> <button id="" type="submit" class="btn btn-dark">Data</button></td>
+                        <td><button id="" type="submit" class="btn btn-success">Airtime</button> <button id="" type="submit" class="btn btn-warning">Data</button></td>
                     </tr>
                   @endforeach
                 @else
