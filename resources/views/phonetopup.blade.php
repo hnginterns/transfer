@@ -38,30 +38,30 @@ first {
     
 form group { 
     
-    height:400;
+    height:40;
     
     }
     
     table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 100;
+    width: 200;
 }
 td, th {
     border: px solid #dddddd;
     
     text-align: center;
-    padding: 5px;
+    
 }
 tr:nth-child(even) {
-    width: 110;
+    
     background-color: #dddddd;
 }
     
 
 <!--
 	#container {
-		width:100;
+		
 	}
 	#box1	{
 		background:#fff; border:0px solid #000;
@@ -70,7 +70,7 @@ tr:nth-child(even) {
 	}
 	#box2 	{
 		background:#fff; border:0px solid #000;
-		float:left; min-height:10px; width:10px;
+		float:left; min-height:230px; width:10px;
 	}
 	-->  
     
