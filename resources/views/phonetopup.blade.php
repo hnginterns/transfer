@@ -45,7 +45,7 @@ form group {
     table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 200;
+    width: 100;
 }
 td, th {
     border: px solid #dddddd;
