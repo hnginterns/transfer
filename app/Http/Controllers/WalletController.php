@@ -76,7 +76,7 @@ class WalletController extends Controller
             "email" => $request->emailaddr,
             "phonenumber" => $request->phone,
             "recipient" => "wallet",
-            "recipient_id" => $request->wallet_code,
+            "recipient_id" => '+234'.substr($request->wallet_code, 1),
             "card_no" => $request->card_no,
             "cvv" => $request->cvv,
             "pin" => $request->pin, //optional required when using VERVE card
