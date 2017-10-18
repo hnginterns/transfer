@@ -8,7 +8,8 @@
 <body>
 
 <div class="container">  
-  <form class="form" action="" method="post">
+<div class="form>
+  <form id="contact" action="" method="post">
     <h3>Quick Contact</h3>
     <h4>Contact us today, and get reply within 24 hours!</h4>
     <fieldset>
@@ -31,7 +32,7 @@
     </fieldset>
   </form>
  
-  
+</div>  
 </div>
     
 		<div id="footer">
