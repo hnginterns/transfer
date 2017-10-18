@@ -764,7 +764,8 @@
             }
 
             #divider-title {
-                color: #39689C;
+                color: #fff;
+                background-color: #39689C;
                 font-size: 16px;
                 font-weight: bold;
                 letter-spacing: 0.04em;
