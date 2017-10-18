@@ -1,5 +1,7 @@
 
 @extends('layouts.admin')
+@section('title', 'Topup Admin Dashboard ')
+@section('subtitle', 'Manage Phone/Data Topup')
 @section('content')
  <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper" style="margin:0px;">
