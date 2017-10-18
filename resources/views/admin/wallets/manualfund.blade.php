@@ -6,11 +6,13 @@
 <div class="row">
     <div class="col-md-10 col-sm-offset-1">
         <br>
-        @if($errors->any())
+        @if($error)
             <div class="alert alert-danger">
-            @foreach($errors->all() as $error)
                 <p>{{ $error }}</p>
-            @endforeach()
+            </div>
+        @else
+            <div class="alert alert-success">
+                <p>{{ $status }}</p>
             </div>
         @endif
         <div class="panel panel-default">
