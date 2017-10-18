@@ -254,7 +254,12 @@ tr:nth-child(even) {
         </button>
       </div>
       <div class="modal-body">
-        ...
+         {{ $phone->firstName }} {{ $phone->lastName }} <br>
+                        {{ $phone->phoneNumber }} <br>
+                        {{ $phone->ref }} <br>
+                        {{ $phone->amount }} <br>
+                        {{ $phone->max_tops }} <br>
+                        
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
