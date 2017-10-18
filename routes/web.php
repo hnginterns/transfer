@@ -206,5 +206,8 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
 	Route::get('/phonetopup', 'Admin\AdminController@phoneTopupView');
 	Route::get('/topup/phone', 'Admin\PhoneTopUpController@topup');
 	Route::post('/addphone', 'Admin\PhoneTopUpController@addPhone');
+
+	
+
 });
 
