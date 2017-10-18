@@ -123,32 +123,13 @@
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                                 @endif
-
-
-                    </div>
-
-                    <div class="form-group">
-
-                        <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-
-                         @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-
                     </div>
 
                     <button type="submit" class="btn btn-primary">Reset Password</button>
 
-                 
-                    
-
-
                 </form>
 
             </div>
-
 
 
         </div>
