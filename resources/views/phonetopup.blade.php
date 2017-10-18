@@ -61,7 +61,7 @@ tr:nth-child(even) {
 
 <!--
 	#container {
-		width:100%;
+		width:100;
 	}
 	#box1	{
 		background:#fff; border:0px solid #000;
@@ -70,7 +70,7 @@ tr:nth-child(even) {
 	}
 	#box2 	{
 		background:#fff; border:0px solid #000;
-		float:left; min-height:230px; width:250px;
+		float:left; min-height:230px; width:10px;
 	}
 	-->  
     
@@ -79,6 +79,7 @@ tr:nth-child(even) {
 
 <link rel="stylesheet" href="walletview.css">
 <link rel="stylesheet" href="user.css">
+<link rel="stylesheet" href="form.css">
 
    
 
