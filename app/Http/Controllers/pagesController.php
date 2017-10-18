@@ -207,4 +207,9 @@ class pagesController extends Controller
     {
         return view('to-main-wallet');
     }
+
+    public function topuptest()
+    {
+        return view('topuptest');
+    }
 }

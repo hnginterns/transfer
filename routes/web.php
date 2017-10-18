@@ -68,6 +68,9 @@ Route::get('/404', 'pagesController@pagenotfound');
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/dashboard', 'pagesController@userdashboard');
 
+	//Test page for @jonesky
+	Route::get('/topuptest', 'pagesController@topuptest')->name('topup.test');
+
 	//Wallet operations start
 	Route::get('/wallet/{wallet}', 'pagesController@walletdetail')->name('user.wallet.detail');
 	Route::get('/transfer/beneficiary/{wallet}', 'pagesController@bank_transfer')->name('transfer.beneficiary');
@@ -107,6 +110,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/ravepaysuccess/{ref}/{amount}/{currency}', 'RavepayController@success')->name('ravepay.success');
 	Route::get('/addbeneficiary/{wallet}', 'pagesController@addBeneficiary');
 	Route::post('/addbeneficiary/{wallet}', 'pagesController@insertBeneficiary')->name('beneficiaries.insert');
+
+
 
 });
 
