@@ -66,9 +66,8 @@ body {
 
 .container {
 	max-width:400px;
-	width:%;
+	width:60%;
 	margin:auto;
-	position:relative;
 	margin-bottom: 20px;
 }
 
