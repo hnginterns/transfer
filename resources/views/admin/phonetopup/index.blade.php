@@ -4,7 +4,9 @@
 @section('subtitle', 'Manage Phone/Data Topup')
 @section('content')
  <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper" style="margin:0px;">
+<div class="row">
+    <div class="col-lg-12">
+        <br>
             <!-- Content Header (Page header) -->
             <section class="content-header" style="padding: 30px;">
                 <div class="row">

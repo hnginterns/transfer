@@ -29,10 +29,39 @@ class AdminController extends WalletController
         $this->middleware('admin')->except('logout');
     }
 
+    public function static getTopupWalletBalance{
+
+        $username = '08189115870';
+        $pass =  'dbcc49ee2fba9f150c5e82';
+
+        $url = "https://mobileairtimeng.com/httpapi/balance.php?userid=" 
+            . urlencode($username). "&pass=". urlencode($pass);
+
+        $curlConnection = curl_init();
+        curl_setopt($curlConnection, CURLOPT_HTTPHEADER, array("cache-control: no-cache",
+              "postman-token: 28c061c4-a48c-629f-3aa2-3e4cad0641ff"));
+        curl_setopt($curlConnection, CURLOPT_URL, $url);
+        curl_setopt($curlConnection, CURLOPT_CUSTOMREQUEST, "POST");
+        curl_setopt($curlConnection, CURLOPT_FOLLOWLOCATION, TRUE);
+        curl_setopt($curlConnection, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curlConnection, CURLOPT_SSL_VERIFYPEER, FALSE);
+
+        $results = json_decode(curl_exec($curlConnection), true);
+
+        if (isset($results['error'])) {
+            var_dump($results);
+            exit();
+        }
+
+        return $results;
+    }
+
     public function phoneTopupView()
     {
         $phones = SmsWalletFund::all();
-        return view('admin.phonetopup.index')->with('phones', $phones);
+           
+
+        return view('admin.phonetopup.index', compact('phones'));
     }
 
     public function index()
