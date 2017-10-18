@@ -29,7 +29,7 @@ class AdminController extends WalletController
         $this->middleware('admin')->except('logout');
     }
 
-    public function getTopupWalletBalance {
+    public function getTopupWalletBalance() {
 
         $username = '08189115870';
         $pass =  'dbcc49ee2fba9f150c5e82';
