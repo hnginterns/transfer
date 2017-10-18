@@ -68,7 +68,6 @@ class WalletController extends Controller
     public function cardWallet(Request $request, CardWallet $cardWallet)
     {
         $token = $this->getToken();
-        print_r($token);
         
         $headers = array('content-type' => 'application/json', 'Authorization' => $token);
         $query = array(
