@@ -61,12 +61,12 @@ tr:nth-child(even) {
 
 <!--
 	#container {
-		width:100;
+		width:200;
 	}
 	#box1	{
 		background:#fff; border:0px solid #000;
         { box-shadow: 1px 1px 1px #999; }
-		float:left; min-height:230px; margin-right:30px;
+		float:left; min-height:230px; margin-right:10px;
 	}
 	#box2 	{
 		background:#fff; border:0px solid #000;
@@ -133,7 +133,7 @@ tr:nth-child(even) {
             </table>    <br>
 <hr><br
 						
-<table>
+ <table>
     <th>
     
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -146,7 +146,8 @@ tr:nth-child(even) {
                             <option value="50000">50000</option>
                             <option value="100000">100000</option>
                             
-   </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button id="" type="submit" class="btn btn-primary pull-right">Tup Up</button></td>
+   </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   <button id="" type="submit" class="btn btn-dark">Top Up</button></td>
     <td height="200">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -154,7 +155,9 @@ tr:nth-child(even) {
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-     </div>
+     </div>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
      <div class="col-md-4 col-sm-4">
         <select class="form-control cus-input" name="beneficiary_id">
  <option>TOP UP DATA</option>
@@ -164,7 +167,7 @@ tr:nth-child(even) {
                             <option value="50000">50000</option>
                             <option value="100000">100000</option>
                             
-   </select>&nbsp;&nbsp;&nbsp;&nbsp;<button id="btn btn-primary btn-block" type="submit"   class="btn btn-primary pull-right">Top Up</button></td>
+   </select>&nbsp;&nbsp;&nbsp;&nbsp;<button id="btn btn-primary btn-block" type="submit"   class="btn btn-dark">Top Up</button></td>
     
     </tr>
                
@@ -172,7 +175,8 @@ tr:nth-child(even) {
                     
        
   </table> <br><hr><br>
-<table>
+  <br><hr><br>
+
 
        <th><div class="orange-box"><h4 class="title" align="center">TRANSACTION HISTORY</h4></div></th><br><div class="">
        

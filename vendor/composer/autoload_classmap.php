@@ -47,6 +47,7 @@ return array(
     'App\\Http\\Middleware\\Admin' => $baseDir . '/app/Http/Middleware/Admin.php',
     'App\\Http\\Middleware\\AdminGuardMiddleware' => $baseDir . '/app/Http/Middleware/AdminGuardMiddleware.php',
     'App\\Http\\Middleware\\AdminMiddleware' => $baseDir . '/app/Http/Middleware/AdminMiddleware.php',
+    'App\\Http\\Middleware\\ClearCache' => $baseDir . '/app/Http/Middleware/ClearCache.php',
     'App\\Http\\Middleware\\EncryptCookies' => $baseDir . '/app/Http/Middleware/EncryptCookies.php',
     'App\\Http\\Middleware\\RedirectIfAuthenticated' => $baseDir . '/app/Http/Middleware/RedirectIfAuthenticated.php',
     'App\\Http\\Middleware\\TransactionsMiddleware' => $baseDir . '/app/Http/Middleware/TransactionsMiddleware.php',
