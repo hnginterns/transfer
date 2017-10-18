@@ -85,7 +85,7 @@ tr:nth-child(even) {
 
 <center>
               <br><div class="">
-	<div class="orange-box"><h4 class="title" align="center">CONTACT</h4></div>
+	<div class="orange-box"><h4 class="title" align="center">CONTACT LIST</h4></div>
           <div class="table-responsive">
                 <table class="table">
               <thead>
@@ -134,7 +134,7 @@ tr:nth-child(even) {
 <hr><br><br>
 						
 <table>
-    <th><div class="orange-box"><h4 class="title" align="center"></h4></div></th><br>
+    <th>
     
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <td><select class="form-control cus-input" name="beneficiary_id" >
@@ -172,7 +172,8 @@ tr:nth-child(even) {
                 </table> <br><br><hr><br>
 <table>
 
-       <th><div class="orange-box"><h4 class="title" align="center">TRANSACTION HISTORY</h4></div></th><br><br><div class="">
+       <th><div class="orange-box"><h4 class="title" align="center">TRANSACTION HISTORY</h4></div>
+       <div class="">
 	
           <div class="table-responsive">
                 <table class="table">
