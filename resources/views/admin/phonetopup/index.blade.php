@@ -288,6 +288,7 @@
                                 <td>Network</td>
                                 <td>Amount Left</td>
                                 <td>Weely Limit</td>
+                                <td>Topups This Week</td>
                             </tr>
                         </thead>
                         <tbody>
