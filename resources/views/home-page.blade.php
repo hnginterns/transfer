@@ -932,7 +932,7 @@
 <div id="divider">
     <div id="divider-content" align="center">
         <div id="divider-text">
-            <p align="center" id="divider-title">Already regsitered? </p>
+            <p align="center" id="divider-title">Already registered? </p>
             <p id="">
                 Login to your account and create wallets for your company.
             </p>
