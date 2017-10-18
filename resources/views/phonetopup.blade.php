@@ -105,7 +105,7 @@ tr:nth-child(even) {
                   <td>Iron</td>
                   <td>MTN</td>
                   <td>09036709916</td>
-                <td><input type="text" name="amount" value="amount"></td>
+                <td><input type="text" name="amount" value="Amount"></td>
                 </tr>
                   <tr>
                  <td><input type="radio" name="select" value=""><br></td>
@@ -113,7 +113,7 @@ tr:nth-child(even) {
                   <td>Iron</td>
                   <td>MTN</td>
                   <td>09036709916</td>
-                <td><input type="text" name="amount" value="amount"></td>
+                <td><input type="text" name="amount" value="Amount"></td>
                 </tr>
                   <tr>
                  <td><input type="radio" name="select" value=""><br></td>
@@ -121,7 +121,7 @@ tr:nth-child(even) {
                   <td>Iron</td>
                   <td>MTN</td>
                   <td>09036709916</td>
-                <td><input type="text" name="amount" value="amount"></td>
+                <td><input type="text" name="amount" value="Amount"></td>
                 </tr>
                   <tr>
                  <td><input type="radio" name="select" value=""><br></td>
@@ -129,7 +129,7 @@ tr:nth-child(even) {
                   <td>Iron</td>
                   <td>MTN</td>
                   <td>09036709916</td>
-                <td><input type="text" name="amount" value="amount" size="20px"></td>
+                <td><input type="text" name="amount" value="Amount" size="20px"></td>
                 </tr>
               
                 </tr>               
