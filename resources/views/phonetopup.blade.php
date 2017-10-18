@@ -109,7 +109,19 @@ tr:nth-child(even) {
                         <td>{{ $phone->ref }}</td>
                         <td>{{ $phone->amount }}</td>
                         <td>{{ $phone->max_tops }}</td>
-                        <td><button id="" type="submit" class="btn btn-success">Airtime</button> <button id="" type="submit" class="btn btn-warning">Data</button></td>
+                        <td>
+
+                          <a class="airtime btn btn-success" data-id="{{ $phone->id }}" data-toggle="modal" data-target="#airtimeModal">
+                              Airtime
+                          </a>
+
+                          <a class="btn btn-success" data-id="{{ $phone->id }}" data-toggle="modal" data-target="#dataModal">
+                              Data
+                          </a>
+
+                          
+
+                        </td>
                     </tr>
                   @endforeach
                 @else
@@ -231,8 +243,26 @@ tr:nth-child(even) {
 
  
 
-    <div class="modal fade" id="otpModal" role="dialog">
-    <div class="modal-dialog">
+   <!-- Modal -->
+<div class="modal fade" id="airtimeModal" tabindex="-1" role="dialog" aria-labelledby="airtimeModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
     
       
             </div>
@@ -243,6 +273,21 @@ tr:nth-child(even) {
   </div>
 
 </div>
+
+<script type="text/javascript">
+  $('.airtime').click(function() {
+
+    // get the invoice ID
+    var id = $(this).data('id');
+
+    // set up a GET route using the invoice ID and retrieve the result for that invoice
+    $.get('/topup/phone/' + id, function(response, status) {
+
+        // display the results in the modal
+        $('#airtimeModal .modal-body').html(response.data);
+    });
+});
+</script>
 
     
   @endsection
