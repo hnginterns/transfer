@@ -66,11 +66,11 @@ tr:nth-child(even) {
 	#box1	{
 		background:#fff; border:0px solid #000;
         { box-shadow: 1px 1px 1px #999; }
-		float:left; min-height:230px; margin-right:10px;
+		float:left; min-height:230px; margin-right:30px;
 	}
 	#box2 	{
 		background:#fff; border:0px solid #000;
-		float:left; min-height:230px; width:5px;
+		float:left; min-height:230px; width:30px;
 	}
 	-->  
     
