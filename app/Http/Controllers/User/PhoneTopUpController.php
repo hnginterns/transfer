@@ -33,6 +33,7 @@ class PhoneTopUpController extends Controller
         //
     }
    public function phoneTopUp()
+
     {
         
 
@@ -55,16 +56,7 @@ class PhoneTopUpController extends Controller
 
     { 
 
-        
-
-
-
-        
-        $phone = SmsWalletFund::find($id);
-
-        $book = Book::find($request->get('id'));
-
-        \Auth::user()->favorites()->save($book);
+        $phone = SmsWalletFund::find($request->get('id'));
 
         return \Redirect::route('home')->with('success', 'Book favorited!');
             
