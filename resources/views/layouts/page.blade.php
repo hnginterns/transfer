@@ -198,7 +198,7 @@
         <li><a href="{{route('contact')}}">Contact Us</a></li>
         
         <li><a href="{{route('help')}}">Help & Support</a></li>
-        <li><a href="{{url('login')}}">Sign In</a></li>
+        <li><a href="{{url('login')}}">Sign In</a> </li>
         <li><a href="{{route('how')}}">FAQs</a></li>
         <li><a href="{{route('terms')}}">Terms & Condition</a></li>
     </div>
