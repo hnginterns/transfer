@@ -14,6 +14,7 @@ use DB;
 use URL;
 use App\Restriction;
 use App\User;
+use App\Notifications\PermissionNotify;
 
 class WalletController  extends Controller
 {
@@ -89,6 +90,9 @@ class WalletController  extends Controller
             $restriction->can_transfer_to_wallets = json_encode($request->can_transfer_to_wallets);
             if($restriction->save()){
                 Session::flash('success', 'Permission created');
+                $user = $restriction->user->email;
+                $users = User::where('email', $user)->first();
+                $users->notify(new PermissionNotify($restriction));
                 return redirect('admin/managePermission');
             }else{
                 Session::flash('error', 'Permission not created');
@@ -224,6 +228,7 @@ class WalletController  extends Controller
             'min_amount' => 'required|numeric',
         ]);
     }
+
 
     
 }
