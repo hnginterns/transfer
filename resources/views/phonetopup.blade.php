@@ -80,10 +80,10 @@ tr:nth-child(even) {
 <link rel="stylesheet" href="walletview.css">
 <link rel="stylesheet" href="user.css">
 <link rel="stylesheet" href="form.css">
+<link rel="stylesheet" href="/css/walletview.css">
 
-   
 
-          <center>
+<center>
               <br><div class="">
 	<div class="orange-box"><h4 class="title" align="center">CONTACT</h4></div>
           <div class="table-responsive">
