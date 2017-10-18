@@ -130,8 +130,8 @@ tr:nth-child(even) {
               
                 </tr>               
               </tbody>
-            </table>    <br><br>
-<hr><br><br>
+            </table>    <br>
+<hr><br
 						
 <table>
     <th>
@@ -169,11 +169,11 @@ tr:nth-child(even) {
     
                     
        
-                </table> <br><br><hr><br>
+                </table> <br><hr><br>
 <table>
 
-       <th><div class="orange-box"><h4 class="title" align="center">TRANSACTION HISTORY</h4></div>
-       <div class="">
+       <th><div class="orange-box"><h4 class="title" align="center">TRANSACTION HISTORY</h4></div></th><br><div class="">
+       
 	
           <div class="table-responsive">
                 <table class="table">
