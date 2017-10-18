@@ -41,12 +41,12 @@
 <div id="section-2">
     <div>
         <p id="heading">
-            Get started on TransferRules today
+            Already registered on TransferRules? 
         </p>
         <p id="sub-heading">
-            It’s simple, no stress, no fuss.
+           Transfer funds today,  It’s simple, no stress, no fuss.
         </p>
-        <button id="get-started"><a href="{{url('/')}}">Sign in</button></a>
+        <button id="get-started"><a href="https://finance.hotels.ng/login">Sign in</a></button>
     </div>
     <img src="img/get-started.png" alt="get started image">
 </div>
