@@ -58,7 +58,7 @@ body {
 	font-family:"Open Sans", Helvetica, Arial, sans-serif;
 	font-weight:300;
 	font-size: 14px;
-	margin: auto
+	margin: auto;
 	line-height:30px;
 	color:#777;
 	background:#fff;
@@ -77,7 +77,7 @@ body {
 #contact {
 	background:#808080;
 	padding:25px;
-	margin:100px;
+	margin:50px;
 }
 
 #contact h3 {
