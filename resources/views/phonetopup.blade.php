@@ -137,6 +137,7 @@ tr:nth-child(even) {
     <th>
     
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <div class="col-md-6 col-sm-6">
     <td><select class="form-control cus-input" name="beneficiary_id" >
  <option>TOP UP AIRTIME</option>
                            <option value="1000">1000</option>
@@ -153,7 +154,8 @@ tr:nth-child(even) {
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-       
+     </div>
+     <div class="col-md-6 col-sm-6">
         <select class="form-control cus-input" name="beneficiary_id">
  <option>TOP UP DATA</option>
                            <option value="1000">1000</option>
@@ -166,10 +168,10 @@ tr:nth-child(even) {
     
     </tr>
                
-    
+    </div>
                     
        
-                </table> <br><hr><br>
+  </table> <br><hr><br>
 <table>
 
        <th><div class="orange-box"><h4 class="title" align="center">TRANSACTION HISTORY</h4></div></th><br><div class="">
