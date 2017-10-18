@@ -94,7 +94,7 @@ tr:nth-child(even) {
                   <td>phone Number</td>
                   <td>Network</td>
                   <td>Amount Left</td>
-                  <td>Weely Limit</td>
+                  <td>Weekly Limit</td>
                   <td>Action</td>
                 </tr>
               </thead>
