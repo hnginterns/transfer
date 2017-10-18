@@ -90,16 +90,19 @@ tr:nth-child(even) {
                 <table class="table">
               <thead>
                 <tr>
+                  <th>Select</th>
                   <td>Name</td>
                   <td>phone Number</td>
                   <td>Network</td>
                   <td>Amount Left</td>
                   <td>Weely Limit</td>
                   <td>Topups This Week</td>
+                  <td>Action</td>
                 </tr>
               </thead>
-              <tbody>
 
+
+              <tbody>
                 @if(count($phones) > 0)
                   @foreach($phones as $phone)
                     <tr>
@@ -118,8 +121,6 @@ tr:nth-child(even) {
                       <td></td>
                   </tr>
                 @endif
-
-
 
               </tbody>
             </table>    <br>
