@@ -4,12 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Notifications\Notifiable;
 
 class Restriction extends Model
 {
     use SoftDeletes;
-    use Notifiable;
 
     protected $fillable = ['wallet_id', 'uuid', 'created_by',
                            'updated_by', 'can_transfer_from_wallet',
