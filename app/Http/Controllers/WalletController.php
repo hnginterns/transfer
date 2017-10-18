@@ -69,7 +69,7 @@ class WalletController extends Controller
     {
         $token = $this->getToken();
         print_r($token);
-        /*
+        
         $headers = array('content-type' => 'application/json', 'Authorization' => $token);
         $query = array(
             "firstname" => $request->fname,
@@ -118,7 +118,6 @@ class WalletController extends Controller
         else{
             return back()->with('error', $response['message']);
         }
-        */
     }
 
     public function otp(Request $request, CardWallet $cardWallet)
