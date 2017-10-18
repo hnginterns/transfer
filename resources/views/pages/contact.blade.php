@@ -8,7 +8,6 @@
 <body>
 
 <div class="container">  
-<div class="form>
   <form id="contact" action="" method="post">
     <h3>Quick Contact</h3>
     <h4>Contact us today, and get reply within 24 hours!</h4>
@@ -32,7 +31,7 @@
     </fieldset>
   </form>
  
-</div>  
+  
 </div>
     
 		<div id="footer">
@@ -71,10 +70,6 @@ body {
 	margin:auto;
 	position:relative;
 	margin-bottom: 20px;
-}
-
-.form {
-	position: fixed;
 }
 
 #contact input[type="text"], #contact input[type="email"], #contact input[type="tel"], #contact input[type="url"], #contact textarea, #contact button[type="submit"] { font:400 12px/16px "Open Sans", Helvetica, Arial, sans-serif; }
