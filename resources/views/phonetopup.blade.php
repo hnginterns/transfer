@@ -1,3 +1,10 @@
+@extends('layouts.user')
+
+@section('title')
+      Transfer to Bank
+@endsection
+@section('content')
+
 <style>
 i.can{
         color: #00a65a;
