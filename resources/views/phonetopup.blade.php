@@ -160,8 +160,6 @@ tr:nth-child(even) {
          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
      <div class="col-md-4 col-sm-4">
         <select class="form-control cus-input" name="beneficiary_id">
-                                  
-   </select>&nbsp;&nbsp;&nbsp;&nbsp;<button id="btn btn-primary btn-block" type="submit"   class="btn btn-dark">Top Up</button></td>
  <option>TOP UP DATA</option>
                            <option value="1000">1000</option>
                             <option value="5000">5000</option>
@@ -169,7 +167,8 @@ tr:nth-child(even) {
                             <option value="50000">50000</option>
                             <option value="100000">100000</option>
                             
-   
+   </select>&nbsp;&nbsp;&nbsp;&nbsp;<button id="btn btn-primary btn-block" type="submit"   class="btn btn-dark">Top Up</button></td>
+    
     </tr>
                
     </div>
