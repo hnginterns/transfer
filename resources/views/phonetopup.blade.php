@@ -66,7 +66,7 @@ tr:nth-child(even) {
 	#box1	{
 		background:#fff; border:0px solid #000;
         { box-shadow: 1px 1px 1px #999; }
-		float:left; min-height:230px; margin-right:100px;
+		float:left; min-height:230px; margin-right:10px;
 	}
 	#box2 	{
 		background:#fff; border:0px solid #000;
@@ -132,7 +132,7 @@ tr:nth-child(even) {
               </tbody>
             </table>    <br>
 <hr><br
-	<div class="orange-box"><h4 class="title" align="center">PHONE TOP UP</h4></div>					
+						
  <table>
     <th>
     
