@@ -10,7 +10,7 @@
 <div class="container">  
   <form id="contact" action="" method="post">
     <h3>Quick Contact</h3>
-    <h4>Contact us today, and get reply with in 24 hours!</h4>
+    <h4>Contact us today, and get reply within 24 hours!</h4>
     <fieldset>
       <input placeholder="Your name" type="text" tabindex="1" required autofocus>
     </fieldset>
@@ -21,7 +21,7 @@
       <input placeholder="Your Phone Number" type="tel" tabindex="3" required>
     </fieldset>
     <fieldset>
-      <input placeholder="Your Company://" type="text" tabindex="4" required>
+      <input placeholder="Your Company:" type="text" tabindex="4" required>
     </fieldset>
     <fieldset>
       <textarea placeholder="Type your Message Here...." tabindex="5"></textarea>
@@ -58,6 +58,7 @@ body {
 	font-family:"Open Sans", Helvetica, Arial, sans-serif;
 	font-weight:300;
 	font-size: 14px;
+	margin: auto
 	line-height:30px;
 	color:#777;
 	background:#fff;
@@ -66,7 +67,7 @@ body {
 .container {
 	max-width:400px;
 	width:100%;
-	margin:auto auto;
+	margin:auto;
 	position:relative;
 }
 
