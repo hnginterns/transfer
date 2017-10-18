@@ -46,7 +46,7 @@
         <p id="sub-heading">
             It’s simple, no stress, no fuss.
         </p>
-        <button id="get-started">GET STARTED</button>
+        <button id="get-started"><a href="{{url('/')}}">GET STARTED</button></a>
     </div>
     <img src="img/get-started.png" alt="get started image">
 </div>
