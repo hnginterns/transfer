@@ -92,13 +92,14 @@ class WalletController extends Controller
 
         $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer', $headers, $body);
         $response = json_decode($response->raw_body, TRUE);
-        $response = $response['data']['transfer'];
-        $meta = $response['meta'];
-        $meta = json_decode($meta, TRUE);
-        $transMsg = $meta['processor']['responsemessage'];
-        $transRef = $meta['processor']['transactionreference'];
-        
+        var_dump($response);
         if($response['status'] == 'success') {
+            $response = $response['data']['transfer'];
+            $meta = $response['meta'];
+            $meta = json_decode($meta, TRUE);
+            $transMsg = $meta['processor']['responsemessage'];
+            $transRef = $meta['processor']['transactionreference'];
+            
             $transaction = new CardWallet;
             $transaction->firstName = $response['firstName'];
             $transaction->lastName = $response['lastName'];
