@@ -92,8 +92,7 @@ class WalletController extends Controller
 
         $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer', $headers, $body);
         $response = json_decode($response->raw_body, TRUE);
-        //var_dump($response);
-        //die();
+        
         if($response['status'] == 'success') {
             $response = $response['data']['transfer'];
             $meta = $response['meta'];
@@ -113,9 +112,10 @@ class WalletController extends Controller
             $transaction->save();
 
             return back()->with('status', $transMsg);
-
         }
-        var_dump($response);
+        else{
+            return back()->with('status', $transMsg);
+        }
     }
 
     public function otp(Request $request, CardWallet $cardWallet)
