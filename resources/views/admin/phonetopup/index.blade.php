@@ -11,7 +11,7 @@
             <section class="content-header" style="padding: 30px;">
                 <div class="row">
                     <div class="col-lg-6">
-                        <h4 id="balance">Top-up Balance: ₦ 20,520</h4>
+                        <h4 id="balance">Top-up Balance: ₦ {{number_format($topupbanlance, 2) }}</h4>
                         <div>
                             <button type="button" class="btn btn-info" data-toggle="modal" data-target="#PurchaseTopUp">Purchase</button>
                         </div>

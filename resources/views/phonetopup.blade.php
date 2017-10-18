@@ -90,49 +90,37 @@ tr:nth-child(even) {
                 <table class="table">
               <thead>
                 <tr>
-                      <th>Select</th>
-                  <th>Name</th>
-                  <th>Department</th>
-                   <th>Network</th>
-                  <th>Phone number</th>
-                    <th>Amount</th>
+                  <td>Name</td>
+                  <td>phone Number</td>
+                  <td>Network</td>
+                  <td>Amount Left</td>
+                  <td>Weely Limit</td>
+                  <td>Topups This Week</td>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                 <td><input type="radio" name="select" value=""><br></td>
-                  <td>Godfred Akpan</td>
-                  <td>Iron</td>
-                  <td>MTN</td>
-                  <td>09036709916</td>
-                <td><input type="text" name="amount" value="Amount"></td>
-                </tr>
-                  <tr>
-                 <td><input type="radio" name="select" value=""><br></td>
-                  <td>Godfred Akpan</td>
-                  <td>Iron</td>
-                  <td>MTN</td>
-                  <td>09036709916</td>
-                <td><input type="text" name="amount" value="Amount"></td>
-                </tr>
-                  <tr>
-                 <td><input type="radio" name="select" value=""><br></td>
-                  <td>Godfred Akpan</td>
-                  <td>Iron</td>
-                  <td>MTN</td>
-                  <td>09036709916</td>
-                <td><input type="text" name="amount" value="Amount"></td>
-                </tr>
-                  <tr>
-                 <td><input type="radio" name="select" value=""><br></td>
-                  <td>Godfred Akpan</td>
-                  <td>Iron</td>
-                  <td>MTN</td>
-                  <td>09036709916</td>
-                <td><input type="text" name="amount" value="Amount" size="20px"></td>
-                </tr>
-              
-                </tr>               
+
+                @if(count($phones) > 0)
+                  @foreach($phones as $phone)
+                    <tr>
+                        <td>{{ $phone->firstName }} {{ $phone->lastName }}</td>
+                        <td>{{ $phone->phoneNumber }}</td>
+                        <td>{{ $phone->ref }}</td>
+                        <td>{{ $phone->amount }}</td>
+                        <td>{{ $phone->max_tops }}</td>
+                    </tr>
+                  @endforeach
+                @else
+                   <tr>
+                      <td></td>
+                      <td>No Phone Number Added</td>
+                      <td></td>
+                      <td></td>
+                  </tr>
+                @endif
+
+
+
               </tbody>
             </table>    <br>
 <hr><br
