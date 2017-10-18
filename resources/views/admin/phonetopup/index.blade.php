@@ -288,22 +288,24 @@
                         <thead>
                             <tr>
                                 <td>Name</td>
-                                <td>phone Number</td>
-                                <td>Network</td>
-                                <td>Amount Left</td>
-                                <td>Weely Limit</td>
-                                <td>Topups This Week</td>
+                                <td>Title</td>
+                                <td>Dept</td>
+                                <td>Phone</td>
+                                <td>Email</td>
+                                <td>Weekly Max</td>
+                                <td>Nos of Topups this week</td>
                             </tr>
                         </thead>
                         <tbody>
-                            @if(count($phones) > 0)
-                              @foreach($phones as $phone)
+                            @if(count($contacts) > 0)
+                              @foreach($contacts as $contact)
                                 <tr>
-                                    <td>{{ $phone->firstName }} {{ $phone->lastName }}</td>
-                                    <td>{{ $phone->phoneNumber }}</td>
-                                    <td>{{ $phone->ref }}</td>
-                                    <td>{{ $phone->amount }}</td>
-                                    <td>{{ $phone->max_tops }}</td>
+                                    <td>{{ $contact->firstname }} {{ $contact->lastname }}</td>
+                                    <td>{{ $contact->title }}</td>
+                                    <td>{{ $contact->department }}</td>
+                                    <td>{{ $contact->phone }}</td>
+                                    <td>{{ $contact->email }}</td>
+                                    <td>{{ $contact->weekly_max }}</td>
                                 </tr>
                               @endforeach
                             @else

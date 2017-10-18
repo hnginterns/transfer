@@ -15,6 +15,10 @@ use App\Restriction;
 use App\Rule;
 use App\SmsWalletFund;
 use DB;
+
+use App\TopupContact;
+use App\TopupHistory;
+
 use App\Beneficiary;
 use App\Transaction;
 use Carbon\Carbon;
@@ -63,7 +67,9 @@ class AdminController extends WalletController
         $phones = SmsWalletFund::all();
         $topupbanlance = $this->getTopupWalletBalance();
 
-        return view('admin.phonetopup.index', compact('phones', 'topupbanlance'));
+        $contacts = TopupContact::all();
+
+        return view('admin.phonetopup.index', compact('phones', 'topupbanlance', 'contacts'));
     }
 
     public function index()
