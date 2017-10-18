@@ -57,7 +57,7 @@
 body {
 	font-family:"Open Sans", Helvetica, Arial, sans-serif;
 	font-weight:300;
-	font-size: 12px;
+	font-size: 14px;
 	line-height:30px;
 	color:#777;
 	background:#fff;
@@ -66,7 +66,7 @@ body {
 .container {
 	max-width:400px;
 	width:100%;
-	margin:0 auto;
+	margin:auto auto;
 	position:relative;
 }
 
@@ -89,7 +89,7 @@ body {
 #contact h4 {
 	margin:5px 0 15px;
 	display:block;
-	font-size:13px;
+	font-size:16px;
 	color: #D3D3D3;
 	text-align: center;
 }
