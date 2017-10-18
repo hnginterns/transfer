@@ -69,6 +69,7 @@ body {
 	width:%;
 	margin:auto;
 	position:relative;
+	margin-top: 100px;
 }
 
 #contact input[type="text"], #contact input[type="email"], #contact input[type="tel"], #contact input[type="url"], #contact textarea, #contact button[type="submit"] { font:400 12px/16px "Open Sans", Helvetica, Arial, sans-serif; }
