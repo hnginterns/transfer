@@ -64,12 +64,13 @@ Route::get('/404', 'pagesController@pagenotfound');
 //Api calls to money wave ends here
 
 
+
+
 // authentications
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/dashboard', 'pagesController@userdashboard');
 
-	//Test page for @jonesky
-	Route::get('/topuptest', 'pagesController@topuptest')->name('topup.test');
+	
 
 	//Wallet operations start
 	Route::get('/wallet/{wallet}', 'pagesController@walletdetail')->name('user.wallet.detail');
@@ -93,6 +94,8 @@ Route::group(['middleware' => 'auth'], function () {
 	//phone top up
 	Route::get('/phonetopup', 'pagesController@phoneTopupView');
 	Route::get('/topup/phone', 'User/PhoneTopUpController@phoneTopUp');
+	Route::get('topup/phone/{id}', 'User/PhoneTopUpController@phoneshow');
+	Route::get('topup/phone/', 'User/PhoneTopUpController@topuphonesubmit')->name('topup.phone.submit');
 	//end of phone top
 
 	Route::get('/transfer', 'pagesController@transfer');
@@ -207,6 +210,9 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
 	Route::get('/topup/phone', 'Admin\PhoneTopUpController@topup');
 	Route::post('/addphone', 'Admin\PhoneTopUpController@addPhone');
 
+	//Test page for @jonesky
+	Route::get('/getTopupWalletBalance', 'Admin\AdminController@getTopupWalletBalance')->name('topupwallet.balance');
+	
 	
 
 });

@@ -1,13 +1,17 @@
 
 @extends('layouts.admin')
+@section('title', 'Topup Admin Dashboard ')
+@section('subtitle', 'Manage Phone/Data Topup')
 @section('content')
  <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper" style="margin:0px;">
+<div class="row">
+    <div class="col-lg-12">
+        <br>
             <!-- Content Header (Page header) -->
             <section class="content-header" style="padding: 30px;">
                 <div class="row">
                     <div class="col-lg-6">
-                        <h4 id="balance">Top-up Balance: ₦ 20,520</h4>
+                        <h4 id="balance">Top-up Balance: ₦ {{number_format($topupbanlance, 2) }}</h4>
                         <div>
                             <button type="button" class="btn btn-info" data-toggle="modal" data-target="#PurchaseTopUp">Purchase</button>
                         </div>
@@ -106,7 +110,7 @@
                         </div>
                     </div>
                     <div class="col-lg-3 ">
-                        <h4 id="balance">Wallet Balance: ₦ 20,520</h4>
+                        <h4 id="balance">Wallet Balance: ₦ {{number_format($topupbanlance, 2) }}</h4>
                         <div>
                             <button type="button" class="btn btn-info" data-toggle="modal" data-target="#walletTopUp">Top Up Wallet</button>
                         </div>
@@ -287,6 +291,8 @@
                                 <td>phone Number</td>
                                 <td>Network</td>
                                 <td>Amount Left</td>
+                                <td>Weely Limit</td>
+                                <td>Topups This Week</td>
                             </tr>
                         </thead>
                         <tbody>
@@ -297,6 +303,7 @@
                                     <td>{{ $phone->phoneNumber }}</td>
                                     <td>{{ $phone->ref }}</td>
                                     <td>{{ $phone->amount }}</td>
+                                    <td>{{ $phone->max_tops }}</td>
                                 </tr>
                               @endforeach
                             @else

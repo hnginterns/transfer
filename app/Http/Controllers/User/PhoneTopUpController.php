@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use App\Restriction;
 use App\CardWallet;
 use App\Beneficiary;
+
+use App\SmsWalletFund;
 use App\Rule;
 use App\Transaction;
 use URL;
@@ -31,7 +33,33 @@ class PhoneTopUpController extends Controller
         //
     }
    public function phoneTopUp()
+
     {
-        //
+        
+
+
+
+    }
+
+    public function phoneshow($id)
+    { 
+        $phone = SmsWalletFund::find($id);
+
+        return response()->json([
+            'type' => 'success',
+            'data' => $phone,
+        ]);
+
+    }
+
+    public function ptopuphonesubmit(Request $request)
+
+    { 
+
+        $phone = SmsWalletFund::find($request->get('id'));
+
+        return \Redirect::route('home')->with('success', 'Book favorited!');
+            
+
     }
 }
