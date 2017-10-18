@@ -77,8 +77,7 @@ body {
 #contact {
 	background:#808080;
 	padding:25px;
-	margin:50px;
-	position: relative;
+	margin:100px;
 }
 
 #contact h3 {
