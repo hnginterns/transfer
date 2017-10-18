@@ -9,13 +9,13 @@
 
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>Sign In</title>
+    <title>Forgot Password</title>
 
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="/css/bootstrap.css" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
 
-    <link href="css/signin.css" rel="stylesheet">
+    <link href="/css/signin.css" rel="stylesheet">
 
 </head>
 
@@ -94,68 +94,50 @@
     </nav>
 
 
-
     <main>
 
         <div class="container">
 
-            <div class="login-box">
-
-                <h4 class="intro">Welcome </h4>
-
-                <h3 class="sign-in">Sign In to hotels.ng finance Account</h3>
-
-                <h6 class="promise">It is simple and easy to control your account -<br> Keep your password secret</h6>
-                @if (Session::has('messages'))
-                    {!! Session::get('messages') !!}
-                @endif
-                <form method="POST" action="{{ route('login') }}" class="admin-login">
-                    {{ csrf_field() }}
-                    <div class="form-group">
-
-                        <input value="{{ old('email') }}" name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                        
+           <div class="login-box">
+                <h4 class="intro-sub">Enter Email and Eew Password</h4>
+                <p class="writeup"></p>
+                <form class="admin-login"  method="POST"  method="POST" action="{{ route('password.request') }}">
+                {{ csrf_field() }}
+                <input type="hidden" name="token" value="{{ $token }}">
+                <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
                         @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-
-
+                            <span class="help-block">
+                                <strong>{{ $errors->first('email') }}</strong>
+                            </span>
+                        @endif
                     </div>
 
                     <div class="form-group">
-
-                        <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-
-                         @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-
+                        <label for="password">Email address</label>
+                        <input type="password" name="password" class="form-control" id="password" aria-describedby="emailHelp" placeholder="New Password">
+                        @if ($errors->has('password'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('password') }}</strong>
+                            </span>
+                        @endif
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Submit</button>
-
-                    <div class="forgot-holder">
-
-                        <a href="{{ route('password.request') }}" class="forgot-password">Forgot Password?</a>
-
+                    <div class="form-group">
+                        <label for="password-confirm">Email address</label>
+                        <input type="password" name="password_confirmation" class="form-control" id="password-confirm" aria-describedby="Confirm Password" placeholder="Confirm New Password">
+                        @if ($errors->has('password_confirmation'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('password_confirmation') }}</strong>
+                            </span>
+                        @endif
                     </div>
-                    
-
+                    <button type="submit" class="btn btn-primary">Reset Password</button>
 
                 </form>
-
             </div>
-
-
-
         </div>
-
-
-
     </main>
 
     <footer class="footer">
@@ -168,9 +150,9 @@
 
     </footer>
 
-    <script src="js/jquery.js"></script>
+    <script src="/js/jquery.js"></script>
 
-    <script src="js/bootstrap.js"></script>
+    <script src="/js/bootstrap.js"></script>
 
 </body>
 

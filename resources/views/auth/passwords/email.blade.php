@@ -94,7 +94,6 @@
     </nav>
 
 
-
     <main>
 
         <div class="container">
@@ -119,8 +118,6 @@
                                 <strong>{{ $errors->first('email') }}</strong>
                             </span>
                         @endif
-
-
                     </div>
                     <button type="submit" class="btn btn-primary">Reset Password</button>
                 </form>
