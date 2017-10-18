@@ -70,7 +70,7 @@ tr:nth-child(even) {
 	}
 	#box2 	{
 		background:#fff; border:0px solid #000;
-		float:left; min-height:230px; width:10px;
+		float:left; min-height:230px; width:5px;
 	}
 	-->  
     
