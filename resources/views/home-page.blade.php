@@ -854,10 +854,10 @@
         
         <div id="content-text" class="clearfix" align="center">
         <span id="heading-top-hd">
-        Online Payments Made Easy
+        Fund Transfer made easy
                 </span>
                 <span id="heading-hd">
-                This Finance tool is an easy way for you to pay and get paid anywhere
+                This Finance tool is used for managing fund with ease
                 </span>
             <button id="button-hd">
                 <a href="{{url('login')}}">Sign In</a>
