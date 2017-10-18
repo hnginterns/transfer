@@ -255,24 +255,15 @@ tr:nth-child(even) {
       </div>
       <div class="modal-body">
 
-      {!! Form::open(
-        [
-         'route' => 'topup.phone.submit', 
-         'class' => 'form'
-        ]
-      ) !!}
-      {!! Form::hidden('id', '', ['id' => 'book-id']) !!}
-      
-      
-  
+        <form action="{{ route('topup.phone.submit')}}" method="POST" role="form">
+          {{csrf_field()}}
 
+           <input type="text" name="phoneRef" value="{{ $phone->ref }}" >
+           <input type="text" name="name" value="{{ $phone->firstName  }}">
+           <input type="text" name="name" value="{{ $phone->lastName  }}">
+           <input type="text" name="phone" value="{{ $phone->phoneNumber }}">
 
-
-         {{ $phone->firstName }} {{ $phone->lastName }} <br>
-                        {{ $phone->phoneNumber }} <br>
-                        {{ $phone->ref }} <br>
-                        {{ $phone->amount }} <br>
-        {!! Form::close() !!}              
+           <input type="text" name="amount" placeholder="Please Enter Amount">          
                         
       </div>
       <div class="modal-footer">
