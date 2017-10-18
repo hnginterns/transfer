@@ -110,7 +110,7 @@
                         </div>
                     </div>
                     <div class="col-lg-3 ">
-                        <h4 id="balance">Wallet Balance: ₦ 20,520</h4>
+                        <h4 id="balance">Wallet Balance: ₦ {{$topupbanlance}}/h4>
                         <div>
                             <button type="button" class="btn btn-info" data-toggle="modal" data-target="#walletTopUp">Top Up Wallet</button>
                         </div>
