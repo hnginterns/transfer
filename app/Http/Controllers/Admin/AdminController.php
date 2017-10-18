@@ -61,7 +61,7 @@ class AdminController extends WalletController
     public function phoneTopupView()
     {
         $phones = SmsWalletFund::all();
-        $topupbanlance = getTopupWalletBalance();
+        $topupbanlance = $this->getTopupWalletBalance();
 
         return view('admin.phonetopup.index', compact('phones', 'topupbanlance'));
     }
