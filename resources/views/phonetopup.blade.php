@@ -90,7 +90,6 @@ tr:nth-child(even) {
                 <table class="table">
               <thead>
                 <tr>
-                  <th>Select</th>
                   <td>Name</td>
                   <td>phone Number</td>
                   <td>Network</td>
