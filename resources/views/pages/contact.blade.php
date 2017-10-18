@@ -65,7 +65,7 @@ body {
 }
 
 .container {
-	max-width:700px;
+	max-width:600px;
 	margin:auto;
 	margin-bottom: 20px;
 }
