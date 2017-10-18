@@ -14,7 +14,7 @@ use DB;
 use URL;
 use App\Restriction;
 use App\User;
-use App\Notifications\PermissionNotify as PermissionNotify;
+use App\Notifications\PermissionNotify;
 
 class WalletController  extends Controller
 {
