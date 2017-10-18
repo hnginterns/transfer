@@ -315,15 +315,7 @@
             background: #39689C;
             position:relative;
             margin-bottom:-50px;
-            z-index: 1;
-            /*margin-left:-20px;
-            -webkit-transform-origin: 100% 0;
-            -ms-transform-origin:0 100%;
-            transform-origin: 0 100% ;
-            -webkit-transform: rotate(2deg);
-            -ms-transform: rotate(2deg);
-            transform: rotate(2deg);
-            */
+            z-index: -1;
         }
         #divider-top:before{
             background: inherit;
