@@ -310,19 +310,19 @@
            
         }
         #divider-top{
-            width: 125%;
+            width: 100%;
             height: 200px;
             background: #39689C;
             margin-bottom:-50px;
-            margin-left:-20px;
+            /*margin-left:-20px;*/
             position:relative;
             z-index:-1;
             -webkit-transform-origin: 100% 0;
-  -ms-transform-origin:0 100%;
-  transform-origin: 0 100% ;
-  -webkit-transform: rotate(2deg);
-  -ms-transform: rotate(2deg);
-  transform: rotate(2deg);
+            -ms-transform-origin:0 100%;
+            transform-origin: 0 100% ;
+            -webkit-transform: rotate(2deg);
+            -ms-transform: rotate(2deg);
+            transform: rotate(2deg);
         }
 
         #divider-content {
