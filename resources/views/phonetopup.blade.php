@@ -248,17 +248,31 @@ tr:nth-child(even) {
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Topup {{ $phone->phoneNumber }} with Airtime </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
+
+      {!! Form::open(
+        [
+         'route' => 'topup.phone.submit', 
+         'class' => 'form'
+        ]
+      ) !!}
+      {!! Form::hidden('id', '', ['id' => 'book-id']) !!}
+      
+      
+  
+
+
+
          {{ $phone->firstName }} {{ $phone->lastName }} <br>
                         {{ $phone->phoneNumber }} <br>
                         {{ $phone->ref }} <br>
                         {{ $phone->amount }} <br>
-                        {{ $phone->max_tops }} <br>
+        {!! Form::close() !!}              
                         
       </div>
       <div class="modal-footer">

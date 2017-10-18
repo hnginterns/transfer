@@ -50,4 +50,24 @@ class PhoneTopUpController extends Controller
         ]);
 
     }
+
+    public function ptopuphonesubmit(Request $request)
+
+    { 
+
+        
+
+
+
+        
+        $phone = SmsWalletFund::find($id);
+
+        $book = Book::find($request->get('id'));
+
+        \Auth::user()->favorites()->save($book);
+
+        return \Redirect::route('home')->with('success', 'Book favorited!');
+            
+
+    }
 }
