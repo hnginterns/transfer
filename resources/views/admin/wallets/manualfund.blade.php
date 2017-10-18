@@ -6,7 +6,7 @@
 <div class="row">
     <div class="col-md-10 col-sm-offset-1">
         <br>
-        @if($error)
+        @if($error->any())
             <div class="alert alert-danger">
                 <p>{{ $error }}</p>
             </div>
