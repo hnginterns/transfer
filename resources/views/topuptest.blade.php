@@ -678,7 +678,18 @@
                                     <label for='regular'>MTN</label>
                                 </div>
                             </td>
-                        </tr>
+                        </tr> <select class="selectpicker" data-style="btn-info">
+                                 <option>Choose Network</option>
+
+                 <option>MTN</option>
+                 <option>GLO</option>
+                 <option>Airtel</option>
+
+                 <option>9Mobile</option>
+                 
+</select>
+<button type="button" class="btn btn-info">Button</button>
+
                     </form>
                 </tbody>
             </table>
@@ -688,15 +699,7 @@
 
     </div>
 
-    <select class="selectpicker" data-style="btn-info">
-                                 <option>Choose Network</option>
-
-                 <option>MTN</option>
-                 <option>GLO</option>
-                 <option>Airtel</option>
-
-                 <option>9Mobile</option>
-</select>
+   
 
 
 
