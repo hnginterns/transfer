@@ -287,6 +287,7 @@
                                 <td>phone Number</td>
                                 <td>Network</td>
                                 <td>Amount Left</td>
+                                <td>Weely Limit</td>
                             </tr>
                         </thead>
                         <tbody>
@@ -297,6 +298,7 @@
                                     <td>{{ $phone->phoneNumber }}</td>
                                     <td>{{ $phone->ref }}</td>
                                     <td>{{ $phone->amount }}</td>
+                                    <td>{{ $phone->max_tops }}</td>
                                 </tr>
                               @endforeach
                             @else
