@@ -4,7 +4,6 @@
       Transfer to Bank
 @endsection
 @section('content')
-
 <style>
 i.can{
         color: #00a65a;
@@ -38,30 +37,31 @@ first {
     
 form group { 
     
-    height:40;
+    height:400;
     
     }
     
     table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 100;
+    width: 899;
+    
 }
 td, th {
     border: px solid #dddddd;
     
     text-align: center;
-    
+    padding: 5px;
 }
 tr:nth-child(even) {
-    
+    width: 100;
     background-color: #dddddd;
 }
     
 
 <!--
 	#container {
-		
+		width:100%;
 	}
 	#box1	{
 		background:#fff; border:0px solid #000;
@@ -70,7 +70,7 @@ tr:nth-child(even) {
 	}
 	#box2 	{
 		background:#fff; border:0px solid #000;
-		float:left; min-height:230px; width:10px;
+		float:left; min-height:230px; width:250px;
 	}
 	-->  
     
@@ -82,7 +82,8 @@ tr:nth-child(even) {
 
    
 
-          <br><div class="">
+          <center>
+              <br><div class="">
 	<div class="orange-box"><h4 class="title" align="center">CONTACT</h4></div>
           <div class="table-responsive">
                 <table class="table">
@@ -228,12 +229,34 @@ tr:nth-child(even) {
             </table>    <br><br>
 		</div>
 
-    
+     @if (session('status'))
+   <script type="text/javascript">
+        $(document).ready(function() {
+            $('#otpModal').modal();
+        });
+    </script>
 
     <div class="modal fade" id="otpModal" role="dialog">
     <div class="modal-dialog">
     
-      
+      <!-- Modal content-->
+      <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Otp</h4>
+          </div>
+          <div class="modal-body">
+            <p>{{session('status')}}</p>
+            <div class="row">
+            <div class="col-md-6 col-md-offset-2">
+              <form action="/otp" method="POST">
+                {{csrf_field()}}
+                <input type="hidden" name="ref" value="{{$cardWallet->ref}}">
+                <div class="form-group">
+                    <input type="password" class="form-control" name="otp" placeholder="Enter OTP">
+                </div>
+                <button type="submit" class="btn btn-default btn-block">Submit</button>
+              </form>
             </div>
           </div>
       </div>
@@ -243,3 +266,5 @@ tr:nth-child(even) {
 
 </div>
 
+    
+  @endsection
