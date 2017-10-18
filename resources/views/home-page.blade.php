@@ -860,7 +860,7 @@
                 This Finance tool is used for managing fund with ease
                 </span>
             <button id="button-hd">
-                <a href="{{url('login')}}">Sign In</a>
+                <a href="{{url('features')}}">Features</a>
             </button>
         </div>
     </div>
@@ -931,13 +931,13 @@
 <div id="divider">
     <div id="divider-content" align="center">
         <div id="divider-text">
-            <p align="center" id="divider-title">Sign up in Five Minutes</p>
+            <p align="center" id="divider-title">Already regsitered? </p>
             <p id="">
-                Create an account in less than 5 minutes. Login to your account and create wallets for your company
+                Login to your account and create wallets for your company.
             </p>
         </div>
         <br />
-        <button id="divider-cta">Read More</button>
+        <button id="divider-cta"><a href="https://finance.hotels.ng/login">Sign In</a></button>
     </div>
 </div><br><br><p>
 <!-- FOOTER -->
@@ -948,7 +948,7 @@
         <li><a href="{{route('about')}}">About Us</a></li>
         <li><a href="{{route('privacy')}}">Privacy Policy</a></li>
 
-        <li><a href="{{route('features')}}">How it works</a></li>
+        <li><a href="{{route('features')}}">How it worksFeatures</a></li>
         <li><a href="{{route('contact')}}">Contact Us</a></li>
    
 
@@ -976,7 +976,7 @@
             <td><a href="{{route('contact')}}">Contact Us</a></td>
         </tr>
         <tr>
-            <td><a href="{{route('how')}}">How it works</a></td>
+            <td><a href="{{route('how')}}">Features</a></td>
             <td><a href="{{route('contact')}}">Contact Us</a></td>
             <td><a href="{{route('help')}}">Help & Support</a></td>
         </tr>
