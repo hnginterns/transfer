@@ -1,5 +1,5 @@
 @extends('layouts.page')
-@section('main-text', 'Contact Us')
+@section('main-text', '')
 @section('sub-text', 'TransferRules lets you receive payments locally and globally with no hassles and zero set up fees')
 @section('content')
 
@@ -21,10 +21,10 @@
       <input placeholder="Your Phone Number" type="tel" tabindex="3" required>
     </fieldset>
     <fieldset>
-      <input placeholder="Your Web Site starts with http://" type="url" tabindex="4" required>
+      <input placeholder="Your Company://" type="url" tabindex="4" required>
     </fieldset>
     <fieldset>
-      <textarea placeholder="Type your Message Here...." tabindex="5" required></textarea>
+      <textarea placeholder="Type your Message Here...." tabindex="5"></textarea>
     </fieldset>
     <fieldset>
       <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
