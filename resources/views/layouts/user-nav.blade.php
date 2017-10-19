@@ -13,7 +13,7 @@
             <input type="text search" class="form-control" placeholder="Search...">
        
                   </ul>
-             </div>
+
              @if(Auth::user()->first_name !== null || Auth::user()->last_name !== null)
                   {{ Auth::user()->first_name.' '.Auth::User()->last_name }}
              @else
@@ -21,8 +21,6 @@
              @endif
             <i class="fa fa-user-circle-o"></i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
            </form>
-        </div>
-      </div>
     </nav>
 
 
