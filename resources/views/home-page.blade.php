@@ -42,7 +42,7 @@
 
         .navbar {
             margin: 0px;
-            padding-top: 30px !important;
+            padding-top: 15px !important;
             padding: 0px;
             background: transparent;
             width: 100%;
@@ -67,7 +67,7 @@
         }
         .navbar-brand,
         .navbar-nav a {
-            color: white !important;
+            color: #000 !important;
             font-size: 17px;
             margin-right: 10px;
         }
@@ -94,9 +94,9 @@
         #sign-in {
             margin-top: 9px;
             /* background: #E57679; */
-            color:#000000 !important;
-            background: #FFFFFF !important;
-            border: 1px solid #00AEFF !important;
+            color:#FFF !important;
+            background: #39689C !important;
+            border: 1px solid #39689C !important;
             border-radius: 63px;
             padding-left: 12px;
             padding-right: 12px;
