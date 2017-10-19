@@ -8,6 +8,7 @@
             <span class="icon-bar"></span>
           </button>    
           </div>
+          <div class="collapse navbar-collapse" id="myNavbar">
           <form class="navbar-form navbar-right navform">
           
             <input type="text search" class="form-control" placeholder="Search...">
@@ -21,6 +22,7 @@
              @endif
             <i class="fa fa-user-circle-o"></i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
            </form>
+           </div>
     </nav>
 
 
