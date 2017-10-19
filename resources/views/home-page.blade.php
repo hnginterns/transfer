@@ -37,17 +37,20 @@
             
             height: 40px;
             margin-right: 15px;
-            margin-left: 50px;
+            margin-left: 0px;
         }
 
         .navbar {
             margin: 0px;
-            padding-top: 30px !important;
+            padding-top: 10px !important;
+            padding-bottom: 10px !important;
             padding: 0px;
             background: transparent;
             width: 100%;
             border-radius: 0px;
             border: none;
+            border-bottom:solid;
+            border-bottom-color:#39689C;
             color: white;
         }
         .about{
@@ -67,7 +70,7 @@
         }
         .navbar-brand,
         .navbar-nav a {
-            color: white !important;
+            color: #000 !important;
             font-size: 17px;
             margin-right: 10px;
         }
@@ -94,9 +97,9 @@
         #sign-in {
             margin-top: 9px;
             /* background: #E57679; */
-            color:#000000 !important;
-            background: #FFFFFF !important;
-            border: 1px solid #00AEFF !important;
+            color:#FFF !important;
+            background: #39689C !important;
+            border: 1px solid #39689C !important;
             border-radius: 63px;
             padding-left: 12px;
             padding-right: 12px;
@@ -104,7 +107,7 @@
         
         #sign-in a  {
             padding: 7px 14px;
-            color: #000000 !important;
+            color: #FFF !important;
             display: block;
         }
         #sign-in:hover a{
@@ -136,6 +139,7 @@
             height: 300px;
             grid-gap: 5px;
             color: white;
+            margin-top:15%;
         }
 
         #heading-hd {
@@ -814,11 +818,8 @@
     </style>
 </head>
 <body>
-<!-- HEADER BEGINS -->
-<div id="header" style="background: url('img/Group2.png');">
-    <p id="background-text">FUNDS</p>
-
-    <nav class="navbar navbar-default">
+<div class="top">
+<nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -857,6 +858,12 @@
             </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
     </nav>
+</div>
+<!-- HEADER BEGINS -->
+<div id="header" style="background: url('img/Group2.png');">
+  <!--  <p id="background-text">FUNDS</p> -->
+
+    
 
     <div id="header-content" align="center">
         
@@ -945,7 +952,7 @@
             </p>
         </div>
         <br />
-        <button id="divider-cta"><a href="https://finance.hotels.ng/login">Sign In</a></button>
+        <button id="divider-cta"><a href="https://finance.hotels.ng/login"><font color="white">Sign In</font></a></button>
     </div>
 </div><br><br><p>
 <!-- FOOTER -->

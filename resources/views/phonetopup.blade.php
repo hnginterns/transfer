@@ -91,10 +91,10 @@ tr:nth-child(even) {
               <thead>
                 <tr>
                   <td>Name</td>
-                  <td>phone Number</td>
+                  <td>Phone Number</td>
                   <td>Network</td>
                   <td>Amount Left</td>
-                  <td>Weely Limit</td>
+                  <td>Weekly Limit</td>
                   <td>Action</td>
                 </tr>
               </thead>
