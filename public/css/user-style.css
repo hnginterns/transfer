@@ -75,7 +75,8 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .navform{
   border-color:#fff !important;
-
+padding-right: 3px;
+padding-left:3px;
 }
 .main {
   margin-top: 60px;
