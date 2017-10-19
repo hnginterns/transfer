@@ -58,8 +58,7 @@ tr:nth-child(even) {
     background-color: #dddddd;
 }
     
-
-<!--
+/* 
 	#container {
 		width:200;
 	}
@@ -71,8 +70,7 @@ tr:nth-child(even) {
 	#box2 	{
 		background:#fff; border:0px solid #000;
 		float:right; min-height:230px; width:30px;
-	}
-	-->  
+	} */
     
     }
 </style>
