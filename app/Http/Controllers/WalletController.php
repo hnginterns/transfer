@@ -68,8 +68,7 @@ class WalletController extends Controller
     public function cardWallet(Request $request, CardWallet $cardWallet)
     {
         $token = $this->getToken();
-        print_r($token);
-        /*
+        
         $headers = array('content-type' => 'application/json', 'Authorization' => $token);
         $query = array(
             "firstname" => $request->fname,
@@ -84,7 +83,7 @@ class WalletController extends Controller
             "expiry_year" => $request->expiry_year,
             "expiry_month" => $request->expiry_month,
             "charge_auth" => "PIN", //optional required where card is a local Mastercard
-            "apiKey" => env('APP_KEY'),
+            "apiKey" => env('API_KEY'),
             "amount" => $request->amount,
             "fee" => 0,
             "medium" => "web",
@@ -94,13 +93,12 @@ class WalletController extends Controller
 
         $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer', $headers, $body);
         $response = json_decode($response->raw_body, TRUE);
-        
         if($response['status'] == 'success') {
             $response = $response['data']['transfer'];
-            $meta = $response['meta'];
-            $meta = json_decode($meta, TRUE);
-            $transMsg = $meta['processor']['responsemessage'];
-            $transRef = $meta['processor']['transactionreference'];
+            //$meta = $response['meta'];
+            //$meta = json_decode($meta, TRUE);
+            $transMsg = $response['flutterChargeResponseMessage'];
+            $transRef = $response['flutterChargeReference'];
             
             $transaction = new CardWallet;
             $transaction->firstName = $response['firstName'];
@@ -118,7 +116,6 @@ class WalletController extends Controller
         else{
             return back()->with('error', $response['message']);
         }
-        */
     }
 
     public function otp(Request $request, CardWallet $cardWallet)

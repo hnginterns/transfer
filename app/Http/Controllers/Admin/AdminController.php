@@ -65,6 +65,7 @@ class AdminController extends WalletController
     public function phoneTopupView()
     {
         $phones = SmsWalletFund::all();
+        
         $topupbanlance = $this->getTopupWalletBalance();
 
         $contacts = TopupContact::all();
@@ -82,7 +83,7 @@ class AdminController extends WalletController
 
     public function managePermission()
     {
-        $restriction = Restriction::all();
+        $restriction = Restriction::paginate(8);
 
         return view('admin.permit.managepermission', compact('restriction'));
     }
