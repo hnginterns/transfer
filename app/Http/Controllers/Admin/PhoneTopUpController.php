@@ -98,6 +98,7 @@ class PhoneTopUpController extends Controller
      //transfer from wallet to bank
     public function postTopup(Request $request)
     {
+        
         $validator = $this->validateRequest($request->all());
         if ($validator->fails()) {
             $messages = $validator->messages()->toArray();
@@ -105,6 +106,7 @@ class PhoneTopUpController extends Controller
             return back();
         } else {
                 $token = $this->getToken();
+                
                 $headers = array('content-type' => 'application/json', 'Authorization' => $token);
                 $wallet = Wallet::find($request->wallet_id);
                 $bank = Bank::find($request->bank_id);
@@ -147,7 +149,7 @@ class PhoneTopUpController extends Controller
                 $response = json_decode($response->raw_body, true);
                 $status = $response['status'];
                 //end of Api call
-
+                
                 if ($status == 'success') {
 
                     //data to be parsed to display transaction details
