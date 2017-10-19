@@ -139,6 +139,7 @@
             height: 300px;
             grid-gap: 5px;
             color: white;
+            margin-top:15%;
         }
 
         #heading-hd {
