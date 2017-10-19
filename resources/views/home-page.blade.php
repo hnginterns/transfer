@@ -814,11 +814,8 @@
     </style>
 </head>
 <body>
-<!-- HEADER BEGINS -->
-<div id="header" style="background: url('img/Group2.png');">
-    <p id="background-text">FUNDS</p>
-
-    <nav class="navbar navbar-default">
+<div class="top">
+<nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -857,6 +854,12 @@
             </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
     </nav>
+</div>
+<!-- HEADER BEGINS -->
+<div id="header" style="background: url('img/Group2.png');">
+  <!--  <p id="background-text">FUNDS</p> -->
+
+    
 
     <div id="header-content" align="center">
         
