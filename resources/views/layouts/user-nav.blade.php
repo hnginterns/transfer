@@ -10,7 +10,7 @@
           </div>
           <form class="navbar-form navbar-right navform">
           
-            <input type="text" class="form-control" placeholder="Search...">
+            <input type="text search" class="form-control" placeholder="Search...">
        
                   </ul>
              </div>
