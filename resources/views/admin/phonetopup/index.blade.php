@@ -314,15 +314,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @if(count($contacts) > 0)
-                              @foreach($contacts as $contact)
+                            @if(count($phones) > 0)
+                              @foreach($phones as $phone)
                                 <tr>
-                                    <td>{{ $contact->firstname }} {{ $contact->lastname }}</td>
-                                    <td>{{ $contact->title }}</td>
-                                    <td>{{ $contact->department }}</td>
-                                    <td>{{ $contact->phone }}</td>
-                                    <td>{{ $contact->email }}</td>
-                                    <td>{{ $contact->weekly_max }}</td>
+                                    <td>{{ $phone->firstName }} {{ $phone->lastName }}</td>
+                                    <td>@isset($phone->title){{ $phone->title }}@else Not Set @endisset</td>
+                                    <td>@isset($phone->department){{ $phone->department }}@else Not Set @endisset</td>
+                                    <td>{{ $phone->phoneNumber }}</td>
+                                    <td>@isset($phone->email){{ $phone->email }}@else Not Set @endisset</td>
+                                    <td>{{ $phone->max_tops }}</td>
+                                    <td>{{ $phone->amount }}</td>
                                 </tr>
                               @endforeach
                             @else

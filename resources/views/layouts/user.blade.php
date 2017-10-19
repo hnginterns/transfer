@@ -61,8 +61,10 @@
         toastr.error("{{ Session::get('error') }}");
   @endif
 
-</script>
-  
+
+   </script>
+ 
+
 </body>
 
 </html>
