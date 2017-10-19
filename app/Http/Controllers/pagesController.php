@@ -14,6 +14,7 @@ use App\Transaction;
 use App\BankTransaction;
 use App\WalletTransaction;
 use App\SmsWalletFund;
+use App\TopupContact;
 
 use App\Bank;
 
@@ -229,10 +230,10 @@ class pagesController extends Controller
 
  public function phoneTopupView()
     {
-        $phones = SmsWalletFund::all();
+        $contacts = TopupContact::all();
         $topupbanlance = $this->getTopupWalletBalance();
 
-        return view('phonetopup', compact('phones', 'topupbanlance'));
+        return view('phonetopup', compact('contacts', 'topupbanlance'));
     }
 
     //all other page functions can be added

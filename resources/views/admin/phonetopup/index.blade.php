@@ -303,7 +303,7 @@
                                     <td>{{ $contact->firstname }} {{ $contact->lastname }}</td>
                                     <td>{{ $contact->title }}</td>
                                     <td>{{ $contact->department }}</td>
-                                    <td>{{ $contact->phone }}</td>
+                                    <td>{{ $contact->phoneNumber }}</td>
                                     <td>{{ $contact->email }}</td>
                                     <td>{{ $contact->weekly_max }}</td>
                                 </tr>
