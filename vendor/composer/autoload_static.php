@@ -430,6 +430,7 @@ class ComposerStaticInitcb56c8f99153a160391720319584c667
         'App\\Notifications\\PermissionNotify' => __DIR__ . '/../..' . '/app/Notifications/PermissionNotify.php',
         'App\\Notifications\\UserCreated' => __DIR__ . '/../..' . '/app/Notifications/UserCreated.php',
         'App\\Notifications\\WalletTransaction' => __DIR__ . '/../..' . '/app/Notifications/WalletTransaction.php',
+        'App\\PhonetopupTransaction' => __DIR__ . '/../..' . '/app/PhonetopupTransaction.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',

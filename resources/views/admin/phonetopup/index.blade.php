@@ -27,21 +27,55 @@
                                             <h4 class="modal-title">Transfer To Service Provider</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="#" method="post" accept-charset="utf-8">
+                                            <form action="{{config('app.url')}}/admin/transfer/topup" method="post" accept-charset="utf-8">
+                                                {{csrf_field()}}
                                                 <div class="modal-body" style="padding: 5px;">
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                                                            <input class="form-control" name="text" placeholder="Account number" type="text" required />
+                                                            <input class="form-control" name="account_name" placeholder="Account Name" type="text" required />
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
+                                                            <select class="form-control" name="wallet_id" required >
+                                                                <option>--Select Wallet --</option>
+                                                                @foreach($wallet as $key=>$wallets)
+                                                                    <option value="{{$wallets->id}}">{{$wallets->wallet_name}}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
+                                                            <select class="form-control" name="bank_id" required >
+                                                                <option>--Select bank --</option>
+                                                                @foreach($bank as $key=>$banks)
+                                                                    <option value="{{$banks->id}}">{{$banks->bank_name}}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
+                                                            <input class="form-control" name="account_number" placeholder="Account number" type="text" required />
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                                                            <input class="form-control" name="Amount" placeholder="Amount" type="text" required />
+                                                            <input class="form-control" name="amount" placeholder="Amount" type="number" required />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
+                                                            <input class="form-control" name="narration" placeholder="Narration" type="text" required />
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="panel-footer" style="margin-bottom:-14px;">
-                                                    <input type="submit" class="btn btn-success" value="Save" />
+                                                    <button type="submit" class="btn btn-primary">Top up</button>
                                                     <button style="float: right;" type="button" class="btn btn-default btn-close" data-dismiss="modal">Close</button>
                                                 </div>
                                             </form>

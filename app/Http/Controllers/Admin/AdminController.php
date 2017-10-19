@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\WalletController;
 use App\User;
 use App\Wallet;
+use App\Bank;
 use App\CardWallet;
 use App\Restriction;
 use App\Rule;
@@ -62,8 +63,10 @@ class AdminController extends WalletController
     {
         $phones = SmsWalletFund::all();
         $topupbanlance = $this->getTopupWalletBalance();
-
-        return view('admin.phonetopup.index', compact('phones', 'topupbanlance'));
+        $bank = Bank::all();
+        $wallet = Wallet::all();
+        
+        return view('admin.phonetopup.index', compact('phones', 'wallet', 'bank', 'topupbanlance'));
     }
 
     public function index()

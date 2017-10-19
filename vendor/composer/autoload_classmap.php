@@ -65,6 +65,7 @@ return array(
     'App\\Notifications\\PermissionNotify' => $baseDir . '/app/Notifications/PermissionNotify.php',
     'App\\Notifications\\UserCreated' => $baseDir . '/app/Notifications/UserCreated.php',
     'App\\Notifications\\WalletTransaction' => $baseDir . '/app/Notifications/WalletTransaction.php',
+    'App\\PhonetopupTransaction' => $baseDir . '/app/PhonetopupTransaction.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',
     'App\\Providers\\BroadcastServiceProvider' => $baseDir . '/app/Providers/BroadcastServiceProvider.php',
