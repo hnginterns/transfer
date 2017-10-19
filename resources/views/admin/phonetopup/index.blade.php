@@ -300,7 +300,7 @@
                             @if(count($contacts) > 0)
                               @foreach($contacts as $contact)
                                 <tr>
-                                    <td>{{ $contact->firstname }} {{ $contact->lastname }}</td>
+                                    <td>{{ $contact->firstName }} {{ $contact->lastName }}</td>
                                     <td>{{ $contact->title }}</td>
                                     <td>{{ $contact->department }}</td>
                                     <td>{{ $contact->phoneNumber }}</td>
