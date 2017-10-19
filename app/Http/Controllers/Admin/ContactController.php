@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\TopupContact;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -43,7 +45,9 @@ class ContactController extends Controller
             'lastname' => 'required|string',
             'phone' => 'required|numeric',
             'network' => 'required',
-            'weekly_max' => 'required|numeric'
+            'weekly_max' => 'required|numeric',
+            'title' => 'required',
+            'department' => 'required',
 
             ],
                                      [
