@@ -49,6 +49,8 @@
             width: 100%;
             border-radius: 0px;
             border: none;
+            border-bottom:solid;
+            border-bottom-color:#39689C;
             color: white;
         }
         .about{
@@ -105,7 +107,7 @@
         
         #sign-in a  {
             padding: 7px 14px;
-            color: #000000 !important;
+            color: #FFF !important;
             display: block;
         }
         #sign-in:hover a{
