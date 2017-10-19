@@ -63,7 +63,8 @@
 
 
    </script>
- 
+
+      @yield('add_js')
 
 </body>
 
