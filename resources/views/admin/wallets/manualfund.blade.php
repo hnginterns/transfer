@@ -6,13 +6,7 @@
 <div class="row">
     <div class="col-md-10 col-sm-offset-1">
         <br>
-        @if($errors->any())
-            <div class="alert alert-danger">
-            @foreach($errors->all() as $error)
-                <p>{{ $error }}</p>
-            @endforeach()
-            </div>
-        @endif
+        
         <div class="panel panel-default">
             <div class="panel-heading">
                 Fund <strong>{{ $wallet->wallet_name }} </strong>  Wallet with Card <a href="{{ route('wallets.details', $wallet->id) }}" class="label label-primary pull-right">Back</a>

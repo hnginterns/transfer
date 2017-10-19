@@ -18,6 +18,7 @@ class CreateTopupHistoriesTable extends Migration
             $table->integer('contact_id');
             $table->integer('user_id');
             $table->integer('amount');
+            $table->string('type'); // Type of topup: airtime or data
             $table->string('ref');
             $table->string('txn_response');
             $table->string('status');
