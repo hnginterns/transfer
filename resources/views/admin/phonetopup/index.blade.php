@@ -297,10 +297,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @if(count($phones) > 0)
-                              @foreach($phones as $contact)
+                            @if(count($contacts) > 0)
+                              @foreach($contacts as $contact)
                                 <tr>
-                                    <td>{{ $contact->firstName }} {{ $contact->lastName }}</td>
+                                    <td>{{ $contact->firstname }} {{ $contact->lastname }}</td>
                                     <td>{{ $contact->title }}</td>
                                     <td>{{ $contact->department }}</td>
                                     <td>{{ $contact->phoneNumber }}</td>
