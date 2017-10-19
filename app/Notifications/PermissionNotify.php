@@ -50,11 +50,11 @@ class PermissionNotify extends Notification implements ShouldQueue
                     ->line('1. ' .$this->restriction->can_fund_wallet = 'fund wallet')
                     ->line('2. '.$this->restriction->can_transfer_from_wallet = 'transfer from wallet')
                     ->line('3. '.$this->restriction->can_add_beneficiary = 'can add beneficiary')
-                    ->line('4. can transfer to wallets with ids: '.$this->restriction->can_transfer_to_wallets)
+                    ->line($this->restriction->can_transfer_to_wallets ? '4. can transfer to wallets with ids: '.$this->restriction->can_transfer_to_wallets : "")
                     ->line('Minimum amount for transfer: '.$this->restriction->min_amount)
                     ->line('Maximum amount for transfer: '.$this->restriction->max_amount)     
                 
-                    ->action('View Permission', url('/wallet'.$this->restriction->wallet_id))
+                    ->action('View Permission', url("/wallet/".$this->restriction->wallet_id))
                     ->line('Thank you for using our application!');
     }
 

@@ -6,13 +6,7 @@
 <div class="row">
     <div class="col-md-10 col-sm-offset-1">
         <br>
-        @if($errors->any())
-            <div class="alert alert-danger">
-            @foreach($errors->all() as $error)
-                <p>{{ $error }}</p>
-            @endforeach()
-            </div>
-        @endif
+        
         <div class="panel panel-default">
             <div class="panel-heading">
                 Fund <strong>{{ $wallet->wallet_name }} </strong>  Wallet with Card <a href="{{ route('wallets.details', $wallet->id) }}" class="label label-primary pull-right">Back</a>
@@ -23,6 +17,7 @@
                 <form action="/admin/{{$wallet->wallet_code}}/fund" method="POST" class="form-horizontal">
                     {{ csrf_field() }}
                     <input type="hidden" name="wallet_name" value="{{$wallet->wallet_name}}">
+                    <input type="hidden" name="wallet_code" value="{{$wallet->wallet_code}}">
                     <div class="container-fluid">
                 <fieldset>
                     

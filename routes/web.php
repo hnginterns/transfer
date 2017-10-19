@@ -208,7 +208,14 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
 	//Phone topup starts here
 	Route::get('/phonetopup', 'Admin\AdminController@phoneTopupView');
 	Route::post('/addphone', 'Admin\PhoneTopUpController@addPhone');
+<<<<<<< HEAD
 	Route::post('/transfer/topup', 'Admin\PhoneTopUpController@postTopup');
+=======
+
+	Route::resource('contacts', 'Admin\ContactContoller');
+
+
+>>>>>>> 595984792d39158fdaf2f86d02871f91580a82eb
 	//Test page for @jonesky
 	Route::get('/getTopupWalletBalance', 'Admin\AdminController@getTopupWalletBalance')->name('topupwallet.balance');
 	

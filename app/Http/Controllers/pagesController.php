@@ -14,6 +14,7 @@ use App\Transaction;
 use App\BankTransaction;
 use App\WalletTransaction;
 use App\SmsWalletFund;
+use App\TopupContact;
 
 use App\Bank;
 

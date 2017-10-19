@@ -94,6 +94,7 @@
         </a>
         @endif
         @endforeach
+        {{$restriction->links()}}
       </div>
   </div>
 

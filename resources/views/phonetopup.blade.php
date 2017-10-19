@@ -58,8 +58,7 @@ tr:nth-child(even) {
     background-color: #dddddd;
 }
     
-
-<!--
+/* 
 	#container {
 		width:200;
 	}
@@ -71,8 +70,7 @@ tr:nth-child(even) {
 	#box2 	{
 		background:#fff; border:0px solid #000;
 		float:right; min-height:230px; width:30px;
-	}
-	-->  
+	} */
     
     }
 </style>
@@ -91,10 +89,10 @@ tr:nth-child(even) {
               <thead>
                 <tr>
                   <td>Name</td>
-                  <td>phone Number</td>
+                  <td>Phone Number</td>
                   <td>Network</td>
                   <td>Amount Left</td>
-                  <td>Weely Limit</td>
+                  <td>Weekly Limit</td>
                   <td>Action</td>
                 </tr>
               </thead>
@@ -104,11 +102,11 @@ tr:nth-child(even) {
                 @if(count($phones) > 0)
                   @foreach($phones as $phone)
                     <tr>
-                        <td>{{ $phone->firstName }} {{ $phone->lastName }}</td>
-                        <td>{{ $phone->phoneNumber }}</td>
-                        <td>{{ $phone->ref }}</td>
-                        <td>{{ $phone->amount }}</td>
-                        <td>{{ $phone->max_tops }}</td>
+                        <td class="firstName" data-lastName="{{ $phone->lastName }}">{{ $phone->firstName }} {{ $phone->lastName }}</td>
+                        <td class="phone">{{ $phone->phoneNumber }}</td>
+                        <td class="phoneRef">{{ $phone->ref }}</td>
+                        <td class="amount">{{ $phone->amount }}</td>
+                        <td class="max-tops">{{ $phone->max_tops }}</td>
                         <td>
 
                           <a class="airtime btn btn-success" data-id="{{ $phone->id }}" data-toggle="modal" data-target="#airtimeModal">
@@ -258,13 +256,13 @@ tr:nth-child(even) {
         <form action="{{ route('topup.phone.submit')}}" method="POST" role="form">
           {{csrf_field()}}
 
-           <input type="text" name="phoneRef" value="{{ $phone->ref }}" >
-           <input type="text" name="name" value="{{ $phone->firstName  }}">
-           <input type="text" name="name" value="{{ $phone->lastName  }}">
-           <input type="text" name="phone" value="{{ $phone->phoneNumber }}">
+           <input type="text" class="phoneRef" name="phoneRef" value="{{ $phone->ref }}" >
+           <input type="text" class="firstName" name="firstName" value="{{ $phone->firstName  }}">
+           <input type="text" class="lastName" name="lastName" value="{{ $phone->lastName  }}">
+           <input type="text" class="phone" name="phone" value="{{ $phone->phoneNumber }}">
 
            <input type="text" name="amount" placeholder="Please Enter Amount">          
-                        
+        </form>            
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -284,20 +282,33 @@ tr:nth-child(even) {
 
 </div>
 
+  @endsection
+
+@section('add_js')
 <script type="text/javascript">
-  $('.airtime').click(function() {
-
-    // get the invoice ID
-    var id = $(this).data('id');
-
-    // set up a GET route using the invoice ID and retrieve the result for that invoice
-    $.get('/topup/phone/' + id, function(response, status) {
-
-        // display the results in the modal
-        $('#airtimeModal .modal-body').html(response.data);
+  $(function () {
+    $('.modal#airtimeModal').on('show.bs.modal', function (e) {
+      var btn = $(e.relatedTarget);
+      var row = btn.parents('tr');
+      $(this).find('form input.phoneRef').val(row.find('td.phoneRef').html());
+      $(this).find('form input.firstName').val(row.find('td.firstName').html());
+      $(this).find('form input.lastName').val(row.find('td.firstName').data('lastName'));
+      $(this).find('form input.phone').val(row.find('td.phone').html());
     });
-});
+  });
+
+//   $('.airtime').click(function() {
+
+//     // get the invoice ID
+//     var id = $(this).data('id');
+
+//     // set up a GET route using the invoice ID and retrieve the result for that invoice
+//     $.get('/topup/phone/' + id, function(response, status) {
+
+//         // display the results in the modal
+//         $('#airtimeModal .modal-body').html(response.data);
+//     });
+// });
 </script>
 
-    
-  @endsection
+@endsection
