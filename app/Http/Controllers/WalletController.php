@@ -95,8 +95,8 @@ class WalletController extends Controller
         $response = json_decode($response->raw_body, TRUE);
         if($response['status'] == 'success') {
             $response = $response['data']['transfer'];
-            //$meta = $response['meta'];
-            //$meta = json_decode($meta, TRUE);
+            $meta = $response['meta'];
+            $meta = json_decode($meta, TRUE);
             $transMsg = $response['flutterChargeResponseMessage'];
             $transRef = $response['flutterChargeReference'];
             
