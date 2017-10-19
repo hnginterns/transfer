@@ -64,6 +64,8 @@ class PhoneTopUpController extends Controller
             $phone->max_tops = $input['max_tops'];
 
             $phone->save();
+
+            
             
             return redirect()->to('admin/phonetopup');
         }

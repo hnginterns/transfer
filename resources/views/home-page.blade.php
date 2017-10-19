@@ -310,19 +310,26 @@
            
         }
         #divider-top{
-            width: 125%;
+            width: 100%;
             height: 200px;
             background: #39689C;
-            margin-bottom:-50px;
-            margin-left:-20px;
             position:relative;
-            z-index:-1;
-            -webkit-transform-origin: 100% 0;
-  -ms-transform-origin:0 100%;
-  transform-origin: 0 100% ;
-  -webkit-transform: rotate(2deg);
-  -ms-transform: rotate(2deg);
-  transform: rotate(2deg);
+            margin-bottom:-50px;
+            z-index: -1;
+        }
+        #divider-top:before{
+            background: inherit;
+            content: '';
+            display: block;
+            height: 50%;
+            left: 0;
+            position: absolute;
+            right: 0;
+            z-index: -1;
+            -webkit-backface-visibility: hidden;
+            top: 0;
+            transform: skewY(2deg);
+            transform-origin: 100% 0;
         }
 
         #divider-content {
@@ -938,7 +945,7 @@
             </p>
         </div>
         <br />
-        <button id="divider-cta"><a href="https://finance.hotels.ng/login">Sign In</a></button>
+        <button id="divider-cta"><a href="https://finance.hotels.ng/login"><font color="white">Sign In</font></a></button>
     </div>
 </div><br><br><p>
 <!-- FOOTER -->

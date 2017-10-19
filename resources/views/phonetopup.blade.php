@@ -90,49 +90,49 @@ tr:nth-child(even) {
                 <table class="table">
               <thead>
                 <tr>
-                      <th>Select</th>
-                  <th>Name</th>
-                  <th>Department</th>
-                   <th>Network</th>
-                  <th>Phone number</th>
-                    <th>Amount</th>
+                  <td>Name</td>
+                  <td>Phone Number</td>
+                  <td>Network</td>
+                  <td>Amount Left</td>
+                  <td>Weekly Limit</td>
+                  <td>Action</td>
                 </tr>
               </thead>
+
+
               <tbody>
-                <tr>
-                 <td><input type="radio" name="select" value=""><br></td>
-                  <td>Godfred Akpan</td>
-                  <td>Iron</td>
-                  <td>MTN</td>
-                  <td>09036709916</td>
-                <td><input type="text" name="amount" value="Amount"></td>
-                </tr>
-                  <tr>
-                 <td><input type="radio" name="select" value=""><br></td>
-                  <td>Godfred Akpan</td>
-                  <td>Iron</td>
-                  <td>MTN</td>
-                  <td>09036709916</td>
-                <td><input type="text" name="amount" value="Amount"></td>
-                </tr>
-                  <tr>
-                 <td><input type="radio" name="select" value=""><br></td>
-                  <td>Godfred Akpan</td>
-                  <td>Iron</td>
-                  <td>MTN</td>
-                  <td>09036709916</td>
-                <td><input type="text" name="amount" value="Amount"></td>
-                </tr>
-                  <tr>
-                 <td><input type="radio" name="select" value=""><br></td>
-                  <td>Godfred Akpan</td>
-                  <td>Iron</td>
-                  <td>MTN</td>
-                  <td>09036709916</td>
-                <td><input type="text" name="amount" value="Amount" size="20px"></td>
-                </tr>
-              
-                </tr>               
+                @if(count($phones) > 0)
+                  @foreach($phones as $phone)
+                    <tr>
+                        <td>{{ $phone->firstName }} {{ $phone->lastName }}</td>
+                        <td>{{ $phone->phoneNumber }}</td>
+                        <td>{{ $phone->ref }}</td>
+                        <td>{{ $phone->amount }}</td>
+                        <td>{{ $phone->max_tops }}</td>
+                        <td>
+
+                          <a class="airtime btn btn-success" data-id="{{ $phone->id }}" data-toggle="modal" data-target="#airtimeModal">
+                              Airtime
+                          </a>
+
+                          <a class="btn btn-success" data-id="{{ $phone->id }}" data-toggle="modal" data-target="#dataModal">
+                              Data
+                          </a>
+
+                          
+
+                        </td>
+                    </tr>
+                  @endforeach
+                @else
+                   <tr>
+                      <td></td>
+                      <td>No Phone Number Added</td>
+                      <td></td>
+                      <td></td>
+                  </tr>
+                @endif
+
               </tbody>
             </table>    <br>
 <hr><br
@@ -243,8 +243,36 @@ tr:nth-child(even) {
 
  
 
-    <div class="modal fade" id="otpModal" role="dialog">
-    <div class="modal-dialog">
+   <!-- Modal -->
+<div class="modal fade" id="airtimeModal" tabindex="-1" role="dialog" aria-labelledby="airtimeModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Topup {{ $phone->phoneNumber }} with Airtime </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <form action="{{ route('topup.phone.submit')}}" method="POST" role="form">
+          {{csrf_field()}}
+
+           <input type="text" name="phoneRef" value="{{ $phone->ref }}" >
+           <input type="text" name="name" value="{{ $phone->firstName  }}">
+           <input type="text" name="name" value="{{ $phone->lastName  }}">
+           <input type="text" name="phone" value="{{ $phone->phoneNumber }}">
+
+           <input type="text" name="amount" placeholder="Please Enter Amount">          
+                        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
     
       
             </div>
@@ -255,6 +283,21 @@ tr:nth-child(even) {
   </div>
 
 </div>
+
+<script type="text/javascript">
+  $('.airtime').click(function() {
+
+    // get the invoice ID
+    var id = $(this).data('id');
+
+    // set up a GET route using the invoice ID and retrieve the result for that invoice
+    $.get('/topup/phone/' + id, function(response, status) {
+
+        // display the results in the modal
+        $('#airtimeModal .modal-body').html(response.data);
+    });
+});
+</script>
 
     
   @endsection
