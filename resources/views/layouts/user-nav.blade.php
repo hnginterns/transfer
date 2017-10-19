@@ -8,7 +8,7 @@
             <span class="icon-bar"></span>
           </button>    
           </div>
-          <form class="navbar-form navbar-right">
+          <form class="navbar-form navbar-right navform">
           
             <input type="text" class="form-control" placeholder="Search...">
        
