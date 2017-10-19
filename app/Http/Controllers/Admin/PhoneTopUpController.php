@@ -51,24 +51,25 @@ class PhoneTopUpController extends Controller
             'network.required' => 'Please select a network',
             'max_tops.required' => 'Please enter Maximum Number of topups per week',
             ]
-         );
+         ); 
         
         if ($validator->fails()) {
             $messages = $validator->messages()->toArray();
             return redirect()->to(URL::previous())->with('failed', $messages);
         } else {
             
-            $phone = new SmsWalletFund();
+            $phone = new TopupContact();
             $phone->firstName = $input['first_name'];
             $phone->lastName = $input['last_name'];
             $phone->phoneNumber = $input['phone'];
+            $phone->phoneNumber = $input['title'];
+            $phone->phoneNumber = $input['department'];
+            $phone->phoneNumber = $input['email'];
             $phone->amount = 0;
             $phone->ref = $input['network'];
             $phone->max_tops = $input['max_tops'];
 
             $phone->save();
-
-            
             
             return redirect()->to('admin/phonetopup');
         }
