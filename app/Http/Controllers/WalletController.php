@@ -76,14 +76,14 @@ class WalletController extends Controller
             "email" => $request->emailaddr,
             "phonenumber" => $request->phone,
             "recipient" => "wallet",
-            "recipient_id" => '+234'.substr($request->wallet_code, 1),
+            "recipient_id" => $request->wallet_code,
             "card_no" => $request->card_no,
             "cvv" => $request->cvv,
             "pin" => $request->pin, //optional required when using VERVE card
             "expiry_year" => $request->expiry_year,
             "expiry_month" => $request->expiry_month,
             "charge_auth" => "PIN", //optional required where card is a local Mastercard
-            "apiKey" => env('APP_KEY'),
+            "apiKey" => env('API_KEY'),
             "amount" => $request->amount,
             "fee" => 0,
             "medium" => "web",
@@ -93,13 +93,12 @@ class WalletController extends Controller
 
         $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer', $headers, $body);
         $response = json_decode($response->raw_body, TRUE);
-        
         if($response['status'] == 'success') {
             $response = $response['data']['transfer'];
-            $meta = $response['meta'];
-            $meta = json_decode($meta, TRUE);
-            $transMsg = $meta['processor']['responsemessage'];
-            $transRef = $meta['processor']['transactionreference'];
+            //$meta = $response['meta'];
+            //$meta = json_decode($meta, TRUE);
+            $transMsg = $response['flutterChargeResponseMessage'];
+            $transRef = $response['flutterChargeReference'];
             
             $transaction = new CardWallet;
             $transaction->firstName = $response['firstName'];

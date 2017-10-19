@@ -17,6 +17,7 @@
                 <form action="/admin/{{$wallet->wallet_code}}/fund" method="POST" class="form-horizontal">
                     {{ csrf_field() }}
                     <input type="hidden" name="wallet_name" value="{{$wallet->wallet_name}}">
+                    <input type="hidden" name="wallet_code" value="{{$wallet->wallet_code}}">
                     <div class="container-fluid">
                 <fieldset>
                     
