@@ -37,12 +37,13 @@
             
             height: 40px;
             margin-right: 15px;
-            margin-left: 50px;
+            margin-left: 0px;
         }
 
         .navbar {
             margin: 0px;
-            padding-top: 15px !important;
+            padding-top: 10px !important;
+            padding-bottom: 10px !important;
             padding: 0px;
             background: transparent;
             width: 100%;
