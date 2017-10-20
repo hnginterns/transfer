@@ -208,7 +208,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
 	//Phone topup starts here
 	Route::get('/phonetopup', 'Admin\AdminController@phoneTopupView')->name('topup.index');
 	Route::post('/addphone', 'Admin\PhoneTopUpController@addPhone');
-	Route::post('/transfer/topup', 'Admin\PhoneTopUpController@postTopup');
+	Route::post('/transfer/topup', 'Admin\PhoneTopUpController@postTopup')->name('topup.phone.submit');
 
 	Route::resource('contacts', 'Admin\ContactContoller');
 
