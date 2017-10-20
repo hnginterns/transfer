@@ -79,7 +79,7 @@ class AdminController extends WalletController
 
          $wallet = Wallet::where('type', 'topup')->first();
          //DB::table('wallets')->where('type', '=','topup')->first();
-
+         $cardWallet = CardWallet::latest()->first();
          //dd($wallet);
         
         return view('admin.phonetopup.index', compact('phones', 'wallet', 'bank', 'topupbalance', 'contacts'));
