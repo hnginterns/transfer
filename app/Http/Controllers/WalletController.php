@@ -154,11 +154,13 @@ class WalletController extends Controller
                 $permit = Restriction::where('wallet_id', $wallet->id)
                         ->where('uuid', Auth::user()->id)
                         ->first();
+                Session::flash('error', 'You do not have access to this wallet');
                 if($permit == null) return redirect('/dashboard');
                      $restrict = new Restrict($permit, $request);
                      $errors = $restrict->transferToWallet();
                 if(count($errors) != 0){
-                     return back()->with('multiple-error', $errors);
+                    Session::flash('errors', $errors);
+                    return back();
                 }
                 //end of permission checks
 
@@ -251,7 +253,8 @@ class WalletController extends Controller
                      $restrict = new Restrict($permit, $request);
                      $errors = $restrict->transferToBank();
                 if(count($errors) != 0){
-                     return back()->with('multiple-error', $errors);
+                    Session::flash('errors', $errors);
+                    return back();
                 }
                 //end of permission checks
 
