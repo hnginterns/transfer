@@ -7,9 +7,11 @@ use App\WalletTransaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
+
 use App\Http\Controllers\WalletController;
 use App\User;
 use App\Wallet;
+use App\Bank;
 use App\CardWallet;
 use App\Restriction;
 use App\Rule;
@@ -64,18 +66,28 @@ class AdminController extends WalletController
     }
     public function phoneTopupView()
     {
-        $phones = SmsWalletFund::all();
-        
-        $topupbanlance = $this->getTopupWalletBalance();
 
         $contacts = TopupContact::all();
 
-        return view('admin.phonetopup.index', compact('phones', 'topupbanlance', 'contacts'));
+        //dd($contacts);
+
+        $phones = SmsWalletFund::all();
+        
+        $topupbalance = $this->getTopupWalletBalance();
+        $bank = Bank::all();
+        //$wallet = Wallet::where('type', 'topup')->get();
+
+         $wallet = Wallet::where('type', 'topup')->first();
+         //DB::table('wallets')->where('type', '=','topup')->first();
+         $cardWallet = CardWallet::latest()->first();
+         //dd($wallet);
+        
+        return view('admin.phonetopup.index', compact('phones', 'wallet', 'bank', 'topupbalance', 'contacts'));
     }
 
     public function index()
     {
-        $wallets = Wallet::all();
+        $wallets = DB::table('wallets')->where('type', '=', '')->get();
         $users = User::all();
         return view('admin.dashboard', compact('wallets', 'users'));
     }
@@ -90,7 +102,9 @@ class AdminController extends WalletController
 
     public function managewallet()
     {
-        $wallets = Wallet::all();
+        //$wallets = Wallet::where('type',' ')->get();
+        $wallets = DB::table('wallets')->where('type', '=', '')->get();
+
         return view('admin.managewallet', compact('wallets'));
     }
 
@@ -108,7 +122,8 @@ class AdminController extends WalletController
                 $this->storeWalletDetailsToDB(
                     $wallet_data,
                     $request->lock_code,
-                    $request->wallet_name
+                    $request->wallet_name,
+                    $request->type
                 );
             }
 
@@ -121,7 +136,7 @@ class AdminController extends WalletController
     {
         $user = User::all();
         $user_ref = substr(md5(Carbon::now()), 0, 10);
-        return view('admin/createwallet', compact('user', 'user_ref'));
+        return view('admin.createwallet', compact('user', 'user_ref'));
     }
 
     public function show($walletId, CardWallet $cardWallet)

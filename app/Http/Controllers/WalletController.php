@@ -68,7 +68,7 @@ class WalletController extends Controller
     public function cardWallet(Request $request, CardWallet $cardWallet)
     {
         $token = $this->getToken();
-        
+        // dd($request);
         $headers = array('content-type' => 'application/json', 'Authorization' => $token);
         $query = array(
             "firstname" => $request->fname,
@@ -92,11 +92,11 @@ class WalletController extends Controller
         $body = \Unirest\Request\Body::json($query);
 
         $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer', $headers, $body);
+        
         $response = json_decode($response->raw_body, TRUE);
+        // dd($response);
         if($response['status'] == 'success') {
             $response = $response['data']['transfer'];
-            //$meta = $response['meta'];
-            //$meta = json_decode($meta, TRUE);
             $transMsg = $response['flutterChargeResponseMessage'];
             $transRef = $response['flutterChargeReference'];
             
@@ -134,9 +134,8 @@ class WalletController extends Controller
             
             if($response['status'] == 'success') {
                 event(new FundWallet($cardWallet));
-                $response = $response['data']['flutterChargeResponseMessage'];
-                //return redirect('dashboard')->with('status', $response);
-                return redirect('admin/managewallet')->with('status', $response);
+                Session::flash('success',$response);
+                return redirect('admin/managewallet');
 
             }
             
@@ -336,7 +335,7 @@ class WalletController extends Controller
         $walletCharge = var_dump($data['data']);
     }
 
-    public function storeWalletDetailsToDB($wallet_data, $lock_code, $wallet_name)
+    public function storeWalletDetailsToDB($wallet_data, $lock_code, $wallet_name, $wallet_type)
     {
         $wallet = new Wallet;
         $moneywave_wallet_id = $wallet_data['id'];
@@ -357,7 +356,8 @@ class WalletController extends Controller
         $wallet->lock_code = $lock_code;
         $wallet->wallet_code = $wallet_code;
         $wallet->uuid = Auth::user()->id;
-        $wallet->wallet_name = $wallet_name;;
+        $wallet->wallet_name = $wallet_name;
+        $wallet->type = $wallet_type;
 
         if ($wallet->save()) {
             return back()->with('success', 'Wallet creation successful');

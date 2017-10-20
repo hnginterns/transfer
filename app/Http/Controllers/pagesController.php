@@ -51,8 +51,9 @@ class pagesController extends Controller
 
     public function userdashboard()
     {
-        $wallet = Wallet::all();
+        //$wallet = Wallet::all();
         // $permission = Restriction::where('uuid',Auth::user()->id)->get();
+        $wallet = DB::table('wallets')->where('type', '=', '')->get();
         
         return view('dashboard', compact('wallet'));
     }
@@ -134,10 +135,12 @@ class pagesController extends Controller
 
         // get all wallet to wallet transactions, both sent and received
         $walletTransfer = WalletTransaction::where('source_wallet', $wallet->wallet_code)->get();
+        //var_dump($walletTransfer);
+        //die();
         $walletTransactions = CardWallet::where('wallet_name', $wallet->wallet_name)->get();
         $bankTransactions = BankTransaction::where('wallet_id', $wallet->id)->get();
 
-        $history = Trans::getTransactionsHistory($walletTransactions, $bankTransactions, $wallet->wallet_code, $wallet->id, $walletTransfer);
+        $history = Trans::getTransactionsHistory($walletTransfer, $walletTransactions, $bankTransactions, $wallet->wallet_code, $wallet->id);
 
         return view('view-wallet', compact('wallet','permit','rules','beneficiaries', 'history', 'cardWallet'));
     }
