@@ -98,7 +98,6 @@
                           <th>Amount</th>
                           <th>Payment Ref</th>
                           <th>Date</th>
-                          
                         </tr>
                     </thead>
 
