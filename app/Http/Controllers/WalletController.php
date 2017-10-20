@@ -95,8 +95,8 @@ class WalletController extends Controller
         $response = json_decode($response->raw_body, TRUE);
         if($response['status'] == 'success') {
             $response = $response['data']['transfer'];
-            //$meta = $response['meta'];
-            //$meta = json_decode($meta, TRUE);
+            $meta = $response['meta'];
+            $meta = json_decode($meta, TRUE);
             $transMsg = $response['flutterChargeResponseMessage'];
             $transRef = $response['flutterChargeReference'];
             
@@ -357,7 +357,7 @@ class WalletController extends Controller
         $wallet->lock_code = $lock_code;
         $wallet->wallet_code = $wallet_code;
         $wallet->uuid = Auth::user()->id;
-        $wallet->wallet_name = $wallet_name;;
+        $wallet->wallet_name = $wallet_name;
 
         if ($wallet->save()) {
             return back()->with('success', 'Wallet creation successful');
