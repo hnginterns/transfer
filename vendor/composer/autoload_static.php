@@ -381,6 +381,7 @@ class ComposerStaticInitcb56c8f99153a160391720319584c667
         'App\\Events\\WalletToWallet' => __DIR__ . '/../..' . '/app/Events/WalletToWallet.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Facades\\Trs' => __DIR__ . '/../..' . '/app/Facades/Trs.php',
+        'App\\FundPhoneWallet' => __DIR__ . '/../..' . '/app/FundPhoneWallet.php',
         'App\\Helpers\\LogUserActivity' => __DIR__ . '/../..' . '/app/Helpers/LogUserActivity.php',
         'App\\Http\\Controllers\\Admin\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/AdminController.php',
         'App\\Http\\Controllers\\Admin\\AdminLoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/AdminLoginController.php',

@@ -356,7 +356,7 @@ class WalletController extends Controller
         $wallet->lock_code = $lock_code;
         $wallet->wallet_code = $wallet_code;
         $wallet->uuid = Auth::user()->id;
-        $wallet->wallet_name = $wallet_name;;
+        $wallet->wallet_name = $wallet_name;
 
         if ($wallet->save()) {
             return back()->with('success', 'Wallet creation successful');

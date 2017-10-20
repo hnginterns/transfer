@@ -7,6 +7,7 @@ use App\WalletTransaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
+
 use App\Http\Controllers\WalletController;
 use App\User;
 use App\Wallet;
@@ -65,22 +66,28 @@ class AdminController extends WalletController
     }
     public function phoneTopupView()
     {
+
+        $contacts = TopupContact::all();
+
+        //dd($contacts);
+
         $phones = SmsWalletFund::all();
         
         $topupbanlance = $this->getTopupWalletBalance();
         $bank = Bank::all();
-        $wallet = Wallet::all();
+        //$wallet = Wallet::where('type', 'topup')->get();
+
+         $wallet = Wallet::where('type', 'topup')->first();
+         //DB::table('wallets')->where('type', '=','topup')->first();
+
+         //dd($wallet);
         
-        return view('admin.phonetopup.index', compact('phones', 'wallet', 'bank', 'topupbanlance'));
-
-        $contacts = TopupContact::all();
-
-        return view('admin.phonetopup.index', compact('phones', 'topupbanlance', 'contacts'));
+        return view('admin.phonetopup.index', compact('phones', 'wallet', 'bank', 'topupbanlance', 'contacts'));
     }
 
     public function index()
     {
-        $wallets = Wallet::all();
+        $wallets = DB::table('wallets')->where('type', '=', '')->get();
         $users = User::all();
         return view('admin.dashboard', compact('wallets', 'users'));
     }
@@ -95,7 +102,9 @@ class AdminController extends WalletController
 
     public function managewallet()
     {
-        $wallets = Wallet::all();
+        //$wallets = Wallet::where('type',' ')->get();
+        $wallets = DB::table('wallets')->where('type', '=', '')->get();
+
         return view('admin.managewallet', compact('wallets'));
     }
 
