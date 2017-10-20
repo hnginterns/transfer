@@ -51,8 +51,9 @@ class pagesController extends Controller
 
     public function userdashboard()
     {
-        $wallet = Wallet::all();
+        //$wallet = Wallet::all();
         // $permission = Restriction::where('uuid',Auth::user()->id)->get();
+        $wallets = DB::table('wallets')->where('type', '=', '')->get();
         
         return view('dashboard', compact('wallet'));
     }
