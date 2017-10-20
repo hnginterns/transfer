@@ -7,6 +7,7 @@ use App\WalletTransaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
+
 use App\Http\Controllers\WalletController;
 use App\User;
 use App\Wallet;
@@ -81,7 +82,7 @@ class AdminController extends WalletController
 
     public function index()
     {
-        $wallets = Wallet::all();
+        $wallets = Wallet::where('type','!=','topup')->all();
         $users = User::all();
         return view('admin.dashboard', compact('wallets', 'users'));
     }
@@ -115,7 +116,6 @@ class AdminController extends WalletController
                     $wallet_data,
                     $request->lock_code,
                     $request->wallet_name,
-                    $request->type
                 );
             }
 
