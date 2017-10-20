@@ -142,7 +142,7 @@ class WalletController extends Controller
     }
 
    //transfer from wallet to wallet
-    public function transfer(Request $request, Wallet $wallet, WalletToWallet $transactions) {
+    public function transfer(Request $request, Wallet $wallet, FundWallet $fund) {
         $validator = $this->validateWalletTransfer($request->all());
 
         if ($validator->fails()) {
@@ -194,8 +194,8 @@ class WalletController extends Controller
                     //end of logic
 
                     //update wallet balance
-                    event(new WalletToWallet($transactions));
-
+                   // event(new WalletToWallet($transactions));
+                    event(new FundWallet($fund));
                     $transaction = WalletTransaction::latest()->first();
                    // \LogUserActivity::addToLog($transaction->source->wallet_name.' transferred '.$transaction->amount.' to '.$transaction->destination->wallet_name);
 
@@ -291,7 +291,7 @@ class WalletController extends Controller
 
                     $this->sendBankTransactionNotifications($transaction);
 
-                    event(new TransferToBank($bank));
+                    event(new FundWallet($bank));
                     $transactions = BankTransaction::latest()->first();
                     //\LogUserActivity::addToLog(auth()->user()->name.'transferred '.$transactions->amount.' from '. $transactions->source->wallet_name.' to '.$transactions->beneficiary->name);
                     return redirect('success')->with('status',$data);
