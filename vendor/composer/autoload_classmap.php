@@ -16,6 +16,7 @@ return array(
     'App\\Events\\WalletToWallet' => $baseDir . '/app/Events/WalletToWallet.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Facades\\Trs' => $baseDir . '/app/Facades/Trs.php',
+    'App\\FundPhoneWallet' => $baseDir . '/app/FundPhoneWallet.php',
     'App\\Helpers\\LogUserActivity' => $baseDir . '/app/Helpers/LogUserActivity.php',
     'App\\Http\\Controllers\\Admin\\AdminController' => $baseDir . '/app/Http/Controllers/Admin/AdminController.php',
     'App\\Http\\Controllers\\Admin\\AdminLoginController' => $baseDir . '/app/Http/Controllers/Admin/AdminLoginController.php',

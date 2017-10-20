@@ -68,7 +68,7 @@ class AdminController extends WalletController
 
         $contacts = TopupContact::all();
 
-        dd($contacts->toJson());
+        //dd($contacts);
 
         $phones = SmsWalletFund::all();
         
