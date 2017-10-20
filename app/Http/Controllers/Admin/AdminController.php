@@ -76,15 +76,13 @@ class AdminController extends WalletController
         $topupbanlance = $this->getTopupWalletBalance();
         $bank = Bank::all();
         $wallet = Wallet::where('type', 'topup')->get();
-
         
         return view('admin.phonetopup.index', compact('phones', 'wallet', 'bank', 'topupbanlance', 'contacts'));
     }
 
     public function index()
     {
-        //$wallets = DB::table('wallets')->where('type', '=', '')->get();
-        $wallets = Wallet::where('type',' ')->get();
+        $wallets = DB::table('wallets')->where('type', '=', '')->get();
         $users = User::all();
         return view('admin.dashboard', compact('wallets', 'users'));
     }
@@ -100,7 +98,7 @@ class AdminController extends WalletController
     public function managewallet()
     {
         //$wallets = Wallet::where('type',' ')->get();
-        //$wallets = DB::table('wallets')->where('type', '=', '')->get();
+        $wallets = DB::table('wallets')->where('type', '=', '')->get();
 
         return view('admin.managewallet', compact('wallets'));
     }
