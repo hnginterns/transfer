@@ -77,7 +77,8 @@ class AdminController extends WalletController
         $bank = Bank::all();
         //$wallet = Wallet::where('type', 'topup')->get();
 
-         $wallet = DB::table('wallets')->where('type', '=','topup')->first();
+         $wallet = Wallet::where('type', 'topup')->first();
+         //DB::table('wallets')->where('type', '=','topup')->first();
 
          //dd($wallet);
         

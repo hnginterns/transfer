@@ -28,10 +28,11 @@
               <hr>
 
               <h3 class="profile-username text-center"> Wallet Balance</h3>
-
+            @isset($wallet->balance)
               <p class="text-center"><strong>₦ {{ $wallet->balance }}</strong></p>
              <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#walletTopUp">Fund Wallet</button>
-              
+             @endisset
+             <p>No wallet linked. <strong>Please set type of wallet to Topup</strong></p>
             </div>
             <!-- /.box-body -->
           </div>
