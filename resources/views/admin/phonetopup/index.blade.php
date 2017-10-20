@@ -34,10 +34,58 @@
                   </div>
                 </div>
 
+                <div class="col-md-9">
+
+                    <div class="box box-primary">
+                        <div class="box-body">
+                            <table id="datatable" class="table table-bordered table-hover">
+                                <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                            <td>Title</td>
+                                            <td>Dept</td>
+                                            <td>Phone</td>
+                                            <td>Email</td>
+                                            <td>Weekly Max</td>
+                                            <td>Nos of Topups this week</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if(count($phones) > 0)
+                                          @foreach($phones as $phone)
+                                            <tr>
+                                                <td>{{ $phone->firstName }} {{ $phone->lastName }}</td>
+                                                <td>@isset($phone->title){{ $phone->title }}@else Not Set @endisset</td>
+                                                <td>@isset($phone->department){{ $phone->department }}@else Not Set @endisset</td>
+                                                <td>{{ $phone->phoneNumber }}</td>
+                                                <td>@isset($phone->email){{ $phone->email }}@else Not Set @endisset</td>
+                                                <td>{{ $phone->max_tops }}</td>
+                                                <td>{{ $phone->amount }}</td>
+                                            </tr>
+                                          @endforeach
+                                        @else
+                                           <tr>
+                                              <td></td>
+                                              <td>No Phone Number Added</td>
+                                              <td></td>
+                                              <td></td>
+                                          </tr>
+                                        @endif
+                                    </tbody>
+                            </table>
+                        
+                        </div>
+                    </div>
+
+
+                </div>
+
             </div>
         </div>
 
     </div>
+
+
 
 </div>
 
