@@ -129,7 +129,7 @@
                                             <h4 class="modal-title">Transfer To Service Provider</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="{{ route('topup.phone.submit')}}" method="post" accept-charset="utf-8">
+                                            <form action="" method="post" accept-charset="utf-8">
                                                 <div class="modal-body" style="padding: 5px;">
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
@@ -243,7 +243,7 @@
                                     </div>
                                     <!-- /.box-header -->
                                     <div class="box-body">
-                                        <form action="#" method="POST" role="form form-horizontal">
+                                        <form action="{{ route('topup.phone.submit')}}" method="POST" role="form form-horizontal">
                                             <!-- text input -->
                                             <div class="container-fluid">
                                                 <fieldset>
