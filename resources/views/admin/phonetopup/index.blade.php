@@ -4,188 +4,134 @@
 @section('subtitle', 'Manage Phone/Data Topup')
 @section('content')
  <!-- Content Wrapper. Contains page content -->
- <div class="col-sm-12">
-
-    <div class="col-md-3">
-
-                    <!-- mobiletopuopng balance -->
-
-                    <div class="panel panel-info">
-                        <div class="panel-heading">
-                        <h3 class="panel-title">Topup Wallet Balance</h3>
-                      </div>
-                        <div class="panel-body">
-                        ₦ {{number_format($topupbanlance, 2) }}
-                      </div>
-
-                      <div class="panel-footer"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#PurchaseTopUp">Purchase</button></div>
-                    </div>
-
-                    
-                    <!-- Moneywave Wallet balance -->
-
-                    <div class="panel panel-info">
-                        <div class="panel-heading">
-                        <h3 class="panel-title">Wallet Balance</h3>
-                      </div>
-                        <div class="panel-body">
-                        ₦ {{number_format($topupbanlance, 2) }}
-                      </div>
-
-                      <button type="button" class="btn btn-info" data-toggle="modal" data-target="#walletTopUp">Top Up Wallet</button>
-
-                    </div>
-
-
-
-                </div>
-
-
-
-
-
-    <div class="box">      
-            <!-- /.box-header -->
-            <div class="box-body">
-                <div class="col-md-9">
-
-                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Add New Phone</button>
-
-                    <div class="box-body">
-                       <table id="datatable" class="table table-bordered table-hover">
-                           <thead>
-                                    <tr>
-                                        <td>Name</td>
-                                        <td>Title</td>
-                                        <td>Dept</td>
-                                        <td>Phone</td>
-                                        <td>Email</td>
-                                        <td>Weekly Max</td>
-                                        <td>Nos of Topups this week</td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @if(count($phones) > 0)
-                                      @foreach($phones as $phone)
-                                        <tr>
-                                            <td>{{ $phone->firstName }} {{ $phone->lastName }}</td>
-                                            <td>@isset($phone->title){{ $phone->title }}@else Not Set @endisset</td>
-                                            <td>@isset($phone->department){{ $phone->department }}@else Not Set @endisset</td>
-                                            <td>{{ $phone->phoneNumber }}</td>
-                                            <td>@isset($phone->email){{ $phone->email }}@else Not Set @endisset</td>
-                                            <td>{{ $phone->max_tops }}</td>
-                                            <td>{{ $phone->amount }}</td>
-                                        </tr>
-                                      @endforeach
-                                    @else
-                                       <tr>
-                                          <td></td>
-                                          <td>No Phone Number Added</td>
-                                          <td></td>
-                                          <td></td>
-                                      </tr>
-                                    @endif
-                                </tbody>
-                        </table>
-            </div>
-
-
-
-
-
-
-
-                    <div class="container">
-                    <hr>
-                    <p>
-                        <h3>Phone Numbers </h3>
-                        
-                    </p>
-                    <table class="table" style="width:70%;">
-                        
-                    </table>
-                    <hr>
-                </div>
-
-                </div>
-
-            </div>
-
-    </div>
-</div>
-
-<div class="container">
-        <!-- Trigger the modal with a button -->
-        <!-- Modal -->
-        <div class="modal fade" id="PurchaseTopUp" role="dialog">
-            <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Transfer To Service Provider</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form action="{{config('app.url')}}/admin/transfer/topup" method="post" accept-charset="utf-8">
-                            {{csrf_field()}}
-                            <div class="modal-body" style="padding: 5px;">
-                                <div class="row">
-                                    <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                                        <input class="form-control" name="account_name" placeholder="Account Name" type="text" required />
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                                        <select class="form-control" name="wallet_id" required >
-                                            <option>--Select Wallet --</option>
-                                            @foreach($wallet as $key=>$wallets)
-                                                <option value="{{$wallets->id}}">{{$wallets->wallet_name}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                                        <select class="form-control" name="bank_id" required >
-                                            <option>--Select bank --</option>
-                                            @foreach($bank as $key=>$banks)
-                                                <option value="{{$banks->id}}">{{$banks->bank_name}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                                        <input class="form-control" name="account_number" placeholder="Account number" type="text" required />
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                                        <input class="form-control" name="amount" placeholder="Amount" type="number" required />
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                                        <input class="form-control" name="narration" placeholder="Narration" type="text" required />
+<div class="row">
+    <div class="col-lg-12">
+        <br>
+            <!-- Content Header (Page header) -->
+            <section class="content-header" style="padding: 30px;">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h4 id="balance">Top-up Balance: ₦ {{number_format($topupbanlance, 2) }}</h4>
+                        <div>
+                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#PurchaseTopUp">Purchase</button>
+                        </div>
+                        <div class="container">
+                            <!-- Trigger the modal with a button -->
+                            <!-- Modal -->
+                            <div class="modal fade" id="PurchaseTopUp" role="dialog">
+                                <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Transfer To Service Provider</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="#" method="post" accept-charset="utf-8">
+                                                <div class="modal-body" style="padding: 5px;">
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
+                                                            <input class="form-control" name="text" placeholder="Account number" type="text" required />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
+                                                            <input class="form-control" name="Amount" placeholder="Amount" type="text" required />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="panel-footer" style="margin-bottom:-14px;">
+                                                    <input type="submit" class="btn btn-success" value="Save" />
+                                                    <button style="float: right;" type="button" class="btn btn-default btn-close" data-dismiss="modal">Close</button>
+                                                </div>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="panel-footer" style="margin-bottom:-14px;">
-                                <button type="submit" class="btn btn-primary">Top up</button>
-                                <button style="float: right;" type="button" class="btn btn-default btn-close" data-dismiss="modal">Close</button>
+                        </div>
+                        <div class="container">
+                            <!-- Trigger the modal with a button -->
+                            <!-- Modal -->
+                            <div class="modal fade" id="myModal" role="dialog">
+                                <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Add New Phone Number</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="{{ route('contacts.store') }}" method="post" accept-charset="utf-8">
+                                                {{csrf_field()}}
+                                                <div class="modal-body" style="padding: 5px;">
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
+                                                            <input class="form-control" name="firstname" placeholder="First Name" type="text" required />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
+                                                            <input class="form-control" name="lastname" placeholder="Last Name" type="text" required />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
+                                                            <input class="form-control" name="phone" placeholder="Phone Number" type="text" required />
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
+                                                            <input class="form-control" name="email" placeholder="Email" type="text" required />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
+                                                            <input class="form-control" name="title" placeholder="Title" type="text" required />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
+                                                            <input class="form-control" name="department" placeholder="Department" type="text" required />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
+                                                           <select class="form-control" name="network">
+                                                            <option selected value="">Choose Network</option>
+                                                            <option value="15">MTN</option>
+                                                            <option value="6">GLO</option>
+                                                            <option value="1">AIRTEL</option>
+                                                            <option value="2">9Mobile</option>
+                                                            <option value="4">Visa</option>
+                                                           </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
+                                                            <input class="form-control" name="max_tops" placeholder="Weekly Maximum Topups" type="text" required />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="panel-footer" style="margin-bottom:-14px;">
+                                                    <input type="submit" class="btn btn-success" value="Save" />
+                                                    <button style="float: right;" type="button" class="btn btn-default btn-close" data-dismiss="modal">Close
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-                
+                    <div class="col-lg-3 ">
+                        <h4 id="balance">Wallet Balance: ₦ {{number_format($topupbanlance, 2) }}</h4>
+                        <div>
+                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#walletTopUp">Top Up Wallet</button>
+                        </div>
+                    </div>
                     <!---Modal for wallet top Up-->
                     <div class="modal fade" id="walletTopUp">
                         <div class="modal-dialog">
@@ -346,5 +292,63 @@
                                 </div>
                                 <!-- /.modal -->
             </section>
+
+            <!-- Main content -->
+            <section class="content container" id="bulksms" style="margin-right: 0px;margin-left: 0px;">
+                <div class="container">
+                    <hr>
+                    <p>
+                        <h3>Phone Numbers </h3>
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Add New Phone</button>
+                    </p>
+                    <table class="table" style="width:70%;">
+                        <thead>
+                            <tr>
+                                <td>Name</td>
+                                <td>Title</td>
+                                <td>Dept</td>
+                                <td>Phone</td>
+                                <td>Email</td>
+                                <td>Weekly Max</td>
+                                <td>Nos of Topups this week</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if(count($phones) > 0)
+                              @foreach($phones as $phone)
+                                <tr>
+                                    <td>{{ $phone->firstName }} {{ $phone->lastName }}</td>
+                                    <td>@isset($phone->title){{ $phone->title }}@else Not Set @endisset</td>
+                                    <td>@isset($phone->department){{ $phone->department }}@else Not Set @endisset</td>
+                                    <td>{{ $phone->phoneNumber }}</td>
+                                    <td>@isset($phone->email){{ $phone->email }}@else Not Set @endisset</td>
+                                    <td>{{ $phone->max_tops }}</td>
+                                    <td>{{ $phone->amount }}</td>
+                                </tr>
+                              @endforeach
+                            @else
+                               <tr>
+                                  <td></td>
+                                  <td>No Phone Number Added</td>
+                                  <td></td>
+                                  <td></td>
+                              </tr>
+                            @endif
+                        </tbody>
+                    </table>
+                    <hr>
+                </div>
+                </div>
+                <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+                </div>
+                <!-- /.modal -->
+
+
+                <!-- /.content -->
+                </div>
+                <!-- /.content-wrapper -->
+
 
 @endsection
