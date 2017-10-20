@@ -123,29 +123,6 @@ class PhoneTopUpController extends Controller
                     "walletUref" => $wallet->wallet_code
                 );
 
-                //checks for permissions
-                /*
-                $permit = Restriction::where('wallet_id', $wallet->id)
-                        ->where('uuid', Auth::user()->id)
-                        ->first();
-                
-                if($permit == null){
-                    Session::flash('error', 'You cannot make this transfer');
-                    return redirect('/admin');
-
-                }
-                     $restrict = new Restrict($permit, $request);
-                     $errors = $restrict->transferToBank();
-                     $prepare = "";
-                if(count($errors) != 0){
-                    foreach($errors as $key => $error){
-                        $prepare.="<p>$error</p>";
-                    }
-                     return back()->with('error', $prepare);
-                }
-                */
-                //end of permission checks
-
                 //Api call to moneywave for transaction
                 $body = \Unirest\Request\Body::json($query);
                 $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/disburse', $headers, $body);
