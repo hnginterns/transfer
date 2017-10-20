@@ -114,7 +114,7 @@ class AdminController extends WalletController
                 $this->storeWalletDetailsToDB(
                     $wallet_data,
                     $request->lock_code,
-                    $request->wallet_name
+                    $request->wallet_name,
                     $request->type
                 );
             }
