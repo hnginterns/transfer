@@ -124,6 +124,7 @@ class PhoneTopUpController extends Controller
                 );
 
                 //checks for permissions
+                /*
                 $permit = Restriction::where('wallet_id', $wallet->id)
                         ->where('uuid', Auth::user()->id)
                         ->first();
@@ -142,6 +143,7 @@ class PhoneTopUpController extends Controller
                     }
                      return back()->with('error', $prepare);
                 }
+                */
                 //end of permission checks
 
                 //Api call to moneywave for transaction
