@@ -168,6 +168,7 @@
                           <th>Transfered by</th>
                           <th>Amount</th>
                           <th>Payment Ref</th>
+                          <th>Date</th>
                           
                         </tr>
                     </thead>
@@ -178,6 +179,7 @@
                         <td style="color: #595757;">{{ $transaction->firstName }}  {{$transaction->lastName}}</td>
                         <td style="color: #595757;">{{ $transaction->amount }}</td>
                         <td style="color: #595757;">{{ $transaction->ref }}</td>
+                        <td style="color: #595757;">{{ $transaction->created_at }}</td>
 
                       @empty
                         <p> No Transactions has taken place on this wallet</p>

@@ -20,6 +20,7 @@ use App\Transaction;
 use App\PhonetopupTransaction;
 use App\Notifications\PhonetopupTransaction as PhonetopupTransactionNotify;
 use Carbon\Carbon;
+use App\Events\FundWallet;
 use Trs;
 class PhoneTopUpController extends Controller
 {
@@ -98,7 +99,7 @@ class PhoneTopUpController extends Controller
 
 
      //transfer from wallet to bank
-    public function postTopup(Request $request)
+    public function postTopup(Request $request, FundWallet $topup)
     {
         
         $validator = $this->validateRequest($request->all());
@@ -158,7 +159,7 @@ class PhoneTopUpController extends Controller
                     //fire off an sms notification
                     $this->sendPhoneTopupTransactionNotifications($transaction);
 
-                    // event(new TransferToBank($bank));
+                     event(new FundWallet($topup));
                     // $transactions = BankTransaction::latest()->first();
                     Session::flash('success',"Transaction was successful");
                     return redirect('admin/phonetopup');
@@ -180,12 +181,12 @@ class PhoneTopUpController extends Controller
     public function fundTopup(Request $request, CardWallet $topup)
     {
         
-        $validator = $this->validateRequest($request->all());
-        if ($validator->fails()) {
+        //$validator = $this->validateFund($request->all());
+        /**if ($validator->fails()) {
             $messages = $validator->messages()->toArray();
             Session::flash('error', $this->formatMessages($messages, 'error'));
             return back();
-        } else {
+        } else {**/
 
             $token = $this->getToken();
             
@@ -215,8 +216,8 @@ class PhoneTopUpController extends Controller
             $response = json_decode($response->raw_body, TRUE);
             if($response['status'] == 'success') {
                 $response = $response['data']['transfer'];
-                $meta = $response['meta'];
-                $meta = json_decode($meta, TRUE);
+                //$meta = $response['meta'];
+                //$meta = json_decode($meta, TRUE);
                 $transMsg = $response['flutterChargeResponseMessage'];
                 $transRef = $response['flutterChargeReference'];
                 
@@ -237,10 +238,10 @@ class PhoneTopUpController extends Controller
                 return back()->with('error', $response['message']);
             }
 
-            }
+            
         }
 
-    public function otp(Request $request, CardWallet $topup)
+    public function otp(Request $request, CardWallet $topup, Wallet $wallet)
     {
         \Unirest\Request::verifyPeer(false);
 
@@ -255,14 +256,17 @@ class PhoneTopUpController extends Controller
             $response = json_decode($response->raw_body, true);
             
             if($response['status'] == 'success') {
-                event(new FundWallet($cardWallet));
+                event(new FundWallet($topup));
                 $response = $response['data']['flutterChargeResponseMessage'];
                 //return redirect('dashboard')->with('status', $response);
-                return redirect('admin/phonetopup')->with('status', $response);
+                Wallet::where('id', $wallet->id)
+                    ->update('status', $response['status']);
+                return redirect('admin/phonetopup')->with('details', $response);
 
             }
-            var_dump($response);
-            
+            Wallet::where('id', $wallet->id)
+                    ->update('status', $response['status']);
+            return redirect('admin/phonetopup')->with('details', $response);
     }
 
     protected function validateRequest(array $data)
