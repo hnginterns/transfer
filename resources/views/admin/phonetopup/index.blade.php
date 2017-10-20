@@ -29,7 +29,7 @@
 
               <h3 class="profile-username text-center"> Wallet Balance</h3>
 
-              <p class="text-center"><strong>₦ {{number_format($wallet, 2) }}</strong></p>
+              <p class="text-center"><strong>₦ {{ $wallet }}</strong></p>
              <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#walletTopUp">Fund Wallet</button>
               
             </div>
