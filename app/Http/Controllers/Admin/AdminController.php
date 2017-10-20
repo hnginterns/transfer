@@ -82,7 +82,7 @@ class AdminController extends WalletController
 
     public function index()
     {
-        $wallets = Wallet::where('type',' ')->all();
+        $wallets = DB::table('wallets')->where('type', '=', '')->get();
         $users = User::all();
         return view('admin.dashboard', compact('wallets', 'users'));
     }
@@ -97,7 +97,9 @@ class AdminController extends WalletController
 
     public function managewallet()
     {
-        $wallets = Wallet::all();
+        //$wallets = Wallet::where('type',' ')->all();
+        $wallets = DB::table('wallets')->where('type', '=', '')->get();
+
         return view('admin.managewallet', compact('wallets'));
     }
 
