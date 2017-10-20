@@ -115,6 +115,7 @@ class AdminController extends WalletController
                     $wallet_data,
                     $request->lock_code,
                     $request->wallet_name
+                    $request->type
                 );
             }
 
