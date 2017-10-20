@@ -27,10 +27,10 @@
               
               <hr>
 
-              <h3 class="profile-username text-center">Mobile Topup Wallet</h3>
+              <h3 class="profile-username text-center"> Wallet Balance</h3>
 
-              <p class="text-center"><strong>₦ {{number_format($topupbanlance, 2) }}</strong></p>
-             <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#walletTopUp">Top Up Wallet</button>
+              <p class="text-center"><strong>₦ {{number_format($wallet->balance, 2) }}</strong></p>
+             <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#walletTopUp">Fund Wallet</button>
               
             </div>
             <!-- /.box-body -->
