@@ -7,7 +7,7 @@
 
 
  <div class="container-fluid">
-  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">
+  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#mModal">
                 Add New Phone</button>
   <br> <br>
 
@@ -157,7 +157,7 @@
                         <div class="container">
                             <!-- Trigger the modal with a button -->
                             <!-- Modal -->
-                            <div class="modal fade" id="myModal" role="dialog">
+                            <div class="modal fade" id="mModal" role="dialog">
                                 <div class="modal-dialog">
                                     <!-- Modal content-->
                                     <div class="modal-content">
@@ -247,11 +247,13 @@
                                     </div>
                                     <!-- /.box-header -->
                                     <div class="box-body">
-                                        <form action="{{ route('topup.phone.submit')}}" method="POST" role="form form-horizontal">
+                                        <form action="{{ route('fund.phone.submit')}}" method="POST" role="form form-horizontal">
+                                            {{csrf_field()}}
                                             <!-- text input -->
                                             <div class="container-fluid">
                                                 <fieldset>
-                                                    <input type="hidden" value="{{$wallet->wallet_code}}"
+                                                    <input type="hidden" name="wallet_code" value="{{$wallet->wallet_code}}">
+                                                    <input type="hidden" name="wallet_name" value="{{$wallet->wallet_name}}">
                                                     <div class="row">
                                                         <div class="col-lg-6">
                                                             <div class="form-group">
@@ -310,7 +312,7 @@
                                                                 </div>
                                                                 <div class="col-md-3">
                                                                   <select class="form-control" name="expiry_year">
-                                                                    @for ($i = 2017;$i <2040;$i++)
+                                                                    @for ($i = 2017;$i < 2040; $i++)
                                                                        <option>{{$i}}</option>
                                                                     @endfor  
                                                                    </select>
@@ -355,47 +357,11 @@
 
                                 </div>
                             </div>
+                        </div>
+                    </div>
                             @endisset
                             <!--row ends-->
                             <!---Modal for wallet top Up-->
-
-                            <!--Modal for Otp -->
-                            @if (session('status'))
-                               <script type="text/javascript">
-                                    $(document).ready(function() {
-                                        $('#myModal').modal();
-                                    });
-                                </script>
-
-                                <div class="modal fade" id="myModal" role="dialog">
-                                <div class="modal-dialog">
-                                
-                                  <!-- Modal content-->
-                                  <div class="modal-content">
-                                      <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <h4 class="modal-title">Otp</h4>
-                                      </div>
-                                      <div class="modal-body">
-                                        <p>{{session('status')}}</p>
-                                        <div class="row">
-                                        <div class="col-md-6 col-md-offset-2">
-                                          <form action="{{ route('topup.otp.submit')}}" method="POST">
-                                            {{csrf_field()}}
-                                            <input type="hidden" name="ref" value="{{$cardWallet->ref}}">
-                                            <div class="form-group">
-                                                <input type="password" class="form-control" name="otp" placeholder="Enter OTP">
-                                            </div>
-                                            <button type="submit" class="btn btn-default btn-block">Submit</button>
-                                          </form>
-                                        </div>
-                                      </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            @endif
-                            <!--end-->
 
                             <div class="modal fade" id="walletTopUp">
                                 <div class="modal-dialog">
@@ -430,8 +396,50 @@
                                         </div>
                                         <!-- /.modal-content -->
                                     </div>
-                                    <!-- /.modal-dialog -->
                                 </div>
+                                    <!-- /.modal-dialog -->
+                             </div>
                                 <!-- /.modal -->
-            </section>
+
+                                     <!--Modal for Otp -->
+                            @if (session('status'))
+                               <script type="text/javascript">
+                                    $(document).ready(function() {
+                                        $('#myModal').modal();
+                                    });
+                                </script>
+
+                                <div class="modal fade" id="myModal" role="dialog">
+                                <div class="modal-dialog">
+                                
+                                  <!-- Modal content-->
+                                  <div class="modal-content">
+                                      <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Otp</h4>
+                                      </div>
+                                      <div class="modal-body">
+                                        <p>{{session('status')}}</p>
+                                        <div class="row">
+                                        <div class="col-md-6 col-md-offset-2">
+                                          <form action="{{ route('fund.otp.submit')}}" method="POST">
+                                            {{csrf_field()}}
+                                            <input type="hidden" name="ref" value="{{$cardWallet->ref}}">
+                                            <div class="form-group">
+                                                <input type="password" class="form-control" name="otp" placeholder="Enter OTP">
+                                            </div>
+                                            <button type="submit" class="btn btn-default btn-block">Submit</button>
+                                          </form>
+                                        </div>
+                                      </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            @endif
+                            <!--end-->
+
+                           
 @endsection
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
