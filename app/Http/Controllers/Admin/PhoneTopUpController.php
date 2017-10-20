@@ -99,7 +99,7 @@ class PhoneTopUpController extends Controller
 
 
      //transfer from wallet to bank
-    public function postTopup(Request $request)
+    public function postTopup(Request $request, FundWallet $topup)
     {
         
         $validator = $this->validateRequest($request->all());
@@ -159,7 +159,7 @@ class PhoneTopUpController extends Controller
                     //fire off an sms notification
                     $this->sendPhoneTopupTransactionNotifications($transaction);
 
-                    // event(new TransferToBank($bank));
+                     event(new FundWallet($topup));
                     // $transactions = BankTransaction::latest()->first();
                     Session::flash('success',"Transaction was successful");
                     return redirect('admin/phonetopup');
