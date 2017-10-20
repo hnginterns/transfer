@@ -22,17 +22,18 @@
               
               <h3 class="profile-username text-center">Mobile Topup Wallet</h3>
 
-              <p class="text-center"><strong>₦ {{number_format($topupbanlance, 2) }}</strong></p>
+              <p class="text-center"><strong>₦ {{isset($topupbanlance) ? number_format($topupbalance, 2) : 'null' }}</strong></p>
               <button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#PurchaseTopUp">Purchase</button>
               
               <hr>
 
               <h3 class="profile-username text-center"> Wallet Balance</h3>
-            @isset($wallet->balance)
+            @if(isset($wallet->balance))
               <p class="text-center"><strong>₦ {{ $wallet->balance }}</strong></p>
              <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#walletTopUp">Fund Wallet</button>
-             @endisset
+            @else
              <p>No wallet linked. <strong>Please Create a wallet and set type of wallet to Topup</strong></p>
+            @endif
             </div>
             <!-- /.box-body -->
           </div>

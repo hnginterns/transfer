@@ -73,7 +73,7 @@ class AdminController extends WalletController
 
         $phones = SmsWalletFund::all();
         
-        $topupbanlance = $this->getTopupWalletBalance();
+        $topupbalance = $this->getTopupWalletBalance();
         $bank = Bank::all();
         //$wallet = Wallet::where('type', 'topup')->get();
 
@@ -82,7 +82,7 @@ class AdminController extends WalletController
 
          //dd($wallet);
         
-        return view('admin.phonetopup.index', compact('phones', 'wallet', 'bank', 'topupbanlance', 'contacts'));
+        return view('admin.phonetopup.index', compact('phones', 'wallet', 'bank', 'topupbalance', 'contacts'));
     }
 
     public function index()
@@ -122,7 +122,8 @@ class AdminController extends WalletController
                 $this->storeWalletDetailsToDB(
                     $wallet_data,
                     $request->lock_code,
-                    $request->wallet_name
+                    $request->wallet_name,
+                    $request->type
                 );
             }
 
@@ -135,7 +136,7 @@ class AdminController extends WalletController
     {
         $user = User::all();
         $user_ref = substr(md5(Carbon::now()), 0, 10);
-        return view('admin/createwallet', compact('user', 'user_ref'));
+        return view('admin.createwallet', compact('user', 'user_ref'));
     }
 
     public function show($walletId, CardWallet $cardWallet)

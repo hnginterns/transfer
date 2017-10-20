@@ -335,7 +335,7 @@ class WalletController extends Controller
         $walletCharge = var_dump($data['data']);
     }
 
-    public function storeWalletDetailsToDB($wallet_data, $lock_code, $wallet_name)
+    public function storeWalletDetailsToDB($wallet_data, $lock_code, $wallet_name, $wallet_type)
     {
         $wallet = new Wallet;
         $moneywave_wallet_id = $wallet_data['id'];
@@ -357,6 +357,7 @@ class WalletController extends Controller
         $wallet->wallet_code = $wallet_code;
         $wallet->uuid = Auth::user()->id;
         $wallet->wallet_name = $wallet_name;
+        $wallet->type = $wallet_type;
 
         if ($wallet->save()) {
             return back()->with('success', 'Wallet creation successful');
