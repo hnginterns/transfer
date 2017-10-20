@@ -36,89 +36,57 @@
         </div>
     </div>
 </div>
-                <div class="col-md-9">
+<div class="col-md-9">
+    <div class="box box-primary">
 
-                    <div class="box box-primary">
-
-                        <div class="box-header">
-                         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Add New Phone</button>
-
-                        </div>
-
-             
-
-
-                        <div class="box-body">
-                            <table id="datatable" class="table table-bordered table-hover">
-                                <thead>
-                                        <tr>
-                                            <td>Name</td>
-                                            <td>Title</td>
-                                            <td>Dept</td>
-                                            <td>Phone</td>
-                                            <td>Email</td>
-                                            <td>Weekly Max</td>
-                                            <td>Nos of Topups this week</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @if(count($phones) > 0)
-                                          @foreach($phones as $phone)
-                                            <tr>
-                                                <td>{{ $phone->firstName }} {{ $phone->lastName }}</td>
-                                                <td>@isset($phone->title){{ $phone->title }}@else Not Set @endisset</td>
-                                                <td>@isset($phone->department){{ $phone->department }}@else Not Set @endisset</td>
-                                                <td>{{ $phone->phoneNumber }}</td>
-                                                <td>@isset($phone->email){{ $phone->email }}@else Not Set @endisset</td>
-                                                <td>{{ $phone->max_tops }}</td>
-                                                <td>{{ $phone->amount }}</td>
-                                            </tr>
-                                          @endforeach
-                                        @else
-                                           <tr>
-                                              <td></td>
-                                              <td>No Phone Number Added</td>
-                                              <td></td>
-                                              <td></td>
-                                          </tr>
-                                        @endif
-                                    </tbody>
-                            </table>
-                        
-                        </div>
-                    </div>
-
-
-                </div>
-
-            </div>
+        <div class="box-header">
+            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">
+            Add New Phone</button>
         </div>
-
+        <div class="box-body">
+            <table id="datatable" class="table table-bordered table-hover">
+                <thead>
+                        <tr>
+                            <td>Name</td>
+                            <td>Title</td>
+                            <td>Dept</td>
+                            <td>Phone</td>
+                            <td>Email</td>
+                            <td>Weekly Max</td>
+                            <td>Nos of Topups this week</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if(count($phones) > 0)
+                          @foreach($phones as $phone)
+                            <tr>
+                                <td>{{ $phone->firstName }} {{ $phone->lastName }}</td>
+                                <td>@isset($phone->title){{ $phone->title }}@else Not Set @endisset</td>
+                                <td>@isset($phone->department){{ $phone->department }}@else Not Set @endisset</td>
+                                <td>{{ $phone->phoneNumber }}</td>
+                                <td>@isset($phone->email){{ $phone->email }}@else Not Set @endisset</td>
+                                <td>{{ $phone->max_tops }}</td>
+                                <td>{{ $phone->amount }}</td>
+                            </tr>
+                          @endforeach
+                        @else
+                           <tr>
+                              <td></td>
+                              <td>No Phone Number Added</td>
+                              <td></td>
+                              <td></td>
+                          </tr>
+                        @endif
+                    </tbody>
+            </table>
+        
+        </div>
     </div>
-
-
 
 </div>
 
-       
-        
-        
-
-
-
-
-
-
-
-        <br>
-            <!-- Content Header (Page header) -->
-            <section class="content-header" style="padding: 30px;">
                 <div class="row">
-                    <div class="col-lg-6">
-                        <h4 id="balance">Top-up Balance: ₦ {{number_format($topupbanlance, 2) }}</h4>
-                        <div>
-                            
-                        </div>
+                    
                         <div class="container">
                             <!-- Trigger the modal with a button -->
                             <!-- Modal -->
@@ -230,12 +198,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 ">
-                        <h4 id="balance">Wallet Balance: ₦ {{number_format($topupbanlance, 2) }}</h4>
-                        <div>
-                            
-                        </div>
-                    </div>
+                    
                     <!---Modal for wallet top Up-->
                     <div class="modal fade" id="walletTopUp">
                         <div class="modal-dialog">
@@ -396,63 +359,4 @@
                                 </div>
                                 <!-- /.modal -->
             </section>
-
-            <!-- Main content -->
-            <section class="content container" id="bulksms" style="margin-right: 0px;margin-left: 0px;">
-                <div class="container">
-                    <hr>
-                    <p>
-                        <h3>Phone Numbers </h3>
-                       
-                    </p>
-                    <table class="table" style="width:70%;">
-                        <thead>
-                            <tr>
-                                <td>Name</td>
-                                <td>Title</td>
-                                <td>Dept</td>
-                                <td>Phone</td>
-                                <td>Email</td>
-                                <td>Weekly Max</td>
-                                <td>Nos of Topups this week</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @if(count($phones) > 0)
-                              @foreach($phones as $phone)
-                                <tr>
-                                    <td>{{ $phone->firstName }} {{ $phone->lastName }}</td>
-                                    <td>@isset($phone->title){{ $phone->title }}@else Not Set @endisset</td>
-                                    <td>@isset($phone->department){{ $phone->department }}@else Not Set @endisset</td>
-                                    <td>{{ $phone->phoneNumber }}</td>
-                                    <td>@isset($phone->email){{ $phone->email }}@else Not Set @endisset</td>
-                                    <td>{{ $phone->max_tops }}</td>
-                                    <td>{{ $phone->amount }}</td>
-                                </tr>
-                              @endforeach
-                            @else
-                               <tr>
-                                  <td></td>
-                                  <td>No Phone Number Added</td>
-                                  <td></td>
-                                  <td></td>
-                              </tr>
-                            @endif
-                        </tbody>
-                    </table>
-                    <hr>
-                </div>
-                </div>
-                <!-- /.modal-content -->
-                </div>
-                <!-- /.modal-dialog -->
-                </div>
-                <!-- /.modal -->
-
-
-                <!-- /.content -->
-                </div>
-                <!-- /.content-wrapper -->
-
-
 @endsection
