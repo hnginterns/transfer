@@ -62,7 +62,7 @@
                                             <h4 class="modal-title">Add New Phone Number</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="{{ route('contacts.store') }}" method="post" accept-charset="utf-8">
+                                            <form action="{{ url('/admin/addphone') }}" method="post" accept-charset="utf-8">
                                                 {{csrf_field()}}
                                                 <div class="modal-body" style="padding: 5px;">
                                                     <div class="row">
@@ -311,19 +311,21 @@
                                 <td>Email</td>
                                 <td>Weekly Max</td>
                                 <td>Nos of Topups this week</td>
+                                <td></td>
                             </tr>
                         </thead>
                         <tbody>
-                            @if(count($phones) > 0)
-                              @foreach($phones as $phone)
+                            @if(count($contacts) > 0)
+                              @foreach($contacts as $contact)
                                 <tr>
-                                    <td>{{ $phone->firstName }} {{ $phone->lastName }}</td>
-                                    <td>@isset($phone->title){{ $phone->title }}@else Not Set @endisset</td>
-                                    <td>@isset($phone->department){{ $phone->department }}@else Not Set @endisset</td>
-                                    <td>{{ $phone->phoneNumber }}</td>
-                                    <td>@isset($phone->email){{ $phone->email }}@else Not Set @endisset</td>
-                                    <td>{{ $phone->max_tops }}</td>
-                                    <td>{{ $phone->amount }}</td>
+                                    <td>{{ $contact->firstName }} {{ $contact->lastName }}</td>
+                                    <td>@isset($contact->title){{ $contact->title }}@else Not Set @endisset</td>
+                                    <td>@isset($contact->department){{ $contact->department }}@else Not Set @endisset</td>
+                                    <td>{{ $contact->contactNumber }}</td>
+                                    <td>@isset($contact->email){{ $contact->email }}@else Not Set @endisset</td>
+                                    <td>{{ $contact->max_tops }}</td>
+                                    <td>{{ $contact->amount }}</td>
+                                    <td> <button class="btn btn-danger btn-sm delete-number" id="{{ $contact->id }}">Delete</button></td>
                                 </tr>
                               @endforeach
                             @else
