@@ -74,7 +74,7 @@ class AdminController extends WalletController
         
         $topupbanlance = $this->getTopupWalletBalance();
         $bank = Bank::all();
-        $wallet = Wallet::all();
+        $wallet = Wallet::where('type', 'topup')->get();
         
         return view('admin.phonetopup.index', compact('phones', 'wallet', 'bank', 'topupbanlance', 'contacts'));
     }
