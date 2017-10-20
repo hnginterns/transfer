@@ -6,13 +6,11 @@
  <!-- Content Wrapper. Contains page content -->
  <div class="col-sm-12">
     <div class="box">
-            <div class="box-header">
-              <a href="{{ route('topup.index') }}" class="btn btn-success">Back to Wallets </a>
-            </div>
+            
             <!-- /.box-header -->
             <div class="box-body">
 
-                <div class="col-md-5">
+                <div class="col-md-2">
 
                     <!-- mobiletopuopng balance -->
 
@@ -46,7 +44,7 @@
 
                 </div>
 
-                <div class="col-md-7">
+                <div class="col-md-10">
 
                     <div class="container">
                     <hr>
