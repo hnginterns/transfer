@@ -20,7 +20,14 @@
 
                   </div>
                 </div>
+            </div>
+        </div>
+    </div>
 
+    <div class="col-md-3">
+          <!-- Profile Image -->
+          <div class="box box-primary">
+            <div class="box-body">
 
                 <div class="panel panel-success">
                   <div class="panel-heading">
@@ -33,10 +40,13 @@
 
                   </div>
                 </div>
+            </div>
         </div>
     </div>
 </div>
-<div class="col-md-9">
+
+<div class="row">
+<div class="col-md-12">
     <div class="box box-primary">
 
         <div class="box-header">
@@ -82,6 +92,8 @@
         
         </div>
     </div>
+
+</div>
 
 </div>
 
