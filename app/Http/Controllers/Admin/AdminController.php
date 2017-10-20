@@ -65,17 +65,18 @@ class AdminController extends WalletController
     }
     public function phoneTopupView()
     {
+
+        $contacts = TopupContact::all();
+
+        dd($contacts);
+
         $phones = SmsWalletFund::all();
         
         $topupbanlance = $this->getTopupWalletBalance();
         $bank = Bank::all();
         $wallet = Wallet::all();
         
-        return view('admin.phonetopup.index', compact('phones', 'wallet', 'bank', 'topupbanlance'));
-
-        $contacts = TopupContact::all();
-
-        return view('admin.phonetopup.index', compact('phones', 'topupbanlance', 'contacts'));
+        return view('admin.phonetopup.index', compact('phones', 'wallet', 'bank', 'topupbanlance', 'contacts'));
     }
 
     public function index()
