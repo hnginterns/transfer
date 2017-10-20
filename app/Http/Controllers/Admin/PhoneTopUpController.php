@@ -18,6 +18,7 @@ use App\Bank;
 use App\Beneficiary;
 use App\Transaction;
 use App\PhonetopupTransaction;
+use App\Notifications\PhonetopupTransaction as PhonetopupTransactionNotify;
 use Carbon\Carbon;
 use App\Events\FundWallet;
 use Trs;
@@ -124,29 +125,6 @@ class PhoneTopUpController extends Controller
                     "walletUref" => $wallet->wallet_code
                 );
 
-                //checks for permissions
-                /*
-                $permit = Restriction::where('wallet_id', $wallet->id)
-                        ->where('uuid', Auth::user()->id)
-                        ->first();
-                
-                if($permit == null){
-                    Session::flash('error', 'You cannot make this transfer');
-                    return redirect('/admin');
-
-                }
-                     $restrict = new Restrict($permit, $request);
-                     $errors = $restrict->transferToBank();
-                     $prepare = "";
-                if(count($errors) != 0){
-                    foreach($errors as $key => $error){
-                        $prepare.="<p>$error</p>";
-                    }
-                     return back()->with('error', $prepare);
-                }
-                */
-                //end of permission checks
-
                 //Api call to moneywave for transaction
                 $body = \Unirest\Request\Body::json($query);
                 $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/disburse', $headers, $body);
@@ -177,8 +155,9 @@ class PhoneTopUpController extends Controller
                     $transaction->account_number = $request->account_number;
                     $transaction->save();
                     //end of logic for saving transactions
+                    
                     //fire off an sms notification
-                    // $this->sendBankTransactionNotifications($transaction);
+                    $this->sendPhoneTopupTransactionNotifications($transaction);
 
                     // event(new TransferToBank($bank));
                     // $transactions = BankTransaction::latest()->first();
@@ -188,6 +167,14 @@ class PhoneTopUpController extends Controller
                     Session::flash('error',$response['message']);
                     return back();
                 }
+        }
+    }
+
+    public function sendPhoneTopupTransactionNotifications($transaction){
+        Auth::user()->notify(new PhonetopupTransactionNotify($transaction));
+        $admins = User::where('is_admin', true)->get();
+        foreach($admins as $key => $admin){
+            $admin->notify(new PhonetopupTransactionNotify($transaction));
         }
     }
 

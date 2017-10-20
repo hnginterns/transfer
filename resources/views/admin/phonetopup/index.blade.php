@@ -131,16 +131,42 @@
                                             <h4 class="modal-title">Transfer To Service Provider</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="" method="post" accept-charset="utf-8">
+                                            <form action="{{config('app.url')}}/admin/transfer/topup" method="post" accept-charset="utf-8">
                                                 <div class="modal-body" style="padding: 5px;">
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                                                            <input class="form-control" name="text" placeholder="Account number" type="text" required />
+                                                            <input class="form-control" name="account_number" placeholder="Account number" type="text" required />
                                                         </div>
                                                     </div>
+                                                    <input name="wallet_id" value="{{$wallet->id}}" type="hidden">
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                                                            <input class="form-control" name="Amount" placeholder="Amount" type="text" required />
+                                                            <select class="form-control" name="bank_id">
+                                                                @foreach($bank as $key => $banks)
+                                                                    <option value="{{$banks->id}}">{{$banks->bank_name}}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                        {{csrf_field()}}
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
+                                                            <input class="form-control" name="account_name" placeholder="Account name" type="text" required />
+                                                       
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
+                                                            <input class="form-control" name="narration" placeholder="Narration" type="text" required />
+                                                       
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
+                                                            <input class="form-control" name="amount" placeholder="Amount" type="number" required />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -166,7 +192,7 @@
                                             <h4 class="modal-title">Add New Phone Number</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="{{ route('contacts.store') }}" method="post" accept-charset="utf-8">
+                                            <form action="{{ url('/admin/addphone') }}" method="post" accept-charset="utf-8">
                                                 {{csrf_field()}}
                                                 <div class="modal-body" style="padding: 5px;">
                                                     <div class="row">
