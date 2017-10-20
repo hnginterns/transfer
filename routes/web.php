@@ -206,7 +206,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
 	Route::get('analytics', 'Admin\AdminController@webAnalytics');
 	
 	//Phone topup starts here
-	Route::get('/phonetopup', 'Admin\AdminController@phoneTopupView');
+	Route::get('/phonetopup', 'Admin\AdminController@phoneTopupView')->name('topup.index');
 	Route::post('/addphone', 'Admin\PhoneTopUpController@addPhone');
 	Route::post('/transfer/topup', 'Admin\PhoneTopUpController@postTopup');
 
