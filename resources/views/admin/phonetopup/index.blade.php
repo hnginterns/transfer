@@ -5,18 +5,16 @@
 @section('content')
  <!-- Content Wrapper. Contains page content -->
 
-<div class="col-sm-12">
-    <div class="box">
-            <div class="box-header">
-              <div class="box-header">
-                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">
-                Add New Phone</button>
-        </div>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
 
-        <div class="col-md-3">
+ <div class="container-fluid">
+  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">
+                Add New Phone</button>
+  <br> <br>
+
+        <div class="row">
+        <br>
+
+        <div class="col-md-3 col-sm-3">
 
           <!-- Profile Image -->
           <div class="box box-primary">
@@ -39,9 +37,10 @@
           </div>
           <!-- /.box -->
     </div>
-        
-        <!-- /.col -->
-        <div class="col-md-9">
+
+
+    <!-- /.col -->
+        <div class="col-md-9 col-sm-9">
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
               <li class="active"><a href="#contacts" data-toggle="tab">Contacts</a></li>
@@ -108,16 +107,15 @@
               <!-- /.tab-pane -->
             </div>
             <!-- /.tab-content -->
+            <!-- /.tab-content -->
           </div>
           <!-- /.nav-tabs-custom -->
         </div>
-        <!-- /.col -->
- 
-    
+<!-- /.col -->
+
 </div>
-</div>
-</div>
-                <div class="row">
+
+
                     
                         <div class="container">
                             <!-- Trigger the modal with a button -->
