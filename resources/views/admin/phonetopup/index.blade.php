@@ -21,6 +21,19 @@
                   </div>
                 </div>
 
+
+                <div class="panel panel-success">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">Funding Wallet Balance</h3>
+                  </div>
+                  <div class="panel-body">
+                    <h2>₦ {{number_format($topupbanlance, 2) }}</h2> <br>
+
+                    <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#walletTopUp">Top Up Wallet</button>
+
+                  </div>
+                </div>
+
             </div>
         </div>
 
@@ -161,7 +174,7 @@
                     <div class="col-lg-3 ">
                         <h4 id="balance">Wallet Balance: ₦ {{number_format($topupbanlance, 2) }}</h4>
                         <div>
-                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#walletTopUp">Top Up Wallet</button>
+                            
                         </div>
                     </div>
                     <!---Modal for wallet top Up-->
