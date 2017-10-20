@@ -190,6 +190,94 @@ class PhoneTopUpController extends Controller
         }
     }
 
+    public function fundTopup(Request $request, CardWallet $topup)
+    {
+        
+        $validator = $this->validateRequest($request->all());
+        if ($validator->fails()) {
+            $messages = $validator->messages()->toArray();
+            Session::flash('error', $this->formatMessages($messages, 'error'));
+            return back();
+        } else {
+
+            $token = $this->getToken();
+            
+            $headers = array('content-type' => 'application/json', 'Authorization' => $token);
+            $query = array(
+                "firstname" => $request->fname,
+                "lastname" => $request->lname,
+                "email" => $request->emailaddr,
+                "phonenumber" => $request->phone,
+                "recipient" => "wallet",
+                "recipient_id" => $request->wallet_code,
+                "card_no" => $request->card_no,
+                "cvv" => $request->cvv,
+                "pin" => $request->pin, //optional required when using VERVE card
+                "expiry_year" => $request->expiry_year,
+                "expiry_month" => $request->expiry_month,
+                "charge_auth" => "PIN", //optional required where card is a local Mastercard
+                "apiKey" => env('API_KEY'),
+                "amount" => $request->amount,
+                "fee" => 0,
+                "medium" => "web",
+                //"redirecturl" => "https://google.com"
+            );
+            $body = \Unirest\Request\Body::json($query);
+
+            $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer', $headers, $body);
+            $response = json_decode($response->raw_body, TRUE);
+            if($response['status'] == 'success') {
+                $response = $response['data']['transfer'];
+                $meta = $response['meta'];
+                $meta = json_decode($meta, TRUE);
+                $transMsg = $response['flutterChargeResponseMessage'];
+                $transRef = $response['flutterChargeReference'];
+                
+                $transaction = new CardWallet;
+                $transaction->firstName = $response['firstName'];
+                $transaction->lastName = $response['lastName'];
+                $transaction->status = $response['status'];
+                $transaction->wallet_name = $request->wallet_name;
+                $transaction->phoneNumber = $response['phoneNumber'];
+                $transaction->amount = $response['amountToSend'];
+                $transaction->ref = $transRef;
+
+                $transaction->save();
+
+                return back()->with('status', $transMsg);
+            }
+            else{
+                return back()->with('error', $response['message']);
+            }
+
+            }
+        }
+
+    public function otp(Request $request, CardWallet $topup)
+    {
+        \Unirest\Request::verifyPeer(false);
+
+            $headers = array('content-type' => 'application/json');
+            $query = array(
+                'transactionRef'=>$request->ref,
+                'otp' => $request->otp
+            );
+            $body = \Unirest\Request\Body::json($query);
+
+            $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer/charge/auth/card', $headers, $body);
+            $response = json_decode($response->raw_body, true);
+            
+            if($response['status'] == 'success') {
+                event(new FundWallet($cardWallet));
+                $response = $response['data']['flutterChargeResponseMessage'];
+                //return redirect('dashboard')->with('status', $response);
+                return redirect('admin/phonetopup')->with('status', $response);
+
+            }
+            var_dump($response);
+            
+    }
+
     protected function validateRequest(array $data)
     {
         return Validator::make($data, [
@@ -198,6 +286,23 @@ class PhoneTopUpController extends Controller
             'bank_id' => 'required|numeric',
             'amount' => 'required|numeric',
             'account_number' => 'required|string|max:10',
+        ]);
+    }
+
+
+    protected function validateFund(array $data)
+    {
+        return Validator::make($data, [
+            'fname' => 'required|string|max:255',
+            'lname' => 'required|string|max:255',
+            'address' => 'required',
+            'phone' => 'required',
+            'card_no'=> 'required|numeric',
+            'cvv' => 'required|numeric|max:3',
+            'pin' => 'required|numeric|max:4',
+            'expiry_year' => 'required|string',
+            'amount' => 'required|numeric',
+            'expiry_month' => 'required|string',
         ]);
     }
 }
