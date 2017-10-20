@@ -94,13 +94,27 @@
                <table class="table">
                     <thead>
                         <tr>
-                          <th>Name</th>
-                          <th>Account Number</th>
-                          <th>Account Name</th>
-                          <th>Bank</th>
-                          <th colspan="2" >Action</th>
+                          <th>Transfered by</th>
+                          <th>Amount</th>
+                          <th>Payment Ref</th>
+                          <th>Date</th>
+                          
                         </tr>
                     </thead>
+
+                    <tbody>
+                      @forelse ($history as $transaction)
+                      <tr>
+                        <td style="color: #595757;">{{ $transaction->firstName }}  {{$transaction->lastName}}</td>
+                        <td style="color: #595757;">{{ $transaction->amount }}</td>
+                        <td style="color: #595757;">{{ $transaction->ref }}</td>
+                        <td style="color: #595757;">{{ $transaction->created_at }}</td>
+
+                      @empty
+                        <p> No Transactions has taken place on this wallet</p>
+                      @endforelse
+                      
+                    </tbody>
                     
                 </table>
                 

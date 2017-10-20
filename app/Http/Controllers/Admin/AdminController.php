@@ -81,11 +81,11 @@ class AdminController extends WalletController
          //DB::table('wallets')->where('type', '=','topup')->first();
          
          $wallet_name = $wallet->wallet_name;
-         $cardWallet = CardWallet::where('wallet_name', $wallet_name)->get();
+         $history = CardWallet::where('wallet_name', $wallet_name)->get();
 
-         dd($cardWallet);
+         //dd($cardWallet);
         
-        return view('admin.phonetopup.index', compact('phones', 'wallet', 'bank', 'topupbalance', 'contacts', 'cardwallets'));
+        return view('admin.phonetopup.index', compact('phones', 'wallet', 'bank', 'topupbalance', 'contacts', 'history'));
     }
 
     public function index()
