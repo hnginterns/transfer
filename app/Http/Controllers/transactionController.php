@@ -19,15 +19,28 @@ class transactionController extends Controller
     }
 
     // Retrieve transactions from wallets and transactions collections
-    public static function getTransactionsHistory($wallet, $bank, $wallet_code, $wallet_id) {
+    public static function getTransactionsHistory($walletz, $wallet, $bank, $wallet_code, $wallet_id) {
 
         $history = collect();
-        $wallet->each(function($wallet) use ($history, $wallet_code) {
+
+         $walletz->each(function($source) use ($history) {
             // dd($wallet->toArray());
             // Wallet to wallet
             $history->push(collect([
                 'transaction_type' => 'Wallet',
-                'transaction_state' => $wallet->payee_wallet_code == $wallet_code ? 'Receiving' : 'Sending',
+                'transaction_state' => $source->payee_wallet_code == $source->wallet_code ? 'Sending' : 'Receiving',
+                'transaction_date' => $source->created_at->toFormattedDateString(),
+                'transaction_amount' => $source->amount,
+                'transaction_status' => $source->status
+            ]));
+        });
+
+        $wallet->each(function($wallet) use ($history) {
+            // dd($wallet->toArray());
+            // Wallet to wallet
+            $history->push(collect([
+                'transaction_type' => 'Wallet',
+                'transaction_state' => $wallet->payee_wallet_code == $wallet->wallet_code ? 'Sending' : 'Receiving',
                 'transaction_date' => $wallet->created_at->toFormattedDateString(),
                 'transaction_amount' => $wallet->amount,
                 'transaction_status' => $wallet->status

@@ -4,17 +4,121 @@
 @section('subtitle', 'Manage Phone/Data Topup')
 @section('content')
  <!-- Content Wrapper. Contains page content -->
-<div class="row">
-    <div class="col-lg-12">
+
+
+ <div class="container-fluid">
+  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">
+                Add New Phone</button>
+  <br> <br>
+
+        <div class="row">
         <br>
-            <!-- Content Header (Page header) -->
-            <section class="content-header" style="padding: 30px;">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <h4 id="balance">Top-up Balance: ₦ {{number_format($topupbanlance, 2) }}</h4>
-                        <div>
-                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#PurchaseTopUp">Purchase</button>
-                        </div>
+
+        <div class="col-md-3 col-sm-3">
+
+          <!-- Profile Image -->
+          <div class="box box-primary">
+            <div class="box-body box-profile">
+              
+              <h3 class="profile-username text-center">Mobile Topup Wallet</h3>
+
+              <p class="text-center"><strong>₦ {{isset($topupbalance) ? number_format($topupbalance, 2) : 'null' }}</strong></p>
+              <button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#PurchaseTopUp">Purchase</button>
+              
+              <hr>
+
+              <h3 class="profile-username text-center"> Wallet Balance</h3>
+            @if(isset($wallet->balance))
+              <p class="text-center"><strong>₦ {{ $wallet->balance }}</strong></p>
+             <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#walletTopUp">Fund Wallet</button>
+            @else
+             <p>No wallet linked. <strong>Please Create a wallet and set type of wallet to Topup</strong></p>
+            @endif
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+    </div>
+
+
+    <!-- /.col -->
+        <div class="col-md-9 col-sm-9">
+          <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+              <li class="active"><a href="#contacts" data-toggle="tab">Contacts</a></li>
+              <li><a href="#history" data-toggle="tab">Transaction History</a></li>
+            </ul>
+            <div class="tab-content">
+              <div class="active tab-pane" id="contacts">
+                
+                 <table id="datatable" class="table table-bordered table-hover">
+                    <thead>
+                            <tr>
+                                <td>Name</td>
+                                <td>Title</td>
+                                <td>Dept</td>
+                                <td>Phone</td>
+                                <td>Email</td>
+                                <td>Weekly Max</td>
+                                <td>Nos of Topups this week</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if(count($phones) > 0)
+                              @foreach($phones as $phone)
+                                <tr>
+                                    <td>{{ $phone->firstName }} {{ $phone->lastName }}</td>
+                                    <td>@isset($phone->title){{ $phone->title }}@else Not Set @endisset</td>
+                                    <td>@isset($phone->department){{ $phone->department }}@else Not Set @endisset</td>
+                                    <td>{{ $phone->phoneNumber }}</td>
+                                    <td>@isset($phone->email){{ $phone->email }}@else Not Set @endisset</td>
+                                    <td>{{ $phone->max_tops }}</td>
+                                    <td>{{ $phone->amount }}</td>
+                                </tr>
+                              @endforeach
+                            @else
+                               <tr>
+                                  <td></td>
+                                  <td>No Phone Number Added</td>
+                                  <td></td>
+                                  <td></td>
+                              </tr>
+                            @endif
+                        </tbody>
+                </table>
+
+              </div>
+              <!-- /.tab-pane -->
+              <div class="tab-pane" id="history">
+
+               <table class="table">
+                    <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Account Number</th>
+                          <th>Account Name</th>
+                          <th>Bank</th>
+                          <th colspan="2" >Action</th>
+                        </tr>
+                    </thead>
+                    
+                </table>
+                
+              </div>
+              
+              <!-- /.tab-pane -->
+            </div>
+            <!-- /.tab-content -->
+            <!-- /.tab-content -->
+          </div>
+          <!-- /.nav-tabs-custom -->
+        </div>
+<!-- /.col -->
+
+</div>
+
+
+                    
                         <div class="container">
                             <!-- Trigger the modal with a button -->
                             <!-- Modal -->
@@ -27,16 +131,42 @@
                                             <h4 class="modal-title">Transfer To Service Provider</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="#" method="post" accept-charset="utf-8">
+                                            <form action="{{config('app.url')}}/admin/transfer/topup" method="post" accept-charset="utf-8">
                                                 <div class="modal-body" style="padding: 5px;">
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                                                            <input class="form-control" name="text" placeholder="Account number" type="text" required />
+                                                            <input class="form-control" name="account_number" placeholder="Account number" type="text" required />
                                                         </div>
                                                     </div>
+                                                    <input name="wallet_id" value="{{ $wallet->id }}" type="hidden">
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                                                            <input class="form-control" name="Amount" placeholder="Amount" type="text" required />
+                                                            <select class="form-control" name="bank_id">
+                                                                @foreach($bank as $key => $banks)
+                                                                    <option value="{{$banks->id}}">{{$banks->bank_name}}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                        {{csrf_field()}}
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
+                                                            <input class="form-control" name="account_name" placeholder="Account name" type="text" required />
+                                                       
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
+                                                            <input class="form-control" name="narration" placeholder="Narration" type="text" required />
+                                                       
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
+                                                            <input class="form-control" name="amount" placeholder="Amount" type="number" required />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -126,19 +256,16 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 ">
-                        <h4 id="balance">Wallet Balance: ₦ {{number_format($topupbanlance, 2) }}</h4>
-                        <div>
-                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#walletTopUp">Top Up Wallet</button>
-                        </div>
-                    </div>
+                    @isset($wallet)
                     <!---Modal for wallet top Up-->
                     <div class="modal fade" id="walletTopUp">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title text-center">Phone Wallet Top Up</h4>
+                                    
+                                    <h4 class="modal-title text-center">{{$wallet->wallet_name}}</h4>
+            
                                 </div>
                                 <div class="modal-body">
                                     <div class="box-header with-border">
@@ -146,10 +273,11 @@
                                     </div>
                                     <!-- /.box-header -->
                                     <div class="box-body">
-                                        <form action="#" method="POST" role="form form-horizontal">
+                                        <form action="{{ route('topup.phone.submit')}}" method="POST" role="form form-horizontal">
                                             <!-- text input -->
                                             <div class="container-fluid">
                                                 <fieldset>
+                                                    <input type="hidden" value="{{$wallet->wallet_code}}"
                                                     <div class="row">
                                                         <div class="col-lg-6">
                                                             <div class="form-group">
@@ -253,8 +381,48 @@
 
                                 </div>
                             </div>
+                            @endisset
                             <!--row ends-->
                             <!---Modal for wallet top Up-->
+
+                            <!--Modal for Otp -->
+                            @if (session('status'))
+                               <script type="text/javascript">
+                                    $(document).ready(function() {
+                                        $('#myModal').modal();
+                                    });
+                                </script>
+
+                                <div class="modal fade" id="myModal" role="dialog">
+                                <div class="modal-dialog">
+                                
+                                  <!-- Modal content-->
+                                  <div class="modal-content">
+                                      <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Otp</h4>
+                                      </div>
+                                      <div class="modal-body">
+                                        <p>{{session('status')}}</p>
+                                        <div class="row">
+                                        <div class="col-md-6 col-md-offset-2">
+                                          <form action="{{ route('topup.otp.submit')}}" method="POST">
+                                            {{csrf_field()}}
+                                            <input type="hidden" name="ref" value="{{$cardWallet->ref}}">
+                                            <div class="form-group">
+                                                <input type="password" class="form-control" name="otp" placeholder="Enter OTP">
+                                            </div>
+                                            <button type="submit" class="btn btn-default btn-block">Submit</button>
+                                          </form>
+                                        </div>
+                                      </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            @endif
+                            <!--end-->
+
                             <div class="modal fade" id="walletTopUp">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -292,65 +460,4 @@
                                 </div>
                                 <!-- /.modal -->
             </section>
-
-            <!-- Main content -->
-            <section class="content container" id="bulksms" style="margin-right: 0px;margin-left: 0px;">
-                <div class="container">
-                    <hr>
-                    <p>
-                        <h3>Phone Numbers </h3>
-                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Add New Phone</button>
-                    </p>
-                    <table class="table" style="width:70%;">
-                        <thead>
-                            <tr>
-                                <td>Name</td>
-                                <td>Title</td>
-                                <td>Dept</td>
-                                <td>Phone</td>
-                                <td>Email</td>
-                                <td>Weekly Max</td>
-                                <td>Nos of Topups this week</td>
-                                <td></td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @if(count($contacts) > 0)
-                              @foreach($contacts as $contact)
-                                <tr>
-                                    <td>{{ $contact->firstName }} {{ $contact->lastName }}</td>
-                                    <td>@isset($contact->title){{ $contact->title }}@else Not Set @endisset</td>
-                                    <td>@isset($contact->department){{ $contact->department }}@else Not Set @endisset</td>
-                                    <td>{{ $contact->contactNumber }}</td>
-                                    <td>@isset($contact->email){{ $contact->email }}@else Not Set @endisset</td>
-                                    <td>{{ $contact->max_tops }}</td>
-                                    <td>{{ $contact->amount }}</td>
-                                    <td> <button class="btn btn-danger btn-sm delete-number" id="{{ $contact->id }}">Delete</button></td>
-                                </tr>
-                              @endforeach
-                            @else
-                               <tr>
-                                  <td></td>
-                                  <td>No Phone Number Added</td>
-                                  <td></td>
-                                  <td></td>
-                              </tr>
-                            @endif
-                        </tbody>
-                    </table>
-                    <hr>
-                </div>
-                </div>
-                <!-- /.modal-content -->
-                </div>
-                <!-- /.modal-dialog -->
-                </div>
-                <!-- /.modal -->
-
-
-                <!-- /.content -->
-                </div>
-                <!-- /.content-wrapper -->
-
-
 @endsection

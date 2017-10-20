@@ -791,6 +791,9 @@
             #footer {
                 
             }
+            #footer{
+                display:none;
+            }
 
             #mobile-footer {
                 display: block;
@@ -1005,7 +1008,7 @@
     <div id="lower-footer">
         <p>&#169; 2017 Transferrules.com. All rights reserved</p>
     </div>
-</div>
+</div>  
 </section>
 <!-- DIVIDER ENDS-->
 

@@ -151,7 +151,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
 	//wallet fund starts
 	Route::get('/fundwallet', 'Admin\AdminController@fundwallet');
 	Route::post('/{wallet_code}/fund', 'WalletController@cardWallet');
-	Route::post('/otp', 'WalletController@otp');
+	// Route::post('/otp', 'WalletController@otp');
 	//Wallet fund ends
 
 	Route::get('logActivity', 'Admin\AdminController@logActivity');
@@ -206,9 +206,11 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
 	Route::get('analytics', 'Admin\AdminController@webAnalytics');
 	
 	//Phone topup starts here
-	Route::get('/phonetopup', 'Admin\AdminController@phoneTopupView');
-	Route::get('/topup/phone', 'Admin\PhoneTopUpController@topup');
+	Route::get('/phonetopup', 'Admin\AdminController@phoneTopupView')->name('topup.index');
 	Route::post('/addphone', 'Admin\PhoneTopUpController@addPhone');
+	Route::post('/transfer/topup', 'Admin\PhoneTopUpController@postTopup')->name('topup.phone.submit');
+	Route::post('/fund/topup', 'Admin\PhoneTopUpController@fundTopup')->name('fund.phone.submit');
+	Route::post('/otp', 'Admin\PhoneTopUpController@otp')->name('fund.otp.submit');
 
 	Route::resource('contacts', 'Admin\ContactContoller');
 
