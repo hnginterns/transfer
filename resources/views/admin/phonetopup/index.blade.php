@@ -5,7 +5,39 @@
 @section('content')
  <!-- Content Wrapper. Contains page content -->
 <div class="row">
-    <div class="col-lg-12">
+    <div class="col-md-3">
+          <!-- Profile Image -->
+          <div class="box box-primary">
+            <div class="box-body">
+
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">Mobile Topup Wallet</h3>
+                  </div>
+                  <div class="panel-body">
+                    <h2>₦ {{number_format($topupbanlance, 2) }}</h2> <br>
+                    <button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#PurchaseTopUp">Purchase</button>
+
+                  </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+       
+        
+        
+
+
+
+
+
+
+
         <br>
             <!-- Content Header (Page header) -->
             <section class="content-header" style="padding: 30px;">
@@ -13,7 +45,7 @@
                     <div class="col-lg-6">
                         <h4 id="balance">Top-up Balance: ₦ {{number_format($topupbanlance, 2) }}</h4>
                         <div>
-                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#PurchaseTopUp">Purchase</button>
+                            
                         </div>
                         <div class="container">
                             <!-- Trigger the modal with a button -->
