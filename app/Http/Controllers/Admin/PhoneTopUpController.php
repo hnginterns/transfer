@@ -180,7 +180,7 @@ class PhoneTopUpController extends Controller
                     // event(new TransferToBank($bank));
                     // $transactions = BankTransaction::latest()->first();
                     Session::flash('success',"Transaction was successful");
-                    return back('success');
+                    return redirect('admin/phonetopup');
                 } else {
                     Session::flash('error',$response['message']);
                     return back();
