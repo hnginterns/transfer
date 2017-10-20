@@ -241,7 +241,7 @@ class PhoneTopUpController extends Controller
             
         }
 
-    public function otp(Request $request, CardWallet $topup)
+    public function otp(Request $request, CardWallet $topup, Wallet $wallet)
     {
         \Unirest\Request::verifyPeer(false);
 
@@ -259,11 +259,14 @@ class PhoneTopUpController extends Controller
                 event(new FundWallet($topup));
                 $response = $response['data']['flutterChargeResponseMessage'];
                 //return redirect('dashboard')->with('status', $response);
-                return redirect('admin/phonetopup')->with('status', $response);
+                Wallet::where('id', $wallet->id)
+                    ->update('status', $response['status']);
+                return redirect('admin/phonetopup')->with('details', $response);
 
             }
-            var_dump($response);
-            
+            Wallet::where('id', $wallet->id)
+                    ->update('status', $response['status']);
+            return redirect('admin/phonetopup')->with('details', $response);
     }
 
     protected function validateRequest(array $data)
