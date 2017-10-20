@@ -18,6 +18,7 @@ use App\Bank;
 use App\Beneficiary;
 use App\Transaction;
 use App\PhonetopupTransaction;
+use App\Notifications\PhonetopupTransaction as PhonetopupTransactionNotify;
 use Carbon\Carbon;
 use Trs;
 class PhoneTopUpController extends Controller
@@ -153,8 +154,9 @@ class PhoneTopUpController extends Controller
                     $transaction->account_number = $request->account_number;
                     $transaction->save();
                     //end of logic for saving transactions
+                    
                     //fire off an sms notification
-                    // $this->sendBankTransactionNotifications($transaction);
+                    $this->sendPhoneTopupTransactionNotifications($transaction);
 
                     // event(new TransferToBank($bank));
                     // $transactions = BankTransaction::latest()->first();
@@ -164,6 +166,14 @@ class PhoneTopUpController extends Controller
                     Session::flash('error',$response['message']);
                     return back();
                 }
+        }
+    }
+
+    public function sendPhoneTopupTransactionNotifications($transaction){
+        Auth::user()->notify(new PhonetopupTransactionNotify($transaction));
+        $admins = User::where('is_admin', true)->get();
+        foreach($admins as $key => $admin){
+            $admin->notify(new PhonetopupTransactionNotify($transaction));
         }
     }
 
