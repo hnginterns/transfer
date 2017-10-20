@@ -37,6 +37,15 @@
                 <div class="col-md-9">
 
                     <div class="box box-primary">
+
+                        <div class="box-header">
+                         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Add New Phone</button>
+
+                        </div>
+
+             
+
+
                         <div class="box-body">
                             <table id="datatable" class="table table-bordered table-hover">
                                 <thead>
@@ -392,7 +401,7 @@
                     <hr>
                     <p>
                         <h3>Phone Numbers </h3>
-                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Add New Phone</button>
+                       
                     </p>
                     <table class="table" style="width:70%;">
                         <thead>
