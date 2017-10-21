@@ -60,20 +60,20 @@
                                 <td>Phone</td>
                                 <td>Email</td>
                                 <td>Weekly Max</td>
-                                <td>Nos of Topups this week</td>
+                                
                             </tr>
                         </thead>
                         <tbody>
-                            @if(count($phones) > 0)
-                              @foreach($phones as $phone)
+                            @if(count($contacts) > 0)
+                              @foreach($contacts as $phone)
                                 <tr>
-                                    <td>{{ $phone->firstName }} {{ $phone->lastName }}</td>
+                                    <td>{{ $phone->firstname }} {{ $phone->lastname }}</td>
                                     <td>@isset($phone->title){{ $phone->title }}@else Not Set @endisset</td>
                                     <td>@isset($phone->department){{ $phone->department }}@else Not Set @endisset</td>
-                                    <td>{{ $phone->phoneNumber }}</td>
+                                    <td>{{ $phone->phone }}</td>
                                     <td>@isset($phone->email){{ $phone->email }}@else Not Set @endisset</td>
-                                    <td>{{ $phone->max_tops }}</td>
-                                    <td>{{ $phone->amount }}</td>
+                                    <td>{{ $phone->weekly_max }}</td>
+                                    
                                 </tr>
                               @endforeach
                             @else
@@ -151,7 +151,7 @@
                                                             <input class="form-control" name="account_number" placeholder="Account number" type="text" required />
                                                         </div>
                                                     </div>
-                                                    <input name="wallet_id" value="{{$wallet->id}}" type="hidden">
+                                                    <input name="wallet_id" value="{{ NULL }}" type="hidden">
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
                                                             <select class="form-control" name="bank_id">
@@ -205,7 +205,7 @@
                                             <h4 class="modal-title">Add New Phone Number</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="{{ url('/admin/addphone') }}" method="post" accept-charset="utf-8">
+                                            <form action="{{ url('admin/addphone') }}" method="post" accept-charset="utf-8">
                                                 {{csrf_field()}}
                                                 <div class="modal-body" style="padding: 5px;">
                                                     <div class="row">

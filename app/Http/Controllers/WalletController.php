@@ -290,10 +290,8 @@ class WalletController extends Controller
 
                     //$wallet->balance -= $request->amount;
                     //$wallet->save();
-
-                    $this->sendBankTransactionNotifications($transaction);
-
                     event(new FundWallet($bank));
+                    $this->sendBankTransactionNotifications($transaction);
                     $transactions = BankTransaction::latest()->first();
                     //\LogUserActivity::addToLog(auth()->user()->name.'transferred '.$transactions->amount.' from '. $transactions->source->wallet_name.' to '.$transactions->beneficiary->name);
                     
