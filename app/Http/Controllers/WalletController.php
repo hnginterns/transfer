@@ -182,7 +182,7 @@ class WalletController extends Controller
                 // print_r($response_arr);
                 
                 $status = $response_arr['status'];
-                // $r_data = $response_arr['data'];  
+                $r_data = $response_arr['data'];  
 
                 if ($status == 'success') {
                     
@@ -213,8 +213,7 @@ class WalletController extends Controller
                     
                     return redirect('wallet-transfer-success')->with('status', $data);
                 } else {
-                    $response = $r_data;
-                    
+                    $response = $r_data;                  
                     return back()->with('error',$response);
                 }
         }

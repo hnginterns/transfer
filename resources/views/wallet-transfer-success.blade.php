@@ -80,7 +80,7 @@
             </div>
             <!-- Modal Body -->
             <div class="modal-body">
-                <h4>YOUR TRANSACTION WAS SUCCESSFULL</h4>
+                <h4>YOUR TRANSACTION WAS SUCCESSFUL</h4>
             </div>
 
             <div class="table-responsive">
