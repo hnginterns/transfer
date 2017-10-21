@@ -205,9 +205,11 @@ class pagesController extends Controller
         $username = '08189115870';
         $pass =  'dbcc49ee2fba9f150c5e82';
 
+        https://mobilenig.com/api/balance.php/?username=****&password=****
+
         $curl = curl_init();
           curl_setopt_array($curl, array(
-            CURLOPT_URL => "https://mobileairtimeng.com/httpapi/balance.php?userid=%2008189115870&pass=dbcc49ee2fba9f150c5e82",
+            CURLOPT_URL => "https://mobilenig.com/api/balance.php/?username=jekayode&password=transfer",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
