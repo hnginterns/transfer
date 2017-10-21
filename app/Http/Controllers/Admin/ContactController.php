@@ -48,6 +48,7 @@ class ContactController extends Controller
             'weekly_max' => 'required|numeric',
             'title' => 'required',
             'department' => 'required',
+            'email' => 'required'
 
             ],
                                      [
@@ -65,17 +66,19 @@ class ContactController extends Controller
             return redirect()->to(URL::previous())->with('failed', $messages);
         } else {
             
-            $phone = new SmsWalletFund();
-            $phone->firstName = $input['first_name'];
-            $phone->lastName = $input['last_name'];
-            $phone->phoneNumber = $input['phone'];
-            $phone->amount = 0;
-            $phone->ref = $input['network'];
-            $phone->max_tops = $input['max_tops'];
+            $contact = new TopupContact();
+            $contact->firstname = $input['firstname'];
+            $contact->lastname = $input['lastname'];
+            $contact->phone = $input['phone'];
+            $contact->network = $input['network'];
+            $contact->email = $input['email'];
+            $contact->max_tops = $input['max_tops'];
+            $contact->department = $input['department'];
+            $contact->title = $input['title'];
 
-            $phone->save();
+            $contact->save();
 
-            
+            Session::flash('success', 'Contact Added successfully.');
             
             return redirect()->to('admin/phonetopup');
     }

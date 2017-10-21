@@ -208,22 +208,43 @@ tr:nth-child(even) {
       </div>
       <div class="modal-body">
 
-        <form action="{{ route('topup.phone.submit')}}" method="POST" role="form">
+        <div class="form-row">
+
+        <form action="{{ route('topup.phone.submit')}}" method="POST" role="form" >
           {{csrf_field()}}
 
-           <input type="text" class="phoneRef" name="phoneRef" value="{{ $phone->ref }}" >
-           <input type="text" class="firstName" name="firstName" value="{{ $phone->firstName  }}">
-           <input type="text" class="lastName" name="lastName" value="{{ $phone->lastName  }}">
-           <input type="text" class="phone" name="phone" value="{{ $phone->phoneNumber }}">
+            <div class="form-group col-md-6">
+              <label for="Phoneref" class="col-form-label">Phoneref</label>
+              <input type="text" class="form-control" name="phoneRef" value="{{ $phone->ref }}" >
+            </div>
+          <div class="form-group col-md-6">
+            <label for="Phone" class="col-form-label">Phone</label>
+            <input type="text" class="form-control" id="phone" name="phone" value="{{ $phone->phoneNumber }}">
+          </div>
 
-           <input type="text" name="amount" placeholder="Please Enter Amount">          
-        </form>            
+          <div class="form-group col-md-6">
+            <label for="Firstname" class="col-form-label">Firstname</label>
+            <input type="text" class="form-control" id="firstName" name="firstName" value="{{ $phone->firstName }}">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="Lastname" class="col-form-label">Lastname</label>
+            <input type="text" class="form-control" id="lastName" name="lastName" value="{{ $phone->lastName }}">
+          </div>
+          <div class="form-group col-md-12">
+            <label for="Lastname" class="col-form-label">Amoun</label>
+            <input type="text" class="form-control" id="amount" name="amount" placeholder="Please Enter Amount">
+          </div>      
+                   
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Save changes</button>
       </div>
+
+      </form> 
     </div>
+
+     </div>
   </div>
 </div>
     
