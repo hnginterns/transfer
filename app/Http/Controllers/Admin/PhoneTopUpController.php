@@ -40,8 +40,8 @@ class PhoneTopUpController extends Controller
         
         $validator = Validator::make($input, 
             [
-            'first_name' => 'required|string',
-            'last_name' => 'required|string',
+            'firstname' => 'required|string',
+            'lastname' => 'required|string',
             'phone' => 'required|numeric',
             'network' => 'required',
             'max_tops' => 'required'
