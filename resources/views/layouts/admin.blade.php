@@ -127,6 +127,20 @@
         toastr.error("{{ Session::get('error') }}");
   @endif
 
+  @if(Session::has('errors'))
+      @foreach(Session::get('errors') as $key => $messages)	
+        	toastr.error("{{$messages}}");
+	    @endforeach   
+  @endif
+
+   @if(Session::has('form-errors'))
+      @foreach(Session::get('form-errors') as $key => $messages)
+          @foreach($messages as $keys => $errors)	
+        	  toastr.error("{{$errors}}");
+          @endforeach
+	    @endforeach   
+  @endif
+
 </script>
 
 
