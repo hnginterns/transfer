@@ -13,11 +13,11 @@ use App\Wallet;
 use App\SmsWalletFund;
 use App\CardWallet;
 use App\Restriction;
+
+use App\TopupContact;
 use App\Rule;
 use App\Bank;
 use App\Beneficiary;
-
-use App\TopupContact;
 use App\Transaction;
 use App\PhonetopupTransaction;
 use App\Notifications\PhonetopupTransaction as PhonetopupTransactionNotify;
@@ -36,19 +36,15 @@ class PhoneTopUpController extends Controller
     }
     
     public function addPhone(Request $request){
-        
         $input = $request->all();
         
         $validator = Validator::make($input, 
             [
-            'firstname' => 'required|string',
-            'lastname' => 'required|string',
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
             'phone' => 'required|numeric',
             'network' => 'required',
-            'weekly_max' => 'required|numeric',
-            'title' => 'required',
-            'department' => 'required',
-            'email' => 'required'
+            'max_tops' => 'required'
 
             ],
                                      [
@@ -59,29 +55,30 @@ class PhoneTopUpController extends Controller
             'network.required' => 'Please select a network',
             'max_tops.required' => 'Please enter Maximum Number of topups per week',
             ]
-         );
+         ); 
         
         if ($validator->fails()) {
             $messages = $validator->messages()->toArray();
+            Session::flash('error', $messages);
             return redirect()->to(URL::previous())->with('failed', $messages);
         } else {
             
-            $contact = new TopupContact();
-            $contact->firstname = $input['firstname'];
-            $contact->lastname = $input['lastname'];
-            $contact->phone = $input['phone'];
-            $contact->network = $input['network'];
-            $contact->email = $input['email'];
-            $contact->max_tops = $input['max_tops'];
-            $contact->department = $input['department'];
-            $contact->title = $input['title'];
+            $phone = new TopupContact();
+            $phone->firstname = $input['firstname'];
+            $phone->lastname = $input['lastname'];
+            $phone->phone = $input['phone'];
+            $phone->title = $input['title'];
+            $phone->department = $input['department'];
+            $phone->email = $input['email'];
+            $phone->newtork = $input['network'];
+            $phone->max_tops = $input['max_tops'];
 
-            $contact->save();
+            $phone->save();
 
             Session::flash('success', 'Contact Added successfully.');
             
             return redirect()->to('admin/phonetopup');
-    }
+        }
     }
 
     //get token for new transaction
