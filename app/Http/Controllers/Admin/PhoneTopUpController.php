@@ -59,7 +59,7 @@ class PhoneTopUpController extends Controller
         
         if ($validator->fails()) {
             $messages = $validator->messages()->toArray();
-            return redirect()->to(URL::previous())->with('failed', $messages);
+            return redirect()->to(URL::previous())->with('error', $messages);
         } else {
             
             $phone = new TopupContact();
