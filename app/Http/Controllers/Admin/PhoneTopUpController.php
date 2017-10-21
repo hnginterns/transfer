@@ -262,13 +262,13 @@ class PhoneTopUpController extends Controller
                 event(new FundWallet($topup));
                 $response = $response['data']['flutterChargeResponseMessage'];
                 //return redirect('dashboard')->with('status', $response);
-                Wallet::where('id', $wallet->id)
-                    ->update('status', $response['status']);
+                CardWallet::where('id', $wallet->id)
+                    ->update(['status' => $response]);
                 return redirect('admin/phonetopup')->with('details', $response);
 
             }
-            Wallet::where('id', $wallet->id)
-                    ->update('status', $response['status']);
+            CardWallet::where('id', $wallet->id)
+                    ->update(['status' => $response['status']]);
             return redirect('admin/phonetopup')->with('details', $response);
     }
 

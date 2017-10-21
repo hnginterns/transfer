@@ -83,9 +83,10 @@ class AdminController extends WalletController
          $wallet_name = $wallet->wallet_name;
          $history = CardWallet::where('wallet_name', $wallet_name)->get();
 
-         //dd($cardWallet);
+         $cardWallet = CardWallet::latest()->first();
+        //dd($cardWallet);
         
-        return view('admin.phonetopup.index', compact('phones', 'wallet', 'bank', 'topupbalance', 'contacts', 'history'));
+        return view('admin.phonetopup.index', compact('cardWallet', 'phones', 'wallet', 'bank', 'topupbalance', 'contacts', 'history'));
     }
 
     public function index()

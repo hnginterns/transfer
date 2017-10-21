@@ -235,8 +235,8 @@ class pagesController extends Controller
     {
         $phones = TopupContact::all();
         $topupbanlance = $this->getTopupWalletBalance();
-
-        return view('phonetopup', compact('phones', 'topupbanlance'));
+        $cardWallet = CardWallet::latest()->first();
+        return view('phonetopup', compact('cardWallet', 'phones', 'topupbanlance'));
     }
 
     //all other page functions can be added
