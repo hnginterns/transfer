@@ -274,4 +274,10 @@ class AdminController extends WalletController
         $logs = \LogUserActivity::logUserActivityLists();
         return view('admin/logActivity', compact('logs'));
     }
+
+    
+
+
+
+
 }

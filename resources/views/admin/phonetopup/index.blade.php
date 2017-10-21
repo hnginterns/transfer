@@ -205,7 +205,7 @@
                                             <h4 class="modal-title">Add New Phone Number</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="{{ route('contacts.store') }}" method="post" accept-charset="utf-8">
+                                            <form action="{{ url('admin/addphone') }}" method="post" accept-charset="utf-8">
                                                 {{csrf_field()}}
                                                 <div class="modal-body" style="padding: 5px;">
                                                     <div class="row">

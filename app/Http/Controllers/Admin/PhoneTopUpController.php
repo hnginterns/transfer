@@ -34,15 +34,19 @@ class PhoneTopUpController extends Controller
     }
     
     public function addPhone(Request $request){
+        
         $input = $request->all();
         
         $validator = Validator::make($input, 
             [
-            'first_name' => 'required|string',
-            'last_name' => 'required|string',
+            'firstname' => 'required|string',
+            'lastname' => 'required|string',
             'phone' => 'required|numeric',
             'network' => 'required',
-            'max_tops' => 'required'
+            'weekly_max' => 'required|numeric',
+            'title' => 'required',
+            'department' => 'required',
+            'email' => 'required'
 
             ],
                                      [
@@ -53,28 +57,29 @@ class PhoneTopUpController extends Controller
             'network.required' => 'Please select a network',
             'max_tops.required' => 'Please enter Maximum Number of topups per week',
             ]
-         ); 
+         );
         
         if ($validator->fails()) {
             $messages = $validator->messages()->toArray();
             return redirect()->to(URL::previous())->with('failed', $messages);
         } else {
             
-            $phone = new TopupContact();
-            $phone->firstName = $input['first_name'];
-            $phone->lastName = $input['last_name'];
-            $phone->phoneNumber = $input['phone'];
-            $phone->phoneNumber = $input['title'];
-            $phone->phoneNumber = $input['department'];
-            $phone->phoneNumber = $input['email'];
-            $phone->amount = 0;
-            $phone->ref = $input['network'];
-            $phone->max_tops = $input['max_tops'];
+            $contact = new TopupContact();
+            $contact->firstname = $input['firstname'];
+            $contact->lastname = $input['lastname'];
+            $contact->phone = $input['phone'];
+            $contact->network = $input['network'];
+            $contact->email = $input['email'];
+            $contact->max_tops = $input['max_tops'];
+            $contact->department = $input['department'];
+            $contact->title = $input['title'];
 
-            $phone->save();
+            $contact->save();
+
+            Session::flash('success', 'Contact Added successfully.');
             
             return redirect()->to('admin/phonetopup');
-        }
+    }
     }
 
     //get token for new transaction
