@@ -151,7 +151,7 @@
                                                             <input class="form-control" name="account_number" placeholder="Account number" type="text" required />
                                                         </div>
                                                     </div>
-                                                    <input name="wallet_id" value="{{ NULL }}" type="hidden">
+                                                    <input name="wallet_id" value="{{$wallet->id}}" type="hidden">
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
                                                             <select class="form-control" name="bank_id">
@@ -184,7 +184,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="panel-footer" style="margin-bottom:-14px;">
-                                                    <input type="submit" class="btn btn-success" value="Save" />
+                                                    <button type="submit" class="btn btn-success">Purchase</button>
                                                     <button style="float: right;" type="button" class="btn btn-default btn-close" data-dismiss="modal">Close</button>
                                                 </div>
                                             </form>

@@ -23,7 +23,7 @@
         }
 
         .modal-body h4 {
-            color: #FF6200;
+            color: #00AEFF;
             font-weight: bold;
             font-size: 16px;
         }
@@ -50,7 +50,7 @@
         }
 
         .text-orange{
-            color: #FF6200;
+            color: #00AEFF;
             text-align: left;
         }
 
@@ -60,14 +60,14 @@
             box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
             border-radius: 63px;
             padding:6px 15px;
-            background: #FF6200;
+            background: #00AEFF;
             color: white;
             border: none;
         }
 
         .modal-footer button:hover {
             background: white;
-            color: #FF6200;
+            color: #00AEFF;
         }
     </style>
 
@@ -80,7 +80,7 @@
             </div>
             <!-- Modal Body -->
             <div class="modal-body">
-                <h4>YOUR TRANSACTION WAS SUCCESSFULL</h4>
+                <h4>YOUR TRANSACTION WAS SUCCESSFUL</h4>
             </div>
 
             <div class="table-responsive">

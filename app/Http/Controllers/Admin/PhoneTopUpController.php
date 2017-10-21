@@ -32,7 +32,8 @@ class PhoneTopUpController extends Controller
     }
     public function topup()
     {
-        return view('phonetopup');
+        $wallet = Wallet::where('type', 'topup')->first();
+        return view('phonetopup', compact('wallet'));
     }
     
     public function addPhone(Request $request){
@@ -42,15 +43,16 @@ class PhoneTopUpController extends Controller
             [
             'firstname' => 'required|string',
             'lastname' => 'required|string',
-            'phone' => 'required|numeric',
+            'phone' => 'required|numeric|unique:topup_contacts',
             'network' => 'required',
             'max_tops' => 'required'
 
             ],
                                      [
-            'first_name.required' => 'First name is required',
-            'last_name.required' => 'Last name is required',
+            'firstname.required' => 'First name is required',
+            'lastname.required' => 'Last name is required',
             'phone.required' => 'Phone Number is required',
+            'phone.unique' => 'Phone Number is already registered',
             'phone.numeric' => 'Phone Number must be in numbers',
             'network.required' => 'Please select a network',
             'max_tops.required' => 'Please enter Maximum Number of topups per week',
@@ -59,7 +61,7 @@ class PhoneTopUpController extends Controller
         
         if ($validator->fails()) {
             $messages = $validator->messages()->toArray();
-            return redirect()->to(URL::previous())->with('error', $messages);
+            return redirect()->to(URL::previous())->with('form-errors', $messages);
         } else {
             
             $phone = new TopupContact();
@@ -111,8 +113,25 @@ class PhoneTopUpController extends Controller
             Session::flash('error', $this->formatMessages($messages, 'error'));
             return back();
         } else {
-                $token = $this->getToken();
+
+                //checks for permissions
+                $permit = Restriction::where('wallet_id', $wallet->id)
+                        ->where('uuid', Auth::user()->id)
+                        ->first();
                 
+                if($permit == null){
+                    Session::flash('error', 'You do not have access to this wallet');
+                    return redirect('/dashboard');
+                }    
+                 $restrict = new Restrict($permit, $request);
+                     $errors = $restrict->transferToBank();
+                if(count($errors) != 0){
+                    Session::flash('errors', $errors);
+                    return back();
+                }
+                //end of permission checks
+
+                $token = $this->getToken();
                 $headers = array('content-type' => 'application/json', 'Authorization' => $token);
                 $wallet = Wallet::find($request->wallet_id);
                 $bank = Bank::find($request->bank_id);

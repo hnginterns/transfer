@@ -154,8 +154,12 @@ class WalletController extends Controller
                 $permit = Restriction::where('wallet_id', $wallet->id)
                         ->where('uuid', Auth::user()->id)
                         ->first();
-                Session::flash('error', 'You do not have access to this wallet');
-                if($permit == null) return redirect('/dashboard');
+                
+                if($permit == null){
+                    Session::flash('error', 'You do not have access to this wallet');
+                    return redirect('/dashboard');
+
+                }
                      $restrict = new Restrict($permit, $request);
                      $errors = $restrict->transferToWallet();
                 if(count($errors) != 0){
@@ -182,7 +186,7 @@ class WalletController extends Controller
                 // print_r($response_arr);
                 
                 $status = $response_arr['status'];
-                // $r_data = $response_arr['data'];  
+                $r_data = $response_arr['data'];  
 
                 if ($status == 'success') {
                     
@@ -213,9 +217,9 @@ class WalletController extends Controller
                     
                     return redirect('wallet-transfer-success')->with('status', $data);
                 } else {
-                    $response = $r_data;
-                    
-                    return back()->with('error',$response);
+                    $response = $r_data;    
+                    Session::flash('error', $response);              
+                    return back();
                 }
         }
     }
@@ -249,8 +253,11 @@ class WalletController extends Controller
                         ->where('uuid', Auth::user()->id)
                         ->first();
                 
-                if($permit == null) return redirect('/dashboard');
-                     $restrict = new Restrict($permit, $request);
+                if($permit == null){
+                    Session::flash('error', 'You do not have access to this wallet');
+                    return redirect('/dashboard');
+                }    
+                 $restrict = new Restrict($permit, $request);
                      $errors = $restrict->transferToBank();
                 if(count($errors) != 0){
                     Session::flash('errors', $errors);
