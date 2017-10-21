@@ -132,54 +132,9 @@ tr:nth-child(even) {
 
               </tbody>
             </table>    <br>
-<hr><br
+<hr><br>
 						
- <table>
-    <th>
-    
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <div class="col-md-4 col-sm-4">
-    <td><select class="form-control cus-input" name="beneficiary_id" >
- <option>TOP UP AIRTIME</option>
-                           <option value="1000">1000</option>
-                            <option value="5000">5000</option>
-                            <option value="10000">10000</option>
-                            <option value="50000">50000</option>
-                            <option value="100000">100000</option>
-                            
-   </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-   <button id="" type="submit" class="btn btn-dark">Top Up</button></td>
-    <td height="200">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-     </div>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-     <div class="col-md-4 col-sm-4">
-        <select class="form-control cus-input" name="beneficiary_id">
- <option>TOP UP DATA</option>
-                           <option value="1000">1000</option>
-                            <option value="5000">5000</option>
-                            <option value="10000">10000</option>
-                            <option value="50000">50000</option>
-                            <option value="100000">100000</option>
-                            
-   </select>&nbsp;&nbsp;&nbsp;&nbsp;<button id="btn btn-primary btn-block" type="submit"   class="btn btn-dark">Top Up</button></td>
-    
-    </tr>
-               
-    </div>
-                    
-       
-  </table> <br><hr><br>
-  <br><hr><br>
-
-
-       <th><div class="orange-box"><h4 class="title" align="center">TRANSACTION HISTORY</h4></div></th><br><div class="">
+<div class="orange-box"><h4 class="title" align="center">TRANSACTION HISTORY</h4></div></th><br><div class="">
        
 	
           <div class="table-responsive">
@@ -252,23 +207,38 @@ tr:nth-child(even) {
       </div>
       <div class="modal-body">
 
-        <form class="send-airtime" action="{{ route('topup.phone.user')}}" method="POST" role="form">
-          {{csrf_field()}}
+        <div class="form-row">
+          <form class="send-airtime" action="{{ route('topup.phone.user')}}" method="POST" role="form">
+              {{csrf_field()}}
 
-           <input type="text" class="firstName" name="firstName" >
-          <input type="hidden" name="current_id" class="current_user">
-           <!-- <input type="text" class="phoneRef" name="phoneRef" > -->
-           <!-- <input type="text" class="lastName" name="lastName" > -->
-           <input type="text" class="phone" name="phone" >
+    
+            {{csrf_field()}}
+            <input type="hidden" name="current_id" class="current_user">
+
+            <div class="form-group col-md-6">
+              <label for="Firstname" class="col-form-label">Name</label>
+            <input type="text" class="firstName" name="firstName" >
+            </div>
+            <div class="form-group col-md-6">
+              <label for="Phone" class="col-form-label">Phone</label>
+              <input type="text" class="phone" name="phone" >
+            </div>
             <hr />
-           <input type="text" name="amount" placeholder="Please Enter Amount">          
-        </form>            
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary btn-send">Send Airtime</button>
-      </div>
+            <div class="form-group col-md-12">
+              <label for="Lastname" class="col-form-label">Amount</label>
+              <input type="text" name="amount" placeholder="Please Enter Amount">          
+            </div>      
+                    
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary btn-send">Send Airtime</button>
+          </div>
+
+        </form> 
     </div>
+
+     </div>
   </div>
 </div>
     

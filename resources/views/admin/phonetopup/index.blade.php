@@ -60,20 +60,20 @@
                                 <td>Phone</td>
                                 <td>Email</td>
                                 <td>Weekly Max</td>
-                                <td>Nos of Topups this week</td>
+                                
                             </tr>
                         </thead>
                         <tbody>
-                            @if(count($phones) > 0)
-                              @foreach($phones as $phone)
+                            @if(count($contacts) > 0)
+                              @foreach($contacts as $phone)
                                 <tr>
-                                    <td>{{ $phone->firstName }} {{ $phone->lastName }}</td>
+                                    <td>{{ $phone->firstname }} {{ $phone->lastname }}</td>
                                     <td>@isset($phone->title){{ $phone->title }}@else Not Set @endisset</td>
                                     <td>@isset($phone->department){{ $phone->department }}@else Not Set @endisset</td>
-                                    <td>{{ $phone->phoneNumber }}</td>
+                                    <td>{{ $phone->phone }}</td>
                                     <td>@isset($phone->email){{ $phone->email }}@else Not Set @endisset</td>
-                                    <td>{{ $phone->max_tops }}</td>
-                                    <td>{{ $phone->amount }}</td>
+                                    <td>{{ $phone->weekly_max }}</td>
+                                    
                                 </tr>
                               @endforeach
                             @else
@@ -94,13 +94,26 @@
                <table class="table">
                     <thead>
                         <tr>
-                          <th>Name</th>
-                          <th>Account Number</th>
-                          <th>Account Name</th>
-                          <th>Bank</th>
-                          <th colspan="2" >Action</th>
+                          <th>Transfered by</th>
+                          <th>Amount</th>
+                          <th>Payment Ref</th>
+                          <th>Date</th>
                         </tr>
                     </thead>
+
+                    <tbody>
+                      @forelse ($history as $transaction)
+                      <tr>
+                        <td style="color: #595757;">{{ $transaction->firstName }}  {{$transaction->lastName}}</td>
+                        <td style="color: #595757;">{{ $transaction->amount }}</td>
+                        <td style="color: #595757;">{{ $transaction->ref }}</td>
+                        <td style="color: #595757;">{{ $transaction->created_at }}</td>
+
+                      @empty
+                        <p> No Transactions has taken place on this wallet</p>
+                      @endforelse
+                      
+                    </tbody>
                     
                 </table>
                 
@@ -192,7 +205,7 @@
                                             <h4 class="modal-title">Add New Phone Number</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="{{ url('/admin/addphone') }}" method="post" accept-charset="utf-8">
+                                            <form action="{{ url('admin/addphone') }}" method="post" accept-charset="utf-8">
                                                 {{csrf_field()}}
                                                 <div class="modal-body" style="padding: 5px;">
                                                     <div class="row">
