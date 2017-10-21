@@ -116,7 +116,7 @@
                     </tbody>
                     
                 </table>
-                
+                    {{$history->links()}}
               </div>
               
               <!-- /.tab-pane -->

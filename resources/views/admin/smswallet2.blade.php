@@ -241,11 +241,11 @@
     <section class="content container" id="bulksms">
  
   <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">ADD SMS ACCOUNT</button>
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#add-sms-Modal">ADD SMS ACCOUNT</button>
 <!--modal for add sms account -->
         <div class="container">
     <!--Add sms Account  Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
+  <div class="modal fade" id="add-sms-Modal" role="dialog">
     <div class="modal-dialog">
     
     
@@ -257,7 +257,7 @@
         </div>
         <div class="modal-body">
           <p>Please fill out your details</p>
-          <form role="form" class="submit-add_sms_account">
+          <form role="form" method="POST" action="/post" class="submit-add_sms_account">
                 {{ csrf_field() }}
                 <!-- text input -->
 		<div class="form-group">
@@ -314,7 +314,7 @@
                 </div>
 				
 				
-                <input type="button" class="btn btn-block btn-success btn-top-up" name="" value="ADD SMS ACCOUNT">
+                <input type="submit" class="btn btn-block btn-success btn-top-up" name="" value="ADD SMS ACCOUNT">
               </form>
         </div>
         <div class="modal-footer">
