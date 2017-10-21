@@ -59,7 +59,6 @@ class PhoneTopUpController extends Controller
         
         if ($validator->fails()) {
             $messages = $validator->messages()->toArray();
-            Session::flash('error', $messages);
             return redirect()->to(URL::previous())->with('failed', $messages);
         } else {
             
