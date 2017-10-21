@@ -60,20 +60,20 @@
                                 <td>Phone</td>
                                 <td>Email</td>
                                 <td>Weekly Max</td>
-                                <td>Nos of Topups this week</td>
+                                
                             </tr>
                         </thead>
                         <tbody>
-                            @if(count($phones) > 0)
-                              @foreach($phones as $phone)
+                            @if(count($contacts) > 0)
+                              @foreach($contacts as $phone)
                                 <tr>
-                                    <td>{{ $phone->firstName }} {{ $phone->lastName }}</td>
+                                    <td>{{ $phone->firstname }} {{ $phone->lastname }}</td>
                                     <td>@isset($phone->title){{ $phone->title }}@else Not Set @endisset</td>
                                     <td>@isset($phone->department){{ $phone->department }}@else Not Set @endisset</td>
-                                    <td>{{ $phone->phoneNumber }}</td>
+                                    <td>{{ $phone->phone }}</td>
                                     <td>@isset($phone->email){{ $phone->email }}@else Not Set @endisset</td>
                                     <td>{{ $phone->max_tops }}</td>
-                                    <td>{{ $phone->amount }}</td>
+                                    
                                 </tr>
                               @endforeach
                             @else
