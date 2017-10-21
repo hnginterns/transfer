@@ -28,6 +28,13 @@ class WalletController  extends Controller
     {
         $this->middleware('cache');
         $this->middleware('auth');
+        $this->middleware('admin')
+             ->only(
+                ['addPermission', 'editPermission', 
+                 'deletePermission', 'PostAddPermission', 
+                 'PostEditPermission'
+                 ]
+            );
         
     }
 
@@ -61,11 +68,10 @@ class WalletController  extends Controller
     public function PostAddPermission(Request $request){
         
         $validator = $this->validatePermission($request->all());
-        
         if ($validator->fails()) {
             $messages = $validator->messages()->toArray();
-            Session::flash('messages', $this->formatMessages($messages, 'error'));
-            return redirect()->to(URL::previous())->withInput();
+            Session::flash('form-errors', $messages);
+            return redirect()->to(URL::previous());
         } else {
             
             $duplicate = Restriction::where('uuid',$request->uuid)
@@ -113,7 +119,7 @@ class WalletController  extends Controller
         $validator = $this->validatePermission($request->all());
         if ($validator->fails()) {
             $messages = $validator->messages()->toArray();
-            Session::flash('messages', $this->formatMessages($messages, 'error'));
+             Session::flash('form-errors', $messages);
             return redirect()->to(URL::previous())->withInput();
         } else {
 

@@ -67,6 +67,14 @@
 	@endforeach   
   @endif
 
+  @if(Session::has('form-errors'))
+      @foreach(Session::get('form-errors') as $key => $messages)
+          @foreach($messages as $keys => $errors)	
+        	  toastr.error("{{$errors}}");
+          @endforeach
+	    @endforeach   
+  @endif
+
 
    </script>
 

@@ -118,7 +118,7 @@ class AdminController extends WalletController
 
         if ($validator->fails()) {
             $messages = $validator->messages()->toArray();
-            Session::flash('messages', $this->formatMessages($messages, 'error'));
+             Session::flash('form-errors', $messages);
             return redirect()->to(URL::previous())->withInput();
         } else {
             $wallet_data = $this->createWalletAdmin($request);
@@ -260,7 +260,7 @@ class AdminController extends WalletController
     {
         return Validator::make($data, [
             'name' => 'required|string|max:255',
-            //'bank_id' => 'required|string',
+            'bank_id' => 'required|string',
             'account_number' => 'required|string|max:10',
         ]);
     }

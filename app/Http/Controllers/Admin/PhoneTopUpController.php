@@ -110,7 +110,7 @@ class PhoneTopUpController extends Controller
         $validator = $this->validateRequest($request->all());
         if ($validator->fails()) {
             $messages = $validator->messages()->toArray();
-            Session::flash('error', $this->formatMessages($messages, 'error'));
+             Session::flash('form-errors', $messages);
             return back();
         } else {
 
