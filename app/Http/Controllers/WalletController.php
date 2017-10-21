@@ -154,11 +154,13 @@ class WalletController extends Controller
                 $permit = Restriction::where('wallet_id', $wallet->id)
                         ->where('uuid', Auth::user()->id)
                         ->first();
+                Session::flash('error', 'You do not have access to this wallet');
                 if($permit == null) return redirect('/dashboard');
                      $restrict = new Restrict($permit, $request);
                      $errors = $restrict->transferToWallet();
                 if(count($errors) != 0){
-                     return back()->with('multiple-error', $errors);
+                    Session::flash('errors', $errors);
+                    return back();
                 }
                 //end of permission checks
 
@@ -251,7 +253,8 @@ class WalletController extends Controller
                      $restrict = new Restrict($permit, $request);
                      $errors = $restrict->transferToBank();
                 if(count($errors) != 0){
-                     return back()->with('multiple-error', $errors);
+                    Session::flash('errors', $errors);
+                    return back();
                 }
                 //end of permission checks
 
@@ -292,9 +295,11 @@ class WalletController extends Controller
                     $this->sendBankTransactionNotifications($transaction);
                     $transactions = BankTransaction::latest()->first();
                     //\LogUserActivity::addToLog(auth()->user()->name.'transferred '.$transactions->amount.' from '. $transactions->source->wallet_name.' to '.$transactions->beneficiary->name);
+                    
                     return redirect('success')->with('status',$data);
                 } else {
-                    return redirect()->back()->with('failed',$response['message']);
+                    Session::flash('error',$response['message']);
+                    return back();
                 }
         }
     }
@@ -307,7 +312,7 @@ class WalletController extends Controller
         $response = \Unirest\Request::get('https://moneywave.herokuapp.com/v1/wallet', $headers);
         $data = json_decode($response->raw_body, true);
         $walletBalance = $data['data'];
-        dd($walletBalance);
+        // dd($walletBalance);
         
         foreach($walletBalance as $wallets)
                         {

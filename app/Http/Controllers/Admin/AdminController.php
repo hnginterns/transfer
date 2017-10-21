@@ -18,8 +18,8 @@ use App\Rule;
 use App\SmsWalletFund;
 use DB;
 
-use App\TopupContact;
 use App\TopupHistory;
+use App\TopupContact;
 
 use App\Beneficiary;
 use App\Transaction;
@@ -71,9 +71,9 @@ class AdminController extends WalletController
 
         //dd($contacts);
 
-        $phones = SmsWalletFund::all();
+        $phones = TopupContact::all();
         
-        $topupbalance = $this->getTopupWalletBalance();
+        $topupbalance = (integer) $this->getTopupWalletBalance();
         $bank = Bank::all();
         //$wallet = Wallet::where('type', 'topup')->get();
 
@@ -274,4 +274,10 @@ class AdminController extends WalletController
         $logs = \LogUserActivity::logUserActivityLists();
         return view('admin/logActivity', compact('logs'));
     }
+
+    
+
+
+
+
 }

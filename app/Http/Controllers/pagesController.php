@@ -233,7 +233,7 @@ class pagesController extends Controller
 
  public function phoneTopupView()
     {
-        $phones = SmsWalletFund::all();
+        $phones = TopupContact::all();
         $topupbanlance = $this->getTopupWalletBalance();
 
         return view('phonetopup', compact('phones', 'topupbanlance'));

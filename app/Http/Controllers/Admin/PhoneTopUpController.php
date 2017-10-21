@@ -13,6 +13,8 @@ use App\Wallet;
 use App\SmsWalletFund;
 use App\CardWallet;
 use App\Restriction;
+
+use App\TopupContact;
 use App\Rule;
 use App\Bank;
 use App\Beneficiary;
@@ -38,8 +40,8 @@ class PhoneTopUpController extends Controller
         
         $validator = Validator::make($input, 
             [
-            'first_name' => 'required|string',
-            'last_name' => 'required|string',
+            'firstname' => 'required|string',
+            'lastname' => 'required|string',
             'phone' => 'required|numeric',
             'network' => 'required',
             'max_tops' => 'required'
@@ -57,21 +59,22 @@ class PhoneTopUpController extends Controller
         
         if ($validator->fails()) {
             $messages = $validator->messages()->toArray();
-            return redirect()->to(URL::previous())->with('failed', $messages);
+            return redirect()->to(URL::previous())->with('error', $messages);
         } else {
             
             $phone = new TopupContact();
-            $phone->firstName = $input['first_name'];
-            $phone->lastName = $input['last_name'];
-            $phone->phoneNumber = $input['phone'];
-            $phone->phoneNumber = $input['title'];
-            $phone->phoneNumber = $input['department'];
-            $phone->phoneNumber = $input['email'];
-            $phone->amount = 0;
-            $phone->ref = $input['network'];
-            $phone->max_tops = $input['max_tops'];
+            $phone->firstname = $input['firstname'];
+            $phone->lastname = $input['lastname'];
+            $phone->phone = $input['phone'];
+            $phone->title = $input['title'];
+            $phone->department = $input['department'];
+            $phone->email = $input['email'];
+            $phone->network = $input['network'];
+            $phone->weekly_max = $input['max_tops'];
 
             $phone->save();
+
+            Session::flash('success', 'Contact Added successfully.');
             
             return redirect()->to('admin/phonetopup');
         }
