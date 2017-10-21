@@ -79,8 +79,7 @@ class AdminController extends WalletController
 
          $wallet = Wallet::where('type', 'topup')->first();
          //DB::table('wallets')->where('type', '=','topup')->first();
-         
-         $wallet_name = $wallet->wallet_name;
+         $wallet_name = $wallet == null ? null : $wallet->wallet_name;
          $history = CardWallet::where('wallet_name', $wallet_name)->get();
 
          $cardWallet = CardWallet::latest()->first();

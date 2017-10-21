@@ -23,12 +23,13 @@
               <h3 class="profile-username text-center">Mobile Topup Wallet</h3>
 
               <p class="text-center"><strong>₦ {{isset($topupbalance) ? number_format($topupbalance, 2) : 'null' }}</strong></p>
+              @if(isset($wallet))
               <button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#PurchaseTopUp">Purchase</button>
-              
+              @endif
               <hr>
 
               <h3 class="profile-username text-center"> Wallet Balance</h3>
-            @if(isset($wallet->balance))
+            @if(isset($wallet))
               <p class="text-center"><strong>₦ {{ $wallet->balance }}</strong></p>
              <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#walletTopUp">Fund Wallet</button>
             @else
@@ -151,7 +152,7 @@
                                                             <input class="form-control" name="account_number" placeholder="Account number" type="text" required />
                                                         </div>
                                                     </div>
-                                                    <input name="wallet_id" value="{{$wallet->id}}" type="hidden">
+                                                    <input name="wallet_id" value="{{$wallet == null ? 'null' : $wallet->id}}" type="hidden">
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
                                                             <select class="form-control" name="bank_id">
@@ -277,7 +278,7 @@
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                     
-                                    <h4 class="modal-title text-center">{{$wallet->wallet_name}}</h4>
+                                    <h4 class="modal-title text-center">{{$wallet == null ? 'null' : $wallet->wallet_name}}</h4>
             
                                 </div>
                                 <div class="modal-body">
@@ -291,8 +292,8 @@
                                             <!-- text input -->
                                             <div class="container-fluid">
                                                 <fieldset>
-                                                    <input type="hidden" name="wallet_code" value="{{$wallet->wallet_code}}">
-                                                    <input type="hidden" name="wallet_name" value="{{$wallet->wallet_name}}">
+                                                    <input type="hidden" name="wallet_code" value="{{$wallet == null ? 'null' : $wallet->wallet_code}}">
+                                                    <input type="hidden" name="wallet_name" value="{{$wallet == null ? 'null' : $wallet->wallet_name}}">
                                                     <div class="row">
                                                         <div class="col-lg-6">
                                                             <div class="form-group">
