@@ -16,6 +16,8 @@ use App\Restriction;
 use App\Rule;
 use App\Bank;
 use App\Beneficiary;
+
+use App\TopupContact;
 use App\Transaction;
 use App\PhonetopupTransaction;
 use App\Notifications\PhonetopupTransaction as PhonetopupTransactionNotify;
