@@ -138,7 +138,7 @@
                                                             <input class="form-control" name="account_number" placeholder="Account number" type="text" required />
                                                         </div>
                                                     </div>
-                                                    <input name="wallet_id" value="{{ $wallet->id }}" type="hidden">
+                                                    <input name="wallet_id" value="{{ NULL }}" type="hidden">
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
                                                             <select class="form-control" name="bank_id">
