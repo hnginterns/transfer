@@ -72,7 +72,7 @@
                                     <td>@isset($phone->department){{ $phone->department }}@else Not Set @endisset</td>
                                     <td>{{ $phone->phone }}</td>
                                     <td>@isset($phone->email){{ $phone->email }}@else Not Set @endisset</td>
-                                    <td>{{ $phone->max_tops }}</td>
+                                    <td>{{ $phone->weekly_max }}</td>
                                     
                                 </tr>
                               @endforeach
