@@ -89,6 +89,7 @@
                                     <div class="box-header with-border">
                                         <h3 class="box-title">Enter Card Details</h3>
                                     </div>
+                                  @if(isset($smsWallet))
                                     <!-- /.box-header -->
                                     <div class="box-body">
                                         <form action="{{ route('fund.smswallet.submit')}}" method="POST" role="form form-horizontal">
@@ -198,7 +199,7 @@
                                             </div>
                                         </form>
                                     </div>
-
+                                    @endif
                                 </div>
                             </div>
                         </div>
