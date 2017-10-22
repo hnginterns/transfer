@@ -71,7 +71,7 @@ class PhoneTopUpController extends Controller
             $phone->title = $input['title'];
             $phone->department = $input['department'];
             $phone->email = $input['email'];
-            $phone->network = $input['network'];
+            $phone->network = 0;
             $phone->netw = $input['network'];
             $phone->weekly_max = $input['max_tops'];
 
