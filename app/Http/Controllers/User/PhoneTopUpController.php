@@ -108,9 +108,12 @@ class PhoneTopUpController extends Controller
 
         */
 
+        $user_id = Auth::user()->id;
+
         $topuphistory = new TopupHistory;
 
-        $topuphistory->user_id = $contact->id;
+        $topuphistory->contact_id = $contact->id;
+        $topuphistory->user_id = $user_id;
         $topuphistory->amount = $amount;
         //$topuphistory->type = $request->type;
         $topuphistory->ref = str_random(10);
