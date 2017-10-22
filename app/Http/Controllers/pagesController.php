@@ -253,7 +253,7 @@ class pagesController extends Controller
 
         $user = Auth::user();
 
-        $topuphistory = TopupContact::where('user_id', $user->id);
+        $topuphistory = TopupContact::where('user_id', $user->id)->get();
         return view('phonetopup', compact('cardWallet', 'phones', 'topupbanlance', 'topuphistory'));
     }
 
