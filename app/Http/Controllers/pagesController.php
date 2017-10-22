@@ -17,6 +17,7 @@ use App\BankTransaction;
 use App\WalletTransaction;
 use App\SmsWalletFund;
 use App\TopupContact;
+use App\TopupHistory;
 
 use App\Bank;
 
@@ -249,7 +250,11 @@ class pagesController extends Controller
         $phones = TopupContact::all();
         $topupbanlance = $this->getTopupWalletBalance();
         $cardWallet = CardWallet::latest()->first();
-        return view('phonetopup', compact('cardWallet', 'phones', 'topupbanlance'));
+
+        $user = Auth::user();
+
+        $topuphistory = TopupHistory::where('user_id', $user->id)->get();
+        return view('phonetopup', compact('cardWallet', 'phones', 'topupbanlance', 'topuphistory'));
     }
 
     //all other page functions can be added
