@@ -64,6 +64,10 @@ class PhoneTopUpController extends Controller
 
     public function topuphonesubmit(Request $request)
     {
+        $phone = $request->phone;
+        $network = $request->network;
+        $amount = $request->amount
+
         // dd($request);
         // $contact = TopupContact::all();
         $contact = TopupContact::find($request->user_id);
@@ -71,13 +75,13 @@ class PhoneTopUpController extends Controller
         // dd($contact);
         $headers = array('content-type' => 'application/json');
         $response = \Unirest\Request::get(
-            'https://mobileairtimeng.com/httpapi/?userid=' .
-            '08189115870&pass=dbcc49ee2fba9f150c5e82' .
-            '&network='. $contact->network .'&phone='. $contact->phone .'&amt=5', 
-            // '&network='. $contact->network .'&phone='. $contact->phone .'&amt='. $request->amount, 
+            'https://mobilenig.com/api/airtime.php/?username=' .
+            'jekayode&password=transfer' .
+            '&network='.  $network .'&phoneNumber'. $phone .'&amt='. $amount, 
+            
             $headers
         );
-        var_dump($response);
+        //var_dump($response);
         $response = json_decode($response->raw_body, true);
         $status = $response['status'];
         dd($response);
@@ -85,8 +89,8 @@ class PhoneTopUpController extends Controller
     }
 
 
-    
 
-    
+
+
 
 }

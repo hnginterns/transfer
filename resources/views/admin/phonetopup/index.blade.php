@@ -61,6 +61,7 @@
                                 <td>Phone</td>
                                 <td>Email</td>
                                 <td>Weekly Max</td>
+                                <td>Network</td>
                                 
                             </tr>
                         </thead>
@@ -74,6 +75,7 @@
                                     <td>{{ $phone->phone }}</td>
                                     <td>@isset($phone->email){{ $phone->email }}@else Not Set @endisset</td>
                                     <td>{{ $phone->weekly_max }}</td>
+                                    <td>{{ $phone->netw }}</td>
                                     
                                 </tr>
                               @endforeach
@@ -249,7 +251,7 @@
                                                             <option value="GLO">GLO</option>
                                                             <option value="AIRTEL">AIRTEL</option>
                                                             <option value="9MOBILE">9MOBILE</option>
-                                                            
+
                                                            </select>
                                                         </div>
                                                     </div>

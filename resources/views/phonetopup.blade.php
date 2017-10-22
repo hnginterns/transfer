@@ -91,7 +91,8 @@ tr:nth-child(even) {
                   <td>Name</td>
                   <td>Phone Number</td>
                   <td>Network</td>
-                  <td>Amount Left</td>
+                  <td>Title</td>
+                  <td>Department</td>
                   <td>Weekly Limit</td>
                   <td>Action</td>
                 </tr>
@@ -103,8 +104,9 @@ tr:nth-child(even) {
                     <tr>
                         <td class="firstName" data-user="{{ $phone->id }}">{{ $phone->firstname }} {{ $phone->lastname }}</td>
                         <td class="phone">{{ $phone->phone }}</td>
-                        <td class="phoneRef">{{ $phone->network }}</td>
-                        <td class="amount">{{ $phone->weekly_max }}</td>
+                        <td class="phoneRef">{{ $phone->netw }}</td>
+                        <td class="amount">{{ $phone->title }}</td>
+                        <td class="amount">{{ $phone->department }}</td>
                         <td class="max-tops">{{ $phone->weekly_max }}</td>
                         <td>
 

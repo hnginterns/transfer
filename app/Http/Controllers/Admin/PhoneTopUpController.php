@@ -44,7 +44,7 @@ class PhoneTopUpController extends Controller
             'firstname' => 'required|string',
             'lastname' => 'required|string',
             'phone' => 'required|numeric|unique:topup_contacts',
-            'network' => 'required',
+            'netw' => 'required',
             'max_tops' => 'required'
 
             ],
@@ -54,7 +54,7 @@ class PhoneTopUpController extends Controller
             'phone.required' => 'Phone Number is required',
             'phone.unique' => 'Phone Number is already registered',
             'phone.numeric' => 'Phone Number must be in numbers',
-            'network.required' => 'Please select a network',
+            'netw.required' => 'Please select a network',
             'max_tops.required' => 'Please enter Maximum Number of topups per week',
             ]
          ); 
@@ -72,6 +72,7 @@ class PhoneTopUpController extends Controller
             $phone->department = $input['department'];
             $phone->email = $input['email'];
             $phone->network = $input['network'];
+            $phone->netw = $input['network'];
             $phone->weekly_max = $input['max_tops'];
 
             $phone->save();
