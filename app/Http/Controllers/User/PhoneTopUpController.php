@@ -96,14 +96,17 @@ class PhoneTopUpController extends Controller
         //var_dump($response);
         $response = json_decode($response->raw_body, true);
 
-        dd($response);
+        //dd($response);
         
-        if ($response === '00') {
+        /*
+        if ($response === null) {
             $status = 'Success';
         } else {
            return redirect('/phonetopup')->with('error', 'An Error Occured');
         }
         //end of Api call
+
+        */
 
         $topuphistory = new TopupHistory;
 
@@ -111,8 +114,9 @@ class PhoneTopUpController extends Controller
         $topuphistory->amount = $amount;
         //$topuphistory->type = $request->type;
         $topuphistory->ref = str_random(10);
-        $topuphistory->txn_response = $response;
-        $topuphistory->status = 00;
+        //$topuphistory->txn_response = $response;
+        $topuphistory->txn_response = 00;
+        $topuphistory->status = 'Success';
 
         $topuphistory->save();
 
