@@ -96,7 +96,7 @@ class PhoneTopUpController extends Controller
         //var_dump($response);
         $response = json_decode($response->body, true);
         
-        $if ($response === 00) {
+        if ($response === 00) {
             $status = 'Success'
         };
         //end of Api call
