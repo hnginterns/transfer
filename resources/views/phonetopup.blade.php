@@ -114,7 +114,7 @@ tr:nth-child(even) {
                               Airtime
                           </a>
 
-                          <a class="btn btn-success" data-id="{{ $phone->id }}" data-toggle="modal" data-target="#dataModal">
+                          <a class="airtime btn btn-success" data-id="{{ $phone->id }}" data-toggle="modal" data-target="#airtimeModal">
                               Data
                           </a>
 
