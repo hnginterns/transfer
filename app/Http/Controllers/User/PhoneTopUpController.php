@@ -78,11 +78,43 @@ class PhoneTopUpController extends Controller
         //dd($contact);
 
         $contacthistory = TopupHistory::where('user_id', $contact->id)->sum('amount');
+
+        //dd($contacthistory);
+
+        if (contacthistory >= $contact->weekly_max) {
         
-        dd($contacthistory);
+            return redirect('/phonetopup')->with('error', 'Weekly Maximum Exceede');
 
-        $contact->weekly_max;
+        } 
 
+        $curl = curl_init();
+          curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://mobilenig.com/api/airtime.php/?username=' .
+            'jekayode&password=transfer' .
+            '&network='. $contact->netw .'&phoneNumber'. $contact->phone .'&amt='. $amount'',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_HTTPHEADER => array(
+              "cache-control: no-cache",
+              "postman-token: 28c061c4-a48c-629f-3aa2-3e4cad0641ff"
+            ),
+          ));
+          $response = curl_exec($curl);
+          $response = json_decode($response->raw_body, true);
+
+          $err = curl_error($curl);
+          curl_close($curl);
+          if ($err) {
+            return "cURL Error #:" . $err;
+          } else {
+            $status = $response['status'];
+          }
+    
+        /*
         $headers = array('content-type' => 'application/json');
         $response = \Unirest\Request::get(
             'https://mobilenig.com/api/airtime.php/?username=' .
@@ -96,7 +128,8 @@ class PhoneTopUpController extends Controller
         $status = $response['status'];
         dd($response);
         //end of Api call
-
+        */
+        
         $topuphistory = new TopupHistory;
 
         $topuphistory->user_id = $request->current_user;
@@ -108,7 +141,8 @@ class PhoneTopUpController extends Controller
 
         $topuphistory->save();
 
-        Session::flash('success',' Phone topped up uccessfully.');
+        //Session::flash('success',' Phone topped up uccessfully.');
+        return redirect('/phonetopup')->with('error', 'Phone topped up uccessfully.');
 
     }
 
