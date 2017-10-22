@@ -92,9 +92,9 @@ class PhoneTopUpController extends Controller
             '&network='. $contact->netw .'&phoneNumber='. $contact->phone .'&amount='. $amount;
         
         $headers = array('content-type' => 'application/json');
-        $response = \Unirest\Request::get($url, $headers);
-        dd($response);
-        $response = json_decode($response, true);
+        $response = json_decode(\Unirest\Request::get($url, $headers), true);
+        
+        $status = $response['body'];
 
         //dd($response->raw_body);
         
