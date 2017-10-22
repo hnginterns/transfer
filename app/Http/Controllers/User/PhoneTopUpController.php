@@ -88,22 +88,6 @@ class PhoneTopUpController extends Controller
 
         } 
 
-        $type = $request->type;
-
-        if ($type == 'Airtime'){
-
-            $url = 'https://mobilenig.com/api/airtime.php/?username=' .
-            'jekayode&password=transfer' .
-            '&network='. $contact->netw .'&phoneNumber='. $contact->phone .'&amount='. $amount;
-        } else {
-
-              $url = 'https://mobilenig.com/api/data.php/?username=' .
-            'jekayode&password=transfer' .
-            '&network='. $contact->netw .'&phoneNumber='. $contact->phone .'&amount='. $amount.'&ref='. $txn_ref .'&return_url='. $return_url;
-
-        }
-
-
         $url = 'https://mobilenig.com/api/airtime.php/?username=' .
             'jekayode&password=transfer' .
             '&network='. $contact->netw .'&phoneNumber='. $contact->phone .'&amount='. $amount;
