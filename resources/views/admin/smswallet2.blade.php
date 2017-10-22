@@ -62,7 +62,7 @@
               </button>
           </div>
           <div class="col-md-3 col-sm-10 units" >
-            <p>Account Name: BigJeo</p..>
+            <p>Account Name: BigJeo</p>
             <p>Sms Unit: 1000.00</p>
             <button type="button" class="btn btn-success btn-block " data-toggle="modal" data-target="#jeo">
                 Top up
@@ -91,13 +91,13 @@
                                     </div>
                                     <!-- /.box-header -->
                                     <div class="box-body">
-                                        <form action="{{ route('fund.phone.submit')}}" method="POST" role="form form-horizontal">
+                                        <form action="{{ route('fund.smswallet.submit')}}" method="POST" role="form form-horizontal">
                                             {{csrf_field()}}
                                             <!-- text input -->
                                             <div class="container-fluid">
                                                 <fieldset>
-                                                    <input type="hidden" name="wallet_code" value="">
-                                                    <input type="hidden" name="wallet_name" value="">
+                                                    <input type="hidden" name="wallet_code" value="{{$smsWallet->wallet_code}}">
+                                                    <input type="hidden" name="wallet_name" value="{{$smsWallet->wallet_name}}">
                                                     <div class="row">
                                                         <div class="col-lg-6">
                                                             <div class="form-group">
@@ -270,8 +270,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        
 
 
                             <!-- Modal  for transfering to sms Bank account that is low-->
@@ -324,11 +323,47 @@
   </div>
   <!-- /.c
 
+           <!--Modal for Otp -->
+                            @if (session('status'))
+                               <script type="text/javascript">
+                                    $(document).ready(function() {
+                                        $('#myModal').modal();
+                                    });
+                                </script>
 
+                                <div class="modal fade" id="myModal" role="dialog">
+                                <div class="modal-dialog">
+                                
+                                  <!-- Modal content-->
+                                  <div class="modal-content">
+                                      <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Otp</h4>
+                                      </div>
+                                      <div class="modal-body">
+                                        <p>{{session('status')}}</p>
+                                        <div class="row">
+                                        <div class="col-md-6 col-md-offset-2">
+                                          <form action="sms/otp" method="POST">
+                                            {{csrf_field()}}
+                                            <input type="hidden" name="ref" value="{{$sms->ref}}">
+                                            <div class="form-group">
+                                                <input type="password" class="form-control" name="otp" placeholder="Enter OTP">
+                                            </div>
+                                            <button type="submit" class="btn btn-default btn-block">Submit</button>
+                                          </form>
+                                        </div>
+                                      </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            @endif
+                            <!--end-->
 
 <!-- REQUIRED JS SCRIPTS -->
 
-</section>
 
 
 @endsection
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
