@@ -114,7 +114,7 @@ tr:nth-child(even) {
                               Airtime
                           </a>
 
-                          <a class="airtime btn btn-success" data-id="{{ $phone->id }}" data-toggle="modal" data-target="#airtimeModal">
+                          <a class="btn btn-success" data-id="{{ $phone->id }}" data-toggle="modal" data-target="#dataModal">
                               Data
                           </a>
 
@@ -242,6 +242,52 @@ tr:nth-child(even) {
      </div>
   </div>
 </div>
+
+
+<div class="modal fade" id="dataModal" tabindex="-1" role="dialog" aria-labelledby="dataModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Topup <span class="phoneToTopUp"></span> with Data </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="form-row">
+          <form class="send-data" action="{{ route('topup.data.user')}}" method="POST" role="form">
+            {{csrf_field()}}
+            <input type="hidden" name="current_id" class="current_user">
+            <input type="hidden" name="Data" class="Data">
+
+            <div class="form-group col-md-6">
+              <label for="Firstname" class="col-form-label">Name</label>
+            <input type="text" class="form-control firstName" name="firstName" >
+            </div>
+            <div class="form-group col-md-6">
+              <label for="Phone" class="col-form-label">Phone</label>
+              <input type="text" class="form-control phone" name="phone" >
+            </div>
+          
+            <hr />
+            <div class="form-group col-md-12">
+              <label for="Lastname" class="col-form-label">Amount</label>
+              <input type="text" name="amount" class="form-control" placeholder="Please Enter Amount">          
+            </div>      
+                    
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary btn-send">Send Data</button>
+          </div>
+
+        </form> 
+    </div>
+
+     </div>
+  </div>
+</div>
     
       
             </div>
@@ -306,7 +352,7 @@ tr:nth-child(even) {
     });
   });
 
-  $('.modal#dataeModal').on('click', 'button.btn-send' ,function () {
+  $('.modal#dataModal').on('click', 'button.btn-send' ,function () {
       console.log('Clcked');
       $('.modal#dataModal').find('form.send-data').submit();
   })
