@@ -136,7 +136,7 @@ class PhoneTopUpController extends Controller
 
         $topuphistory = new TopupHistory;
 
-        $topuphistory->user_id = $request->current_user;
+        $topuphistory->user_id = $contact->id;
         $topuphistory->amount = $amount;
         //$topuphistory->type = $request->type;
         $topuphistory->ref = $ref;
