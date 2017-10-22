@@ -81,7 +81,7 @@ class PhoneTopUpController extends Controller
 
         //dd($contacthistory);
 
-        if (contacthistory >= $contact->weekly_max) {
+        if ($contacthistory >= $contact->weekly_max) {
         
             return redirect('/phonetopup')->with('error', 'Weekly Maximum Exceede');
 
