@@ -89,45 +89,15 @@ class PhoneTopUpController extends Controller
 
         $url = 'https://mobilenig.com/api/airtime.php/?username=' .
             'jekayode&password=transfer' .
-            '&network='. $contact->netw .'&phoneNumber'. $contact->phone .'&amt='. $amount;
-
-        $curlConnection = curl_init();
-        curl_setopt($curlConnection, CURLOPT_HTTPHEADER, array("Content-Type: application/json"));
-        curl_setopt($curlConnection, CURLOPT_URL, $url);
-        curl_setopt($curlConnection, CURLOPT_CUSTOMREQUEST, "POST");
-        curl_setopt($curlConnection, CURLOPT_FOLLOWLOCATION, TRUE);
-        curl_setopt($curlConnection, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($curlConnection, CURLOPT_SSL_VERIFYPEER, FALSE);
-
-        $results = json_decode(curl_exec($curlConnection), true);
-
-        dd($results);
-
-
-
-
-
-
-
-
-
+            '&network='. $contact->netw .'&phoneNumber='. $contact->phone .'&amount='. $amount;
         
-    
-        /*
         $headers = array('content-type' => 'application/json');
-        $response = \Unirest\Request::get(
-            'https://mobilenig.com/api/airtime.php/?username=' .
-            'jekayode&password=transfer' .
-            '&network='. $contact->netw .'&phoneNumber'. $contact->phone .'&amt='. $amount, 
-            
-            $headers
-        );
+        $response = \Unirest\Request::get($url, $headers);
         //var_dump($response);
         $response = json_decode($response->raw_body, true);
         $status = $response['status'];
         dd($response);
         //end of Api call
-        */
 
         $ref = mt_rand();
 
