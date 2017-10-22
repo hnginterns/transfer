@@ -213,6 +213,7 @@ tr:nth-child(even) {
           <form class="send-airtime" action="{{ route('topup.phone.user')}}" method="POST" role="form">
             {{csrf_field()}}
             <input type="hidden" name="current_id" class="current_user">
+            <input type="hidden" name="Airtime" class="Airtime">
 
             <div class="form-group col-md-6">
               <label for="Firstname" class="col-form-label">Name</label>
