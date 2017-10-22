@@ -115,6 +115,8 @@ class PhoneTopUpController extends Controller
           } else {
             $status = $response['status'];
           }
+
+          dd($status);
     
         /*
         $headers = array('content-type' => 'application/json');
