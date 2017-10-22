@@ -67,7 +67,7 @@ class PhoneTopUpController extends Controller
     {
         $phone = $request->phone;
         $network = $request->netw;
-        $amount = $request->amount
+        $amount = $request->amount;
 
         // dd($request);
         // $contact = TopupContact::all();
