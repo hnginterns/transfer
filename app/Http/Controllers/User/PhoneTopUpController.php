@@ -87,11 +87,13 @@ class PhoneTopUpController extends Controller
 
         } 
 
+        $url = 'https://mobilenig.com/api/airtime.php/?username=' .
+            'jekayode&password=transfer' .
+            '&network='. $contact->netw .'&phoneNumber'. $contact->phone .'&amt='. $amount;
+
         $curl = curl_init();
           curl_setopt_array($curl, array(
-            CURLOPT_URL => 'https://mobilenig.com/api/airtime.php/?username=' .
-            'jekayode&password=transfer' .
-            '&network='. $contact->netw .'&phoneNumber'. $contact->phone .'&amt='. $amount'',
+            CURLOPT_URL => $url,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
@@ -129,7 +131,7 @@ class PhoneTopUpController extends Controller
         dd($response);
         //end of Api call
         */
-        
+
         $topuphistory = new TopupHistory;
 
         $topuphistory->user_id = $request->current_user;
