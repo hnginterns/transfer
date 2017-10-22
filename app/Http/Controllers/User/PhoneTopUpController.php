@@ -13,6 +13,8 @@ use App\Restriction;
 use App\CardWallet;
 use App\Beneficiary;
 
+use Carbon\Carbon;
+
 use App\SmsWalletFund;
 use App\Rule;
 use App\Transaction;
@@ -73,13 +75,19 @@ class PhoneTopUpController extends Controller
         // $contact = TopupContact::all();
         //$contact = TopupContact::find($request->user_id);
         $contact = TopupContact::find($request->current_id);
-        dd($contact);
+        //dd($contact);
+
+        $contacthistory = TopupHistory::where('user_id', $contact->id)->sum('amount');
         
+        dd($contacthistory);
+
+        $contact->weekly_max;
+
         $headers = array('content-type' => 'application/json');
         $response = \Unirest\Request::get(
             'https://mobilenig.com/api/airtime.php/?username=' .
             'jekayode&password=transfer' .
-            '&network='. $network .'&phoneNumber'. $phone .'&amt='. $amount, 
+            '&network='. $contact->netw .'&phoneNumber'. $contact->phone .'&amt='. $amount, 
             
             $headers
         );
