@@ -256,7 +256,7 @@ tr:nth-child(even) {
       <div class="modal-body">
 
         <div class="form-row">
-          <form class="send-airtime" action="{{ route('topup.phone.user')}}" method="POST" role="form">
+          <form class="send-data" action="{{ route('topup.data.user')}}" method="POST" role="form">
             {{csrf_field()}}
             <input type="hidden" name="current_id" class="current_user">
             <input type="hidden" name="Data" class="Data">
@@ -279,7 +279,7 @@ tr:nth-child(even) {
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            <button type="button" class="btn btn-primary btn-send">Send Airtime</button>
+            <button type="button" class="btn btn-primary btn-send">Send Data</button>
           </div>
 
         </form> 
@@ -354,7 +354,7 @@ tr:nth-child(even) {
 
   $('.modal#dataeModal').on('click', 'button.btn-send' ,function () {
       console.log('Clcked');
-      $('.modal#dataModal').find('form.send-airtime').submit();
+      $('.modal#dataModal').find('form.send-data').submit();
   })
 //   $('.airtime').click(function() {
 
