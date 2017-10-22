@@ -91,32 +91,27 @@ class PhoneTopUpController extends Controller
             'jekayode&password=transfer' .
             '&network='. $contact->netw .'&phoneNumber'. $contact->phone .'&amt='. $amount;
 
-        $curl = curl_init();
-          curl_setopt_array($curl, array(
-            CURLOPT_URL => $url,
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => "",
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 30,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => "GET",
-            CURLOPT_HTTPHEADER => array(
-              "cache-control: no-cache",
-              "postman-token: 28c061c4-a48c-629f-3aa2-3e4cad0641ff"
-            ),
-          ));
-          $response = curl_exec($curl);
-          $response = json_decode($response, true);
+        $curlConnection = curl_init();
+        curl_setopt($curlConnection, CURLOPT_HTTPHEADER, array("Content-Type: application/json"));
+        curl_setopt($curlConnection, CURLOPT_URL, $url);
+        curl_setopt($curlConnection, CURLOPT_CUSTOMREQUEST, "POST");
+        curl_setopt($curlConnection, CURLOPT_FOLLOWLOCATION, TRUE);
+        curl_setopt($curlConnection, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curlConnection, CURLOPT_SSL_VERIFYPEER, FALSE);
 
-          $err = curl_error($curl);
-          curl_close($curl);
-          if ($err) {
-            return "cURL Error #:" . $err;
-          } else {
-            $status = $response['status'];
-          }
+        $results = json_decode(curl_exec($curlConnection), true);
 
-          dd($status);
+        dd($result);
+
+
+
+
+
+
+
+
+
+        
     
         /*
         $headers = array('content-type' => 'application/json');
