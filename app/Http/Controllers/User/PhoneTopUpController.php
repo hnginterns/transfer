@@ -71,14 +71,14 @@ class PhoneTopUpController extends Controller
 
         // dd($request);
         // $contact = TopupContact::all();
-        $contact = TopupContact::find($request->user_id);
+        //$contact = TopupContact::find($request->user_id);
         // $contact = TopupContact::find($request->current_id);
         // dd($contact);
         $headers = array('content-type' => 'application/json');
         $response = \Unirest\Request::get(
             'https://mobilenig.com/api/airtime.php/?username=' .
             'jekayode&password=transfer' .
-            '&network='.  $network .'&phoneNumber'. $phone .'&amt='. $amount, 
+            '&network='. $network .'&phoneNumber'. $phone .'&amt='. $amount, 
             
             $headers
         );
