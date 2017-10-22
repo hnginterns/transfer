@@ -95,8 +95,10 @@ class PhoneTopUpController extends Controller
         $response = \Unirest\Request::get($url, $headers);
         //var_dump($response);
         $response = json_decode($response->body, true);
+
+        dd($response);
         
-        if ($response === 00) {
+        if ($response === '00') {
             $status = 'Success';
         } else {
            return redirect('/phonetopup')->with('error', 'An Error Occured');
