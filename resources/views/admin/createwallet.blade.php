@@ -77,6 +77,7 @@
                   <br><select name="type" class="form-control input-defaulted">
                           <option value="topup">Topup Wallet</option>
                           <option value="regular">Regular Wallet</option>
+                          <option value="sms">Sms Wallet</option>
                       </select>
                   <br><input type="text" name="lock_code" class="form-control input-defaulted" placeholder="Wallet Lock Code">
                   <input type="hidden" name="user_ref" class="form-control input-defaulted" value="{{$user_ref}}" placeholder="User Reference">
