@@ -106,7 +106,7 @@ class PhoneTopUpController extends Controller
             ),
           ));
           $response = curl_exec($curl);
-          $response = json_decode($response->raw_body, true);
+          $response = json_decode($response, true);
 
           $err = curl_error($curl);
           curl_close($curl);
