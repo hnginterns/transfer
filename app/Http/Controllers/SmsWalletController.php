@@ -72,7 +72,7 @@ class SmsWalletController extends Controller
         );
         $response = Unirest\Request::post('https://moneywave.herokuapp.com/v1/merchant/verify', $header, $query);
         
-        $user = SmsWallet::where('username', $request->email)->first();
+        // $user = SmsWallet::where('username', $request->email)->first();
         $url = "https://moneywave.herokuapp.com/v1/disburse";
         $headers = array(
             'content-type' => 'application/json',
@@ -81,8 +81,8 @@ class SmsWalletController extends Controller
         $data = [
             "lock" => "abc12345",
             "amount" => $request->amount,
-            "bankcode" => $user->bank_code,
-            "accountNumber" => $user->account,
+            "bankcode" => $request->bank_code,
+            "accountNumber" => $request->account,
             "currency" => "NGN",
             "senderName" => "TransferRule",
             "narration" => 'Transfer for data', //Optional
