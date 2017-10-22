@@ -24,6 +24,8 @@ use App\Notifications\PhonetopupTransaction as PhonetopupTransactionNotify;
 use Carbon\Carbon;
 use App\Events\FundWallet;
 use Trs;
+use App\Http\Requests\PhoneNumberDeleteRequest;
+
 class PhoneTopUpController extends Controller
 {
     public function __construct()
@@ -318,6 +320,13 @@ class PhoneTopUpController extends Controller
             'amount' => 'required|numeric',
             'expiry_month' => 'required|string',
         ]);
+    }
+
+    public function delete_phone(PhoneNumberDeleteRequest $request)
+    {
+        if (TopupContact::destroy($request->delete_phone)) {
+            return redirect()->back()->with('success', 'Phone Number Deleted');
+        }
     }
 }
 

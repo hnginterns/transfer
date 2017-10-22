@@ -62,7 +62,7 @@
                                 <td>Email</td>
                                 <td>Weekly Max</td>
                                 <td>Network</td>
-                                
+                                <td></td>
                             </tr>
                         </thead>
                         <tbody>
@@ -76,7 +76,13 @@
                                     <td>@isset($phone->email){{ $phone->email }}@else Not Set @endisset</td>
                                     <td>{{ $phone->weekly_max }}</td>
                                     <td>{{ $phone->netw }}</td>
-                                    
+                                    <td>
+                                        <form action="{{ url('/delete-phone') }}" method="post">
+                                            {{ csrf_field() }}
+                                            <input type="hidden" name="delete_phone" value="{{ $phone->id }}" >
+                                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                        </form>
+                                    </td> 
                                 </tr>
                               @endforeach
                             @else
