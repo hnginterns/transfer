@@ -142,7 +142,7 @@ class WalletController extends Controller
     }
 
    //transfer from wallet to wallet
-    public function transfer(Request $request, Wallet $wallet, FundWallet $fund) {
+    public function transfer(Request $request, Wallet $wallet, CardWallet $fund) {
         $validator = $this->validateWalletTransfer($request->all());
 
         if ($validator->fails()) {
