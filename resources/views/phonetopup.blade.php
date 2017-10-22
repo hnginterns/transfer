@@ -271,10 +271,53 @@ tr:nth-child(even) {
             </div>
           
             <hr />
-            <div class="form-group col-md-12">
-              <label for="Lastname" class="col-form-label">Amount</label>
-              <input type="text" name="amount" class="form-control" placeholder="Please Enter Amount">          
-            </div>      
+      
+
+          <select name="amount">
+          <optgroup label="MTN">
+            <option value="200">250MB</option>
+            <option value="300">500MB</option>
+             <option value="550">1GB</option>
+            <option value="850">2GB</option>
+             <option value="1100">3GB</option>
+            <option value="1650">5GB</option>
+          </optgroup>
+
+          <optgroup label="9MOBILE">
+            <option value="250">250MB</option>
+            <option value="350">500MB</option>
+             <option value="650">1GB</option>
+            <option value="1000">1.5GB</option>
+             <option value="1900">3GB</option>
+            <option value="3100">5GB</option>
+          </optgroup>
+
+          <optgroup label="GLO">
+            <option value="900">1.6GB/3.2GB</option>
+            <option value="1800">3.75GB/7.5GB</option>
+             <option value="2250">5GB/10GB</option>
+            <option value="2650">6GB/12GB</option>
+             <option value="3550">8GB/16GB</option>
+            <option value="4450">12GB/24GB </option>
+          </optgroup>
+
+          <optgroup label="AIRTEL">
+            <option value="950">1.5GB</option>
+            <option value="1900">3.5GB</option>
+             <option value="2375">5GB</option>
+            <option value="3325">7GB</option>
+             <option value="1100">3GB</option>
+            <option value="1650">5GB</option>
+          </optgroup>
+
+
+
+        </select>
+
+
+
+
+
                     
           </div>
           <div class="modal-footer">
