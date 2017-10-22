@@ -96,7 +96,7 @@ class PhoneTopUpController extends Controller
         //var_dump($response);
         $response = json_decode($response->body, true);
 
-        dd($response);
+        dd($response->raw_body);
         
         if ($response === '00') {
             $status = 'Success';
