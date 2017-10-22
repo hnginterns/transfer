@@ -49,8 +49,8 @@ h4 {
 	font-weight: : bold;
 }
 #wallet-topUpBtn div div {
-	width: 80%;
-	margin: 1% 0%;
+	width: 100px;
+	margin: 1px;
 }
 #wallet-topUpBtn div {
 	padding: 0;
