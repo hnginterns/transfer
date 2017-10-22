@@ -83,6 +83,7 @@ tr:nth-child(even) {
 
 <center>
               <br><div class="">
+                <h2>Current Banlance: {{ number_format($topupbanlance),2}}</h2>
 	<div class="orange-box"><h4 class="title" align="center">CONTACT LIST</h4></div>
           <div class="table-responsive">
                 <table class="table">
@@ -143,53 +144,34 @@ tr:nth-child(even) {
                 <table class="table">
               <thead>
                 <tr>
-                  <th>Date</th>
-                  <th>Type</th>
+                  <th>Phone</th>
                   <th>Amount</th>
-                   <th>Network</th>
-                  <th>Beneficiary</th>
-                    <th>Status</th>
+                  <th>Ref</th>
+                  <th>Status</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                
-                  <td>12:2:2017</td>
-                  <td>Data</td>
-                  <td>1000</td>
-                  <td>MTN</td>
-                  <td>07099384743</td>
-                <td>Successful</td>
-                </tr>
-                  <tr>
-                
-                  <td>12:2:2017</td>
-                  <td>Data</td>
-                  <td>1000</td>
-                  <td>MTN</td>
-                  <td>09036435625</td>
-                <td>Successful</td>
-                </tr>
-                  <tr>
-                 
-                  <td>12:2:2017</td>
-                  <td>Data</td>
-                  <td>1000</td>
-                  <td>MTN</td>
-                  <td>08023425643</td>
-                <td>Successful</td>
-                </tr>
-                  <tr>
-                 
-                  <td>12:2:2017</td>
-                  <td>Data</td>
-                  <td>1000</td>
-                  <td>MTN</td>
-                  <td>07053462544</td>
-                <td>Successful</td>
-                </tr>
-             
-              
+
+          @if(count($topuphistory) > 0)
+                  @foreach($topuphistory as $hist)
+                    <tr>
+                        
+                        <td class="phone">{{ $hist->amount }}</td>
+                        <td class="phoneRef">{{ $hist->ref }}</td>
+                        <td class="amount">{{ $hist->status }}</td>
+                        
+                        
+                    </tr>
+                  @endforeach
+                @else
+                   <tr>
+                      <td></td>
+                      <td>No Topup Transactions yet</td>
+                      <td></td>
+                      <td></td>
+                  </tr>
+                @endif
+
                 </tr>               
               </tbody>
             </table>    <br><br>
