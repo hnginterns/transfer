@@ -268,12 +268,12 @@ tr:nth-child(even) {
           </optgroup>
 
           <optgroup label="9MOBILE">
-            <option value="250">250MB</option>
-            <option value="350">500MB</option>
-             <option value="650">1GB</option>
-            <option value="1000">1.5GB</option>
-             <option value="1900">3GB</option>
-            <option value="3100">5GB</option>
+            <option value="250">250MB (#250)</option>
+            <option value="350">500MB (#350)</option>
+             <option value="650">1GB (#650)</option>
+            <option value="1000">1.5GB (#1000)</option>
+             <option value="1900">3GB (#1900)</option>
+            <option value="3100">5GB (#3100)</option>
           </optgroup>
 
           <optgroup label="GLO">
@@ -293,8 +293,6 @@ tr:nth-child(even) {
              <option value="1100">3GB</option>
             <option value="1650">5GB</option>
           </optgroup>
-
-
 
         </select>
 
