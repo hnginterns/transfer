@@ -3,6 +3,7 @@ namespace App\Http\Controllers\User;
 use DateTime;
 use App\Wallet;
 use App\TopupContact;
+use App\TopupHistory;
 use App\WalletTransaction;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
@@ -65,19 +66,20 @@ class PhoneTopUpController extends Controller
     public function topuphonesubmit(Request $request)
     {
         $phone = $request->phone;
-        $network = $request->network;
-        $amount = $request->amount
+        $network = $request->netw;
+        $amount = $request->amount;
 
         // dd($request);
         // $contact = TopupContact::all();
-        $contact = TopupContact::find($request->user_id);
-        // $contact = TopupContact::find($request->current_id);
-        // dd($contact);
+        //$contact = TopupContact::find($request->user_id);
+        $contact = TopupContact::find($request->current_id);
+        dd($contact);
+        
         $headers = array('content-type' => 'application/json');
         $response = \Unirest\Request::get(
             'https://mobilenig.com/api/airtime.php/?username=' .
             'jekayode&password=transfer' .
-            '&network='.  $network .'&phoneNumber'. $phone .'&amt='. $amount, 
+            '&network='. $network .'&phoneNumber'. $phone .'&amt='. $amount, 
             
             $headers
         );
@@ -86,10 +88,21 @@ class PhoneTopUpController extends Controller
         $status = $response['status'];
         dd($response);
         //end of Api call
+
+        $topuphistory = new TopupHistory;
+
+        $topuphistory->user_id = $request->current_user;
+        $topuphistory->amount = $amount;
+        $topuphistory->type = $request->type;
+        $topuphistory->ref = $request->name;
+        $topuphistory->txn_response = $response;
+        $topuphistory->status = $status;
+
+        $topuphistory->save();
+
+        Session::flash('success',' Phone topped up uccessfully.');
+
     }
-
-
-
 
 
 
