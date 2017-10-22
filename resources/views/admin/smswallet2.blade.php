@@ -39,36 +39,15 @@
   <section class="content container" id="bulksms">
           
         <div class="row">
-       
+       @foreach($accounts as $account)
           <div class="col-md-3 col-sm-10 units" >
-            <p>Account Name: Jonesky</p>
-            <p>Sms Unit: 1826.00</p>
-            <button type="button" class="btn btn-success btn-block " data-toggle="modal" data-target="#smstop">
+            <p>Account Name: {{$account->username}}</p>
+            <p>Sms Unit: {{$balance}}</p>
+            <button type="button" class="btn btn-success btn-block " data-toggle="modal" data-target="#{{$account->id}}smstop">
                 Top up
               </button>
           </div>
-          <div class="col-md-3 col-sm-10 units" >
-            <p>Account Name: Samfield</p>
-            <p>Sms Unit: 2000.00</p>
-            <button type="button" class="btn btn-success btn-block " data-toggle="modal" data-target="#samfield">
-                Top up
-              </button>
-          </div>
-          <div class="col-md-3 col-sm-10 units" >
-            <p>Account Name: Godfred</p>
-            <p>Sms Unit: 500.00</p>
-            <button type="button" class="btn btn-success btn-block " data-toggle="modal" data-target="#godfred">
-                Top up
-              </button>
-          </div>
-          <div class="col-md-3 col-sm-10 units" >
-            <p>Account Name: BigJeo</p>
-            <p>Sms Unit: 1000.00</p>
-            <button type="button" class="btn btn-success btn-block " data-toggle="modal" data-target="#jeo">
-                Top up
-              </button>
-          </div>
-          
+          @endforeach
         </div>
     </section>
 
@@ -220,7 +199,7 @@
                                             <h4 class="modal-title">Add New Ebulk SMS Details</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="" method="post" accept-charset="utf-8">
+                                            <form action="addSmsAccount" method="post" accept-charset="utf-8">
                                                 {{csrf_field()}}
                                                 <div class="modal-body" style="padding: 5px;">
                                                     <div class="row">
@@ -237,27 +216,19 @@
 
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                                                            <input class="form-control" name="Text" placeholder="Bank Account Number" type="text" required />
-                                                        </div>
-                                                    </div>
-                                                   
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                                                            <input class="form-control" name="department" placeholder="Department" type="text" required />
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                                                           <select class="form-control" name="network">
+                                                           <select class="form-control" name="bank_code">
                                                             <option selected value="">Choose Bank</option>
-                                                            <option value="15">first bank</option>
+                                                            
+                                                            @foreach(App\Http\Controllers\BanksController::getAllBanks() as $key => $bankcode)
+                                                            <option value="{{$bankcode->id}}">{{ $bankcode->bank_name }}</option>
+                                                            @endforeach
                                                            
                                                            </select>
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                                                            <input class="form-control" name="acc_number" placeholder="Bank Account Number" type="text" required />
+                                                            <input class="form-control" name="bank_account" placeholder="Bank Account Number" type="text" required />
                                                         </div>
                                                     </div>
                                                 </div>

@@ -31,6 +31,8 @@ class SmsWalletController extends Controller
 
         $smsWallet = Wallet::where('type', 'sms')->first();
 
+        $accounts = SmsWallet::all();
+
         Unirest\Request::verifyPeer(false); /** Remember to remove this line of code before pushing to production server**/
 
         foreach ($wallet as $key => $wallet) {
@@ -51,7 +53,14 @@ class SmsWalletController extends Controller
             array_push($smswalletdetails, $detail);
         }
 
-        return view('admin.smswallet2', compact('smsWallet', 'smswalletdetails', 'sms'));
+        foreach($smswalletdetails as $sms)
+        {
+            $balance = $sms['balance'];
+            
+        }
+        //$balance = $smswalletdetails[0]['balance'];
+
+        return view('admin.smswallet2', compact('accounts', 'smsWallet', 'balance', 'smswalletdetails', 'sms'));
     }
 
     public function getUserDetails(Request $request)
@@ -185,6 +194,19 @@ class SmsWalletController extends Controller
 
             }
 
+    }
+
+    public function addSmsAccount(Request $request)
+    {
+        $smsAccount = new SmsWallet;
+        $smsAccount->username = $request->username;
+        $smsAccount->bank_code = $request->bank_code;
+        $smsAccount->bank_account = $request->bank_account;
+        $smsAccount->api_key = $request->api_key;
+
+        $smsAccount->save();
+
+        return back()->with('success', 'Account added successfully');
     }
     
 

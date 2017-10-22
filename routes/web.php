@@ -198,7 +198,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
 	Route::get('/smswallet', 'SmsWalletController@smsWalletBalance');
 	Route::post('/sms', 'SmsWalletController@smsWallet')->name('fund.smswallet.submit');
 	Route::post('/sms/otp', 'SmsWalletController@Otp');
-	Route::post('/smswallet', 'SmsWalletController@smsWallet');
+	Route::post('/addSmsAccount', 'SmsWalletController@addSmsAccount');
 	Route::post('/smswallet-topup', 'SmsWalletController@smsWalletTopup');
 	Route::post('/get-user-details', 'SmsWalletController@getUserDetails');
 	//admin sms transaction ends here
