@@ -83,7 +83,7 @@ tr:nth-child(even) {
 
 <center>
               <br><div class="">
-                <h2>Current Topup Banlance: ₦ {{isset($topupbalance) ? number_format($topupbalance, 2) : 'null' }}</h2>
+                <h3>Current Banlance: ₦ {{ number_format($topupbanlance),2}}</h3>
 	<div class="orange-box"><h4 class="title" align="center">CONTACT LIST</h4></div>
           <div class="table-responsive">
                 <table class="table">
@@ -98,6 +98,7 @@ tr:nth-child(even) {
                   <td>Action</td>
                 </tr>
               </thead>
+
 
               <tbody>
                 @if(count($phones) > 0)
