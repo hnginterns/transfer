@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Validator;
 use App\Wallet;
+use Session;
 use Illuminate\Support\Facades\Auth;
 use App\Beneficiary;
 use App\User;
@@ -102,9 +104,6 @@ class pagesController extends Controller
           ->first();
         if($permit == null) return back()->with('error', 'You do not have the permission to transfer to bank');;
         $restrict = new Restrict($permit);
-
-        if(count($restrict->canTransferFromWallet()) != 0) return redirect('/dashboard');
-
         if(count($restrict->canTransferFromWallet()) != 0) return back()->with('error', 'You do not have the permission to transfer to bank');;
 
         return view('transfer-to-bank', compact('wallet'));
@@ -166,29 +165,43 @@ class pagesController extends Controller
         return view('createbeneficiary', compact('wallet','banks'));
     }
 
-    public function insertBeneficiary(Wallet $wallet)
+    public function insertBeneficiary(Request $request, Wallet $wallet)
     {    
-          
-        $permit = Restriction::where('wallet_id', $wallet->id)
-          ->where('uuid', Auth::user()->id)
-          ->first();
-        if($permit == null) return redirect('/dashboard')->with('error', 'You do not have the permission to add beneficiary');
-        $restrict = new Restrict($permit);
-        
-        if(count($restrict->canAddBeneficiary()) > 0) return redirect('/dashboard')->with('error', 'You do not have the permission to add beneficiary');
+         $validator = $this->validateBeneficiary($request->all());
+        //  dd($validator);
+        if ($validator->fails()) {
+            $messages = $validator->messages()->toArray();
+             Session::flash('form-errors', $messages);
+            return redirect()->to(URL::previous())->withInput();
+        } else { 
+            
+            $permit = Restriction::where('wallet_id', $wallet->id)
+            ->where('uuid', Auth::user()->id)
+            ->first();
+            if($permit == null){
+                return redirect('/dashboard')
+                        ->with('error', 'You do not have the permission to add beneficiary');
+            }
+            $restrict = new Restrict($permit);
+            
+            if(count($restrict->canAddBeneficiary()) > 0){
+                return redirect('/dashboard')
+                ->with('error', 'You do not have the permission to add beneficiary');
+            }
 
-        $beneficiary = new Beneficiary;
-        $beneficiary->name = request('name');
-        $beneficiary->account_number = request('account_number'); //->account_number;
-        $bank_detail = explode('||', request('bank_id'));
-        $beneficiary->wallet_id = $wallet->id;
-        $beneficiary->bank_id = $bank_detail[0];
-        $beneficiary->bank_name = $bank_detail[1];
-        $beneficiary->uuid = Auth::user()->id;
-        if ($beneficiary->save()) {
-            return redirect("wallet/$wallet->id")->with('success', 'Beneficiary added');
-        } else {
-            return redirect()->back()->with('error', 'Beneficiary could not be added');
+            $beneficiary = new Beneficiary;
+            $beneficiary->name = request('name');
+            $beneficiary->account_number = request('account_number'); //->account_number;
+            $bank_detail = explode('||', request('bank_id'));
+            $beneficiary->wallet_id = $wallet->id;
+            $beneficiary->bank_id = $bank_detail[0];
+            $beneficiary->bank_name = $bank_detail[1];
+            $beneficiary->uuid = Auth::user()->id;
+            if ($beneficiary->save()) {
+                return redirect("wallet/$wallet->id")->with('success', 'Beneficiary added');
+            } else {
+                return redirect()->back()->with('error', 'Beneficiary could not be added');
+            }
         }
     }
 
@@ -207,7 +220,7 @@ class pagesController extends Controller
 
         $curl = curl_init();
           curl_setopt_array($curl, array(
-            CURLOPT_URL => "https://mobileairtimeng.com/httpapi/balance.php?userid=%2008189115870&pass=dbcc49ee2fba9f150c5e82",
+            CURLOPT_URL => "https://mobilenig.com/api/balance.php/?username=jekayode&password=transfer",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
@@ -249,5 +262,13 @@ class pagesController extends Controller
     public function topuptest()
     {
         return view('topuptest');
+    }
+
+    protected function validateBeneficiary(array $data) {
+        return Validator::make($data, [
+            'name' => 'required|string',
+            'bank_id' => 'required|string|min:4',
+            'account_number' => 'required|numeric',
+        ]);
     }
 }

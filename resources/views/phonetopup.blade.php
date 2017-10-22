@@ -209,9 +209,6 @@ tr:nth-child(even) {
 
         <div class="form-row">
           <form class="send-airtime" action="{{ route('topup.phone.user')}}" method="POST" role="form">
-              {{csrf_field()}}
-
-    
             {{csrf_field()}}
             <input type="hidden" name="current_id" class="current_user">
 

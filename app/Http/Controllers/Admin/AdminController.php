@@ -42,7 +42,7 @@ class AdminController extends WalletController
 
         $curl = curl_init();
           curl_setopt_array($curl, array(
-            CURLOPT_URL => "https://mobileairtimeng.com/httpapi/balance.php?userid=%2008189115870&pass=dbcc49ee2fba9f150c5e82",
+            CURLOPT_URL => "https://mobilenig.com/api/balance.php/?username=jekayode&password=transfer",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
@@ -79,9 +79,14 @@ class AdminController extends WalletController
 
          $wallet = Wallet::where('type', 'topup')->first();
          //DB::table('wallets')->where('type', '=','topup')->first();
+<<<<<<< HEAD
          
          $wallet_name = $wallet->wallet_name;
          $history = CardWallet::where('wallet_name', $wallet_name)->paginate(10);
+=======
+         $wallet_name = $wallet == null ? null : $wallet->wallet_name;
+         $history = CardWallet::where('wallet_name', $wallet_name)->get();
+>>>>>>> 4de004f3f0aede505b041f20d1cb4b1acf37938e
 
          $cardWallet = CardWallet::latest()->first();
         //dd($cardWallet);

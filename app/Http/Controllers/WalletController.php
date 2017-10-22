@@ -147,7 +147,8 @@ class WalletController extends Controller
 
         if ($validator->fails()) {
             $messages = $validator->messages()->toArray();
-            return redirect()->to(URL::previous())->with('failed', $messages);
+            Session::flash('form-errors', $messages);
+            return redirect()->to(URL::previous());
         } else {
 
            //checks for permissions
@@ -230,8 +231,8 @@ class WalletController extends Controller
         $validator = $this->validateBeneficiary($request->all());
         if ($validator->fails()) {
             $messages = $validator->messages()->toArray();
-            Session::flash('messages', $this->formatMessages($messages, 'error'));
-            return redirect()->to(URL::previous())->withInput();
+            Session::flash('form-errors', $messages);
+            return redirect()->to(URL::previous());
         } else {
                 $token = $this->getToken();
                 $headers = array('content-type' => 'application/json', 'Authorization' => $token);
@@ -460,7 +461,9 @@ class WalletController extends Controller
             'wallet_id' => 'required|numeric',
             'amount' => 'required|numeric',
             'beneficiary_id' => 'required|numeric',
-        ]);
+        ],
+        
+        ['beneficiary_id.numeric' => 'Select a beneficiary']);
     }
 
     /**
