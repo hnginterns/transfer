@@ -222,6 +222,10 @@ tr:nth-child(even) {
               <label for="Phone" class="col-form-label">Phone</label>
               <input type="text" class="phone" name="phone" >
             </div>
+            <div class="form-group col-md-6">
+              <label for="Phone" class="col-form-label">Phone</label>
+              <input type="text" class="network" name="network" >
+            </div>
             <hr />
             <div class="form-group col-md-12">
               <label for="Lastname" class="col-form-label">Amount</label>
@@ -262,9 +266,11 @@ tr:nth-child(even) {
       $(this).find('form input.phoneRef').val(row.find('td.phoneRef').html());
       $(this).find('form input.current_user').val(row.find('td.firstName').data('user'));
       $(this).find('form input.firstName').val(row.find('td.firstName').html());
+      $(this).find('form input.network').val(row.find('td.network').html());
       // $(this).find('form input.lastName').val(row.find('td.firstName').data('lastName'));
       $(this).find('form input.phone').val(row.find('td.phone').html());
       $(this).find('form .phoneToTopUp').val(row.find('td.phone').html());
+
     });
   });
 
