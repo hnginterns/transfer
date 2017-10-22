@@ -256,14 +256,15 @@ tr:nth-child(even) {
             <hr />
       
 
-          <select name="amount">
+          <select name="amount" class="form-control">
+
           <optgroup label="MTN">
-            <option value="200">250MB</option>
-            <option value="300">500MB</option>
-             <option value="550">1GB</option>
-            <option value="850">2GB</option>
-             <option value="1100">3GB</option>
-            <option value="1650">5GB</option>
+            <option value="200">250MB (#200)</option>
+            <option value="300">500MB (#300)</option>
+             <option value="550">1GB (#550) </option>
+            <option value="850">2GB  (#850)</option>
+             <option value="1100">3GB (#1100)</option>
+            <option value="1650">5GB (#1650)</option>
           </optgroup>
 
           <optgroup label="9MOBILE">
