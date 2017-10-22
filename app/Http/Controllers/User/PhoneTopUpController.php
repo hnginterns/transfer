@@ -101,14 +101,12 @@ class PhoneTopUpController extends Controller
         }
         //end of Api call
 
-        $ref = str_random(10);
-
         $topuphistory = new TopupHistory;
 
         $topuphistory->user_id = $contact->id;
         $topuphistory->amount = $amount;
         //$topuphistory->type = $request->type;
-        $topuphistory->ref = $ref;
+        $topuphistory->ref = str_random(10);
         $topuphistory->txn_response = $response;
         $topuphistory->status = $status;
 
