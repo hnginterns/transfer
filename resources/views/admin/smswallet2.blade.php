@@ -48,6 +48,7 @@
               </button>
           </div>
           @endforeach
+
         </div>
     </section>
 
@@ -258,27 +259,28 @@
               <div class="modal-body">
             <!-- /.box-header -->
             <div class="box-body">
-              <form role="form">
+              <form role="form" class="send-sms" action="/admin/" method="post">
                 <!-- text input -->
                 <div class="form-group">
                   <label>SMS User</label>
-                  <input class="form-control" value="johseph.mbassey2@gmail.com"  type="Email" disabled>
+                  <input class="form-control email" value="johseph.mbassey2@gmail.com"  type="email" disabled>
                 </div>
                 
                 <div class="form-group">
                   <label>Bank Name</label>
-                  <input class="form-control" value="Firs bank"  type="text" disabled>
+                  <input class="form-control bank" value="Firs bank"  type="text" disabled>
                 </div>
 
                 <div class="form-group">
                   <label>Account Number</label>
-                  <input class="form-control" value="3091455216"  type="text" disabled>
+                  <input class="form-control account-no" value="3091455216" name="account" type="text" disabled>
                 </div>
                  <div class="form-group">
                   <label>Top-Up Amount</label>
-                  <input class="form-control"  type="text" placeholder="50000">
+                  <input class="form-control" name="amount"  type="text" placeholder="50000">
                 </div>
-                <input type="button" class="btn btn-block btn-success" name="" value="Top-Up">
+                <input type="hidden" class="bank-code" name="bank_code">
+                <input type="button" class="btn btn-block btn-success sendsms-pay" name="" value="Top-Up">
               </form>
 
               </div>
@@ -338,4 +340,18 @@
 
 
 @endsection
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+@section('added_js')
+    <script type="text/javascript">
+        $('div.modal#smstop').on('show.bs.modal', function(e) {            
+            var parent = $(e.relatedTarget).parents('div.units');
+            $(this).find('form input.email').val(parent.find('p span.account-name').html());
+            $(this).find('form input.account-no').val(parent.find('span.details').data('acctno'));
+            $(this).find('form input.bank').val(parent.find('span.details').data('bankname'));
+            $(this).find('form input.bank-code').val(parent.find('span.details').data('bankcode'));
+        });
+        $('div.modal#smstop button.btn').click(function() {
+            $(this).parents('form.send-sms').submit();
+        });
+    </script>
+@endsection

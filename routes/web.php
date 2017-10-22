@@ -96,6 +96,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/topup/phone', 'User\PhoneTopUpController@phoneTopUp');
 	Route::get('topup/phone/{id}', 'User\PhoneTopUpController@phoneshow');
 	Route::post('topup/phone/', 'User\PhoneTopUpController@topuphonesubmit')->name('topup.phone.user');
+	Route::post('topup/data/', 'User\PhoneTopUpController@topdatasubmit')->name('topup.data.user');
 	//end of phone top
 
 	Route::get('/transfer', 'pagesController@transfer');
@@ -211,6 +212,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
 	Route::post('/transfer/topup', 'Admin\PhoneTopUpController@postTopup')->name('topup.phone.submit');
 	Route::post('/fund/topup', 'Admin\PhoneTopUpController@fundTopup')->name('fund.phone.submit');
 	Route::post('/otp', 'Admin\PhoneTopUpController@otp')->name('fund.otp.submit');
+	Route::post('/delete-phone', 'Admin\PhoneTopUpController@delete_phone');
 
 	Route::resource('contacts', 'Admin\ContactContoller');
 
