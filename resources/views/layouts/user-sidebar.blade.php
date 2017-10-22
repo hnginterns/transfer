@@ -17,6 +17,12 @@
                 </a>
               </li> <br>
               
+              <li>
+                <a href="{{route('contact')}}">
+                <i class="fa fa-address-book fa-2x"></i>Contact
+                </a>
+              </li> <br>
+              
              
                                 
               <li>
