@@ -12,10 +12,16 @@
  */
 Auth::routes();
 Route::get('notify','WalletController@notifyme');
+Route::get('freq',function(){
+	return view('faq');
+});
+
+Route::get('/mypdf', 'HomeController@pdf');
 // get default home pages
 Route::get('/', 'pagesController@home')->name('home');
 
 Route::get('/logout', function () {
+	//\LogUserActivity::addToLog(Auth::user()->username.' logged out successfully');
 	Auth::logout();
 	Session::flush();
 	return redirect('/login');
@@ -58,9 +64,13 @@ Route::get('/404', 'pagesController@pagenotfound');
 //Api calls to money wave ends here
 
 
+
+
 // authentications
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/dashboard', 'pagesController@userdashboard');
+
+	
 
 	//Wallet operations start
 	Route::get('/wallet/{wallet}', 'pagesController@walletdetail')->name('user.wallet.detail');
@@ -83,6 +93,9 @@ Route::group(['middleware' => 'auth'], function () {
 
 	//phone top up
 	Route::get('/phonetopup', 'pagesController@phoneTopupView');
+	Route::get('/topup/phone', 'User\PhoneTopUpController@phoneTopUp');
+	Route::get('topup/phone/{id}', 'User\PhoneTopUpController@phoneshow');
+	Route::post('topup/phone/', 'User\PhoneTopUpController@topuphonesubmit')->name('topup.phone.user');
 	//end of phone top
 
 	Route::get('/transfer', 'pagesController@transfer');
@@ -101,6 +114,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/addbeneficiary/{wallet}', 'pagesController@addBeneficiary');
 	Route::post('/addbeneficiary/{wallet}', 'pagesController@insertBeneficiary')->name('beneficiaries.insert');
 
+
+
 });
 
 
@@ -110,6 +125,8 @@ Route::group(['middleware' => 'auth'], function () {
 Route::get('/admin/login', 'Admin\AdminLoginController@showLoginForm');
 Route::post('/admin/login', 'Admin\AdminLoginController@login')->name('admin.login');
 Route::get('/admin/logout', 'Admin\AdminLoginController@logout')->name('admin.logout');
+
+
 //end of admin auth
 
 
@@ -134,8 +151,10 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
 	//wallet fund starts
 	Route::get('/fundwallet', 'Admin\AdminController@fundwallet');
 	Route::post('/{wallet_code}/fund', 'WalletController@cardWallet');
-	Route::post('/otp', 'WalletController@otp');
+	// Route::post('/otp', 'WalletController@otp');
 	//Wallet fund ends
+
+	Route::get('logActivity', 'Admin\AdminController@logActivity');
 
 	Route::get('/fundwallet', 'Admin\AdminController@fundwallet');
 	Route::post('/{wallet_code}/fund', 'WalletController@cardWallet');
@@ -159,31 +178,47 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
 	Route::get('/managePermission', 'Admin\AdminController@managePermission')->name('permission.manage');
 	Route::get('/addpermission', 'Admin\WalletController@addPermission')->name('permission.create');
 	Route::get('/editpermission/{restriction}', 'Admin\WalletController@editPermission')->name('permission.edit');
+	Route::delete('/deletepermission/{restriction}', 'Admin\WalletController@deletePermission')->name('permission.delete');
 	Route::post('/addpermission', 'Admin\WalletController@PostAddPermission')->name('permission.store');
 	Route::post('/editpermission/{restriction}', 'Admin\WalletController@PostEditPermission')->name('permission.update');
 	//Permission ends
 	
 	Route::get('/', 'Admin\AdminController@index')->name('admin.dashboard');
-	
 	//admin user management starts
 	Route::resource('users', 'User\UsermgtController');
 	Route::post('users/banUser/{id}', 'User\UsermgtController@banUser');
 	Route::post('users/unbanUser/{id}', 'User\UsermgtController@unbanUser');
 	Route::post('users/makeAdmin/{id}', 'User\UsermgtController@makeAdmin');
 	Route::post('users/removeAdmin/{id}', 'User\UsermgtController@removeAdmin');
+	// Route::post('users/delete/{user}', 'User\UsermgtController@forceDeleteUser');
 	//admin user management ends
 
 
 	//admin sms transaction starts
 	Route::get('/smswallet', 'SmsWalletController@smsWalletBalance');
-	Route::post('/sms', 'SmsWalletController@smsWallet');
-	Route::post('/Otp', 'SmsWalletController@Otp');
+	Route::post('/sms', 'SmsWalletController@smsWallet')->name('fund.smswallet.submit');
+	Route::post('/sms/otp', 'SmsWalletController@Otp');
 	Route::post('/smswallet', 'SmsWalletController@smsWallet');
 	Route::post('/smswallet-topup', 'SmsWalletController@smsWalletTopup');
 	Route::post('/get-user-details', 'SmsWalletController@getUserDetails');
 	//admin sms transaction ends here
 
 	Route::get('analytics', 'Admin\AdminController@webAnalytics');
+	
+	//Phone topup starts here
+	Route::get('/phonetopup', 'Admin\AdminController@phoneTopupView')->name('topup.index');
+	Route::post('/addphone', 'Admin\PhoneTopUpController@addPhone');
+	Route::post('/transfer/topup', 'Admin\PhoneTopUpController@postTopup')->name('topup.phone.submit');
+	Route::post('/fund/topup', 'Admin\PhoneTopUpController@fundTopup')->name('fund.phone.submit');
+	Route::post('/otp', 'Admin\PhoneTopUpController@otp')->name('fund.otp.submit');
+
+	Route::resource('contacts', 'Admin\ContactContoller');
+
+
+	//Test page for @jonesky
+	Route::get('/getTopupWalletBalance', 'Admin\AdminController@getTopupWalletBalance')->name('topupwallet.balance');
+	
+	
 
 });
 

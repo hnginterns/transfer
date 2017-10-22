@@ -35,14 +35,17 @@ class LoginController extends Controller
      * @return void
      */
     public function __construct(Request $request)
-    {
+    {   
+        
         $this->datta['ref'] = str_replace('http://', '', str_replace('https://', '', URL::previous()));
         $this->datta['host'] = str_replace('http://', '', str_replace('https://', '', $request->server('HTTP_HOST')));
         $this->middleware('guest')->except('logout');
+        
     }
 
     protected function authenticated(Request $request, $user)
     {
-        $this->redirectTo = (boolean) $user->is_admin ? '/admin' : '/dashboard';
+        //\LogUserActivity::addToLog(auth()->user()->username.' signed in successfully');
+        $this->redirectTo = '/dashboard';
     }
 }

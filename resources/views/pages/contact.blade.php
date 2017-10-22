@@ -1,5 +1,5 @@
 @extends('layouts.page')
-@section('main-text', 'Contact Us')
+@section('main-text', '')
 @section('sub-text', 'TransferRules lets you receive payments locally and globally with no hassles and zero set up fees')
 @section('content')
 
@@ -10,7 +10,7 @@
 <div class="container">  
   <form id="contact" action="" method="post">
     <h3>Quick Contact</h3>
-    <h4>Contact us today, and get reply with in 24 hours!</h4>
+    <h4>Contact us today, and get reply within 24 hours!</h4>
     <fieldset>
       <input placeholder="Your name" type="text" tabindex="1" required autofocus>
     </fieldset>
@@ -21,10 +21,10 @@
       <input placeholder="Your Phone Number" type="tel" tabindex="3" required>
     </fieldset>
     <fieldset>
-      <input placeholder="Your Web Site starts with http://" type="url" tabindex="4" required>
+      <input placeholder="Your Company:" type="text" tabindex="4" required>
     </fieldset>
     <fieldset>
-      <textarea placeholder="Type your Message Here...." tabindex="5" required></textarea>
+      <textarea placeholder="Type your Message Here...." tabindex="5"></textarea>
     </fieldset>
     <fieldset>
       <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
@@ -57,17 +57,17 @@
 body {
 	font-family:"Open Sans", Helvetica, Arial, sans-serif;
 	font-weight:300;
-	font-size: 12px;
+	font-size: 14px;
+	margin: auto;
 	line-height:30px;
 	color:#777;
 	background:#fff;
 }
 
 .container {
-	max-width:400px;
-	width:100%;
-	margin:0 auto;
-	position:relative;
+	max-width:600px;
+	margin:auto;
+	margin-bottom: 20px;
 }
 
 #contact input[type="text"], #contact input[type="email"], #contact input[type="tel"], #contact input[type="url"], #contact textarea, #contact button[type="submit"] { font:400 12px/16px "Open Sans", Helvetica, Arial, sans-serif; }
@@ -75,7 +75,7 @@ body {
 #contact {
 	background:#808080;
 	padding:25px;
-	margin:50px 0;
+	margin:50px;
 }
 
 #contact h3 {
@@ -89,7 +89,7 @@ body {
 #contact h4 {
 	margin:5px 0 15px;
 	display:block;
-	font-size:13px;
+	font-size:16px;
 	color: #D3D3D3;
 	text-align: center;
 }

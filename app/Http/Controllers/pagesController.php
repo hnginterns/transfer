@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Validator;
 use App\Wallet;
+use Session;
 use Illuminate\Support\Facades\Auth;
 use App\Beneficiary;
 use App\User;
@@ -13,6 +15,8 @@ use App\CardWallet;
 use App\Transaction;
 use App\BankTransaction;
 use App\WalletTransaction;
+use App\SmsWalletFund;
+use App\TopupContact;
 
 use App\Bank;
 
@@ -29,6 +33,7 @@ class pagesController extends Controller
 
     public function __contruct()
     {
+        $this->middleware('cache');
         $this->middleware('auth')->except('signin');
     }
 
@@ -48,8 +53,9 @@ class pagesController extends Controller
 
     public function userdashboard()
     {
-        $wallet = Wallet::all();
+        //$wallet = Wallet::all();
         // $permission = Restriction::where('uuid',Auth::user()->id)->get();
+        $wallet = DB::table('wallets')->where('type', '=', '')->get();
         
         return view('dashboard', compact('wallet'));
     }
@@ -59,10 +65,6 @@ class pagesController extends Controller
         return view('about');
     }
 
-    public function forgot()
-    {
-        return view('forgot');
-    }
 
     public function signout()
     {
@@ -77,7 +79,7 @@ class pagesController extends Controller
 
     public function walletSuccess()
     {
-        return view('wallet-transfer-success');
+        return view('successWallet');
     }
 
     public function failed($response)
@@ -102,9 +104,6 @@ class pagesController extends Controller
           ->first();
         if($permit == null) return back()->with('error', 'You do not have the permission to transfer to bank');;
         $restrict = new Restrict($permit);
-
-        if(count($restrict->canTransferFromWallet()) != 0) return redirect('/dashboard');
-
         if(count($restrict->canTransferFromWallet()) != 0) return back()->with('error', 'You do not have the permission to transfer to bank');;
 
         return view('transfer-to-bank', compact('wallet'));
@@ -135,10 +134,12 @@ class pagesController extends Controller
 
         // get all wallet to wallet transactions, both sent and received
         $walletTransfer = WalletTransaction::where('source_wallet', $wallet->wallet_code)->get();
+        //var_dump($walletTransfer);
+        //die();
         $walletTransactions = CardWallet::where('wallet_name', $wallet->wallet_name)->get();
         $bankTransactions = BankTransaction::where('wallet_id', $wallet->id)->get();
 
-        $history = Trans::getTransactionsHistory($walletTransactions, $bankTransactions, $wallet->wallet_code, $wallet->id, $walletTransfer);
+        $history = Trans::getTransactionsHistory($walletTransfer, $walletTransactions, $bankTransactions, $wallet->wallet_code, $wallet->id);
 
         return view('view-wallet', compact('wallet','permit','rules','beneficiaries', 'history', 'cardWallet'));
     }
@@ -164,29 +165,43 @@ class pagesController extends Controller
         return view('createbeneficiary', compact('wallet','banks'));
     }
 
-    public function insertBeneficiary(Wallet $wallet)
+    public function insertBeneficiary(Request $request, Wallet $wallet)
     {    
-          
-        $permit = Restriction::where('wallet_id', $wallet->id)
-          ->where('uuid', Auth::user()->id)
-          ->first();
-        if($permit == null) return redirect('/dashboard')->with('error', 'You do not have the permission to add beneficiary');
-        $restrict = new Restrict($permit);
-        
-        if(count($restrict->canAddBeneficiary()) > 0) return redirect('/dashboard')->with('error', 'You do not have the permission to add beneficiary');
+         $validator = $this->validateBeneficiary($request->all());
+        //  dd($validator);
+        if ($validator->fails()) {
+            $messages = $validator->messages()->toArray();
+             Session::flash('form-errors', $messages);
+            return redirect()->to(URL::previous())->withInput();
+        } else { 
+            
+            $permit = Restriction::where('wallet_id', $wallet->id)
+            ->where('uuid', Auth::user()->id)
+            ->first();
+            if($permit == null){
+                return redirect('/dashboard')
+                        ->with('error', 'You do not have the permission to add beneficiary');
+            }
+            $restrict = new Restrict($permit);
+            
+            if(count($restrict->canAddBeneficiary()) > 0){
+                return redirect('/dashboard')
+                ->with('error', 'You do not have the permission to add beneficiary');
+            }
 
-        $beneficiary = new Beneficiary;
-        $beneficiary->name = request('name');
-        $beneficiary->account_number = request('account_number'); //->account_number;
-        $bank_detail = explode('||', request('bank_id'));
-        $beneficiary->wallet_id = $wallet->id;
-        $beneficiary->bank_id = $bank_detail[0];
-        $beneficiary->bank_name = $bank_detail[1];
-        $beneficiary->uuid = Auth::user()->id;
-        if ($beneficiary->save()) {
-            return redirect("wallet/$wallet->id")->with('success', 'Beneficiary added');
-        } else {
-            return redirect()->back()->with('error', 'Beneficiary could not be added');
+            $beneficiary = new Beneficiary;
+            $beneficiary->name = request('name');
+            $beneficiary->account_number = request('account_number'); //->account_number;
+            $bank_detail = explode('||', request('bank_id'));
+            $beneficiary->wallet_id = $wallet->id;
+            $beneficiary->bank_id = $bank_detail[0];
+            $beneficiary->bank_name = $bank_detail[1];
+            $beneficiary->uuid = Auth::user()->id;
+            if ($beneficiary->save()) {
+                return redirect("wallet/$wallet->id")->with('success', 'Beneficiary added');
+            } else {
+                return redirect()->back()->with('error', 'Beneficiary could not be added');
+            }
         }
     }
 
@@ -198,10 +213,43 @@ class pagesController extends Controller
         return view('404');
     }
 
+    public function getTopupWalletBalance() {
+
+        $username = '08189115870';
+        $pass =  'dbcc49ee2fba9f150c5e82';
+
+        $curl = curl_init();
+          curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://mobilenig.com/api/balance.php/?username=jekayode&password=transfer",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_HTTPHEADER => array(
+              "cache-control: no-cache",
+              "postman-token: 28c061c4-a48c-629f-3aa2-3e4cad0641ff"
+            ),
+          ));
+          $response = curl_exec($curl);
+          $err = curl_error($curl);
+          curl_close($curl);
+          if ($err) {
+            return "cURL Error #:" . $err;
+          } else {
+            return $response;
+          }
+
+    }
+
 
  public function phoneTopupView()
     {
-        return view('phonetopup');
+        $phones = TopupContact::all();
+        $topupbanlance = $this->getTopupWalletBalance();
+        $cardWallet = CardWallet::latest()->first();
+        return view('phonetopup', compact('cardWallet', 'phones', 'topupbanlance'));
     }
 
     //all other page functions can be added
@@ -209,5 +257,18 @@ class pagesController extends Controller
     public function mainWallet()
     {
         return view('to-main-wallet');
+    }
+
+    public function topuptest()
+    {
+        return view('topuptest');
+    }
+    
+    protected function validateBeneficiary(array $data) {
+        return Validator::make($data, [
+            'name' => 'required|string',
+            'bank_id' => 'required|string|min:4',
+            'account_number' => 'required|numeric',
+        ]);
     }
 }

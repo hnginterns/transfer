@@ -24,6 +24,10 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\WalletToWallet' => [
             'App\Listeners\WalletTransferBalance',
         ],
+
+        'App\Events\PhoneTopUpTransaction' => [
+            'App\Listeners\WalletBalance',
+        ],
     ];
 
     /**

@@ -33,47 +33,68 @@ i.sent{
 
     i.received{
       color: #dd4b39;
+      
+ }
+    
+    table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 5px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+    
     }
 </style>
 
 <link rel="stylesheet" href="/css/walletview.css">
+   <!-- Trigger the modal with a button -->
+        <center><button type="button" class="btn btn-dark" data-toggle="modal" data-target="#beneficiaryModal">Add Beneficiary</button>
+<!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#myModal">Fund</button>
+  
+  <a href="{{ route('transfer.beneficiary', $wallet->id)}}" class="btn btn-dark ">Transfer To Beneficiary</a>
+      
 
-            <div class="col-md-4 col-sm-4">
-              
+      <a href="{{ route('transfer.wallet', $wallet->id)}}" class="btn btn-dark ">Transfer to Another Wallet </a></center><br>
+
+              <div class="">
               @if (!empty($permit))
-                  <div class="col-sm-12 text-center">
-                      <p>Wallet Name</p>
-                      <h2>{{ $wallet->wallet_name }}</h2>
-                  </div>   
-                   <br>
-                   <div class="col-sm-12 text-center">
-                      <p>Wallet ID</p>
-                      <h2>{{ $wallet->wallet_code }}</h2>
-                   </div> 
-                  </br>
-                   <div class="col-sm-12 text-center">
-                        <p>Currency Type</p>
-                        <h2>Nigeria Naira</h2>
-                   </div>
-                    <br><br>
-                   <div class="col-sm-12 text-center">
-                        <p>Balance</p>
-                        <h2>{{ $wallet->balance }}</h2>
-                   </div>
-              
-                                 
+                  
+           <table>
+  <tr>
+    <th><font color="#39689C">Wallet Name</font></th>
+    <th><font color="#39689C">Wallet ID</font></th>
+    <th><font color="#39689C"> Currency Type</font></th>
+    <th><font color="#39689C">Balance</font></th>
+  </tr>
+  <tr>
+    <td> {{ $wallet->wallet_name }}</td>
+    <td>{{ $wallet->wallet_code }}</td>
+    <td>Nigeria Naira</td>
+    <td>{{ $wallet->balance }}</td>
+  </tr>
+  
+</table><p>
+</div><br><br>
 
-            </div>
-
-          <div class="col-md-8 col-sm-8">
-					<div class="orange-box"><h4 class="title" align="center"> {{ ucfirst($wallet->wallet_name) }} TRANSACTION HISTORY</h4></div><br>
+          <br><div class="">
+	<div class="orange-box"><h4 class="title" align="center"> {{ ucfirst($wallet->wallet_name) }} TRANSACTION HISTORY</h4></div><br>
           <div class="table-responsive">
               @if(count($history))          
 						<table class="table table-hover">
 							<thead>
 								<tr>
 									<th>Transaction Type</th>
-                  <th>State</th>
+                  							<th>State</th>
 									<th>Transaction Amount</th>
 									<th>Transaction Date</th>
 									<th>Status</th>
@@ -115,7 +136,7 @@ i.sent{
                 @endforeach
                 
 							</tbody>
-						</table>
+						</table><br>
               @else
                   
                     <p class="text-center"><b>No Transactions at the moment</b></p>
@@ -162,17 +183,12 @@ i.sent{
 
 <div class="container">
   
-  <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Fund</button>
+  
 
-  <a href="{{ route('transfer.beneficiary', $wallet->id)}}" class="btn btn-dark ">Transfer To Beneficiary</a>
-      
-
-      <a href="{{ route('transfer.wallet', $wallet->id)}}" class="btn btn-dark ">Transfer to Another Wallet </a>
+  
 
      <div class="container">
-        <!-- Trigger the modal with a button -->
-        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#beneficiaryModal">Add Beneficiary</button>
+     
       <!--Add sms Account  Modal -->
           <div class="modal fade" id="myModal" role="dialog">
             <div class="modal-dialog">
@@ -184,7 +200,7 @@ i.sent{
       			
             <div class="modal-body">  
                 <!-- text input -->      
-				        <form action="/fund/{{$wallet->id}}" method="POST" class="form-horizontal">
+	    <form action="/fund/{{$wallet->id}}" method="POST" class="form-horizontal">
                     {{ csrf_field() }}
                     <input type="hidden" name="wallet_name" value="{{$wallet->wallet_name}}">
                       <input type="hidden" name="wallet_code" value="{{$wallet->wallet_code}}">
@@ -391,6 +407,22 @@ i.sent{
   </div>
 
 </div>
+<script>
+$('.modal-content').resizable({
+      //alsoResize: ".modal-dialog",
+      minHeight: 300,
+      minWidth: 300
+    });
+    $('.modal-dialog').draggable();
+
+    $('#myModal').on('show.bs.modal', function() {
+      $(this).find('.modal-body').css({
+        'max-height': '100%'
+      });
+    });
+
+</script>
+
 @endif
 
     @else

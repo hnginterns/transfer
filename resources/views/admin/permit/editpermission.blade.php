@@ -132,9 +132,17 @@
                   </div> 
                   @endforeach
 
-                  <br><button type="submit" class="btn btn-info" name="button">Update Permissions</button>
-                  <a type="button" href="{{config('app.url')}}/admin/managePermission" class="btn btn-danger">Cancel</a>
-                </form>                
+                  <br><button type="submit" class="btn btn-info" name="button">Update Permission</button>
+                        <a type="button" href="{{config('app.url')}}/admin/managePermission" class="btn btn-default">Cancel</a>
+               
+               </form>                
+                
+                <form action="/admin/deletepermission/{{$restriction->id}}" onsubmit="return confirm('Are you sure you want to delete this permission?')" method="POST" role="form">
+                    {{csrf_field()}}
+                    {{method_field('DELETE')}}
+                  <button type="submit" class="btn btn-danger">Delete Permission&nbsp;&nbsp;</button>
+                </form>
+                
             </div>
         </div>
       </div>

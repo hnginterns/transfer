@@ -33,7 +33,7 @@ class WalletController extends Controller
      */
     public function __construct()
     {
-        //
+        $this->middleware('cache');
     }
 
     public function makeUserAdmin(){
@@ -68,6 +68,7 @@ class WalletController extends Controller
     public function cardWallet(Request $request, CardWallet $cardWallet)
     {
         $token = $this->getToken();
+        // dd($request);
         $headers = array('content-type' => 'application/json', 'Authorization' => $token);
         $query = array(
             "firstname" => $request->fname,
@@ -82,7 +83,7 @@ class WalletController extends Controller
             "expiry_year" => $request->expiry_year,
             "expiry_month" => $request->expiry_month,
             "charge_auth" => "PIN", //optional required where card is a local Mastercard
-            "apiKey" => env('APP_KEY'),
+            "apiKey" => env('API_KEY'),
             "amount" => $request->amount,
             "fee" => 0,
             "medium" => "web",
@@ -91,15 +92,13 @@ class WalletController extends Controller
         $body = \Unirest\Request\Body::json($query);
 
         $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer', $headers, $body);
+        
         $response = json_decode($response->raw_body, TRUE);
-        //var_dump($response);
-        //die();
+        // dd($response);
         if($response['status'] == 'success') {
             $response = $response['data']['transfer'];
-            $meta = $response['meta'];
-            $meta = json_decode($meta, TRUE);
-            $transMsg = $meta['processor']['responsemessage'];
-            $transRef = $meta['processor']['transactionreference'];
+            $transMsg = $response['flutterChargeResponseMessage'];
+            $transRef = $response['flutterChargeReference'];
             
             $transaction = new CardWallet;
             $transaction->firstName = $response['firstName'];
@@ -113,9 +112,10 @@ class WalletController extends Controller
             $transaction->save();
 
             return back()->with('status', $transMsg);
-
         }
-        var_dump($response);
+        else{
+            return back()->with('error', $response['message']);
+        }
     }
 
     public function otp(Request $request, CardWallet $cardWallet)
@@ -134,32 +134,38 @@ class WalletController extends Controller
             
             if($response['status'] == 'success') {
                 event(new FundWallet($cardWallet));
-                $response = $response['data']['flutterChargeResponseMessage'];
-                //return redirect('dashboard')->with('status', $response);
-                return redirect('admin/managewallet')->with('status', $response);
+                Session::flash('success',$response);
+                return redirect('admin/managewallet');
 
             }
             
     }
 
    //transfer from wallet to wallet
-    public function transfer(Request $request, Wallet $wallet) {
+    public function transfer(Request $request, Wallet $wallet, CardWallet $fund) {
         $validator = $this->validateWalletTransfer($request->all());
 
         if ($validator->fails()) {
             $messages = $validator->messages()->toArray();
-            return redirect()->to(URL::previous())->with('failed', $messages);
+            Session::flash('form-errors', $messages);
+            return redirect()->to(URL::previous());
         } else {
 
            //checks for permissions
                 $permit = Restriction::where('wallet_id', $wallet->id)
                         ->where('uuid', Auth::user()->id)
                         ->first();
-                if($permit == null) return redirect('/dashboard');
+                
+                if($permit == null){
+                    Session::flash('error', 'You do not have access to this wallet');
+                    return redirect('/dashboard');
+
+                }
                      $restrict = new Restrict($permit, $request);
                      $errors = $restrict->transferToWallet();
                 if(count($errors) != 0){
-                     return back()->with('multiple-error', $errors);
+                    Session::flash('errors', $errors);
+                    return back();
                 }
                 //end of permission checks
 
@@ -184,6 +190,7 @@ class WalletController extends Controller
                 $r_data = $response_arr['data'];  
 
                 if ($status == 'success') {
+                    
                     //logic to persist wallet transaction details
                     $w_transaction = new WalletTransaction;
                     $w_transaction->source_wallet = $request->sourceWallet;
@@ -194,20 +201,26 @@ class WalletController extends Controller
                     //end of logic
 
                     //update wallet balance
-                    $recipient_wallet->balance += $request->amount;
-                    $wallet->balance -= $request->amount;
-                    $wallet->save();
-                    $recipient_wallet->save();
-                    // end of update wallet balance
+                   // event(new WalletToWallet($transactions));
+                    event(new FundWallet($fund));
+                    $transaction = WalletTransaction::latest()->first();
+                   // \LogUserActivity::addToLog($transaction->source->wallet_name.' transferred '.$transaction->amount.' to '.$transaction->destination->wallet_name);
 
+                    //lgoic to display transaction details
+                    $data= [];
+                    $data['username'] = auth()->user()->username;
+                    $data['source_wallet'] = $transaction->source->wallet_name;
+                    $data['recipient_wallet'] = $transaction->destination->wallet_name;
+                    $data['amount'] = $transaction->amount;
+                    $data['time'] = $transaction->created_at->toDateTimeString();
 
                     $this->sendWalletTransactionNotifications($w_transaction);
-                    // event(new WalletToWallet($transactions));
-                    return redirect()->action('pagesController@success');
-                } else {
-                    $response = $r_data;
                     
-                    return back()->with('error',$response);
+                    return redirect('wallet-transfer-success')->with('status', $data);
+                } else {
+                    $response = $r_data;    
+                    Session::flash('error', $response);              
+                    return back();
                 }
         }
     }
@@ -218,8 +231,8 @@ class WalletController extends Controller
         $validator = $this->validateBeneficiary($request->all());
         if ($validator->fails()) {
             $messages = $validator->messages()->toArray();
-            Session::flash('messages', $this->formatMessages($messages, 'error'));
-            return redirect()->to(URL::previous())->withInput();
+            Session::flash('form-errors', $messages);
+            return redirect()->to(URL::previous());
         } else {
                 $token = $this->getToken();
                 $headers = array('content-type' => 'application/json', 'Authorization' => $token);
@@ -241,11 +254,15 @@ class WalletController extends Controller
                         ->where('uuid', Auth::user()->id)
                         ->first();
                 
-                if($permit == null) return redirect('/dashboard');
-                     $restrict = new Restrict($permit, $request);
+                if($permit == null){
+                    Session::flash('error', 'You do not have access to this wallet');
+                    return redirect('/dashboard');
+                }    
+                 $restrict = new Restrict($permit, $request);
                      $errors = $restrict->transferToBank();
                 if(count($errors) != 0){
-                     return back()->with('multiple-error', $errors);
+                    Session::flash('errors', $errors);
+                    return back();
                 }
                 //end of permission checks
 
@@ -280,15 +297,17 @@ class WalletController extends Controller
                     $transaction->save();
                     //end of logic for saving transactions
 
-                    $wallet->balance -= $request->amount;
-                    $wallet->save();
-
+                    //$wallet->balance -= $request->amount;
+                    //$wallet->save();
+                    event(new FundWallet($bank));
                     $this->sendBankTransactionNotifications($transaction);
-
-                    event(new TransferToBank($bank));
+                    $transactions = BankTransaction::latest()->first();
+                    //\LogUserActivity::addToLog(auth()->user()->name.'transferred '.$transactions->amount.' from '. $transactions->source->wallet_name.' to '.$transactions->beneficiary->name);
+                    
                     return redirect('success')->with('status',$data);
                 } else {
-                    return redirect()->back()->with('failed',$response['message']);
+                    Session::flash('error',$response['message']);
+                    return back();
                 }
         }
     }
@@ -301,7 +320,7 @@ class WalletController extends Controller
         $response = \Unirest\Request::get('https://moneywave.herokuapp.com/v1/wallet', $headers);
         $data = json_decode($response->raw_body, true);
         $walletBalance = $data['data'];
-        dd($walletBalance);
+        // dd($walletBalance);
         
         foreach($walletBalance as $wallets)
                         {
@@ -327,7 +346,7 @@ class WalletController extends Controller
         $walletCharge = var_dump($data['data']);
     }
 
-    public function storeWalletDetailsToDB($wallet_data, $lock_code, $wallet_name)
+    public function storeWalletDetailsToDB($wallet_data, $lock_code, $wallet_name, $wallet_type)
     {
         $wallet = new Wallet;
         $moneywave_wallet_id = $wallet_data['id'];
@@ -348,7 +367,8 @@ class WalletController extends Controller
         $wallet->lock_code = $lock_code;
         $wallet->wallet_code = $wallet_code;
         $wallet->uuid = Auth::user()->id;
-        $wallet->wallet_name = $wallet_name;;
+        $wallet->wallet_name = $wallet_name;
+        $wallet->type = $wallet_type;
 
         if ($wallet->save()) {
             return back()->with('success', 'Wallet creation successful');
@@ -441,7 +461,9 @@ class WalletController extends Controller
             'wallet_id' => 'required|numeric',
             'amount' => 'required|numeric',
             'beneficiary_id' => 'required|numeric',
-        ]);
+        ],
+        
+        ['beneficiary_id.numeric' => 'Select a beneficiary']);
     }
 
     /**

@@ -12,8 +12,12 @@ border-radius: 0 !important;
 background-color: #39689C;
 color: #fff;
 height: 100%;
+width: 300;
+	
 }
-
+form-control{
+width: 300;	
+}
 
 .active-sidebar {
 background-color: #39689C;
@@ -63,9 +67,18 @@ background-color:#39689C;
 }
 
 .navbar {
-height: 60px;
+height: auto;
+padding-top:5px;
+padding-bottom:5px;
 background: #FFF;
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.navform{
+  border-color:#fff !important;
+
+}
+.search{
+  margin-bottom:3px;
 }
 .main {
   margin-top: 60px;

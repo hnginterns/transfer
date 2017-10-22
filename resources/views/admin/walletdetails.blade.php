@@ -118,7 +118,7 @@
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
               <li class="active"><a href="#beneficiaries" data-toggle="tab">Beneficiaries</a></li>
-              <li><a href="#history" data-toggle="tab">Transaction History</a></li>
+              <li><a href="#history" data-toggle="tab">Card Funding History</a></li>
               <li><a href="#users" data-toggle="tab">Users</a></li>
             </ul>
             <div class="tab-content">
@@ -168,6 +168,7 @@
                           <th>Transfered by</th>
                           <th>Amount</th>
                           <th>Payment Ref</th>
+                          <th>Date</th>
                           
                         </tr>
                     </thead>
@@ -177,7 +178,8 @@
                       <tr>
                         <td style="color: #595757;">{{ $transaction->firstName }}  {{$transaction->lastName}}</td>
                         <td style="color: #595757;">{{ $transaction->amount }}</td>
-                        <td style="color: #595757;">{{ $transaction->ref }}</td>
+                        <td style="color: #595757;"><a href="#">{{ $transaction->ref }}</a></td>
+                        <td style="color: #595757;">{{ $transaction->created_at }}</td>
 
                       @empty
                         <p> No Transactions has taken place on this wallet</p>

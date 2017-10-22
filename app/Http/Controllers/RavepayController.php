@@ -165,10 +165,10 @@ class RavepayController extends Controller
         //die();
         if($response['status'] == 'success') {
             $response = $response['data']['transfer'];
-            $meta = $response['meta'];
-            $meta = json_decode($meta, TRUE);
-            $transMsg = $meta['processor']['responsemessage'];
-            $transRef = $meta['processor']['transactionreference'];
+            //$meta = $response['meta'];
+            //$meta = json_decode($meta, TRUE);
+            $transMsg = $response['flutterChargeResponseMessage'];
+            $transRef = $response['flutterChargeReference'];
             
             $transaction = new CardWallet;
             $transaction->firstName = $response['firstName'];

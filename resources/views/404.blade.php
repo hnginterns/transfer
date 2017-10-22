@@ -5,7 +5,7 @@
 	<title>404</title>
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 
-  <<style>
+  <style>
     body{
       font-family: lato;
       height: 100%;

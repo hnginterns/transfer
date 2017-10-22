@@ -1,73 +1,177 @@
-@extends('layouts.app')
+<!DOCTYPE html>
 
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
+<html lang="en">
 
-                <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('login') }}">
-                        {{ csrf_field() }}
+<head>
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-                                @if ($errors->has('email'))
+    <title>Sign In</title>
+
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
+
+    <link href="css/signin.css" rel="stylesheet">
+
+</head>
+
+
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+        <div class="container-fluid">
+
+
+
+            <a class="navbar-brand" href="#">
+
+        <a href="{{url('/')}}">  <img src="/img/HNGlogo.png" width="120" height="40"alt=""></a>
+               
+
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+
+                aria-expanded="false" aria-label="Toggle navigation">
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <ul class="navbar-nav mr-auto">
+
+
+
+                </ul>
+
+                <ul class="navbar-nav">
+
+                    <li class="nav-item">
+
+                        <a class="nav-link" href="{{url('/')}}">Home
+
+                            <span class="sr-only">(current)</span>
+
+                        </a>
+
+                    </li>
+
+                    <li class="nav-item">
+
+                        <a class="nav-link" href="/about">About</a>
+
+                    </li>
+
+                    <li class="nav-item">
+
+                        <a class="nav-link" href="{{url('/')}}">Get Started</a>
+
+                    </li>
+
+                    <li class="nav-item active">
+
+                        <a href="{{ route('admin.login') }}"class="nav-link">Admin login</a>
+
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+
+    <main>
+
+        <div class="container">
+
+            <div class="login-box">
+
+                <h4 class="intro">Welcome </h4>
+
+                <h3 class="sign-in">Sign In to hotels.ng finance Account</h3>
+
+                <h6 class="promise">It is simple and easy to control your account -<br> Keep your password secret</h6>
+                @if (Session::has('messages'))
+                    {!! Session::get('messages') !!}
+                @endif
+                <form method="POST" action="{{ route('login') }}" class="admin-login">
+                    {{ csrf_field() }}
+                    <div class="form-group">
+
+                        <input value="{{ old('email') }}" name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                        
+                        @if ($errors->has('email'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                                 @endif
-                            </div>
-                        </div>
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
+                    </div>
 
-                                @if ($errors->has('password'))
+                    <div class="form-group">
+
+                        <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+
+                         @if ($errors->has('password'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
                                 @endif
-                            </div>
-                        </div>
 
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
+                    </div>
 
-                        <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Login
-                                </button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
 
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    Forgot Your Password?
-                                </a>
-                                
-                            </div
-                            <a class="btn btn-link" href="{{ route('admin.login') }}">
-                                    Login as admin
-                                </a>>
-                        </div>
-                    </form>
-                </div>
+                    <div class="forgot-holder">
+
+                        <a href="{{ route('password.request') }}" class="forgot-password">Forgot Password?</a>
+
+                    </div>
+                    
+
+
+                </form>
+
             </div>
+
         </div>
-    </div>
-</div>
-@endsection
+
+
+
+    </main>
+
+    <footer class="footer">
+
+        <div class="container" style="text-align:center">
+
+            <span class="text-muted company">2017 TransferFunds - All Rights Reserved</span>
+
+        </div>
+
+    </footer>
+
+    <script src="js/jquery.js"></script>
+
+    <script src="js/bootstrap.js"></script>
+
+</body>
+
+
+
+</html>

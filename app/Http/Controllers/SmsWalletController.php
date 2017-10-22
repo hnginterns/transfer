@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use URL;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\SmsWallet;
 use App\SmsWalletFund;
+use App\CardWallet;
 use Unirest;
+use App\Wallet;
+use App\Events\FundWallet;
 
 class SmsWalletController extends Controller
 {
@@ -21,9 +25,11 @@ class SmsWalletController extends Controller
     {
         $smswalletdetails = array();
 
-        $sms = SmsWalletFund::latest()->first();
+        $sms = CardWallet::latest()->first();
 
         $wallet = $this->index();
+
+        $smsWallet = Wallet::where('type', 'sms')->first();
 
         Unirest\Request::verifyPeer(false); /** Remember to remove this line of code before pushing to production server**/
 
@@ -45,7 +51,7 @@ class SmsWalletController extends Controller
             array_push($smswalletdetails, $detail);
         }
 
-        return view('admin.smswallet2', compact('smswalletdetails', 'sms'));
+        return view('admin.smswallet2', compact('smsWallet', 'smswalletdetails', 'sms'));
     }
 
     public function getUserDetails(Request $request)
@@ -65,9 +71,7 @@ class SmsWalletController extends Controller
             'secret' => 'ts_AM2PIJ8VTPYLBK1K6EJDEXD9STLC6G'
         );
         $response = Unirest\Request::post('https://moneywave.herokuapp.com/v1/merchant/verify', $header, $query);
-        var_dump($response);
-        exit();
-
+        
         $user = SmsWallet::where('username', $request->email)->first();
         $url = "https://moneywave.herokuapp.com/v1/disburse";
         $headers = array(
@@ -86,7 +90,8 @@ class SmsWalletController extends Controller
         ];
         $body = Unirest\Request\Body::form($data);
         $response = Unirest\Request::post($url, $headers, $data);
-        echo json_encode($response->body);
+        
+        return redirect()->to(URL::previous())->with('response', $response->body);
     }
 
     public function generate_ref()
@@ -139,32 +144,29 @@ class SmsWalletController extends Controller
 
         $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer', $headers, $body);
         $response = json_decode($response->raw_body, TRUE);
-        //var_dump($response);
-        //die();
-        if($response['status'] == 'success') {
+         if($response['status'] == 'success') {
             $response = $response['data']['transfer'];
-            $meta = $response['meta'];
-            $meta = json_decode($meta, TRUE);
-            $transMsg = $meta['processor']['responsemessage'];
-            $transRef = $meta['processor']['transactionreference'];
+            $transMsg = $response['flutterChargeResponseMessage'];
+            $transRef = $response['flutterChargeReference'];
             
-            $transaction = new SmsWalletFund;
+            $transaction = new CardWallet;
             $transaction->firstName = $response['firstName'];
             $transaction->lastName = $response['lastName'];
             $transaction->phoneNumber = $response['phoneNumber'];
             $transaction->amount = $response['amountToSend'];
+            $transaction->wallet_name = $request->wallet_name;
+            $transaction->status = $response['status'];
             $transaction->ref = $transRef;
 
             $transaction->save();
 
-
             return back()->with('status', $transMsg);
-
+        }else{
+            return back()->with('error', $response['message']);
         }
-        var_dump($response);
     }
 
-    public function Otp(Request $request)
+    public function Otp(Request $request, CardWallet $cardWallet)
     {
         \Unirest\Request::verifyPeer(false);
 
@@ -174,11 +176,15 @@ class SmsWalletController extends Controller
                 'otp' => $request->otp
             );
             $body = \Unirest\Request\Body::json($query);
-
             $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer/charge/auth/card', $headers, $body);
             $response = json_decode($response->raw_body, true);
-            $response = $response['data']['flutterChargeResponseMessage'];
-            return redirect('admin/smswallet')->with('status', $response);
+            if($response['status'] == 'success') {
+                event(new FundWallet($cardWallet));
+                //Session::flash('success',$response);
+                return redirect('admin/smswallet2')->with('success', $response);
+
+            }
+
     }
     
 

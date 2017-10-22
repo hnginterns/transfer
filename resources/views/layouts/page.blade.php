@@ -9,13 +9,14 @@
 
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>Finance@hotels.ng</title>
+    <title>Transfer Rules</title>
 
-    <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
 
-    <link href="{{asset('css/signin.css')}}" rel="stylesheet">
+    <link href="css/signin.css" rel="stylesheet">
+    <link href="css/custom2.css" rel="stylesheet">
 
     <style>
         
@@ -74,7 +75,7 @@
 
             <a class="navbar-brand" href="{{url('/')}}">
 
-                <img src="logo3.png" width="30" height="30" class="d-inline-block align-top" alt=""> Finance@hotels.ng
+                <a class="navbar-brand" href="https://finance.hotels.ng/"><img src="img/logo.png" alt="logo"></a>
 
             </a>
 
@@ -82,7 +83,7 @@
 
                 aria-expanded="false" aria-label="Toggle navigation">
 
-                <span class="navbar-toggler-icon">#</span>
+                <span class="navbar-toggler-icon"></span>
 
             </button>
 
@@ -113,12 +114,6 @@
                         <a class="nav-link" href="{{route('about')}}">About</a>
 
                     </li>
-                    
-                     <li class="nav-item">
-
-                        <a class="nav-link" href="{{route('features')}}">Demo</a>
-
-                    </li>
 
                     <li class="nav-item">
 
@@ -126,7 +121,15 @@
 
                     </li>
 
-                    
+                    <li class="nav-item">
+
+                        <a class="nav-link" href="{{route('features')}}">Features</a>
+
+                    </li>
+
+
+                   
+
                     <li class="nav-item active">
 
                     @if(Auth::guest())
@@ -191,12 +194,11 @@
         <li><a href="{{route('about')}}">About Us</a></li>
         <li><a href="{{route('privacy')}}">Privacy Policy</a></li>
 
-        <li><a href="{{route('features')}}">How it works</a></li>
+        <li><a href="{{route('features')}}">Features</a></li>
         <li><a href="{{route('contact')}}">Contact Us</a></li>
-   
-
+        
         <li><a href="{{route('help')}}">Help & Support</a></li>
-        <li><a href="{{url('login')}}">Sign In</a></li>
+        <li><a href="{{url('login')}}">Sign In</a> </li>
         <li><a href="{{route('how')}}">FAQs</a></li>
         <li><a href="{{route('terms')}}">Terms & Condition</a></li>
     </div>

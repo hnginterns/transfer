@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Transfer Rules</title>
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- <link rel="stylesheet" href="css/style.css"> -->
@@ -25,33 +26,51 @@
 
         #header {
             width: 100%;
-            height: 650px;
-            /* background: linear-gradient(180deg, #358CAA 1.49%, #F87373 98.73%); */
-            /* background: #333333; */
-            background-size: 100% 650px !important;
-        }
+            height: 850px; 
 
+    /* Center and scale the image nicely */
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+        }
         #logo {
             
             height: 40px;
             margin-right: 15px;
-            margin-left: 50px;
+            margin-left: 0px;
         }
 
         .navbar {
             margin: 0px;
-            padding-top: 30px !important;
+            padding-top: 10px !important;
+            padding-bottom: 10px !important;
             padding: 0px;
             background: transparent;
             width: 100%;
             border-radius: 0px;
             border: none;
+            border-bottom:solid;
+            border-bottom-color:#39689C;
             color: white;
         }
+        .about{
+            height:700px;
+        }
+        .about-content{
+            width:70%;
+            padding:20px;
+            margin-top:20px;
+            margin-bottom:-200px;
+            margin-left:auto;
+            margin-right:auto;
+            background:#fff;
+            z-index:1000 !important;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
+        }
         .navbar-brand,
         .navbar-nav a {
-            color: white !important;
+            color: #000 !important;
             font-size: 17px;
             margin-right: 10px;
         }
@@ -78,9 +97,9 @@
         #sign-in {
             margin-top: 9px;
             /* background: #E57679; */
-            color:#000000 !important;
-            background: #FFFFFF !important;
-            border: 1px solid #00AEFF !important;
+            color:#FFF !important;
+            background: #39689C !important;
+            border: 1px solid #39689C !important;
             border-radius: 63px;
             padding-left: 12px;
             padding-right: 12px;
@@ -88,7 +107,7 @@
         
         #sign-in a  {
             padding: 7px 14px;
-            color: #000000 !important;
+            color: #FFF !important;
             display: block;
         }
         #sign-in:hover a{
@@ -109,10 +128,9 @@
         }
 
         #header-content {
-            padding: 80px 200px;
-            display: grid;
-            grid-template-columns: 40% 60%;
             z-index: 200;
+            width:100%;
+            padding:20px;
         }
 
         #content-text {
@@ -121,13 +139,20 @@
             height: 300px;
             grid-gap: 5px;
             color: white;
+            margin-top:15%;
         }
 
         #heading-hd {
-            font-size: 36px;
+            font-size: 23px;
             letter-spacing: 0.07em;
             padding-right: 100px;
         }
+        #heading-top-hd{
+                font-size: 64px;
+                letter-spacing: 0.07em;
+                padding-right: 0px;
+                text-align:0;
+            }
 
         #text-hd {
           padding-right: 100px;
@@ -285,28 +310,43 @@
             width: 100%;
             height: 300px;
             padding: 70px 170px;
-            background: #333333;
+            background: #39689C;
+           
+        }
+        #divider-top{
+            width: 100%;
+            height: 200px;
+            background: #39689C;
+            position:relative;
+            margin-bottom:-50px;
+            z-index: -1;
+        }
+        #divider-top:before{
+            background: inherit;
+            content: '';
+            display: block;
+            height: 50%;
+            left: 0;
+            position: absolute;
+            right: 0;
+            z-index: -1;
+            -webkit-backface-visibility: hidden;
+            top: 0;
+            transform: skewY(2deg);
+            transform-origin: 100% 0;
         }
 
         #divider-content {
-            display: grid;
-            align-content: center;
-            justify-content: center;
-            align-items: center;
-            grid-template-columns: 70% 30%;
             padding: 30px 30px;
             background: white;
-            text-align: left;
+            text-align: center;
         }
 
         #divider-cta {
             transition: color 1s, background 1s;
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-            grid-column: 2/3;
-            grid-row: 1/3;
-            width: fit-content;
-            height: fit-content;
-            background: #2AA6E8;
+            padding:20px;
+            background: #39689C;
             color: #FFFFFF;
             border: none;
             padding: 12px 16px;
@@ -320,21 +360,36 @@
         }
 
         #divider-text {
-            display: grid;
-            grid-template-rows: 20% 80%;
-            grid-row-gap: 10px;
-            width: fit-content;
-            height: fit-content;
-            margin-right: 40px;
+           text-align:center;
+           color:#404040;
+           font-size: 18px
         }
 
         #divider-title {
-            color: #2AA6E8;
-            font-size: 20px;
+            color: #39689C;
+            text-align:center;
+            font-size: 40px;
             font-weight: bold;
             letter-spacing: 0.04em;
             margin: 0px;
             padding: 0px;
+        }
+        .icon{
+            color:#39689C;
+            font-size:70px;
+            text-align:center;
+        }
+        .about-title{
+            color:#39689C;
+            font-size:24px;
+            text-align:center;
+            font-family: 'Nunito Sans', sans-serif;
+        }
+        .about-paragraph{
+            color:#404040;
+            font-size:16px;
+            text-align:center;
+            font-family: Lato-Regular,sans-serif!important;
         }
         /* DIVIDER STYLE ENDS */
 
@@ -389,12 +444,18 @@
         @media only screen and (max-width: 1250px) {
             /* HEADER BODY STYLE */
             #header {
-                height: 650px;
+                width: 850px;
+                               /* Full height */
+    height: 100%; 
+
+    /* Center and scale the image nicely */
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
             }
 
             #header-content {
-                padding: 80px 150px;
-                grid-template-columns: 40% 60%;
+               
             }
 
             #mobile-app {
@@ -453,13 +514,18 @@
         @media only screen and (max-width: 1090px) {
             /* HEADER BODY STYLE */
             #header {
-                height: 550px;
+                width: 100%;
+                /* Full height */
+    height: 800px; 
+
+    /* Center and scale the image nicely */
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
             }
 
             #header-content {
-                padding: 80px 100px;
-                display: grid;
-                grid-template-columns: 40% 60%;
+                
             }
 
             #mobile-app {
@@ -518,13 +584,20 @@
                 width: 100%;
                 height: 300px;
                 padding: 30px 100px;
-                background: #306B8E;
+                background: #39689C;
             }
+
         }
 
         @media only screen and (max-width: 800px) {
             #header {
-                height: 620px;
+                /* Full height */
+                height: 650px; 
+                width:100%;
+    /* Center and scale the image nicely */
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
             }
             .features-icons {
                 display: inline;
@@ -535,9 +608,7 @@
             }
 
             #header-content {
-                padding: 50px 10px;
-                display: flex;
-                flex-direction: row;
+                
             }
 
             #content-text {
@@ -546,6 +617,7 @@
                 display: flex;
                 flex-direction: column;
                 height: fit-content;
+                width:100%;
             }
 
             #heading-hd {
@@ -555,7 +627,8 @@
                 margin-bottom: 15px;
             }
             #heading-top-hd{
-                font-size: 22px;
+                margin-top:25px;
+                font-size: 40px;
                 letter-spacing: 0.07em;
                 padding-right: 0px;
                 margin-bottom: 15px;
@@ -672,16 +745,13 @@
             /* DIVIDER STYLE */
             #divider {
                 width: 100%;
-                height: fit-content;
+                
                 padding: 70px 30px;
-                background: #333333;
+                background: #39689C;
             }
 
             #divider-content {
-                display: flex;
-                flex-direction: column;
-                align-content: center;
-                justify-content: center;
+             
                 align-items: center;
                 padding: 15px 15px;
                 background: white;
@@ -689,29 +759,24 @@
             }
 
             #divider-cta {
-                width: fit-content;
-                height: fit-content;
                 text-align: center !important;
-                background: #FF6200;
+                background:#39689C;
                 color: white;
                 border: none;
-                padding: 12px 60px;
+                padding:20px;
                 border-radius: 63px;
                 margin-right: 0px;
                 margin-top: 20px;
             }
 
             #divider-text {
-                display: flex;
-                flex-direction: column;
-                text-align: justify;
-                width: fit-content;
-                height: fit-content;
-                margin-right: 0px;
+                text-align: center;
+              
             }
 
             #divider-title {
-                color: #FF6200;
+                color: #fff;
+                background-color: #39689C;
                 font-size: 16px;
                 font-weight: bold;
                 letter-spacing: 0.04em;
@@ -724,7 +789,10 @@
 
             /* FOOTER STYLES */
             #footer {
-                display: none;
+                
+            }
+            #footer{
+                display:none;
             }
 
             #mobile-footer {
@@ -753,11 +821,8 @@
     </style>
 </head>
 <body>
-<!-- HEADER BEGINS -->
-<div id="header" style="background: url('img/backgroundnew.png');">
-    <p id="background-text">FUNDS</p>
-
-    <nav class="navbar navbar-default">
+<div class="top">
+<nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -772,10 +837,9 @@
                 <ul class="nav navbar-nav navbar-right">
 
                      <li class="{{ Request::segment(1) === '/' ? 'active' : null }}" ><a href="{{url('/')}}">Home</a></li>
+                     <li class="{{ Request::segment(1) === 'about' ? 'active' : null }}"><a href="{{route('about')}}">About<span class="sr-only">(current)</span></a></li>
                     <li class="{{ Request::segment(1) === 'how' ? 'active' : null }}" ><a href="{{route('how')}}">FAQs</a></li>
-                    <li class="{{ Request::segment(1) === 'features' ? 'active' : null }}"><a href="{{route('features')}}">Features</a></li>
-                   <li class="{{ Request::segment(1) === 'features' ? 'active' : null }}"><a href="{{route('features')}}">Demo</a></li>
-                   <li class="{{ Request::segment(1) === 'about' ? 'active' : null }}"><a href="{{route('about')}}">About<span class="sr-only">(current)</span></a></li>
+                  
 
                     @if(Auth::guest())
                     <li id="sign-in"><a href="{{url('login')}}">Sign In</a></li> 
@@ -797,110 +861,103 @@
             </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
     </nav>
+</div>
+<!-- HEADER BEGINS -->
+<div id="header" style="background: url('img/Group2.png');">
+  <!--  <p id="background-text">FUNDS</p> -->
 
-    <div id="header-content">
+    
+
+    <div id="header-content" align="center">
         
         <div id="content-text" class="clearfix" align="center">
         <span id="heading-top-hd">
-        Online payments made easy
+        Fund Transfer made easy
                 </span>
                 <span id="heading-hd">
-                   Payant is an easy way for you to pay and get paid any where
-                </span>
-            <span id="text-hd">
-                    Create an account for your company with TransferRules and gain full control over financial transactions, disbursement of funds and lot more services.
+                This Finance tool is used for managing fund with ease
                 </span>
             <button id="button-hd">
-                Get Started
+                <a href="{{url('features')}}">Features</a>
             </button>
         </div>
     </div>
 </div>
 
 <!--HEADER ENDS -->
-
-<!-- SECTION ONE - (AMAZING FEATURES) -->
-<div id="section1">
-    <p class="section-header">
-        Amazing Features
-    </p>
-      <!-- <p class="section-sub">
-          Enjoy our great and amazing features
-      </p> -->
-    <div id="features">
-        <img src="img/screenshots.png" alt="site screenshot" id="screenshots">
-        <div id="features-list">
-            <div class="feature">
-                <span class="feature-img"></span>
-                <span id="feature-heading">Get Payment <span class="fa fa-money features-icons"></span></span>
-                <span class="feature-text">You can trust transferrules with fast and secure online payment.</span>
-            </div>
-            <div class="feature">
-                <span class="feature-img"></span>
-                <span id="feature-heading">Manage Funds <span class="fa fa-money features-icons"></span></span>
-                <span class="feature-text">Transferrules gives you full control to manage and track your company funds.</span>
-            </div>
-            <div class="feature">
-                <span class="feature-img"></span>
-                <span id="feature-heading">Access Wallet <span class="fa fa-shopping-bag features-icons"></span></span>
-                <span class="feature-text">Create, access and manage unlimited number of wallets for every staff.</span>
-            </div>
+<section class="about">
+<div class="about-content">
+<div class="row">
+        <div class="col-lg-12">
+        <h5 class="about-title">How it works</h5>
+        <p class="about-paragraph">
+        Our custom built Transfer Rules is built with the aim to connect your business to clients, employer to employee etc in a more effcient way and simplify your financial
+        transactions. Crisp and clear UX design and excellent workflow serves to foster customer intimacy and user loyalty
+        </p>
+        </div>
+        
+</div>
+<div class="row">
+        <div class="col-lg-4">
+        <div class="icon"><img src="img/multiple-shots.png" alt="icon" /> </div>
+        <h5 class="about-title">Multiple Wallet Support</h5>
+        <p class="about-paragraph">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate 
+        </p>
+        </div>
+        <div class="col-lg-4">
+        <div class="icon"><img src="img/Group.png" alt="icon" /></div>
+        <h5 class="about-title">Credit/Data Top Up</h5>
+        <p class="about-paragraph">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate
+        </p>
+        </div>
+        <div class="col-lg-4">
+        <div class="icon"><img src="img/smartphone-chat.png" alt="icon" /></div>
+        <h5 class="about-title">Bulk SMS Integration</h5>
+        <p class="about-paragraph">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate
+        </div>
+</div>
+<div class="row" style="z-index:1001;">
+        <div class="col-lg-4">
+        <div class="icon"><img src="img/live-chat.png" alt="icon" /></div>
+        <h5 class="about-title">Live Chat</h5>
+        <p class="about-paragraph">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate
+        </p>
+        </div>
+        <div class="col-lg-4">
+        <div class="icon"><img src="img/credit-card.png" alt="icon" /></div>
+        <h5 class="about-title">Reliable Payment Method</h5>
+        <p class="about-paragraph">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate
+        </p>
+        </div>
+        <div class="col-lg-4">
+        <div class="icon"><img src="img/maze.png" alt="icon" /></div>
+        <h5 class="about-title">Easy Usage</h5>
+        <p class="about-paragraph">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate 
+        </p>
         </div>
     </div>
 </div>
-<!-- SECTION ONE ENDS -->
-
-
-<!-- SECTION TWO - (TESTIMONIES) -->
-<div id="section2">
-    <p class="section-header">
-        Testimonies
-    </p>
-    <p class="section-sub">
-        Our Users are passionate about us because we are passionate about them. Hear what they say about us!
-    </p>
-
-    <div id="t-container">
-        <div class="row">
-            <div class="media col-md-6" id="media1">
-                <a class="pull-left" href="#">
-                    <img src="img/man.jpg" alt="man" class="testimony-img">
-                </a>
-                <div class="media-body">
-                    <h4 class="media-heading name">Mr. Musa Abubakar</h4>
-                    <p class="testimony">It has been more than 2 years my company started using TRANSFERRULES for fund disbursement and i must confess it has been great, fast and secure. </p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="media col-md-12 pull-right" id="media2">
-                <a class="pull-right" href="#">
-                    <img src="img/woman.jpg" alt="man" class="testimony-img">
-                </a>
-                <div class="media-body">
-                    <h4 class="media-heading name">Miss Natasha Paul</h4>
-                    <p class="testimony">Thank you TRANSFERRULES for providing a secure, friendly and trusted way for we to manage funds in my company.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- SECTION TWO ENDS -->
 
 <!-- DIVIDER -->
+<div id="divider-top"></div>
 <div id="divider">
-    <div id="divider-content">
+    <div id="divider-content" align="center">
         <div id="divider-text">
-            <p id="divider-title">Get Started in Five Minutes</p>
+            <p align="center" id="divider-title">Already registered? </p>
             <p id="">
-                Create an account in less than 5 minutes. Login to your account and create wallets for your company
+                Login to your account and create wallets for your company.
             </p>
         </div>
-        <button id="divider-cta">Read More</button>
+        <br />
+        <button id="divider-cta"><a href="https://finance.hotels.ng/login"><font color="white">Sign In</font></a></button>
     </div>
-</div>
-<!-- DIVIDER ENDS-->
-
+</div><br><br><p>
 <!-- FOOTER -->
 
 <div id="footer">
@@ -909,7 +966,7 @@
         <li><a href="{{route('about')}}">About Us</a></li>
         <li><a href="{{route('privacy')}}">Privacy Policy</a></li>
 
-        <li><a href="{{route('features')}}">How it works</a></li>
+        <li><a href="{{route('features')}}">Features</a></li>
         <li><a href="{{route('contact')}}">Contact Us</a></li>
    
 
@@ -923,7 +980,7 @@
         <p>&#169; 2017 Transferrules.com. All rights reserved</p>
     </div>
 </div>
-
+<br><br><p>
 <div id="mobile-footer">
     <table>
         <tr>
@@ -937,7 +994,7 @@
             <td><a href="{{route('contact')}}">Contact Us</a></td>
         </tr>
         <tr>
-            <td><a href="{{route('how')}}">How it works</a></td>
+            <td><a href="{{route('how')}}">Features</a></td>
             <td><a href="{{route('contact')}}">Contact Us</a></td>
             <td><a href="{{route('help')}}">Help & Support</a></td>
         </tr>
@@ -951,7 +1008,11 @@
     <div id="lower-footer">
         <p>&#169; 2017 Transferrules.com. All rights reserved</p>
     </div>
-</div>
+</div>  
+</section>
+<!-- DIVIDER ENDS-->
+
+
 
 <!-- FOOTER ENDS -->
 <!--<script
@@ -961,9 +1022,9 @@
 </script> -->
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
+<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
         integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script> -->
 <script src="js/script.js"></script>
 </body>
 </html>

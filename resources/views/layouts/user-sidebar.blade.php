@@ -17,16 +17,18 @@
                 </a>
               </li> <br>
               
-              <li>
-                <a href="/admin/smswallet">
-                <i class="fa fa-envelope fa-1x"></i> Sms Top up
-                </a>
-              </li> <br>
+             
                                 
               <li>
-                <a href="{{ url('/logout') }}">
-                <i class="fa fa-sign-out fa-1x"></i> Logout
+                <a href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                              document.getElementById('logout-form').submit();">
+                    Logout
                 </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                </form>
               </li> 
 
                
