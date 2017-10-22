@@ -218,8 +218,6 @@ class pagesController extends Controller
         $username = '08189115870';
         $pass =  'dbcc49ee2fba9f150c5e82';
 
-        https://mobilenig.com/api/balance.php/?username=****&password=****
-
         $curl = curl_init();
           curl_setopt_array($curl, array(
             CURLOPT_URL => "https://mobilenig.com/api/balance.php/?username=jekayode&password=transfer",
@@ -250,6 +248,8 @@ class pagesController extends Controller
     {
         $phones = TopupContact::all();
         $topupbanlance = $this->getTopupWalletBalance();
+        dd($topupbanlance);
+
         $cardWallet = CardWallet::latest()->first();
         return view('phonetopup', compact('cardWallet', 'phones', 'topupbanlance'));
     }
