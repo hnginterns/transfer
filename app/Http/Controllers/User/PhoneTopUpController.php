@@ -98,6 +98,8 @@ class PhoneTopUpController extends Controller
         
         if ($response === 00) {
             $status = 'Success';
+        } else {
+           return redirect('/phonetopup')->with('error', 'An Error Occured');
         }
         //end of Api call
 
@@ -108,12 +110,12 @@ class PhoneTopUpController extends Controller
         //$topuphistory->type = $request->type;
         $topuphistory->ref = str_random(10);
         $topuphistory->txn_response = $response;
-        $topuphistory->status = $status;
+        $topuphistory->status = 00;
 
         $topuphistory->save();
 
         //Session::flash('success',' Phone topped up uccessfully.');
-        return redirect('/phonetopup')->with('error', 'Phone topped up uccessfully.');
+        return redirect('/phonetopup')->with('success', 'Phone topped up uccessfully.');
 
     }
 
