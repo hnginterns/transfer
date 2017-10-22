@@ -77,7 +77,7 @@
                                     <td>{{ $phone->weekly_max }}</td>
                                     <td>{{ $phone->netw }}</td>
                                     <td>
-                                        <form action="{{ url('/delete-phone') }}" method="post">
+                                        <form action="{{ url('admin/delete-phone') }}" method="post">
                                             {{ csrf_field() }}
                                             <input type="hidden" name="delete_phone" value="{{ $phone->id }}" >
                                             <button type="submit" class="btn btn-danger btn-sm">Delete</button>
