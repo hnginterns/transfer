@@ -44,7 +44,7 @@ class PhoneTopUpController extends Controller
             'firstname' => 'required|string',
             'lastname' => 'required|string',
             'phone' => 'required|numeric|unique:topup_contacts',
-            'netw' => 'required',
+            'network' => 'required',
             'max_tops' => 'required'
 
             ],
@@ -54,7 +54,7 @@ class PhoneTopUpController extends Controller
             'phone.required' => 'Phone Number is required',
             'phone.unique' => 'Phone Number is already registered',
             'phone.numeric' => 'Phone Number must be in numbers',
-            'netw.required' => 'Please select a network',
+            'network.required' => 'Please select a network',
             'max_tops.required' => 'Please enter Maximum Number of topups per week',
             ]
          ); 
