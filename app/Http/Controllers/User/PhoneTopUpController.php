@@ -98,7 +98,7 @@ class PhoneTopUpController extends Controller
         
         $if ($response === 00) {
             $status = 'Success'
-        }
+        };
         //end of Api call
 
         $topuphistory = new TopupHistory;
