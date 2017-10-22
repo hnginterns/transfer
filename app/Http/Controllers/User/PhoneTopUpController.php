@@ -101,7 +101,7 @@ class PhoneTopUpController extends Controller
         }
         //end of Api call
 
-        $ref = mt_rand();
+        $ref = str_random(10);
 
         $topuphistory = new TopupHistory;
 
