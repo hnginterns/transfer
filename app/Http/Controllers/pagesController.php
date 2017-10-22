@@ -254,7 +254,7 @@ class pagesController extends Controller
         $user = Auth::user();
 
         $topuphistory = TopupContact::where('user_id', $user->id)
-        return view('phonetopup', compact('cardWallet', 'phones', 'topupbanlance', '$topuphistory'));
+        return view('phonetopup', compact('cardWallet', 'phones', 'topupbanlance', 'topuphistory'));
     }
 
     //all other page functions can be added
