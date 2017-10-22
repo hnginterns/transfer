@@ -244,11 +244,12 @@
                                                         <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
                                                            <select class="form-control" name="network">
                                                             <option selected value="">Choose Network</option>
-                                                            <option value="15">MTN</option>
-                                                            <option value="6">GLO</option>
-                                                            <option value="1">AIRTEL</option>
-                                                            <option value="2">9Mobile</option>
-                                                            <option value="4">Visa</option>
+
+                                                            <option value="MTN">MTN</option>
+                                                            <option value="GLO">GLO</option>
+                                                            <option value="AIRTEL">AIRTEL</option>
+                                                            <option value="9MOBILE">9MOBILE</option>
+                                                            
                                                            </select>
                                                         </div>
                                                     </div>
