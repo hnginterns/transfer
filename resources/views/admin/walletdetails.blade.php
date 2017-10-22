@@ -118,7 +118,7 @@
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
               <li class="active"><a href="#beneficiaries" data-toggle="tab">Beneficiaries</a></li>
-              <li><a href="#history" data-toggle="tab">Transaction History</a></li>
+              <li><a href="#history" data-toggle="tab">Card Funding History</a></li>
               <li><a href="#users" data-toggle="tab">Users</a></li>
             </ul>
             <div class="tab-content">

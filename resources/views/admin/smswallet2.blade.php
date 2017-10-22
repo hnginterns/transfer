@@ -18,12 +18,18 @@
 
 <div class="container top-up" style="padding-left:30px;">
 
+@if(isset($smsWallet))
   <div class="row">
-    <h3>Balance: ₦ 1200</h3>
+    <h3>Balance: {{ $smsWallet->balance }}</h3>
+
 <button type="button" class="btn btn-info" data-toggle="modal" data-target="#walletTopUp">
                 Fund Wallet</button>
   </div>
-
+  @else
+  <div class="row">
+    <p>No wallet linked to this account. Please create a wallet and set type to Sms Wallet</p>
+  </div>
+  @endif
 </div>
 
 <section class="content">

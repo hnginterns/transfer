@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\SmsWallet;
 use App\SmsWalletFund;
 use Unirest;
+use App\Wallet;
 
 class SmsWalletController extends Controller
 {
@@ -25,6 +26,8 @@ class SmsWalletController extends Controller
         $sms = SmsWalletFund::latest()->first();
 
         $wallet = $this->index();
+
+        $smsWallet = Wallet::where('type', 'sms')->first();
 
         Unirest\Request::verifyPeer(false); /** Remember to remove this line of code before pushing to production server**/
 
@@ -46,7 +49,7 @@ class SmsWalletController extends Controller
             array_push($smswalletdetails, $detail);
         }
 
-        return view('admin.smswallet2', compact('smswalletdetails', 'sms'));
+        return view('admin.smswallet2', compact('smsWallet', 'smswalletdetails', 'sms'));
     }
 
     public function getUserDetails(Request $request)
@@ -141,13 +144,12 @@ class SmsWalletController extends Controller
 
         $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer', $headers, $body);
         $response = json_decode($response->raw_body, TRUE);
-        
+        var_dump($response);
+        die();
         if($response['status'] == 'success') {
             $response = $response['data']['transfer'];
-            $meta = $response['meta'];
-            $meta = json_decode($meta, TRUE);
-            $transMsg = $meta['processor']['responsemessage'];
-            $transRef = $meta['processor']['transactionreference'];
+            $transMsg = $response['flutterChargeResponseMessage'];
+            $transRef = $response['flutterChargeReference'];
             
             $transaction = new SmsWalletFund;
             $transaction->firstName = $response['firstName'];
