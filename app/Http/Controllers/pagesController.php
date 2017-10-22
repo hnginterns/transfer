@@ -263,7 +263,7 @@ class pagesController extends Controller
     {
         return view('topuptest');
     }
-
+    
     protected function validateBeneficiary(array $data) {
         return Validator::make($data, [
             'name' => 'required|string',
