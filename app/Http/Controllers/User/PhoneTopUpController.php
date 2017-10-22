@@ -94,8 +94,8 @@ class PhoneTopUpController extends Controller
         $headers = array('content-type' => 'application/json');
         $response = \Unirest\Request::get($url, $headers);
         //var_dump($response);
-        $response = json_decode($response->raw_body, true);
-        $status = $response['status'];
+        //$response = json_decode($response->raw_body, true);
+        //$status = $response['status'];
         dd($response);
         //end of Api call
 
