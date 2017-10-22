@@ -101,7 +101,7 @@ class PhoneTopUpController extends Controller
 
         $results = json_decode(curl_exec($curlConnection), true);
 
-        dd($result);
+        dd($results);
 
 
 
