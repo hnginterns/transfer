@@ -86,7 +86,7 @@ tr:nth-child(even) {
                 <h1>Current Balance: ₦ {{ number_format($topupbanlance),2}}</h1>
 	<div class="orange-box"><h4 class="title" align="center">CONTACT LIST</h4></div>
           <div class="table table-responsive">
-                <table class="table">
+                <table class="table" id="contact-table">
               <thead>
                 <tr>
                   <td>Select</td>
@@ -105,19 +105,15 @@ tr:nth-child(even) {
               <tbody>
                 @if(count($phones) > 0)
                   @foreach($phones as $phone)
-                    <tr>
-                      <td><input type="checkbox" name="select" value="1"></td>
+                    <tr class="contact-fn">
+                      <td><input type="checkbox" name="select" value="1" class="checkbox"></td>
                         <td class="firstName" data-user="{{ $phone->id }}">{{ $phone->firstname }} {{ $phone->lastname }}</td>
                         <td class="phone">{{ $phone->phone }}</td>
                         <td class="phoneRef">{{ $phone->netw }}</td>
                         <td class="amount">{{ $phone->title }}</td>
                         <td class="amount">{{ $phone->department }}</td>
                         <td class="max-tops">{{ $phone->weekly_max }}</td>
-                        <td>
-                          <form>
-                              <input class="form-control" type="text"  placeholder="Enter Amount" />
-                          </form>
-                        </td>
+                        <td><input class="form-control input-airtime-amount" type="text"  placeholder="Enter Amount" /></td>
                         <td>
 
                           <a class="airtime btn btn-success" data-id="{{ $phone->id }}" data-toggle="modal" data-target="#airtimeModal">
@@ -151,7 +147,7 @@ tr:nth-child(even) {
                 <td></td>
                 <td></td>
                 <td></td>
-                <td><button class="btn btn-success">Top Up All</button></td>
+                <td><button class="btn btn-success" id="topUpAll">Top Up All</button></td>
                 <td></td>
                </tr>
             </table>  
@@ -421,6 +417,21 @@ tr:nth-child(even) {
 //         $('#airtimeModal .modal-body').html(response.data);
 //     });
 // });
+$('#topUpAll').click(function(){
+    var contact =$('.contact-fn');
+    contact.each(function(){
+      if($(this).find('.checkbox').prop('checked','checked')){
+    var network =$(this).find('.phoneRef').html();
+    var dataUser =$(this).find('.firstName').data('user');
+    var contactName =$(this).find('.firstName').html();
+    var amount =$(this).find('.input-airtime-amount').val();    
+    alert(contactName);
+      }
+  })
+   
+
+})
 </script>
+
 
 @endsection
