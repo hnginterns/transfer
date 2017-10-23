@@ -83,7 +83,7 @@ tr:nth-child(even) {
 
 <center>
               <br><div class="">
-                <h3>Current Banlance: ₦ {{ number_format($topupbanlance),2}}</h3>
+                <h1>Current Balance: ₦ {{ number_format($topupbanlance),2}}</h1>
 	<div class="orange-box"><h4 class="title" align="center">CONTACT LIST</h4></div>
           <div class="table-responsive">
                 <table class="table">
@@ -142,7 +142,7 @@ tr:nth-child(even) {
        
 	
           <div class="table-responsive">
-                <table class="table">
+                <table id="datatable" class="table table-bordered table-hover">
               <thead>
                 <tr>
                   <th>Phone</th>
@@ -152,6 +152,7 @@ tr:nth-child(even) {
                   <th>Ref</th>
                   <th>User</th>
                   <th>Status</th>
+                  <th>Date</th>
                 </tr>
               </thead>
               <tbody>
@@ -166,7 +167,7 @@ tr:nth-child(even) {
                         <td class="phoneRef">{{ $hist->ref }}</td>
                         <td class="amount">{{ $hist->username }}</td>
                         <td class="amount">{{ $hist->status }}</td>
-                        
+                        <td class="amount">{{ $hist->created_at }}</td>
                         
                     </tr>
                   @endforeach
