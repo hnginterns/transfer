@@ -115,6 +115,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/ravepaysuccess/{ref}/{amount}/{currency}', 'RavepayController@success')->name('ravepay.success');
 	Route::get('/addbeneficiary/{wallet}', 'pagesController@addBeneficiary');
 	Route::post('/addbeneficiary/{wallet}', 'pagesController@insertBeneficiary')->name('beneficiaries.insert');
+	Route::post('/updateBeneficiary/{wallet}', 'pagesController@addAccount')->name('beneficiaries.insert');
 
 
 
