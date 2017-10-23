@@ -886,7 +886,9 @@
 
 <!--HEADER ENDS -->
 <section class="about">
+
 <div class="about-content">
+
 <div class="row">
         <div class="col-lg-12">
         <h5 class="about-title">How it works</h5>
@@ -897,6 +899,7 @@
         </div>
         
 </div>
+
 <div class="row">
         <div class="col-lg-4">
         <div class="icon"><img src="img/multiple-shots.png" alt="icon" /> </div>
@@ -904,6 +907,7 @@
         <p class="about-paragraph">
         Own more than one wallet for different purpose controlled from one dashboard</p>
         </div>
+        
         <div class="col-lg-4">
         <div class="icon"><img src="img/Group.png" alt="icon" /></div>
         <h5 class="about-title">Credit/Data Top Up</h5>
@@ -911,12 +915,14 @@
         Credit/Data Top Up can be sent to one beneficiary or groups.
         </p>
         </div>
+        
         <div class="col-lg-4">
         <div class="icon"><img src="img/smartphone-chat.png" alt="icon" /></div>
         <h5 class="about-title">Bulk SMS Integration</h5>
         <p class="about-paragraph">
         Bulk SMS Integration can be done by admin.
         </div>
+        
    </div>     
 </div>
 
@@ -944,9 +950,7 @@
         <li><a href="{{route('privacy')}}">Privacy Policy</a></li>
 
         <li><a href="{{route('features')}}">Features</a></li>
-        <li><a href="{{route('contact')}}">Contact Us</a></li>
-   
-
+        
         <li><a href="{{route('help')}}">Help & Support</a></li>
         <li><a href="{{url('login')}}">Sign In</a></li>
         <li><a href="{{route('how')}}">FAQs</a></li>
@@ -968,7 +972,6 @@
         <tr>
             <td><a href="{{url('/')}}">Home</a></td>
             <td><a href="{{route('about')}}">About Us</a></td>
-            <td><a href="{{route('contact')}}">Contact Us</a></td>
         </tr>
         <tr>
             <td><a href="{{route('how')}}">Features</a></td>
