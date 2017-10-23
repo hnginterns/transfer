@@ -297,8 +297,7 @@ class WalletController extends Controller
                     $transaction->save();
                     //end of logic for saving transactions
 
-                    //$wallet->balance -= $request->amount;
-                    //$wallet->save();
+
                     event(new FundWallet($bank));
                     $this->sendBankTransactionNotifications($transaction);
                     $transactions = BankTransaction::latest()->first();

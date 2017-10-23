@@ -73,6 +73,12 @@ tr:nth-child(even) {
 	} */
     
     }
+    
+    #tableTitle {
+    font-weight: 400px;
+	
+    }
+    
 </style>
 
 <link rel="stylesheet" href="walletview.css">
@@ -81,9 +87,57 @@ tr:nth-child(even) {
 <link rel="stylesheet" href="/css/walletview.css">
 
 
+<div class="row">
+  
+  <a type="button" class="btn btn-info">Fund wallet</a>
+  
+  <a href='#PurchaseTopUp' data-toggle="modal" class="btn btn-success">Purchase</a>
+  
+    <!-- Trigger the modal with a button -->
+                            <!-- Modal -->
+                            <div class="modal fade" id="PurchaseTopUp" role="dialog">
+                                <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Transfer To Service Provider</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="{{config('app.url')}}/phonetopup/fund" method="post" accept-charset="utf-8">
+                                                <div class="modal-body" style="padding: 5px;">
+                                                    <input name="wallet_id" value="{{$wallet == null ? 'null' : $wallet->id}}" type="hidden">
+                                                   
+                                                        {{csrf_field()}}
+
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
+                                                            <input class="form-control" name="narration" placeholder="Narration" type="text" required />
+                                                       
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
+                                                            <input class="form-control" name="amount" placeholder="Amount" type="number" required />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="panel-footer" style="margin-bottom:-14px;">
+                                                    <button type="submit" class="btn btn-success">Purchase</button>
+                                                    <button style="float: right;" type="button" class="btn btn-default btn-close" data-dismiss="modal">Close</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+  
+</div>
+
 <center>
               <br><div class="">
-                <h1>Current Balance: ₦ {{ number_format($topupbanlance),2}}</h1>
+                <h1>Current Balance : &#8358;{{ $topupbalance == null ? 'Balance unavailable' : number_format($topupbalance),2}}</h1>
 	<div class="orange-box"><h4 class="title" align="center">CONTACT LIST</h4></div>
           <div class="table table-responsive">
                 <table class="table" id="contact-table">
