@@ -9,4 +9,8 @@ class PhonetopupTransaction extends Model
     public function user(){
         return $this->belongsTo(User::class, 'uuid', 'id');
     }
+
+    public function wallet(){
+        return $this->belongsTo(Wallet::class);
+    }
 }
