@@ -7,7 +7,7 @@
 
             <!-- Modal Header -->
             <div class="modal-header">
-            	<span href="https://finance.hotels.ng/admin"><i class="fa fa-arrow-left" aria-hidden="true"></i></span>
+            	<a href="https://finance.hotels.ng/admin"><span><i class="fa fa-arrow-left" aria-hidden="true"></i></span></a>
                 <h4 class="modal-title">TRANSFER RULES</h4>
             </div>
             <!-- Modal Body -->

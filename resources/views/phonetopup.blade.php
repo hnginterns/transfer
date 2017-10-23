@@ -89,6 +89,7 @@ tr:nth-child(even) {
                 <table class="table">
               <thead>
                 <tr>
+                  <td>Select</td>
                   <td>Name</td>
                   <td>Phone Number</td>
                   <td>Network</td>
@@ -104,6 +105,7 @@ tr:nth-child(even) {
                 @if(count($phones) > 0)
                   @foreach($phones as $phone)
                     <tr>
+                      <td><input type="checkbox" name="select" value="1"></td>
                         <td class="firstName" data-user="{{ $phone->id }}">{{ $phone->firstname }} {{ $phone->lastname }}</td>
                         <td class="phone">{{ $phone->phone }}</td>
                         <td class="phoneRef">{{ $phone->netw }}</td>
