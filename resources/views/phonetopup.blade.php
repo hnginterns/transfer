@@ -75,7 +75,8 @@ tr:nth-child(even) {
     }
     
     #tableTitle {
-    color: red;
+    font-weight: 400px;
+	
     }
     
 </style>
@@ -88,7 +89,7 @@ tr:nth-child(even) {
 
 <center>
               <br><div class="">
-                <h1 id="tableTitle>Current Balance: ₦ {{ number_format($topupbanlance),2}}</h1>
+                <h1 id="tableTitle>Current Balance: ₦{{ number_format($topupbanlance),2}}</h1>
 	<div class="orange-box"><h4 class="title" align="center">CONTACT LIST</h4></div>
           <div class="table table-responsive">
                 <table class="table" id="contact-table">
