@@ -73,6 +73,11 @@ tr:nth-child(even) {
 	} */
     
     }
+    
+    #tableTitle {
+    color: red;
+    }
+    
 </style>
 
 <link rel="stylesheet" href="walletview.css">
@@ -83,7 +88,7 @@ tr:nth-child(even) {
 
 <center>
               <br><div class="">
-                <h2>Current Balance: ₦ {{ number_format($topupbanlance),2}}</h2>
+                <h1 id="tableTitle>Current Balance: ₦ {{ number_format($topupbanlance),2}}</h1>
 	<div class="orange-box"><h4 class="title" align="center">CONTACT LIST</h4></div>
           <div class="table table-responsive">
                 <table class="table" id="contact-table">
