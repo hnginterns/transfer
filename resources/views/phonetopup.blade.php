@@ -142,7 +142,7 @@ tr:nth-child(even) {
        
 	
           <div class="table-responsive">
-                <table class="table">
+                <table id="datatable" class="table table-bordered table-hover">
               <thead>
                 <tr>
                   <th>Phone</th>
@@ -152,6 +152,7 @@ tr:nth-child(even) {
                   <th>Ref</th>
                   <th>User</th>
                   <th>Status</th>
+                  <th>Date</th>
                 </tr>
               </thead>
               <tbody>
@@ -166,6 +167,7 @@ tr:nth-child(even) {
                         <td class="phoneRef">{{ $hist->ref }}</td>
                         <td class="amount">{{ $hist->username }}</td>
                         <td class="amount">{{ $hist->status }}</td>
+                        <td class="amount">{{ $hist->created_at }}</td>
                         
                         
                     </tr>
