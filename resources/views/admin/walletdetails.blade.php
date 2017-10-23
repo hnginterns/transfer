@@ -96,7 +96,11 @@
                 </li>
 
                 <li class="list-group-item">
-                 <a href="{{ route('wallets.manualfund', $wallet->id)}}" class="btn btn-warning">Fund Wallet</a>
+                 <a href="{{ route('wallets.manualfund', $wallet->id)}}" class="btn btn-warning">Fund Wallet With Card</a>
+                </li>
+
+                <li class="list-group-item">
+                 <a href="{{ route('wallets.manualfund', $wallet->id)}}" class="btn btn-warning">Fund Wallet Via Internet banking</a>
                 </li>
                 
                 <li class="list-group-item">
