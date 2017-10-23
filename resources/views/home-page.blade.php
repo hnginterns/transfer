@@ -893,8 +893,8 @@
         <div class="col-lg-12">
         <h5 class="about-title">How it works</h5>
         <p class="about-paragraph">
-        Our custom built Transfer Rules is built with the aim to simplify your financial
-        transactions to groups or individual account.
+        Our custom built Transfer Rules webapp is built with the aim of simplifying your financial
+        transactions to groups or individual accounts.
         </p>
         </div>
         
@@ -905,7 +905,7 @@
         <div class="icon"><img src="img/multiple-shots.png" alt="icon" /> </div>
         <h5 class="about-title">Multiple Wallet Support</h5>
         <p class="about-paragraph">
-        Own more than one wallet for different purpose controlled from one dashboard</p>
+        Own more than one wallet for different purposes and control them from one dashboard</p>
         </div>
         
         <div class="col-lg-4">
