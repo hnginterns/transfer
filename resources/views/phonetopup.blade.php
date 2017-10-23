@@ -85,7 +85,7 @@ tr:nth-child(even) {
               <br><div class="">
                 <h1>Current Balance: ₦ {{ number_format($topupbanlance),2}}</h1>
 	<div class="orange-box"><h4 class="title" align="center">CONTACT LIST</h4></div>
-          <div class="table-responsive">
+          <div class="table table-responsive">
                 <table class="table">
               <thead>
                 <tr>
@@ -162,7 +162,7 @@ tr:nth-child(even) {
 <div class="orange-box"><h4 class="title" align="center">TRANSACTION HISTORY</h4></div></th><br><div class="">
        
 	
-          <div class="table-responsive">
+          <div class="table table-responsive">
                 <table id="datatable" class="table table-bordered table-hover">
               <thead>
                 <tr>
