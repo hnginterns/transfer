@@ -71,6 +71,7 @@ class PhoneTopUpController extends Controller
         $network = $request->netw;
         $amount = $request->amount;
 
+
         // dd($request);
         // $contact = TopupContact::all();
         //$contact = TopupContact::find($request->user_id);
@@ -108,9 +109,12 @@ class PhoneTopUpController extends Controller
 
         */
 
+        $user_id = Auth::user()->id;
+
         $topuphistory = new TopupHistory;
 
-        $topuphistory->user_id = $contact->id;
+        $topuphistory->contact_id = $contact->id;
+        $topuphistory->user_id = $user_id;
         $topuphistory->amount = $amount;
         //$topuphistory->type = $request->type;
         $topuphistory->ref = str_random(10);
@@ -122,6 +126,74 @@ class PhoneTopUpController extends Controller
 
         //Session::flash('success',' Phone topped up uccessfully.');
         return redirect('/phonetopup')->with('success', 'Phone topped up uccessfully.');
+
+    }
+
+    public function topdatasubmit(Request $request)
+    {
+        $phone = $request->phone;
+        $network = $request->netw;
+        $amount = $request->amount;
+
+        $txn_ref = str_random(10);
+
+        $return_url = 'https://finance.hotels.ng/phonetopup';
+
+
+        // dd($request);
+        // $contact = TopupContact::all();
+        //$contact = TopupContact::find($request->user_id);
+        $contact = TopupContact::find($request->current_id);
+        //dd($contact);
+
+        $contacthistory = TopupHistory::where('user_id', $contact->id)->sum('amount');
+
+        //dd($contacthistory);
+
+        if ($contacthistory >= $contact->weekly_max) {
+        
+            return redirect('/phonetopup')->with('error', 'Weekly Maximum Exceede');
+
+        } 
+
+        $url = 'https://mobilenig.com/api/data.php/?username=' .
+            'jekayode&password=transfer' .
+            '&network='. $contact->netw .'&phoneNumber='. $contact->phone .'&amount='. $amount.'&ref='. $txn_ref .'&return_url='. $return_url;
+        
+        $headers = array('content-type' => 'application/json');
+        $response = \Unirest\Request::get($url, $headers);
+        //dd($response);
+        $response = json_decode($response->raw_body, true);
+
+        //dd($response);
+        
+        /*
+        if ($response === null) {
+            $status = 'Success';
+        } else {
+           return redirect('/phonetopup')->with('error', 'An Error Occured');
+        }
+        //end of Api call
+
+        */
+
+        $user_id = Auth::user()->id;
+
+        $topuphistory = new TopupHistory;
+
+        $topuphistory->contact_id = $contact->id;
+        $topuphistory->user_id = $user_id;
+        $topuphistory->amount = $amount;
+        //$topuphistory->type = $request->type;
+        $topuphistory->ref = str_random(10);
+        //$topuphistory->txn_response = $response;
+        $topuphistory->txn_response = 00;
+        $topuphistory->status = 'Success';
+
+        $topuphistory->save();
+
+        //Session::flash('success',' Phone topped up uccessfully.');
+        return redirect('/phonetopup')->with('success', 'Data topped up uccessfully.');
 
     }
 

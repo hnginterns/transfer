@@ -886,63 +886,46 @@
 
 <!--HEADER ENDS -->
 <section class="about">
+
 <div class="about-content">
+
 <div class="row">
         <div class="col-lg-12">
         <h5 class="about-title">How it works</h5>
         <p class="about-paragraph">
-        Our custom built Transfer Rules is built with the aim to connect your business to clients, employer to employee etc in a more effcient way and simplify your financial
-        transactions. Crisp and clear UX design and excellent workflow serves to foster customer intimacy and user loyalty
+        Our custom built Transfer Rules is built with the aim to simplify your financial
+        transactions to groups or individual account.
         </p>
         </div>
         
 </div>
+
 <div class="row">
         <div class="col-lg-4">
         <div class="icon"><img src="img/multiple-shots.png" alt="icon" /> </div>
         <h5 class="about-title">Multiple Wallet Support</h5>
         <p class="about-paragraph">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate 
-        </p>
+        Own more than one wallet for different purpose controlled from one dashboard</p>
         </div>
+        
         <div class="col-lg-4">
         <div class="icon"><img src="img/Group.png" alt="icon" /></div>
         <h5 class="about-title">Credit/Data Top Up</h5>
         <p class="about-paragraph">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate
+        Credit/Data Top Up can be sent to one beneficiary or groups.
         </p>
         </div>
+        
         <div class="col-lg-4">
         <div class="icon"><img src="img/smartphone-chat.png" alt="icon" /></div>
         <h5 class="about-title">Bulk SMS Integration</h5>
         <p class="about-paragraph">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate
+        Bulk SMS Integration can be done by admin.
         </div>
+        
+   </div>     
 </div>
-<div class="row" style="z-index:1001;">
-        <div class="col-lg-4">
-        <div class="icon"><img src="img/live-chat.png" alt="icon" /></div>
-        <h5 class="about-title">Live Chat</h5>
-        <p class="about-paragraph">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate
-        </p>
-        </div>
-        <div class="col-lg-4">
-        <div class="icon"><img src="img/credit-card.png" alt="icon" /></div>
-        <h5 class="about-title">Reliable Payment Method</h5>
-        <p class="about-paragraph">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate
-        </p>
-        </div>
-        <div class="col-lg-4">
-        <div class="icon"><img src="img/maze.png" alt="icon" /></div>
-        <h5 class="about-title">Easy Usage</h5>
-        <p class="about-paragraph">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed porro, laborum quis dolorum impedit unde, sunt voluptate 
-        </p>
-        </div>
-    </div>
-</div>
+
 
 <!-- DIVIDER -->
 <div id="divider-top"></div>
@@ -967,9 +950,7 @@
         <li><a href="{{route('privacy')}}">Privacy Policy</a></li>
 
         <li><a href="{{route('features')}}">Features</a></li>
-        <li><a href="{{route('contact')}}">Contact Us</a></li>
-   
-
+        
         <li><a href="{{route('help')}}">Help & Support</a></li>
         <li><a href="{{url('login')}}">Sign In</a></li>
         <li><a href="{{route('how')}}">FAQs</a></li>
@@ -991,7 +972,6 @@
         <tr>
             <td><a href="{{url('/')}}">Home</a></td>
             <td><a href="{{route('about')}}">About Us</a></td>
-            <td><a href="{{route('contact')}}">Contact Us</a></td>
         </tr>
         <tr>
             <td><a href="{{route('how')}}">Features</a></td>

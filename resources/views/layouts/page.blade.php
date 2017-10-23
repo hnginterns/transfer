@@ -194,9 +194,7 @@
         <li><a href="{{route('about')}}">About Us</a></li>
         <li><a href="{{route('privacy')}}">Privacy Policy</a></li>
 
-        <li><a href="{{route('features')}}">Features</a></li>
-        <li><a href="{{route('contact')}}">Contact Us</a></li>
-        
+        <li><a href="{{route('features')}}">Features</a></li>    
         <li><a href="{{route('help')}}">Help & Support</a></li>
         <li><a href="{{url('login')}}">Sign In</a> </li>
         <li><a href="{{route('how')}}">FAQs</a></li>
@@ -218,11 +216,9 @@
         <tr>
             <td><a href="{{url('/')}}">Home</a></td>
             <td><a href="{{route('about')}}">About Us</a></td>
-            <td><a href="{{route('contact')}}">Contact Us</a></td>
         </tr>
         <tr>
             <td><a href="{{route('how')}}">How it works</a></td>
-            <td><a href="{{route('contact')}}">Contact Us</a></td>
             <td><a href="{{route('help')}}">Help & Support</a></td>
         </tr>
         <tr>

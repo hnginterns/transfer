@@ -31,6 +31,8 @@ class SmsWalletController extends Controller
 
         $smsWallet = Wallet::where('type', 'sms')->first();
 
+        $accounts = SmsWallet::all();
+
         Unirest\Request::verifyPeer(false); /** Remember to remove this line of code before pushing to production server**/
 
         foreach ($wallet as $key => $wallet) {
@@ -51,7 +53,14 @@ class SmsWalletController extends Controller
             array_push($smswalletdetails, $detail);
         }
 
-        return view('admin.smswallet2', compact('smsWallet', 'smswalletdetails', 'sms'));
+        foreach($smswalletdetails as $sms)
+        {
+            $balance = $sms['balance'];
+            
+        }
+        //$balance = $smswalletdetails[0]['balance'];
+
+        return view('admin.smswallet2', compact('accounts', 'smsWallet', 'balance', 'smswalletdetails', 'sms'));
     }
 
     public function getUserDetails(Request $request)
@@ -72,7 +81,7 @@ class SmsWalletController extends Controller
         );
         $response = Unirest\Request::post('https://moneywave.herokuapp.com/v1/merchant/verify', $header, $query);
         
-        $user = SmsWallet::where('username', $request->email)->first();
+        // $user = SmsWallet::where('username', $request->email)->first();
         $url = "https://moneywave.herokuapp.com/v1/disburse";
         $headers = array(
             'content-type' => 'application/json',
@@ -81,8 +90,8 @@ class SmsWalletController extends Controller
         $data = [
             "lock" => "abc12345",
             "amount" => $request->amount,
-            "bankcode" => $user->bank_code,
-            "accountNumber" => $user->account,
+            "bankcode" => $request->bank_code,
+            "accountNumber" => $request->account,
             "currency" => "NGN",
             "senderName" => "TransferRule",
             "narration" => 'Transfer for data', //Optional
@@ -185,6 +194,19 @@ class SmsWalletController extends Controller
 
             }
 
+    }
+
+    public function addSmsAccount(Request $request)
+    {
+        $smsAccount = new SmsWallet;
+        $smsAccount->username = $request->username;
+        $smsAccount->bank_code = $request->bank_code;
+        $smsAccount->bank_account = $request->bank_account;
+        $smsAccount->api_key = $request->api_key;
+
+        $smsAccount->save();
+
+        return back()->with('success', 'Account added successfully');
     }
     
 
