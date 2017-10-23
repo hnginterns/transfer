@@ -257,7 +257,7 @@ class pagesController extends Controller
 
         $topuphistory = DB::table('topup_histories')
             ->join('topup_contacts', 'topup_histories.contact_id', '=', 'topup_contacts.id')
-            ->join('users', 'topup_histories.user_id', '=', 'user.id')
+            ->join('users', 'topup_histories.user_id', '=', 'users.id')
             ->select('topup_histories.*', 'topup_contacts.phone', 'topup_contacts.firstname', 'users.username', 'topup_contacts.lastname', 'topup_contacts.netw')
             ->get();
 
