@@ -83,7 +83,7 @@ tr:nth-child(even) {
 
 <center>
               <br><div class="">
-                <h3>Current Banlance: ₦ {{ number_format($topupbanlance),2}}</h3>
+                <h1>Current Balance: ₦ {{ number_format($topupbanlance),2}}</h1>
 	<div class="orange-box"><h4 class="title" align="center">CONTACT LIST</h4></div>
           <div class="table-responsive">
                 <table class="table">
