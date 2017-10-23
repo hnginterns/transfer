@@ -95,6 +95,7 @@ tr:nth-child(even) {
                   <td>Title</td>
                   <td>Department</td>
                   <td>Weekly Limit</td>
+                  <td>Enter Amount<br>(airtime)</td>
                   <td>Action</td>
                 </tr>
               </thead>
@@ -110,6 +111,11 @@ tr:nth-child(even) {
                         <td class="amount">{{ $phone->title }}</td>
                         <td class="amount">{{ $phone->department }}</td>
                         <td class="max-tops">{{ $phone->weekly_max }}</td>
+                        <td>
+                          <form>
+                              <input class="form-control" type="text" placeholder="Enter Amount" />
+                          </form>
+                        </td>
                         <td>
 
                           <a class="airtime btn btn-success" data-id="{{ $phone->id }}" data-toggle="modal" data-target="#airtimeModal">
@@ -133,9 +139,11 @@ tr:nth-child(even) {
                       <td></td>
                   </tr>
                 @endif
-
+             
               </tbody>
-            </table>    <br>
+            </table>  
+            <tr><button class="btn btn-success">Top Up All</button></tr>
+              <br>
 <hr><br>
 						
 <div class="orange-box"><h4 class="title" align="center">TRANSACTION HISTORY</h4></div></th><br><div class="">
