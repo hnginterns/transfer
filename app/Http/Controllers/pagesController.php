@@ -248,7 +248,7 @@ class pagesController extends Controller
  public function phoneTopupView()
     {
         $phones = TopupContact::all();
-        $topupbanlance = $this->getTopupWalletBalance();
+        $topupbalance = $this->getTopupWalletBalance();
         $cardWallet = CardWallet::latest()->first();
 
         $user = Auth::user();
@@ -261,8 +261,11 @@ class pagesController extends Controller
             ->select('topup_histories.*', 'topup_contacts.phone', 'topup_contacts.firstname', 'users.username', 'topup_contacts.lastname', 'topup_contacts.netw')
             ->orderBy('created_at', 'desc')
             ->get();
-
-        return view('phonetopup', compact('cardWallet', 'phones', 'topupbanlance', 'topuphistory'));
+            if(strlen($topupbalance) > 12){
+                $topupbalance = null;
+                Session::flash('error', 'Could not retrieve balance');
+            }
+        return view('phonetopup', compact('cardWallet', 'phones', 'topupbalance', 'topuphistory'));
     }
 
     //all other page functions can be added
