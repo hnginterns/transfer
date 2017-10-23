@@ -77,18 +77,14 @@ tr:nth-child(even) {
 </style>
 
 <link rel="stylesheet" href="walletview.css">
-<link rel="stylesheet" href="user.css">
-<link rel="stylesheet" href="form.css">
-<link rel="stylesheet" href="/css/walletview.css">
-
 
 <div class="row">
   	
-  <div class="row">
-  <div class="col-md-8 md-offset-3">
-     <h2 class="title" align="center"> Current Balance: &#x20A6; {{ number_format(($topupbalance),2) }} </h2>
- </div>
-</div>
+  <center>            
+ <div class="orange-box"><h2 class="title" align="center">Current Balance: &#x20A6; {{ number_format(($topupbalance),2) }} </h2></div>
+</center>
+  
+  <br>
   
   <a type="button" class="btn btn-info">Fund wallet</a>
   
