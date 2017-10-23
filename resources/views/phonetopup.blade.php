@@ -84,9 +84,11 @@ tr:nth-child(even) {
 
 <div class="row">
   	
+  <div class="row">
   <div class="col-md-4 md-offset-3">
-     <h2>{{ $topupbalance }}</h2>
+     <h2> Current Balance: &#x20A6; {{ number_format(($topupbalance),2) }} </h2>
  </div>
+</div>
   
   <a type="button" class="btn btn-info">Fund wallet</a>
   
