@@ -40,6 +40,7 @@ class PhoneTopUpController extends Controller
      //transfer from wallet to bank
     public function fundTopupWallet(Request $request, FundWallet $topup)
     {
+        
         $username       =     env('TOP_UP_USERNAME');
         $password       =     env('TOP_UP_PASSWORD');
         $phone          =     env('TOP_UP_PHONE');
