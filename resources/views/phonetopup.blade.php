@@ -420,12 +420,23 @@ tr:nth-child(even) {
 $('#topUpAll').click(function(){
     var contact =$('.contact-fn');
     contact.each(function(){
-      if($(this).find('.checkbox').prop('checked','checked')){
+      if($(this).find('.checkbox').is(':checked')){
+    var phone =$(this).find('.phone').html();
     var network =$(this).find('.phoneRef').html();
-    var dataUser =$(this).find('.firstName').data('user');
+    var dataUser =$(this).find('.firstName').attr('data-user');
     var contactName =$(this).find('.firstName').html();
     var amount =$(this).find('.input-airtime-amount').val();    
-    alert(contactName);
+  
+    //Ajax to handle request
+
+    $.ajax({
+            url: '/topup/phone',
+            type: 'POST',
+            data: {'phone':''+phone,'netw':''+network,'amount':''+amount}, // An object with the key 'submit' and value 'true;
+            success: function () {
+              alert("Your bookmark has been saved");
+            }
+        }); 
       }
   })
    
