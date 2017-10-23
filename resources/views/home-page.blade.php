@@ -917,6 +917,7 @@
         <p class="about-paragraph">
         Bulk SMS Integration can be done by admin.
         </div>
+   </div>     
 </div>
 
 
