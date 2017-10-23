@@ -85,7 +85,7 @@ tr:nth-child(even) {
 <div class="row">
   	
   <div class="row">
-  <div class="col-md-4 md-offset-3">
+  <div class="col-md-8 md-offset-3">
      <h2> Current Balance: &#x20A6; {{ number_format(($topupbalance),2) }} </h2>
  </div>
 </div>
