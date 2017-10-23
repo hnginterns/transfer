@@ -157,8 +157,8 @@ tr:nth-child(even) {
           @if(count($topuphistory) > 0)
                   @foreach($topuphistory as $hist)
                     <tr>
-                        <th>{{ $hist->contact->phone }}</th>
-                        <th>{{ $hist->contact->netw }}</th>
+                        <th>{{ $hist->phone }}</th>
+                        <th>{{ $hist->netw }}</th>
                         <td class="phone">{{ $hist->amount }}</td>
                         <td class="phoneRef">{{ $hist->ref }}</td>
                         <td class="amount">{{ $hist->status }}</td>
