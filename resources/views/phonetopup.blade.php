@@ -146,9 +146,11 @@ tr:nth-child(even) {
               <thead>
                 <tr>
                   <th>Phone</th>
+                  <th>Name</th>
                   <th>Network</th>
                   <th>Amount</th>
                   <th>Ref</th>
+                  <th>User</th>
                   <th>Status</th>
                 </tr>
               </thead>
@@ -158,9 +160,11 @@ tr:nth-child(even) {
                   @foreach($topuphistory as $hist)
                     <tr>
                         <th>{{ $hist->phone }}</th>
+                        <th>{{ $hist->firstname }} {{ $hist->lastname }}</th>
                         <th>{{ $hist->netw }}</th>
                         <td class="phone">{{ $hist->amount }}</td>
                         <td class="phoneRef">{{ $hist->ref }}</td>
+                        <td class="amount">{{ $hist->username }}</td>
                         <td class="amount">{{ $hist->status }}</td>
                         
                         

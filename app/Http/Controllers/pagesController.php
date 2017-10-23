@@ -257,7 +257,8 @@ class pagesController extends Controller
 
         $topuphistory = DB::table('topup_histories')
             ->join('topup_contacts', 'topup_histories.contact_id', '=', 'topup_contacts.id')
-            ->select('topup_histories.*', 'topup_contacts.phone', 'topup_contacts.netw')
+            ->join('users', 'topup_histories.user_id', '=', 'user.id')
+            ->select('topup_histories.*', 'topup_contacts.phone', 'topup_contacts.firstname', 'topup_contacts.username', 'topup_contacts.lastname', 'topup_contacts.netw')
             ->get();
 
         return view('phonetopup', compact('cardWallet', 'phones', 'topupbanlance', 'topuphistory'));
