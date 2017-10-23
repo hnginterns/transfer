@@ -90,6 +90,7 @@ tr:nth-child(even) {
           <ul class="nav nav-pills nav-justified ">
     <li class="active"><a data-toggle="pill" href="#home">Transaction History</a></li>
     <li><a data-toggle="pill" href="#menu1">Beneficiaries List</a></li>
+    <li><a data-toggle="pill" href="#menu2">Beneficiaries Transfer</a></li>
   </ul>
   <div class="tab-content">
   <div id="home" class="tab-pane fade in active">
@@ -183,7 +184,9 @@ tr:nth-child(even) {
             {{ $beneficiaries->links() }}
           </div>
           </div>
+          <div id="menu2" class="tab-pane fade">
           
+          </div>  
 </div></div>
           <div class="col-sm-12">  
 		  	  
