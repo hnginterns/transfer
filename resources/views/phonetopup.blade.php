@@ -137,7 +137,7 @@ tr:nth-child(even) {
 
 <center>
               <br><div class="">
-                <h1>Current Balance : &#8358;{{ $topupbalance == null ? 'Balance unavailable' : number_format($topupbalance),2}}</h1>
+                <h1 id="tableTitle>Current Balance : &#8358;{{ $topupbalance == null ? 'Balance unavailable' : number_format($topupbalance),2}}</h1>
 	<div class="orange-box"><h4 class="title" align="center">CONTACT LIST</h4></div>
           <div class="table table-responsive">
                 <table class="table" id="contact-table">
