@@ -77,7 +77,7 @@
 <div class="col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2">
             <!-- Modal Header -->
             <div class="modal-header">
-                <span><i class="fa fa-arrow-left" aria-hidden="true"></i></span>
+                <a href="https://finance.hotels.ng/admin"><span><i class="fa fa-arrow-left" aria-hidden="true"></i></span></a>
                 <h3 class="modal-title">TRANSFER RULES</h3>
             </div>
             <!-- Modal Body -->
