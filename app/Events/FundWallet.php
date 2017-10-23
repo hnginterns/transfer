@@ -20,7 +20,7 @@ class FundWallet
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($cardWallet)
     {
        $this->cardWallet = $cardWallet;
     }
