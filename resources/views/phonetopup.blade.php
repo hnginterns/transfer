@@ -33,7 +33,7 @@ i.sent{
 first {
     float: right;
     margin: 0 0 10px 10px;
-}
+} 
     
 form group { 
     
