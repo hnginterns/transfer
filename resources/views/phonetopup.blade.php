@@ -142,7 +142,7 @@ tr:nth-child(even) {
        
 	
           <div class="table-responsive">
-                <table class="table">
+                <table id="datatable" class="table table-bordered table-hover">
               <thead>
                 <tr>
                   <th>Phone</th>
