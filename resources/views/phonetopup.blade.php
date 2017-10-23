@@ -115,7 +115,7 @@ tr:nth-child(even) {
                         <td class="max-tops">{{ $phone->weekly_max }}</td>
                         <td>
                           <form>
-                              <input class="form-control" type="text" placeholder="Enter Amount" />
+                              <input class="form-control" type="text"  placeholder="Enter Amount" />
                           </form>
                         </td>
                         <td>
@@ -143,8 +143,19 @@ tr:nth-child(even) {
                 @endif
              
               </tbody>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><button class="btn btn-success">Top Up All</button></td>
+                <td></td>
+               </tr>
             </table>  
-            <tr><button class="btn btn-success">Top Up All</button></tr>
+            
               <br>
 <hr><br>
 						
