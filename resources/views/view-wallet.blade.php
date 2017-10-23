@@ -87,7 +87,7 @@ tr:nth-child(even) {
 </div><br><br>
 
           <br> <div class="">
-          <ul class="nav nav-pills">
+          <ul class="nav nav-pills nav-justified ">
     <li class="active"><a data-toggle="pill" href="#home">Transaction History</a></li>
     <li><a data-toggle="pill" href="#menu1">Beneficiaries List</a></li>
   </ul>
