@@ -216,7 +216,6 @@
         <tr>
             <td><a href="{{url('/')}}">Home</a></td>
             <td><a href="{{route('about')}}">About Us</a></td>
-            <td><a href="{{route('contact')}}">Contact Us</a></td>
         </tr>
         <tr>
             <td><a href="{{route('how')}}">How it works</a></td>
