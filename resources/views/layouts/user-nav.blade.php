@@ -12,7 +12,7 @@
           <div class="collapse navbar-collapse" id="navbar">
           <form class="navbar-form navbar-right navform">
           
-            <input type="text search" class="form-control" placeholder="Search...">
+            
        
                   </ul>
 
