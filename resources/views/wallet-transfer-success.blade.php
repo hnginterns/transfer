@@ -73,9 +73,11 @@
 
 @if(Session::has('status'))
 @php($data = Session::get('status'))
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2">
             <!-- Modal Header -->
             <div class="modal-header">
+                <a href="https://finance.hotels.ng/admin"><span><i class="fa fa-arrow-left" aria-hidden="true"></i></span></a>
                 <h3 class="modal-title">TRANSFER RULES</h3>
             </div>
             <!-- Modal Body -->

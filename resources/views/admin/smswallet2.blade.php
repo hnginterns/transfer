@@ -42,7 +42,11 @@
        @foreach($accounts as $account)
           <div class="col-md-3 col-sm-10 units" >
             <p>Account Name: {{$account->username}}</p>
-            <p>Sms Unit: {{$balance}}</p>
+            @foreach($smswalletdetails as $sms)
+            @if($account->username == $sms['username'])
+            <p>Sms Unit: {{$sms['balance']}}</p>
+            @endif
+            @endforeach
             <button type="button" class="btn btn-success btn-block " data-toggle="modal" data-target="#{{$account->id}}smstop">
                 Top up
               </button>
@@ -320,7 +324,7 @@
                                         <div class="col-md-6 col-md-offset-2">
                                           <form action="sms/otp" method="POST">
                                             {{csrf_field()}}
-                                            <input type="hidden" name="ref" value="{{$sms->ref}}">
+                                            <input type="hidden" name="ref" value="{{$smswallet->ref}}">
                                             <div class="form-group">
                                                 <input type="password" class="form-control" name="otp" placeholder="Enter OTP">
                                             </div>
@@ -355,3 +359,6 @@
         });
     </script>
 @endsection
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+

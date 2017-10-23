@@ -22,7 +22,7 @@ class FundWallet
      */
     public function __construct()
     {
-       // $this->cardWallet = $cardWallet;
+       $this->cardWallet = $cardWallet;
     }
 
     /**
