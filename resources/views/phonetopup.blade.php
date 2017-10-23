@@ -86,7 +86,7 @@ tr:nth-child(even) {
   	
   <div class="row">
   <div class="col-md-8 md-offset-3">
-     <h2> Current Balance: &#x20A6; {{ number_format(($topupbalance),2) }} </h2>
+     <h2 class="title" align="center"> Current Balance: &#x20A6; {{ number_format(($topupbalance),2) }} </h2>
  </div>
 </div>
   
@@ -138,8 +138,7 @@ tr:nth-child(even) {
 
 <center>
               <br><div class="">
-                <h1 id="tableTitle>Current Balance : &#8358;{{ $topupbalance == null ? 'Balance unavailable' : number_format($topupbalance),2}}</h1>
-	<div class="orange-box"><h4 class="title" align="center">CONTACT LIST</h4></div>
+               <div class="orange-box"><h4 class="title" align="center">CONTACT LIST</h4></div>
           <div class="table table-responsive">
                 <table class="table" id="contact-table">
               <thead>
