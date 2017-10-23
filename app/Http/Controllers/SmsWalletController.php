@@ -25,7 +25,7 @@ class SmsWalletController extends Controller
     {
         $smswalletdetails = array();
 
-        $sms = CardWallet::latest()->first();
+        $smswallet = CardWallet::latest()->first();
 
         $wallet = $this->index();
 
@@ -53,14 +53,10 @@ class SmsWalletController extends Controller
             array_push($smswalletdetails, $detail);
         }
 
-        foreach($smswalletdetails as $sms)
-        {
-            $balance = $sms['balance'];
-            
-        }
+        
         //$balance = $smswalletdetails[0]['balance'];
 
-        return view('admin.smswallet2', compact('accounts', 'smsWallet', 'balance', 'smswalletdetails', 'sms'));
+        return view('admin.smswallet2', compact('accounts', 'smsWallet', 'balance', 'smswalletdetails', 'smswallet'));
     }
 
     public function getUserDetails(Request $request)
@@ -189,8 +185,10 @@ class SmsWalletController extends Controller
             $response = json_decode($response->raw_body, true);
             if($response['status'] == 'success') {
                 event(new FundWallet($cardWallet));
+                var_dump($response);
+                die();
                 //Session::flash('success',$response);
-                return redirect('admin/smswallet2')->with('success', $response);
+                return redirect('admin/smswallet')->with('success', $response);
 
             }
 
