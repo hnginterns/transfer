@@ -85,7 +85,7 @@ tr:nth-child(even) {
               <br><div class="">
                 <h1>Current Balance : &#8358;{{ $topupbalance == null ? 'Balance unavailable' : number_format($topupbalance),2}}</h1>
 	<div class="orange-box"><h4 class="title" align="center">CONTACT LIST</h4></div>
-          <div class="table-responsive">
+          <div class="table table-responsive">
                 <table class="table">
               <thead>
                 <tr>
@@ -96,6 +96,7 @@ tr:nth-child(even) {
                   <td>Title</td>
                   <td>Department</td>
                   <td>Weekly Limit</td>
+                  <td>Enter Amount<br>(airtime)</td>
                   <td>Action</td>
                 </tr>
               </thead>
@@ -112,6 +113,11 @@ tr:nth-child(even) {
                         <td class="amount">{{ $phone->title }}</td>
                         <td class="amount">{{ $phone->department }}</td>
                         <td class="max-tops">{{ $phone->weekly_max }}</td>
+                        <td>
+                          <form>
+                              <input class="form-control" type="text"  placeholder="Enter Amount" />
+                          </form>
+                        </td>
                         <td>
 
                           <a class="airtime btn btn-success" data-id="{{ $phone->id }}" data-toggle="modal" data-target="#airtimeModal">
@@ -135,15 +141,28 @@ tr:nth-child(even) {
                       <td></td>
                   </tr>
                 @endif
-
+             
               </tbody>
-            </table>    <br>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><button class="btn btn-success">Top Up All</button></td>
+                <td></td>
+               </tr>
+            </table>  
+            
+              <br>
 <hr><br>
 						
 <div class="orange-box"><h4 class="title" align="center">TRANSACTION HISTORY</h4></div></th><br><div class="">
        
 	
-          <div class="table-responsive">
+          <div class="table table-responsive">
                 <table id="datatable" class="table table-bordered table-hover">
               <thead>
                 <tr>

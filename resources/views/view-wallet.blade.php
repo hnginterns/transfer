@@ -86,7 +86,14 @@ tr:nth-child(even) {
 </table><p>
 </div><br><br>
 
-          <br><div class="">
+          <br> <div class="">
+          <ul class="nav nav-pills nav-justified ">
+    <li class="active"><a data-toggle="pill" href="#home">Transaction History</a></li>
+    <li><a data-toggle="pill" href="#menu1">Beneficiaries List</a></li>
+    <li><a data-toggle="pill" href="#menu2">Beneficiaries Transfer</a></li>
+  </ul>
+  <div class="tab-content">
+  <div id="home" class="tab-pane fade in active">
 	<div class="orange-box"><h4 class="title" align="center"> {{ ucfirst($wallet->wallet_name) }} TRANSACTION HISTORY</h4></div><br>
           <div class="table-responsive">
               @if(count($history))          
@@ -143,7 +150,8 @@ tr:nth-child(even) {
                   
                 @endif
 					</div>
-
+</div>
+<div id="menu1" class="tab-pane fade">
           <div class="orange-box"><h4 class="title" align="center"> {{ $wallet->wallet_name }}'s Beneficiaries</h4></div>
 
           <div class="table-responsive">
@@ -175,8 +183,11 @@ tr:nth-child(even) {
 
             {{ $beneficiaries->links() }}
           </div>
+          </div>
+          <div id="menu2" class="tab-pane fade">
           
-
+          </div>  
+</div></div>
           <div class="col-sm-12">  
 		  	  
             	
