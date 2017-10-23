@@ -169,7 +169,6 @@ tr:nth-child(even) {
                         <td class="amount">{{ $hist->status }}</td>
                         <td class="amount">{{ $hist->created_at }}</td>
                         
-                        
                     </tr>
                   @endforeach
                 @else
