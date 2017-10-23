@@ -73,12 +73,7 @@ tr:nth-child(even) {
 	} */
     
     }
-    
-    #tableTitle {
-    font-weight: 400px;
-	
-    }
-    
+        
 </style>
 
 <link rel="stylesheet" href="walletview.css">
@@ -88,6 +83,10 @@ tr:nth-child(even) {
 
 
 <div class="row">
+  	
+  <div class="col-md-4 md-offset-3">
+     <h2>{{ $topupbalance }}</h2>
+ </div>
   
   <a type="button" class="btn btn-info">Fund wallet</a>
   
