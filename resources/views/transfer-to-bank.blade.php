@@ -7,7 +7,7 @@
 
 <link rel="stylesheet" href="/css/form.css">
             <div class="col-md-6 col-sm-6">
-            <img src="https://ferpay.com/fpmedia/panel/svg/ewallet-transfer-bank.svg" width="250" height="250">
+            <img src="https://ferpay.com/fpmedia/panel/svg/ewallet-transfer-bank.svg" width="300" height="300">
                   @if(session('failed'))
                   
                   <div class="alert alert-danger">
