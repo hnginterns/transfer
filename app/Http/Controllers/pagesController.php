@@ -18,6 +18,7 @@ use App\WalletTransaction;
 use App\SmsWalletFund;
 use App\TopupContact;
 use App\TopupHistory;
+use App\Validation;
 
 use App\Bank;
 
@@ -145,7 +146,7 @@ class pagesController extends Controller
         if($permit == null) return redirect('/dashboard')->with('error', 'You do not have access to this wallet');
 
         $cardWallet = CardWallet::latest()->first();
-        $beneficiary = Beneficiary::latest()->first();
+        $beneficiary = Validation::latest()->first();
         $beneficiaries = Beneficiary::where('wallet_id', $wallet->id)->paginate(15);
 
         // get all wallet to wallet transactions, both sent and received
@@ -221,7 +222,7 @@ class pagesController extends Controller
                 $response = json_decode($response->raw_body, true);
                 if($response['status'] == 'success')
                 {
-                    $beneficiary = new Beneficiary;
+                    $beneficiary = new Validation;
                     //$beneficiary->name = request('name');
                     $beneficiary->account_number = request('account_number'); //->account_number;
                     $bank_detail = explode('||', request('bank_id'));
@@ -247,9 +248,15 @@ class pagesController extends Controller
 
     public function addAccount(Request $request, Wallet $wallet)
     {
-        $beneficiary = Beneficiary::latest()->first();
-        Beneficiary::where('id', $beneficiary->id)
-                    ->update(['name' => $request->name]);
+        $beneficiary = new Beneficiary;
+        $beneficiary->name = $request->name;
+        $beneficiary->bank_id = $request->bank_id;
+        $beneficiary->bank_name = $request->bank_name;
+        $beneficiary->account_number = $request->account_number;
+        $beneficiary->wallet_id = $wallet->id;
+        $beneficiary->uuid = Auth::user()->id;
+        $beneficiary->save();
+
         return redirect("wallet/$wallet->id")->with('success', 'Beneficiary added');
     }
 
