@@ -33,7 +33,7 @@ i.sent{
 first {
     float: right;
     margin: 0 0 10px 10px;
-}
+} 
     
 form group { 
     
@@ -73,22 +73,18 @@ tr:nth-child(even) {
 	} */
     
     }
-    
-    #tableTitle {
-    font-weight: 400px;
-	
-    }
-    
+        
 </style>
 
 <link rel="stylesheet" href="walletview.css">
-<link rel="stylesheet" href="user.css">
-<link rel="stylesheet" href="form.css">
-<link rel="stylesheet" href="/css/walletview.css">
-
 
 <div class="row">
-  
+  	
+  <center>            
+ <div class="orange-box"><h2 class="title" align="center">Current Balance : &#8358;{{ $topupbalance == null ? 'Balance unavailable' : number_format($topupbalance),2}} </strong> </h2></div>
+</center>
+  <br>
+
   <a href="#walletTopUp" data-toggle="modal" class="btn btn-info">Fund wallet</a>
   
   <a href='#PurchaseTopUp' data-toggle="modal" class="btn btn-success">Purchase</a>
@@ -265,6 +261,7 @@ tr:nth-child(even) {
 
 <center>
               <br><div class="">
+
               
 	<div class="orange-box"><h4 class="title" align="center">WALLET TRANSFER HISTORY</h4></div>
   <br>
@@ -300,9 +297,11 @@ tr:nth-child(even) {
         </tbody>
       </table>
     </div>
-    
-                <h1>Current Balance : &#8358;{{ $topupbalance == null ? 'Balance unavailable' : number_format($topupbalance),2}}</h1>
-	<div class="orange-box"><h4 class="title" align="center">CONTACT LIST</h4></div>
+    <br>
+    <hr>
+              
+               <div class="orange-box"><h4 class="title" align="center">CONTACT LIST</h4></div>
+
           <div class="table table-responsive">
                 <table class="table" id="contact-table">
               <thead>

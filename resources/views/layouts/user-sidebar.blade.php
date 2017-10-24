@@ -1,7 +1,7 @@
 <body style="background-color:#E6E6FA">
   
           <ul class="nav nav-sidebar">
-          <input type="text" class="form-control" placeholder="Search..."><br>
+          <br>
      
              
               <li>
