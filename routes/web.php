@@ -146,7 +146,9 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
   	Route::get('wallets/details/{id}', 'Admin\WalletController@details')->name('wallets.details');
   	Route::get('wallets/manualfund/{id}', 'Admin\WalletController@manualfund')->name('wallets.manualfund');
   	Route::post('wallets/manualfund/{id}', 'Admin\WalletController@manualfundstore')->name('wallets.manualfund.store');
-  	Route::get('wallets/ravefund/{id}', 'Admin\WalletController@ravefund')->name('wallets.ravefund');
+	Route::get('wallets/manualfundint/{id}', 'Admin\WalletController@manualfundint')->name('wallets.manualfundint');
+  	Route::post('wallets/manualfundint/{id}', 'Admin\WalletController@manualfundstoreint')->name('wallets.manualfund.storeint');
+	Route::get('wallets/ravefund/{id}', 'Admin\WalletController@ravefund')->name('wallets.ravefund');
   	Route::post('wallets/ravefund/{id}', 'Admin\WalletController@ravefundstore')->name('wallets.ravefund.store');
 	Route::get('/managewallet', 'Admin\AdminController@managewallet');
 	Route::get('/{id}/archivewallet', 'Admin\AdminController@archiveWallet');

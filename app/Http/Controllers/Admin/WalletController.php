@@ -204,6 +204,47 @@ class WalletController  extends Controller
         return view('admin.wallets.ravefund', ['wallet' => $wallet]);*/
     }
 
+    public function manualfundint($id, CardWallet $cardWallet){
+        //get wallet data by id
+        $wallet = Wallet::find($id);
+
+        $cardWallet = CardWallet::latest()->first();
+
+        $user = Auth::user();
+        
+        //load form view
+        return view('admin.wallets.internetbanking', compact('wallet', 'cardWallet','user'));
+    }
+
+    public function manualfundstoreint($id, Request $request){
+        
+                //validate wallet data
+                /**$this->validate($request, [
+                    'name' => 'required',
+                    'amount' => 'required',
+                    'user_id' => 'required',
+                    'wallet_id' => 'required',
+                    'method' => 'required',
+                    'status' => 'required'
+                ]);
+                
+                //get wallet data
+                $fundingData = $request->all();
+                
+                //update wallet data
+                Wallet::find($id)->update($fundingData);
+        
+                return redirect()->route('admin.wallets.index')->with('success','wallet funded successfully!');
+            }
+        
+            public function ravefund($id){
+                //get wallet data by id
+                $wallet = Wallet::find($id);
+                
+                //load form view
+                return view('admin.wallets.ravefund', ['wallet' => $wallet]);*/
+            }
+
 
     public function ravefundstore($id, Request $request){
 

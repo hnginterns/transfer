@@ -1,6 +1,6 @@
 @extends('layouts.admin')
-@section('title', 'Manual Fund Wallet')
-@section('subtitle', 'Fund Wallet')
+@section('title', 'Internet Fund Wallet')
+@section('subtitle', 'Internet Fund Wallet')
 
 @section('content')
 <div class="row">
