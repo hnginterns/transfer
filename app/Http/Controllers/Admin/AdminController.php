@@ -20,6 +20,7 @@ use DB;
 
 use App\TopupHistory;
 use App\TopupContact;
+use App\Tag;
 
 use App\Beneficiary;
 use App\Transaction;
@@ -75,6 +76,7 @@ class AdminController extends WalletController
         
         $topupbalance = (integer) $this->getTopupWalletBalance();
         $bank = Bank::all();
+        $tags = Tag::all();
         //$wallet = Wallet::where('type', 'topup')->get();
 
          $wallet = Wallet::where('type', 'topup')->first();
@@ -89,7 +91,7 @@ class AdminController extends WalletController
          $cardWallet = CardWallet::latest()->first();
         //dd($cardWallet);
         
-        return view('admin.phonetopup.index', compact('cardWallet', 'phones', 'wallet', 'bank', 'topupbalance', 'contacts', 'history'));
+        return view('admin.phonetopup.index', compact('cardWallet', 'phones', 'wallet', 'bank', 'topupbalance', 'contacts', 'history', 'tags'));
     }
 
     public function index()
