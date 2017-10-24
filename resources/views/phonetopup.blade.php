@@ -701,7 +701,9 @@ $('#topUpAll').click(function(){
 
 <script>
   $(document).ready(function(){
-    $('#wallettopuphistory').DataTable();
+    $('#wallettopuphistory').DataTable({
+        "order": [[ 7, "desc" ]]
+    });
   });
 </script>
 @endsection
