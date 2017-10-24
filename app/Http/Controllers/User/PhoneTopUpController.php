@@ -40,6 +40,83 @@ class PhoneTopUpController extends Controller
 
     {
         
+<<<<<<< HEAD
+=======
+        $username       =     env('TOP_UP_USERNAME');
+        $password       =     env('TOP_UP_PASSWORD');
+        $phone          =     env('TOP_UP_PHONE');
+        $bank_account   =     env('TOP_UP_BANK_ACCOUNT');
+        $bank_code      =     env('TOP_UP_BANK_CODE');
+        $bank = Bank::where('bank_code', $bank_code)->first();
+        $validator = $this->validateRequest($request->all());
+        if ($validator->fails()) {
+            $messages = $validator->messages()->toArray();
+             Session::flash('form-errors', $messages);
+            return back();
+        } else {
+                $wallet = Wallet::find($request->wallet_id);
+                
+                $token = $this->getToken();
+                $headers = array('content-type' => 'application/json', 'Authorization' => $token);
+                $wallet = Wallet::find($request->wallet_id);
+                $query = array(
+                    "lock" => $wallet->lock_code,
+                    "amount" => $request->amount,
+                    "bankcode" => $bank_code,
+                    "accountNumber" => $bank_account,
+                    "currency" => "NGN",
+                    "senderName" => $phone,
+                    "narration" => $request->narration, //Optional
+                    "ref" => $request->reference, // No Refrence from request
+                    "walletUref" => $wallet->wallet_code
+                );
+
+                //Api call to moneywave for transaction
+                $body = \Unirest\Request\Body::json($query);
+                $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/disburse', $headers, $body);
+                $response = json_decode($response->raw_body, true);
+                $status = $response['status'];
+                //end of Api call
+                
+                if ($status == 'success') {
+
+                    //data to be parsed to display transaction details
+                    $data = $response['data']['data'];
+                    $data['senderName'] = Auth::user()->username;
+                    $data['walletCodeSender'] = $wallet->wallet_code;
+                    $data['receiverName'] = 'service Provider';
+                    $data['beneficiaryAccount'] = $bank_account;
+                    $data['amount'] = $request->amount;
+                    $data['narration'] = $request->narration;
+
+                    //end of data prep
+
+                    //logic to persist transaction details
+                    $transaction = new PhonetopupTransaction;
+                    $transaction->wallet_id = $wallet->id;
+                    $transaction->amount = $request->amount;
+                    $transaction->uuid =  Auth::user()->id;
+                    $transaction->account_name = 'Service Provider';
+                    $transaction->bank_id = $bank->id;
+                    $transaction->status = true;
+                    $transaction->account_number = $bank_account;
+                    $transaction->narration = $request->narration;
+                    $transaction->save();
+                    //end of logic for saving transactions
+                    
+                    //fire off an sms notification
+                    $this->sendPhoneTopupTransactionNotifications($transaction);
+
+                     event(new FundWallet($topup));
+                    // Session::flash('success',"Transaction was successful");
+                    return redirect('success')->with('status',$data);
+                } else {
+                    Session::flash('error',$response['message']);
+                    return back();
+                }
+        }
+    }
+>>>>>>> a140738b761a85cd1058564199d468eb3a88dc35
 
 
 
