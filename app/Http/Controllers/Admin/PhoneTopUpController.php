@@ -13,12 +13,12 @@ use App\Wallet;
 use App\SmsWalletFund;
 use App\CardWallet;
 use App\Restriction;
-
 use App\TopupContact;
 use App\Rule;
 use App\Bank;
 use App\Beneficiary;
 use App\Transaction;
+use App\Tag;
 use App\PhonetopupTransaction;
 use App\Notifications\PhonetopupTransaction as PhonetopupTransactionNotify;
 use Carbon\Carbon;
@@ -37,6 +37,62 @@ class PhoneTopUpController extends Controller
         $wallet = Wallet::where('type', 'topup')->first();
         return view('phonetopup', compact('wallet'));
     }
+
+    public function addTag(Request $request){
+        $input = $request->all();
+        
+        $validator = Validator::make($input, 
+            [
+                'tagname' => 'required|string'
+            ],
+            [
+                'tagname.required' => 'Tag name is required'
+            ]
+         ); 
+        if ($validator->fails()) {
+            $messages = $validator->messages();
+            return response()->json(['error' => true, 'msg' => $messages]);
+        } else {
+            $tag = new Tag();
+            $tag->name = $input['tagname'];
+            
+            $tag->save();
+            
+            return response()->json(['error' => false, 'msg' => "Tag added successfully"]);
+        }
+    }
+
+    public function editTag(Request $request, $id){
+        $input = $request->all();
+        
+        $validator = Validator::make($input, 
+            [
+                'tagname' => 'required|string'
+            ],
+            [
+                'tagname.required' => 'Tag name is required'
+            ]
+         ); 
+        if ($validator->fails()) {
+            $messages = $validator->messages();
+            return response()->json(['error' => true, 'msg' => $messages]);
+        } else {
+            $tag = Tag::find($id);
+            $tag->name = $input['tagname'];
+
+            $tag->save();
+            
+            return response()->json(['error' => false, 'msg' => "Tag updated successfully"]);
+        }
+    }
+
+    public function deleteTag(Request $request, $id){
+
+        $tag = Tag::find($id);
+        $tag->delete();
+        
+        return response()->json(['error' => false, 'msg' => "Tag deleted successfully"]);
+    }
     
     public function addPhone(Request $request){
         $input = $request->all();
@@ -48,7 +104,6 @@ class PhoneTopUpController extends Controller
             'phone' => 'required|numeric|unique:topup_contacts',
             'network' => 'required',
             'max_tops' => 'required'
-
             ],
                                      [
             'firstname.required' => 'First name is required',
@@ -76,6 +131,7 @@ class PhoneTopUpController extends Controller
             $phone->network = 0;
             $phone->netw = $input['network'];
             $phone->weekly_max = $input['max_tops'];
+            $phone->tags = $input['tagcontact'];
 
             $phone->save();
 

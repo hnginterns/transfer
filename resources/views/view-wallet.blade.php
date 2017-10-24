@@ -56,6 +56,11 @@ tr:nth-child(even) {
 </style>
 
 <link rel="stylesheet" href="/css/walletview.css">
+
+<center>            
+ <div class="orange-box"><h2 class="title" align="center">Current Balance: <strong> &#x20A6;{{ number_format(($wallet->balance),2) }} </strong>  </h2></div>
+</center>
+
    <!-- Trigger the modal with a button -->
         <center><button type="button" class="btn btn-dark" data-toggle="modal" data-target="#beneficiaryModal">Add Beneficiary</button>
 <!-- Trigger the modal with a button -->
@@ -351,10 +356,10 @@ tr:nth-child(even) {
                     <form action="/addbeneficiary/{{ $wallet->id }}" method="post" role="form" class="submit-topup">
                           {{ csrf_field() }}
                           <!-- text input -->
-                          <div class="form-group">                  
+                          {{--<div class="form-group">                  
                             <label>Beneficiary Name</label>
                             <input type="text" required name="name" class="form-control input-defaulted" placeholder="Name">
-                          </div>
+                          </div>--}}
 
                            <div class="form-group">                   
                             <label>Bank</label>
@@ -434,6 +439,63 @@ $('.modal-content').resizable({
 
 </script>
 
+@endif
+
+@if (session('response'))
+   <script type="text/javascript">
+        $(document).ready(function() {
+            $('#validateModal').modal();
+        });
+    </script>
+
+    <div class="modal fade" id="validateModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Save Beneficiary</h4>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+            <div class="col-md-6 col-md-offset-2">
+              <form action="/updateBeneficiary/{{$wallet->id}}" method="POST">
+                {{csrf_field()}}
+                <div class="form-group">
+                <input type="text" name="name" value="{{session('response')}}" class="form-control" readonly>
+              </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="bank_name" value="{{$beneficiary->bank_name}}" readonly>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="account_number" value="{{$beneficiary->account_number}}" readonly>
+                </div>
+                <button type="submit" class="btn btn-default btn-block">Submit</button>
+              </form>
+            </div>
+          </div>
+      </div>
+      
+    </div>
+  </div>
+
+</div>
+<script>
+$('.modal-content').resizable({
+      //alsoResize: ".modal-dialog",
+      minHeight: 300,
+      minWidth: 300
+    });
+    $('.modal-dialog').draggable();
+
+    $('#myModal').on('show.bs.modal', function() {
+      $(this).find('.modal-body').css({
+        'max-height': '100%'
+      });
+    });
+
+</script>
 @endif
 
     @else

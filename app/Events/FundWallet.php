@@ -14,13 +14,13 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 class FundWallet
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-
+    protected $cardWallet;
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($cardWallet)
     {
        $this->cardWallet = $cardWallet;
     }

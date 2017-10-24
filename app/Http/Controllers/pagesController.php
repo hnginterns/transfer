@@ -52,6 +52,26 @@ class pagesController extends Controller
     // return view ('sign-in');
     }
 
+    //get token for new transaction
+    public function getToken()
+    {
+        $api_key = env('API_KEY');
+        $secret_key = env('API_SECRET');
+        \Unirest\Request::verifyPeer(false);
+        $headers = array('content-type' => 'application/json');
+        $query = array('apiKey' => $api_key, 'secret' => $secret_key);
+        $body = \Unirest\Request\Body::json($query);
+        $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/merchant/verify', $headers, $body);
+        $response = json_decode($response->raw_body, true);
+        $status = $response['status'];
+        if (!$status == 'success') {
+            echo 'INVALID TOKEN';
+        } else {
+            $token = $response['token'];
+            return $token;
+        }
+    }
+
     public function userdashboard()
     {
         //$wallet = Wallet::all();
@@ -117,11 +137,6 @@ class pagesController extends Controller
     }
 
 
-    public function otp()
-    {
-        return view('otp');
-    }
-
     public function walletdetail(Wallet $wallet)
     {
         $permit = Restriction::where('wallet_id', $wallet->id)
@@ -130,7 +145,7 @@ class pagesController extends Controller
         if($permit == null) return redirect('/dashboard')->with('error', 'You do not have access to this wallet');
 
         $cardWallet = CardWallet::latest()->first();
-        
+        $beneficiary = Beneficiary::latest()->first();
         $beneficiaries = Beneficiary::where('wallet_id', $wallet->id)->paginate(15);
 
         // get all wallet to wallet transactions, both sent and received
@@ -142,7 +157,7 @@ class pagesController extends Controller
 
         $history = Trans::getTransactionsHistory($walletTransfer, $walletTransactions, $bankTransactions, $wallet->wallet_code, $wallet->id);
 
-        return view('view-wallet', compact('wallet','permit','rules','beneficiaries', 'history', 'cardWallet'));
+        return view('view-wallet', compact('wallet','permit','rules','beneficiaries', 'history', 'cardWallet', 'beneficiary'));
     }
 
     public function createBeneficiary()
@@ -164,6 +179,11 @@ class pagesController extends Controller
         $banks = Bank::all();
 
         return view('createbeneficiary', compact('wallet','banks'));
+    }
+
+    public function validateAccount(Request $request)
+    {
+        
     }
 
     public function insertBeneficiary(Request $request, Wallet $wallet)
@@ -190,22 +210,48 @@ class pagesController extends Controller
                 ->with('error', 'You do not have the permission to add beneficiary');
             }
 
-            $beneficiary = new Beneficiary;
-            $beneficiary->name = request('name');
-            $beneficiary->account_number = request('account_number'); //->account_number;
-            $bank_detail = explode('||', request('bank_id'));
-            $beneficiary->wallet_id = $wallet->id;
-            $beneficiary->bank_id = $bank_detail[0];
-            $beneficiary->bank_name = $bank_detail[1];
-            $beneficiary->uuid = Auth::user()->id;
-            if ($beneficiary->save()) {
-                return redirect("wallet/$wallet->id")->with('success', 'Beneficiary added');
-            } else {
-                return redirect()->back()->with('error', 'Beneficiary could not be added');
-            }
+            $token = $this->getToken();
+                $headers = array('content-type' => 'application/json','Authorization'=> $token);
+                $query = array(
+                'account_number'=> $request->account_number,
+                'bank_code' => explode('||', request('bank_id'))
+                );
+                $body = \Unirest\Request\Body::json($query);
+                $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/resolve/account', $headers, $body);
+                $response = json_decode($response->raw_body, true);
+                if($response['status'] == 'success')
+                {
+                    $beneficiary = new Beneficiary;
+                    //$beneficiary->name = request('name');
+                    $beneficiary->account_number = request('account_number'); //->account_number;
+                    $bank_detail = explode('||', request('bank_id'));
+                    $beneficiary->wallet_id = $wallet->id;
+                    $beneficiary->bank_id = $bank_detail[0];
+                    $beneficiary->bank_name = $bank_detail[1];
+                    $beneficiary->uuid = Auth::user()->id; 
+                    
+                    if ($beneficiary->save()) {
+                    $response = $response['data']['account_name'];
+                    return back()->with('response', $response);
+                //return redirect("wallet/$wallet->id")->with('success', 'Beneficiary added');
+                    } else {
+                        return redirect()->back()->with('error', 'Beneficiary could not be added');
+                    }       
+                }else {
+
+                    return redirect()->back()->with('error', $response['msg']);
+                }
+
         }
     }
 
+    public function addAccount(Request $request, Wallet $wallet)
+    {
+        $beneficiary = Beneficiary::latest()->first();
+        Beneficiary::where('id', $beneficiary->id)
+                    ->update(['name' => $request->name]);
+        return redirect("wallet/$wallet->id")->with('success', 'Beneficiary added');
+    }
 
 
 
@@ -248,12 +294,13 @@ class pagesController extends Controller
  public function phoneTopupView()
     {
         $phones = TopupContact::all();
-        $topupbanlance = $this->getTopupWalletBalance();
+        $topupbalance = $this->getTopupWalletBalance();
         $cardWallet = CardWallet::latest()->first();
-
         $user = Auth::user();
-
-        //$topuphistory = TopupHistory::where('user_id', $user->id)->get();
+        $wallet = Wallet::where('type', 'topup')->first();
+        $walletfundhistory = \App\PhonetopupTransaction::where('wallet_id', $wallet->id)
+                            ->orderBy('created_at', 'desc')
+                            ->get();
 
         $topuphistory = DB::table('topup_histories')
             ->join('topup_contacts', 'topup_histories.contact_id', '=', 'topup_contacts.id')
@@ -261,8 +308,11 @@ class pagesController extends Controller
             ->select('topup_histories.*', 'topup_contacts.phone', 'topup_contacts.firstname', 'users.username', 'topup_contacts.lastname', 'topup_contacts.netw')
             ->orderBy('created_at', 'desc')
             ->get();
-
-        return view('phonetopup', compact('cardWallet', 'phones', 'topupbanlance', 'topuphistory'));
+            if(strlen($topupbalance) > 12){
+                $topupbalance = null;
+                Session::flash('error', 'Could not retrieve balance');
+            }
+        return view('phonetopup', compact('cardWallet','wallet', 'phones', 'topupbalance', 'topuphistory', 'walletfundhistory'));
     }
 
     //all other page functions can be added
@@ -279,7 +329,7 @@ class pagesController extends Controller
     
     protected function validateBeneficiary(array $data) {
         return Validator::make($data, [
-            'name' => 'required|string',
+            //'name' => 'required|string',
             'bank_id' => 'required|string|min:4',
             'account_number' => 'required|numeric',
         ]);

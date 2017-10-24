@@ -93,10 +93,12 @@ Route::group(['middleware' => 'auth'], function () {
 
 	//phone top up
 	Route::get('/phonetopup', 'pagesController@phoneTopupView');
+	Route::post('/phonetopup/fund', 'User\PhoneTopUpController@fundTopupWallet');
 	Route::get('/topup/phone', 'User\PhoneTopUpController@phoneTopUp');
 	Route::get('topup/phone/{id}', 'User\PhoneTopUpController@phoneshow');
 	Route::post('topup/phone/', 'User\PhoneTopUpController@topuphonesubmit')->name('topup.phone.user');
 	Route::post('topup/data/', 'User\PhoneTopUpController@topdatasubmit')->name('topup.data.user');
+	Route::post('/fund/topup', 'User\PhoneTopUpController@fundTopup')->name('user.fund.phone.submit');
 	//end of phone top
 
 	Route::get('/transfer', 'pagesController@transfer');
@@ -114,6 +116,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/ravepaysuccess/{ref}/{amount}/{currency}', 'RavepayController@success')->name('ravepay.success');
 	Route::get('/addbeneficiary/{wallet}', 'pagesController@addBeneficiary');
 	Route::post('/addbeneficiary/{wallet}', 'pagesController@insertBeneficiary')->name('beneficiaries.insert');
+	Route::post('/updateBeneficiary/{wallet}', 'pagesController@addAccount')->name('beneficiaries.insert');
 
 
 
@@ -209,6 +212,9 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
 	//Phone topup starts here
 	Route::get('/phonetopup', 'Admin\AdminController@phoneTopupView')->name('topup.index');
 	Route::post('/addphone', 'Admin\PhoneTopUpController@addPhone');
+	Route::post('/addtag', 'Admin\PhoneTopUpController@addTag');
+	Route::get('/deletetag/{id}', 'Admin\PhoneTopUpController@deleteTag');
+	Route::post('/edittag/{id}', 'Admin\PhoneTopUpController@editTag');
 	Route::post('/transfer/topup', 'Admin\PhoneTopUpController@postTopup')->name('topup.phone.submit');
 	Route::post('/fund/topup', 'Admin\PhoneTopUpController@fundTopup')->name('fund.phone.submit');
 	Route::post('/otp', 'Admin\PhoneTopUpController@otp')->name('fund.otp.submit');
