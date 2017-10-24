@@ -50,7 +50,9 @@
   <!-- page script -->
 <script>
   $(function () {
-    $('#datatable').DataTable()
+    $('#datatable').DataTable({
+        "order": [[ 7, "desc" ]]
+    })
     $('#example2').DataTable({
       'paging'      : true,
       'lengthChange': false,
