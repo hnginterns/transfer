@@ -1,7 +1,7 @@
 @extends('layouts.user')
 
 @section('title')
-      Phone Top up
+      Phone Top Up
 @endsection
 @section('content')
 <style>
