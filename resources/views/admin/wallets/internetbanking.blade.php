@@ -63,14 +63,14 @@
                             <div class="col-md-3">
                                    <label>Sender Account</label>
                                     <div class="controls">
-                                        <input class="form-control" autocomplete="off" maxlength="10" pattern="\d{3}" title="Three digits at back of your card" required="" type="number" name="cvv">
+                                        <input class="form-control" autocomplete="off" maxlength="10" title="Your account number" required="" type="number" name="acctno">
                                     </div>
                              </div>
 
                          <div class="col-md-3">
                                <label>Sender Bank</label>
                                 <div class="controls">
-                                    <input class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="pin" required="" type="password" name="pin">
+                                    <input class="form-control" autocomplete="off" maxlength="3" title="Your bank name" required="" type="number" name="bankname">
                                 </div>
                          </div>
             
@@ -78,7 +78,7 @@
                                   <label>Amount</label>
                                   <div class="input-group">
                                       <div class="input-group-addon">₦</div>
-                                      <input name="amount" type="text" class="form-control" id="amount" placeholder="Amount">
+                                      <input name="amount" type="number" class="form-control" id="amount" placeholder="Amount">
                                 </div>
                           </div>
                         </div>
