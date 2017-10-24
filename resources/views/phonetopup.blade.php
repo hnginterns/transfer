@@ -674,26 +674,32 @@ tr:nth-child(even) {
 // });
 $('#topUpAll').click(function(){
     var contact =$('.contact-fn');
+   var  datas = [];
     contact.each(function(){
+        var dataUser;
+        var amount;
       if($(this).find('.checkbox').is(':checked')){
-    var phone =$(this).find('.phone').html();
-    var network =$(this).find('.phoneRef').html();
-    var dataUser =$(this).find('.firstName').attr('data-user');
-    var contactName =$(this).find('.firstName').html();
-    var amount =$(this).find('.input-airtime-amount').val();    
+          var dataUser =$(this).find('.firstName').attr('data-user');
+          var amount1 =$(this).find('.input-airtime-amount').val(); 
+          if(amount1 == ''){
+            alert('Enter amount for '+$(this).find('.firstName').html())
+          }
+          
+        }
+         datas.push({'id':dataUser,'amount':amount1});
+       })
+       
   
     //Ajax to handle request
 
     $.ajax({
-            url: '/topup/phone',
+            url: '/topup/phone/',
             type: 'POST',
-            data: {'phone':''+phone,'netw':''+network,'amount':''+amount}, // An object with the key 'submit' and value 'true;
+            data: {dat:datas}, // An object with the key 'submit' and value 'true;
             success: function () {
               alert("Your bookmark has been saved");
             }
         }); 
-      }
-  })
    
 
 })
@@ -701,7 +707,9 @@ $('#topUpAll').click(function(){
 
 <script>
   $(document).ready(function(){
-    $('#wallettopuphistory').DataTable();
+    $('#wallettopuphistory').DataTable({
+        "order": [[ 7, "desc" ]]
+    });
   });
 </script>
 @endsection
