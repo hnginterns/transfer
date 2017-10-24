@@ -441,6 +441,7 @@ class ComposerStaticInitcb56c8f99153a160391720319584c667
         'App\\Rule' => __DIR__ . '/../..' . '/app/Rule.php',
         'App\\SmsWallet' => __DIR__ . '/../..' . '/app/SmsWallet.php',
         'App\\SmsWalletFund' => __DIR__ . '/../..' . '/app/SmsWalletFund.php',
+        'App\\Tag' => __DIR__ . '/../..' . '/app/Tag.php',
         'App\\TopupContact' => __DIR__ . '/../..' . '/app/TopupContact.php',
         'App\\TopupHistory' => __DIR__ . '/../..' . '/app/TopupHistory.php',
         'App\\Transaction' => __DIR__ . '/../..' . '/app/Transaction.php',

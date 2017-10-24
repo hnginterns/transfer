@@ -33,7 +33,7 @@ i.sent{
 first {
     float: right;
     margin: 0 0 10px 10px;
-}
+} 
     
 form group { 
     
@@ -73,23 +73,19 @@ tr:nth-child(even) {
 	} */
     
     }
-    
-    #tableTitle {
-    font-weight: 400px;
-	
-    }
-    
+        
 </style>
 
 <link rel="stylesheet" href="walletview.css">
-<link rel="stylesheet" href="user.css">
-<link rel="stylesheet" href="form.css">
-<link rel="stylesheet" href="/css/walletview.css">
-
 
 <div class="row">
-  
-  <a type="button" class="btn btn-info">Fund wallet</a>
+  	
+  <center>            
+ <div class="orange-box"><h2 class="title" align="center">Current Balance : &#8358;{{ $topupbalance == null ? 'Balance unavailable' : number_format($topupbalance),2}} </strong> </h2></div>
+</center>
+  <br>
+
+  <a href="#walletTopUp" data-toggle="modal" class="btn btn-info">Fund wallet</a>
   
   <a href='#PurchaseTopUp' data-toggle="modal" class="btn btn-success">Purchase</a>
   
@@ -132,13 +128,180 @@ tr:nth-child(even) {
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="modal fade" id="walletTopUp">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    
+                                    <h4 class="modal-title text-center">{{$wallet == null ? 'null' : $wallet->wallet_name}}</h4>
+            
+                                </div>
+                                <div class="modal-body">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">Card Details</h3>
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <div class="box-body">
+                                        <form action="{{ route('user.fund.phone.submit')}}" method="POST" role="form form-horizontal">
+                                            {{csrf_field()}}
+                                            <!-- text input -->
+                                            <div class="container-fluid">
+                                                <fieldset>
+                                                    <input type="hidden" name="wallet_code" value="{{$wallet == null ? 'null' : $wallet->wallet_code}}">
+                                                    <input type="hidden" name="wallet_name" value="{{$wallet == null ? 'null' : $wallet->wallet_name}}">
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <div class="form-group">
+                                                                <label for="cc_name">First Name</label>
+                                                                <div class="controls">
+                                                                    <input name="fname" class="form-control" id="cc_name" title="First Name" required type="text">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="form-group">
+                                                                <label for="cc_name">Last Name</label>
+                                                                <div class="controls">
+                                                                    <input name="lname" class="form-control" id="cc_name" title="last name" required type="text">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Phone Number</label>
+                                                        <div class="controls">
+                                                            <input name="phone" class="form-control" autocomplete="off" maxlength="20" required="" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Email Address</label>
+                                                        <div class="controls">
+                                                            <input name="emailaddr" class="form-control" autocomplete="off" required="" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Card Number</label>
+                                                        <div class="controls">
+                                                            <input name="card_no" class="form-control" autocomplete="off" maxlength="20" required="" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Card Expiry Date</label>
+                                                        <div class="controls">
+                                                            <div class="row">
+                                                                <div class="col-md-9">
+                                                                    <select class="form-control" name="expiry_month">
+                                                                       <option value="01">January</option>
+                                                                       <option value="02">February</option>
+                                                                       <option value="03">March</option>
+                                                                       <option value="04">April</option>
+                                                                       <option value="05">May</option>
+                                                                       <option value="06">June</option>
+                                                                       <option value="07">July</option>
+                                                                       <option value="08">August</option>
+                                                                       <option value="09">September</option>
+                                                                       <option value="10">October</option>
+                                                                       <option value="11">November</option>
+                                                                       <option value="12">December</option>
+                                                                   </select>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                  <select class="form-control" name="expiry_year">
+                                                                    @for ($i = 2017;$i < 2040; $i++)
+                                                                       <option>{{$i}}</option>
+                                                                    @endfor  
+                                                                   </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-md-3">
+                                                                <label>Card CVV</label>
+                                                                <div class="controls">
+                                                                    <input class="form-control" autocomplete="off" maxlength="3" pattern="\d{3}" title="Three digits at back of your card" required="" type="text" name="cvv">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <label>Pin</label>
+                                                                <div class="controls">
+                                                                    <input class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="pin" required="" type="text" name="pin">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label>Amount</label>
+                                                                <div class="input-group">
+                                                                    <div class="input-group-addon">₦</div>
+                                                                    <input name="amount" type="text" class="form-control" id="amount" placeholder="Amount">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label></label>
+                                                        <div class="controls">
+                                                            <button type="submit" class="btn btn-primary">Top up</button>
+                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
   
 </div>
 
 <center>
               <br><div class="">
-                <h1 id="tableTitle>Current Balance : &#8358;{{ $topupbalance == null ? 'Balance unavailable' : number_format($topupbalance),2}}</h1>
-	<div class="orange-box"><h4 class="title" align="center">CONTACT LIST</h4></div>
+
+              
+	<div class="orange-box"><h4 class="title" align="center">WALLET TRANSFER HISTORY</h4></div>
+  <br>
+    
+    <div class="table-responsive">
+      <table class="table table-hover" id ="wallettopuphistory">
+        <thead>
+          <tr>
+            <th>S/N</th>
+            <th>User</th>
+            <th>Wallet</th>
+            <th>Account Name</th>
+            <th>Amount</th>
+            <th>Status</th>
+            <th>Time</th>
+
+          </tr>
+        </thead>
+        <tbody>
+        @php($count = 1)
+        @foreach($walletfundhistory as $key => $walletfundhistories)
+          <tr>
+            <th>{{$count}}</th>
+            <td>{{$walletfundhistories->user->username}}</td>
+            <td>{{$walletfundhistories->wallet->wallet_name}}</td>
+            <td>{{$walletfundhistories->account_name}}</td>
+            <td>{{$walletfundhistories->amount}}</td>
+            <td><i class="fa {{$walletfundhistories->status ? 'fa-check-circle can' : 'fa-times-circle cannot'}}" aria-hidden="true"></i></td>           
+            <td>{{$walletfundhistories->created_at->diffForHumans()}}</td>
+          </tr>
+          @php($count++)
+        @endforeach
+        </tbody>
+      </table>
+    </div>
+    <br>
+    <hr>
+              
+               <div class="orange-box"><h4 class="title" align="center">CONTACT LIST</h4></div>
+
           <div class="table table-responsive">
                 <table class="table" id="contact-table">
               <thead>
@@ -402,6 +565,44 @@ tr:nth-child(even) {
 
 </div>
 
+
+                                     <!--Modal for Otp -->
+                            @if (session('status'))
+                               <script type="text/javascript">
+                                    $(document).ready(function() {
+                                        $('#myModal').modal();
+                                    });
+                                </script>
+
+                                <div class="modal fade" id="myModal" role="dialog">
+                                <div class="modal-dialog">
+                                
+                                  <!-- Modal content-->
+                                  <div class="modal-content">
+                                      <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Otp</h4>
+                                      </div>
+                                      <div class="modal-body">
+                                        <p>{{session('status')}}</p>
+                                        <div class="row">
+                                        <div class="col-md-6 col-md-offset-2">
+                                          <form action="{{ route('fund.otp.submit')}}" method="POST">
+                                            {{csrf_field()}}
+                                            <input type="hidden" name="ref" value="{{$cardWallet->ref}}">
+                                            <div class="form-group">
+                                                <input type="password" class="form-control" name="otp" placeholder="Enter OTP">
+                                            </div>
+                                            <button type="submit" class="btn btn-default btn-block">Submit</button>
+                                          </form>
+                                        </div>
+                                      </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            @endif
+
   @endsection
 
 @section('add_js')
@@ -473,30 +674,42 @@ tr:nth-child(even) {
 // });
 $('#topUpAll').click(function(){
     var contact =$('.contact-fn');
+   var  datas = [];
     contact.each(function(){
+        var dataUser;
+        var amount;
       if($(this).find('.checkbox').is(':checked')){
-    var phone =$(this).find('.phone').html();
-    var network =$(this).find('.phoneRef').html();
-    var dataUser =$(this).find('.firstName').attr('data-user');
-    var contactName =$(this).find('.firstName').html();
-    var amount =$(this).find('.input-airtime-amount').val();    
+          var dataUser =$(this).find('.firstName').attr('data-user');
+          var amount1 =$(this).find('.input-airtime-amount').val(); 
+          if(amount1 == ''){
+            alert('Enter amount for '+$(this).find('.firstName').html())
+          }
+          
+        }
+         datas.push({'id':dataUser,'amount':amount1});
+       })
+       
   
     //Ajax to handle request
 
     $.ajax({
-            url: '/topup/phone',
+            url: '/topup/phone/',
             type: 'POST',
-            data: {'phone':''+phone,'netw':''+network,'amount':''+amount}, // An object with the key 'submit' and value 'true;
+            data: {dat:datas}, // An object with the key 'submit' and value 'true;
             success: function () {
               alert("Your bookmark has been saved");
             }
         }); 
-      }
-  })
    
 
 })
 </script>
 
-
+<script>
+  $(document).ready(function(){
+    $('#wallettopuphistory').DataTable({
+        "order": [[ 7, "desc" ]]
+    });
+  });
+</script>
 @endsection

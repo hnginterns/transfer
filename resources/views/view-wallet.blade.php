@@ -56,6 +56,11 @@ tr:nth-child(even) {
 </style>
 
 <link rel="stylesheet" href="/css/walletview.css">
+
+<center>            
+ <div class="orange-box"><h2 class="title" align="center">Current Balance: <strong> &#x20A6;{{ number_format(($wallet->balance),2) }} </strong>  </h2></div>
+</center>
+
    <!-- Trigger the modal with a button -->
         <center><button type="button" class="btn btn-dark" data-toggle="modal" data-target="#beneficiaryModal">Add Beneficiary</button>
 <!-- Trigger the modal with a button -->

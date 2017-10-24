@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="/css/form.css">
             
  <div class="col-md-6 col-sm-6">
- <img src="https://ferpay.com/fpmedia/panel/svg/ewallet-transfer-account.svg" width="250" height="250">
+ <img src="https://ferpay.com/fpmedia/panel/svg/ewallet-transfer-account.svg" width="300" height="300">
         <h4 class="intro text-left" >Transfer to another Wallet account </h4>
        {{-- @if($failed)) 
             <div class="alert alert-danger">

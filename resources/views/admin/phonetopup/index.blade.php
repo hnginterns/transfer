@@ -9,6 +9,8 @@
  <div class="container-fluid">
   <button type="button" class="btn btn-info" data-toggle="modal" data-target="#mModal">
                 Add New Phone</button>
+
+  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#tModal">Tags</button>
   <br> <br>
 
         <div class="row">
@@ -100,44 +102,44 @@
               <!-- /.tab-pane -->
               <div class="tab-pane" id="history">
 
-               <table class="table">
-                    <thead>
-                        <tr>
-                          <th>Transfered by</th>
-                          <th>Amount</th>
-                          <th>Payment Ref</th>
-                          <th>Date</th>
-                        </tr>
-                    </thead>
+                   <table class="table">
+                        <thead>
+                            <tr>
+                              <th>Transfered by</th>
+                              <th>Amount</th>
+                              <th>Payment Ref</th>
+                              <th>Date</th>
+                            </tr>
+                        </thead>
 
-                    <tbody>
-                      @forelse ($history as $transaction)
-                      <tr>
-                        <td style="color: #595757;">{{ $transaction->firstName }}  {{$transaction->lastName}}</td>
-                        <td style="color: #595757;">{{ $transaction->amount }}</td>
-                        <td style="color: #595757;">{{ $transaction->ref }}</td>
-                        <td style="color: #595757;">{{ $transaction->created_at }}</td>
+                        <tbody>
+                          @forelse ($history as $transaction)
+                          <tr>
+                            <td style="color: #595757;">{{ $transaction->firstName }}  {{$transaction->lastName}}</td>
+                            <td style="color: #595757;">{{ $transaction->amount }}</td>
+                            <td style="color: #595757;">{{ $transaction->ref }}</td>
+                            <td style="color: #595757;">{{ $transaction->created_at }}</td>
 
-                      @empty
-                        <p> No Transactions has taken place on this wallet</p>
-                      @endforelse
-                      
-                    </tbody>
-                    
-                </table>
-                    {{$history->links()}}
+                          @empty
+                            <p> No Transactions has taken place on this wallet</p>
+                          @endforelse
+                          
+                        </tbody>
+                        
+                    </table>
+                        {{$history->links()}}
+                  </div>
+                  
+                  <!-- /.tab-pane -->
+                </div>
+                <!-- /.tab-content -->
+                <!-- /.tab-content -->
               </div>
-              
-              <!-- /.tab-pane -->
+              <!-- /.nav-tabs-custom -->
             </div>
-            <!-- /.tab-content -->
-            <!-- /.tab-content -->
-          </div>
-          <!-- /.nav-tabs-custom -->
-        </div>
-<!-- /.col -->
+    <!-- /.col -->
 
-</div>
+    </div>
 
 
                     
@@ -263,6 +265,20 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
+                                                           <select class="form-control" name="tagcontact">
+                                                            @if(count($tags) > 0)
+                                                              <option selected value="">Select Tag</option>
+                                                              @foreach($tags as $tag)
+                                                                <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                                                              @endforeach
+                                                            @else
+                                                                <option selected value="">No tags added</option>
+                                                            @endif
+                                                           </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
                                                             <input class="form-control" name="max_tops" placeholder="Weekly Maximum Topups" type="text" required />
                                                         </div>
                                                     </div>
@@ -273,6 +289,155 @@
                                                     </button>
                                                 </div>
                                             </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Modal for tags -->
+                            <div class="modal fade" id="tModal" role="dialog">
+                                <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Tags</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="alert alert-success tagsuccess" style="display: none; font-size: 14px;"></div>
+                                            <div class="alert alert-danger tagerror" style="display: none; font-size: 14px;"></div>
+                                            <table class="table">
+                                              <thead>
+                                                  <tr>
+                                                    <th>Name</th>
+                                                    <th>Action</th>
+                                                  </tr>
+                                              </thead>
+
+                                              <tbody id="tagbody">
+                                                @if(count($tags) > 0)
+                                                  @foreach($tags as $tag)
+                                                    <tr id="{{ $tag->id }}">
+                                                      <td class="name">{{ $tag->name }}</td>
+                                                      <td><button type="button" class="btn btn-info btn-xs tagedit" style="margin-right: 10px;" data-name="{{ $tag->name }}" data-tag="{{ $tag->id }}">Edit</button><button type="button" class="btn btn-danger btn-xs tagdelete" data-name="{{ $tag->name }}" data-tag="{{ $tag->id }}">Delete</button></td>
+                                                    </tr>
+                                                  @endforeach
+                                                @else
+                                                  <tr id="tagempty">
+                                                    <td>No tags added</td>
+                                                  </tr>
+                                                @endif
+                                              </tbody>
+                                              
+                                          </table>
+                                            <form onsubmit="return false;" accept-charset="utf-8">
+                                                {{csrf_field()}}
+                                                <div class="modal-body" style="padding: 5px;">
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
+                                                            <input class="form-control" name="tagname" id="tagname" placeholder="Tag Name" type="text" required />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="panel-footer" style="margin-bottom:-14px;">
+                                                    <input type="submit" class="btn btn-success" value="Save" id="addtagbtn"/>
+                                                    <input type="submit" class="btn btn-info" value="Edit" id="editbtn" style="display: none;" />
+                                                    <input type="submit" class="btn btn-danger" value="Cancel" id="cancelbtn" style="display: none;" />
+                                                    <button style="float: right;" type="button" class="btn btn-default btn-close" data-dismiss="modal">Close
+                                                    </button>
+                                                </div>
+                                            </form>
+                                            <script>
+                                              $('document').ready(function(){
+
+                                                $('#addtagbtn').on('click', function(){
+                                                  var tagname = $('input[name=tagname]').val();
+                                                  var _token = $('input[name=_token]').val();
+                                                  $.ajax({
+                                                    url: "{{url('admin/addtag')}}",
+                                                    type: "POST",
+                                                    data:{
+                                                      "tagname" : tagname,
+                                                      "_token" : _token,
+                                                      "type" : "new"
+                                                    },
+                                                    dataType: "json",
+                                                    success: function(data){
+                                                      if(data.error == true){
+                                                        $(".tagerror").html(data.msg).show();
+                                                      }
+                                                      else{
+                                                        var taghtml = '<tr><td>'+tagname+'</td><td>Refresh page to modify</td></tr>'
+                                                        $('#tagempty').remove();
+                                                        $("#tagbody").append(taghtml);
+                                                        $(".tagsuccess").html(data.msg).show();
+                                                        $('input[name=tagname]').val("");
+                                                      }
+                                                    }
+                                                  });
+                                                });
+
+                                                $('#editbtn').on('click', function(){
+                                                  var tagid = $(this).attr('data-tag');
+                                                  var tagname = $('input[name=tagname]').val();
+                                                  var _token = $('input[name=_token]').val();
+                                                  $.ajax({
+                                                    url: "{{url('admin/edittag')}}/"+tagid,
+                                                    type: "POST",
+                                                    data:{
+                                                      "tagname" : tagname,
+                                                      "_token" : _token,
+                                                      "type" : "edit"
+                                                    },
+                                                    dataType: "json",
+                                                    success: function(data){
+                                                      if(data.error == true){
+                                                        $(".tagerror").html(data.msg).show();
+                                                      }
+                                                      else{
+                                                        $('#tagempty').remove();
+                                                        $("#"+tagid+" .name").html(tagname);
+                                                        $(".tagsuccess").html(data.msg).show();
+                                                        $('input[name=tagname]').val("");
+                                                        $("#editbtn").hide();
+                                                        $("#cancelbtn").hide();
+                                                        $('#addtagbtn').show();
+                                                      }
+                                                    }
+                                                  });
+                                                });
+
+                                                $('#cancelbtn').on('click', function(){
+                                                  $("#tagname").val("");
+                                                  $("#editbtn").hide();
+                                                  $("#cancelbtn").hide();
+                                                  $('#addtagbtn').show();
+                                                });
+
+                                                $('.tagedit').on('click', function(){
+                                                  var tagname = $(this).attr('data-name');
+                                                  var tagid = $(this).attr('data-tag');
+                                                  $("#tagname").val(tagname);
+                                                  $("#editbtn").attr('data-tag', tagid).show();
+                                                  $("#cancelbtn").show();
+                                                  $('#addtagbtn').hide();
+                                                });
+
+                                                $('.tagdelete').on('click', function(){
+                                                  var tagid = $(this).attr('data-tag');
+                                                  var _token = $('input[name=_token]').val();
+                                                  $.ajax({
+                                                    url: "{{url('admin/deletetag')}}/"+tagid,
+                                                    type: "GET",
+                                                    dataType: "json",
+                                                    success: function(data){
+                                                        $("#"+tagid).remove();
+                                                        $(".tagsuccess").html(data.msg).show();
+                                                    }
+                                                  });
+                                                });
+
+                                              });
+                                            </script>
                                         </div>
                                     </div>
                                 </div>
@@ -408,87 +573,85 @@
                             </div>
                         </div>
                     </div>
-                            @endisset
-                            <!--row ends-->
-                            <!---Modal for wallet top Up-->
+                    @endisset
+                    <!--row ends-->
+                    <!---Modal for wallet top Up-->
 
-                            <div class="modal fade" id="walletTopUp">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                            <h4 class="modal-title text-center">Wallet Top Up</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="box-header with-border">
-                                                <h3 class="box-title">Wallet Details</h3>
+                    <div class="modal fade" id="walletTopUp">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title text-center">Wallet Top Up</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">Wallet Details</h3>
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <div class="box-body">
+                                        <form role="form">
+                                            <!-- text input -->
+                                            <div class="form-group">
+                                                <label>Account</label>
+                                                <input class="form-control" value="Transfer Rule Sms" type="text" disabled>
                                             </div>
-                                            <!-- /.box-header -->
-                                            <div class="box-body">
-                                                <form role="form">
-                                                    <!-- text input -->
-                                                    <div class="form-group">
-                                                        <label>Account</label>
-                                                        <input class="form-control" value="Transfer Rule Sms" type="text" disabled>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Wallet Id</label>
-                                                        <input class="form-control" value="X846945532" type="text" disabled>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Top-up Amount</label>
-                                                        <input id="amountToPay" class="form-control" type="text">
-                                                    </div>
-                                                    <input type="button" class="btn btn-block btn-success" name="" id="topu1p" value="Top-Up">
-                                                </form>
+                                            <div class="form-group">
+                                                <label>Wallet Id</label>
+                                                <input class="form-control" value="X846945532" type="text" disabled>
                                             </div>
-                                        </div>
-                                        <!-- /.modal-content -->
+                                            <div class="form-group">
+                                                <label>Top-up Amount</label>
+                                                <input id="amountToPay" class="form-control" type="text">
+                                            </div>
+                                            <input type="button" class="btn btn-block btn-success" name="" id="topu1p" value="Top-Up">
+                                        </form>
                                     </div>
                                 </div>
-                                    <!-- /.modal-dialog -->
-                             </div>
-                                <!-- /.modal -->
+                                <!-- /.modal-content -->
+                            </div>
+                        </div>
+                            <!-- /.modal-dialog -->
+                     </div>
+                        <!-- /.modal -->
 
-                                     <!--Modal for Otp -->
-                            @if (session('status'))
-                               <script type="text/javascript">
-                                    $(document).ready(function() {
-                                        $('#myModal').modal();
-                                    });
-                                </script>
+                             <!--Modal for Otp -->
+                    @if (session('status'))
+                       <script type="text/javascript">
+                            $(document).ready(function() {
+                                $('#myModal').modal();
+                            });
+                        </script>
 
-                                <div class="modal fade" id="myModal" role="dialog">
-                                <div class="modal-dialog">
-                                
-                                  <!-- Modal content-->
-                                  <div class="modal-content">
-                                      <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <h4 class="modal-title">Otp</h4>
-                                      </div>
-                                      <div class="modal-body">
-                                        <p>{{session('status')}}</p>
-                                        <div class="row">
-                                        <div class="col-md-6 col-md-offset-2">
-                                          <form action="{{ route('fund.otp.submit')}}" method="POST">
-                                            {{csrf_field()}}
-                                            <input type="hidden" name="ref" value="{{$cardWallet->ref}}">
-                                            <div class="form-group">
-                                                <input type="password" class="form-control" name="otp" placeholder="Enter OTP">
-                                            </div>
-                                            <button type="submit" class="btn btn-default btn-block">Submit</button>
-                                          </form>
-                                        </div>
-                                      </div>
-                                  </div>
+                        <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
+                        
+                          <!-- Modal content-->
+                          <div class="modal-content">
+                              <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Otp</h4>
+                              </div>
+                              <div class="modal-body">
+                                <p>{{session('status')}}</p>
+                                <div class="row">
+                                <div class="col-md-6 col-md-offset-2">
+                                  <form action="{{ route('fund.otp.submit')}}" method="POST">
+                                    {{csrf_field()}}
+                                    <input type="hidden" name="ref" value="{{$cardWallet->ref}}">
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" name="otp" placeholder="Enter OTP">
+                                    </div>
+                                    <button type="submit" class="btn btn-default btn-block">Submit</button>
+                                  </form>
                                 </div>
                               </div>
-                            </div>
-                            @endif
-                            <!--end-->
-
-                           
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    @endif
+                    <!--end-->         
 @endsection
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

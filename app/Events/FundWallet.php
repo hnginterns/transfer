@@ -14,7 +14,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 class FundWallet
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-
+    protected $cardWallet;
     /**
      * Create a new event instance.
      *

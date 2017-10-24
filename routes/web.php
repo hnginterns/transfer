@@ -98,6 +98,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('topup/phone/{id}', 'User\PhoneTopUpController@phoneshow');
 	Route::post('topup/phone/', 'User\PhoneTopUpController@topuphonesubmit')->name('topup.phone.user');
 	Route::post('topup/data/', 'User\PhoneTopUpController@topdatasubmit')->name('topup.data.user');
+	Route::post('/fund/topup', 'User\PhoneTopUpController@fundTopup')->name('user.fund.phone.submit');
 	//end of phone top
 
 	Route::get('/transfer', 'pagesController@transfer');
@@ -211,6 +212,9 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
 	//Phone topup starts here
 	Route::get('/phonetopup', 'Admin\AdminController@phoneTopupView')->name('topup.index');
 	Route::post('/addphone', 'Admin\PhoneTopUpController@addPhone');
+	Route::post('/addtag', 'Admin\PhoneTopUpController@addTag');
+	Route::get('/deletetag/{id}', 'Admin\PhoneTopUpController@deleteTag');
+	Route::post('/edittag/{id}', 'Admin\PhoneTopUpController@editTag');
 	Route::post('/transfer/topup', 'Admin\PhoneTopUpController@postTopup')->name('topup.phone.submit');
 	Route::post('/fund/topup', 'Admin\PhoneTopUpController@fundTopup')->name('fund.phone.submit');
 	Route::post('/otp', 'Admin\PhoneTopUpController@otp')->name('fund.otp.submit');
