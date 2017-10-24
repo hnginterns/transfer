@@ -212,6 +212,9 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
 	//Phone topup starts here
 	Route::get('/phonetopup', 'Admin\AdminController@phoneTopupView')->name('topup.index');
 	Route::post('/addphone', 'Admin\PhoneTopUpController@addPhone');
+	Route::post('/addtag', 'Admin\PhoneTopUpController@addTag');
+	Route::get('/deletetag/{id}', 'Admin\PhoneTopUpController@deleteTag');
+	Route::post('/edittag/{id}', 'Admin\PhoneTopUpController@editTag');
 	Route::post('/transfer/topup', 'Admin\PhoneTopUpController@postTopup')->name('topup.phone.submit');
 	Route::post('/fund/topup', 'Admin\PhoneTopUpController@fundTopup')->name('fund.phone.submit');
 	Route::post('/otp', 'Admin\PhoneTopUpController@otp')->name('fund.otp.submit');

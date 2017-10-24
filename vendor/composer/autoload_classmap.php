@@ -54,6 +54,7 @@ return array(
     'App\\Http\\Middleware\\TrimStrings' => $baseDir . '/app/Http/Middleware/TrimStrings.php',
     'App\\Http\\Middleware\\TrustProxies' => $baseDir . '/app/Http/Middleware/TrustProxies.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
+    'App\\Http\\Requests\\PhoneNumberDeleteRequest' => $baseDir . '/app/Http/Requests/PhoneNumberDeleteRequest.php',
     'App\\Http\\Utilities\\Bank' => $baseDir . '/app/Http/Utilities/Bank.php',
     'App\\Http\\Utilities\\Wallet' => $baseDir . '/app/Http/Utilities/Wallet.php',
     'App\\Listeners\\FundWalletBalance' => $baseDir . '/app/Listeners/FundWalletBalance.php',
