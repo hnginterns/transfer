@@ -124,23 +124,18 @@ class WalletController extends Controller
         // dd($request);
         $headers = array('content-type' => 'application/json', 'Authorization' => $token);
         $query = array(
-            "firstname" => $request->fname,
-            "lastname" => $request->lname,
-            "email" => $request->emailaddr,
+            "amount"=> $request->amount,
+            "apiKey"=> env('API_KEY'),
+            "charge_with"=>"ext_account",
+            "charge_auth"=>"INTERNETBANKING",
+            "firstname"=> $request->fname,
+            "lastname"=> $request->lname,
             "phonenumber" => $request->phone,
-            "recipient" => "wallet",
-            "recipient_id" => $request->wallet_code,
-            "card_no" => $request->card_no,
-            "cvv" => $request->cvv,
-            "pin" => $request->pin, //optional required when using VERVE card
-            "expiry_year" => $request->expiry_year,
-            "expiry_month" => $request->expiry_month,
-            "charge_auth" => "PIN", //optional required where card is a local Mastercard
-            "apiKey" => env('API_KEY'),
-            "amount" => $request->amount,
-            "fee" => 0,
-            "medium" => "web",
-            //"redirecturl" => "https://google.com"
+            "email"=> $request->emailaddr,
+            "medium"=>"web",
+            "sender_bank"=> $request->bankname,
+            "recipient"=>"wallet",
+            "redirecturl"=>"https://finance.hotels.ng/admin"
         );
         $body = \Unirest\Request\Body::json($query);
 
