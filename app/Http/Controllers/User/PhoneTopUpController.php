@@ -11,24 +11,20 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Restriction;
 use App\CardWallet;
-
 use App\Beneficiary;
+
 use Carbon\Carbon;
 
 use App\SmsWalletFund;
-use App\Bank;
+use App\Rule;
 use App\Transaction;
 use URL;
-use App\User;
 use App\BankTransaction;
 use RestrictionController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\RestrictionController as Restrict;
-use App\Notifications\PhonetopupTransaction as PhonetopupTransactionNotify;
 use App\Events\TransferToBank;
 use App\Events\FundWallet;
-use App\PhonetopupTransaction;
-
 class PhoneTopUpController extends Controller
 {
     /**
@@ -38,32 +34,14 @@ class PhoneTopUpController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //
     }
+   public function phoneTopUp()
 
-    public function getToken()
-    {
-        $api_key = env('API_KEY');
-        $secret_key = env('API_SECRET');
-        \Unirest\Request::verifyPeer(false);
-        $headers = array('content-type' => 'application/json');
-        $query = array('apiKey' => $api_key, 'secret' => $secret_key);
-        $body = \Unirest\Request\Body::json($query);
-        $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/merchant/verify', $headers, $body);
-        $response = json_decode($response->raw_body, true);
-        $status = $response['status'];
-        if (!$status == 'success') {
-            echo 'INVALID TOKEN';
-        } else {
-            $token = $response['token'];
-            return $token;
-        }
-    }
-
-     //transfer from wallet to bank
-    public function fundTopupWallet(Request $request, CardWallet $topup)
     {
         
+<<<<<<< HEAD
+=======
         $username       =     env('TOP_UP_USERNAME');
         $password       =     env('TOP_UP_PASSWORD');
         $phone          =     env('TOP_UP_PHONE');
@@ -138,76 +116,10 @@ class PhoneTopUpController extends Controller
                 }
         }
     }
+>>>>>>> a140738b761a85cd1058564199d468eb3a88dc35
 
-    public function fundTopup(Request $request, CardWallet $topup)
-    {
-        // dd($request);
-        //$validator = $this->validateFund($request->all());
-        /**if ($validator->fails()) {
-            $messages = $validator->messages()->toArray();
-            Session::flash('error', $this->formatMessages($messages, 'error'));
-            return back();
-        } else {**/
 
-            $token = $this->getToken();
-            
-            $headers = array('content-type' => 'application/json', 'Authorization' => $token);
-            $query = array(
-                "firstname" => $request->fname,
-                "lastname" => $request->lname,
-                "email" => $request->emailaddr,
-                "phonenumber" => $request->phone,
-                "recipient" => "wallet",
-                "recipient_id" => $request->wallet_code,
-                "card_no" => $request->card_no,
-                "cvv" => $request->cvv,
-                "pin" => $request->pin, //optional required when using VERVE card
-                "expiry_year" => $request->expiry_year,
-                "expiry_month" => $request->expiry_month,
-                "charge_auth" => "PIN", //optional required where card is a local Mastercard
-                "apiKey" => env('API_KEY'),
-                "amount" => $request->amount,
-                "fee" => 0,
-                "medium" => "web",
-                //"redirecturl" => "https://google.com"
-            );
-            $body = \Unirest\Request\Body::json($query);
 
-            $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer', $headers, $body);
-            $response = json_decode($response->raw_body, TRUE);
-            if($response['status'] == 'success') {
-                $response = $response['data']['transfer'];
-                //$meta = $response['meta'];
-                //$meta = json_decode($meta, TRUE);
-                $transMsg = $response['flutterChargeResponseMessage'];
-                $transRef = $response['flutterChargeReference'];
-                
-                $transaction = new CardWallet;
-                $transaction->firstName = $response['firstName'];
-                $transaction->lastName = $response['lastName'];
-                $transaction->status = $response['status'];
-                $transaction->wallet_name = $request->wallet_name;
-                $transaction->phoneNumber = $response['phoneNumber'];
-                $transaction->amount = $response['amountToSend'];
-                $transaction->ref = $transRef;
-
-                $transaction->save();
-
-                return back()->with('status', $transMsg);
-            }
-            else{
-                return back()->with('error', $response['message']);
-            }
-
-            
-        }
-
-    public function sendPhoneTopupTransactionNotifications($transaction){
-        Auth::user()->notify(new PhonetopupTransactionNotify($transaction));
-        $admins = User::where('is_admin', true)->get();
-        foreach($admins as $key => $admin){
-            $admin->notify(new PhonetopupTransactionNotify($transaction));
-        }
     }
 
     public function phoneshow($id)
@@ -228,34 +140,6 @@ class PhoneTopUpController extends Controller
         return \Redirect::route('home')->with('success', 'Book favorited!');
             
 
-    }
-
-    public function otp(Request $request, CardWallet $topup, Wallet $wallet)
-    {
-        \Unirest\Request::verifyPeer(false);
-
-            $headers = array('content-type' => 'application/json');
-            $query = array(
-                'transactionRef'=>$request->ref,
-                'otp' => $request->otp
-            );
-            $body = \Unirest\Request\Body::json($query);
-
-            $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer/charge/auth/card', $headers, $body);
-            $response = json_decode($response->raw_body, true);
-            
-            if($response['status'] == 'success') {
-                event(new FundWallet($topup));
-                $response = $response['data']['flutterChargeResponseMessage'];
-                //return redirect('dashboard')->with('status', $response);
-                CardWallet::where('id', $wallet->id)
-                    ->update(['status' => $response]);
-                return redirect('admin/phonetopup')->with('details', $response);
-
-            }
-            CardWallet::where('id', $wallet->id)
-                    ->update(['status' => $response['status']]);
-            return redirect('admin/phonetopup')->with('details', $response);
     }
 
     public function topuphonesubmit(Request $request)
@@ -386,16 +270,10 @@ class PhoneTopUpController extends Controller
         $topuphistory->save();
 
         //Session::flash('success',' Phone topped up uccessfully.');
-        return redirect('/phonetopup')->with('success', 'Data topped up successfully.');
+        return redirect('/phonetopup')->with('success', 'Data topped up uccessfully.');
 
     }
 
-    protected function validateRequest(array $data)
-    {
-        return Validator::make($data, [
-            'wallet_id' => 'required|numeric',
-            'amount' => 'required|numeric',
-        ]);
-    }
+
 
 }
