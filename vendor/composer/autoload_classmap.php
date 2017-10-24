@@ -76,6 +76,7 @@ return array(
     'App\\Rule' => $baseDir . '/app/Rule.php',
     'App\\SmsWallet' => $baseDir . '/app/SmsWallet.php',
     'App\\SmsWalletFund' => $baseDir . '/app/SmsWalletFund.php',
+    'App\\Tag' => $baseDir . '/app/Tag.php',
     'App\\TopupContact' => $baseDir . '/app/TopupContact.php',
     'App\\TopupHistory' => $baseDir . '/app/TopupHistory.php',
     'App\\Transaction' => $baseDir . '/app/Transaction.php',
