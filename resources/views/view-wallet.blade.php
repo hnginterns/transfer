@@ -463,8 +463,6 @@ $('.modal-content').resizable({
               <form action="/updateBeneficiary/{{$wallet->id}}" method="POST">
                 {{csrf_field()}}
                 <input type="hidden" name="bank_id" value="{{$beneficiary->bank_id}}">
-                <input type="hidden" name="wallet_id" value="{{$beneficiary->wallet_id}}">
-                <input type="hidden" name="uuid" value="{{$beneficiary->uuid}}">
                 <div class="form-group">
                 <input type="text" name="name" value="{{session('response')}}" class="form-control" readonly>
               </div>

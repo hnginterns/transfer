@@ -400,7 +400,8 @@ class WalletController extends Controller
                              "phonenumber" => $request->phoneNumber,
                              "email"=>$request->email,
                              "medium"=>"web",
-                             "sender_bank"=> $request->bank_id,
+                             $bank_detail = explode('||', request('bank_id')),
+                            "sender_bank" => $bank_detail[0],
                              "recipient"=>"wallet",
                              "recipient_id" => $request->wallet_code,
                              //"redirecturl"=>"google.com"
@@ -411,7 +412,7 @@ class WalletController extends Controller
                 $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer', $headers, $body);
 
                 $response = json_decode($response->raw_body, true);
-    
+
 
 var_dump($response);
 die();
