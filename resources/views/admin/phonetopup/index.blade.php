@@ -24,7 +24,7 @@
               
               <h3 class="profile-username text-center">Mobile Topup Wallet</h3>
 
-              <p class="text-center"><strong><font size="10">₦ {{isset($topupbalance) ? number_format($topupbalance, 2) : 'null' }}</strong></p>
+              <h2> class="text-center"><strong>₦ {{isset($topupbalance) ? number_format($topupbalance, 2) : 'null' }}</strong></h2>
               @if(isset($wallet))
               <button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#PurchaseTopUp">Purchase</button>
               @endif
