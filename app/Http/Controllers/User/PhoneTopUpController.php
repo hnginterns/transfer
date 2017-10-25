@@ -176,7 +176,7 @@ class PhoneTopUpController extends Controller
                     $topuphistory->txn_response = 00;
                     $topuphistory->status = 'Success';
             
-                    $topuphistory->save();
+                 //   $topuphistory->save();
             
                     //Session::flash('success',' Phone topped up uccessfully.');
                     
