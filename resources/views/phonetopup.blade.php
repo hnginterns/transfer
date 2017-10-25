@@ -86,19 +86,16 @@ tr:nth-child(even) {
                 <h1>Current Balance: ₦ {{ number_format($topupbalance),2}}</h1>
 	<div class="orange-box"><h4 class="title" align="center">CONTACT LIST</h4></div>
          
-	 <div class="row">
+	<br>
+<div class="row">
     <div class="col-md-2">
-        <a href="" class="btn btn-success" id="add-user">
-            <i class="glyphicon glyphicon-plus"></i>
-            
-        </a>
     </div>
     <div class="col-md-5"></div>
     <form method="GET" action="" accept-charset="UTF-8" id="users-form">
         <div class="col-md-2">
 
           <select class="form-control" name>
-            <option>All Depts/option>
+            <option>All Depts</option>
             <option>IT</option>
             <option>Dev</option>
             <option>Marketing</option>
@@ -118,6 +115,7 @@ tr:nth-child(even) {
         </div>
     </form>
 </div>
+<br>
 	 
 	 <div class="table table-responsive">
                 <table class="table" id="contact-table">
