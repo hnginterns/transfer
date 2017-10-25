@@ -57,13 +57,13 @@
                  <table id="datatable" class="table table-bordered table-hover">
                     <thead>
                             <tr>
-                                <td>Name</td>
-                                <td>Title</td>
-                                <td>Dept</td>
-                                <td>Phone</td>
-                                <td>Email</td>
-                                <td>Weekly Max</td>
-                                <td>Network</td>
+                                <td><strong>Name</strong></td>
+                                <td><strong>Title</strong></td>
+                                <td><strong>Dept</strong></td>
+                                <td><strong>Phone</strong></td>
+                                <td><strong>Email</strong></td>
+                                <td><strong>Weekly Max</strong></td>
+                                <td><strong>Network</strong></td>
                                 <td></td>
                             </tr>
                         </thead>
