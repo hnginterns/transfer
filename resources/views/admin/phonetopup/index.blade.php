@@ -24,7 +24,7 @@
               
               <h3 class="profile-username text-center">Mobile Topup Wallet</h3>
 
-              <p class="text-center"><strong><font size="10">₦ {{isset($topupbalance) ? number_format($topupbalance, 2) : 'null' }}</strong></p>
+              <h2 class="text-center"><strong>₦ {{isset($topupbalance) ? number_format($topupbalance, 2) : 'null' }}</strong></h2>
               @if(isset($wallet))
               <button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#PurchaseTopUp">Purchase</button>
               @endif
@@ -32,7 +32,7 @@
 
               <h3 class="profile-username text-center"> Wallet Balance</h3>
             @if(isset($wallet))
-              <p class="text-center"><strong>₦ {{ $wallet->balance }}</strong></p>
+              <h2 class="text-center"><strong>₦ {{ $wallet->balance }}</strong></h2>
              <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#walletTopUp">Fund Wallet</button>
             @else
              <p>No wallet linked. <strong>Please Create a wallet and set type of wallet to Topup</strong></p>
@@ -48,8 +48,8 @@
         <div class="col-md-9 col-sm-9">
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-              <li class="active"><a href="#contacts" data-toggle="tab">Contacts</a></li>
-              <li><a href="#history" data-toggle="tab">Transaction History</a></li>
+              <li class="active"><a href="#contacts" data-toggle="tab"><strong>Contacts</strong></a></li>
+              <li><a href="#history" data-toggle="tab"><strong>Transaction History</strong></a></li>
             </ul>
             <div class="tab-content">
               <div class="active tab-pane" id="contacts">
