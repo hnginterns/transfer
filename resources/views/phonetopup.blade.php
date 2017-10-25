@@ -103,6 +103,8 @@ tr:nth-child(even) {
 
 
               <tbody>
+              <form class="send-airtime" action="{{ route('topup.phone.multiple')}}" method="POST" role="form">
+              {{ csrf_field() }}
                 @if(count($phones) > 0)
                   @foreach($phones as $phone)
                     <tr class="contact-fn">
@@ -113,7 +115,7 @@ tr:nth-child(even) {
                         <td class="amount">{{ $phone->title }}</td>
                         <td class="amount">{{ $phone->department }}</td>
                         <td class="max-tops">{{ $phone->weekly_max }}</td>
-                        <td><input class="form-control input-airtime-amount" type="text"  placeholder="Enter Amount" /></td>
+                        <td><input class="form-control input-airtime-amount" type="text" name="{{ $phone->id }}" placeholder="Enter Amount" /></td>
                         <td>
 
                           <a class="airtime btn btn-success" data-id="{{ $phone->id }}" data-toggle="modal" data-target="#airtimeModal">
@@ -147,7 +149,7 @@ tr:nth-child(even) {
                 <td></td>
                 <td></td>
                 <td></td>
-                <td><button class="btn btn-success" id="topUpAll">Top Up All</button></td>
+                <td><input type="submit" class="btn btn-success" value="Top Up All"></td>
                 <td></td>
                </tr>
             </table>  
@@ -197,7 +199,8 @@ tr:nth-child(even) {
                   </tr>
                 @endif
 
-                </tr>               
+                </tr>  
+                </form>             
               </tbody>
             </table>    <br><br>
 		</div>
@@ -417,37 +420,7 @@ tr:nth-child(even) {
 //         $('#airtimeModal .modal-body').html(response.data);
 //     });
 // });
-$('#topUpAll').click(function(){
-    var contact =$('.contact-fn');
-   var  datas = [];
-    contact.each(function(){
-        var dataUser;
-        var amount;
-      if($(this).find('.checkbox').is(':checked')){
-          var dataUser =$(this).find('.firstName').attr('data-user');
-          var amount1 =$(this).find('.input-airtime-amount').val(); 
-          if(amount1 == ''){
-            alert('Enter amount for '+$(this).find('.firstName').html())
-          }
-          
-        }
-         datas.push({'id':dataUser,'amount':amount1});
-       })
-       
-  
-    //Ajax to handle request
 
-    $.ajax({
-            url: '/topup/phone',
-            type: 'POST',
-            data: datas.serialize(); // An object with the key 'submit' and value 'true;
-            success: function () {
-              alert("Your bookmark has been saved");
-            }
-        }); 
-   
-
-})
 </script>
 
 

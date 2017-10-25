@@ -40,8 +40,6 @@ class PhoneTopUpController extends Controller
 
     {
         
-<<<<<<< HEAD
-=======
         $username       =     env('TOP_UP_USERNAME');
         $password       =     env('TOP_UP_PASSWORD');
         $phone          =     env('TOP_UP_PHONE');
@@ -116,11 +114,10 @@ class PhoneTopUpController extends Controller
                 }
         }
     }
->>>>>>> a140738b761a85cd1058564199d468eb3a88dc35
 
 
 
-    }
+
 
     public function phoneshow($id)
     { 
@@ -141,7 +138,52 @@ class PhoneTopUpController extends Controller
             
 
     }
-
+    public function topuphonemultiple(Request $request){
+        $datas = $request->all();
+      //  $datas =  json_encode($datas);
+        foreach($datas as $id => $amount){
+           if($id =="_token"){continue;}
+           $contact = TopupContact::find($id);
+            $contacthistory = TopupHistory::where('user_id', $contact->id)->sum('amount');
+            
+                    //dd($contacthistory);
+            
+                    if ($contacthistory >= $contact->weekly_max) {
+                    
+                        return redirect('/phonetopup')->with('error', 'Weekly Maximum Exceede');
+            
+                    } 
+            
+                    $url = 'https://mobilenig.com/api/airtime.php/?username=' .
+                        'jekayode&password=transfer' .
+                        '&network='. $contact->netw .'&phoneNumber='. $contact->phone .'&amount='. $amount;
+                    
+                    $headers = array('content-type' => 'application/json');
+                    $response = \Unirest\Request::get($url, $headers);
+                    //var_dump($response);
+                    $response = json_decode($response->raw_body, true);
+            
+                    $user_id = Auth::user()->id;
+            
+                    $topuphistory = new TopupHistory;
+            
+                    $topuphistory->contact_id = $contact->id;
+                    $topuphistory->user_id = $user_id;
+                    $topuphistory->amount = $amount;
+                  
+                    $topuphistory->ref = str_random(10);
+                    //$topuphistory->txn_response = $response;
+                    $topuphistory->txn_response = 00;
+                    $topuphistory->status = 'Success';
+            
+                    $topuphistory->save();
+            
+                    //Session::flash('success',' Phone topped up uccessfully.');
+                    
+        }
+        redirect('/phonetopup')->with('success', 'Phone topped up uccessfully.');
+       // dd($input);
+    }
     public function topuphonesubmit(Request $request)
     {
         $phone = $request->phone;
