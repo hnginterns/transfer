@@ -229,7 +229,7 @@ class pagesController extends Controller
                     //$beneficiary->wallet_id = $wallet->id;
                     $beneficiary->bank_id = $bank_detail[0];
                     $beneficiary->bank_name = $bank_detail[1];
-                    //$beneficiary->uuid = Auth::user()->id; 
+                    $beneficiary->uuid = Auth::user()->id; 
                     
                     if ($beneficiary->save()) {
                     $response = $response['data']['account_name'];

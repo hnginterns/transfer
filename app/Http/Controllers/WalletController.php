@@ -358,34 +358,64 @@ class WalletController extends Controller
     }
 
     //internet banking
-    public function payWithInternetBanking(Wallet $wallet)
+    public function payWithInternetBanking(Request $request, Wallet $wallet)
     {
-        $token = $this->getToken();
+        $validator = $this->validateInternetBanking($request->all());
 
-        $headers = array('content-type' => 'application/json','Authorization'=>$token);
-$query = array(
-             "amount"=>1000,
-             "apiKey"=>env('API_KEY'),
-             "charge_with"=>"account",
-             "charge_auth"=>"INTERNETBANKING",
-             "sender_account_number" => "0690000004",
-             "firstname"=>"Okoi",
-             "lastname"=>"Ibiang",
-             "phonenumber" => "+2348067415830",
-             "email"=>"aaa@bbb.com",
-             "medium"=>"web",
-             "sender_bank"=> "044",
-             "recipient"=>"wallet",
-             "recipient_id" => "5238b7fbf7",
-             "redirecturl"=>"google.com"
-    );
+        if ($validator->fails()) {
+            $messages = $validator->messages()->toArray();
+            Session::flash('form-errors', $messages);
+            return redirect()->to(URL::previous());
+        } else {
 
-$body = \Unirest\Request\Body::json($query);
+           //checks for permissions
+                $permit = Restriction::where('wallet_id', $wallet->id)
+                        ->where('uuid', Auth::user()->id)
+                        ->first();
+                
+                if($permit == null){
+                    Session::flash('error', 'You do not have access to this wallet');
+                    return redirect('/dashboard');
 
-$response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer', $headers, $body);
+                }
+                     $restrict = new Restrict($permit, $request);
+                     $errors = $restrict->transferToWallet();
+                if(count($errors) != 0){
+                    Session::flash('errors', $errors);
+                    return back();
+                }
+                //end of permission checks
+                
+                $token = $this->getToken();
+
+                $headers = array('content-type' => 'application/json','Authorization'=>$token);
+                    $query = array(
+                             "amount"=>$request->amount,
+                             "apiKey"=>env('API_KEY'),
+                             "charge_with"=>"ext_account",
+                             "charge_auth"=>"INTERNETBANKING",
+                             "sender_account_number" => $request->account_number,
+                             "firstname"=>$request->firstname,
+                             "lastname"=>$request->lastname,
+                             "phonenumber" => $request->phoneNumber,
+                             "email"=>$request->email,
+                             "medium"=>"web",
+                             "sender_bank"=> $request->bank_id,
+                             "recipient"=>"wallet",
+                             "recipient_id" => $request->wallet_code,
+                             //"redirecturl"=>"google.com"
+                    );
+
+                $body = \Unirest\Request\Body::json($query);
+
+                $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer', $headers, $body);
+
+                $response = json_decode($response->raw_body, true);
+    
 
 var_dump($response);
 die();
+        }
     }
 
     //
@@ -535,5 +565,29 @@ die();
             'amount' => 'required|numeric'
         ]);
     }
+
+    /**
+     * Get a validator for an incoming internet banking request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+
+    protected function validateInternetBanking(array $data)
+    {
+        return Validator::make($data, [
+            'firstname' => 'required|string',
+            'lastname' => 'required|string',
+            'amount' => 'required|numeric',
+            'phoneNumber' => 'required|numeric',
+            'email' => 'required|email',
+            'bank_id' => 'required|string',
+            'bank_name' => 'required|string',
+            'account_number' => 'required|string',
+
+        ]);
+    }
+
+
     
 }
