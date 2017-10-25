@@ -20,9 +20,7 @@ use RestrictionController;
 use App\Http\Controllers\RestrictionController as Restrict;
 use App\Notifications\WalletTransaction as WalletTransactionNotify;
 use App\Notifications\BankTransaction as BankTransactionNotify;
-use App\Events\TransferToBank;
 use App\Events\FundWallet;
-use App\Events\WalletToWallet;
 
 class WalletController extends Controller
 {
@@ -359,26 +357,35 @@ class WalletController extends Controller
         }
     }
 
-    //get wallet balance
-    public function walletBalance(Wallet $wallet)
+    //internet banking
+    public function payWithInternetBanking(Wallet $wallet)
     {
         $token = $this->getToken();
-        $headers = array('content-type' => 'application/json', 'Authorization' => $token);
-        $response = \Unirest\Request::get('https://moneywave.herokuapp.com/v1/wallet', $headers);
-        $data = json_decode($response->raw_body, true);
-        $walletBalance = $data['data'];
-        // dd($walletBalance);
-        
-        foreach($walletBalance as $wallets)
-                        {
-            
-                        Wallet::where('wallet_code', $wallets['uref'])
-                        ->update(['balance'=> $wallets['balance']]);
-    
-                        //return view('walletBalance', compact('walletBalance'));
-                        }
-        
-    
+
+        $headers = array('content-type' => 'application/json','Authorization'=>$token);
+$query = array(
+             "amount"=>1000,
+             "apiKey"=>env('API_KEY'),
+             "charge_with"=>"account",
+             "charge_auth"=>"INTERNETBANKING",
+             "sender_account_number" => "0690000004",
+             "firstname"=>"Okoi",
+             "lastname"=>"Ibiang",
+             "phonenumber" => "+2348067415830",
+             "email"=>"aaa@bbb.com",
+             "medium"=>"web",
+             "sender_bank"=> "044",
+             "recipient"=>"wallet",
+             "recipient_id" => "5238b7fbf7",
+             "redirecturl"=>"google.com"
+    );
+
+$body = \Unirest\Request\Body::json($query);
+
+$response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer', $headers, $body);
+
+var_dump($response);
+die();
     }
 
     //

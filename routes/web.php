@@ -16,7 +16,7 @@ Route::get('freq',function(){
 	return view('faq');
 });
 
-Route::get('/mypdf', 'HomeController@pdf');
+Route::get('/internet', 'WalletController@payWithInternetBanking');
 // get default home pages
 Route::get('/', 'pagesController@home')->name('home');
 
