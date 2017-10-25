@@ -82,7 +82,7 @@
                                         <form action="{{ url('admin/delete-phone') }}" method="post">
                                             {{ csrf_field() }}
                                             <input type="hidden" name="delete_phone" value="{{ $phone->id }}" >
-                                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                            <button type="submit" class="btn btn-danger btn-sm" style="color:#fff;"><span class="glyphicon glyphicon-remove"></span></button>
                                         </form>
                                     </td> 
                                 </tr>
