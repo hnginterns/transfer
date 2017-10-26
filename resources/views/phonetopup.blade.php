@@ -87,9 +87,9 @@ i.can {
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
                                                             <select class="form-control" name="bank_id">
-                                                               ($bank as $key => $banks)
+                                                                @foreach($bank as $key => $banks)
                                                                     <option value="{{$banks->id}}">{{$banks->bank_name}}</option>
-                                                               
+                                                                @endforeach
                                                             </select>
                                                         </div>
                                                     </div>
@@ -210,7 +210,7 @@ i.can {
                                                                   <select class="form-control" name="expiry_year">
                                                                     @for ($i = 2017;$i < 2040; $i++)
                                                                        <option>{{$i}}</option>
-                                                                   
+                                                                    @endfor  
                                                                    </select>
                                                                 </div>
                                                             </div>
