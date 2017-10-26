@@ -379,7 +379,7 @@ class WalletController extends Controller
 
                 }
                      $restrict = new Restrict($permit, $request);
-                     $errors = $restrict->transferToWallet();
+                     $errors = $restrict->canFundWallet();
                 if(count($errors) != 0){
                     Session::flash('errors', $errors);
                     return back();
@@ -583,8 +583,8 @@ die();
             'phoneNumber' => 'required|numeric',
             'email' => 'required|email',
             'bank_id' => 'required|string',
-            'bank_name' => 'required|string',
-            'account_number' => 'required|string',
+            //'bank_name' => 'required|string',
+            //'account_number' => 'required|string',
 
         ]);
     }

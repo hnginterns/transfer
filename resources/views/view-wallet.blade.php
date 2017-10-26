@@ -367,7 +367,7 @@ tr:nth-child(even) {
                               <option>Select Bank</option>
 
                             @foreach(App\Http\Controllers\BanksController::getAllBanks() as $key => $bankcode)
-                            <option value="{{$bankcode->id}}||{{$bankcode->bank_name}}">{{ $bankcode->bank_name }}</option>
+                            <option value="{{$bankcode->bank_code}}||{{$bankcode->bank_name}}">{{ $bankcode->bank_name }}</option>
                             @endforeach
                             </select>
                           </div>
@@ -462,15 +462,15 @@ $('.modal-content').resizable({
             <div class="col-md-6 col-md-offset-2">
               <form action="/updateBeneficiary/{{$wallet->id}}" method="POST">
                 {{csrf_field()}}
-                <input type="hidden" name="bank_id" value="{{$beneficiary->bank_id}}">
+                <input type="hidden" name="bank_id" value="{{$validate->bank_id}}">
                 <div class="form-group">
                 <input type="text" name="name" value="{{session('response')}}" class="form-control" readonly>
               </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" name="bank_name" value="{{$beneficiary->bank_name}}" readonly>
+                    <input type="text" class="form-control" name="bank_name" value="{{$validate->bank_name}}" readonly>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" name="account_number" value="{{$beneficiary->account_number}}" readonly>
+                    <input type="text" class="form-control" name="account_number" value="{{$validate->account_number}}" readonly>
                 </div>
                 <button type="submit" class="btn btn-default btn-block">Submit</button>
               </form>

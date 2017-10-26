@@ -422,6 +422,7 @@ class ComposerStaticInitcb56c8f99153a160391720319584c667
         'App\\Http\\Requests\\PhoneNumberDeleteRequest' => __DIR__ . '/../..' . '/app/Http/Requests/PhoneNumberDeleteRequest.php',
         'App\\Http\\Utilities\\Bank' => __DIR__ . '/../..' . '/app/Http/Utilities/Bank.php',
         'App\\Http\\Utilities\\Wallet' => __DIR__ . '/../..' . '/app/Http/Utilities/Wallet.php',
+        'App\\InternetBanking' => __DIR__ . '/../..' . '/app/InternetBanking.php',
         'App\\Listeners\\FundWalletBalance' => __DIR__ . '/../..' . '/app/Listeners/FundWalletBalance.php',
         'App\\LogUserActivity' => __DIR__ . '/../..' . '/app/LogUserActivity.php',
         'App\\Notifications\\BankTransaction' => __DIR__ . '/../..' . '/app/Notifications/BankTransaction.php',

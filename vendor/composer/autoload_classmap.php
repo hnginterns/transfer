@@ -57,6 +57,7 @@ return array(
     'App\\Http\\Requests\\PhoneNumberDeleteRequest' => $baseDir . '/app/Http/Requests/PhoneNumberDeleteRequest.php',
     'App\\Http\\Utilities\\Bank' => $baseDir . '/app/Http/Utilities/Bank.php',
     'App\\Http\\Utilities\\Wallet' => $baseDir . '/app/Http/Utilities/Wallet.php',
+    'App\\InternetBanking' => $baseDir . '/app/InternetBanking.php',
     'App\\Listeners\\FundWalletBalance' => $baseDir . '/app/Listeners/FundWalletBalance.php',
     'App\\LogUserActivity' => $baseDir . '/app/LogUserActivity.php',
     'App\\Notifications\\BankTransaction' => $baseDir . '/app/Notifications/BankTransaction.php',

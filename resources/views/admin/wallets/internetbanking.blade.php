@@ -13,7 +13,7 @@
             </div>
                 <div class="panel-body">
 
-                <form action="/wallets/manualfundint/{{$wallet->id}}" method="POST" class="form-horizontal">
+                <form action="/admin/wallets/manualfundint/{{$wallet->id}}" method="POST" class="form-horizontal">
                     {{ csrf_field() }}
                     <input type="hidden" name="wallet_name" value="{{$wallet->wallet_name}}">
                     <input type="hidden" name="wallet_code" value="{{$wallet->wallet_code}}">
@@ -62,7 +62,7 @@
                             <div class="col-md-3">
                                    <label>Sender Account</label>
                                     <div class="controls">
-                                        <input class="form-control" autocomplete="off" maxlength="10" title="Your account number" required="" type="number" name="acctno">
+                                        <input class="form-control" autocomplete="off" maxlength="10" title="Your account number" required="" type="number" name="account_number">
                                     </div>
                              </div>
 
@@ -71,7 +71,7 @@
                                 <select name="bank_id" required class="form-control input-defaulted" >
                               <option>Select Bank</option>
                               @foreach(App\Http\Controllers\BanksController::getAllBanks() as $key => $bankcode)
-                              <option value="{{$bankcode->id}}||{{$bankcode->bank_name}}">{{ $bankcode->bank_name }}</option>
+                              <option value="{{$bankcode->bank_code}}||{{$bankcode->bank_name}}">{{ $bankcode->bank_name }}</option>
                               @endforeach
                               </select>
                          </div>
