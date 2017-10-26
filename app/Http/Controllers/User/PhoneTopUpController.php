@@ -139,6 +139,16 @@ class PhoneTopUpController extends Controller
             
     }
 
+        public function getTopupWalletBalance() {
+            $username = env('TOP_UP_USERNAME');
+            $password = env('TOP_UP_PASSWORD');
+            $url = "https://mobilenig.com/api/balance.php/?username=$username&password=$password";
+            $headers = array('content-type' => 'application/json');
+            $response = \Unirest\Request::get($url, $headers);
+            $response = json_decode($response->raw_body, true);
+            return $response;
+    }
+
 
     public function hasReachedLimit($id, $amount, $max_limit){
         $sum = TopupHistory::where('contact_id', $id)->get();
@@ -148,13 +158,12 @@ class PhoneTopUpController extends Controller
                         $weekly_max += $sums->amount;
                     }
                 }
-                // dump($weekly_max);
         return  ($max_limit - $weekly_max + $amount) <= 0 ? true : false;
     }
 
 
     public function topuphonemultiple(Request $request){
-
+        
         if($request->checked == null ){
             Session::flash('error', 'You must select a contact and enter amount to topup');
             return back();
@@ -170,31 +179,60 @@ class PhoneTopUpController extends Controller
         foreach($phones as $key => $phone){
             if($amount[$key] == null){
                 $contact = TopupContact::find($phone);
-                $errors [] = 'Enter amount for '.$contact->firstname;
+                Session::flash('error', 'Enter amount for all the selected contacts');
+                return back();
             }else{
                 
                 $contact = TopupContact::find($phone);
-                if($this->hasReachedLimit($phone, $amount[$key], $contact->weekly_max)){
-                    $errors [] = $contact->firstname.' has reached max topup for the week';
+                if($this->hasReachedLimit($phone, $amount[$key], $contact->weekly_max)){  
+                    //logs details of contacts who have exceeded weekly limits
+                    $message = ['contact_id' => $phone, 
+                                'ref'=>str_random(10), 
+                                'amount'=>$amount[$key],
+                                'status'=>'failed',
+                                'txn_response'=> 'Weekly limit reached'
+                                ];
+                    $errors [] = $message;                  
+                    //end of log detail of contacts who have exceeded weekly limits
                 }else{
                     $total += $amount[$key];
                     $final_phones [] = $contact->phone;
                     $final_amount [] = $amount[$key];
                     $final_id [] = $phone;
-                }
-                
-                
-            } 
-            
-            
+                }  
+            }     
+        }
+
+        $this->batchRechargeFailed($errors);
+        
+        if($total > $this->getTopupWalletBalance()){
+            Session::flash('error', 'You do not have enough fund in your wallet for this topup');
+            return back();
         }
         
         if(count($final_phones) > 0){
             $this->batchRecharge($final_id, $final_phones, $final_amount);
+            return redirect('/phonetopup')->with('success', 'Contacts topped up successfully. Check history');
+   
         }else{
-            Session::flash('error', 'No Contact to recharge');
+            Session::flash('error', 'No due Contact(s) to recharge');
+            return back();
         }
         
+    }
+
+    public function batchRechargeFailed($errors){
+        $user_id = Auth::user()->id;
+        foreach($errors as $key => $error){
+            $topuphistory = new TopupHistory;
+            $topuphistory->contact_id = $error['contact_id'];
+            $topuphistory->user_id = $user_id;
+            $topuphistory->amount = $error['amount'];
+            $topuphistory->ref = $error['ref'];
+            $topuphistory->txn_response = $error['txn_response'];
+            $topuphistory->status = $error['status'];
+            $topuphistory->save();
+        }
     }
 
     public function batchRecharge($id, $phone, $amount){
@@ -202,28 +240,23 @@ class PhoneTopUpController extends Controller
         $password = env('TOP_UP_PASSWORD');
         for($i = 0; $i < count($phone); $i++){
             $contact = TopupContact::find($id[$i]);
-
             $url = "https://mobilenig.com/api/airtime.php/?username=$username&password=$password&network=$contact->netw&phoneNumber=$contact->phone&amount=$amount[$i]";
-            // dd($url);
             $headers = array('content-type' => 'application/json');
             $response = \Unirest\Request::get($url, $headers);
-            dump($response);
             $response = json_decode($response->raw_body, true);
 
             $user_id = Auth::user()->id;
-
             $topuphistory = new TopupHistory;
-
             $topuphistory->contact_id = $contact->id;
             $topuphistory->user_id = $user_id;
             $topuphistory->amount = $amount[$i];
             $topuphistory->ref = str_random(10);
             $topuphistory->txn_response = 00;
-            $topuphistory->status = 'Success';
+            $topuphistory->status = $response == '00' ? 'success' : 'failed';
             $topuphistory->save();
         }
-        // return redirect('/phonetopup')->with('success', 'Phone topped up uccessfully.');
     }
+
 
     public function topuphonesubmit(Request $request)
     {

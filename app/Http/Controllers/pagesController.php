@@ -312,7 +312,7 @@ class pagesController extends Controller
             ->select('topup_histories.*', 'topup_contacts.phone', 'topup_contacts.firstname', 'users.username', 'topup_contacts.lastname', 'topup_contacts.netw')
             ->orderBy('created_at', 'desc')
             ->get();
-            if(strlen($topupbalance) > 12){
+            if(strlen($topupbalance) > 16){
                 $topupbalance = null;
                 Session::flash('error', 'Could not retrieve balance');
             }
