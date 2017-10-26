@@ -220,6 +220,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
 	Route::get('/deletetag/{id}', 'Admin\PhoneTopUpController@deleteTag');
 	Route::post('/edittag/{id}', 'Admin\PhoneTopUpController@editTag');
 	Route::post('/transfer/topup', 'Admin\PhoneTopUpController@postTopup')->name('topup.phone.submit');
+	Route::post('/transfer/topupUser', 'Admin\PhoneTopUpController@postTopupUser');
 	Route::post('/fund/topup', 'Admin\PhoneTopUpController@fundTopup')->name('fund.phone.submit');
 	Route::post('/otp', 'Admin\PhoneTopUpController@otp')->name('fund.otp.submit');
 	Route::post('/delete-phone', 'Admin\PhoneTopUpController@delete_phone');

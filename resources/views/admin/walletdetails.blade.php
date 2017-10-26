@@ -82,7 +82,7 @@
 
               <h3 class="profile-username text-center">Name: {{ $wallet->wallet_name }}</h3>
 
-              <p class="text-muted text-center">Rule: 2 | Status: {{ $wallet->archived == 0 ? 'Active' : 'Archived' }}</p>
+              <p class="text-muted text-center"> Status: {{ $wallet->archived == 0 ? 'Active' : 'Archived' }}</p>
 
               <ul class="list-group list-group-unbordered">
                 <li class="list-group-item">

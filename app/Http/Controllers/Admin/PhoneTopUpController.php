@@ -251,6 +251,94 @@ class PhoneTopUpController extends Controller
         }
     }
 
+    public function postTopupUser(Request $request, FundWallet $topup)
+    {
+        
+        $validator = $this->validateRequestUser($request->all());
+        if ($validator->fails()) {
+            $messages = $validator->messages()->toArray();
+             Session::flash('form-errors', $messages);
+            return back();
+        } else {
+
+                //checks for permissions
+                $permit = Restriction::where('wallet_id', $wallet->id)
+                        ->where('uuid', Auth::user()->id)
+                        ->first();
+                
+                if($permit == null){
+                    Session::flash('error', 'You do not have access to this wallet');
+                    return redirect('/dashboard');
+                }    
+                 $restrict = new Restrict($permit, $request);
+                     $errors = $restrict->transferToBank();
+                if(count($errors) != 0){
+                    Session::flash('errors', $errors);
+                    return back();
+                }
+                //end of permission checks
+
+                $token = $this->getToken();
+                $headers = array('content-type' => 'application/json', 'Authorization' => $token);
+                $wallet = Wallet::find($request->wallet_id);
+                $bank = Bank::find("044");
+                $query = array(
+                    "lock" => $wallet->lock_code,
+                    "amount" => $request->amount,
+                    "bankcode" => "044",
+                    "accountNumber" => "0690000004",
+                    "currency" => "NGN",
+                    "senderName" => Auth::user()->username,
+                    "narration" => "enter narration", //Optional
+                    "ref" => "enter reference ", // No Refrence from request
+                    "walletUref" => $wallet->wallet_code
+                );
+
+                //Api call to moneywave for transaction
+                $body = \Unirest\Request\Body::json($query);
+                $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/disburse', $headers, $body);
+                $response = json_decode($response->raw_body, true);
+                $status = $response['status'];
+                //end of Api call
+                
+                if ($status == 'success') {
+
+                    //data to be parsed to display transaction details
+                    $data = $response['data']['data'];
+                    $data['senderName'] = Auth::user()->username;
+                    $data['walletCodeSender'] = $wallet->wallet_code;
+                    $data['receiverName'] = $request->account_name;
+                    $data['beneficiaryAccount'] = $request->account_number;
+                    $data['amount'] = $request->amount;
+                    $data['narration'] = $request->narration;
+                    //end of data prep
+
+                    //logic to persist transaction details
+                    $transaction = new PhonetopupTransaction;
+                    $transaction->wallet_id = $wallet->id;
+                    $transaction->amount = $request->amount;
+                    $transaction->uuid =  Auth::user()->id;
+                    $transaction->account_name = $request->account_name;
+                    $transaction->bank_id = $request->bank_id;
+                    $transaction->status = true;
+                    $transaction->account_number = $request->account_number;
+                    $transaction->save();
+                    //end of logic for saving transactions
+                    
+                    //fire off an sms notification
+                    $this->sendPhoneTopupTransactionNotifications($transaction);
+
+                     event(new FundWallet($topup));
+                    // $transactions = BankTransaction::latest()->first();
+                    Session::flash('success',"Transaction was successful");
+                    return redirect('admin/phonetopup');
+                } else {
+                    Session::flash('error',$response['message']);
+                    return back();
+                }
+        }
+    }
+
     public function sendPhoneTopupTransactionNotifications($transaction){
         Auth::user()->notify(new PhonetopupTransactionNotify($transaction));
         $admins = User::where('is_admin', true)->get();
@@ -358,6 +446,13 @@ class PhoneTopUpController extends Controller
             'bank_id' => 'required|numeric',
             'amount' => 'required|numeric',
             'account_number' => 'required|string|max:10',
+        ]);
+    }
+
+    protected function validateRequestUser(array $data)
+    {
+        return Validator::make($data, [
+            'amount' => 'required|numeric',
         ]);
     }
 
