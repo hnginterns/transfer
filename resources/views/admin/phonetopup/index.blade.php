@@ -9,14 +9,16 @@
   <link rel="stylesheet" type="text/css" href="/css/select2.min.css">
 
  <div class="container-fluid">
-  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#mModal">
-                Add New Phone</button>
-
-  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#tModal">Tags</button>
-  <br> <br>
 
         <div class="row">
-        <br>
+        <div class="col-md-3 col-sm-3">
+                
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#mModal">
+                Add New Phone</button>
+
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#tModal">Tags</button>
+                <br> <br>
+        </div>
 
         <div class="col-md-3 col-sm-3">
 
@@ -30,20 +32,24 @@
               @if(isset($wallet))
               <button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#PurchaseTopUp">Purchase</button>
               @endif
-              <hr>
 
-              <h3 class="profile-username text-center"> Wallet Balance</h3>
-            @if(isset($wallet))
-              <h2 class="text-center"><strong>₦ {{ $wallet->balance }}</strong></h2>
-             <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#walletTopUp">Fund Wallet</button>
-            @else
-             <p>No wallet linked. <strong>Please Create a wallet and set type of wallet to Topup</strong></p>
-            @endif
+              
             </div>
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
     </div>
+
+     <div class="col-md-3 col-sm-3">
+
+          <!-- Profile Image -->
+          <div class="box box-primary">
+            <div class="box-body box-profile">
+
+              <h3 class="profile-username text-center"> Wallet Balance</h3>
+            @if(isset($wallet))
+              <h2 class="text-center"><strong>₦ {{ $wallet->balance }}</strong></h2>
+              
 
 
     <!-- /.col -->
