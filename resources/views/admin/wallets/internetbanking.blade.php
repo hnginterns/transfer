@@ -123,7 +123,7 @@
             <div class="col-md-6 col-md-offset-2">
               <form action="/admin/otp" method="POST">
                 {{csrf_field()}}
-                <input type="hidden" name="ref" value="{{$cardWallet->ref}}">
+                <input type="hidden" name="ref" value="{{$intBanking->reference}}">
                 <div class="form-group">
                     <input type="password" class="form-control" name="otp" placeholder="Enter OTP">
                 </div>

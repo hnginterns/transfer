@@ -16,7 +16,7 @@ Route::get('freq',function(){
 	return view('faq');
 });
 
-Route::get('/internet', 'WalletController@payWithInternetBanking');
+Route::get('/internet', 'WalletController@otpForInternetBanking');
 // get default home pages
 Route::get('/', 'pagesController@home')->name('home');
 
