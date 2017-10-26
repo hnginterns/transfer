@@ -76,70 +76,7 @@ i.can {
 
 <center>
   <br>
-  <div class="container">
-                            <!-- Trigger the modal with a button -->
-                            <!-- Modal -->
-                            <div class="modal fade" id="PurchaseTopUp" role="dialog">
-                                <div class="modal-dialog">
-                                    <!-- Modal content-->
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            <h4 class="modal-title">Transfer To Service Provider</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form action="{{config('app.url')}}/admin/transfer/topup" method="post" accept-charset="utf-8">
-                                                <div class="modal-body" style="padding: 5px;">
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                                                            <input class="form-control" name="account_number" placeholder="Account number" type="text" required />
-                                                        </div>
-                                                    </div>
-                                                    <input name="wallet_id" value="{{$wallet == null ? 'null' : $wallet->id}}" type="hidden">
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                                                            <select class="form-control" name="bank_id">
-                                                               ($bank as $key => $banks)
-                                                                    <option value="{{$banks->id}}">{{$banks->bank_name}}</option>
-                                                               
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                        {{csrf_field()}}
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                                                            <input class="form-control" name="account_name" placeholder="Account name" type="text" required />
-                                                       
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                                                            <input class="form-control" name="narration" placeholder="Narration" type="text" required />
-                                                       
-                                                        </div>
-                                                    </div>
-
-
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                                                            <input class="form-control" name="amount" placeholder="Amount" type="number" required />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="panel-footer" style="margin-bottom:-14px;">
-                                                    <button type="submit" class="btn btn-success">Purchase</button>
-                                                    <button style="float: right;" type="button" class="btn btn-default btn-close" data-dismiss="modal">Close</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-</div>
-
-
-
+ 
   <div class="">
     <h1>Current Balance: ₦ {{ number_format($topupbalance),2}}</h1>
     <div class="orange-box">
