@@ -178,9 +178,9 @@ class PhoneTopUpController extends Controller
         $total = 0;
         foreach($phones as $key => $phone){
             if($amount[$key] == null){
-                $contact = TopupContact::find($phone);
-                Session::flash('error', 'Enter amount for all the selected contacts');
-                return back();
+                // $contact = TopupContact::find($phone);
+                // Session::flash('error', 'Enter amount for all the selected contacts');
+                // return back();
             }else{
                 
                 $contact = TopupContact::find($phone);
