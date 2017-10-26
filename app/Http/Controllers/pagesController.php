@@ -22,6 +22,8 @@ use App\Validation;
 
 use App\Bank;
 
+use Illuminate\Support\Facades\Input;
+
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\RestrictionController as Restrict;
 use App\Http\Controllers\transactionController as Trans;
@@ -309,7 +311,7 @@ class pagesController extends Controller
 
         $perPage = 10;
 
-        $uphones = $this->paginate($perPage, Input::get('search'), Input::get('department'));
+        $phones = $this->paginate($perPage, Input::get('search'), Input::get('department'));
 
         $topupbalance = $this->getTopupWalletBalance();
         $cardWallet = CardWallet::latest()->first();
