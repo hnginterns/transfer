@@ -5,18 +5,8 @@
 @section('content')
  <!-- Content Wrapper. Contains page content -->
 
- {!! Html::style('css/parsley.css') !!}
-  {!! Html::style('css/select2.min.css') !!}
-  
-
-  <script>
-    tinymce.init({
-      selector: 'textarea',
-      plugins: 'link code',
-      menubar: false
-    });
-  </script>
-
+  <link rel="stylesheet" type="text/css" href="css/parsley.css">
+  <link rel="stylesheet" type="text/css" href="css/select2.min.css">
 
  <div class="container-fluid">
   <button type="button" class="btn btn-info" data-toggle="modal" data-target="#mModal">
@@ -668,8 +658,8 @@
 @endsection
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-{!! Html::script('js/parsley.min.js') !!}
-  {!! Html::script('js/select2.min.js') !!}
+<script src="js/parsley.min.js"></script>
+<script src="js/select2.min.js"></script>
 
   <script type="text/javascript">
     $('.select2-multi').select2();
