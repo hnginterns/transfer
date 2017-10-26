@@ -195,7 +195,7 @@ tr:nth-child(even) {
           <!-- end beneficiaries list table tab -->
           </div>
           <div id="menu2" class="tab-pane fade">
-            <div class="orange-box"><h4 class="title" align="center"><!-- pane title here --></h4></div>
+            <div class="orange-box"><h4 class="title" align="center"><!-- pane title here -->Beneficiaries Transfer</h4></div>
             <!-- beneficiaries transfer table tab -->
               <div class="table table-responsive">
                 <table id="datatable" class="table table-bordered table-hover">
