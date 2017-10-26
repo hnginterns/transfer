@@ -11,10 +11,9 @@
             <div class="panel-heading">
                 Fund <strong>{{ $wallet->wallet_name }} </strong>  Wallet with Internet Banking <a href="{{ route('wallets.details', $wallet->id) }}" class="label label-primary pull-right">Back</a>
             </div>
-            
                 <div class="panel-body">
 
-                <form action="/admin/{{$wallet->wallet_code}}/fundint" method="POST" class="form-horizontal">
+                <form action="/admin/wallets/manualfundint/{{$wallet->id}}" method="POST" class="form-horizontal">
                     {{ csrf_field() }}
                     <input type="hidden" name="wallet_name" value="{{$wallet->wallet_name}}">
                     <input type="hidden" name="wallet_code" value="{{$wallet->wallet_code}}">
@@ -26,14 +25,14 @@
                             <div class="col-md-5">
                                 <label for="cc_name">First Name</label>
                                 <div class="controls">
-                                    <input name="fname" class="form-control" id="cc_name" title="First Name" required type="text">
+                                    <input name="firstname" class="form-control" id="cc_name" title="First Name" required type="text">
                                 </div>
                             </div>
                             <div class="col-md-5">
                               <div class="form-group">
                                   <label for="cc_name">Last Name</label>
                                   <div class="controls">
-                                      <input name="lname" class="form-control" id="cc_name"  title="last name" required type="text">
+                                      <input name="lastname" class="form-control" id="cc_name"  title="last name" required type="text">
                                   </div>
                               </div>
                             </div>
@@ -44,14 +43,14 @@
                             <div class="col-md-5">
                                 <label>Phone Number</label>
                                 <div class="controls">
-                                      <input name="phone" class="form-control" autocomplete="off" maxlength="20"  required="" type="text">
+                                      <input name="phoneNumber" class="form-control" autocomplete="off" maxlength="20"  required="" type="text">
                                 </div>
                             </div>
                             <div class="col-md-5">
                                 <div class="form-group">
                                     <label>Email Address</label>
                                     <div class="controls">
-                                          <input type="email" name="emailaddr" class="form-control" autocomplete="off" required="" type="text">
+                                          <input type="email" name="email" class="form-control" autocomplete="off" required="" type="text">
                                     </div>
                                 </div>
                             </div>
@@ -63,15 +62,18 @@
                             <div class="col-md-3">
                                    <label>Sender Account</label>
                                     <div class="controls">
-                                        <input class="form-control" autocomplete="off" maxlength="10" title="Your account number" required="" type="number" name="acctno">
+                                        <input class="form-control" autocomplete="off" maxlength="10" title="Your account number" required="" type="number" name="account_number">
                                     </div>
                              </div>
 
                          <div class="col-md-3">
                                <label>Sender Bank</label>
-                                <div class="controls">
-                                    <input class="form-control" autocomplete="off" maxlength="3" title="Your bank name" required="" type="number" name="bankname">
-                                </div>
+                                <select name="bank_id" required class="form-control input-defaulted" >
+                              <option>Select Bank</option>
+                              @foreach(App\Http\Controllers\BanksController::getAllBanks() as $key => $bankcode)
+                              <option value="{{$bankcode->bank_code}}||{{$bankcode->bank_name}}">{{ $bankcode->bank_name }}</option>
+                              @endforeach
+                              </select>
                          </div>
             
                           <div class="col-md-4">

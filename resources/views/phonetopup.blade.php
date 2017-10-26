@@ -85,7 +85,39 @@ tr:nth-child(even) {
               <br><div class="">
                 <h1>Current Balance: ₦ {{ number_format($topupbalance),2}}</h1>
 	<div class="orange-box"><h4 class="title" align="center">CONTACT LIST</h4></div>
-          <div class="table table-responsive">
+         
+	<br>
+<div class="row">
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-5"></div>
+    <form method="GET" action="" accept-charset="UTF-8" id="users-form">
+        <div class="col-md-2">
+
+          <select class="form-control" name>
+            <option>All Depts</option>
+            @foreach($phones as $contact)
+              <option value="{{ $contact->department }}">{{ $contact->department }}</option>
+            @endforeach
+          </select>
+           
+        </div>
+        <div class="col-md-3">
+            <div class="input-group custom-search-form">
+                <input type="text" class="form-control" name="search" value="" placeholder="Search tags">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit" id="search-users-btn">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                    
+                </span>
+            </div>
+        </div>
+    </form>
+</div>
+<br>
+	 
+	 <div class="table table-responsive">
                 <table class="table" id="contact-table">
               <thead>
                 <tr>

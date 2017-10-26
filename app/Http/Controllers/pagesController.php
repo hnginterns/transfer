@@ -146,7 +146,7 @@ class pagesController extends Controller
         if($permit == null) return redirect('/dashboard')->with('error', 'You do not have access to this wallet');
 
         $cardWallet = CardWallet::latest()->first();
-        $beneficiary = Validation::latest()->first();
+        $validate = Validation::latest()->first();
         $beneficiaries = Beneficiary::where('wallet_id', $wallet->id)->paginate(15);
 
         // get all wallet to wallet transactions, both sent and received
@@ -158,7 +158,7 @@ class pagesController extends Controller
 
         $history = Trans::getTransactionsHistory($walletTransfer, $walletTransactions, $bankTransactions, $wallet->wallet_code, $wallet->id);
 
-        return view('view-wallet', compact('wallet','permit','rules','beneficiaries', 'history', 'cardWallet', 'beneficiary'));
+        return view('view-wallet', compact('wallet','permit','rules','beneficiaries', 'history', 'cardWallet', 'validate'));
     }
 
     public function createBeneficiary()
@@ -180,11 +180,6 @@ class pagesController extends Controller
         $banks = Bank::all();
 
         return view('createbeneficiary', compact('wallet','banks'));
-    }
-
-    public function validateAccount(Request $request)
-    {
-        
     }
 
     public function insertBeneficiary(Request $request, Wallet $wallet)
@@ -235,7 +230,7 @@ class pagesController extends Controller
                     $response = $response['data']['account_name'];
                     return back()->with('response', $response);
                 //return redirect("wallet/$wallet->id")->with('success', 'Beneficiary added');
-                    } else {
+                    } else { 
                         return redirect()->back()->with('error', 'Beneficiary could not be added');
                     }       
                 }else {
@@ -249,9 +244,9 @@ class pagesController extends Controller
     public function addAccount(Request $request, Wallet $wallet)
     {
         $beneficiary = new Beneficiary;
-        $beneficiary->uuid = $request->uuid;
+        $beneficiary->uuid = Auth::user()->id;
         $beneficiary->name = $request->name;
-        $beneficiary->wallet_id = $request->wallet_id;
+        $beneficiary->wallet_id = $wallet->id;
         $beneficiary->bank_id = $request->bank_id;
         $beneficiary->bank_name = $request->bank_name;
         $beneficiary->account_number = $request->account_number;
@@ -321,7 +316,7 @@ class pagesController extends Controller
                 $topupbalance = null;
                 Session::flash('error', 'Could not retrieve balance');
             }
-        return view('phonetopup', compact('cardWallet','wallet', 'phones', 'topupbalance', 'topuphistory', 'walletfundhistory'));
+        return view('phonetopup', compact('cardWallet','wallet', 'phones', 'topupbalance', 'topuphistory', 'walletfundhistory', 'depts'));
     }
 
     //all other page functions can be added

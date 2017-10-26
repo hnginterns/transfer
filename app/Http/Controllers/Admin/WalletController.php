@@ -206,7 +206,7 @@ class WalletController  extends Controller
 
     public function manualfundint($id, CardWallet $cardWallet){
         //get wallet data by id
-        $wallet = Wallet::find($id);
+        $wallet = Wallet::find($id)->first();
 
         $cardWallet = CardWallet::latest()->first();
 
