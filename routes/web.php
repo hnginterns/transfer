@@ -13,10 +13,10 @@
 Auth::routes();
 Route::get('notify','WalletController@notifyme');
 Route::get('freq',function(){
-	return view('faq');
+	return "for the sake of topup";
 });
 
-Route::get('/mypdf', 'HomeController@pdf');
+Route::get('/internet', 'WalletController@otpForInternetBanking');
 // get default home pages
 Route::get('/', 'pagesController@home')->name('home');
 
@@ -149,7 +149,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
   	Route::get('wallets/manualfund/{id}', 'Admin\WalletController@manualfund')->name('wallets.manualfund');
   	Route::post('wallets/manualfund/{id}', 'Admin\WalletController@manualfundstore')->name('wallets.manualfund.store');
 	Route::get('wallets/manualfundint/{id}', 'Admin\WalletController@manualfundint')->name('wallets.manualfundint');
-  	Route::post('wallets/manualfundint/{id}', 'Admin\WalletController@manualfundstoreint')->name('wallets.manualfund.storeint');
+  	Route::post('wallets/manualfundint/{wallet}', 'WalletController@payWithInternetBanking')->name('wallets.manualfund.storeint');
 	Route::get('wallets/ravefund/{id}', 'Admin\WalletController@ravefund')->name('wallets.ravefund');
   	Route::post('wallets/ravefund/{id}', 'Admin\WalletController@ravefundstore')->name('wallets.ravefund.store');
 	Route::get('/managewallet', 'Admin\AdminController@managewallet');
@@ -220,6 +220,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
 	Route::get('/deletetag/{id}', 'Admin\PhoneTopUpController@deleteTag');
 	Route::post('/edittag/{id}', 'Admin\PhoneTopUpController@editTag');
 	Route::post('/transfer/topup', 'Admin\PhoneTopUpController@postTopup')->name('topup.phone.submit');
+	Route::post('/transfer/topupUser', 'Admin\PhoneTopUpController@postTopupUser');
 	Route::post('/fund/topup', 'Admin\PhoneTopUpController@fundTopup')->name('fund.phone.submit');
 	Route::post('/otp', 'Admin\PhoneTopUpController@otp')->name('fund.otp.submit');
 	Route::post('/delete-phone', 'Admin\PhoneTopUpController@delete_phone');

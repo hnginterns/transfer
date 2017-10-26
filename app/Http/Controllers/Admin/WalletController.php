@@ -15,6 +15,7 @@ use URL;
 use App\Restriction;
 use App\User;
 use App\Notifications\PermissionNotify;
+use App\InternetBanking;
 
 class WalletController  extends Controller
 {
@@ -204,16 +205,16 @@ class WalletController  extends Controller
         return view('admin.wallets.ravefund', ['wallet' => $wallet]);*/
     }
 
-    public function manualfundint($id, CardWallet $cardWallet){
+    public function manualfundint($id){
         //get wallet data by id
-        $wallet = Wallet::find($id);
+        $wallet = Wallet::find($id)->first();
 
-        $cardWallet = CardWallet::latest()->first();
+        $intBanking = InternetBanking::latest()->first();
 
         $user = Auth::user();
         
         //load form view
-        return view('admin.wallets.internetbanking', compact('wallet', 'cardWallet','user'));
+        return view('admin.wallets.internetbanking', compact('wallet', 'intBanking','user'));
     }
 
     public function manualfundstoreint($id, Request $request){

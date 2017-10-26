@@ -20,7 +20,7 @@
 
 @if(isset($smsWallet))
   <div class="row">
-    <h3>Balance: {{ $smsWallet->balance }}</h3>
+    <h3>Balance:₦ {{ $smsWallet->balance }}</h3>
 
 <button type="button" class="btn btn-info" data-toggle="modal" data-target="#walletTopUp">
                 Fund Wallet</button>
@@ -33,26 +33,41 @@
 </div>
 
 <section class="content">
- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mModal">
+ <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newsms">
           Add New SMS Account</button>
 
   <section class="content container" id="bulksms">
-          
         <div class="row">
-       @foreach($accounts as $account)
-          <div class="col-md-3 col-sm-10 units" >
-            <p>Account Name: {{$account->username}}</p>
-            @foreach($smswalletdetails as $sms)
-            @if($account->username == $sms['username'])
-            <p>Sms Unit: {{$sms['balance']}}</p>
-            @endif
-            @endforeach
-            <button type="button" class="btn btn-success btn-block " data-toggle="modal" data-target="#{{$account->id}}smstop">
-                Top up
-              </button>
-          </div>
-          @endforeach
 
+          @foreach ($smswalletdetails as $smswalletdetail)
+
+            <div class="col-md-3 col-xs-12 units">
+                <!-- small box -->
+                <div class="small-box">
+      <div class="inner unit">
+          <p>SMS Account</p>
+          <hr/>
+          <p>Account Name: <span class="username">{{ $smswalletdetail['username'] }}</span></p>
+          <p>Sms Unit: <span class="unit-balance">{{ $smswalletdetail['balance'] }}</span>
+            @if($smswalletdetail['balance'] < 50 && $smswalletdetail['balance'] >10)
+          <p class="text-warning">Balance is getting low</p>
+        @elseif($smswalletdetail['balance'] < 10) 
+          <p class="text-danger">Balance is low</p>
+        @else 
+          <p></p>
+        @endif
+          </p>
+      </div>
+      
+      <div class="icon">
+          <i class="fa fa-envelope"></i>
+      </div>  
+      <a href="#" class="btn-success btn pull-right" type="button"  data-toggle="modal" data-target="#{{$smswalletdetail['id']}}modal">Transfer fund <i class="fa fa-arrow-circle-right"></i></a>
+      
+                </div>
+            </div>
+
+          @endforeach
         </div>
     </section>
 
@@ -195,7 +210,7 @@
 
 
                             <!-- Modal  for adding new sms Account-->
-                            <div class="modal fade" id="mModal" role="dialog">
+                            <div class="modal fade" id="newsms" role="dialog">
                                 <div class="modal-dialog">
                                     <!-- Modal content -->
                                     <div class="modal-content">
@@ -251,8 +266,8 @@
 
 
                             <!-- Modal  for transfering to sms Bank account that is low-->
-
-                     <div class="modal fade" id="smstop">
+@foreach ($smswalletdetails as $smswalletdetail)
+                     <div class="modal fade" id="{{$smswalletdetail['id']}}modal">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
@@ -267,24 +282,24 @@
                 <!-- text input -->
                 <div class="form-group">
                   <label>SMS User</label>
-                  <input class="form-control email" value="johseph.mbassey2@gmail.com"  type="email" disabled>
+                  <input class="form-control email" value="{{$smswalletdetail['username']}}"  type="email" disabled>
                 </div>
                 
                 <div class="form-group">
                   <label>Bank Name</label>
-                  <input class="form-control bank" value="Firs bank"  type="text" disabled>
+                  <input class="form-control bank" value="GTBank Plc" placeholder='' type="text" disabled>
                 </div>
 
                 <div class="form-group">
                   <label>Account Number</label>
-                  <input class="form-control account-no" value="3091455216" name="account" type="text" disabled>
+                  <input class="form-control account-no" value="0013093302" name="account" type="text" disabled>
                 </div>
                  <div class="form-group">
                   <label>Top-Up Amount</label>
-                  <input class="form-control" name="amount"  type="text" placeholder="50000">
+                  <input class="form-control" name="amount"  type="text" placeholder="60000">
                 </div>
                 <input type="hidden" class="bank-code" name="bank_code">
-                <input type="button" class="btn btn-block btn-success sendsms-pay" name="" value="Top-Up">
+                <input type="button" class="btn btn-block btn-success sendsms-pay" name="" value="Transfer">
               </form>
 
               </div>
@@ -299,7 +314,9 @@
       
     <!-- /.content -->
   </div>
-  <!-- /.c
+  @endforeach
+  <!-- /
+
 
            <!--Modal for Otp -->
                             @if (session('status'))

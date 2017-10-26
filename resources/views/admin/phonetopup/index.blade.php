@@ -5,6 +5,8 @@
 @section('content')
  <!-- Content Wrapper. Contains page content -->
 
+  <link rel="stylesheet" type="text/css" href="/css/parsley.css">
+  <link rel="stylesheet" type="text/css" href="/css/select2.min.css">
 
  <div class="container-fluid">
   <button type="button" class="btn btn-info" data-toggle="modal" data-target="#mModal">
@@ -24,7 +26,7 @@
               
               <h3 class="profile-username text-center">Mobile Topup Wallet</h3>
 
-              <p class="text-center"><strong><font size="10">₦ {{isset($topupbalance) ? number_format($topupbalance, 2) : 'null' }}</strong></p>
+              <h2 class="text-center"><strong>₦ {{isset($topupbalance) ? number_format($topupbalance, 2) : 'null' }}</strong></h2>
               @if(isset($wallet))
               <button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#PurchaseTopUp">Purchase</button>
               @endif
@@ -32,7 +34,7 @@
 
               <h3 class="profile-username text-center"> Wallet Balance</h3>
             @if(isset($wallet))
-              <p class="text-center"><strong>₦ {{ $wallet->balance }}</strong></p>
+              <h2 class="text-center"><strong>₦ {{ $wallet->balance }}</strong></h2>
              <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#walletTopUp">Fund Wallet</button>
             @else
              <p>No wallet linked. <strong>Please Create a wallet and set type of wallet to Topup</strong></p>
@@ -48,56 +50,56 @@
         <div class="col-md-9 col-sm-9">
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-              <li class="active"><a href="#contacts" data-toggle="tab">Contacts</a></li>
-              <li><a href="#history" data-toggle="tab">Transaction History</a></li>
+              <li class="active"><a href="#contacts" data-toggle="tab"><strong>Contacts</strong></a></li>
+              <li><a href="#history" data-toggle="tab"><strong>Transaction History</strong></a></li>
             </ul>
             <div class="tab-content">
               <div class="active tab-pane" id="contacts">
-                
-                 <table id="datatable" class="table table-bordered table-hover">
-                    <thead>
-                            <tr>
-                                <td>Name</td>
-                                <td>Title</td>
-                                <td>Dept</td>
-                                <td>Phone</td>
-                                <td>Email</td>
-                                <td>Weekly Max</td>
-                                <td>Network</td>
-                                <td></td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @if(count($contacts) > 0)
-                              @foreach($contacts as $phone)
+                <div class="table-responsive">
+                    <table id="datatable" class="table table-bordered table-hover">
+                        <thead>
                                 <tr>
-                                    <td>{{ $phone->firstname }} {{ $phone->lastname }}</td>
-                                    <td>@isset($phone->title){{ $phone->title }}@else Not Set @endisset</td>
-                                    <td>@isset($phone->department){{ $phone->department }}@else Not Set @endisset</td>
-                                    <td>{{ $phone->phone }}</td>
-                                    <td>@isset($phone->email){{ $phone->email }}@else Not Set @endisset</td>
-                                    <td>{{ $phone->weekly_max }}</td>
-                                    <td>{{ $phone->netw }}</td>
-                                    <td>
-                                        <form action="{{ url('admin/delete-phone') }}" method="post">
-                                            {{ csrf_field() }}
-                                            <input type="hidden" name="delete_phone" value="{{ $phone->id }}" >
-                                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                                        </form>
-                                    </td> 
+                                    <td><strong>Name</strong></td>
+                                    <td><strong>Title</strong></td>
+                                    <td><strong>Dept</strong></td>
+                                    <td><strong>Phone</strong></td>
+                                    <td><strong>Email</strong></td>
+                                    <td><strong>Weekly Max</strong></td>
+                                    <td><strong>Network</strong></td>
+                                    <td></td>
                                 </tr>
-                              @endforeach
-                            @else
-                               <tr>
-                                  <td></td>
-                                  <td>No Phone Number Added</td>
-                                  <td></td>
-                                  <td></td>
-                              </tr>
-                            @endif
-                        </tbody>
-                </table>
-
+                            </thead>
+                            <tbody>
+                                @if(count($contacts) > 0)
+                                @foreach($contacts as $phone)
+                                    <tr>
+                                        <td>{{ $phone->firstname }} {{ $phone->lastname }}</td>
+                                        <td>@isset($phone->title){{ $phone->title }}@else Not Set @endisset</td>
+                                        <td>@isset($phone->department){{ $phone->department }}@else Not Set @endisset</td>
+                                        <td>{{ $phone->phone }}</td>
+                                        <td>@isset($phone->email){{ $phone->email }}@else Not Set @endisset</td>
+                                        <td>{{ $phone->weekly_max }}</td>
+                                        <td>{{ $phone->netw }}</td>
+                                        <td>
+                                            <form action="{{ url('admin/delete-phone') }}" method="post">
+                                                {{ csrf_field() }}
+                                                <input type="hidden" name="delete_phone" value="{{ $phone->id }}" >
+                                                <button type="submit" class="btn btn-danger btn-sm" style="color:#fff;"><span class="fa fa-trash"></span></button>
+                                            </form>
+                                        </td> 
+                                    </tr>
+                                @endforeach
+                                @else
+                                <tr>
+                                    <td></td>
+                                    <td>No Phone Number Added</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                @endif
+                            </tbody>
+                    </table>
+                </div>
               </div>
               <!-- /.tab-pane -->
               <div class="tab-pane" id="history">
@@ -265,11 +267,13 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                                                           <select class="form-control" name="tagcontact">
+                                                           <select class="form-control"  name="tags">
+
                                                             @if(count($tags) > 0)
                                                               <option selected value="">Select Tag</option>
                                                               @foreach($tags as $tag)
-                                                                <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                                                                <option value="{{ $tag->name }}">{{ $tag->name }}</option>
+
                                                               @endforeach
                                                             @else
                                                                 <option selected value="">No tags added</option>
@@ -655,3 +659,9 @@
 @endsection
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/parsley.min.js"></script>
+<script src="/js/select2.min.js"></script>
+
+  <script type="text/javascript">
+    $('.select2-multi').select2();
+  </script>

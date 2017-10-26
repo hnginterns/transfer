@@ -73,8 +73,8 @@ tr:nth-child(even) {
 
               <div class="">
               @if (!empty($permit))
-                  
-           <table>
+<!-- wallet types table -->
+<table>
   <tr>
     <th><font color="#39689C">Wallet Name</font></th>
     <th><font color="#39689C">Wallet ID</font></th>
@@ -88,7 +88,9 @@ tr:nth-child(even) {
     <td>{{ $wallet->balance }}</td>
   </tr>
   
-</table><p>
+</table>
+<!-- end wallet types table -->
+<p>
 </div><br><br>
 
           <br> <div class="">
@@ -100,13 +102,14 @@ tr:nth-child(even) {
   <div class="tab-content">
   <div id="home" class="tab-pane fade in active">
 	<div class="orange-box"><h4 class="title" align="center"> {{ ucfirst($wallet->wallet_name) }} TRANSACTION HISTORY</h4></div><br>
+        <!-- transaction history table tab -->
           <div class="table-responsive">
-              @if(count($history))          
-						<table class="table table-hover">
+              @if(count($history)) 
+            <table id="datatable" class="table table-bordered table-hover">
 							<thead>
 								<tr>
 									<th>Transaction Type</th>
-                  							<th>State</th>
+                  <th>State</th>
 									<th>Transaction Amount</th>
 									<th>Transaction Date</th>
 									<th>Status</th>
@@ -155,12 +158,13 @@ tr:nth-child(even) {
                   
                 @endif
 					</div>
+          <!-- end transction history table tab -->
 </div>
 <div id="menu1" class="tab-pane fade">
           <div class="orange-box"><h4 class="title" align="center"> {{ $wallet->wallet_name }}'s Beneficiaries</h4></div>
-
-          <div class="table-responsive">
-            <table class="table">
+        <!-- beneficiaries list table tab -->
+          <div class="table table-responsive">
+            <table id="datatable" class="table table-bordered table-hover">
               <thead>
                 <tr>
                   <th>Name</th>
@@ -186,13 +190,66 @@ tr:nth-child(even) {
               </tbody>
             </table>
 
-            {{ $beneficiaries->links() }}
           </div>
+          <!-- end beneficiaries list table tab -->
           </div>
           <div id="menu2" class="tab-pane fade">
-          
-          </div>  
-</div></div>
+            <div class="orange-box"><h4 class="title" align="center"><!-- pane title here -->Beneficiaries Transfer</h4></div>
+            <!-- beneficiaries transfer table tab -->
+              <div class="table table-responsive">
+                <table id="datatable" class="table table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Amount</th>
+                      <th>Wallet ID</th>
+                      <th>Transaction Status</th>
+                      <th>Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- some temporary dummy table data -->
+                    <tr>
+                      <td>Cletus Nnabuife</td>
+                      <td>5,000</td>
+                      <td>0902892</td>
+                      <td>Success</td>
+                      <td>2017-10-26</td>
+                    </tr>
+                    <tr>
+                      <td>Cletus Nnabuife</td>
+                      <td>5,000</td>
+                      <td>0902892</td>
+                      <td>Success</td>
+                      <td>2017-10-26</td>
+                    </tr>
+                    <tr>
+                      <td>Cletus Nnabuife</td>
+                      <td>5,000</td>
+                      <td>0902892</td>
+                      <td>Success</td>
+                      <td>2017-10-26</td>
+                    </tr>
+                    <tr>
+                      <td>Cletus Nnabuife</td>
+                      <td>5,000</td>
+                      <td>0902892</td>
+                      <td>Success</td>
+                      <td>2017-10-26</td>
+                    </tr>
+                    <tr>
+                      <td>Cletus Nnabuife</td>
+                      <td>5,000</td>
+                      <td>0902892</td>
+                      <td>Success</td>
+                      <td>2017-10-26</td>
+                    </tr>
+                    <!-- end dummy data -->
+                  </tbody>          
+                </div>  
+          <!-- end beneficiaries transfer table tab -->     
+              </div>
+            </div>
           <div class="col-sm-12">  
 		  	  
             	
@@ -367,7 +424,7 @@ tr:nth-child(even) {
                               <option>Select Bank</option>
 
                             @foreach(App\Http\Controllers\BanksController::getAllBanks() as $key => $bankcode)
-                            <option value="{{$bankcode->id}}||{{$bankcode->bank_name}}">{{ $bankcode->bank_name }}</option>
+                            <option value="{{$bankcode->bank_code}}||{{$bankcode->bank_name}}">{{ $bankcode->bank_name }}</option>
                             @endforeach
                             </select>
                           </div>
@@ -462,17 +519,15 @@ $('.modal-content').resizable({
             <div class="col-md-6 col-md-offset-2">
               <form action="/updateBeneficiary/{{$wallet->id}}" method="POST">
                 {{csrf_field()}}
-                <input type="hidden" name="bank_id" value="{{$beneficiary->bank_id}}">
-                <input type="hidden" name="bank_id" value="{{$beneficiary->wallet_id}}">
-                <input type="hidden" name="bank_id" value="{{$beneficiary->uuid}}">
+                <input type="hidden" name="bank_id" value="{{$validate->bank_id}}">
                 <div class="form-group">
                 <input type="text" name="name" value="{{session('response')}}" class="form-control" readonly>
               </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" name="bank_name" value="{{$beneficiary->bank_name}}" readonly>
+                    <input type="text" class="form-control" name="bank_name" value="{{$validate->bank_name}}" readonly>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" name="account_number" value="{{$beneficiary->account_number}}" readonly>
+                    <input type="text" class="form-control" name="account_number" value="{{$validate->account_number}}" readonly>
                 </div>
                 <button type="submit" class="btn btn-default btn-block">Submit</button>
               </form>

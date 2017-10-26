@@ -85,11 +85,43 @@ tr:nth-child(even) {
               <br><div class="">
                 <h1>Current Balance: ₦ {{ number_format($topupbalance),2}}</h1>
 	<div class="orange-box"><h4 class="title" align="center">CONTACT LIST</h4></div>
-          <div class="table table-responsive">
+         
+	<br>
+<div class="row">
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-5"></div>
+    <form method="GET" action="" accept-charset="UTF-8" id="users-form">
+        <div class="col-md-2">
+
+          <select class="form-control" name>
+            <option>All Depts</option>
+            @foreach($phones as $contact)
+              <option value="{{ $contact->department }}">{{ $contact->department }}</option>
+            @endforeach
+          </select>
+           
+        </div>
+        <div class="col-md-3">
+            <div class="input-group custom-search-form">
+                <input type="text" class="form-control" name="search" value="" placeholder="Search tags">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit" id="search-users-btn">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                    
+                </span>
+            </div>
+        </div>
+    </form>
+</div>
+<br>
+	 
+	 <div class="table table-responsive">
                 <table class="table" id="contact-table">
               <thead>
                 <tr>
-                  <td>Select</td>
+                  <th><input type="checkbox" class="select-all"/> Select All</th>
                   <td>Name</td>
                   <td>Phone Number</td>
                   <td>Network</td>
@@ -108,14 +140,15 @@ tr:nth-child(even) {
                 @if(count($phones) > 0)
                   @foreach($phones as $phone)
                     <tr class="contact-fn">
-                      <td><input type="checkbox" name="select" value="1" class="checkbox"></td>
+
+                      <td><input type="checkbox" name="checked[]" value="{{$phone->id}}" class="checkbox"></td>
                         <td class="firstName" data-user="{{ $phone->id }}">{{ $phone->firstname }} {{ $phone->lastname }}</td>
                         <td class="phone">{{ $phone->phone }}</td>
                         <td class="phoneRef">{{ $phone->netw }}</td>
                         <td class="amount">{{ $phone->title }}</td>
                         <td class="amount">{{ $phone->department }}</td>
                         <td class="max-tops">{{ $phone->weekly_max }}</td>
-                        <td><input class="form-control input-airtime-amount" type="text" name="{{ $phone->id }}" placeholder="Enter Amount" /></td>
+                        <td><input class="form-control input-airtime-amount"  type="number" min="0" name="amount[{{$phone->id}}]" placeholder="Enter Amount"/></td>
                         <td>
 
                           <a class="airtime btn btn-success" data-id="{{ $phone->id }}" data-toggle="modal" data-target="#airtimeModal">
@@ -125,8 +158,6 @@ tr:nth-child(even) {
                           <a class="btn btn-success" data-id="{{ $phone->id }}" data-toggle="modal" data-target="#dataModal">
                               Data
                           </a>
-
-                          
 
                         </td>
                     </tr>
@@ -138,6 +169,7 @@ tr:nth-child(even) {
                       <td></td>
                       <td></td>
                   </tr>
+                
                 @endif
              
               </tbody>
@@ -149,9 +181,10 @@ tr:nth-child(even) {
                 <td></td>
                 <td></td>
                 <td></td>
-                <td><input type="submit" class="btn btn-success" value="Top Up All"></td>
+                <td><button type="submit" class="btn btn-success">Top up all</button></td>
                 <td></td>
                </tr>
+               </form>
             </table>  
             
               <br>
@@ -237,7 +270,7 @@ tr:nth-child(even) {
             <hr />
             <div class="form-group col-md-12">
               <label for="Lastname" class="col-form-label">Amount</label>
-              <input type="text" name="amount" class="form-control" placeholder="Please Enter Amount">          
+              <input type="text" name="amount" class="form-control" placeholder="Please Enter Amount" required>          
             </div>      
                     
           </div>
@@ -421,6 +454,17 @@ tr:nth-child(even) {
 //     });
 // });
 
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.select-all').on('click', function() {
+            var checkAll = this.checked;
+            $('input[type=checkbox]').each(function() {
+                this.checked = checkAll;
+            });
+        });
+    });
 </script>
 
 

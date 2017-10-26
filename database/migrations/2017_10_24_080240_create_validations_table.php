@@ -16,6 +16,7 @@ class CreateValidationsTable extends Migration
         Schema::create('validations', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('bank_id');
+            $table->integer('wallet_id');
             $table->string('bank_name');
             $table->string('account_number');
             $table->timestamps();
