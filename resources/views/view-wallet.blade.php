@@ -563,3 +563,5 @@ $('.modal-content').resizable({
      @endif
     
   @endsection
+<script src="/js/parsley.min.js"></script>
+<script src="/js/select2.min.js"></script>
