@@ -62,6 +62,11 @@ i.can {
 <link rel="stylesheet" href="/css/walletview.css">
 
 
+ <button type="button" class="btn btn-success" data-toggle="modal" data-target="#walletTopUp">Fund Wallet</button>
+
+<button type="button" class="btn btn-info" data-toggle="modal" data-target="#PurchaseTopUp">Purchase</button>
+
+
 <!---Modal for wallet top Up-->
                     <div class="modal fade" id="walletTopUp">
                         <div class="modal-dialog">
@@ -271,7 +276,7 @@ i.can {
       <form method="GET" action="" accept-charset="UTF-8" id="conatcts-form">
         <div class="col-md-2">
 
-          <select class="form-control" name="department" id="department">
+          <select class="form-control" name="department">
             <option>All Depts</option>
             @foreach($phones as $contact)
               <option value="{{ $contact->department }}">{{ $contact->department }}</option>
@@ -368,7 +373,6 @@ i.can {
         </tr>
         </form>
       </table>
-      {!! $phones->render() !!}
   </div>
       <br>
       <hr><br>
@@ -542,6 +546,10 @@ i.can {
         </select>
 
 
+
+
+
+
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -623,6 +631,7 @@ i.can {
 //     });
 // });
   </script>
+
 
   <script>
         $("#department").change(function () {
