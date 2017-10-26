@@ -190,7 +190,6 @@ tr:nth-child(even) {
               </tbody>
             </table>
 
-            {{ $beneficiaries->links() }}
           </div>
           <!-- end beneficiaries list table tab -->
           </div>
