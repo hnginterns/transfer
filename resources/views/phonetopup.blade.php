@@ -1,64 +1,58 @@
-@extends('layouts.user')
-
-@section('title')
-      Phone Top Up
-@endsection
-@section('content')
+@extends('layouts.user') @section('title') Phone Top Up @endsection @section('content')
 <style>
-i.can{
-        color: #00a65a;
-        
-    }
-    i.cannot{
-      color: #dd4b39;
-    }
-i.sent{
-        color: #00a65a;
-        filter: blur(10px);
-        -webkit-filter: blur(10px);
-        z-index:-1
-        
-    }
-    em.sent{
-        opacity: 0.5
-        z-index:-1
-        
-    }
-    i.received{
-      color: #dd4b39;
-      
- }
-    
-    
-first {
+i.can {
+    color: #00a65a;
+  }
+
+  i.cannot {
+    color: #dd4b39;
+  }
+
+  i.sent {
+    color: #00a65a;
+    filter: blur(10px);
+    -webkit-filter: blur(10px);
+    z-index: -1
+  }
+
+  em.sent {
+    opacity: 0.5 z-index:-1
+  }
+
+  i.received {
+    color: #dd4b39;
+  }
+
+
+  first {
     float: right;
     margin: 0 0 10px 10px;
-}
-    
-form group { 
-    
-    height:400;
-    
-    }
-    
-    table {
+  }
+
+  form group {
+
+    height: 400;
+  }
+
+  table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 899;
-    
-}
-td, th {
+  }
+
+  td,
+  th {
     border: px solid #dddddd;
-    
+
     text-align: center;
     padding: 5px;
-}
-tr:nth-child(even) {
+  }
+
+  tr:nth-child(even) {
     width: 100;
     background-color: #dddddd;
-}
-    
-/* 
+  }
+  /* 
 	#container {
 		width:200;
 	}
@@ -71,8 +65,7 @@ tr:nth-child(even) {
 		background:#fff; border:0px solid #000;
 		float:right; min-height:230px; width:30px;
 	} */
-    
-    }
+}
 </style>
 
 <link rel="stylesheet" href="walletview.css">
@@ -82,16 +75,19 @@ tr:nth-child(even) {
 
 
 <center>
-              <br><div class="">
-                <h1>Current Balance: ₦ {{ number_format($topupbalance),2}}</h1>
-	<div class="orange-box"><h4 class="title" align="center">CONTACT LIST</h4></div>
-         
-	<br>
-<div class="row">
-    <div class="col-md-2">
+  <br>
+  <div class="">
+    <h1>Current Balance: ₦ {{ number_format($topupbalance),2}}</h1>
+    <div class="orange-box">
+      <h4 class="title" align="center">CONTACT LIST</h4>
     </div>
-    <div class="col-md-5"></div>
-    <form method="GET" action="" accept-charset="UTF-8" id="users-form">
+
+    <br>
+    <div class="row">
+      <div class="col-md-2">
+      </div>
+      <div class="col-md-5"></div>
+      <form method="GET" action="" accept-charset="UTF-8" id="users-form">
         <div class="col-md-2">
 
           <select class="form-control" name>
@@ -100,223 +96,225 @@ tr:nth-child(even) {
               <option value="{{ $contact->department }}">{{ $contact->department }}</option>
             @endforeach
           </select>
-           
+
         </div>
         <div class="col-md-3">
-            <div class="input-group custom-search-form">
-                <input type="text" class="form-control" name="search" value="" placeholder="Search tags">
-                <span class="input-group-btn">
-                    <button class="btn btn-default" type="submit" id="search-users-btn">
-                        <span class="glyphicon glyphicon-search"></span>
-                    </button>
-                    
-                </span>
-            </div>
+          <div class="input-group custom-search-form">
+            <input type="text" class="form-control" name="search" value="" placeholder="Search tags">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="submit" id="search-users-btn">
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+
+            </span>
+          </div>
         </div>
-    </form>
-</div>
-<br>
-	 
-	 <div class="table table-responsive">
-                <table class="table" id="contact-table">
-              <thead>
-                <tr>
-                  <th><input type="checkbox" class="select-all"/> Select All</th>
-                  <td>Name</td>
-                  <td>Phone Number</td>
-                  <td>Network</td>
-                  <td>Title</td>
-                  <td>Department</td>
-                  <td>Weekly Limit</td>
-                  <td>Enter Amount<br>(airtime)</td>
-                  <td>Action</td>
-                </tr>
-              </thead>
+      </form>
+    </div>
+    <br>
+
+    <div class="table table-responsive">
+      <table class="table" id="contact-table">
+        <thead>
+          <tr>
+            <th><input type="checkbox" class="select-all" /> Select All</th>
+            <td>Name</td>
+            <td>Phone Number</td>
+            <td>Network</td>
+            <td>Title</td>
+            <td>Department</td>
+            <td>Weekly Limit</td>
+            <td>Enter Amount<br>(airtime)</td>
+            <td colspan="2">Action</td>
+          </tr>
+        </thead>
 
 
-              <tbody>
-              <form class="send-airtime" action="{{ route('topup.phone.multiple')}}" method="POST" role="form">
-              {{ csrf_field() }}
-                @if(count($phones) > 0)
-                  @foreach($phones as $phone)
-                    <tr class="contact-fn">
+        <tbody>
+          <form class="send-airtime" action="{{ route('topup.phone.multiple')}}" method="POST" role="form">
+            {{ csrf_field() }} @if(count($phones) > 0) @foreach($phones as $phone)
+            <tr class="contact-fn">
 
-                      <td><input type="checkbox" name="checked[]" value="{{$phone->id}}" class="checkbox"></td>
-                        <td class="firstName" data-user="{{ $phone->id }}">{{ $phone->firstname }} {{ $phone->lastname }}</td>
-                        <td class="phone">{{ $phone->phone }}</td>
-                        <td class="phoneRef">{{ $phone->netw }}</td>
-                        <td class="amount">{{ $phone->title }}</td>
-                        <td class="amount">{{ $phone->department }}</td>
-                        <td class="max-tops">{{ $phone->weekly_max }}</td>
-                        <td><input class="form-control input-airtime-amount"  type="number" min="0" name="amount[{{$phone->id}}]" placeholder="Enter Amount"/></td>
-                        <td>
+              <td><input type="checkbox" name="checked[]" value="{{$phone->id}}" class="checkbox"></td>
+              <td class="firstName" data-user="{{ $phone->id }}">{{ $phone->firstname }} {{ $phone->lastname }}</td>
+              <td class="phone">{{ $phone->phone }}</td>
+              <td class="phoneRef">{{ $phone->netw }}</td>
+              <td class="amount">{{ $phone->title }}</td>
+              <td class="amount">{{ $phone->department }}</td>
+              <td class="max-tops">{{ $phone->weekly_max }}</td>
+              <td><input class="form-control input-airtime-amount" type="number" min="50" name="amount[{{$phone->id}}]" placeholder="Enter Amount"
+                /></td>
+              <td>
 
-                          <a class="airtime btn btn-success" data-id="{{ $phone->id }}" data-toggle="modal" data-target="#airtimeModal">
-                              Airtime
-                          </a>
+                <a class="airtime btn btn-success" data-id="{{ $phone->id }}" data-toggle="modal" data-target="#airtimeModal">
+                   Airtime
+                </a>
+              </td>
+              <td>
+                <a class="btn btn-primary" data-id="{{ $phone->id }}" data-toggle="modal" data-target="#dataModal">
+                    Data
+                </a>
+                </td>
 
-                          <a class="btn btn-success" data-id="{{ $phone->id }}" data-toggle="modal" data-target="#dataModal">
-                              Data
-                          </a>
+              </td>
+            </tr>
+            @endforeach @else
+            <tr>
+              <td></td>
+              <td>No Phone Number Added</td>
+              <td></td>
+              <td></td>
+            </tr>
 
-                        </td>
-                    </tr>
-                  @endforeach
-                @else
-                   <tr>
-                      <td></td>
-                      <td>No Phone Number Added</td>
-                      <td></td>
-                      <td></td>
-                  </tr>
-                
-                @endif
-             
-              </tbody>
+            @endif
+
+        </tbody>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><button type="submit" class="btn btn-success">Top up all</button></td>
+          <td></td>
+        </tr>
+        </form>
+      </table>
+  </div>
+      <br>
+      <hr><br>
+
+      <div class="orange-box">
+        <h4 class="title" align="center">TRANSACTION HISTORY</h4>
+      </div>
+      </th><br>
+      <div class="">
+
+
+        <div class="table table-responsive">
+          <table id="datatable" class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>Phone</th>
+                <th>Name</th>
+                <th>Network</th>
+                <th>Amount</th>
+                <th>Ref</th>
+                <th>User</th>
+                <th>Status</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              @if(count($topuphistory) > 0) @foreach($topuphistory as $hist)
+              <tr>
+                <th>{{ $hist->phone }}</th>
+                <th>{{ $hist->firstname }} {{ $hist->lastname }}</th>
+                <th>{{ $hist->netw }}</th>
+                <td class="phone">{{ $hist->amount }}</td>
+                <td class="phoneRef">{{ $hist->ref }}</td>
+                <td class="amount">{{ $hist->username }}</td>
+                <td class="amount">{{ $hist->status }}</td>
+                <td class="amount">{{ $hist->created_at }}</td>
+
+              </tr>
+              @endforeach @else
               <tr>
                 <td></td>
+                <td>No Topup Transactions yet</td>
                 <td></td>
                 <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><button type="submit" class="btn btn-success">Top up all</button></td>
-                <td></td>
-               </tr>
-               </form>
-            </table>  
-            
-              <br>
-<hr><br>
-						
-<div class="orange-box"><h4 class="title" align="center">TRANSACTION HISTORY</h4></div></th><br><div class="">
-       
-	
-          <div class="table table-responsive">
-                <table id="datatable" class="table table-bordered table-hover">
-              <thead>
-                <tr>
-                  <th>Phone</th>
-                  <th>Name</th>
-                  <th>Network</th>
-                  <th>Amount</th>
-                  <th>Ref</th>
-                  <th>User</th>
-                  <th>Status</th>
-                  <th>Date</th>
-                </tr>
-              </thead>
-              <tbody>
+              </tr>
+              @endif
 
-          @if(count($topuphistory) > 0)
-                  @foreach($topuphistory as $hist)
-                    <tr>
-                        <th>{{ $hist->phone }}</th>
-                        <th>{{ $hist->firstname }} {{ $hist->lastname }}</th>
-                        <th>{{ $hist->netw }}</th>
-                        <td class="phone">{{ $hist->amount }}</td>
-                        <td class="phoneRef">{{ $hist->ref }}</td>
-                        <td class="amount">{{ $hist->username }}</td>
-                        <td class="amount">{{ $hist->status }}</td>
-                        <td class="amount">{{ $hist->created_at }}</td>
-                        
-                    </tr>
-                  @endforeach
-                @else
-                   <tr>
-                      <td></td>
-                      <td>No Topup Transactions yet</td>
-                      <td></td>
-                      <td></td>
-                  </tr>
-                @endif
+              </tr>
+              </form>
+            </tbody>
+          </table> <br><br>
+        </div>
 
-                </tr>  
-                </form>             
-              </tbody>
-            </table>    <br><br>
-		</div>
 
- 
 
-   <!-- Modal -->
-<div class="modal fade" id="airtimeModal" tabindex="-1" role="dialog" aria-labelledby="airtimeModal" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Topup <span class="phoneToTopUp"></span> with Airtime </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <!-- Modal -->
+        <div class="modal fade" id="airtimeModal" tabindex="-1" role="dialog" aria-labelledby="airtimeModal" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Topup <span class="phoneToTopUp"></span> with Airtime </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-      </div>
-      <div class="modal-body">
+              </div>
+              <div class="modal-body">
 
-        <div class="form-row">
-          <form class="send-airtime" action="{{ route('topup.phone.user')}}" method="POST" role="form">
-            {{csrf_field()}}
-            <input type="hidden" name="current_id" class="current_user">
-            <input type="hidden" name="Airtime" class="Airtime">
+                <div class="form-row">
+                  <form class="send-airtime" action="{{ route('topup.phone.user')}}" method="POST" role="form">
+                    {{csrf_field()}}
+                    <input type="hidden" name="current_id" class="current_user">
+                    <input type="hidden" name="Airtime" class="Airtime">
 
-            <div class="form-group col-md-6">
-              <label for="Firstname" class="col-form-label">Name</label>
-            <input type="text" class="form-control firstName" name="firstName" >
+                    <div class="form-group col-md-6">
+                      <label for="Firstname" class="col-form-label">Name</label>
+                      <input type="text" class="form-control firstName" name="firstName">
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="Phone" class="col-form-label">Phone</label>
+                      <input type="text" class="form-control phone" name="phone">
+                    </div>
+
+                    <hr />
+                    <div class="form-group col-md-12">
+                      <label for="Lastname" class="col-form-label">Amount</label>
+                      <input type="text" name="amount" class="form-control" placeholder="Please Enter Amount" required>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                  <button type="button" class="btn btn-primary btn-send">Send Airtime</button>
+                </div>
+
+                </form>
+              </div>
+
             </div>
-            <div class="form-group col-md-6">
-              <label for="Phone" class="col-form-label">Phone</label>
-              <input type="text" class="form-control phone" name="phone" >
-            </div>
-          
-            <hr />
-            <div class="form-group col-md-12">
-              <label for="Lastname" class="col-form-label">Amount</label>
-              <input type="text" name="amount" class="form-control" placeholder="Please Enter Amount" required>          
-            </div>      
-                    
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            <button type="button" class="btn btn-primary btn-send">Send Airtime</button>
-          </div>
-
-        </form> 
-    </div>
-
-     </div>
-  </div>
-</div>
+        </div>
 
 
-<div class="modal fade" id="dataModal" tabindex="-1" role="dialog" aria-labelledby="dataModal" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Topup <span class="phoneToTopUp"></span> with Data </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <div class="modal fade" id="dataModal" tabindex="-1" role="dialog" aria-labelledby="dataModal" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Topup <span class="phoneToTopUp"></span> with Data </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-      </div>
-      <div class="modal-body">
+              </div>
+              <div class="modal-body">
 
-        <div class="form-row">
-          <form class="send-data" action="{{ route('topup.data.user')}}" method="POST" role="form">
-            {{csrf_field()}}
-            <input type="hidden" name="current_id" class="current_user">
-            <input type="hidden" name="Data" class="Data">
+                <div class="form-row">
+                  <form class="send-data" action="{{ route('topup.data.user')}}" method="POST" role="form">
+                    {{csrf_field()}}
+                    <input type="hidden" name="current_id" class="current_user">
+                    <input type="hidden" name="Data" class="Data">
 
-            <div class="form-group col-md-6">
-              <label for="Firstname" class="col-form-label">Name</label>
-            <input type="text" class="form-control firstName" name="firstName" >
-            </div>
-            <div class="form-group col-md-6">
-              <label for="Phone" class="col-form-label">Phone</label>
-              <input type="text" class="form-control phone" name="phone" >
-            </div>
-          
-            <hr />
-      
+                    <div class="form-group col-md-6">
+                      <label for="Firstname" class="col-form-label">Name</label>
+                      <input type="text" class="form-control firstName" name="firstName">
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="Phone" class="col-form-label">Phone</label>
+                      <input type="text" class="form-control phone" name="phone">
+                    </div>
 
-          <select name="amount" class="form-control">
+                    <hr />
+
+
+                    <select name="amount" class="form-control">
 
           <optgroup label="MTN">
             <option value="200">250MB (#200)</option>
@@ -360,53 +358,51 @@ tr:nth-child(even) {
 
 
 
-                    
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            <button type="button" class="btn btn-primary btn-send">Send Data</button>
-          </div>
 
-        </form> 
-    </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                  <button type="button" class="btn btn-primary btn-send">Send Data</button>
+                </div>
 
-     </div>
-  </div>
-</div>
-    
-      
+                </form>
+              </div>
+
             </div>
           </div>
+        </div>
+
+
       </div>
-      
     </div>
   </div>
 
-</div>
+  </div>
+  </div>
 
-  @endsection
+  </div>
 
-@section('add_js')
-<script type="text/javascript">
-  $(function () {
-    $('.modal#airtimeModal').on('show.bs.modal', function (e) {
-      var btn = $(e.relatedTarget);
-      var row = btn.parents('tr');
-      $(this).find('form input.phoneRef').val(row.find('td.phoneRef').html());
-      $(this).find('form input.current_user').val(row.find('td.firstName').data('user'));
-      $(this).find('form input.firstName').val(row.find('td.firstName').html());
-      $(this).find('form input.netw').val(row.find('td.netw').html());
-      // $(this).find('form input.lastName').val(row.find('td.firstName').data('lastName'));
-      $(this).find('form input.phone').val(row.find('td.phone').html());
-      $(this).find('form .phoneToTopUp').val(row.find('td.phone').html());
+  @endsection @section('add_js')
+  <script type="text/javascript">
+    $(function () {
+      $('.modal#airtimeModal').on('show.bs.modal', function (e) {
+        var btn = $(e.relatedTarget);
+        var row = btn.parents('tr');
+        $(this).find('form input.phoneRef').val(row.find('td.phoneRef').html());
+        $(this).find('form input.current_user').val(row.find('td.firstName').data('user'));
+        $(this).find('form input.firstName').val(row.find('td.firstName').html());
+        $(this).find('form input.netw').val(row.find('td.netw').html());
+        // $(this).find('form input.lastName').val(row.find('td.firstName').data('lastName'));
+        $(this).find('form input.phone').val(row.find('td.phone').html());
+        $(this).find('form .phoneToTopUp').val(row.find('td.phone').html());
 
+      });
     });
-  });
 
-  $('.modal#airtimeModal').on('click', 'button.btn-send' ,function () {
+    $('.modal#airtimeModal').on('click', 'button.btn-send', function () {
       console.log('Clcked');
       $('.modal#airtimeModal').find('form.send-airtime').submit();
-  })
+    })
 //   $('.airtime').click(function() {
 
 //     // get the invoice ID
@@ -419,28 +415,29 @@ tr:nth-child(even) {
 //         $('#airtimeModal .modal-body').html(response.data);
 //     });
 // });
-</script>
 
-<script type="text/javascript">
-  $(function () {
-    $('.modal#dataModal').on('show.bs.modal', function (e) {
-      var btn = $(e.relatedTarget);
-      var row = btn.parents('tr');
-      $(this).find('form input.phoneRef').val(row.find('td.phoneRef').html());
-      $(this).find('form input.current_user').val(row.find('td.firstName').data('user'));
-      $(this).find('form input.firstName').val(row.find('td.firstName').html());
-      $(this).find('form input.netw').val(row.find('td.netw').html());
-      // $(this).find('form input.lastName').val(row.find('td.firstName').data('lastName'));
-      $(this).find('form input.phone').val(row.find('td.phone').html());
-      $(this).find('form .phoneToTopUp').val(row.find('td.phone').html());
+  </script>
 
+  <script type="text/javascript">
+    $(function () {
+      $('.modal#dataModal').on('show.bs.modal', function (e) {
+        var btn = $(e.relatedTarget);
+        var row = btn.parents('tr');
+        $(this).find('form input.phoneRef').val(row.find('td.phoneRef').html());
+        $(this).find('form input.current_user').val(row.find('td.firstName').data('user'));
+        $(this).find('form input.firstName').val(row.find('td.firstName').html());
+        $(this).find('form input.netw').val(row.find('td.netw').html());
+        // $(this).find('form input.lastName').val(row.find('td.firstName').data('lastName'));
+        $(this).find('form input.phone').val(row.find('td.phone').html());
+        $(this).find('form .phoneToTopUp').val(row.find('td.phone').html());
+
+      });
     });
-  });
 
-  $('.modal#dataModal').on('click', 'button.btn-send' ,function () {
+    $('.modal#dataModal').on('click', 'button.btn-send', function () {
       console.log('Clcked');
       $('.modal#dataModal').find('form.send-data').submit();
-  })
+    })
 //   $('.airtime').click(function() {
 
 //     // get the invoice ID
@@ -454,18 +451,19 @@ tr:nth-child(even) {
 //     });
 // });
 
-</script>
+  </script>
 
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('.select-all').on('click', function() {
-            var checkAll = this.checked;
-            $('input[type=checkbox]').each(function() {
-                this.checked = checkAll;
-            });
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('.select-all').on('click', function () {
+        var checkAll = this.checked;
+        $('input[type=checkbox]').each(function () {
+          this.checked = checkAll;
         });
+      });
     });
-</script>
+
+  </script>
 
 
-@endsection
+  @endsection
