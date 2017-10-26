@@ -346,4 +346,35 @@ class pagesController extends Controller
             'account_number' => 'required|numeric',
         ]);
     }
+
+    public function paginate($perPage, $search = null, $dept = null)
+    {
+        $query = User::query();
+
+        if ($dept) {
+            $query->where('department', $dept);
+        }
+
+        if ($search) {
+            $query->where(function ($q) use ($search) {
+                $q->where('username', "like", "%{$search}%");
+                $q->orWhere('phone', 'like', "%{$search}%");
+                $q->orWhere('firstname', 'like', "%{$search}%");
+                $q->orWhere('lastname', 'like', "%{$search}%");
+                $q->orWhere('lastname', 'like', "%{$search}%");
+            });
+        }
+
+        $result = $query->orderBy('created_at', 'desc')
+            ->paginate($perPage);
+
+        if ($search) {
+            $result->appends(['search' => $search]);
+        }
+
+        return $result;
+    }
+
+
+
 }
