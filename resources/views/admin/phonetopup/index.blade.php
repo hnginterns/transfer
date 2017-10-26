@@ -5,6 +5,18 @@
 @section('content')
  <!-- Content Wrapper. Contains page content -->
 
+ {!! Html::style('css/parsley.css') !!}
+  {!! Html::style('css/select2.min.css') !!}
+  
+
+  <script>
+    tinymce.init({
+      selector: 'textarea',
+      plugins: 'link code',
+      menubar: false
+    });
+  </script>
+
 
  <div class="container-fluid">
   <button type="button" class="btn btn-info" data-toggle="modal" data-target="#mModal">
@@ -265,11 +277,12 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                                                           <select class="form-control" name="tagcontact">
+                                                           <select class="form-control" name="tagcontact" select2-multi" name="tags[]" multiple="multiple">
                                                             @if(count($tags) > 0)
                                                               <option selected value="">Select Tag</option>
                                                               @foreach($tags as $tag)
                                                                 <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+
                                                               @endforeach
                                                             @else
                                                                 <option selected value="">No tags added</option>
@@ -655,3 +668,9 @@
 @endsection
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+{!! Html::script('js/parsley.min.js') !!}
+  {!! Html::script('js/select2.min.js') !!}
+
+  <script type="text/javascript">
+    $('.select2-multi').select2();
+  </script>
