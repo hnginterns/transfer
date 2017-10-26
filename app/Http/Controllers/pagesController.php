@@ -243,7 +243,7 @@ class pagesController extends Controller
 
     public function addAccount(Request $request, Wallet $wallet)
     {
-        $beneficiary = Beneficiary::firstOrNew([
+        $beneficiary = Beneficiary::firstOrCreate([
 
             'uuid' => Auth::user()->id,
             'name' => $request->name,
