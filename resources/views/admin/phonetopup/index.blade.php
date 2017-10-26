@@ -267,7 +267,8 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                                                           <select class="form-control" name="tagcontact" select2-multi" name="tags[]" multiple="multiple">
+                                                           <select class="form-control" select2-multi" name="tags[]" multiple="multiple">
+
                                                             @if(count($tags) > 0)
                                                               <option selected value="">Select Tag</option>
                                                               @foreach($tags as $tag)
