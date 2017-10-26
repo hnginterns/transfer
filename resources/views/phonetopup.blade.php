@@ -267,7 +267,7 @@ i.can {
                             </div>
                         </div>
                     </div>
-                    @endisset
+                   
 <!--row ends-->
 
   <div class="">
@@ -288,7 +288,7 @@ i.can {
             <option>All Depts</option>
             @foreach($phones as $contact)
               <option value="{{ $contact->department }}">{{ $contact->department }}</option>
-            @endforeach
+            
           </select>
 
         </div>
