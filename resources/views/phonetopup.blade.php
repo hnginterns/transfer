@@ -64,7 +64,7 @@ i.can {
 
 <center>
   <br>
-  <h1>TESTING AUTO DEPLOY</h1>
+  
    
                     <!---Modal for wallet top Up-->
                     <div class="modal fade" id="walletTopUp">
