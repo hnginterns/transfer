@@ -248,8 +248,9 @@ class PhoneTopUpController extends Controller
             $url = "https://mobilenig.com/api/airtime.php/?username=$username&password=$password&network=$contact->netw&phoneNumber=$contact->phone&amount=$amount[$i]";
             $headers = array('content-type' => 'application/json');
             $response = \Unirest\Request::get($url, $headers);
-            $response = json_decode($response->raw_body, true);
-
+            
+            // $response = json_decode($response->raw_body, true);
+            
             $user_id = Auth::user()->id;
             $topuphistory = new TopupHistory;
             $topuphistory->contact_id = $contact->id;
@@ -257,7 +258,7 @@ class PhoneTopUpController extends Controller
             $topuphistory->amount = $amount[$i];
             $topuphistory->ref = str_random(10);
             $topuphistory->txn_response = 00;
-            $topuphistory->status = 'success';
+            $topuphistory->status = $response->body == '00' ? 'success' : 'failure';
             $topuphistory->save();
         }
     }
