@@ -210,20 +210,20 @@ i.can {
                                             <h4 class="modal-title">Transfer To Service Provider</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="{{config('app.url')}}/admin/transfer/topup" method="post" accept-charset="utf-8">
+                                            <form action="" method="post" accept-charset="utf-8">
                                                 <div class="modal-body" style="padding: 5px;">
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
                                                             <input class="form-control" name="account_number" placeholder="Account number" type="text" required />
                                                         </div>
                                                     </div>
-                                                    <input name="wallet_id" value="{{$wallet == null ? 'null' : $wallet->id}}" type="hidden">
+                                                    <input name="wallet_id" value="Wallet" type="hidden">
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
                                                             <select class="form-control" name="bank_id">
-                                                                @foreach($bank as $key => $banks)
-                                                                    <option value="{{$banks->id}}">{{$banks->bank_name}}</option>
-                                                                @endforeach
+                                                                
+                                                                    <option value="bank">bank</option>
+                                                                
                                                             </select>
                                                         </div>
                                                     </div>
@@ -640,4 +640,3 @@ i.can {
     </script>
 
 @endsection
-
