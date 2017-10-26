@@ -96,9 +96,9 @@ tr:nth-child(even) {
 
           <select class="form-control" name>
             <option>All Depts</option>
-            <option>IT</option>
-            <option>Dev</option>
-            <option>Marketing</option>
+            @foreach($phones as $contact)
+              <option value="{{ $contact->department }}">{{ $contact->department }}</option>
+            @endforeach
           </select>
            
         </div>

@@ -316,7 +316,7 @@ class pagesController extends Controller
                 $topupbalance = null;
                 Session::flash('error', 'Could not retrieve balance');
             }
-        return view('phonetopup', compact('cardWallet','wallet', 'phones', 'topupbalance', 'topuphistory', 'walletfundhistory'));
+        return view('phonetopup', compact('cardWallet','wallet', 'phones', 'topupbalance', 'topuphistory', 'walletfundhistory', 'depts'));
     }
 
     //all other page functions can be added
