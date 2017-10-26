@@ -128,12 +128,20 @@ class AdminController extends WalletController
         } else {
             $wallet_data = $this->createWalletAdmin($request);
             if (!is_bool($wallet_data)) {
-                $this->storeWalletDetailsToDB(
+				
+				$checkWallet =  DB::table('wallets')->where('wallet_name', $request->wallet_name)->first();//check if wallet name exist
+				if($checkWallet == null || $checkWallet == false){//if it does not exist
+					
+					$this->storeWalletDetailsToDB(//add to wallet
                     $wallet_data,
                     $request->lock_code,
                     $request->wallet_name,
                     $request->type
                 );
+					
+				}
+				
+               
             }
 
             Session::flash('messages','Wallet Create successfully');
