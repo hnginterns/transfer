@@ -15,6 +15,7 @@ use App\Rule;
 use App\Transaction;
 use URL;
 use App\User;
+use App\InternetBanking;
 use App\BankTransaction;
 use RestrictionController;
 use App\Http\Controllers\RestrictionController as Restrict;
@@ -116,53 +117,6 @@ class WalletController extends Controller
         }
     }
 
-    public function intWallet(Request $request, CardWallet $cardWallet)
-    {
-        $token = $this->getToken();
-        // dd($request);
-        $headers = array('content-type' => 'application/json', 'Authorization' => $token);
-        $query = array(
-            "amount"=> $request->amount,
-            "apiKey"=> env('API_KEY'),
-            "charge_with"=>"ext_account",
-            "charge_auth"=>"INTERNETBANKING",
-            "firstname"=> $request->fname,
-            "lastname"=> $request->lname,
-            "phonenumber" => $request->phone,
-            "email"=> $request->emailaddr,
-            "medium"=>"web",
-            "sender_bank"=> $request->bankname,
-            "recipient"=>"wallet",
-            "redirecturl"=>"https://finance.hotels.ng/admin"
-        );
-        $body = \Unirest\Request\Body::json($query);
-
-        $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer', $headers, $body);
-        
-        $response = json_decode($response->raw_body, TRUE);
-        // dd($response);
-        if($response['status'] == 'success') {
-            $response = $response['data']['transfer'];
-            $transMsg = $response['flutterChargeResponseMessage'];
-            $transRef = $response['flutterChargeReference'];
-            
-            $transaction = new CardWallet;
-            $transaction->firstName = $response['firstName'];
-            $transaction->lastName = $response['lastName'];
-            $transaction->status = $response['status'];
-            $transaction->wallet_name = $request->wallet_name;
-            $transaction->phoneNumber = $response['phoneNumber'];
-            $transaction->amount = $response['amountToSend'];
-            $transaction->ref = $transRef;
-
-            $transaction->save();
-
-            return back()->with('status', $transMsg);
-        }
-        else{
-            return back()->with('error', $response['message']);
-        }
-    }
 
     public function otp(Request $request, CardWallet $cardWallet)
     {
@@ -412,25 +366,54 @@ class WalletController extends Controller
                 $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer', $headers, $body);
 
                 $response = json_decode($response->raw_body, true);
+                
+                var_dump($response);
+                die();
+                if($response['status'] == 'success')
+                {
+                    $data = $response['data']['transfer'];
+                    $transaction = new InternetBanking;
+                    $transaction->name = $data['firstName'].' '.$data['lastName'];
+                    $transaction->phone = $data['phoneNumber'];
+                    $transaction->status = $data['status'];
+                    $transaction->ip = $data['ip'];
+                    $transaction->amount = $data['netDebitAmount'];
+                    $transaction->reference = $data['flutterChargeReference'];
+                    $transaction->wallet_code = $wallet->wallet_code;
+                    $transaction->account_number = $data['account']['accountNumber'];
+                    $transaction->account_name = $data['account']['accountName'];
+                    $transaction->source = $data['source'];
+                    $transaction->type = $data['type'];
+                    $transaction->uuid = Auth::user()->id;
+                    $bank_detail = explode('||', request('bank_id'));
+                    $transaction->bank_name = $bank_detail[1];
+                    $transaction->save();
 
-
-var_dump($response);
-die();
+                    return back()->with('status', $data['flutterChargeResponseMessage']);
+                }
+                    var_dump($response);
+                    die();
         }
     }
 
-    //
-    public function walletCharge()
+    public function otpForInternetBanking()
     {
         $token = $this->getToken();
-        $headers = array('content-type' => 'application/json', 'Authorization' => $token);
-        $query = array('amount' => 10000, 'fee' => 45);
+
+        $headers = array('content-type' => 'application/json','Authorization'=>$token);
+        $query = array('transactionRef'=> 'MWV-1508998934097',
+        'authType' => 'OTP/ACCOUNT_CREDIT', 
+        'authValue' =>'123456'//could be the  OTP value,  this is applicable based on the response from charge request
+        ) ;
+
         $body = \Unirest\Request\Body::json($query);
-        $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/get-charge', $headers, $body);
-        $data = json_decode($response->raw_body, true);
-        $walletCharge = var_dump($data['data']);
+
+        $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer/charge/auth/account', $headers, $body);
+        var_dump($response);
+
     }
 
+    
     public function storeWalletDetailsToDB($wallet_data, $lock_code, $wallet_name, $wallet_type)
     {
         $wallet = new Wallet;

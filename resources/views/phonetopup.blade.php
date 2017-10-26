@@ -121,7 +121,7 @@ tr:nth-child(even) {
                 <table class="table" id="contact-table">
               <thead>
                 <tr>
-                  <td>Select</td>
+                  <th><input type="checkbox" class="select-all"/> Select All</th>
                   <td>Name</td>
                   <td>Phone Number</td>
                   <td>Network</td>
@@ -140,6 +140,7 @@ tr:nth-child(even) {
                 @if(count($phones) > 0)
                   @foreach($phones as $phone)
                     <tr class="contact-fn">
+
                       <td><input type="checkbox" name="checked[]" value="{{$phone->id}}" class="checkbox"></td>
                         <td class="firstName" data-user="{{ $phone->id }}">{{ $phone->firstname }} {{ $phone->lastname }}</td>
                         <td class="phone">{{ $phone->phone }}</td>
@@ -453,6 +454,17 @@ tr:nth-child(even) {
 //     });
 // });
 
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.select-all').on('click', function() {
+            var checkAll = this.checked;
+            $('input[type=checkbox]').each(function() {
+                this.checked = checkAll;
+            });
+        });
+    });
 </script>
 
 

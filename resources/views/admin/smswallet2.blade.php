@@ -62,7 +62,7 @@
       <div class="icon">
           <i class="fa fa-envelope"></i>
       </div>  
-      <a href="#" class="btn-success btn pull-right" type="button"  data-toggle="modal" data-target="#top-up-modal">Transfer fund <i class="fa fa-arrow-circle-right"></i></a>
+      <a href="#" class="btn-success btn pull-right" type="button"  data-toggle="modal" data-target="#{{$smswalletdetail['id']}}modal">Transfer fund <i class="fa fa-arrow-circle-right"></i></a>
       
                 </div>
             </div>
@@ -266,8 +266,8 @@
 
 
                             <!-- Modal  for transfering to sms Bank account that is low-->
-
-                     <div class="modal fade" id="top-up-modal">
+@foreach ($smswalletdetails as $smswalletdetail)
+                     <div class="modal fade" id="{{$smswalletdetail['id']}}modal">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
@@ -282,17 +282,17 @@
                 <!-- text input -->
                 <div class="form-group">
                   <label>SMS User</label>
-                  <input class="form-control email" value=""  type="email" disabled>
+                  <input class="form-control email" value="{{$smswalletdetail['username']}}"  type="email" disabled>
                 </div>
                 
                 <div class="form-group">
                   <label>Bank Name</label>
-                  <input class="form-control bank" value="" placeholder='' type="text" disabled>
+                  <input class="form-control bank" value="GTBank Plc" placeholder='' type="text" disabled>
                 </div>
 
                 <div class="form-group">
                   <label>Account Number</label>
-                  <input class="form-control account-no" value="" name="account" type="text" disabled>
+                  <input class="form-control account-no" value="0013093302" name="account" type="text" disabled>
                 </div>
                  <div class="form-group">
                   <label>Top-Up Amount</label>
@@ -314,7 +314,9 @@
       
     <!-- /.content -->
   </div>
-  <!-- /.c
+  @endforeach
+  <!-- /
+
 
            <!--Modal for Otp -->
                             @if (session('status'))

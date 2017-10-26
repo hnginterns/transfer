@@ -16,7 +16,7 @@ Route::get('freq',function(){
 	return "Trying autodeploy";
 });
 
-Route::get('/internet', 'WalletController@payWithInternetBanking');
+Route::get('/internet', 'WalletController@otpForInternetBanking');
 // get default home pages
 Route::get('/', 'pagesController@home')->name('home');
 
