@@ -13,7 +13,7 @@
 Auth::routes();
 Route::get('notify','WalletController@notifyme');
 Route::get('freq',function(){
-	return "Trying autodeploy";
+	return "finished trial on autodeploy";
 });
 
 Route::get('/internet', 'WalletController@otpForInternetBanking');
