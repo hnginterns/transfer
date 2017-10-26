@@ -62,11 +62,7 @@ i.can {
 <link rel="stylesheet" href="/css/walletview.css">
 
 
-<center>
-  <br>
-  
-   
-                    <!---Modal for wallet top Up-->
+<!---Modal for wallet top Up-->
                     <div class="modal fade" id="walletTopUp">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -258,7 +254,8 @@ i.can {
                                 </div>
                             </div>
 </div>
-  
+<center>
+  <br> 
 
   <div class="">
     <h1>Current Balance: ₦ {{ number_format($topupbalance),2}}</h1>
