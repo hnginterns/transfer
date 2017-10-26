@@ -287,7 +287,7 @@
                 
                 <div class="form-group">
                   <label>Bank Name</label>
-                  <input class="form-control bank" value="" placeholder='{{ $smswalletdetail['bank_account'] }}' type="text" disabled>
+                  <input class="form-control bank" value="" placeholder='' type="text" disabled>
                 </div>
 
                 <div class="form-group">
