@@ -52,7 +52,16 @@
   $(function () {
     $('#datatable').DataTable({
         "order": [[ 7, "desc" ]]
-    })
+    });
+    $('#datatable-history').DataTable({
+        "order": [[ 3, "desc" ]]
+    });
+    $('#datatable-list').DataTable({
+        "order": [[ 4, "desc" ]]
+    });
+    $('#datatable-transfer').DataTable({
+        "order": [[ 4, "desc" ]]
+    });
     $('#example2').DataTable({
       'paging'      : true,
       'lengthChange': false,
