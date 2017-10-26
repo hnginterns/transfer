@@ -73,8 +73,8 @@ tr:nth-child(even) {
 
               <div class="">
               @if (!empty($permit))
-                  
-           <table>
+<!-- wallet types table -->
+<table>
   <tr>
     <th><font color="#39689C">Wallet Name</font></th>
     <th><font color="#39689C">Wallet ID</font></th>
@@ -88,7 +88,9 @@ tr:nth-child(even) {
     <td>{{ $wallet->balance }}</td>
   </tr>
   
-</table><p>
+</table>
+<!-- end wallet types table -->
+<p>
 </div><br><br>
 
           <br> <div class="">
@@ -100,13 +102,14 @@ tr:nth-child(even) {
   <div class="tab-content">
   <div id="home" class="tab-pane fade in active">
 	<div class="orange-box"><h4 class="title" align="center"> {{ ucfirst($wallet->wallet_name) }} TRANSACTION HISTORY</h4></div><br>
+        <!-- transaction history table tab -->
           <div class="table-responsive">
-              @if(count($history))          
-						<table class="table table-hover">
+              @if(count($history)) 
+            <table id="datatable-history" class="table table-bordered table-hover">
 							<thead>
 								<tr>
 									<th>Transaction Type</th>
-                  							<th>State</th>
+                  <th>State</th>
 									<th>Transaction Amount</th>
 									<th>Transaction Date</th>
 									<th>Status</th>
@@ -155,12 +158,13 @@ tr:nth-child(even) {
                   
                 @endif
 					</div>
+          <!-- end transction history table tab -->
 </div>
 <div id="menu1" class="tab-pane fade">
           <div class="orange-box"><h4 class="title" align="center"> {{ $wallet->wallet_name }}'s Beneficiaries</h4></div>
-
-          <div class="table-responsive">
-            <table class="table">
+        <!-- beneficiaries list table tab -->
+          <div class="table table-responsive">
+            <table id="datatable-list" class="table table-bordered table-hover">
               <thead>
                 <tr>
                   <th>Name</th>
@@ -188,11 +192,65 @@ tr:nth-child(even) {
 
             {{ $beneficiaries->links() }}
           </div>
+          <!-- end beneficiaries list table tab -->
           </div>
           <div id="menu2" class="tab-pane fade">
-          
-          </div>  
-</div></div>
+            <div class="orange-box"><h4 class="title" align="center"><!-- pane title here -->Beneficiaries Transfer</h4></div>
+            <!-- beneficiaries transfer table tab -->
+              <div class="table table-responsive">
+                <table id="datatable-transfer" class="table table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Amount</th>
+                      <th>Wallet ID</th>
+                      <th>Transaction Status</th>
+                      <th>Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- some temporary dummy table data -->
+                    <tr>
+                      <td>Cletus Nnabuife</td>
+                      <td>5,000</td>
+                      <td>0902892</td>
+                      <td>Success</td>
+                      <td>2017-10-26</td>
+                    </tr>
+                    <tr>
+                      <td>Cletus Nnabuife</td>
+                      <td>5,000</td>
+                      <td>0902892</td>
+                      <td>Success</td>
+                      <td>2017-10-26</td>
+                    </tr>
+                    <tr>
+                      <td>Cletus Nnabuife</td>
+                      <td>5,000</td>
+                      <td>0902892</td>
+                      <td>Success</td>
+                      <td>2017-10-26</td>
+                    </tr>
+                    <tr>
+                      <td>Cletus Nnabuife</td>
+                      <td>5,000</td>
+                      <td>0902892</td>
+                      <td>Success</td>
+                      <td>2017-10-26</td>
+                    </tr>
+                    <tr>
+                      <td>Cletus Nnabuife</td>
+                      <td>5,000</td>
+                      <td>0902892</td>
+                      <td>Success</td>
+                      <td>2017-10-26</td>
+                    </tr>
+                    <!-- end dummy data -->
+                  </tbody>          
+                </div>  
+          <!-- end beneficiaries transfer table tab -->     
+              </div>
+            </div>
           <div class="col-sm-12">  
 		  	  
             	
@@ -506,3 +564,5 @@ $('.modal-content').resizable({
      @endif
     
   @endsection
+<script src="/js/parsley.min.js"></script>
+<script src="/js/select2.min.js"></script>
