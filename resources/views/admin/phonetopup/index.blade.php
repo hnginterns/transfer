@@ -55,51 +55,51 @@
             </ul>
             <div class="tab-content">
               <div class="active tab-pane" id="contacts">
-                
-                 <table id="datatable" class="table table-bordered table-hover">
-                    <thead>
-                            <tr>
-                                <td><strong>Name</strong></td>
-                                <td><strong>Title</strong></td>
-                                <td><strong>Dept</strong></td>
-                                <td><strong>Phone</strong></td>
-                                <td><strong>Email</strong></td>
-                                <td><strong>Weekly Max</strong></td>
-                                <td><strong>Network</strong></td>
-                                <td></td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @if(count($contacts) > 0)
-                              @foreach($contacts as $phone)
+                <div class="table-responsive">
+                    <table id="datatable" class="table table-bordered table-hover">
+                        <thead>
                                 <tr>
-                                    <td>{{ $phone->firstname }} {{ $phone->lastname }}</td>
-                                    <td>@isset($phone->title){{ $phone->title }}@else Not Set @endisset</td>
-                                    <td>@isset($phone->department){{ $phone->department }}@else Not Set @endisset</td>
-                                    <td>{{ $phone->phone }}</td>
-                                    <td>@isset($phone->email){{ $phone->email }}@else Not Set @endisset</td>
-                                    <td>{{ $phone->weekly_max }}</td>
-                                    <td>{{ $phone->netw }}</td>
-                                    <td>
-                                        <form action="{{ url('admin/delete-phone') }}" method="post">
-                                            {{ csrf_field() }}
-                                            <input type="hidden" name="delete_phone" value="{{ $phone->id }}" >
-                                            <button type="submit" class="btn btn-danger btn-sm" style="color:#fff;"><span class="glyphicon glyphicon-remove"></span></button>
-                                        </form>
-                                    </td> 
+                                    <td><strong>Name</strong></td>
+                                    <td><strong>Title</strong></td>
+                                    <td><strong>Dept</strong></td>
+                                    <td><strong>Phone</strong></td>
+                                    <td><strong>Email</strong></td>
+                                    <td><strong>Weekly Max</strong></td>
+                                    <td><strong>Network</strong></td>
+                                    <td></td>
                                 </tr>
-                              @endforeach
-                            @else
-                               <tr>
-                                  <td></td>
-                                  <td>No Phone Number Added</td>
-                                  <td></td>
-                                  <td></td>
-                              </tr>
-                            @endif
-                        </tbody>
-                </table>
-
+                            </thead>
+                            <tbody>
+                                @if(count($contacts) > 0)
+                                @foreach($contacts as $phone)
+                                    <tr>
+                                        <td>{{ $phone->firstname }} {{ $phone->lastname }}</td>
+                                        <td>@isset($phone->title){{ $phone->title }}@else Not Set @endisset</td>
+                                        <td>@isset($phone->department){{ $phone->department }}@else Not Set @endisset</td>
+                                        <td>{{ $phone->phone }}</td>
+                                        <td>@isset($phone->email){{ $phone->email }}@else Not Set @endisset</td>
+                                        <td>{{ $phone->weekly_max }}</td>
+                                        <td>{{ $phone->netw }}</td>
+                                        <td>
+                                            <form action="{{ url('admin/delete-phone') }}" method="post">
+                                                {{ csrf_field() }}
+                                                <input type="hidden" name="delete_phone" value="{{ $phone->id }}" >
+                                                <button type="submit" class="btn btn-danger btn-sm" style="color:#fff;"><span class="fa fa-trash"></span></button>
+                                            </form>
+                                        </td> 
+                                    </tr>
+                                @endforeach
+                                @else
+                                <tr>
+                                    <td></td>
+                                    <td>No Phone Number Added</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                @endif
+                            </tbody>
+                    </table>
+                </div>
               </div>
               <!-- /.tab-pane -->
               <div class="tab-pane" id="history">
@@ -267,12 +267,12 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                                                           <select class="form-control" select2-multi" name="tags[]" multiple="multiple">
+                                                           <select class="form-control"  name="tags">
 
                                                             @if(count($tags) > 0)
                                                               <option selected value="">Select Tag</option>
                                                               @foreach($tags as $tag)
-                                                                <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                                                                <option value="{{ $tag->name }}">{{ $tag->name }}</option>
 
                                                               @endforeach
                                                             @else

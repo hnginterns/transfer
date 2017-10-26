@@ -140,14 +140,14 @@ tr:nth-child(even) {
                 @if(count($phones) > 0)
                   @foreach($phones as $phone)
                     <tr class="contact-fn">
-                      <td><input type="checkbox" name="select" value="1" class="checkbox"></td>
+                      <td><input type="checkbox" name="checked[]" value="{{$phone->id}}" class="checkbox"></td>
                         <td class="firstName" data-user="{{ $phone->id }}">{{ $phone->firstname }} {{ $phone->lastname }}</td>
                         <td class="phone">{{ $phone->phone }}</td>
                         <td class="phoneRef">{{ $phone->netw }}</td>
                         <td class="amount">{{ $phone->title }}</td>
                         <td class="amount">{{ $phone->department }}</td>
                         <td class="max-tops">{{ $phone->weekly_max }}</td>
-                        <td><input class="form-control input-airtime-amount" type="text" name="{{ $phone->id }}" placeholder="Enter Amount" /></td>
+                        <td><input class="form-control input-airtime-amount"  type="number" min="0" name="amount[]" placeholder="Enter Amount"/></td>
                         <td>
 
                           <a class="airtime btn btn-success" data-id="{{ $phone->id }}" data-toggle="modal" data-target="#airtimeModal">
@@ -157,8 +157,6 @@ tr:nth-child(even) {
                           <a class="btn btn-success" data-id="{{ $phone->id }}" data-toggle="modal" data-target="#dataModal">
                               Data
                           </a>
-
-                          
 
                         </td>
                     </tr>
@@ -170,6 +168,7 @@ tr:nth-child(even) {
                       <td></td>
                       <td></td>
                   </tr>
+                
                 @endif
              
               </tbody>
@@ -181,9 +180,10 @@ tr:nth-child(even) {
                 <td></td>
                 <td></td>
                 <td></td>
-                <td><input type="submit" class="btn btn-success" value="Top Up All"></td>
+                <td><button type="submit" class="btn btn-success">Top up all</button></td>
                 <td></td>
                </tr>
+               </form>
             </table>  
             
               <br>
