@@ -14,7 +14,7 @@ class AddTagsToTopupContacts extends Migration
     public function up()
     {
         Schema::table('topup_contacts', function (Blueprint $table) {
-            $table->string("tags")->null();
+            $table->string("tags")->nullable();
         });
     }
 
