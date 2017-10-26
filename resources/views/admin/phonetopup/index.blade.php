@@ -5,8 +5,8 @@
 @section('content')
  <!-- Content Wrapper. Contains page content -->
 
-  <link rel="stylesheet" type="text/css" href="css/parsley.css">
-  <link rel="stylesheet" type="text/css" href="css/select2.min.css">
+  <link rel="stylesheet" type="text/css" href="/css/parsley.css">
+  <link rel="stylesheet" type="text/css" href="/css/select2.min.css">
 
  <div class="container-fluid">
   <button type="button" class="btn btn-info" data-toggle="modal" data-target="#mModal">
@@ -659,8 +659,8 @@
 @endsection
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="js/parsley.min.js"></script>
-<script src="js/select2.min.js"></script>
+<script src="/js/parsley.min.js"></script>
+<script src="/js/select2.min.js"></script>
 
   <script type="text/javascript">
     $('.select2-multi').select2();
