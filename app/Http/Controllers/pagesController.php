@@ -364,7 +364,7 @@ class pagesController extends Controller
 
         if ($search) {
             $query->where(function ($q) use ($search) {
-                $q->where('tag', "like", "%{$search}%");
+                $q->where('tags', "like", "%{$search}%");
                 $q->orWhere('phone', 'like', "%{$search}%");
                 $q->orWhere('firstname', 'like', "%{$search}%");
                 $q->orWhere('lastname', 'like', "%{$search}%");

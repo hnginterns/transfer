@@ -268,10 +268,10 @@ i.can {
       <div class="col-md-2">
       </div>
       <div class="col-md-5"></div>
-      <form method="GET" action="" accept-charset="UTF-8" id="users-form">
+      <form method="GET" action="" accept-charset="UTF-8" id="conatcts-form">
         <div class="col-md-2">
 
-          <select class="form-control" name>
+          <select class="form-control" name="department">
             <option>All Depts</option>
             @foreach($phones as $contact)
               <option value="{{ $contact->department }}">{{ $contact->department }}</option>
@@ -627,16 +627,11 @@ i.can {
 // });
   </script>
 
-  <script type="text/javascript">
-    $(document).ready(function () {
-      $('.select-all').on('click', function () {
-        var checkAll = this.checked;
-        $('input[type=checkbox]').each(function () {
-          this.checked = checkAll;
-        });
-      });
-    });
-  </script>
 
+  <script>
+        $("#department").change(function () {
+            $("#contacts-form").submit();
+        });
+    </script>
 
 @endsection
