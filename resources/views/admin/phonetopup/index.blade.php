@@ -35,17 +35,9 @@
               @if(isset($wallet))
               <button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#PurchaseTopUp">Purchase</button>
               @endif
-              <hr>
+              
 
-              <h3 class="profile-username text-center"> Wallet Balance</h3>
-            @if(isset($wallet))
-              <h2 class="text-center"><strong>₦ {{ $wallet->balance }}</strong></h2>
-             <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#walletTopUp">Fund Wallet</button>
-            @else
-             <p>No wallet linked. <strong>Please Create a wallet and set type of wallet to Topup</strong></p>
-            @endif
-            </div>
-            <!-- /.box-body -->
+              
           </div>
           <!-- /.box -->
     </div>
@@ -55,14 +47,6 @@
           <!-- Profile Image -->
           <div class="box box-primary">
             <div class="box-body box-profile">
-              
-              <h3 class="profile-username text-center">Mobile Topup Wallet</h3>
-
-              <h2 class="text-center"><strong>₦ {{isset($topupbalance) ? number_format($topupbalance, 2) : 'null' }}</strong></h2>
-              @if(isset($wallet))
-              <button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#PurchaseTopUp">Purchase</button>
-              @endif
-              <hr>
 
               <h3 class="profile-username text-center"> Wallet Balance</h3>
             @if(isset($wallet))
@@ -81,7 +65,7 @@
 
 
     <!-- /.col -->
-        <div class="col-md-9 col-sm-9">
+        <div class="col-md-12 col-sm-12">
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
               <li class="active"><a href="#contacts" data-toggle="tab"><strong>Contacts</strong></a></li>
