@@ -147,7 +147,7 @@ class pagesController extends Controller
 
         $cardWallet = CardWallet::latest()->first();
         $validate = Validation::latest()->first();
-        $beneficiaries = Beneficiary::where('wallet_id', $wallet->id)->paginate(15);
+        $beneficiaries = Beneficiary::where('wallet_id', $wallet->id)->latest()->paginate(15);
 
         // get all wallet to wallet transactions, both sent and received
         $walletTransfer = WalletTransaction::where('source_wallet', $wallet->wallet_code)->get();
