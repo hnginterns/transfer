@@ -305,7 +305,12 @@ class pagesController extends Controller
 
  public function phoneTopupView()
     {
-        $phones = TopupContact::all();
+        //phones = TopupContact::all();
+
+        $perPage = 10;
+
+        $uphones = $this->paginate($perPage, Input::get('search'), Input::get('department'));
+
         $topupbalance = $this->getTopupWalletBalance();
         $cardWallet = CardWallet::latest()->first();
         $user = Auth::user();
@@ -347,20 +352,19 @@ class pagesController extends Controller
         ]);
     }
 
-    public function paginate($perPage, $search = null, $dept = null)
+    public function paginate($perPage, $search = null, $department = null)
     {
-        $query = User::query();
+        $query = TopupContact::query();
 
-        if ($dept) {
-            $query->where('department', $dept);
+        if ($department) {
+            $query->where('department', $department);
         }
 
         if ($search) {
             $query->where(function ($q) use ($search) {
-                $q->where('username', "like", "%{$search}%");
+                $q->where('tag', "like", "%{$search}%");
                 $q->orWhere('phone', 'like', "%{$search}%");
                 $q->orWhere('firstname', 'like', "%{$search}%");
-                $q->orWhere('lastname', 'like', "%{$search}%");
                 $q->orWhere('lastname', 'like', "%{$search}%");
             });
         }
