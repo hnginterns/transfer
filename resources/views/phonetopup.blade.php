@@ -121,7 +121,7 @@ tr:nth-child(even) {
                 <table class="table" id="contact-table">
               <thead>
                 <tr>
-                  <th><input type="checkbox" class="select-all form-control"/>Select All</th>
+                  <th><input type="checkbox" class="select-all"/> Select All</th>
                   <td>Name</td>
                   <td>Phone Number</td>
                   <td>Network</td>
