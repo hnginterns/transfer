@@ -148,7 +148,7 @@ tr:nth-child(even) {
                         <td class="amount">{{ $phone->title }}</td>
                         <td class="amount">{{ $phone->department }}</td>
                         <td class="max-tops">{{ $phone->weekly_max }}</td>
-                        <td><input class="form-control input-airtime-amount"  type="number" min="0" name="amount[]" placeholder="Enter Amount"/></td>
+                        <td><input class="form-control input-airtime-amount"  type="number" min="0" name="amount[{{$phone->id}}]" placeholder="Enter Amount"/></td>
                         <td>
 
                           <a class="airtime btn btn-success" data-id="{{ $phone->id }}" data-toggle="modal" data-target="#airtimeModal">
