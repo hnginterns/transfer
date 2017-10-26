@@ -105,7 +105,7 @@ tr:nth-child(even) {
         <!-- transaction history table tab -->
           <div class="table-responsive">
               @if(count($history)) 
-            <table id="datatable" class="table table-bordered table-hover">
+            <table id="datatable-history" class="table table-bordered table-hover">
 							<thead>
 								<tr>
 									<th>Transaction Type</th>
@@ -164,7 +164,7 @@ tr:nth-child(even) {
           <div class="orange-box"><h4 class="title" align="center"> {{ $wallet->wallet_name }}'s Beneficiaries</h4></div>
         <!-- beneficiaries list table tab -->
           <div class="table table-responsive">
-            <table id="datatable" class="table table-bordered table-hover">
+            <table id="datatable-list" class="table table-bordered table-hover">
               <thead>
                 <tr>
                   <th>Name</th>
@@ -197,7 +197,7 @@ tr:nth-child(even) {
             <div class="orange-box"><h4 class="title" align="center"><!-- pane title here -->Beneficiaries Transfer</h4></div>
             <!-- beneficiaries transfer table tab -->
               <div class="table table-responsive">
-                <table id="datatable" class="table table-bordered table-hover">
+                <table id="datatable-transfer" class="table table-bordered table-hover">
                   <thead>
                     <tr>
                       <th>Name</th>
