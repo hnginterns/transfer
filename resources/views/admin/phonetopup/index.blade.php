@@ -20,7 +20,6 @@
               <button type="button" class="btn btn-info" data-toggle="modal" data-target="#tModal">Tags</button>
 
          </div>
-<br> <br>
 
 
         <div class="col-md-3 col-sm-3">
@@ -36,10 +35,9 @@
               <button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#PurchaseTopUp">Purchase</button>
               @endif
               
-
-              
           </div>
           <!-- /.box -->
+      </div>
     </div>
 
     <div class="col-md-3 col-sm-3">
