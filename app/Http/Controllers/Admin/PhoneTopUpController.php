@@ -281,16 +281,16 @@ class PhoneTopUpController extends Controller
                 $token = $this->getToken();
                 $headers = array('content-type' => 'application/json', 'Authorization' => $token);
                 $wallet = Wallet::find($request->wallet_id);
-                $bank = Bank::find($request->bank_id);
+                $bank = Bank::find("replace with bank id of purchaser from moneywave ie fcmb but confirm");
                 $query = array(
                     "lock" => $wallet->lock_code,
                     "amount" => $request->amount,
                     "bankcode" => $bank->bank_code,
-                    "accountNumber" => $request->account_number,
+                    "accountNumber" => "find acount number for purchaser",
                     "currency" => "NGN",
                     "senderName" => Auth::user()->username,
-                    "narration" => $request->narration, //Optional
-                    "ref" => $request->reference, // No Refrence from request
+                    "narration" => "enter narration", //Optional
+                    "ref" => "enter reference ", // No Refrence from request
                     "walletUref" => $wallet->wallet_code
                 );
 
