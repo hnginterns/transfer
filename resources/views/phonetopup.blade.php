@@ -65,6 +65,200 @@ i.can {
 <center>
   <br>
   
+   
+                    <!---Modal for wallet top Up-->
+                    <div class="modal fade" id="walletTopUp">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    
+                                    <h4 class="modal-title text-center">Top up wallet</h4>
+            
+                                </div>
+                                <div class="modal-body">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">Card Details</h3>
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <div class="box-body">
+                                        <form action="" method="POST" role="form form-horizontal">
+                                            {{csrf_field()}}
+                                            <!-- text input -->
+                                            <div class="container-fluid">
+                                                <fieldset>
+                                                    <input type="hidden" name="wallet_code" value="Wallet Name">
+                                                    <input type="hidden" name="wallet_name" value="Wallet Name">
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <div class="form-group">
+                                                                <label for="cc_name">First Name</label>
+                                                                <div class="controls">
+                                                                    <input name="fname" class="form-control" id="cc_name" title="First Name" required type="text">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="form-group">
+                                                                <label for="cc_name">Last Name</label>
+                                                                <div class="controls">
+                                                                    <input name="lname" class="form-control" id="cc_name" title="last name" required type="text">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Phone Number</label>
+                                                        <div class="controls">
+                                                            <input name="phone" class="form-control" autocomplete="off" maxlength="20" required="" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Email Address</label>
+                                                        <div class="controls">
+                                                            <input name="emailaddr" class="form-control" autocomplete="off" required="" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Card Number</label>
+                                                        <div class="controls">
+                                                            <input name="card_no" class="form-control" autocomplete="off" maxlength="20" required="" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Card Expiry Date</label>
+                                                        <div class="controls">
+                                                            <div class="row">
+                                                                <div class="col-md-9">
+                                                                    <select class="form-control" name="expiry_month">
+                                                                       <option value="01">January</option>
+                                                                       <option value="02">February</option>
+                                                                       <option value="03">March</option>
+                                                                       <option value="04">April</option>
+                                                                       <option value="05">May</option>
+                                                                       <option value="06">June</option>
+                                                                       <option value="07">July</option>
+                                                                       <option value="08">August</option>
+                                                                       <option value="09">September</option>
+                                                                       <option value="10">October</option>
+                                                                       <option value="11">November</option>
+                                                                       <option value="12">December</option>
+                                                                   </select>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                  <select class="form-control" name="expiry_year">
+                                                                   
+                                                                       <option></option>
+                                                                    
+                                                                   </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-md-3">
+                                                                <label>Card CVV</label>
+                                                                <div class="controls">
+                                                                    <input class="form-control" autocomplete="off" maxlength="3" pattern="" title="Three digits at back of your card" required="" type="text" name="cvv">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <label>Pin</label>
+                                                                <div class="controls">
+                                                                    <input class="form-control" autocomplete="off" maxlength="4" pattern="" title="pin" required="" type="text" name="pin">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label>Amount</label>
+                                                                <div class="input-group">
+                                                                    <div class="input-group-addon">₦</div>
+                                                                    <input name="amount" type="text" class="form-control" id="amount" placeholder="Amount">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label></label>
+                                                        <div class="controls">
+                                                            <button type="submit" class="btn btn-primary">Top up</button>
+                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   
+<!--row ends-->
+
+<div class="container">
+                            <!-- Trigger the modal with a button -->
+                            <!-- Modal -->
+                            <div class="modal fade" id="PurchaseTopUp" role="dialog">
+                                <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Transfer To Service Provider</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="" method="post" accept-charset="utf-8">
+                                                <div class="modal-body" style="padding: 5px;">
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
+                                                            <input class="form-control" name="account_number" placeholder="Account number" type="text" required />
+                                                        </div>
+                                                    </div>
+                                                    <input name="wallet_id" value="" type="hidden">
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
+                                                            <select class="form-control" name="bank_id">
+                                                                
+                                                                    <option value="Bank Name</option>
+                                                                
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                        {{csrf_field()}}
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
+                                                            <input class="form-control" name="account_name" placeholder="Account name" type="text" required />
+                                                       
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
+                                                            <input class="form-control" name="narration" placeholder="Narration" type="text" required />
+                                                       
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
+                                                            <input class="form-control" name="amount" placeholder="Amount" type="number" required />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="panel-footer" style="margin-bottom:-14px;">
+                                                    <button type="submit" class="btn btn-success">Purchase</button>
+                                                    <button style="float: right;" type="button" class="btn btn-default btn-close" data-dismiss="modal">Close</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+</div>
+  
 
   <div class="">
     <h1>Current Balance: ₦ {{ number_format($topupbalance),2}}</h1>
