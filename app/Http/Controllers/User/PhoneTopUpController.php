@@ -36,6 +36,7 @@ class PhoneTopUpController extends Controller
     {
         //
     }
+
    public function phoneTopUp()
 
     {
@@ -136,54 +137,93 @@ class PhoneTopUpController extends Controller
 
         return \Redirect::route('home')->with('success', 'Book favorited!');
             
+    }
 
+    public function hasReachedLimit($id, $amount, $max_limit){
+        $sum = TopupHistory::where('user_id', $id)->get();
+                $weekly_max = 0;
+                foreach($sum as $key => $sums){
+                    if($sums->created_at->diffInDays(Carbon::now()) < 7){
+                        $weekly_max += $sums->amount;
+                    }
+                }
+        return  ($max_limit - $weekly_max + $amount) <= 0 ? true : false;
     }
+
+
     public function topuphonemultiple(Request $request){
-        $datas = $request->all();
-      //  $datas =  json_encode($datas);
-        foreach($datas as $id => $amount){
-           if($id =="_token"){continue;}
-           $contact = TopupContact::find($id);
-            $contacthistory = TopupHistory::where('user_id', $contact->id)->sum('amount');
-            
-                    //dd($contacthistory);
-            
-                    if ($contacthistory >= $contact->weekly_max) {
-                    
-                        return redirect('/phonetopup')->with('error', 'Weekly Maximum Exceede');
-            
-                    } 
-            
-                    $url = 'https://mobilenig.com/api/airtime.php/?username=' .
-                        'jekayode&password=transfer' .
-                        '&network='. $contact->netw .'&phoneNumber='. $contact->phone .'&amount='. $amount;
-                    
-                    $headers = array('content-type' => 'application/json');
-                    $response = \Unirest\Request::get($url, $headers);
-                    //var_dump($response);
-                    $response = json_decode($response->raw_body, true);
-            
-                    $user_id = Auth::user()->id;
-            
-                    $topuphistory = new TopupHistory;
-            
-                    $topuphistory->contact_id = $contact->id;
-                    $topuphistory->user_id = $user_id;
-                    $topuphistory->amount = $amount;
-                  
-                    $topuphistory->ref = str_random(10);
-                    //$topuphistory->txn_response = $response;
-                    $topuphistory->txn_response = 00;
-                    $topuphistory->status = 'Success';
-            
-                    $topuphistory->save();
-            
-                    //Session::flash('success',' Phone topped up uccessfully.');
-                    
+
+        if($request->checked == null ){
+            Session::flash('error', 'You must select a contact and enter amount to topup');
+            return back();
         }
-        redirect('/phonetopup')->with('success', 'Phone topped up uccessfully.');
-       // dd($input);
+
+        $phones = $request->checked == null ? [] : $request->checked;
+        $amount = $request->amount;
+        $final_phones = [];
+        $final_amount = [];
+        $final_id = [];
+        $errors = [];
+        $total = 0;
+        foreach($phones as $key => $phone){
+            if($amount[$key] == null){
+                $contact = TopupContact::find($phone);
+                $errors [] = 'Enter amount for '.$contact->firstname;
+            }else{
+                
+                $contact = TopupContact::find($phone);
+                if($this->hasReachedLimit($phone, $amount[$key], $contact->weekly_max)){
+                    $errors [] = $contact->firstname.' has reached max topup for the week';
+                }else{
+                    $total += $amount[$key];
+                    $final_phones [] = $contact->phone;
+                    $final_amount [] = $amount[$key];
+                    $final_id [] = $phone;
+                }
+                
+                
+            } 
+            
+            
+        }
+        
+        if(count($final_phones) > 0){
+            $this->batchRecharge($final_id, $final_phones, $final_amount);
+        }else{
+            Session::flash('error', 'No Contact to recharge');
+        }
+        
     }
+
+    public function batchRecharge($id, $phone, $amount){
+
+        for($i = 0; $i < count($phone); $i++){
+            $contact = TopupContact::find($id[$i]);
+
+            $url = 'https://mobilenig.com/api/airtime.php/?username=' .
+                'jekayode&password=transfer' .
+                '&network='. $contact->netw .'&phoneNumber='. $contact->phone .'&amount='. $amount[$i];
+            // dd($url);
+            $headers = array('content-type' => 'application/json');
+            $response = \Unirest\Request::get($url, $headers);
+            dump($response);
+            $response = json_decode($response->raw_body, true);
+
+            $user_id = Auth::user()->id;
+
+            $topuphistory = new TopupHistory;
+
+            $topuphistory->contact_id = $contact->id;
+            $topuphistory->user_id = $user_id;
+            $topuphistory->amount = $amount[$i];
+            $topuphistory->ref = str_random(10);
+            $topuphistory->txn_response = 00;
+            $topuphistory->status = 'Success';
+            $topuphistory->save();
+        }
+        // return redirect('/phonetopup')->with('success', 'Phone topped up uccessfully.');
+    }
+
     public function topuphonesubmit(Request $request)
     {
         $phone = $request->phone;
@@ -213,7 +253,7 @@ class PhoneTopUpController extends Controller
         
         $headers = array('content-type' => 'application/json');
         $response = \Unirest\Request::get($url, $headers);
-        //var_dump($response);
+        
         $response = json_decode($response->raw_body, true);
 
         //dd($response);
@@ -315,6 +355,8 @@ class PhoneTopUpController extends Controller
         return redirect('/phonetopup')->with('success', 'Data topped up uccessfully.');
 
     }
+
+    
 
 
 
