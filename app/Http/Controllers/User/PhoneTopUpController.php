@@ -169,35 +169,40 @@ class PhoneTopUpController extends Controller
             return back();
         }
 
-        $phones = $request->checked == null ? [] : $request->checked;
+        $phones = $request->checked;
         $amount = $request->amount;
         $final_phones = [];
         $final_amount = [];
         $final_id = [];
         $errors = [];
         $total = 0;
+        // dump($request->checked);
+        // dump($request->amount);
+        // dd();
         foreach($phones as $key => $phone){
-            if($amount[$key] == null){
-                // $contact = TopupContact::find($phone);
-                // Session::flash('error', 'Enter amount for all the selected contacts');
-                // return back();
+            if($amount["$phone"] == null){               
+                $contact = TopupContact::find($phone);
+                Session::flash('error', 'Enter amount for all the selected contacts');
+                return back();
             }else{
                 
                 $contact = TopupContact::find($phone);
-                if($this->hasReachedLimit($phone, $amount[$key], $contact->weekly_max)){  
+                if($this->hasReachedLimit($phone, $amount["$phone"], $contact->weekly_max)){ 
+
                     //logs details of contacts who have exceeded weekly limits
                     $message = ['contact_id' => $phone, 
                                 'ref'=>str_random(10), 
-                                'amount'=>$amount[$key],
+                                'amount'=>$amount["$phone"],
                                 'status'=>'failed',
                                 'txn_response'=> 'Weekly limit reached'
                                 ];
                     $errors [] = $message;                  
                     //end of log detail of contacts who have exceeded weekly limits
+
                 }else{
-                    $total += $amount[$key];
+                    $total += $amount["$phone"];
                     $final_phones [] = $contact->phone;
-                    $final_amount [] = $amount[$key];
+                    $final_amount [] = $amount["$phone"];
                     $final_id [] = $phone;
                 }  
             }     
@@ -252,7 +257,7 @@ class PhoneTopUpController extends Controller
             $topuphistory->amount = $amount[$i];
             $topuphistory->ref = str_random(10);
             $topuphistory->txn_response = 00;
-            $topuphistory->status = $response == '00' ? 'success' : 'failed';
+            $topuphistory->status = 'success';
             $topuphistory->save();
         }
     }
