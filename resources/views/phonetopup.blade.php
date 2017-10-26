@@ -270,7 +270,7 @@ tr:nth-child(even) {
             <hr />
             <div class="form-group col-md-12">
               <label for="Lastname" class="col-form-label">Amount</label>
-              <input type="text" name="amount" class="form-control" placeholder="Please Enter Amount">          
+              <input type="text" name="amount" class="form-control" placeholder="Please Enter Amount" required>          
             </div>      
                     
           </div>
