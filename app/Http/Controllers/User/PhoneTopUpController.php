@@ -204,7 +204,7 @@ class PhoneTopUpController extends Controller
             $contact = TopupContact::find($id[$i]);
 
             $url = "https://mobilenig.com/api/airtime.php/?username=$username&password=$password&network=$contact->netw&phoneNumber=$contact->phone&amount=$amount[$i]";
-            dd($url);
+            // dd($url);
             $headers = array('content-type' => 'application/json');
             $response = \Unirest\Request::get($url, $headers);
             dump($response);
