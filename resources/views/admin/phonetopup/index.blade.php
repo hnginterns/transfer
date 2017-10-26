@@ -249,7 +249,7 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                                                            <input class="form-control" name="phone" placeholder="Phone Number" type="text" required />
+                                                            <input class="form-control" name="phone" placeholder="Phone Number e.g 08066212000" type="text" required />
                                                         </div>
                                                     </div>
 
