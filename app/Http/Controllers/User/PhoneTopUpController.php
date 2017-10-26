@@ -139,14 +139,16 @@ class PhoneTopUpController extends Controller
             
     }
 
+
     public function hasReachedLimit($id, $amount, $max_limit){
-        $sum = TopupHistory::where('user_id', $id)->get();
+        $sum = TopupHistory::where('contact_id', $id)->get();
                 $weekly_max = 0;
                 foreach($sum as $key => $sums){
                     if($sums->created_at->diffInDays(Carbon::now()) < 7){
                         $weekly_max += $sums->amount;
                     }
                 }
+                // dump($weekly_max);
         return  ($max_limit - $weekly_max + $amount) <= 0 ? true : false;
     }
 
@@ -196,14 +198,13 @@ class PhoneTopUpController extends Controller
     }
 
     public function batchRecharge($id, $phone, $amount){
-
+        $username = env('TOP_UP_USERNAME');
+        $password = env('TOP_UP_PASSWORD');
         for($i = 0; $i < count($phone); $i++){
             $contact = TopupContact::find($id[$i]);
 
-            $url = 'https://mobilenig.com/api/airtime.php/?username=' .
-                'jekayode&password=transfer' .
-                '&network='. $contact->netw .'&phoneNumber='. $contact->phone .'&amount='. $amount[$i];
-            // dd($url);
+            $url = "https://mobilenig.com/api/airtime.php/?username=$username&password=$password&network=$contact->netw&phoneNumber=$contact->phone&amount=$amount[$i]";
+            dd($url);
             $headers = array('content-type' => 'application/json');
             $response = \Unirest\Request::get($url, $headers);
             dump($response);
@@ -243,7 +244,7 @@ class PhoneTopUpController extends Controller
 
         if ($contacthistory >= $contact->weekly_max) {
         
-            return redirect('/phonetopup')->with('error', 'Weekly Maximum Exceede');
+            return redirect('/phonetopup')->with('error', 'Weekly Maximum Exceeded');
 
         } 
 
