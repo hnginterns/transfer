@@ -53,6 +53,10 @@ tr:nth-child(even) {
 }
     
     }
+
+    .text-capitalize {
+      text-transform: capitalize;
+    }
 </style>
 
 <link rel="stylesheet" href="/css/walletview.css">
@@ -95,13 +99,13 @@ tr:nth-child(even) {
 
           <br> <div class="">
           <ul class="nav nav-pills nav-justified ">
-            <li class="active"><a data-toggle="pill" href="#home">Transaction History</a></li>
+            <li class="active"><a data-toggle="pill" href="#home">Wallet Transfer History</a></li>
             <li><a data-toggle="pill" href="#menu1">Beneficiaries List</a></li>
             <li><a data-toggle="pill" href="#menu2">Beneficiaries Transfer</a></li>
           </ul>
         <div class="tab-content">
         <div id="home" class="tab-pane fade in active">
-      	<div class="orange-box"><h4 class="title" align="center"> {{ ucfirst($wallet->wallet_name) }} TRANSACTION HISTORY</h4></div><br>
+      	<div class="orange-box"><h4 class="title text-capitalize" align="center"> {{ ucfirst($wallet->wallet_name) }} wallet transfer history</h4></div><br>
               <!-- transaction history table tab -->
                 <div class="table-responsive">
                     @if(count($history)) 
@@ -161,7 +165,7 @@ tr:nth-child(even) {
                 <!-- end transction history table tab -->
       </div>
       <div id="menu1" class="tab-pane fade">
-                <div class="orange-box"><h4 class="title" align="center"> {{ $wallet->wallet_name }}'s Beneficiaries</h4></div>
+                <div class="orange-box"><h4 class="title text-capitalize" align="center"> {{ $wallet->wallet_name }}'s Beneficiaries</h4></div>
               <!-- beneficiaries list table tab -->
                 <div class="table table-responsive">
                   <table id="datatable-list" class="table table-bordered table-hover">
@@ -193,7 +197,7 @@ tr:nth-child(even) {
                 <!-- end beneficiaries list table tab -->
                 </div>
           <div id="menu2" class="tab-pane fade">
-            <div class="orange-box"><h4 class="title" align="center"><!-- pane title here -->Beneficiaries Transfer</h4></div>
+            <div class="orange-box"><h4 class="title text-capitalize" align="center">{{ ucfirst($wallet->wallet_name) }} Beneficiaries Transfer</h4></div>
             <!-- beneficiaries transfer table tab -->
               <div class="table table-responsive">
                 <table id="datatable-transfer" class="table table-bordered table-hover">
