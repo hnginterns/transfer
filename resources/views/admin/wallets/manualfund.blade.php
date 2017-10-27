@@ -14,7 +14,7 @@
             
                 <div class="panel-body">
 
-                <form action="/admin/{{$wallet->wallet_code}}/fund" method="POST" class="form-horizontal">
+                <form action="{{$wallet->id}}" method="POST" class="form-horizontal">
                     {{ csrf_field() }}
                     <input type="hidden" name="wallet_name" value="{{$wallet->wallet_name}}">
                     <input type="hidden" name="wallet_code" value="{{$wallet->wallet_code}}">
@@ -157,7 +157,7 @@
             <p>{{session('status')}}</p>
             <div class="row">
             <div class="col-md-6 col-md-offset-2">
-              <form action="/admin/otp" method="POST">
+              <form action="otp" method="POST">
                 {{csrf_field()}}
                 <input type="hidden" name="ref" value="{{$cardWallet->ref}}">
                 <div class="form-group">

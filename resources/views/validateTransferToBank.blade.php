@@ -24,7 +24,7 @@
                   
                   @endif
                   <h4 class="intro text-center">Transfer To Beneficiary </h4>
-                  <form class="input-form" action="" method="POST">
+                  <form class="input-form" action="/transfer/validate/{{$wallet->id}}" method="POST">
                   {{csrf_field()}}
                  
                             <div class="form-group">
