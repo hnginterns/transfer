@@ -11,6 +11,10 @@
   padding:2%;
 
   } 
+  .deltop{
+    margin-top: -26px;
+    cursor: pointer;
+  }
 </style>
 @endsection
 
@@ -45,9 +49,14 @@
                 <!-- small box -->
                 <div class="small-box">
       <div class="inner unit">
-          <p>SMS Account</p>
-          <hr/>
-          <p>Account Name: <span class="username">{{ $smswalletdetail['username'] }}</span></p>
+          <P>SMS Account 
+          <form action="{{ url('') }}" method="post">
+         <input type="hidden" name="delete_phone" value="{{$smswalletdetail['id']}}" >
+         <button type="submit" class="btn btn-danger btn-sm deltop pull-right" style="color:#fff;"><span class="fa fa-trash"></span></button>
+                              </form></p> 
+                                                   
+                    <hr>
+              Account Name: <span class="username">{{ $smswalletdetail['username'] }}</span>
           <p>Sms Unit: <span class="unit-balance">{{ $smswalletdetail['balance'] }}</span>
             @if($smswalletdetail['balance'] < 50 && $smswalletdetail['balance'] >10)
           <p class="text-warning">Balance is getting low</p>
@@ -310,7 +319,7 @@
           <!-- /.modal-dialog -->
         </div>
         <!-- /.modal -->
-		
+    
       
     <!-- /.content -->
   </div>

@@ -64,7 +64,6 @@ class PhoneTopUpController extends Controller
    public function phoneTopUp(Request $request, CardWallet $cardWallet)
 
     {
-        // dd($request);
         $username       =     env('TOP_UP_USERNAME');
         $password       =     env('TOP_UP_PASSWORD');
         $phone          =     env('TOP_UP_PHONE');
@@ -198,7 +197,7 @@ class PhoneTopUpController extends Controller
 
                 $transaction->save();
 
-                return back()->with('status', $transMsg);
+                return back()->with('otp', $transMsg);
             }
             else{
                 return back()->with('error', $response['message']);
@@ -209,6 +208,7 @@ class PhoneTopUpController extends Controller
 
     public function otp(Request $request, CardWallet $cardWallet)
     {
+        // dd($request);
         \Unirest\Request::verifyPeer(false);
 
             $headers = array('content-type' => 'application/json');
@@ -223,9 +223,12 @@ class PhoneTopUpController extends Controller
             
             if($response['status'] == 'success') {
                 event(new FundWallet($cardWallet));
-                Session::flash('success',$response);
-                return redirect('admin/managewallet');
+                Session::flash('success','Wallet funding successful');
+                return redirect('/phonetopup');
 
+            }else{
+                Session::flash('error',$response['message']);
+                return redirect('/phonetopup');
             }
             
     }
@@ -510,8 +513,8 @@ class PhoneTopUpController extends Controller
             'emailaddr' => 'required|email',
             'card_no' => 'required|string',
             'expiry_year' => 'required|numeric',
-            'cvv' => 'required|numeric|max:3|min:3',
-            'pin' => 'required|numeric|max:4|min:4',
+            'cvv' => 'required|numeric',
+            'pin' => 'required|numeric',
 
         ]);
     }
