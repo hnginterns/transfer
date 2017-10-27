@@ -75,14 +75,15 @@
                  <table id="datatable" class="table table-bordered table-hover">
                     <thead>
                             <tr>
-                                <td><strong>Name</strong></td>
-                                <td><strong>Title</strong></td>
-                                <td><strong>Dept</strong></td>
-                                <td><strong>Phone</strong></td>
-                                <td><strong>Email</strong></td>
-                                <td><strong>Weekly Max</strong></td>
-                                <td><strong>Network</strong></td>
-                                <td></td>
+                                <td>Name</td>
+                                <td>Title</td>
+                                <td>Dept</td>
+                                <td>Phone</td>
+                                <td>Email</td>
+                                <td>Weekly Max</td>
+                                <td>Network</td>
+                                <td>Tags</td>
+                                <td>Action</td>
                             </tr>
                         </thead>
                         <tbody>
@@ -96,6 +97,7 @@
                                     <td>@isset($phone->email){{ $phone->email }}@else Not Set @endisset</td>
                                     <td>{{ $phone->weekly_max }}</td>
                                     <td>{{ $phone->netw }}</td>
+                                     <td>{{ $phone->tags}}</td>
                                     <td>
                                         <button type="button" class="btn btn-info btn-sm edit-phone-btn" style="color:#fff;" data-toggle="modal" ><span class="fa fa-edit"></span></button>
                                         <form action="{{ url('admin/delete-phone') }}" method="post">
@@ -584,9 +586,6 @@
 @endsection
 
 @section('added_js')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/parsley.min.js"></script>
-<script src="/js/select2.min.js"></script>
 <script type="text/javascript">
     $('document').ready(function(){
         $('#addtagbtn').on('click', function(){
