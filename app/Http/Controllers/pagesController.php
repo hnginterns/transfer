@@ -22,6 +22,8 @@ use App\Validation;
 
 use App\Bank;
 
+use Illuminate\Support\Facades\Input;
+
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\RestrictionController as Restrict;
 use App\Http\Controllers\transactionController as Trans;
@@ -317,7 +319,12 @@ class pagesController extends Controller
 
  public function phoneTopupView()
     {
-        $phones = TopupContact::all();
+        //phones = TopupContact::all();
+
+        $perPage = 10;
+
+        $phones = $this->paginate($perPage, Input::get('search'), Input::get('department'));
+
         $topupbalance = $this->getTopupWalletBalance();
         $cardWallet = CardWallet::latest()->first();
         $user = Auth::user();
@@ -358,4 +365,34 @@ class pagesController extends Controller
             'account_number' => 'required|numeric',
         ]);
     }
+
+    public function paginate($perPage, $search = null, $department = null)
+    {
+        $query = TopupContact::query();
+
+        if ($department) {
+            $query->where('department', $department);
+        }
+
+        if ($search) {
+            $query->where(function ($q) use ($search) {
+                $q->where('tags', "like", "%{$search}%");
+                $q->orWhere('phone', 'like', "%{$search}%");
+                $q->orWhere('firstname', 'like', "%{$search}%");
+                $q->orWhere('lastname', 'like', "%{$search}%");
+            });
+        }
+
+        $result = $query->orderBy('created_at', 'desc')
+            ->paginate($perPage);
+
+        if ($search) {
+            $result->appends(['search' => $search]);
+        }
+
+        return $result;
+    }
+
+
+
 }

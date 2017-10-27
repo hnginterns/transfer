@@ -17,12 +17,7 @@
                 </a>
               </li> <br>
               
-              <li>
-                <a data-toggle="modal" data-target="#PurchaseTopUp" >
-                <i class="fa fa-money fa-2x"></i> Fund Phone TopUp Wallet
-                </a>
-              </li> <br>
-              
+                         
              
                                 
               <li>
