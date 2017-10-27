@@ -232,9 +232,7 @@
 
               <!-- /.tab-pane -->
               <div class="tab-pane" id="transfers">
-
-            <!-- @if(!empty($bankTransaction)) -->
-               @if(!empty($beneficiaries))
+                @if(!empty($beneficiaries))
                 <table class="table">
                     <thead>
                         <tr>
@@ -266,6 +264,7 @@
               @else
               <h2> No Beneficiaries has been added to this wallet yet </h2>
             @endif
+
 
 
               </div>
