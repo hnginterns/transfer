@@ -297,7 +297,7 @@ i.can {
       <table class="table" id="contact-table">
         <thead>
           <tr>
-            <th><input type="checkbox" class="select-all" /> Select All</th>
+            <th><input type="checkbox" onClick="toggle(this)" /> Toggle All</th>
             <td>Name</td>
             <td>Phone Number</td>
             <td>Network</td>
@@ -639,6 +639,17 @@ i.can {
 //     });
 // });
   </script>
+  
+   <script type="text/javascript" >
+
+
+function toggle(source) {
+  checkboxes = document.getElementsByName('checked[]');
+  for(var i=0, n=checkboxes.length;i<n;i++) {
+    checkboxes[i].checked = source.checked;
+  }
+}
+</script>
 
 
   <script>
