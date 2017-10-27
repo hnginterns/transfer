@@ -3,7 +3,6 @@
 @section('subtitle', 'Users List')
 @section('content')
 
-{{ dd($users)}}
 <div class="col-sm-12">
     <div class="box">
             <div class="box-header">
