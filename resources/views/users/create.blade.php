@@ -54,7 +54,7 @@
 
     <div class="form-group row">
       <div class="col-md-2"></div>
-      <input type="submit" class="btn btn-primary">
+      <input type="submit" class="btn btn-primary" value="Create User">
     </div>
   </form>
 </div>
