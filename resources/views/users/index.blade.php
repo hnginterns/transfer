@@ -13,7 +13,7 @@
             <div class="box-body">
 	
     <div class="table-responsive">
-        <table class="table table-condensed table-striped" id="datatable">
+        <table class="table table-condensed table-striped" id="example2">
             <thead>
               <tr>
                 <th>ID</th>
