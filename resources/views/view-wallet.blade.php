@@ -213,7 +213,7 @@ tr:nth-child(even) {
                       <td>{{ $transaction->amount }}</td>
                       <td>{{ $transaction->wallet_id }}</td>
                       <td><i class="fa {{ $transaction->transaction_status ? 'fa-check-circle can' : 'fa-times-circle cannot' }}" aria-hidden="true"</td>
-                      <td>{{ $transction->created_at->toFormattedDateString() }}</td>
+                      <td>{{ $transaction->created_at->toFormattedDateString() }}</td>
                     @endforeach
                     <!-- some temporary dummy table data -->
                     <!-- <tr>
