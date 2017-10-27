@@ -111,7 +111,7 @@
 
 <script>
   @if($errors->any())
-      @foreach($errors->any() as $error)
+      @foreach($errors->all() as $error)
           toastr.error("{{ $error }}");
       @endforeach
   @endif

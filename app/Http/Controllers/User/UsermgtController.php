@@ -93,10 +93,14 @@ class UsermgtController extends Controller
             $user->is_admin = 0;
             $user->role_id = 0;
             $user->created_by = Auth::user()->id;
-            $user->save();
-            Session::flash('success', 'User created successfully.');
-            $user->notify(new UserCreated($user,$password));
-            return redirect()->to('/admin/users');
+            if ($user->save()) {
+                Session::flash('success', 'User created successfully.');
+                $user->notify(new UserCreated($user,$password));
+                return redirect()->to('/admin/users');
+            } else {
+                Session::flash('error', 'Error creating User');
+                return redirect()->to('/admin/users');
+            }
         }
     }
 
