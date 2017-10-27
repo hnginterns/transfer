@@ -84,6 +84,7 @@ i.can {
         <th>Wallet</th>
         <th>Amount</th>
         <th>Status</th>
+        <th>Narration</th>
         <th>Date</th>
       </tr>
     </thead>
@@ -97,6 +98,7 @@ i.can {
         <td>{{$walletfundhistories->wallet->wallet_name}}</td>
         <td>{{$walletfundhistories->amount}}</td>
         <td><i class="fa {{$walletfundhistories->status ? 'fa-check-circle can ' : 'fa-times-circle cannot'}}" aria-hidden="true"></i></td>
+        <td>{{$walletfundhistories->narration}}</td>
         <td>{{$walletfundhistories->created_at}}</td>
       </tr>
       @php($count++)
