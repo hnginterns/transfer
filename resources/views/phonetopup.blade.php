@@ -84,12 +84,10 @@ i.can {
 </div>
 </div>
 
-<br>
+<div class="row">
+  <div class="col-md-12 text-center">
 
- <div class="">
-    
-      <div >
-      <div class="orange-box">
+    <div class="orange-box">
         <h4 class="title" align="center">Group Airtime Top Up</h4>
       </div>
       <br>
@@ -104,36 +102,46 @@ i.can {
           <input class="form-control" type="number" placeholder="Enter Amount to be shared">  
           <button class="btn btn-success" type="submit" >Top Up Group</button>  
                  
-      </from>
+      </form>
       
     </div>
-    <br>
-    <hr><br>
+
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12 text-center">
+
+        <ul class="nav nav-pills nav-justified ">
+            <li class="active"><a data-toggle="pill" href="#contactlistbox">Contact List</a></li>
+            <li><a data-toggle="pill" href="#fundhistorybox">Funding History</a></li>
+            <li><a data-toggle="pill" href="#topuphistorybox">Topup History</a></li>
+        </ul>
 
 
 
+    </div>
+</div>
 
 
 
-    <ul class="nav nav-pills nav-justified ">
-        <li class="active"><a data-toggle="pill" href="#contactlistbox">Contact List</a></li>
-        <li><a data-toggle="pill" href="#fundhistorybox">Funding History</a></li>
-        <li><a data-toggle="pill" href="#topuphistorybox">Topup History</a></li>
-    </ul>
+ 
+
+
+    
 
 
 <div class="tab-content">
-        <div id="contactlistbox" class="tab-pane fade in active">
-
-          <div class="orange-box">
-      <h4 class="title" align="center">CONTACT LIST</h4>
-    </div>
-
-    <br>
-    <div class="row">
-      <div class="col-md-2">
+  <div id="contactlistbox" class="tab-pane fade in active">
+      <div class="orange-box">
+          <h4 class="title" align="center">CONTACT LIST</h4>
       </div>
-      <div class="col-md-5"></div>
+      <br>
+      <div class="row">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-5"></div>
       <form method="GET" action="" accept-charset="UTF-8" id="conatcts-form">
         <div class="col-md-2">
 
@@ -217,6 +225,8 @@ i.can {
             </tr>
 
             @endif
+
+          </form>
 
         </tbody>
         <tr>
@@ -598,47 +608,43 @@ i.can {
 
                     <select name="amount" class="form-control">
 
-          <optgroup label="MTN">
-            <option value="200">250MB (#200)</option>
-            <option value="300">500MB (#300)</option>
-             <option value="550">1GB (#550) </option>
-            <option value="850">2GB  (#850)</option>
-             <option value="1100">3GB (#1100)</option>
-            <option value="1650">5GB (#1650)</option>
-          </optgroup>
+                      <optgroup label="MTN">
+                        <option value="200">250MB (#200)</option>
+                        <option value="300">500MB (#300)</option>
+                         <option value="550">1GB (#550) </option>
+                        <option value="850">2GB  (#850)</option>
+                         <option value="1100">3GB (#1100)</option>
+                        <option value="1650">5GB (#1650)</option>
+                      </optgroup>
 
-          <optgroup label="9MOBILE">
-            <option value="250">250MB (#250)</option>
-            <option value="350">500MB (#350)</option>
-             <option value="650">1GB (#650)</option>
-            <option value="1000">1.5GB (#1000)</option>
-             <option value="1900">3GB (#1900)</option>
-            <option value="3100">5GB (#3100)</option>
-          </optgroup>
+                      <optgroup label="9MOBILE">
+                        <option value="250">250MB (#250)</option>
+                        <option value="350">500MB (#350)</option>
+                         <option value="650">1GB (#650)</option>
+                        <option value="1000">1.5GB (#1000)</option>
+                         <option value="1900">3GB (#1900)</option>
+                        <option value="3100">5GB (#3100)</option>
+                      </optgroup>
 
-          <optgroup label="GLO">
-            <option value="900">1.6GB/3.2GB</option>
-            <option value="1800">3.75GB/7.5GB</option>
-             <option value="2250">5GB/10GB</option>
-            <option value="2650">6GB/12GB</option>
-             <option value="3550">8GB/16GB</option>
-            <option value="4450">12GB/24GB </option>
-          </optgroup>
+                      <optgroup label="GLO">
+                        <option value="900">1.6GB/3.2GB</option>
+                        <option value="1800">3.75GB/7.5GB</option>
+                         <option value="2250">5GB/10GB</option>
+                        <option value="2650">6GB/12GB</option>
+                         <option value="3550">8GB/16GB</option>
+                        <option value="4450">12GB/24GB </option>
+                      </optgroup>
 
-          <optgroup label="AIRTEL">
-            <option value="950">1.5GB</option>
-            <option value="1900">3.5GB</option>
-             <option value="2375">5GB</option>
-            <option value="3325">7GB</option>
-             <option value="1100">3GB</option>
-            <option value="1650">5GB</option>
-          </optgroup>
+                      <optgroup label="AIRTEL">
+                        <option value="950">1.5GB</option>
+                        <option value="1900">3.5GB</option>
+                         <option value="2375">5GB</option>
+                        <option value="3325">7GB</option>
+                         <option value="1100">3GB</option>
+                        <option value="1650">5GB</option>
+                      </optgroup>
 
-        </select>
-
-
-
-
+                    </select>
 
 
                 </div>
