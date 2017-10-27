@@ -103,6 +103,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('topup/data/', 'User\PhoneTopUpController@topdatasubmit')->name('topup.data.user');
 	Route::post('/fund/topup', 'User\PhoneTopUpController@fundTopup')->name('user.fund.phone.submit');
 	Route::post('topup/topuphonemultiple/', 'User\PhoneTopUpController@topuphonemultiple')->name('topup.phone.multiple');
+	Route::post('topup/topuphonegroup/', 'User\PhoneTopUpController@topuphonegroup')->name('topup.phone.group');
 	
 	//end of phone top
 

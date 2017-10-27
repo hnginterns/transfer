@@ -372,7 +372,47 @@ class PhoneTopUpController extends Controller
             $topuphistory->save();
         }
     }
+    public function topuphonegroup(Request $request){
+        $phones = TopupContact::where('tags', $request->tags);
+        $amount = $request->amount;
+		$amount = $amount/count($phones);
+        $final_phones = [];
+        $final_amount = [];
+        $final_id = [];
+        $total = 0;
 
+        foreach($phones as $key => $phone){
+            if($amount == null){               
+                $contact = TopupContact::find($phone);
+                Session::flash('error', 'Enter amount for all the selected contacts');
+                return back();
+            }else{
+                
+                $contact = TopupContact::find($phone);
+                    $total += $amount["$phone"];
+                    $final_phones [] = $contact->phone;
+                    $final_amount [] = $amount;
+                    $final_id [] = $phone;
+                 
+            }     
+        }
+
+        
+        if($total > $this->getTopupWalletBalance()){
+            Session::flash('error', 'You do not have enough fund in your wallet for this topup');
+            return back();
+        }
+        if(count($final_phones) > 0){
+            $this->batchRecharge($final_id, $final_phones, $final_amount);
+        
+            return redirect('/phonetopup')->with('success', 'Contacts topped up successfully. Check history');
+   
+        }else{
+            Session::flash('error', 'No due Contact(s) to recharge');
+            return back();
+        }
+        
+    }
 
     public function topuphonesubmit(Request $request)
     {
