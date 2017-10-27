@@ -363,11 +363,9 @@ i.can {
         </form>
       </table>
   </div>
-      <br>
-      <hr><br>
       <div >
       <div class="orange-box">
-        <h4 class="title" align="center">Group Top Up</h4>
+        <h4 class="title" align="center">Group Airtime Top Up</h4>
       </div>
       <br>
       <form class="form form-inline" action="{{ route('topup.phone.group')}}" method="POST" role="form">
