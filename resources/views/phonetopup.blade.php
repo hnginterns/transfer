@@ -63,28 +63,28 @@ i.can {
 
 
 <div class="row">
-<div class="col-md-3">
+<div class="col-md-6">
   <div class="panel panel-primary">
-    <div class="panel-heading">Wallet Balance &#8358; {{ number_format($wallet->balance),2}}</div>
-  <div class="panel-body">
-    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#walletTopUp">Fund Wallet</button>
+    <div class="panel-heading"><h2>Wallet Balance &#8358; {{ number_format($wallet->balance),2}}</h2></div>
+  <div class="panel-body text-center">
+    <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#walletTopUp">Fund Wallet</button>
   </div>
 </div>
   
 </div>
 
-<div class="col-md-3">
+<div class="col-md-6">
   <div class="panel panel-primary">
-    <div class="panel-heading">Current Balance: &#8358;{{ number_format($topupbalance),2}} </div>
-  <div class="panel-body">
-    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#Purchase">Purchase</button>
+    <div class="panel-heading"> <h2> Current Balance: &#8358;{{ number_format($topupbalance),2}} </h2></div>
+  <div class="panel-body text-center">
+    <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#Purchase">Purchase</button>
   </div>
 </div>
   
 </div>
 </div>
 
-<br><br><br>
+<br>
 <div class="orange-box">
       <h4 class="title" align="center">Fund Transfer History</h4>
 </div>
