@@ -21,7 +21,7 @@ use App\TopupHistory;
 use App\Validation;
 
 use App\Bank;
-
+use App\Tag;
 use Illuminate\Support\Facades\Input;
 
 use Illuminate\Support\Facades\DB;
@@ -324,7 +324,7 @@ class pagesController extends Controller
         $perPage = 10;
 
         $phones = $this->paginate($perPage, Input::get('search'), Input::get('department'));
-
+        $tags = Tag::all();
         $topupbalance = $this->getTopupWalletBalance();
         $cardWallet = CardWallet::latest()->first();
         $user = Auth::user();
@@ -344,7 +344,7 @@ class pagesController extends Controller
                 $topupbalance = null;
                 Session::flash('error', 'Could not retrieve balance');
             }
-        return view('phonetopup', compact('cardWallet','wallet', 'phones', 'topupbalance', 'topuphistory', 'walletfundhistory', 'depts'));
+        return view('phonetopup', compact('cardWallet','wallet', 'phones', 'topupbalance', 'topuphistory', 'walletfundhistory', 'depts','tags'));
     }
 
     //all other page functions can be added

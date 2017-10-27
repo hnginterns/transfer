@@ -95,8 +95,8 @@ i.can {
                     {{csrf_field()}}
       <select class="form-control" name="department">
             <option>Select group</option>
-            @foreach($phones as $contact)
-              <option value="{{ $contact->department }}">{{ $contact->department }}</option>
+            @foreach($tags as $tag)
+              <option value="{{ $tag->id }}">{{ $tag->name }}</option>
             @endforeach
           </select>   
           <input class="form-control" type="number" placeholder="Enter Amount to be shared">  
