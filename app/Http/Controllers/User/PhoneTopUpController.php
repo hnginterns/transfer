@@ -64,7 +64,6 @@ class PhoneTopUpController extends Controller
    public function phoneTopUp(Request $request, CardWallet $cardWallet)
 
     {
-        // dd($request);
         $username       =     env('TOP_UP_USERNAME');
         $password       =     env('TOP_UP_PASSWORD');
         $phone          =     env('TOP_UP_PHONE');
@@ -198,7 +197,7 @@ class PhoneTopUpController extends Controller
 
                 $transaction->save();
 
-                return back()->with('status', $transMsg);
+                return back()->with('otp', $transMsg);
             }
             else{
                 return back()->with('error', $response['message']);
@@ -209,6 +208,7 @@ class PhoneTopUpController extends Controller
 
     public function otp(Request $request, CardWallet $cardWallet)
     {
+        // dd($request);
         \Unirest\Request::verifyPeer(false);
 
             $headers = array('content-type' => 'application/json');
@@ -223,9 +223,12 @@ class PhoneTopUpController extends Controller
             
             if($response['status'] == 'success') {
                 event(new FundWallet($cardWallet));
-                Session::flash('success',$response);
-                return redirect('admin/managewallet');
+                Session::flash('success','Wallet funding successful');
+                return redirect('/phonetopup');
 
+            }else{
+                Session::flash('error',$response['message']);
+                return redirect('/phonetopup');
             }
             
     }
@@ -372,32 +375,50 @@ class PhoneTopUpController extends Controller
             $topuphistory->save();
         }
     }
+
     public function topuphonegroup(Request $request){
-        $phones = TopupContact::where('tags', $request->department);
-        $amount = $request->amount;
-		$amount = $amount/count($phones);
+        $validator = $this->validateTag($request->all());
+        if ($validator->fails()) {
+            $messages = $validator->messages()->toArray();
+            Session::flash('form-errors', $messages);
+            return back();
+        }
+        $contacts = TopupContact::where('tags', $request->department)->get();
+        if(count($contacts->toArray()) == 0){
+            Session::flash('error', 'No contact belongs to the selected tag');
+            return back();
+        }
+        $total = $request->amount;
+		$amount = $total/count($contacts->toArray());
+
         $final_phones = [];
         $final_amount = [];
         $final_id = [];
         $total = 0;
+        $errors = [];
 
-        foreach($phones as $key => $phone){
-            if($amount == null){               
-                $contact = TopupContact::find($phone);
-                Session::flash('error', 'Enter amount for all the selected contacts');
-                return back();
+        foreach($contacts as $key => $contact){
+            if($this->hasReachedLimit($contact->id, $amount, $contact->weekly_max)){ 
+
+                //logs details of contacts who have exceeded weekly limits
+                $message = ['contact_id' => $contact->id, 
+                            'ref'=>str_random(10), 
+                            'amount'=>$amount,
+                            'status'=>'failed',
+                            'txn_response'=> 'Weekly limit reached'
+                            ];
+                $errors [] = $message;                  
+                //end of log detail of contacts who have exceeded weekly limits
+
             }else{
-                
-                $contact = TopupContact::find($phone);
-                    $total += $amount["$phone"];
                     $final_phones [] = $contact->phone;
                     $final_amount [] = $amount;
-                    $final_id [] = $phone;
-                 
-            }     
+                    $final_id [] = $contact->id;
+            }
         }
 
-        
+        $this->batchRechargeFailed($errors);
+
         if($total > $this->getTopupWalletBalance()){
             Session::flash('error', 'You do not have enough fund in your wallet for this topup');
             return back();
@@ -500,6 +521,12 @@ class PhoneTopUpController extends Controller
         ]);
     }
 
+    protected function validateTag(array $data) {
+        return Validator::make($data, [
+            'department' => 'required|string',
+        ]);
+    }
+
     protected function validateWalletFunding(array $data)
     {
         return Validator::make($data, [
@@ -510,8 +537,8 @@ class PhoneTopUpController extends Controller
             'emailaddr' => 'required|email',
             'card_no' => 'required|string',
             'expiry_year' => 'required|numeric',
-            'cvv' => 'required|numeric|max:3|min:3',
-            'pin' => 'required|numeric|max:4|min:4',
+            'cvv' => 'required|numeric',
+            'pin' => 'required|numeric',
 
         ]);
     }

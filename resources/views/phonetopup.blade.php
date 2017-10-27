@@ -56,19 +56,279 @@ i.can {
 }
 </style>
 
-<link rel="stylesheet" href="walletview.css">
-<link rel="stylesheet" href="user.css">
-<link rel="stylesheet" href="form.css">
-<link rel="stylesheet" href="/css/walletview.css">
-
 
 <div class="row">
-    <h3>Wallet Balance &#8358; {{$wallet->balance}}</h3>
+<div class="col-md-6">
+  <div class="panel panel-primary">
+    <div class="panel-heading"><h2>Wallet Balance &#8358; {{ number_format($wallet->balance),2}}</h2></div>
+  <div class="panel-body text-center">
+    <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#walletTopUp">Fund Wallet</button>
+  </div>
+</div>
+  
 </div>
 
-<button type="button" class="btn btn-success" data-toggle="modal" data-target="#walletTopUp">Fund Wallet</button>
+<div class="col-md-6">
+  <div class="panel panel-primary">
+    <div class="panel-heading"> <h2> Current Balance: &#8358;{{ number_format($topupbalance),2}} </h2></div>
+  <div class="panel-body text-center">
+    <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#Purchase">Purchase</button>
+  </div>
+</div>
+  
+</div>
+</div>
 
-<button type="button" class="btn btn-info" data-toggle="modal" data-target="#Purchase">Purchase</button>
+<div class="row">
+  <div class="col-md-12 text-center">
+
+    <div class="orange-box">
+        <h4 class="title" align="center">Group Airtime Top Up</h4>
+      </div>
+      <br>
+      <form class="form form-inline" action="{{ route('topup.phone.group')}}" method="POST" role="form">
+                    {{csrf_field()}}
+      <select class="form-control" name="department">
+            <option>Select group</option>
+            @foreach($tags as $tag)
+              <option value="{{ $tag->name }}">{{ $tag->name }}</option>
+            @endforeach
+          </select>   
+          <input class="form-control" type="number" name="amount" min="50" required placeholder="Enter Amount to be shared">  
+          <button class="btn btn-success" type="submit" >Top Up Group</button>  
+                 
+      </form>
+      
+    </div>
+
+  </div>
+
+<br><br>
+
+<div class="row">
+  <div class="col-md-12 text-center">
+
+        <ul class="nav nav-pills nav-justified ">
+            <li class="active"><a data-toggle="pill" href="#contactlistbox">Contact List</a></li>
+            <li><a data-toggle="pill" href="#fundhistorybox">Funding History</a></li>
+            <li><a data-toggle="pill" href="#topuphistorybox">Topup History</a></li>
+        </ul>
+
+    </div>
+</div>
+
+<div class="tab-content">
+  <div id="contactlistbox" class="tab-pane fade in active">
+      <div class="orange-box">
+          <h4 class="title" align="center">CONTACT LIST</h4>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-5"></div>
+      <form method="GET" action="" accept-charset="UTF-8" id="conatcts-form">
+        <div class="col-md-2">
+
+          <select class="form-control" name="department">
+            <option>All Depts</option>
+            @foreach($phones as $contact)
+              <option value="{{ $contact->department }}">{{ $contact->department }}</option>
+            @endforeach
+          </select>
+
+        </div>
+        <div class="col-md-3">
+          <div class="input-group custom-search-form">
+            <input type="text" class="form-control" name="search" value="{{ Input::get('search') }}" placeholder="Search tags">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="submit" id="search-users-btn">
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+                @if (Input::has('search') && Input::get('search') != '')
+                        <a href="" class="btn btn-danger" type="button" >
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </a>
+                    @endif
+
+            </span>
+          </div>
+        </div>
+      </form>
+    </div>
+
+
+    <br>
+
+    <div class="table table-responsive">
+      <table class="table" id="contact-table">
+        <thead>
+          <tr>
+            <th><input type="checkbox" onClick="toggle(this)" /> Select All Contact</th>
+            <td>Name</td>
+            <td>Phone Number</td>
+            <td>Network</td>
+            <td>Title</td>
+            <td>Department</td>
+            <td>Weekly Limit</td>
+            <td>Enter Amount<br>(airtime)</td>
+            <td colspan="2">Action</td>
+          </tr>
+        </thead>
+        <tbody>
+          <form class="send-airtime" action="{{ route('topup.phone.multiple')}}" method="POST" role="form">
+            {{ csrf_field() }} @if(count($phones) > 0) @foreach($phones as $phone)
+            <tr class="contact-fn">
+
+              <td><input type="checkbox" name="checked[]" value="{{$phone->id}}" class="checkbox"></td>
+              <td class="firstName" data-user="{{ $phone->id }}">{{ $phone->firstname }} {{ $phone->lastname }}</td>
+              <td class="phone">{{ $phone->phone }}</td>
+              <td class="phoneRef">{{ $phone->netw }}</td>
+              <td class="amount">{{ $phone->title }}</td>
+              <td class="amount">{{ $phone->department }}</td>
+              <td class="max-tops">{{ $phone->weekly_max }}</td>
+              <td><input class="form-control input-airtime-amount" type="number" min="50" name="amount[{{$phone->id}}]" placeholder="Enter Amount"
+                /></td>
+              <td>
+
+                <a class="airtime btn btn-success" data-id="{{ $phone->id }}" data-toggle="modal" data-target="#airtimeModal">
+                   Airtime
+                </a>
+              </td>
+              <td>
+                <a class="btn btn-primary" data-id="{{ $phone->id }}" data-toggle="modal" data-target="#dataModal">
+                    Data
+                </a>
+                </td>
+
+              
+            </tr>
+            @endforeach @else
+            <tr>
+              <td></td>
+              <td>No Phone Number Added</td>
+              <td></td>
+              <td></td>
+            </tr>
+
+            @endif
+
+     
+
+        </tbody>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><button type="submit" class="btn btn-success">Top up all</button></td>
+          <td></td>
+        </tr>
+        </form>
+      </table>
+  </div>
+
+        </div>
+        <div id="fundhistorybox" class="tab-pane fade">
+
+          <div class="orange-box">
+              <h4 class="title" align="center">Fund Transfer History</h4>
+        </div>
+          <br>
+          <div class="table-responsive">
+            <table class="table table-hover table-condensed" id="topuphistory">
+             <thead>
+               <tr>
+                  <th>S/N</th>
+                  <th>Payer</th>
+                  <th>Bank</th>
+                  <th>Wallet</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                  <th>Narration</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                @php($count = 1)
+                @foreach($walletfundhistory as $key => $walletfundhistories)
+                <tr>
+                  <td>{{$count}}</td>
+                  <td>{{$walletfundhistories->user->username}}</td>
+                  <td>{{$walletfundhistories->bank->bank_name}}</td>
+                  <td>{{$walletfundhistories->wallet->wallet_name}}</td>
+                  <td>{{$walletfundhistories->amount}}</td>
+                  <td><i class="fa {{$walletfundhistories->status ? 'fa-check-circle can ' : 'fa-times-circle cannot'}}" aria-hidden="true"></i></td>
+                  <td>{{$walletfundhistories->narration}}</td>
+                  <td>{{$walletfundhistories->created_at}}</td>
+                </tr>
+                @php($count++)
+                @endforeach
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+
+        <div id="topuphistorybox" class="tab-pane fade">
+
+            <div class="orange-box">
+              <h4 class="title" align="center">TOPUP HISTORY</h4>
+            </div>
+    
+        <div class="table table-responsive">
+          <table id="datatable" class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>Phone</th>
+                <th>Name</th>
+                <th>Network</th>
+                <th>Amount</th>
+                <th>Ref</th>
+                <th>User</th>
+                <th>Status</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              @if(count($topuphistory) > 0) @foreach($topuphistory as $hist)
+              <tr>
+                <th>{{ $hist->phone }}</th>
+                <th>{{ $hist->firstname }} {{ $hist->lastname }}</th>
+                <th>{{ $hist->netw }}</th>
+                <td class="phone">{{ $hist->amount }}</td>
+                <td class="phoneRef">{{ $hist->ref }}</td>
+                <td class="amount">{{ $hist->username }}</td>
+                <td class="amount">{{ $hist->status }}</td>
+                <td class="amount">{{ $hist->created_at }}</td>
+
+              </tr>
+              @endforeach @else
+              <tr>
+                <td></td>
+                <td>No Topup Transactions yet</td>
+                <td></td>
+                <td></td>
+              </tr>
+              @endif
+
+              
+            </tbody>
+          </table> 
+    
+          
+        </div>
+      </div>
+
+
+
+
+
+
 
 
 <!---Modal for wallet top Up-->
@@ -118,6 +378,7 @@ i.can {
                                                             <input name="phone" class="form-control" autocomplete="off" maxlength="20" required="" type="text">
                                                         </div>
                                                     </div>
+						    
                                                     <div class="form-group">
                                                         <label>Email Address</label>
                                                         <div class="controls">
@@ -168,13 +429,13 @@ i.can {
                                                             <div class="col-md-3">
                                                                 <label>Card CVV</label>
                                                                 <div class="controls">
-                                                                    <input class="form-control" autocomplete="off" maxlength="3" pattern="" title="Three digits at back of your card" required="" type="text" name="cvv">
+                                                                    <input class="form-control" autocomplete="off" maxlength="3" pattern="\d{3}" title="Three digits at back of your card" required="" type="text" name="cvv">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-3">
                                                                 <label>Pin</label>
                                                                 <div class="controls">
-                                                                    <input class="form-control" autocomplete="off" maxlength="4" pattern="" title="pin" required="" type="text" name="pin">
+                                                                    <input class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="pin" required="" type="text" name="pin">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6">
@@ -251,189 +512,8 @@ i.can {
 <center>
   <br> 
 
-  <div class="">
-    <h1>Current Balance: ₦ {{ number_format($topupbalance),2}}</h1>
-    <div class="orange-box">
-      <h4 class="title" align="center">CONTACT LIST</h4>
-    </div>
-
-    <br>
-    <div class="row">
-      <div class="col-md-2">
-      </div>
-      <div class="col-md-5"></div>
-      <form method="GET" action="" accept-charset="UTF-8" id="conatcts-form">
-        <div class="col-md-2">
-
-          <select class="form-control" name="department">
-            <option>All Depts</option>
-            @foreach($phones as $contact)
-              <option value="{{ $contact->department }}">{{ $contact->department }}</option>
-            @endforeach
-          </select>
-
-        </div>
-        <div class="col-md-3">
-          <div class="input-group custom-search-form">
-            <input type="text" class="form-control" name="search" value="{{ Input::get('search') }}" placeholder="Search tags">
-            <span class="input-group-btn">
-                <button class="btn btn-default" type="submit" id="search-users-btn">
-                    <span class="glyphicon glyphicon-search"></span>
-                </button>
-                @if (Input::has('search') && Input::get('search') != '')
-                        <a href="" class="btn btn-danger" type="button" >
-                            <span class="glyphicon glyphicon-remove"></span>
-                        </a>
-                    @endif
-
-            </span>
-          </div>
-        </div>
-      </form>
-    </div>
-    <br>
-
-    <div class="table table-responsive">
-      <table class="table" id="contact-table">
-        <thead>
-          <tr>
-            <th><input type="checkbox" class="select-all" /> Select All</th>
-            <td>Name</td>
-            <td>Phone Number</td>
-            <td>Network</td>
-            <td>Title</td>
-            <td>Department</td>
-            <td>Weekly Limit</td>
-            <td>Enter Amount<br>(airtime)</td>
-            <td colspan="2">Action</td>
-          </tr>
-        </thead>
-
-
-        <tbody>
-          <form class="send-airtime" action="{{ route('topup.phone.multiple')}}" method="POST" role="form">
-            {{ csrf_field() }} @if(count($phones) > 0) @foreach($phones as $phone)
-            <tr class="contact-fn">
-
-              <td><input type="checkbox" name="checked[]" value="{{$phone->id}}" class="checkbox"></td>
-              <td class="firstName" data-user="{{ $phone->id }}">{{ $phone->firstname }} {{ $phone->lastname }}</td>
-              <td class="phone">{{ $phone->phone }}</td>
-              <td class="phoneRef">{{ $phone->netw }}</td>
-              <td class="amount">{{ $phone->title }}</td>
-              <td class="amount">{{ $phone->department }}</td>
-              <td class="max-tops">{{ $phone->weekly_max }}</td>
-              <td><input class="form-control input-airtime-amount" type="number" min="50" name="amount[{{$phone->id}}]" placeholder="Enter Amount"
-                /></td>
-              <td>
-
-                <a class="airtime btn btn-success" data-id="{{ $phone->id }}" data-toggle="modal" data-target="#airtimeModal">
-                   Airtime
-                </a>
-              </td>
-              <td>
-                <a class="btn btn-primary" data-id="{{ $phone->id }}" data-toggle="modal" data-target="#dataModal">
-                    Data
-                </a>
-                </td>
-
-              </td>
-            </tr>
-            @endforeach @else
-            <tr>
-              <td></td>
-              <td>No Phone Number Added</td>
-              <td></td>
-              <td></td>
-            </tr>
-
-            @endif
-
-        </tbody>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td><button type="submit" class="btn btn-success">Top up all</button></td>
-          <td></td>
-        </tr>
-        </form>
-      </table>
-  </div>
-      <div >
-      <div class="orange-box">
-        <h4 class="title" align="center">Group Airtime Top Up</h4>
-      </div>
-      <br>
-      <form class="form form-inline" action="{{ route('topup.phone.group')}}" method="POST" role="form">
-                    {{csrf_field()}}
-      <select class="form-control" name="department">
-            <option>Select group</option>
-            @foreach($phones as $contact)
-              <option value="{{ $contact->department }}">{{ $contact->department }}</option>
-            @endforeach
-          </select>   
-          <input class="form-control" type="number" placeholder="Enter Amount to be shared">  
-          <button class="btn btn-success" type="submit" >Top Up Group</button>  
-                 
-      </from>
-      
-    </div>
-    <br>
-    <hr><br>
-
-      <div class="orange-box">
-        <h4 class="title" align="center">TRANSACTION HISTORY</h4>
-      </div>
-      </th><br>
-      <div class="">
-
-
-        <div class="table table-responsive">
-          <table id="datatable" class="table table-bordered table-hover">
-            <thead>
-              <tr>
-                <th>Phone</th>
-                <th>Name</th>
-                <th>Network</th>
-                <th>Amount</th>
-                <th>Ref</th>
-                <th>User</th>
-                <th>Status</th>
-                <th>Date</th>
-              </tr>
-            </thead>
-            <tbody>
-
-              @if(count($topuphistory) > 0) @foreach($topuphistory as $hist)
-              <tr>
-                <th>{{ $hist->phone }}</th>
-                <th>{{ $hist->firstname }} {{ $hist->lastname }}</th>
-                <th>{{ $hist->netw }}</th>
-                <td class="phone">{{ $hist->amount }}</td>
-                <td class="phoneRef">{{ $hist->ref }}</td>
-                <td class="amount">{{ $hist->username }}</td>
-                <td class="amount">{{ $hist->status }}</td>
-                <td class="amount">{{ $hist->created_at }}</td>
-
-              </tr>
-              @endforeach @else
-              <tr>
-                <td></td>
-                <td>No Topup Transactions yet</td>
-                <td></td>
-                <td></td>
-              </tr>
-              @endif
-
-              </tr>
-              </form>
-            </tbody>
-          </table> <br><br>
-        </div>
+ 
+    
 
 
 
@@ -515,47 +595,43 @@ i.can {
 
                     <select name="amount" class="form-control">
 
-          <optgroup label="MTN">
-            <option value="200">250MB (#200)</option>
-            <option value="300">500MB (#300)</option>
-             <option value="550">1GB (#550) </option>
-            <option value="850">2GB  (#850)</option>
-             <option value="1100">3GB (#1100)</option>
-            <option value="1650">5GB (#1650)</option>
-          </optgroup>
+                      <optgroup label="MTN">
+                        <option value="200">250MB (#200)</option>
+                        <option value="300">500MB (#300)</option>
+                         <option value="550">1GB (#550) </option>
+                        <option value="850">2GB  (#850)</option>
+                         <option value="1100">3GB (#1100)</option>
+                        <option value="1650">5GB (#1650)</option>
+                      </optgroup>
 
-          <optgroup label="9MOBILE">
-            <option value="250">250MB (#250)</option>
-            <option value="350">500MB (#350)</option>
-             <option value="650">1GB (#650)</option>
-            <option value="1000">1.5GB (#1000)</option>
-             <option value="1900">3GB (#1900)</option>
-            <option value="3100">5GB (#3100)</option>
-          </optgroup>
+                      <optgroup label="9MOBILE">
+                        <option value="250">250MB (#250)</option>
+                        <option value="350">500MB (#350)</option>
+                         <option value="650">1GB (#650)</option>
+                        <option value="1000">1.5GB (#1000)</option>
+                         <option value="1900">3GB (#1900)</option>
+                        <option value="3100">5GB (#3100)</option>
+                      </optgroup>
 
-          <optgroup label="GLO">
-            <option value="900">1.6GB/3.2GB</option>
-            <option value="1800">3.75GB/7.5GB</option>
-             <option value="2250">5GB/10GB</option>
-            <option value="2650">6GB/12GB</option>
-             <option value="3550">8GB/16GB</option>
-            <option value="4450">12GB/24GB </option>
-          </optgroup>
+                      <optgroup label="GLO">
+                        <option value="900">1.6GB/3.2GB</option>
+                        <option value="1800">3.75GB/7.5GB</option>
+                         <option value="2250">5GB/10GB</option>
+                        <option value="2650">6GB/12GB</option>
+                         <option value="3550">8GB/16GB</option>
+                        <option value="4450">12GB/24GB </option>
+                      </optgroup>
 
-          <optgroup label="AIRTEL">
-            <option value="950">1.5GB</option>
-            <option value="1900">3.5GB</option>
-             <option value="2375">5GB</option>
-            <option value="3325">7GB</option>
-             <option value="1100">3GB</option>
-            <option value="1650">5GB</option>
-          </optgroup>
+                      <optgroup label="AIRTEL">
+                        <option value="950">1.5GB</option>
+                        <option value="1900">3.5GB</option>
+                         <option value="2375">5GB</option>
+                        <option value="3325">7GB</option>
+                         <option value="1100">3GB</option>
+                        <option value="1650">5GB</option>
+                      </optgroup>
 
-        </select>
-
-
-
-
+                    </select>
 
 
                 </div>
@@ -578,7 +654,44 @@ i.can {
 
   </div>
   </div>
+    </div>
+   @if (session('otp'))
+   <script type="text/javascript">
+        $(document).ready(function() {
+            $('#myModal').modal();
+        });
+    </script>
 
+    <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Otp</h4>
+          </div>
+          <div class="modal-body">
+            <p>{{session('otp')}}</p>
+            <div class="row">
+            <div class="col-md-6 col-md-offset-2">
+              <form action="{{config('app.url')}}/phonetopup/otp" method="POST">
+                {{csrf_field()}}
+                <input type="hidden" name="ref" value="{{$cardWallet->ref}}">
+                <div class="form-group">
+                    <input type="password" class="form-control" name="otp" placeholder="Enter OTP">
+                </div>
+                <button type="submit" class="btn btn-default btn-block">Submit</button>
+              </form>
+            </div>
+          </div>
+      </div>
+      
+    </div>
+  </div>
+
+</div>
+@endif
   </div>
 
   @endsection @section('add_js')
@@ -639,6 +752,17 @@ i.can {
 //     });
 // });
   </script>
+  
+   <script type="text/javascript" >
+
+
+function toggle(source) {
+  checkboxes = document.getElementsByName('checked[]');
+  for(var i=0, n=checkboxes.length;i<n;i++) {
+    checkboxes[i].checked = source.checked;
+  }
+}
+</script>
 
 
   <script>
@@ -663,5 +787,34 @@ i.can {
             }
           });
     </script>
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+    $('#contact-table').DataTable( {
+        initComplete: function () {
+            this.api().columns([1,3]).every( function () {
+                var column = this;
+                var select = $('<select><option value=""></option></select>')
+                    .appendTo( $(column.header()).empty() )
+                    .on( 'change', function () {
+                        var val = $.fn.dataTable.util.escapeRegex(
+                            $(this).val()
+                        );
+ 
+                        column
+                            .search( val ? '^'+val+'$' : '', true, false )
+                            .draw();
+                    } );
+ 
+                column.data().unique().sort().each( function ( d, j ) {
+                    select.append( '<option value="'+d+'">'+d+'</option>' )
+                } );
+            } );
+        }
+    } );
+} );
+    </script>
+
+    
 
 @endsection

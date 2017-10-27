@@ -80,6 +80,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/transfer/beneficiary/{wallet}', 'pagesController@bank_transfer')->name('transfer.beneficiary');
 	Route::get('/transfer/wallet/{wallet}', 'pagesController@wallet_transfer')->name('transfer.wallet');
 	Route::post('/transfer/wallet/{wallet}', 'WalletController@transfer')->name('transfer.wallet.submit');
+	Route::post('/transfer/validate/{wallet}', 'WalletController@ValidateTransferToAccount')->name('transfer.validate.submit');
 	Route::post('/transfer/beneficiary/{wallet}', 'WalletController@transferAccount')->name('transfer.beneficiary.submit');
 	//wallet operations end
 
@@ -96,6 +97,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 	//phone top up
 	Route::get('/phonetopup', 'pagesController@phoneTopupView');
+	Route::post('/phonetopup/otp', 'User\PhoneTopUpController@otp');
 	Route::post('/phonetopup/fund', 'User\PhoneTopUpController@fundTopupWallet');
 	Route::post('/topup/wallet', 'User\PhoneTopUpController@phoneTopUp');
 	Route::get('topup/phone/{id}', 'User\PhoneTopUpController@phoneshow');
@@ -152,6 +154,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
   	Route::get('wallets/details/{id}', 'Admin\WalletController@details')->name('wallets.details');
   	Route::get('wallets/manualfund/{id}', 'Admin\WalletController@manualfund')->name('wallets.manualfund');
   	Route::post('wallets/manualfund/{id}', 'Admin\WalletController@manualfundstore')->name('wallets.manualfund.store');
+  	Route::post('otp', 'Admin\WalletController@manualfundstore')->name('wallets.otp.store');
 	Route::get('wallets/manualfundint/{id}', 'Admin\WalletController@manualfundint')->name('wallets.manualfundint');
   	Route::post('wallets/manualfundint/{wallet}', 'WalletController@payWithInternetBanking')->name('wallets.manualfund.storeint');
 	Route::get('wallets/ravefund/{id}', 'Admin\WalletController@ravefund')->name('wallets.ravefund');

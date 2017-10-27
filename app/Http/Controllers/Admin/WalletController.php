@@ -10,6 +10,7 @@ use Session;
 use App\CardWallet;
 use App\Wallet;
 use App\Beneficiary;
+use App\Events\FundWallet;
 use DB;
 use URL;
 use App\Restriction;
@@ -175,35 +176,103 @@ class WalletController  extends Controller
         return view('admin.wallets.manualfund', compact('wallet', 'cardWallet','user'));
     }
 
-
-    public function manualfundstore($id, Request $request){
-
-        //validate wallet data
-        /**$this->validate($request, [
-            'name' => 'required',
-            'amount' => 'required',
-            'user_id' => 'required',
-            'wallet_id' => 'required',
-            'method' => 'required',
-            'status' => 'required'
-        ]);
-        
-        //get wallet data
-        $fundingData = $request->all();
-        
-        //update wallet data
-        Wallet::find($id)->update($fundingData);
-
-        return redirect()->route('admin.wallets.index')->with('success','wallet funded successfully!');
+    //get token for new transaction
+    public function getToken()
+    {
+        $api_key = env('API_KEY');
+        $secret_key = env('API_SECRET');
+        \Unirest\Request::verifyPeer(false);
+        $headers = array('content-type' => 'application/json');
+        $query = array('apiKey' => $api_key, 'secret' => $secret_key);
+        $body = \Unirest\Request\Body::json($query);
+        $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/merchant/verify', $headers, $body);
+        $response = json_decode($response->raw_body, true);
+        $status = $response['status'];
+        if (!$status == 'success') {
+            echo 'INVALID TOKEN';
+        } else {
+            $token = $response['token'];
+            return $token;
+        }
     }
 
-    public function ravefund($id){
-        //get wallet data by id
-        $wallet = Wallet::find($id);
+    public function manualfundstore(Request $request, CardWallet $cardWallet)
+    {
+        $token = $this->getToken();
+        // dd($request);
+        $headers = array('content-type' => 'application/json', 'Authorization' => $token);
+        $query = array(
+            "firstname" => $request->fname,
+            "lastname" => $request->lname,
+            "email" => $request->emailaddr,
+            "phonenumber" => $request->phone,
+            "recipient" => "wallet",
+            "recipient_id" => $request->wallet_code,
+            "card_no" => $request->card_no,
+            "cvv" => $request->cvv,
+            "pin" => $request->pin, //optional required when using VERVE card
+            "expiry_year" => $request->expiry_year,
+            "expiry_month" => $request->expiry_month,
+            "charge_auth" => "PIN", //optional required where card is a local Mastercard
+            "apiKey" => env('API_KEY'),
+            "amount" => $request->amount,
+            "fee" => 0,
+            "medium" => "web",
+            //"redirecturl" => "https://google.com"
+        );
+        $body = \Unirest\Request\Body::json($query);
+
+        $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer', $headers, $body);
         
-        //load form view
-        return view('admin.wallets.ravefund', ['wallet' => $wallet]);*/
+        $response = json_decode($response->raw_body, TRUE);
+        // dd($response);
+        if($response['status'] == 'success') {
+            $response = $response['data']['transfer'];
+            $transMsg = $response['flutterChargeResponseMessage'];
+            $transRef = $response['flutterChargeReference'];
+            
+            $transaction = new CardWallet;
+            $transaction->firstName = $response['firstName'];
+            $transaction->lastName = $response['lastName'];
+            $transaction->status = $response['status'];
+            $transaction->wallet_name = $request->wallet_name;
+            $transaction->phoneNumber = $response['phoneNumber'];
+            $transaction->amount = $response['amountToSend'];
+            $transaction->ref = $transRef;
+
+            $transaction->save();
+
+            return back()->with('status', $transMsg);
+        }
+        else{
+            return back()->with('error', $response['message']);
+        }
     }
+
+
+    public function otp(Request $request, CardWallet $cardWallet)
+    {
+        \Unirest\Request::verifyPeer(false);
+
+            $headers = array('content-type' => 'application/json');
+            $query = array(
+                'transactionRef'=>$request->ref,
+                'otp' => $request->otp
+            );
+            $body = \Unirest\Request\Body::json($query);
+
+            $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer/charge/auth/card', $headers, $body);
+            $response = json_decode($response->raw_body, true);
+            
+            if($response['status'] == 'success') {
+                event(new FundWallet($cardWallet));
+                Session::flash('success',$response);
+                return redirect('admin/managewallet');
+
+            }
+            
+    }
+    
 
     public function manualfundint($id){
         //get wallet data by id
