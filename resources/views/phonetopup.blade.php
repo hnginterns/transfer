@@ -116,7 +116,7 @@ i.can {
 
 
     <ul class="nav nav-pills nav-justified ">
-        <li class="active"><a data-toggle="pill" href="#contactliste">Contact List</a></li>
+        <li class="active"><a data-toggle="pill" href="#contactlist">Contact List</a></li>
         <li><a data-toggle="pill" href="#fundhistory">Funding History</a></li>
         <li><a data-toggle="pill" href="#topuphistory">Topup History</a></li>
     </ul>
