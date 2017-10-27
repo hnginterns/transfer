@@ -214,6 +214,7 @@ tr:nth-child(even) {
                       <td>{{ $beneficiary->wallet_id }}</td>
                       <td><i class="fa {{ $beneficiary->transaction_status ? 'fa-check-circle can' : 'fa-times-circle cannot' }}" aria-hidden="true"</td>
                       <td>{{ $beneficiary->created_at->toFormattedDateString() }}</td>
+                    @endforeach
                     <!-- some temporary dummy table data -->
                     <!-- <tr>
                       <td>Cletus Nnabuife</td>
