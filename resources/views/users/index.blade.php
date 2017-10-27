@@ -21,7 +21,7 @@
                 <th>Email</th>
                 <th>Firstname</th>
                 <th>Lastname</th>
-                <th colspan="3">Action</th>
+                <th colspan="4">Action</th>
               </tr>
             </thead>
             <tbody>
