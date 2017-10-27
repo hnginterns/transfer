@@ -207,7 +207,7 @@ tr:nth-child(even) {
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach ($bank_transctions as $transaction)
+                    @foreach ($bankTransctions as $transaction)
                     <tr>
                       <td>{{ $transaction->beneficiary->name }}</td>
                       <td>{{ $transction->amount }}</td>
