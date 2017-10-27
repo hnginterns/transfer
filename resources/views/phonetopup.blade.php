@@ -63,9 +63,6 @@ i.can {
 
 
 <div class="row">
-    <h3></h3>
-</div>
-
 <div class="col-md-3">
   <div class="panel panel-primary">
     <div class="panel-heading">Wallet Balance &#8358; {{ number_format($wallet->balance),2}}</div>
@@ -85,7 +82,7 @@ i.can {
 </div>
   
 </div>
-
+</div>
 
 <br><br><br>
 <div class="orange-box">
