@@ -62,10 +62,50 @@ i.can {
 <link rel="stylesheet" href="/css/walletview.css">
 
 
- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#walletTopUp">Fund Wallet</button>
+<div class="row">
+    <h3>Wallet Balance &#8358; {{$wallet->balance}}</h3>
+</div>
 
-<button type="button" class="btn btn-info" data-toggle="modal" data-target="#PurchaseTopUp">Purchase</button>
+<button type="button" class="btn btn-success" data-toggle="modal" data-target="#walletTopUp">Fund Wallet</button>
 
+<button type="button" class="btn btn-info" data-toggle="modal" data-target="#Purchase">Purchase</button>
+<br><br><br>
+<div class="orange-box">
+      <h4 class="title" align="center">Fund Transfer History</h4>
+</div>
+<br>
+<div class="table-responsive">
+  <table class="table table-hover table-condensed" id="topuphistory">
+    <thead>
+      <tr>
+        <th>S/N</th>
+        <th>Payer</th>
+        <th>Bank</th>
+        <th>Wallet</th>
+        <th>Amount</th>
+        <th>Status</th>
+        <th>Narration</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      @php($count = 1)
+      @foreach($walletfundhistory as $key => $walletfundhistories)
+      <tr>
+        <td>{{$count}}</td>
+        <td>{{$walletfundhistories->user->username}}</td>
+        <td>{{$walletfundhistories->bank->bank_name}}</td>
+        <td>{{$walletfundhistories->wallet->wallet_name}}</td>
+        <td>{{$walletfundhistories->amount}}</td>
+        <td><i class="fa {{$walletfundhistories->status ? 'fa-check-circle can ' : 'fa-times-circle cannot'}}" aria-hidden="true"></i></td>
+        <td>{{$walletfundhistories->narration}}</td>
+        <td>{{$walletfundhistories->created_at}}</td>
+      </tr>
+      @php($count++)
+      @endforeach
+    </tbody>
+  </table>
+</div>
 
 <!---Modal for wallet top Up-->
                     <div class="modal fade" id="walletTopUp">
@@ -83,13 +123,13 @@ i.can {
                                     </div>
                                     <!-- /.box-header -->
                                     <div class="box-body">
-                                        <form action="" method="POST" role="form form-horizontal">
+                                        <form action="{{config('app.url')}}/phonetopup/fund" method="POST" role="form form-horizontal">
                                             {{csrf_field()}}
                                             <!-- text input -->
                                             <div class="container-fluid">
                                                 <fieldset>
-                                                    <input type="hidden" name="wallet_code" value="Wallet Name">
-                                                    <input type="hidden" name="wallet_name" value="Wallet Name">
+                                                    <input type="hidden" name="wallet_code" value="{{$wallet->wallet_code}}">
+                                                    <input type="hidden" name="wallet_name" value="{{$wallet->wallet_name}}">
                                                     <div class="row">
                                                         <div class="col-lg-6">
                                                             <div class="form-group">
@@ -147,9 +187,12 @@ i.can {
                                                                    </select>
                                                                 </div>
                                                                 <div class="col-md-3">
+                                                                  @php($year = date('Y'))
                                                                   <select class="form-control" name="expiry_year">
-                                                                   
-                                                                       <option></option>
+                                                                      @for($i = $year; $i < $year + 6; $i++)
+                                                                              <option value="{{$i}}">{{$i}}</option>
+                                                                      @endfor
+                                                                       
                                                                     
                                                                    </select>
                                                                 </div>
@@ -201,7 +244,7 @@ i.can {
 <div class="container">
                             <!-- Trigger the modal with a button -->
                             <!-- Modal -->
-                            <div class="modal fade" id="PurchaseTopUp" role="dialog">
+                            <div class="modal fade" id="Purchase" role="dialog">
                                 <div class="modal-dialog">
                                     <!-- Modal content-->
                                     <div class="modal-content">
@@ -210,31 +253,13 @@ i.can {
                                             <h4 class="modal-title">Transfer To Service Provider</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="" method="post" accept-charset="utf-8">
+                                            <form action="{{config('app.url')}}/topup/wallet" method="post" accept-charset="utf-8">
                                                 <div class="modal-body" style="padding: 5px;">
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                                                            <input class="form-control" name="account_number" placeholder="Account number" type="text" required />
-                                                        </div>
-                                                    </div>
-                                                    <input name="wallet_id" value="Wallet" type="hidden">
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                                                            <select class="form-control" name="bank_id">
-                                                                
-                                                                    <option value="bank">bank</option>
-                                                                
-                                                            </select>
-                                                        </div>
-                                                    </div>
+                                                 
+                                                    <input name="wallet_id" value="{{$wallet->id}}" type="hidden">
+                                                 
                                                         {{csrf_field()}}
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                                                            <input class="form-control" name="account_name" placeholder="Account name" type="text" required />
-                                                       
-                                                        </div>
-                                                    </div>
-
+                                                   
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
                                                             <input class="form-control" name="narration" placeholder="Narration" type="text" required />
@@ -592,15 +617,7 @@ i.can {
       console.log('Clcked');
       $('.modal#airtimeModal').find('form.send-airtime').submit();
     })
-//   $('.airtime').click(function() {
-//     // get the invoice ID
-//     var id = $(this).data('id');
-//     // set up a GET route using the invoice ID and retrieve the result for that invoice
-//     $.get('/topup/phone/' + id, function(response, status) {
-//         // display the results in the modal
-//         $('#airtimeModal .modal-body').html(response.data);
-//     });
-// });
+
   </script>
 
   <script type="text/javascript">
@@ -621,15 +638,7 @@ i.can {
       console.log('Clcked');
       $('.modal#dataModal').find('form.send-data').submit();
     })
-//   $('.airtime').click(function() {
-//     // get the invoice ID
-//     var id = $(this).data('id');
-//     // set up a GET route using the invoice ID and retrieve the result for that invoice
-//     $.get('/topup/phone/' + id, function(response, status) {
-//         // display the results in the modal
-//         $('#airtimeModal .modal-body').html(response.data);
-//     });
-// });
+
   </script>
 
 
@@ -637,6 +646,8 @@ i.can {
         $("#department").change(function () {
             $("#contacts-form").submit();
         });
+
+        $('#topuphistory').DataTable();
     </script>
 
 @endsection

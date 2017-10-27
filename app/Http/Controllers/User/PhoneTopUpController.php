@@ -17,12 +17,16 @@ use Carbon\Carbon;
 
 use App\SmsWalletFund;
 use App\Rule;
+use App\Bank;
 use App\Transaction;
 use URL;
+use App\User;
 use App\BankTransaction;
+use App\PhonetopupTransaction;
 use RestrictionController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\RestrictionController as Restrict;
+use App\Notifications\PhonetopupTransaction as PhonetopupTransactionNotify;
 use App\Events\TransferToBank;
 use App\Events\FundWallet;
 class PhoneTopUpController extends Controller
@@ -37,10 +41,30 @@ class PhoneTopUpController extends Controller
         //
     }
 
-   public function phoneTopUp()
+    //get token for new transaction
+    public function getToken()
+    {
+        $api_key = env('API_KEY');
+        $secret_key = env('API_SECRET');
+        \Unirest\Request::verifyPeer(false);
+        $headers = array('content-type' => 'application/json');
+        $query = array('apiKey' => $api_key, 'secret' => $secret_key);
+        $body = \Unirest\Request\Body::json($query);
+        $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/merchant/verify', $headers, $body);
+        $response = json_decode($response->raw_body, true);
+        $status = $response['status'];
+        if (!$status == 'success') {
+            echo 'INVALID TOKEN';
+        } else {
+            $token = $response['token'];
+            return $token;
+        }
+    }
+
+   public function phoneTopUp(Request $request, CardWallet $cardWallet)
 
     {
-        
+        // dd($request);
         $username       =     env('TOP_UP_USERNAME');
         $password       =     env('TOP_UP_PASSWORD');
         $phone          =     env('TOP_UP_PHONE');
@@ -106,15 +130,106 @@ class PhoneTopUpController extends Controller
                     //fire off an sms notification
                     $this->sendPhoneTopupTransactionNotifications($transaction);
 
-                     event(new FundWallet($topup));
-                    // Session::flash('success',"Transaction was successful");
-                    return redirect('success')->with('status',$data);
+                     event(new FundWallet($cardWallet));
+                    Session::flash('status',$data);
+                    return redirect('success');
                 } else {
                     Session::flash('error',$response['message']);
                     return back();
                 }
         }
     }
+
+    public function sendPhoneTopupTransactionNotifications($transaction){
+        Auth::user()->notify(new PhonetopupTransactionNotify($transaction));
+        $admins = User::where('is_admin', true)->get();
+        foreach($admins as $key => $admin){
+            $admin->notify(new PhonetopupTransactionNotify($transaction));
+        }
+    }
+
+    public function fundTopupWallet(Request $request, CardWallet $cardWallet)
+    {   
+        $validator = $this->validateWalletFunding($request->all());
+        if ($validator->fails()) {
+            $messages = $validator->messages()->toArray();
+            Session::flash('form-errors', $messages);
+            return redirect()->to(URL::previous());
+        } else {
+            $token = $this->getToken();
+            $headers = array('content-type' => 'application/json', 'Authorization' => $token);
+            $query = array(
+                "firstname" => $request->fname,
+                "lastname" => $request->lname,
+                "email" => $request->emailaddr,
+                "phonenumber" => $request->phone,
+                "recipient" => "wallet",
+                "recipient_id" => $request->wallet_code,
+                "card_no" => $request->card_no,
+                "cvv" => $request->cvv,
+                "pin" => $request->pin, //optional required when using VERVE card
+                "expiry_year" => $request->expiry_year,
+                "expiry_month" => $request->expiry_month,
+                "charge_auth" => "PIN", //optional required where card is a local Mastercard
+                "apiKey" => env('API_KEY'),
+                "amount" => $request->amount,
+                "fee" => 0,
+                "medium" => "web",
+                //"redirecturl" => "https://google.com"
+            );
+            $body = \Unirest\Request\Body::json($query);
+
+            $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer', $headers, $body);
+            
+            $response = json_decode($response->raw_body, TRUE);
+            if($response['status'] == 'success') {
+                $response = $response['data']['transfer'];
+                $transMsg = $response['flutterChargeResponseMessage'];
+                $transRef = $response['flutterChargeReference'];
+                
+                $transaction = new CardWallet;
+                $transaction->firstName = $response['firstName'];
+                $transaction->lastName = $response['lastName'];
+                $transaction->status = $response['status'];
+                $transaction->wallet_name = $request->wallet_name;
+                $transaction->phoneNumber = $response['phoneNumber'];
+                $transaction->amount = $response['amountToSend'];
+                $transaction->ref = $transRef;
+
+                $transaction->save();
+
+                return back()->with('status', $transMsg);
+            }
+            else{
+                return back()->with('error', $response['message']);
+            }
+        }
+    }
+
+
+    public function otp(Request $request, CardWallet $cardWallet)
+    {
+        \Unirest\Request::verifyPeer(false);
+
+            $headers = array('content-type' => 'application/json');
+            $query = array(
+                'transactionRef'=>$request->ref,
+                'otp' => $request->otp
+            );
+            $body = \Unirest\Request\Body::json($query);
+
+            $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer/charge/auth/card', $headers, $body);
+            $response = json_decode($response->raw_body, true);
+            
+            if($response['status'] == 'success') {
+                event(new FundWallet($cardWallet));
+                Session::flash('success',$response);
+                return redirect('admin/managewallet');
+
+            }
+            
+    }
+
 
 
 
@@ -176,9 +291,7 @@ class PhoneTopUpController extends Controller
         $final_id = [];
         $errors = [];
         $total = 0;
-        // dump($request->checked);
-        // dump($request->amount);
-        // dd();
+
         foreach($phones as $key => $phone){
             if($amount["$phone"] == null){               
                 $contact = TopupContact::find($phone);
@@ -248,9 +361,6 @@ class PhoneTopUpController extends Controller
             $url = "https://mobilenig.com/api/airtime.php/?username=$username&password=$password&network=$contact->netw&phoneNumber=$contact->phone&amount=$amount[$i]";
             $headers = array('content-type' => 'application/json');
             $response = \Unirest\Request::get($url, $headers);
-            
-            // $response = json_decode($response->raw_body, true);
-            
             $user_id = Auth::user()->id;
             $topuphistory = new TopupHistory;
             $topuphistory->contact_id = $contact->id;
@@ -269,18 +379,9 @@ class PhoneTopUpController extends Controller
         $phone = $request->phone;
         $network = $request->netw;
         $amount = $request->amount;
-
-
-        // dd($request);
-        // $contact = TopupContact::all();
-        //$contact = TopupContact::find($request->user_id);
         $contact = TopupContact::find($request->current_id);
-        //dd($contact);
 
         $contacthistory = TopupHistory::where('user_id', $contact->id)->sum('amount');
-
-        //dd($contacthistory);
-
         if ($contacthistory >= $contact->weekly_max) {
         
             return redirect('/phonetopup')->with('error', 'Weekly Maximum Exceeded');
@@ -296,18 +397,6 @@ class PhoneTopUpController extends Controller
         
         $response = json_decode($response->raw_body, true);
 
-        //dd($response);
-        
-        /*
-        if ($response === null) {
-            $status = 'Success';
-        } else {
-           return redirect('/phonetopup')->with('error', 'An Error Occured');
-        }
-        //end of Api call
-
-        */
-
         $user_id = Auth::user()->id;
 
         $topuphistory = new TopupHistory;
@@ -315,15 +404,11 @@ class PhoneTopUpController extends Controller
         $topuphistory->contact_id = $contact->id;
         $topuphistory->user_id = $user_id;
         $topuphistory->amount = $amount;
-        //$topuphistory->type = $request->type;
         $topuphistory->ref = str_random(10);
-        //$topuphistory->txn_response = $response;
         $topuphistory->txn_response = 00;
         $topuphistory->status = 'Success';
 
         $topuphistory->save();
-
-        //Session::flash('success',' Phone topped up uccessfully.');
         return redirect('/phonetopup')->with('success', 'Phone topped up uccessfully.');
 
     }
@@ -337,17 +422,8 @@ class PhoneTopUpController extends Controller
         $txn_ref = str_random(10);
 
         $return_url = 'https://finance.hotels.ng/phonetopup';
-
-
-        // dd($request);
-        // $contact = TopupContact::all();
-        //$contact = TopupContact::find($request->user_id);
         $contact = TopupContact::find($request->current_id);
-        //dd($contact);
-
         $contacthistory = TopupHistory::where('user_id', $contact->id)->sum('amount');
-
-        //dd($contacthistory);
 
         if ($contacthistory >= $contact->weekly_max) {
         
@@ -361,20 +437,7 @@ class PhoneTopUpController extends Controller
         
         $headers = array('content-type' => 'application/json');
         $response = \Unirest\Request::get($url, $headers);
-        //dd($response);
         $response = json_decode($response->raw_body, true);
-
-        //dd($response);
-        
-        /*
-        if ($response === null) {
-            $status = 'Success';
-        } else {
-           return redirect('/phonetopup')->with('error', 'An Error Occured');
-        }
-        //end of Api call
-
-        */
 
         $user_id = Auth::user()->id;
 
@@ -383,20 +446,35 @@ class PhoneTopUpController extends Controller
         $topuphistory->contact_id = $contact->id;
         $topuphistory->user_id = $user_id;
         $topuphistory->amount = $amount;
-        //$topuphistory->type = $request->type;
         $topuphistory->ref = str_random(10);
-        //$topuphistory->txn_response = $response;
         $topuphistory->txn_response = 00;
         $topuphistory->status = 'Success';
-
         $topuphistory->save();
-
-        //Session::flash('success',' Phone topped up uccessfully.');
         return redirect('/phonetopup')->with('success', 'Data topped up uccessfully.');
 
     }
 
-    
+    protected function validateRequest(array $data) {
+        return Validator::make($data, [
+            'amount' => 'required|numeric',
+        ]);
+    }
+
+    protected function validateWalletFunding(array $data)
+    {
+        return Validator::make($data, [
+            'fname' => 'required|string',
+            'lname' => 'required|string',
+            'amount' => 'required|numeric',
+            'phone' => 'required|numeric',
+            'emailaddr' => 'required|email',
+            'card_no' => 'required|string',
+            'expiry_year' => 'required|numeric',
+            'cvv' => 'required|numeric|max:3|min:3',
+            'pin' => 'required|numeric|max:4|min:4',
+
+        ]);
+    }
 
 
 

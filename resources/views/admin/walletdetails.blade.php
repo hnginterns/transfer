@@ -124,6 +124,7 @@
               <li class="active"><a href="#beneficiaries" data-toggle="tab">Beneficiaries</a></li>
               <li><a href="#history" data-toggle="tab">Card Funding History</a></li>
               <li><a href="#users" data-toggle="tab">Users</a></li>
+              <li><a href="#transfer" data-toggle="tab">Beneficiary Transfers</a></li>
             </ul>
             <div class="tab-content">
               <div class="active tab-pane" id="beneficiaries">
@@ -197,6 +198,40 @@
 
               <!-- /.tab-pane -->
               <div class="tab-pane" id="users">
+
+            @if(!empty($users))
+               <table class="table">
+                    <thead>
+                        <tr>
+                          <th>First Name</th>
+                          <th>Last Name</th>
+                          <th>User Name</th>
+                          <th colspan="2">Email </th>
+                        </tr>
+                    </thead>
+
+                    <tbody style="color: #595757;">
+                      @forelse($users as $user)
+                      <tr>
+                        <td style="color: #595757;"> {{ $user->first_name }}</td>
+                        <td style="color: #595757;"> {{ $user->last_name }}</td>
+                        <td style="color: #595757;"> {{ $user->username }}</td>
+                        <td style="color: #595757;"> {{ $user->email }}</td>
+                      </tr>
+                      @empty
+                        <p> No User has been attached to this wallet.</p>
+                      @endforelse
+                    </tbody>
+
+                </table>
+            @else
+              <h2> No user has been attached to this wallet yet </h2>
+            @endif
+
+              </div>
+
+              <!-- /.tab-pane -->
+              <div class="tab-pane" id="transfers">
 
             @if(!empty($users))
                <table class="table">
