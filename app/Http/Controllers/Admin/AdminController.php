@@ -90,8 +90,10 @@ class AdminController extends WalletController
 
          $cardWallet = CardWallet::latest()->first();
         //dd($cardWallet);
+
+         $topuphistory = TopupHistory::all();
         
-        return view('admin.phonetopup.index', compact('cardWallet', 'phones', 'wallet', 'bank', 'topupbalance', 'contacts', 'history', 'tags'));
+        return view('admin.phonetopup.index', compact('cardWallet', 'phones', 'wallet', 'bank', 'topupbalance', 'contacts', 'history', 'tags', 'topuphistory'));
     }
 
     public function index()

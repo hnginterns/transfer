@@ -68,6 +68,7 @@
             <ul class="nav nav-tabs">
               <li class="active"><a href="#contacts" data-toggle="tab"><strong>Contacts</strong></a></li>
               <li><a href="#history" data-toggle="tab"><strong>Transaction History</strong></a></li>
+              <li><a href="#topuphistory" data-toggle="tab"><strong>Topup History</strong></a></li>
             </ul>
             <div class="tab-content">
               <div class="active tab-pane" id="contacts">
@@ -149,6 +150,51 @@
                         
                     </table>
                         {{$history->links()}}
+                  </div>
+
+
+                  <div class="tab-pane" id="tophistory">
+
+                   <table id="datatable" class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>Phone</th>
+                <th>Name</th>
+                <th>Network</th>
+                <th>Amount</th>
+                <th>Ref</th>
+                <th>User</th>
+                <th>Status</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              @if(count($topuphistory) > 0) @foreach($topuphistory as $hist)
+              <tr>
+                <th>{{ $hist->phone }}</th>
+                <th>{{ $hist->firstname }} {{ $hist->lastname }}</th>
+                <th>{{ $hist->netw }}</th>
+                <td class="phone">{{ $hist->amount }}</td>
+                <td class="phoneRef">{{ $hist->ref }}</td>
+                <td class="amount">{{ $hist->username }}</td>
+                <td class="amount">{{ $hist->status }}</td>
+                <td class="amount">{{ $hist->created_at }}</td>
+
+              </tr>
+              @endforeach @else
+              <tr>
+                <td></td>
+                <td>No Topup Transactions yet</td>
+                <td></td>
+                <td></td>
+              </tr>
+              @endif
+
+              </tr>
+              </form>
+            </tbody>
+          </table>
                   </div>
                   
                   <!-- /.tab-pane -->
