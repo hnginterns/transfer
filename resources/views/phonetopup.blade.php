@@ -343,7 +343,7 @@ i.can {
             <td>Department</td>
             <td>Weekly Limit</td>
             <td>Enter Amount<br>(airtime)</td>
-            <td colspan="2">Action</td>
+            <td>Action</td><td>Action</td>
           </tr>
         </thead>
         <tbody>
@@ -372,7 +372,6 @@ i.can {
                 </a>
                 </td>
 
-              </td>
             </tr>
             @endforeach @else
             <tr>
