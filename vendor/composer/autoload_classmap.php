@@ -82,6 +82,7 @@ return array(
     'App\\TopupHistory' => $baseDir . '/app/TopupHistory.php',
     'App\\Transaction' => $baseDir . '/app/Transaction.php',
     'App\\User' => $baseDir . '/app/User.php',
+    'App\\ValidateTransferToAccount' => $baseDir . '/app/ValidateTransferToAccount.php',
     'App\\Validation' => $baseDir . '/app/Validation.php',
     'App\\Wallet' => $baseDir . '/app/Wallet.php',
     'App\\WalletTransaction' => $baseDir . '/app/WalletTransaction.php',

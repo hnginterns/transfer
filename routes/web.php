@@ -76,6 +76,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 	//Wallet operations start
 	Route::get('/wallet/{wallet}', 'pagesController@walletdetail')->name('user.wallet.detail');
+	Route::get('/transfer/beneficiary/validate/{wallet}', 'pagesController@validation')->name('transfer.validation');;
 	Route::get('/transfer/beneficiary/{wallet}', 'pagesController@bank_transfer')->name('transfer.beneficiary');
 	Route::get('/transfer/wallet/{wallet}', 'pagesController@wallet_transfer')->name('transfer.wallet');
 	Route::post('/transfer/wallet/{wallet}', 'WalletController@transfer')->name('transfer.wallet.submit');
@@ -96,7 +97,7 @@ Route::group(['middleware' => 'auth'], function () {
 	//phone top up
 	Route::get('/phonetopup', 'pagesController@phoneTopupView');
 	Route::post('/phonetopup/fund', 'User\PhoneTopUpController@fundTopupWallet');
-	Route::get('/topup/phone', 'User\PhoneTopUpController@phoneTopUp');
+	Route::post('/topup/wallet', 'User\PhoneTopUpController@phoneTopUp');
 	Route::get('topup/phone/{id}', 'User\PhoneTopUpController@phoneshow');
 	Route::post('topup/phone/', 'User\PhoneTopUpController@topuphonesubmit')->name('topup.phone.user');
 	Route::post('topup/data/', 'User\PhoneTopUpController@topdatasubmit')->name('topup.data.user');

@@ -67,7 +67,7 @@ tr:nth-child(even) {
   <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#myModal">Fund</button>
   
   <a href="{{ route('transfer.beneficiary', $wallet->id)}}" class="btn btn-dark ">Transfer To Beneficiary</a>
-      
+    
 
       <a href="{{ route('transfer.wallet', $wallet->id)}}" class="btn btn-dark ">Transfer to Another Wallet </a></center><br>
 
@@ -207,8 +207,16 @@ tr:nth-child(even) {
                     </tr>
                   </thead>
                   <tbody>
+                    @foreach ($bank_transctions as $transaction)
+                    <tr>
+                      <td>{{ $transaction->beneficiary->name }}</td>
+                      <td>{{ $transction->amount }}</td>
+                      <td>{{ $transction->wallet_id }}</td>
+                      <td><i class="fa {{ $transction->transaction_status ? 'fa-check-circle can' : 'fa-times-circle cannot' }}" aria-hidden="true"</td>
+                      <td>{{ $transction->created_at->toFormattedDateString() }}</td>
+                    @endforeach
                     <!-- some temporary dummy table data -->
-                    <tr>
+                    <!-- <tr>
                       <td>Cletus Nnabuife</td>
                       <td>5,000</td>
                       <td>0902892</td>
@@ -242,7 +250,7 @@ tr:nth-child(even) {
                       <td>0902892</td>
                       <td>Success</td>
                       <td>2017-10-26</td>
-                    </tr>
+                    </tr> -->
                     <!-- end dummy data -->
                   </tbody> 
                   </table>         

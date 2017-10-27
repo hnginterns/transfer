@@ -448,6 +448,7 @@ class ComposerStaticInitcb56c8f99153a160391720319584c667
         'App\\TopupHistory' => __DIR__ . '/../..' . '/app/TopupHistory.php',
         'App\\Transaction' => __DIR__ . '/../..' . '/app/Transaction.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
+        'App\\ValidateTransferToAccount' => __DIR__ . '/../..' . '/app/ValidateTransferToAccount.php',
         'App\\Validation' => __DIR__ . '/../..' . '/app/Validation.php',
         'App\\Wallet' => __DIR__ . '/../..' . '/app/Wallet.php',
         'App\\WalletTransaction' => __DIR__ . '/../..' . '/app/WalletTransaction.php',
