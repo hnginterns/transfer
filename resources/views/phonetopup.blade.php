@@ -346,8 +346,6 @@ i.can {
             <td colspan="2">Action</td>
           </tr>
         </thead>
-
-
         <tbody>
           <form class="send-airtime" action="{{ route('topup.phone.multiple')}}" method="POST" role="form">
             {{ csrf_field() }} @if(count($phones) > 0) @foreach($phones as $phone)
@@ -711,6 +709,33 @@ function toggle(source) {
               $(".select-all").prop("checked", false);
             }
           });
+    </script>
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $('#contact-table').DataTable( {
+            initComplete: function () {
+                this.api().columns().every( function () {
+                    var column = this;
+                    var select = $('<select><option value=""></option></select>')
+                        .appendTo( $(column.header()).empty() )
+                        .on( 'change', function () {
+                            var val = $.fn.dataTable.util.escapeRegex(
+                                $(this).val()
+                            );
+     
+                            column
+                                .search( val ? '^'+val+'$' : '', true, false )
+                                .draw();
+                        } );
+     
+                    column.data().unique().sort().each( function ( d, j ) {
+                        select.append( '<option value="'+d+'">'+d+'</option>' )
+                    } );
+                } );
+            }
+        } );
+    } );
     </script>
 
 @endsection
