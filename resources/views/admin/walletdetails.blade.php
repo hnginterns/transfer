@@ -234,33 +234,39 @@
               <div class="tab-pane" id="transfers">
 
             <!-- @if(!empty($bankTransaction)) -->
-               <table class="table">
+               @if(!empty($beneficiaries))
+                <table class="table">
                     <thead>
                         <tr>
-                          <th>First Name</th>
-                          <th>Last Name</th>
-                          <th>User Name</th>
-                          <th colspan="2">Email </th>
+                          <th>Name</th>
+                          <th>Account Number</th>
+                          <th>Bank</th>
+                          <th >Action</th>
                         </tr>
                     </thead>
-
-                    <tbody style="color: #595757;">
-                      @forelse($bankTransaction as $transaction)
+                    <tbody>
+                      @forelse ($beneficiaries as $beneficiary)
                       <tr>
-                        <td style="color: #595757;"> {{ $transaction->first_name }}</td>
-                        <td style="color: #595757;"> {{ $transaction->last_name }}</td>
-                        <td style="color: #595757;"> {{ $transaction->username }}</td>
-                        <td style="color: #595757;"> {{ $transaction->email }}</td>
+                        <td style="color: #595757;">{{ $beneficiary->name }}  {{$beneficiary->id}}</td>
+                        <td style="color: #595757;">{{ $beneficiary->bank_name }}</td>
+                        <td style="color: #595757;">{{ $beneficiary->account_number }}</td>
+                        <td>
+                          
+                              <a href="{{ route('beneficiaries.delete', $beneficiary->id) }}" class="btn btn-danger" onclick="return confirm('Are you sure to archive this beneficiary?')">Archive</a>
+                            </td>
                       </tr>
+
                       @empty
-                        <p> No User has been attached to this wallet.</p>
+                        <p> No Beneficiaries has been added to this wallet.</p>
                       @endforelse
+                      
                     </tbody>
 
                 </table>
-            <!-- @else -->
-              <h2> No user has been attached to this wallet yet </h2>
-            <!-- @endif -->
+              @else
+              <h2> No Beneficiaries has been added to this wallet yet </h2>
+            @endif
+
 
               </div>
 
