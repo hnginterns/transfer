@@ -207,13 +207,13 @@ tr:nth-child(even) {
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach ($beneficiaries as $beneficiary)
+                    @foreach ($bank_transctions as $transaction)
                     <tr>
-                      <td>{{ $beneficiary->name }}</td>
-                      <td>{{ $beneficiary->amount }}</td>
-                      <td>{{ $beneficiary->wallet_id }}</td>
-                      <td><i class="fa {{ $beneficiary->transaction_status ? 'fa-check-circle can' : 'fa-times-circle cannot' }}" aria-hidden="true"</td>
-                      <td>{{ $beneficiary->created_at->toFormattedDateString() }}</td>
+                      <td>{{ $transaction->beneficiary->name }}</td>
+                      <td>{{ $transction->amount }}</td>
+                      <td>{{ $transction->wallet_id }}</td>
+                      <td><i class="fa {{ $transction->transaction_status ? 'fa-check-circle can' : 'fa-times-circle cannot' }}" aria-hidden="true"</td>
+                      <td>{{ $transction->created_at->toFormattedDateString() }}</td>
                     @endforeach
                     <!-- some temporary dummy table data -->
                     <!-- <tr>
