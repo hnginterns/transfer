@@ -233,7 +233,7 @@
               <!-- /.tab-pane -->
               <div class="tab-pane" id="transfers">
 
-            <!-- @if(!empty($users)) -->
+            @if(!empty($bankTransaction))
                <table class="table">
                     <thead>
                         <tr>
@@ -245,12 +245,12 @@
                     </thead>
 
                     <tbody style="color: #595757;">
-                      @forelse($users as $user)
+                      @forelse($bankTransaction as $transaction)
                       <tr>
-                        <td style="color: #595757;"> {{ $user->first_name }}</td>
-                        <td style="color: #595757;"> {{ $user->last_name }}</td>
-                        <td style="color: #595757;"> {{ $user->username }}</td>
-                        <td style="color: #595757;"> {{ $user->email }}</td>
+                        <td style="color: #595757;"> {{ $transaction->first_name }}</td>
+                        <td style="color: #595757;"> {{ $transaction->last_name }}</td>
+                        <td style="color: #595757;"> {{ $transaction->username }}</td>
+                        <td style="color: #595757;"> {{ $transaction->email }}</td>
                       </tr>
                       @empty
                         <p> No User has been attached to this wallet.</p>
@@ -258,9 +258,9 @@
                     </tbody>
 
                 </table>
-            <!-- @else -->
+            @else
               <h2> No user has been attached to this wallet yet </h2>
-            <!-- @endif -->
+            @endif
 
               </div>
 
