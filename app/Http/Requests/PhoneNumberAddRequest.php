@@ -29,9 +29,9 @@ class PhoneNumberAddRequest extends FormRequest
             'title' => 'required|string',
             'department' => 'required|string',
             'email' => 'required|string',
-            'phone' => 'required|string|digits:12|unique:topup_contacts',
+            'phone' => 'required|string|digits:11|unique:topup_contacts',
             'network' => 'required|string',
-            'tags' => 'sometimes|string',
+            'tags.*' => 'sometimes|string',
             'max_tops' => 'required|string',
         ];
     }
