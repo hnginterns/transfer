@@ -63,12 +63,30 @@ i.can {
 
 
 <div class="row">
-    <h3>Wallet Balance &#8358; {{$wallet->balance}}</h3>
+    <h3></h3>
 </div>
 
-<button type="button" class="btn btn-success" data-toggle="modal" data-target="#walletTopUp">Fund Wallet</button>
+<div class="col-md-3">
+  <div class="panel panel-primary">
+    <div class="panel-heading">Wallet Balance &#8358; {{ number_format($wallet->balance),2}}</div>
+  <div class="panel-body">
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#walletTopUp">Fund Wallet</button>
+  </div>
+</div>
+  
+</div>
 
-<button type="button" class="btn btn-info" data-toggle="modal" data-target="#Purchase">Purchase</button>
+<div class="col-md-3">
+  <div class="panel panel-primary">
+    <div class="panel-heading">Current Balance: &#8358;{{ number_format($topupbalance),2}} </div>
+  <div class="panel-body">
+    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#Purchase">Purchase</button>
+  </div>
+</div>
+  
+</div>
+
+
 <br><br><br>
 <div class="orange-box">
       <h4 class="title" align="center">Fund Transfer History</h4>
@@ -290,7 +308,6 @@ i.can {
   <br> 
 
   <div class="">
-    <h1>Current Balance: ₦ {{ number_format($topupbalance),2}}</h1>
     <div class="orange-box">
       <h4 class="title" align="center">CONTACT LIST</h4>
     </div>
