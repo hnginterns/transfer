@@ -56,11 +56,6 @@ i.can {
 }
 </style>
 
-<link rel="stylesheet" href="walletview.css">
-<link rel="stylesheet" href="user.css">
-<link rel="stylesheet" href="form.css">
-<link rel="stylesheet" href="/css/walletview.css">
-
 
 <div class="row">
 <div class="col-md-6">
