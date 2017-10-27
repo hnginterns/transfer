@@ -131,6 +131,18 @@ class pagesController extends Controller
         return view('transfer-to-bank', compact('wallet'));
     }
 
+    public function validation(Wallet $wallet)
+    {
+        $permit = Restriction::where('wallet_id', $wallet->id)
+          ->where('uuid', Auth::user()->id)
+          ->first();
+        if($permit == null) return back()->with('error', 'You do not have the permission to transfer to bank');;
+        $restrict = new Restrict($permit);
+        if(count($restrict->canTransferFromWallet()) != 0) return back()->with('error', 'You do not have the permission to transfer to bank');;
+
+        return view('validateTransferToBank', compact('wallet'));
+    }
+
     public function wallet_transfer(Wallet $wallet)
     {
         $wallets = Wallet::all();
