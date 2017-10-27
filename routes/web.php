@@ -121,6 +121,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/addbeneficiary', 'pagesController@addBeneficiary');
 	Route::post('/addbeneficiary/insertBeneficiary', 'pagesController@insertBeneficiary')->name('beneficiaries.insert');
 
+
 	Route::get('/ravepaysuccess/{ref}/{amount}/{currency}', 'RavepayController@success')->name('ravepay.success');
 	Route::get('/addbeneficiary/{wallet}', 'pagesController@addBeneficiary');
 	Route::post('/addbeneficiary/{wallet}', 'pagesController@insertBeneficiary')->name('beneficiaries.insert');
@@ -216,6 +217,8 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
 	Route::post('/addSmsAccount', 'SmsWalletController@addSmsAccount');
 	Route::post('/smswallet-topup', 'SmsWalletController@smsWalletTopup');
 	Route::post('/get-user-details', 'SmsWalletController@getUserDetails');
+	Route::delete('/delete_sms/{id}', 'SmsWalletController@delete_sms');
+	
 	//admin sms transaction ends here
 
 	Route::get('analytics', 'Admin\AdminController@webAnalytics');

@@ -18,6 +18,10 @@ class SmsWalletController extends Controller
     {
         return $wallets = SmsWallet::all();
     }
+    public function delete_sms(Request $request, $id){
+        SmsWallet::find($id)->delete();
+        return back()->with('success', 'SMS Account deleted successfully');
+    }
 
 
 
@@ -98,6 +102,9 @@ class SmsWalletController extends Controller
         
         return redirect()->to(URL::previous())->with('response', $response->body);
     }
+    
+
+
 
     public function generate_ref()
     {
@@ -293,5 +300,6 @@ class SmsWalletController extends Controller
         }
     }
     
+
 
 }
