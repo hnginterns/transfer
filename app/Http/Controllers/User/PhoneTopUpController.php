@@ -373,7 +373,7 @@ class PhoneTopUpController extends Controller
         }
     }
     public function topuphonegroup(Request $request){
-        $phones = TopupContact::where('tags', $request->tags);
+        $phones = TopupContact::where('tags', $request->department);
         $amount = $request->amount;
 		$amount = $amount/count($phones);
         $final_phones = [];
