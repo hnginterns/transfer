@@ -105,7 +105,7 @@ tr:nth-child(even) {
           </ul>
         <div class="tab-content">
         <div id="home" class="tab-pane fade in active">
-      	<div class="orange-box"><h4 class="title text-capitalize" align="center"> {{ ucfirst($wallet->wallet_name) }} WALLET TRANSFER HISTORY</h4></div><br>
+      	<div class="orange-box"><h4 class="title text-capitalize" align="center"> {{ ucfirst($wallet->wallet_name) }} wallet transfer history</h4></div><br>
               <!-- transaction history table tab -->
                 <div class="table-responsive">
                     @if(count($history)) 
@@ -197,7 +197,7 @@ tr:nth-child(even) {
                 <!-- end beneficiaries list table tab -->
                 </div>
           <div id="menu2" class="tab-pane fade">
-            <div class="orange-box"><h4 class="title text-capitalize" align="center"><!-- pane title here -->Beneficiaries Transfer</h4></div>
+            <div class="orange-box"><h4 class="title text-capitalize" align="center">{{ ucfirst($wallet->wallet_name) }} Beneficiaries Transfer</h4></div>
             <!-- beneficiaries transfer table tab -->
               <div class="table table-responsive">
                 <table id="datatable-transfer" class="table table-bordered table-hover">
