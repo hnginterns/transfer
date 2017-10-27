@@ -33,7 +33,7 @@ class UsermgtController extends Controller
     {
         $users = User::withTrashed()->paginate(15);
         $name = Auth::user()->username;
-        return view('users.index', compact('users'))->with("name", $name);
+        return view('users.index', ['users' => $users]);
     }
 
     /**
