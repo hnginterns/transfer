@@ -370,7 +370,7 @@ i.can {
         <h4 class="title" align="center">Group Top Up</h4>
       </div>
       <br>
-      <form class="form form-inline" action="{{ route('topup.phone.user')}}" method="POST" role="form">
+      <form class="form form-inline" action="{{ route('topup.phone.group')}}" method="POST" role="form">
                     {{csrf_field()}}
       <select class="form-control" name="department">
             <option>Select group</option>
