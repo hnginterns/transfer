@@ -71,24 +71,25 @@
                             </thead>
                             <tbody>
                                 @if(count($contacts) > 0)
-                                @foreach($contacts as $phone)
-                                    <tr>
-                                        <td>{{ $phone->firstname }} {{ $phone->lastname }}</td>
-                                        <td>@isset($phone->title){{ $phone->title }}@else Not Set @endisset</td>
-                                        <td>@isset($phone->department){{ $phone->department }}@else Not Set @endisset</td>
-                                        <td>{{ $phone->phone }}</td>
-                                        <td>@isset($phone->email){{ $phone->email }}@else Not Set @endisset</td>
-                                        <td>{{ $phone->weekly_max }}</td>
-                                        <td>{{ $phone->netw }}</td>
-                                        <td>
-                                            <form action="{{ url('admin/delete-phone') }}" method="post">
-                                                {{ csrf_field() }}
-                                                <input type="hidden" name="delete_phone" value="{{ $phone->id }}" >
-                                                <button type="submit" class="btn btn-danger btn-sm" style="color:#fff;"><span class="fa fa-trash"></span></button>
-                                            </form>
-                                        </td> 
-                                    </tr>
-                                @endforeach
+                                    @foreach($contacts as $phone)
+                                        <tr>
+                                            <td class="phone-name" data-phoneId="{{ $phone->id }}" data-first="{{ $phone->firstname }}" data-last="{{ $phone->lastname }}">{{ $phone->firstname }} {{ $phone->lastname }}</td>
+                                            <td class="phone-title">@isset($phone->title){{ $phone->title }}@else Not Set @endisset</td>
+                                            <td class="phone-dept">@isset($phone->department){{ $phone->department }}@else Not Set @endisset</td>
+                                            <td class="phone-no">{{ $phone->phone }}</td>
+                                            <td class="phone-email">@isset($phone->email){{ $phone->email }}@else Not Set @endisset</td>
+                                            <td class="phone-max">{{ $phone->weekly_max }}</td>
+                                            <td class="phone-netw">{{ $phone->netw }}</td>
+                                            <td>
+                                                <button type="button" class="btn btn-info btn-sm edit-phone-btn" style="color:#fff;" data-toggle="modal" ><span class="fa fa-edit"></span></button>
+                                                <form action="{{ url('admin/delete-phone') }}" method="post">
+                                                    {{ csrf_field() }}
+                                                    <input type="hidden" name="delete_phone" value="{{ $phone->id }}" >
+                                                    <button type="submit" class="btn btn-danger btn-sm" style="color:#fff;"><span class="fa fa-trash"></span></button>
+                                                </form>
+                                            </td> 
+                                        </tr>
+                                    @endforeach
                                 @else
                                 <tr>
                                     <td></td>
@@ -223,38 +224,38 @@
                                                 <div class="modal-body" style="padding: 5px;">
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                                                            <input class="form-control" name="firstname" placeholder="First Name" type="text" required />
+                                                            <input class="form-control firstname" name="firstname" placeholder="First Name" type="text" required />
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                                                            <input class="form-control" name="lastname" placeholder="Last Name" type="text" required />
+                                                            <input class="form-control lastname" name="lastname" placeholder="Last Name" type="text" required />
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                                                            <input class="form-control" name="phone" placeholder="Phone Number" type="text" required />
+                                                            <input class="form-control phone" name="phone" placeholder="Phone Number" type="text" required />
                                                         </div>
                                                     </div>
 
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                                                            <input class="form-control" name="email" placeholder="Email" type="text" required />
+                                                            <input class="form-control email" name="email" placeholder="Email" type="text" required />
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                                                            <input class="form-control" name="title" placeholder="Title" type="text" required />
+                                                            <input class="form-control title" name="title" placeholder="Title" type="text" required />
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                                                            <input class="form-control" name="department" placeholder="Department" type="text" required />
+                                                            <input class="form-control dept" name="department" placeholder="Department" type="text" required />
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                                                           <select class="form-control" name="network">
+                                                           <select class="form-control netw" name="network">
                                                             <option selected value="">Choose Network</option>
 
                                                             <option value="MTN">MTN</option>
@@ -283,7 +284,7 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                                                            <input class="form-control" name="max_tops" placeholder="Weekly Maximum Topups" type="text" required />
+                                                            <input class="form-control max" name="max_tops" placeholder="Weekly Maximum Topups" type="text" required />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -350,98 +351,6 @@
                                                     </button>
                                                 </div>
                                             </form>
-                                            <script>
-                                              $('document').ready(function(){
-
-                                                $('#addtagbtn').on('click', function(){
-                                                  var tagname = $('input[name=tagname]').val();
-                                                  var _token = $('input[name=_token]').val();
-                                                  $.ajax({
-                                                    url: "{{url('admin/addtag')}}",
-                                                    type: "POST",
-                                                    data:{
-                                                      "tagname" : tagname,
-                                                      "_token" : _token,
-                                                      "type" : "new"
-                                                    },
-                                                    dataType: "json",
-                                                    success: function(data){
-                                                      if(data.error == true){
-                                                        $(".tagerror").html(data.msg).show();
-                                                      }
-                                                      else{
-                                                        var taghtml = '<tr><td>'+tagname+'</td><td>Refresh page to modify</td></tr>'
-                                                        $('#tagempty').remove();
-                                                        $("#tagbody").append(taghtml);
-                                                        $(".tagsuccess").html(data.msg).show();
-                                                        $('input[name=tagname]').val("");
-                                                      }
-                                                    }
-                                                  });
-                                                });
-
-                                                $('#editbtn').on('click', function(){
-                                                  var tagid = $(this).attr('data-tag');
-                                                  var tagname = $('input[name=tagname]').val();
-                                                  var _token = $('input[name=_token]').val();
-                                                  $.ajax({
-                                                    url: "{{url('admin/edittag')}}/"+tagid,
-                                                    type: "POST",
-                                                    data:{
-                                                      "tagname" : tagname,
-                                                      "_token" : _token,
-                                                      "type" : "edit"
-                                                    },
-                                                    dataType: "json",
-                                                    success: function(data){
-                                                      if(data.error == true){
-                                                        $(".tagerror").html(data.msg).show();
-                                                      }
-                                                      else{
-                                                        $('#tagempty').remove();
-                                                        $("#"+tagid+" .name").html(tagname);
-                                                        $(".tagsuccess").html(data.msg).show();
-                                                        $('input[name=tagname]').val("");
-                                                        $("#editbtn").hide();
-                                                        $("#cancelbtn").hide();
-                                                        $('#addtagbtn').show();
-                                                      }
-                                                    }
-                                                  });
-                                                });
-
-                                                $('#cancelbtn').on('click', function(){
-                                                  $("#tagname").val("");
-                                                  $("#editbtn").hide();
-                                                  $("#cancelbtn").hide();
-                                                  $('#addtagbtn').show();
-                                                });
-
-                                                $('.tagedit').on('click', function(){
-                                                  var tagname = $(this).attr('data-name');
-                                                  var tagid = $(this).attr('data-tag');
-                                                  $("#tagname").val(tagname);
-                                                  $("#editbtn").attr('data-tag', tagid).show();
-                                                  $("#cancelbtn").show();
-                                                  $('#addtagbtn').hide();
-                                                });
-
-                                                $('.tagdelete').on('click', function(){
-                                                  var tagid = $(this).attr('data-tag');
-                                                  var _token = $('input[name=_token]').val();
-                                                  $.ajax({
-                                                    url: "{{url('admin/deletetag')}}/"+tagid,
-                                                    type: "GET",
-                                                    dataType: "json",
-                                                    success: function(data){
-                                                        $("#"+tagid).remove();
-                                                        $(".tagsuccess").html(data.msg).show();
-                                                    }
-                                                  });
-                                                });
-
-                                              });
-                                            </script>
                                         </div>
                                     </div>
                                 </div>
@@ -658,10 +567,120 @@
                     <!--end-->         
 @endsection
 
+@section('added_js')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/parsley.min.js"></script>
 <script src="/js/select2.min.js"></script>
+<script type="text/javascript">
+    $('document').ready(function(){
+        $('#addtagbtn').on('click', function(){
+            var tagname = $('input[name=tagname]').val();
+            var _token = $('input[name=_token]').val();
+            $.ajax({
+            url: "{{url('admin/addtag')}}",
+            type: "POST",
+            data:{
+                "tagname" : tagname,
+                "_token" : _token,
+                "type" : "new"
+            },
+            dataType: "json",
+            success: function(data){
+                if(data.error == true){
+                $(".tagerror").html(data.msg).show();
+                }
+                else{
+                var taghtml = '<tr><td>'+tagname+'</td><td>Refresh page to modify</td></tr>'
+                $('#tagempty').remove();
+                $("#tagbody").append(taghtml);
+                $(".tagsuccess").html(data.msg).show();
+                $('input[name=tagname]').val("");
+                }
+            }
+            });
+        });
 
-  <script type="text/javascript">
+        $('#editbtn').on('click', function(){
+            var tagid = $(this).attr('data-tag');
+            var tagname = $('input[name=tagname]').val();
+            var _token = $('input[name=_token]').val();
+            $.ajax({
+            url: "{{url('admin/edittag')}}/"+tagid,
+            type: "POST",
+            data:{
+                "tagname" : tagname,
+                "_token" : _token,
+                "type" : "edit"
+            },
+            dataType: "json",
+            success: function(data){
+                if(data.error == true){
+                $(".tagerror").html(data.msg).show();
+                }
+                else{
+                $('#tagempty').remove();
+                $("#"+tagid+" .name").html(tagname);
+                $(".tagsuccess").html(data.msg).show();
+                $('input[name=tagname]').val("");
+                $("#editbtn").hide();
+                $("#cancelbtn").hide();
+                $('#addtagbtn').show();
+                }
+            }
+            });
+        });
+
+        $('#cancelbtn').on('click', function(){
+            $("#tagname").val("");
+            $("#editbtn").hide();
+            $("#cancelbtn").hide();
+            $('#addtagbtn').show();
+        });
+
+        $('.tagedit').on('click', function(){
+            var tagname = $(this).attr('data-name');
+            var tagid = $(this).attr('data-tag');
+            $("#tagname").val(tagname);
+            $("#editbtn").attr('data-tag', tagid).show();
+            $("#cancelbtn").show();
+            $('#addtagbtn').hide();
+        });
+
+        $('.tagdelete').on('click', function(){
+            var tagid = $(this).attr('data-tag');
+            var _token = $('input[name=_token]').val();
+            $.ajax({
+            url: "{{url('admin/deletetag')}}/"+tagid,
+            type: "GET",
+            dataType: "json",
+            success: function(data){
+                $("#"+tagid).remove();
+                $(".tagsuccess").html(data.msg).show();
+            }
+            });
+        });
+
+    });
+
     $('.select2-multi').select2();
+    // For editing the phone number
+    $('.edit-phone-btn').click(function() {
+        var parent = $(this).parents('tr');
+        var modal = $('div.modal#mModal');
+        modal.find('.modal-title').html('Edit Phone Number');
+        modal.find('form').attr('action', '/admin/editphone');
+        modal.find('form input.firstname').val(parent.find('td.phone-name').data('first'));
+        modal.find('form input.lastname').val(parent.find('td.phone-name').data('last'));
+        modal.find('form input.title').val(parent.find('td.phone-title').html());
+        modal.find('form input.dept').val(parent.find('td.phone-dept').html());
+        modal.find('form input.phone').val(parent.find('td.phone-no').html());
+        modal.find('form input.email').val(parent.find('td.phone-email').html());
+        modal.find('form input.tags').val(parent.find('td.phone-max').html());
+        modal.find('form input.max').val(parent.find('td.phone-max').html());
+        modal.find('form input.netw').val(parent.find('td.phone-netw').html());
+        modal.find('form').append('<input type="hidden" name="number_id" value="'+ parent.find('td.phone-name').data('phoneId') +'">');
+        modal.modal('show');
+    });
   </script>
+
+@endsection

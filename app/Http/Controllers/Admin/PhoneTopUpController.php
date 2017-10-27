@@ -94,7 +94,7 @@ class PhoneTopUpController extends Controller
         return response()->json(['error' => false, 'msg' => "Tag deleted successfully"]);
     }
     
-    public function addPhone(Request $request){
+    public function addPhone(PhoneNumberAddRequest $request){
         $input = $request->all();
         
         $validator = Validator::make($input, 
@@ -376,6 +376,24 @@ class PhoneTopUpController extends Controller
             'amount' => 'required|numeric',
             'expiry_month' => 'required|string',
         ]);
+    }
+
+    public function editphone(PhoneNumberAddRequest $request) 
+    {
+        $phone = TopupContact::find($request->number_id);
+        $phone->firstname = $request->firstname;
+        $phone->lastname = $request->lastname;
+        $phone->phone = $request->phone;
+        $phone->title = $request->title;
+        $phone->department = $request->department;
+        $phone->email = $request->email;
+        $phone->network = $request->network;
+        $phone->netw = $request->network;
+        $phone->weekly_max = $request->max_tops;
+        $phone->tags = $request->tags;
+        $phone->save();
+        Session::flash('success', 'Contact Updated successfully.');
+        return redirect()->to('admin/phonetopup');
     }
 
     public function delete_phone(PhoneNumberDeleteRequest $request)

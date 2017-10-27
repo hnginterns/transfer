@@ -97,7 +97,7 @@
 <!-- page script -->
 <script>
   $(function () {
-    $('#datatable').DataTable()
+    $('#datatable').DataTable();
     $('#example2').DataTable({
       'paging'      : true,
       'lengthChange': false,
@@ -105,8 +105,8 @@
       'ordering'    : true,
       'info'        : true,
       'autoWidth'   : false
-    })
-  })
+    });
+  });
 </script>
 
 <script>
