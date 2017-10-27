@@ -153,7 +153,7 @@
                   </div>
 
 
-                  <div class="tab-pane" id="tophistory">
+                  <div class="tab-pane" id="topuphistory">
 
                    <table id="datatable" class="table table-bordered table-hover">
             <thead>
