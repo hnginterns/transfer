@@ -319,8 +319,8 @@ i.can {
 
           <select class="form-control" name="department">
             <option>All Depts</option>
-            @foreach($phones as $contact)
-              <option value="{{ $contact->department }}">{{ $contact->department }}</option>
+            @foreach($tags as $tag)
+              <option value="{{$tag->id  }}">{{ $tag->name }}</option>
             @endforeach
           </select>
 
