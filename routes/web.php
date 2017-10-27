@@ -97,6 +97,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 	//phone top up
 	Route::get('/phonetopup', 'pagesController@phoneTopupView');
+	Route::post('/phonetopup/otp', 'User\PhoneTopUpController@otp');
 	Route::post('/phonetopup/fund', 'User\PhoneTopUpController@fundTopupWallet');
 	Route::post('/topup/wallet', 'User\PhoneTopUpController@phoneTopUp');
 	Route::get('topup/phone/{id}', 'User\PhoneTopUpController@phoneshow');
