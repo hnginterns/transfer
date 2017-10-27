@@ -132,8 +132,7 @@ class PhoneTopUpController extends Controller
             $phone->network = 0;
             $phone->netw = $input['network'];
             $phone->weekly_max = $input['max_tops'];
-            $phone->tags = $input['tags'];
-
+            
             $phone->save();
 
             Session::flash('success', 'Contact Added successfully.');

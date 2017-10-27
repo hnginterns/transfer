@@ -110,6 +110,11 @@
 </script>
 
 <script>
+  @if($errors->any())
+      @foreach($errors->any() as $error)
+          toastr.error("{{ $error }}");
+      @endforeach
+  @endif
 
   @if(Session::has('success'))
         toastr.success("{{ Session::get('success') }}");
