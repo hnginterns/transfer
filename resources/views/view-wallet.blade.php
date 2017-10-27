@@ -219,43 +219,6 @@ tr:nth-child(even) {
                       <td><i class="fa {{ $transaction->transaction_status ? 'fa-check-circle can' : 'fa-times-circle cannot' }}" aria-hidden="true"</td>
                       <td>{{ $transaction->created_at->toFormattedDateString() }}</td>
                     @endforeach
-                    <!-- some temporary dummy table data -->
-                    <!-- <tr>
-                      <td>Cletus Nnabuife</td>
-                      <td>5,000</td>
-                      <td>0902892</td>
-                      <td>Success</td>
-                      <td>2017-10-26</td>
-                    </tr>
-                    <tr>
-                      <td>Cletus Nnabuife</td>
-                      <td>5,000</td>
-                      <td>0902892</td>
-                      <td>Success</td>
-                      <td>2017-10-26</td>
-                    </tr>
-                    <tr>
-                      <td>Cletus Nnabuife</td>
-                      <td>5,000</td>
-                      <td>0902892</td>
-                      <td>Success</td>
-                      <td>2017-10-26</td>
-                    </tr>
-                    <tr>
-                      <td>Cletus Nnabuife</td>
-                      <td>5,000</td>
-                      <td>0902892</td>
-                      <td>Success</td>
-                      <td>2017-10-26</td>
-                    </tr>
-                    <tr>
-                      <td>Cletus Nnabuife</td>
-                      <td>5,000</td>
-                      <td>0902892</td>
-                      <td>Success</td>
-                      <td>2017-10-26</td>
-                    </tr> -->
-                    <!-- end dummy data -->
                   </tbody> 
                   </table>         
                 </div>  
