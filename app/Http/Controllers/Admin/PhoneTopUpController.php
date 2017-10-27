@@ -121,7 +121,14 @@ class PhoneTopUpController extends Controller
             $messages = $validator->messages()->toArray();
             return redirect()->to(URL::previous())->with('form-errors', $messages);
         } else {
-            
+            if ($request->has('tags') && count($request->has('tags'))) {
+                foreach ($request->tags as $tag) {
+                    $all_tags = $tag . ';';
+                }
+                $tags = rtrim($all_tags, ';');
+            } else {
+                $tags = NULL;
+            }
             $phone = new TopupContact();
             $phone->firstname = $input['firstname'];
             $phone->lastname = $input['lastname'];
@@ -132,7 +139,8 @@ class PhoneTopUpController extends Controller
             $phone->network = 0;
             $phone->netw = $input['network'];
             $phone->weekly_max = $input['max_tops'];
-            
+            $phone->tags = $tags;
+
             $phone->save();
 
             Session::flash('success', 'Contact Added successfully.');
