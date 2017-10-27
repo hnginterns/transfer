@@ -22,6 +22,8 @@ use App\Validation;
 
 use App\Bank;
 
+use Illuminate\Support\Facades\Input;
+
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\RestrictionController as Restrict;
 use App\Http\Controllers\transactionController as Trans;
@@ -147,7 +149,7 @@ class pagesController extends Controller
 
         $cardWallet = CardWallet::latest()->first();
         $validate = Validation::latest()->first();
-        $beneficiaries = Beneficiary::where('wallet_id', $wallet->id)->paginate(15);
+        $beneficiaries = Beneficiary::where('wallet_id', $wallet->id)->latest()->paginate(15);
 
         // get all wallet to wallet transactions, both sent and received
         $walletTransfer = WalletTransaction::where('source_wallet', $wallet->wallet_code)->get();
@@ -243,18 +245,26 @@ class pagesController extends Controller
 
     public function addAccount(Request $request, Wallet $wallet)
     {
-        $beneficiary = new Beneficiary;
-        $beneficiary->uuid = Auth::user()->id;
-        $beneficiary->name = $request->name;
-        $beneficiary->wallet_id = $wallet->id;
-        $beneficiary->bank_id = $request->bank_id;
-        $beneficiary->bank_name = $request->bank_name;
-        $beneficiary->account_number = $request->account_number;
-        $beneficiary->save();
+        $beneficiary = Beneficiary::firstOrCreate([
+
+            'uuid' => Auth::user()->id,
+            'name' => $request->name,
+            'wallet_id' => $wallet->id,
+            'bank_id' => $request->bank_id,
+            'bank_name' => $request->bank_name,
+            'account_number' => $request->account_number
+            ]);
+        //$beneficiary = new Beneficiary;
+//                $beneficiary->save();
         /**$beneficiary = Beneficiary::latest()->first();
         Beneficiary::where('id', $beneficiary->id)
                     ->update(['name' => $request->name]);*/
-        return redirect("wallet/$wallet->id")->with('success', 'Beneficiary added');
+                if($beneficiary->wasRecentlyCreated){
+                return redirect("wallet/$wallet->id")->with('success', 'Beneficiary added');
+    } else {
+            return redirect("wallet/$wallet->id")->with('error', 'Beneficiary already exists');
+        }
+        
     }
 
 
@@ -297,7 +307,12 @@ class pagesController extends Controller
 
  public function phoneTopupView()
     {
-        $phones = TopupContact::all();
+        //phones = TopupContact::all();
+
+        $perPage = 10;
+
+        $phones = $this->paginate($perPage, Input::get('search'), Input::get('department'));
+
         $topupbalance = $this->getTopupWalletBalance();
         $cardWallet = CardWallet::latest()->first();
         $user = Auth::user();
@@ -312,7 +327,7 @@ class pagesController extends Controller
             ->select('topup_histories.*', 'topup_contacts.phone', 'topup_contacts.firstname', 'users.username', 'topup_contacts.lastname', 'topup_contacts.netw')
             ->orderBy('created_at', 'desc')
             ->get();
-            if(strlen($topupbalance) > 12){
+            if(strlen($topupbalance) > 16){
                 $topupbalance = null;
                 Session::flash('error', 'Could not retrieve balance');
             }
@@ -338,4 +353,34 @@ class pagesController extends Controller
             'account_number' => 'required|numeric',
         ]);
     }
+
+    public function paginate($perPage, $search = null, $department = null)
+    {
+        $query = TopupContact::query();
+
+        if ($department) {
+            $query->where('department', $department);
+        }
+
+        if ($search) {
+            $query->where(function ($q) use ($search) {
+                $q->where('tags', "like", "%{$search}%");
+                $q->orWhere('phone', 'like', "%{$search}%");
+                $q->orWhere('firstname', 'like', "%{$search}%");
+                $q->orWhere('lastname', 'like', "%{$search}%");
+            });
+        }
+
+        $result = $query->orderBy('created_at', 'desc')
+            ->paginate($perPage);
+
+        if ($search) {
+            $result->appends(['search' => $search]);
+        }
+
+        return $result;
+    }
+
+
+
 }

@@ -17,8 +17,7 @@
                 </a>
               </li> <br>
               
-              
-              
+                         
              
                                 
               <li>
@@ -37,3 +36,34 @@
 
           </ul>
 </div>
+
+<div class="container">
+                            <!-- Trigger the modal with a button -->
+                            <!-- Modal -->
+                            <div class="modal fade" id="PurchaseTopUp" role="dialog">
+                                <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Transfer To Service Provider</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="{{config('app.url')}}/admin/transfer/topup" method="post" accept-charset="utf-8">
+                                                <div class="modal-body" style="padding: 5px;">
+                                                                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
+                                                            <input class="form-control" name="amount" placeholder="Amount" type="number" required />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="panel-footer" style="margin-bottom:-14px;">
+                                                    <button type="submit" class="btn btn-success">Purchase</button>
+                                                    <button style="float: right;" type="button" class="btn btn-default btn-close" data-dismiss="modal">Close</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>

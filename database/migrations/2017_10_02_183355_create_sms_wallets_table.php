@@ -15,7 +15,6 @@ class CreateSmsWalletsTable extends Migration
     {
         Schema::create('sms_wallets', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
             $table->string('username');
             $table->string('bank_code');
             $table->string('bank_account');

@@ -229,7 +229,7 @@ return [
         'Trs' => App\Facades\Trs::class,
         'LogUserActivity' => App\Helpers\LogUserActivity::class,
         //'PDF' => Barryvdh\DomPDF\Facade::class,
-
+        'Input' => Illuminate\Support\Facades\Input::class,
     ],
 
 ];
