@@ -13,7 +13,7 @@
             <div class="box-body">
 	
     <div class="table-responsive">
-        <table class="table table-condensed table-striped">
+        <table class="table table-condensed table-striped" id="datatable">
             <thead>
               <tr>
                 <th>ID</th>
@@ -73,7 +73,7 @@
             </tbody>
       </table>
     </div>
-    {{$users->links()}}
+    
 </div>
 </div>
 </div>
