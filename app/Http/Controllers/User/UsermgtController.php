@@ -31,7 +31,7 @@ class UsermgtController extends Controller
 
     public function index()
     {
-        $users = User::withTrashed()->all();
+        $users = User::withTrashed()->get();
         $name = Auth::user()->username;
         return view('users.index', ['users' => $users])->with("name", $name);
     }
