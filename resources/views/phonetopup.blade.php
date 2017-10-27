@@ -378,7 +378,7 @@ i.can {
               <option value="{{ $contact->department }}">{{ $contact->department }}</option>
             @endforeach
           </select>   
-          <input class="form-control" type="number" value="enter Amount to be share">  
+          <input class="form-control" type="number" placeholder="Enter Amount to be shared">  
           <button class="btn btn-success" type="submit" >Top Up Group</button>  
                  
       </from>
@@ -647,6 +647,23 @@ i.can {
         $("#department").change(function () {
             $("#contacts-form").submit();
         });
+        
+        $(".select-all").click(function (){
+          if ($(".select-all").is(':checked')){
+              $(".checkbox").each(function (){
+                $(this).prop("checked", true);
+                });
+              }else{
+                $(".checkbox").each(function (){
+                      $(this).prop("checked", false);
+                });
+                      }
+              });
+        $(".checkbox").click(function (){
+            if ($(this).prop('checked')==false){
+              $(".select-all").prop("checked", false);
+            }
+          });
     </script>
 
 @endsection
