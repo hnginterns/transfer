@@ -69,43 +69,7 @@ i.can {
 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#walletTopUp">Fund Wallet</button>
 
 <button type="button" class="btn btn-info" data-toggle="modal" data-target="#Purchase">Purchase</button>
-<br><br><br>
-<div class="orange-box">
-      <h4 class="title" align="center">Fund Transfer History</h4>
-</div>
-<br>
-<div class="table-responsive">
-  <table class="table table-hover table-condensed" id="topuphistory">
-    <thead>
-      <tr>
-        <th>S/N</th>
-        <th>Payer</th>
-        <th>Bank</th>
-        <th>Wallet</th>
-        <th>Amount</th>
-        <th>Status</th>
-        <th>Narration</th>
-        <th>Date</th>
-      </tr>
-    </thead>
-    <tbody>
-      @php($count = 1)
-      @foreach($walletfundhistory as $key => $walletfundhistories)
-      <tr>
-        <td>{{$count}}</td>
-        <td>{{$walletfundhistories->user->username}}</td>
-        <td>{{$walletfundhistories->bank->bank_name}}</td>
-        <td>{{$walletfundhistories->wallet->wallet_name}}</td>
-        <td>{{$walletfundhistories->amount}}</td>
-        <td><i class="fa {{$walletfundhistories->status ? 'fa-check-circle can ' : 'fa-times-circle cannot'}}" aria-hidden="true"></i></td>
-        <td>{{$walletfundhistories->narration}}</td>
-        <td>{{$walletfundhistories->created_at}}</td>
-      </tr>
-      @php($count++)
-      @endforeach
-    </tbody>
-  </table>
-</div>
+
 
 <!---Modal for wallet top Up-->
                     <div class="modal fade" id="walletTopUp">
@@ -401,6 +365,27 @@ i.can {
   </div>
       <br>
       <hr><br>
+      <div >
+      <div class="orange-box">
+        <h4 class="title" align="center">Group Top Up</h4>
+      </div>
+      <br>
+      <form class="form form-inline" action="{{ route('topup.phone.user')}}" method="POST" role="form">
+                    {{csrf_field()}}
+      <select class="form-control" name="department">
+            <option>Select group</option>
+            @foreach($phones as $contact)
+              <option value="{{ $contact->department }}">{{ $contact->department }}</option>
+            @endforeach
+          </select>   
+          <input class="form-control" type="number" value="enter Amount to be share">  
+          <button class="btn btn-success" type="submit" >Top Up Group</button>  
+                 
+      </from>
+      
+    </div>
+    <br>
+    <hr><br>
 
       <div class="orange-box">
         <h4 class="title" align="center">TRANSACTION HISTORY</h4>
@@ -617,7 +602,15 @@ i.can {
       console.log('Clcked');
       $('.modal#airtimeModal').find('form.send-airtime').submit();
     })
-
+//   $('.airtime').click(function() {
+//     // get the invoice ID
+//     var id = $(this).data('id');
+//     // set up a GET route using the invoice ID and retrieve the result for that invoice
+//     $.get('/topup/phone/' + id, function(response, status) {
+//         // display the results in the modal
+//         $('#airtimeModal .modal-body').html(response.data);
+//     });
+// });
   </script>
 
   <script type="text/javascript">
@@ -638,7 +631,15 @@ i.can {
       console.log('Clcked');
       $('.modal#dataModal').find('form.send-data').submit();
     })
-
+//   $('.airtime').click(function() {
+//     // get the invoice ID
+//     var id = $(this).data('id');
+//     // set up a GET route using the invoice ID and retrieve the result for that invoice
+//     $.get('/topup/phone/' + id, function(response, status) {
+//         // display the results in the modal
+//         $('#airtimeModal .modal-body').html(response.data);
+//     });
+// });
   </script>
 
 
@@ -646,8 +647,6 @@ i.can {
         $("#department").change(function () {
             $("#contacts-form").submit();
         });
-
-        $('#topuphistory').DataTable();
     </script>
 
 @endsection
