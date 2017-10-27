@@ -321,9 +321,7 @@ class pagesController extends Controller
     {
         //phones = TopupContact::all();
 
-        $perPage = 10;
-
-        $phones = $this->paginate($perPage, Input::get('search'), Input::get('department'));
+        $phones = $this->paginate(Input::get('search'), Input::get('department'));
         $tags = Tag::all();
         $topupbalance = $this->getTopupWalletBalance();
         $cardWallet = CardWallet::latest()->first();
@@ -367,7 +365,7 @@ class pagesController extends Controller
         ]);
     }
 
-    public function paginate($perPage, $search = null, $department = null)
+    public function paginate($search = null, $department = null)
     {
         $query = TopupContact::query();
 
@@ -385,7 +383,7 @@ class pagesController extends Controller
         }
 
         $result = $query->orderBy('created_at', 'desc')
-            ->paginate($perPage);
+            ->get();
 
         if ($search) {
             $result->appends(['search' => $search]);
