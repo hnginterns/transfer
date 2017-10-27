@@ -103,7 +103,7 @@ i.can {
 
   </div>
 
-
+<br><br>
 
 <div class="row">
   <div class="col-md-12 text-center">
@@ -116,8 +116,6 @@ i.can {
 
     </div>
 </div>
-
-<br><br>
 
 <div class="tab-content">
   <div id="contactlistbox" class="tab-pane fade in active">
