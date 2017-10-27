@@ -552,7 +552,7 @@ $('.modal-content').resizable({
     });
 
 </script>
-<!-- @endif -->
+@endif
 
     @else
 
