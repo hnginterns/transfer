@@ -375,32 +375,46 @@ class PhoneTopUpController extends Controller
             $topuphistory->save();
         }
     }
+
     public function topuphonegroup(Request $request){
-        $phones = TopupContact::where('tags', $request->department);
-        $amount = $request->amount;
-		$amount = $amount/count($phones);
+        $validator = $this->validateTag($request->all());
+        if ($validator->fails()) {
+            $messages = $validator->messages()->toArray();
+            Session::flash('form-errors', $messages);
+            return back();
+        }
+        $contacts = TopupContact::where('tags', $request->department)->get();
+        $total = $request->amount;
+		$amount = $total/count($contacts->toArray());
+
         $final_phones = [];
         $final_amount = [];
         $final_id = [];
         $total = 0;
+        $errors = [];
 
-        foreach($phones as $key => $phone){
-            if($amount == null){               
-                $contact = TopupContact::find($phone);
-                Session::flash('error', 'Enter amount for all the selected contacts');
-                return back();
+        foreach($contacts as $key => $contact){
+            if($this->hasReachedLimit($contact->id, $amount, $contact->weekly_max)){ 
+
+                //logs details of contacts who have exceeded weekly limits
+                $message = ['contact_id' => $contact->id, 
+                            'ref'=>str_random(10), 
+                            'amount'=>$amount,
+                            'status'=>'failed',
+                            'txn_response'=> 'Weekly limit reached'
+                            ];
+                $errors [] = $message;                  
+                //end of log detail of contacts who have exceeded weekly limits
+
             }else{
-                
-                $contact = TopupContact::find($phone);
-                    $total += $amount["$phone"];
                     $final_phones [] = $contact->phone;
                     $final_amount [] = $amount;
-                    $final_id [] = $phone;
-                 
-            }     
+                    $final_id [] = $contact->id;
+            }
         }
 
-        
+        $this->batchRechargeFailed($errors);
+
         if($total > $this->getTopupWalletBalance()){
             Session::flash('error', 'You do not have enough fund in your wallet for this topup');
             return back();
@@ -500,6 +514,12 @@ class PhoneTopUpController extends Controller
     protected function validateRequest(array $data) {
         return Validator::make($data, [
             'amount' => 'required|numeric',
+        ]);
+    }
+
+    protected function validateTag(array $data) {
+        return Validator::make($data, [
+            'department' => 'required|string',
         ]);
     }
 
