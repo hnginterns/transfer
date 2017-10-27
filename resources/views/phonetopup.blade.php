@@ -166,6 +166,8 @@ i.can {
         </div>
       </form>
     </div>
+
+
     <br>
 
     <div class="table table-responsive">
@@ -221,7 +223,7 @@ i.can {
 
             @endif
 
-          </form>
+     
 
         </tbody>
         <tr>
@@ -243,49 +245,49 @@ i.can {
         <div id="fundhistorybox" class="tab-pane fade">
 
           <div class="orange-box">
-      <h4 class="title" align="center">Fund Transfer History</h4>
-</div>
-<br>
-<div class="table-responsive">
-  <table class="table table-hover table-condensed" id="topuphistory">
-   <thead>
-     <tr>
-        <th>S/N</th>
-        <th>Payer</th>
-        <th>Bank</th>
-        <th>Wallet</th>
-        <th>Amount</th>
-        <th>Status</th>
-        <th>Narration</th>
-        <th>Date</th>
-      </tr>
-    </thead>
-    <tbody>
-      @php($count = 1)
-      @foreach($walletfundhistory as $key => $walletfundhistories)
-      <tr>
-        <td>{{$count}}</td>
-        <td>{{$walletfundhistories->user->username}}</td>
-        <td>{{$walletfundhistories->bank->bank_name}}</td>
-        <td>{{$walletfundhistories->wallet->wallet_name}}</td>
-        <td>{{$walletfundhistories->amount}}</td>
-        <td><i class="fa {{$walletfundhistories->status ? 'fa-check-circle can ' : 'fa-times-circle cannot'}}" aria-hidden="true"></i></td>
-        <td>{{$walletfundhistories->narration}}</td>
-        <td>{{$walletfundhistories->created_at}}</td>
-      </tr>
-      @php($count++)
-      @endforeach
-    </tbody>
-  </table>
-</div>
+              <h4 class="title" align="center">Fund Transfer History</h4>
+        </div>
+          <br>
+          <div class="table-responsive">
+            <table class="table table-hover table-condensed" id="topuphistory">
+             <thead>
+               <tr>
+                  <th>S/N</th>
+                  <th>Payer</th>
+                  <th>Bank</th>
+                  <th>Wallet</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                  <th>Narration</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                @php($count = 1)
+                @foreach($walletfundhistory as $key => $walletfundhistories)
+                <tr>
+                  <td>{{$count}}</td>
+                  <td>{{$walletfundhistories->user->username}}</td>
+                  <td>{{$walletfundhistories->bank->bank_name}}</td>
+                  <td>{{$walletfundhistories->wallet->wallet_name}}</td>
+                  <td>{{$walletfundhistories->amount}}</td>
+                  <td><i class="fa {{$walletfundhistories->status ? 'fa-check-circle can ' : 'fa-times-circle cannot'}}" aria-hidden="true"></i></td>
+                  <td>{{$walletfundhistories->narration}}</td>
+                  <td>{{$walletfundhistories->created_at}}</td>
+                </tr>
+                @php($count++)
+                @endforeach
+              </tbody>
+            </table>
+          </div>
 
         </div>
 
         <div id="topuphistorybox" class="tab-pane fade">
 
             <div class="orange-box">
-        <h4 class="title" align="center">TOPUP HISTORY</h4>
-      </div>
+              <h4 class="title" align="center">TOPUP HISTORY</h4>
+            </div>
     
         <div class="table table-responsive">
           <table id="datatable" class="table table-bordered table-hover">
@@ -324,13 +326,13 @@ i.can {
               </tr>
               @endif
 
-              </tr>
               
             </tbody>
-          </table> <br><br>
+          </table> 
     
           
         </div>
+      </div>
 
 
 
