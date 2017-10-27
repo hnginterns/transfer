@@ -129,7 +129,7 @@
             <div class="tab-content">
               <div class="active tab-pane" id="beneficiaries">
               
-              @if(!empty($beneficiaries))
+              @if(empty($beneficiaries))
                 <table class="table">
                     <thead>
                         <tr>
