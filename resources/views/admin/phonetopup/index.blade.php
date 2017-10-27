@@ -97,10 +97,11 @@
                                     <td>{{ $phone->weekly_max }}</td>
                                     <td>{{ $phone->netw }}</td>
                                     <td>
+                                        <button type="button" class="btn btn-info btn-sm edit-phone-btn" style="color:#fff;" data-toggle="modal" ><span class="fa fa-edit"></span></button>
                                         <form action="{{ url('admin/delete-phone') }}" method="post">
                                             {{ csrf_field() }}
                                             <input type="hidden" name="delete_phone" value="{{ $phone->id }}" >
-                                            <button type="submit" class="btn btn-danger btn-sm" style="color:#fff;"><span class="glyphicon glyphicon-remove"></span></button>
+                                            <button type="submit" class="btn btn-danger btn-sm" style="color:#fff;"><span class="fa fa-trash"></span></button>
                                         </form>
                                     </td> 
                                 </tr>

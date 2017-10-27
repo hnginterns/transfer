@@ -74,6 +74,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 	//Wallet operations start
 	Route::get('/wallet/{wallet}', 'pagesController@walletdetail')->name('user.wallet.detail');
+	Route::get('/transfer/beneficiary/validate/{wallet}', 'pagesController@validation')->name('transfer.validation');;
 	Route::get('/transfer/beneficiary/{wallet}', 'pagesController@bank_transfer')->name('transfer.beneficiary');
 	Route::get('/transfer/wallet/{wallet}', 'pagesController@wallet_transfer')->name('transfer.wallet');
 	Route::post('/transfer/wallet/{wallet}', 'WalletController@transfer')->name('transfer.wallet.submit');

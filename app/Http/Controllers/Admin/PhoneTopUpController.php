@@ -4,6 +4,7 @@ use Auth;
 use URL;
 use App\WalletTransaction;
 use Illuminate\Http\Request;
+use App\Http\Requests\PhoneNumberAddRequest;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\Controller;
