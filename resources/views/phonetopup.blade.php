@@ -62,7 +62,11 @@ i.can {
 <link rel="stylesheet" href="/css/walletview.css">
 
 
- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#walletTopUp">Fund Wallet</button>
+<div class="row">
+    <h3>Wallet Balance &#8358; {{$wallet->balance}}</h3>
+</div>
+
+<button type="button" class="btn btn-success" data-toggle="modal" data-target="#walletTopUp">Fund Wallet</button>
 
 <button type="button" class="btn btn-info" data-toggle="modal" data-target="#Purchase">Purchase</button>
 
@@ -83,13 +87,13 @@ i.can {
                                     </div>
                                     <!-- /.box-header -->
                                     <div class="box-body">
-                                        <form action="" method="POST" role="form form-horizontal">
+                                        <form action="{{config('app.url')}}/phonetopup/fund" method="POST" role="form form-horizontal">
                                             {{csrf_field()}}
                                             <!-- text input -->
                                             <div class="container-fluid">
                                                 <fieldset>
-                                                    <input type="hidden" name="wallet_code" value="Wallet Name">
-                                                    <input type="hidden" name="wallet_name" value="Wallet Name">
+                                                    <input type="hidden" name="wallet_code" value="{{$wallet->wallet_code}}">
+                                                    <input type="hidden" name="wallet_name" value="{{$wallet->wallet_name}}">
                                                     <div class="row">
                                                         <div class="col-lg-6">
                                                             <div class="form-group">
@@ -147,9 +151,12 @@ i.can {
                                                                    </select>
                                                                 </div>
                                                                 <div class="col-md-3">
+                                                                  @php($year = date('Y'))
                                                                   <select class="form-control" name="expiry_year">
-                                                                   
-                                                                       <option></option>
+                                                                      @for($i = $year; $i < $year + 6; $i++)
+                                                                              <option value="{{$i}}">{{$i}}</option>
+                                                                      @endfor
+                                                                       
                                                                     
                                                                    </select>
                                                                 </div>
