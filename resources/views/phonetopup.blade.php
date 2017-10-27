@@ -118,6 +118,7 @@ i.can {
                                                             <input name="phone" class="form-control" autocomplete="off" maxlength="20" required="" type="text">
                                                         </div>
                                                     </div>
+						    
                                                     <div class="form-group">
                                                         <label>Email Address</label>
                                                         <div class="controls">
