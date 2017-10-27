@@ -91,10 +91,10 @@ i.can {
       <select class="form-control" name="department">
             <option>Select group</option>
             @foreach($tags as $tag)
-              <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+              <option value="{{ $tag->name }}">{{ $tag->name }}</option>
             @endforeach
           </select>   
-          <input class="form-control" type="number" placeholder="Enter Amount to be shared">  
+          <input class="form-control" type="number" name="amount" min="50" required placeholder="Enter Amount to be shared">  
           <button class="btn btn-success" type="submit" >Top Up Group</button>  
                  
       </form>
