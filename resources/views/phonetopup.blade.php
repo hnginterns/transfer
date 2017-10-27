@@ -114,18 +114,10 @@ i.can {
             <li><a data-toggle="pill" href="#topuphistorybox">Topup History</a></li>
         </ul>
 
-
-
     </div>
 </div>
 
-
-
- 
-
-
-    
-
+<br><br>
 
 <div class="tab-content">
   <div id="contactlistbox" class="tab-pane fade in active">
