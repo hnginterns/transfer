@@ -116,14 +116,14 @@ i.can {
 
 
     <ul class="nav nav-pills nav-justified ">
-        <li class="active"><a data-toggle="pill" href="#contactlist">Contact List</a></li>
-        <li><a data-toggle="pill" href="#fundhistory">Funding History</a></li>
-        <li><a data-toggle="pill" href="#topuphistory">Topup History</a></li>
+        <li class="active"><a data-toggle="pill" href="#contactlistbox">Contact List</a></li>
+        <li><a data-toggle="pill" href="#fundhistorybox">Funding History</a></li>
+        <li><a data-toggle="pill" href="#topuphistorybox">Topup History</a></li>
     </ul>
 
 
 <div class="tab-content">
-        <div id="contactlist" class="tab-pane fade in active">
+        <div id="contactlistbox" class="tab-pane fade in active">
 
           <div class="orange-box">
       <h4 class="title" align="center">CONTACT LIST</h4>
@@ -235,7 +235,7 @@ i.can {
   </div>
 
         </div>
-        <div id="fundhistory" class="tab-pane fade">
+        <div id="fundhistorybox" class="tab-pane fade">
 
           <div class="orange-box">
       <h4 class="title" align="center">Fund Transfer History</h4>
@@ -276,15 +276,12 @@ i.can {
 
         </div>
 
-        <div id="topuphistory" class="tab-pane fade">
+        <div id="topuphistorybox" class="tab-pane fade">
 
             <div class="orange-box">
         <h4 class="title" align="center">TOPUP HISTORY</h4>
       </div>
-      </th><br>
-      
-
-
+    
         <div class="table table-responsive">
           <table id="datatable" class="table table-bordered table-hover">
             <thead>
