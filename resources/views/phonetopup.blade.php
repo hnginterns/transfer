@@ -298,7 +298,7 @@ i.can {
       <table class="table" id="contact-table">
         <thead>
           <tr>
-            <th><input type="checkbox" onClick="toggle(this)" /> Toggle All</th>
+            <th><input type="checkbox" onClick="toggle(this)" /> Select All Contact</th>
             <td>Name</td>
             <td>Phone Number</td>
             <td>Network</td>
