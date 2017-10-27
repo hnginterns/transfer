@@ -343,7 +343,7 @@ i.can {
             <td>Department</td>
             <td>Weekly Limit</td>
             <td>Enter Amount<br>(airtime)</td>
-            <td>Action</td><td>Action</td>
+            <td colspan="2">Action</td>
           </tr>
         </thead>
         <tbody>
@@ -372,6 +372,7 @@ i.can {
                 </a>
                 </td>
 
+              
             </tr>
             @endforeach @else
             <tr>
@@ -710,31 +711,6 @@ function toggle(source) {
           });
     </script>
 
-    <script type="text/javascript">
-      $(document).ready(function() {
-        $('#contact-table').DataTable( {
-            initComplete: function () {
-                this.api().columns().every( function () {
-                    var column = this;
-                    var select = $('<select><option value=""></option></select>')
-                        .appendTo( $(column.header()).empty() )
-                        .on( 'change', function () {
-                            var val = $.fn.dataTable.util.escapeRegex(
-                                $(this).val()
-                            );
-     
-                            column
-                                .search( val ? '^'+val+'$' : '', true, false )
-                                .draw();
-                        } );
-     
-                    column.data().unique().sort().each( function ( d, j ) {
-                        select.append( '<option value="'+d+'">'+d+'</option>' )
-                    } );
-                } );
-            }
-        } );
-    } );
-    </script>
+    
 
 @endsection
