@@ -64,7 +64,7 @@ i.can {
 
  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#walletTopUp">Fund Wallet</button>
 
-<button type="button" class="btn btn-info" data-toggle="modal" data-target="#PurchaseTopUp">Purchase</button>
+<button type="button" class="btn btn-info" data-toggle="modal" data-target="#Purchase">Purchase</button>
 
 
 <!---Modal for wallet top Up-->
@@ -201,7 +201,7 @@ i.can {
 <div class="container">
                             <!-- Trigger the modal with a button -->
                             <!-- Modal -->
-                            <div class="modal fade" id="PurchaseTopUp" role="dialog">
+                            <div class="modal fade" id="Purchase" role="dialog">
                                 <div class="modal-dialog">
                                     <!-- Modal content-->
                                     <div class="modal-content">
@@ -210,31 +210,13 @@ i.can {
                                             <h4 class="modal-title">Transfer To Service Provider</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="" method="post" accept-charset="utf-8">
+                                            <form action="{{config('app.url')}}/topup/wallet" method="post" accept-charset="utf-8">
                                                 <div class="modal-body" style="padding: 5px;">
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                                                            <input class="form-control" name="account_number" placeholder="Account number" type="text" required />
-                                                        </div>
-                                                    </div>
-                                                    <input name="wallet_id" value="Wallet" type="hidden">
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                                                            <select class="form-control" name="bank_id">
-                                                                
-                                                                    <option value="bank">bank</option>
-                                                                
-                                                            </select>
-                                                        </div>
-                                                    </div>
+                                                 
+                                                    <input name="wallet_id" value="{{$wallet->id}}" type="hidden">
+                                                 
                                                         {{csrf_field()}}
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                                                            <input class="form-control" name="account_name" placeholder="Account name" type="text" required />
-                                                       
-                                                        </div>
-                                                    </div>
-
+                                                   
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
                                                             <input class="form-control" name="narration" placeholder="Narration" type="text" required />
