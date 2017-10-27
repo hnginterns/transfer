@@ -13,7 +13,7 @@
             <div class="box-body">
 	
     <div class="table-responsive">
-        <table class="table table-condensed table-striped" id="example2">
+        <table class="table table-condensed table-striped" id="datatable">
             <thead>
               <tr>
                 <th>ID</th>
@@ -21,7 +21,10 @@
                 <th>Email</th>
                 <th>Firstname</th>
                 <th>Lastname</th>
-                <th colspan="4">Action</th>
+                <th>Action</th>
+                <th></th>
+                <th></th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
