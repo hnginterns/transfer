@@ -85,7 +85,159 @@ i.can {
 </div>
 
 <br>
-<div class="orange-box">
+
+ <div class="">
+    
+      <div >
+      <div class="orange-box">
+        <h4 class="title" align="center">Group Airtime Top Up</h4>
+      </div>
+      <br>
+      <form class="form form-inline" action="{{ route('topup.phone.group')}}" method="POST" role="form">
+                    {{csrf_field()}}
+      <select class="form-control" name="department">
+            <option>Select group</option>
+            @foreach($phones as $contact)
+              <option value="{{ $contact->department }}">{{ $contact->department }}</option>
+            @endforeach
+          </select>   
+          <input class="form-control" type="number" placeholder="Enter Amount to be shared">  
+          <button class="btn btn-success" type="submit" >Top Up Group</button>  
+                 
+      </from>
+      
+    </div>
+    <br>
+    <hr><br>
+
+
+
+
+
+
+    <ul class="nav nav-pills nav-justified ">
+        <li class="active"><a data-toggle="pill" href="#contactliste">Contact List</a></li>
+        <li><a data-toggle="pill" href="#fundhistory">Funding History</a></li>
+        <li><a data-toggle="pill" href="#topuphistory">Topup History</a></li>
+    </ul>
+
+
+<div class="tab-content">
+        <div id="contactlist" class="tab-pane fade in active">
+
+          <div class="orange-box">
+      <h4 class="title" align="center">CONTACT LIST</h4>
+    </div>
+
+    <br>
+    <div class="row">
+      <div class="col-md-2">
+      </div>
+      <div class="col-md-5"></div>
+      <form method="GET" action="" accept-charset="UTF-8" id="conatcts-form">
+        <div class="col-md-2">
+
+          <select class="form-control" name="department">
+            <option>All Depts</option>
+            @foreach($phones as $contact)
+              <option value="{{ $contact->department }}">{{ $contact->department }}</option>
+            @endforeach
+          </select>
+
+        </div>
+        <div class="col-md-3">
+          <div class="input-group custom-search-form">
+            <input type="text" class="form-control" name="search" value="{{ Input::get('search') }}" placeholder="Search tags">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="submit" id="search-users-btn">
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+                @if (Input::has('search') && Input::get('search') != '')
+                        <a href="" class="btn btn-danger" type="button" >
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </a>
+                    @endif
+
+            </span>
+          </div>
+        </div>
+      </form>
+    </div>
+    <br>
+
+    <div class="table table-responsive">
+      <table class="table" id="contact-table">
+        <thead>
+          <tr>
+            <th><input type="checkbox" onClick="toggle(this)" /> Select All Contact</th>
+            <td>Name</td>
+            <td>Phone Number</td>
+            <td>Network</td>
+            <td>Title</td>
+            <td>Department</td>
+            <td>Weekly Limit</td>
+            <td>Enter Amount<br>(airtime)</td>
+            <td colspan="2">Action</td>
+          </tr>
+        </thead>
+        <tbody>
+          <form class="send-airtime" action="{{ route('topup.phone.multiple')}}" method="POST" role="form">
+            {{ csrf_field() }} @if(count($phones) > 0) @foreach($phones as $phone)
+            <tr class="contact-fn">
+
+              <td><input type="checkbox" name="checked[]" value="{{$phone->id}}" class="checkbox"></td>
+              <td class="firstName" data-user="{{ $phone->id }}">{{ $phone->firstname }} {{ $phone->lastname }}</td>
+              <td class="phone">{{ $phone->phone }}</td>
+              <td class="phoneRef">{{ $phone->netw }}</td>
+              <td class="amount">{{ $phone->title }}</td>
+              <td class="amount">{{ $phone->department }}</td>
+              <td class="max-tops">{{ $phone->weekly_max }}</td>
+              <td><input class="form-control input-airtime-amount" type="number" min="50" name="amount[{{$phone->id}}]" placeholder="Enter Amount"
+                /></td>
+              <td>
+
+                <a class="airtime btn btn-success" data-id="{{ $phone->id }}" data-toggle="modal" data-target="#airtimeModal">
+                   Airtime
+                </a>
+              </td>
+              <td>
+                <a class="btn btn-primary" data-id="{{ $phone->id }}" data-toggle="modal" data-target="#dataModal">
+                    Data
+                </a>
+                </td>
+
+              
+            </tr>
+            @endforeach @else
+            <tr>
+              <td></td>
+              <td>No Phone Number Added</td>
+              <td></td>
+              <td></td>
+            </tr>
+
+            @endif
+
+        </tbody>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><button type="submit" class="btn btn-success">Top up all</button></td>
+          <td></td>
+        </tr>
+        </form>
+      </table>
+  </div>
+
+        </div>
+        <div id="fundhistory" class="tab-pane fade">
+
+          <div class="orange-box">
       <h4 class="title" align="center">Fund Transfer History</h4>
 </div>
 <br>
@@ -121,6 +273,68 @@ i.can {
     </tbody>
   </table>
 </div>
+
+        </div>
+
+        <div id="topuphistory" class="tab-pane fade">
+
+            <div class="orange-box">
+        <h4 class="title" align="center">TOPUP HISTORY</h4>
+      </div>
+      </th><br>
+      
+
+
+        <div class="table table-responsive">
+          <table id="datatable" class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>Phone</th>
+                <th>Name</th>
+                <th>Network</th>
+                <th>Amount</th>
+                <th>Ref</th>
+                <th>User</th>
+                <th>Status</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              @if(count($topuphistory) > 0) @foreach($topuphistory as $hist)
+              <tr>
+                <th>{{ $hist->phone }}</th>
+                <th>{{ $hist->firstname }} {{ $hist->lastname }}</th>
+                <th>{{ $hist->netw }}</th>
+                <td class="phone">{{ $hist->amount }}</td>
+                <td class="phoneRef">{{ $hist->ref }}</td>
+                <td class="amount">{{ $hist->username }}</td>
+                <td class="amount">{{ $hist->status }}</td>
+                <td class="amount">{{ $hist->created_at }}</td>
+
+              </tr>
+              @endforeach @else
+              <tr>
+                <td></td>
+                <td>No Topup Transactions yet</td>
+                <td></td>
+                <td></td>
+              </tr>
+              @endif
+
+              </tr>
+              
+            </tbody>
+          </table> <br><br>
+    
+          
+        </div>
+
+
+
+
+
+
 
 
 <!---Modal for wallet top Up-->
@@ -304,186 +518,8 @@ i.can {
 <center>
   <br> 
 
-  <div class="">
-    <div class="orange-box">
-      <h4 class="title" align="center">CONTACT LIST</h4>
-    </div>
-
-    <br>
-    <div class="row">
-      <div class="col-md-2">
-      </div>
-      <div class="col-md-5"></div>
-      <form method="GET" action="" accept-charset="UTF-8" id="conatcts-form">
-        <div class="col-md-2">
-
-          <select class="form-control" name="department">
-            <option>All Depts</option>
-            @foreach($phones as $contact)
-              <option value="{{ $contact->department }}">{{ $contact->department }}</option>
-            @endforeach
-          </select>
-
-        </div>
-        <div class="col-md-3">
-          <div class="input-group custom-search-form">
-            <input type="text" class="form-control" name="search" value="{{ Input::get('search') }}" placeholder="Search tags">
-            <span class="input-group-btn">
-                <button class="btn btn-default" type="submit" id="search-users-btn">
-                    <span class="glyphicon glyphicon-search"></span>
-                </button>
-                @if (Input::has('search') && Input::get('search') != '')
-                        <a href="" class="btn btn-danger" type="button" >
-                            <span class="glyphicon glyphicon-remove"></span>
-                        </a>
-                    @endif
-
-            </span>
-          </div>
-        </div>
-      </form>
-    </div>
-    <br>
-
-    <div class="table table-responsive">
-      <table class="table" id="contact-table">
-        <thead>
-          <tr>
-            <th><input type="checkbox" onClick="toggle(this)" /> Select All Contact</th>
-            <td>Name</td>
-            <td>Phone Number</td>
-            <td>Network</td>
-            <td>Title</td>
-            <td>Department</td>
-            <td>Weekly Limit</td>
-            <td>Enter Amount<br>(airtime)</td>
-            <td colspan="2">Action</td>
-          </tr>
-        </thead>
-        <tbody>
-          <form class="send-airtime" action="{{ route('topup.phone.multiple')}}" method="POST" role="form">
-            {{ csrf_field() }} @if(count($phones) > 0) @foreach($phones as $phone)
-            <tr class="contact-fn">
-
-              <td><input type="checkbox" name="checked[]" value="{{$phone->id}}" class="checkbox"></td>
-              <td class="firstName" data-user="{{ $phone->id }}">{{ $phone->firstname }} {{ $phone->lastname }}</td>
-              <td class="phone">{{ $phone->phone }}</td>
-              <td class="phoneRef">{{ $phone->netw }}</td>
-              <td class="amount">{{ $phone->title }}</td>
-              <td class="amount">{{ $phone->department }}</td>
-              <td class="max-tops">{{ $phone->weekly_max }}</td>
-              <td><input class="form-control input-airtime-amount" type="number" min="50" name="amount[{{$phone->id}}]" placeholder="Enter Amount"
-                /></td>
-              <td>
-
-                <a class="airtime btn btn-success" data-id="{{ $phone->id }}" data-toggle="modal" data-target="#airtimeModal">
-                   Airtime
-                </a>
-              </td>
-              <td>
-                <a class="btn btn-primary" data-id="{{ $phone->id }}" data-toggle="modal" data-target="#dataModal">
-                    Data
-                </a>
-                </td>
-
-              
-            </tr>
-            @endforeach @else
-            <tr>
-              <td></td>
-              <td>No Phone Number Added</td>
-              <td></td>
-              <td></td>
-            </tr>
-
-            @endif
-
-        </tbody>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td><button type="submit" class="btn btn-success">Top up all</button></td>
-          <td></td>
-        </tr>
-        </form>
-      </table>
-  </div>
-      <div >
-      <div class="orange-box">
-        <h4 class="title" align="center">Group Airtime Top Up</h4>
-      </div>
-      <br>
-      <form class="form form-inline" action="{{ route('topup.phone.group')}}" method="POST" role="form">
-                    {{csrf_field()}}
-      <select class="form-control" name="department">
-            <option>Select group</option>
-            @foreach($phones as $contact)
-              <option value="{{ $contact->department }}">{{ $contact->department }}</option>
-            @endforeach
-          </select>   
-          <input class="form-control" type="number" placeholder="Enter Amount to be shared">  
-          <button class="btn btn-success" type="submit" >Top Up Group</button>  
-                 
-      </from>
-      
-    </div>
-    <br>
-    <hr><br>
-
-      <div class="orange-box">
-        <h4 class="title" align="center">TRANSACTION HISTORY</h4>
-      </div>
-      </th><br>
-      <div class="">
-
-
-        <div class="table table-responsive">
-          <table id="datatable" class="table table-bordered table-hover">
-            <thead>
-              <tr>
-                <th>Phone</th>
-                <th>Name</th>
-                <th>Network</th>
-                <th>Amount</th>
-                <th>Ref</th>
-                <th>User</th>
-                <th>Status</th>
-                <th>Date</th>
-              </tr>
-            </thead>
-            <tbody>
-
-              @if(count($topuphistory) > 0) @foreach($topuphistory as $hist)
-              <tr>
-                <th>{{ $hist->phone }}</th>
-                <th>{{ $hist->firstname }} {{ $hist->lastname }}</th>
-                <th>{{ $hist->netw }}</th>
-                <td class="phone">{{ $hist->amount }}</td>
-                <td class="phoneRef">{{ $hist->ref }}</td>
-                <td class="amount">{{ $hist->username }}</td>
-                <td class="amount">{{ $hist->status }}</td>
-                <td class="amount">{{ $hist->created_at }}</td>
-
-              </tr>
-              @endforeach @else
-              <tr>
-                <td></td>
-                <td>No Topup Transactions yet</td>
-                <td></td>
-                <td></td>
-              </tr>
-              @endif
-
-              </tr>
-              </form>
-            </tbody>
-          </table> <br><br>
-        </div>
+ 
+    
 
 
 
