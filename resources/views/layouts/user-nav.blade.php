@@ -10,7 +10,7 @@
             
           </div>
          
-          <div>
+          <div class="collapse navbar-collapse" id="navbar">
           <form class="navbar-form navbar-right navform">
           <ul>
       <li class="header">ADMIN CONTROLS</li>
