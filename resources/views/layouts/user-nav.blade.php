@@ -25,10 +25,7 @@
             <i class="fa fa-sign-out" aria-hidden="true"></i>
             <span> Logout</span>
         </a>
-      </li>
-
-</ul>
-            
+      </li>      
        
                   </ul>
 
