@@ -8,7 +8,7 @@
             <span class="icon-bar"></span>
           </button>    
             <!-- Header Navbar -->
-  <nav class="navbar navbar-static-top" style="background-color: #25313F;" role="navigation">
+  <nav class="navbar navbar-static-top" style="" role="navigation">
     <!-- Sidebar toggle button-->
     <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
       <span class="sr-only">Toggle navigation</span>
