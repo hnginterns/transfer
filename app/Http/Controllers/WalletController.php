@@ -64,7 +64,7 @@ class WalletController extends Controller
         }
     }
 
-    public function cardWallet(Request $request, CardWallet $cardWallet)
+    public function fundWalletWithCard(Request $request, CardWallet $cardWallet)
     {
         $token = $this->getToken();
         // dd($request);
@@ -131,14 +131,14 @@ class WalletController extends Controller
 
             $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer/charge/auth/card', $headers, $body);
             $response = json_decode($response->raw_body, true);
-            dd($response);
             if($response['status'] == 'success') {
                 event(new FundWallet($cardWallet));
                 Session::flash('success',$response);
                 return redirect('admin/managewallet');
 
             }
-            
+
+            return back()->with('error', $response['message']);
     }
 
    //transfer from wallet to wallet

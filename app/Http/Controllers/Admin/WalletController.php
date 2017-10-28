@@ -245,9 +245,7 @@ class WalletController  extends Controller
             return back()->with('status', $transMsg);
         }
     
-        var_dump($response);
-        die();
-            return back()->with('error', $response['message']);
+        return back()->with('error', $response['message']);
     }
 
 

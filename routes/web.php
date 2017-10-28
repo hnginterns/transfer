@@ -113,8 +113,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/balance', 'pagesController@balance');
 	Route::get('/fund/{id}', 'RavepayController@index')->name('ravepay.pay');
 	Route::post('/fund/{id}', 'RavepayController@cardWallet')->name('ravepay.pay');
-	Route::post('/otp', 'RavepayController@otp')->name('ravepay.pay');
-	Route::post('/wallet/{wallet_code}/fund', 'WalletController@cardWallet');
+	Route::post('/wallet/{wallet_code}/fund', 'WalletController@fundWalletWithCard');
+	Route::post('/otp', 'WalletController@otp');
 	Route::get('/integrity/{txRef}/{email}', 'RavepayController@checkSum');
 
 	Route::get('/ravepaysuccess/{ref}/{amount}/{currency}', 'RavepayController@success');
@@ -167,7 +167,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
 	//wallet fund starts
 	Route::get('/fundwallet', 'Admin\AdminController@fundwallet');
 	Route::post('/{wallet_code}/fund', 'WalletController@cardWallet');
-	// Route::post('/otp', 'WalletController@otp');
+	Route::post('/otp', 'WalletController@otp');
 	//Wallet fund ends
 
 	Route::get('logActivity', 'Admin\AdminController@logActivity');
