@@ -382,7 +382,7 @@ class pagesController extends Controller
             });
         }
 
-        $result = $query->orderBy('created_at', 'desc')
+        $result = $query->orderBy('starred', 'desc')
             ->get();
 
         if ($search) {
