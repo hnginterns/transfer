@@ -88,12 +88,7 @@ i.can {
       <br>
       <form class="form form-inline" action="{{ route('topup.phone.group')}}" method="POST" role="form">
                     {{csrf_field()}}
-      <select class="form-control" name="department">
-            <option>Select group</option>
-            @foreach($tags as $tag)
-              <option value="{{ $tag->name }}">{{ $tag->name }}</option>
-            @endforeach
-          </select>   
+        
           <input class="form-control" type="number" name="amount" min="50" required placeholder="Enter Amount to be shared">  
           <button class="btn btn-success" type="submit" >Top Up Group</button>  
                  
@@ -121,7 +116,6 @@ i.can {
   <div id="contactlistbox" class="tab-pane fade in active">
       <div class="orange-box">
           <h4 class="title" align="center">TOP UP</h4>
-          <button type="submit" class="btn btn-success pull-right">Top up all</button>
       </div>
       <br>
       <div class="row">
@@ -133,10 +127,11 @@ i.can {
 
        
         </div>
-       
+        <div class="col-md-3">
+          <div class="input-group custom-search-form">
             
             <span class="input-group-btn">
-                
+                <button class="btn btn-default" type="submit" id="search-users-btn">
                     <span class="glyphicon glyphicon-search"></span>
                 </button>
                 @if (Input::has('search') && Input::get('search') != '')
@@ -744,8 +739,6 @@ i.can {
   </script>
   
    <script type="text/javascript" >
-
-
 function toggle(source) {
   checkboxes = document.getElementsByName('checked[]');
   for(var i=0, n=checkboxes.length;i<n;i++) {
