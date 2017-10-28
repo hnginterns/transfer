@@ -872,10 +872,10 @@
         
         <div id="content-text" class="clearfix" align="center">
         <span id="heading-top-hd">
-        Fund Transfer made easy
+        Hotels.ng Financial Control
                 </span>
                 <span id="heading-hd">
-                This Finance tool is used for managing fund with ease
+               --- making sure your booking gets to the hotel on time ---
                 </span>
             <button id="button-hd">
                 <a href="{{url('features')}}">Features</a>
