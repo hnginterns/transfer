@@ -10,7 +10,7 @@
      
           </div>
          
-          <div class="collapse navbar-collapse" id="navbar">
+          <div class="" id="">
           <form class="">
           <ul class="nav nav-sidebar">
           <br>
