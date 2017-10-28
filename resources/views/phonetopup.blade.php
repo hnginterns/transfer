@@ -70,7 +70,7 @@ i.can {
 
 <div class="col-md-6">
   <div class="panel panel-primary">
-    <div class="panel-heading"> <h2> Current Balance: &#8358;{{ number_format($topupbalance),2}} </h2></div>
+    <div class="panel-heading"> <h2> Current Balance with provider: &#8358;{{ number_format($topupbalance),2}} </h2></div>
   <div class="panel-body text-center">
     <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#Purchase">Purchase</button>
   </div>
