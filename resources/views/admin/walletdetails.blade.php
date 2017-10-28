@@ -124,7 +124,7 @@
               <li class="active"><a href="#beneficiaries" data-toggle="tab">Beneficiaries</a></li>
               <li><a href="#history" data-toggle="tab">Card Funding History</a></li>
               <li><a href="#users" data-toggle="tab">Users</a></li>
-              <li><a href="#transfer" data-toggle="tab">Beneficiary Transfers</a></li>
+              <li><a href="#transfers" data-toggle="tab">Beneficiary Transfers</a></li>
             </ul>
             <div class="tab-content">
               <div class="active tab-pane" id="beneficiaries">
@@ -232,8 +232,7 @@
 
               <!-- /.tab-pane -->
               <div class="tab-pane" id="transfers">
-
-            @if(!empty($users))
+                @if(!empty($users))
                <table class="table">
                     <thead>
                         <tr>
@@ -261,7 +260,6 @@
             @else
               <h2> No user has been attached to this wallet yet </h2>
             @endif
-
               </div>
 
 

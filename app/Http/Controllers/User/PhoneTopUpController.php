@@ -384,6 +384,10 @@ class PhoneTopUpController extends Controller
             return back();
         }
         $contacts = TopupContact::where('tags', $request->department)->get();
+        if(count($contacts->toArray()) == 0){
+            Session::flash('error', 'No contact belongs to the selected tag');
+            return back();
+        }
         $total = $request->amount;
 		$amount = $total/count($contacts->toArray());
 

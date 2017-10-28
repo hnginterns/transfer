@@ -192,13 +192,12 @@
     <div id="footer-links">
         <li><a href="{{url('/')}}">Home</a></li>
         <li><a href="{{route('about')}}">About Us</a></li>
-        <li><a href="{{route('privacy')}}">Privacy Policy</a></li>
+      
 
         <li><a href="{{route('features')}}">Features</a></li>    
-        <li><a href="{{route('help')}}">Help & Support</a></li>
+        
         <li><a href="{{url('login')}}">Sign In</a> </li>
-        <li><a href="{{route('how')}}">FAQs</a></li>
-        <li><a href="{{route('terms')}}">Terms & Condition</a></li>
+        
     </div>
     <p id="line"> </p>
     <div id="lower-footer">
@@ -218,12 +217,10 @@
             <td><a href="{{route('about')}}">About Us</a></td>
         </tr>
         <tr>
-            <td><a href="{{route('how')}}">How it works</a></td>
-            <td><a href="{{route('help')}}">Help & Support</a></td>
+          
         </tr>
         <tr>
-            <td><a href="{{route('terms')}}">Terms & Condition</a></td>
-            <td><a href="{{route('privacy')}}">Privacy Policy</a></td>
+            
             
         </tr>
     </table>

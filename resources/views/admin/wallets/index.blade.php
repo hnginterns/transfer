@@ -65,8 +65,7 @@
                             </td>
                             <td>
                                 <a href="{{ route('wallets.details', $wallet->id) }}" class="btn btn-success">Details</a>
-                                <a href="{{ route('wallets.edit', $wallet->id) }}" class="btn btn-warning">Edit</a>
-
+                           
                                 @if($wallet->archived == 0)
                                   <a href="/admin/{{ $wallet->id }}/archivewallet" type="submit" class="btn btn-md btn-danger" onclick="return confirm('Are you sure to archive this wallet?')">{{ 'Archive Wallet' }}</a>
                                 @else

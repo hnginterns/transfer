@@ -70,7 +70,7 @@ i.can {
 
 <div class="col-md-6">
   <div class="panel panel-primary">
-    <div class="panel-heading"> <h2> Current Balance: &#8358;{{ number_format($topupbalance),2}} </h2></div>
+    <div class="panel-heading"> <h2> Current Balance with provider: &#8358;{{ number_format($topupbalance),2}} </h2></div>
   <div class="panel-body text-center">
     <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#Purchase">Purchase</button>
   </div>
@@ -88,12 +88,7 @@ i.can {
       <br>
       <form class="form form-inline" action="{{ route('topup.phone.group')}}" method="POST" role="form">
                     {{csrf_field()}}
-      <select class="form-control" name="department">
-            <option>Select group</option>
-            @foreach($tags as $tag)
-              <option value="{{ $tag->name }}">{{ $tag->name }}</option>
-            @endforeach
-          </select>   
+        
           <input class="form-control" type="number" name="amount" min="50" required placeholder="Enter Amount to be shared">  
           <button class="btn btn-success" type="submit" >Top Up Group</button>  
                  
@@ -109,7 +104,7 @@ i.can {
   <div class="col-md-12 text-center">
 
         <ul class="nav nav-pills nav-justified ">
-            <li class="active"><a data-toggle="pill" href="#contactlistbox">Contact List</a></li>
+            <li class="active"><a data-toggle="pill" href="#contactlistbox">Top Up</a></li>
             <li><a data-toggle="pill" href="#fundhistorybox">Funding History</a></li>
             <li><a data-toggle="pill" href="#topuphistorybox">Topup History</a></li>
         </ul>
@@ -120,7 +115,8 @@ i.can {
 <div class="tab-content">
   <div id="contactlistbox" class="tab-pane fade in active">
       <div class="orange-box">
-          <h4 class="title" align="center">CONTACT LIST</h4>
+          <h4 class="title" align="center">TOP UP</h4>
+          <button type="submit" class="btn btn-success pull-right">Top up all</button>
       </div>
       <br>
       <div class="row">
@@ -130,22 +126,12 @@ i.can {
       <form method="GET" action="" accept-charset="UTF-8" id="conatcts-form">
         <div class="col-md-2">
 
-          <select class="form-control" name="department">
-            <option>All Depts</option>
-            @foreach($phones as $contact)
-              <option value="{{ $contact->department }}">{{ $contact->department }}</option>
-            @endforeach
-          </select>
-
+       
         </div>
         <div class="col-md-3">
-          <div class="input-group custom-search-form">
-            <input type="text" class="form-control" name="search" value="{{ Input::get('search') }}" placeholder="Search tags">
-            <span class="input-group-btn">
-                <button class="btn btn-default" type="submit" id="search-users-btn">
-                    <span class="glyphicon glyphicon-search"></span>
-                </button>
-                @if (Input::has('search') && Input::get('search') != '')
+          
+            
+                    @if (Input::has('search') && Input::get('search') != '')
                         <a href="" class="btn btn-danger" type="button" >
                             <span class="glyphicon glyphicon-remove"></span>
                         </a>
@@ -172,7 +158,7 @@ i.can {
             <td>Department</td>
             <td>Weekly Limit</td>
             <td>Enter Amount<br>(airtime)</td>
-            <td colspan="2">Action</td>
+            
           </tr>
         </thead>
         <tbody>
@@ -191,14 +177,10 @@ i.can {
                 /></td>
               <td>
 
-                <a class="airtime btn btn-success" data-id="{{ $phone->id }}" data-toggle="modal" data-target="#airtimeModal">
-                   Airtime
-                </a>
+                
               </td>
               <td>
-                <a class="btn btn-primary" data-id="{{ $phone->id }}" data-toggle="modal" data-target="#dataModal">
-                    Data
-                </a>
+               
                 </td>
 
               
@@ -754,8 +736,6 @@ i.can {
   </script>
   
    <script type="text/javascript" >
-
-
 function toggle(source) {
   checkboxes = document.getElementsByName('checked[]');
   for(var i=0, n=checkboxes.length;i<n;i++) {
@@ -814,7 +794,30 @@ function toggle(source) {
     } );
 } );
     </script>
-
+    <!-- script enbles checkbox to be clicked when you click on the row -->
+    <script>
+      $('#contact-table tr').click(function() {
+        ele = $(this).find('td input:checkbox')[0];
+        ele.checked = ! ele.checked;
+      });
+      $('input:checkbox').click(function(e){
+        e.stopPropagation();
+      })
+      $('#topuphistory tr').click(function() {
+        ele = $(this).find('td input:checkbox')[0];
+        ele.checked = ! ele.checked;
+      });
+      $('input:checkbox').click(function(e){
+        e.stopPropagation();
+      })
+      $('#datatable tr').click(function() {
+        ele = $(this).find('td input:checkbox')[0];
+        ele.checked = ! ele.checked;
+      });
+      $('input:checkbox').click(function(e){
+        e.stopPropagation();
+      })
+    </script>
     
 
 @endsection

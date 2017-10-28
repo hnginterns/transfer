@@ -63,33 +63,33 @@ tr:nth-child(even) {
 
 <center>            
  <div class="orange-box"><h2 class="title" align="center">Current Balance: <strong> &#x20A6;{{ number_format(($wallet->balance),2) }} </strong>  </h2></div>
-</center>
+</center><br>
 
    <!-- Trigger the modal with a button -->
-        <center><button type="button" class="btn btn-dark" data-toggle="modal" data-target="#beneficiaryModal">Add Beneficiary</button>
+        <center><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#beneficiaryModal">Add Beneficiary</button>
 <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#myModal">Fund</button>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Fund {{ $wallet->wallet_name }}</button>
   
-  <a href="{{ route('transfer.validation', $wallet->id)}}" class="btn btn-dark ">Transfer To Beneficiary</a>
+  <a href="{{ route('transfer.validation', $wallet->id)}}" class="btn btn-primary ">Transfer To Beneficiary</a>
     
 
-      <a href="{{ route('transfer.wallet', $wallet->id)}}" class="btn btn-dark ">Transfer to Another Wallet </a></center><br>
+      <a href="{{ route('transfer.wallet', $wallet->id)}}" class="btn btn-primary ">Transfer to Another Wallet </a></center><br>
 
      <div class="">
                   @if (!empty($permit))
     <!-- wallet types table -->
         <table>
           <tr>
-            <th><font color="#39689C">Wallet Name</font></th>
-            <th><font color="#39689C">Wallet ID</font></th>
-            <th><font color="#39689C"> Currency Type</font></th>
-            <th><font color="#39689C">Balance</font></th>
+            <th><font color="#39689C"><h2>Wallet Name</h2></font></th>
+            <th><font color="#39689C"><h2>Wallet ID</h2></font></th>
+            <th><font color="#39689C"> <h2>Currency Type</h2></font></th>
+            <th><font color="#39689C"><h2>Balance</h2></font></th>
           </tr>
           <tr>
-            <td> {{ $wallet->wallet_name }}</td>
-            <td>{{ $wallet->wallet_code }}</td>
-            <td>Nigeria Naira</td>
-            <td>{{ $wallet->balance }}</td>
+            <td><font color="#008000"> <h2>{{ $wallet->wallet_name }}</h2></font></td>
+            <td><h2>{{ $wallet->wallet_code }}</h2></td>
+            <td><h2>Nigeria Naira</h2></td>
+            <td><h2>{{ $wallet->balance }}</h2></td>
           </tr>
           
         </table>
@@ -101,7 +101,7 @@ tr:nth-child(even) {
           <ul class="nav nav-pills nav-justified ">
             <li class="active"><a data-toggle="pill" href="#home">Wallet Transfer History</a></li>
             <li><a data-toggle="pill" href="#menu1">Beneficiaries List</a></li>
-            <li><a data-toggle="pill" href="#menu2">Beneficiaries Transfer</a></li>
+            <li><a data-toggle="pill" href="#menu2">Beneficiaries Transaction History</a></li>
           </ul>
         <div class="tab-content">
         <div id="home" class="tab-pane fade in active">
@@ -214,49 +214,12 @@ tr:nth-child(even) {
                     
                     @foreach ($bankTransactions as $transaction)
                     <tr>
-                      <td>{{ $transaction->beneficiary->name }}</td>
+                      <td>{{ $transaction->beneficiary == null ? 'unknown' : $transaction->beneficiary->name }}</td>
                       <td>{{ $transaction->amount }}</td>
                       <td>{{ $transaction->wallet_id }}</td>
                       <td><i class="fa {{ $transaction->transaction_status ? 'fa-check-circle can' : 'fa-times-circle cannot' }}" aria-hidden="true"</td>
                       <td>{{ $transaction->created_at->toFormattedDateString() }}</td>
                     @endforeach
-                    <!-- some temporary dummy table data -->
-                    <!-- <tr>
-                      <td>Cletus Nnabuife</td>
-                      <td>5,000</td>
-                      <td>0902892</td>
-                      <td>Success</td>
-                      <td>2017-10-26</td>
-                    </tr>
-                    <tr>
-                      <td>Cletus Nnabuife</td>
-                      <td>5,000</td>
-                      <td>0902892</td>
-                      <td>Success</td>
-                      <td>2017-10-26</td>
-                    </tr>
-                    <tr>
-                      <td>Cletus Nnabuife</td>
-                      <td>5,000</td>
-                      <td>0902892</td>
-                      <td>Success</td>
-                      <td>2017-10-26</td>
-                    </tr>
-                    <tr>
-                      <td>Cletus Nnabuife</td>
-                      <td>5,000</td>
-                      <td>0902892</td>
-                      <td>Success</td>
-                      <td>2017-10-26</td>
-                    </tr>
-                    <tr>
-                      <td>Cletus Nnabuife</td>
-                      <td>5,000</td>
-                      <td>0902892</td>
-                      <td>Success</td>
-                      <td>2017-10-26</td>
-                    </tr> -->
-                    <!-- end dummy data -->
                   </tbody> 
                   </table>         
                 </div>  

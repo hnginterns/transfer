@@ -838,7 +838,7 @@
 
                      <li class="{{ Request::segment(1) === '/' ? 'active' : null }}" ><a href="{{url('/')}}">Home</a></li>
                      <li class="{{ Request::segment(1) === 'about' ? 'active' : null }}"><a href="{{route('about')}}">About<span class="sr-only">(current)</span></a></li>
-                    <li class="{{ Request::segment(1) === 'how' ? 'active' : null }}" ><a href="{{route('how')}}">FAQs</a></li>
+                   
                   
 
                     @if(Auth::guest())
@@ -872,10 +872,10 @@
         
         <div id="content-text" class="clearfix" align="center">
         <span id="heading-top-hd">
-        Fund Transfer made easy
+        Hotels.ng Financial Control
                 </span>
                 <span id="heading-hd">
-                This Finance tool is used for managing fund with ease
+               --- making sure your booking gets to the hotel on time ---
                 </span>
             <button id="button-hd">
                 <a href="{{url('features')}}">Features</a>
@@ -947,14 +947,13 @@
     <div id="footer-links">
         <li><a href="{{url('/')}}">Home</a></li>
         <li><a href="{{route('about')}}">About Us</a></li>
-        <li><a href="{{route('privacy')}}">Privacy Policy</a></li>
+       
 
         <li><a href="{{route('features')}}">Features</a></li>
         
-        <li><a href="{{route('help')}}">Help & Support</a></li>
+        
         <li><a href="{{url('login')}}">Sign In</a></li>
-        <li><a href="{{route('how')}}">FAQs</a></li>
-        <li><a href="{{route('terms')}}">Terms & Condition</a></li>
+        
     </div>
     <p id="line"> </p>
     <div id="lower-footer">
@@ -979,8 +978,8 @@
             <td><a href="{{route('help')}}">Help & Support</a></td>
         </tr>
         <tr>
-            <td><a href="{{route('terms')}}">Terms & Condition</a></td>
-            <td><a href="{{route('privacy')}}">Privacy Policy</a></td>
+           
+            
             
         </tr>
     </table>

@@ -12,8 +12,7 @@
 
   } 
   .deltop{
-    margin-top: -26px;
-    cursor: pointer;
+    margin-top: -30px;
   }
 </style>
 @endsection
@@ -45,23 +44,29 @@
 
           @foreach ($smswalletdetails as $smswalletdetail)
 
-            <div class="col-md-3 col-xs-12 units">
+         <div class="col-md-3 col-xs-12 units">
                 <!-- small box -->
                 <div class="small-box">
       <div class="inner unit">
-          <P>SMS Account 
-          <form action="{{ url('') }}" method="post">
-         <input type="hidden" name="delete_phone" value="{{$smswalletdetail['id']}}" >
-         <button type="submit" class="btn btn-danger btn-sm deltop pull-right" style="color:#fff;"><span class="fa fa-trash"></span></button>
-                              </form></p> 
+              <h4 class="pull-right deltop">Ebulk SMS Account {{$smswalletdetail['id']}}</h4>
+
+       <form action="{{ url('admin/delete_sms') }}/{{$smswalletdetail['id']}}" method="post">
+		 {{ csrf_field() }}   {{method_field("DELETE")}}
+   <input type="hidden" name="delete_sms" value="{{$smswalletdetail['id']}}" >
+         <button type="submit" class="btn btn-danger  deltop " style="color:#fff;"><span class="fa fa-trash"></span></button>
+</form>
+
                                                    
                     <hr>
               Account Name: <span class="username">{{ $smswalletdetail['username'] }}</span>
-          <p>Sms Unit: <span class="unit-balance">{{ $smswalletdetail['balance'] }}</span>
-            @if($smswalletdetail['balance'] < 50 && $smswalletdetail['balance'] >10)
-          <p class="text-warning">Balance is getting low</p>
-        @elseif($smswalletdetail['balance'] < 10) 
-          <p class="text-danger">Balance is low</p>
+<p>Sms Unit Balance: <span class="unit-balance">{{ $smswalletdetail['balance'] }}</span>
+
+         @if($smswalletdetail['balance'] < 50) 
+            
+   <div class="alert alert-danger alert-dismissable fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>SMS Unit is Low!</strong> 
+  </div>
         @else 
           <p></p>
         @endif
@@ -71,7 +76,7 @@
       <div class="icon">
           <i class="fa fa-envelope"></i>
       </div>  
-      <a href="#" class="btn-success btn pull-right" type="button"  data-toggle="modal" data-target="#{{$smswalletdetail['id']}}modal">Transfer fund <i class="fa fa-arrow-circle-right"></i></a>
+      <a href="#" class="btn-success btn pull-right" type="button"  data-toggle="modal" data-target="#{{$smswalletdetail['id']}}modal">Top-Up Unit <i class="fa fa-arrow-circle-right"></i></a>
       
                 </div>
             </div>
