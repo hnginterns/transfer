@@ -45,22 +45,14 @@
 
                             <td class="table-text">
                                 <div>
-
                                     @if ($wallet->archived == 1)
-
-                                    Archived 
-
+                                        Archived 
                                     @else
-
-                                    Active
-
+                                        Active
                                     @endif
-
-
                                 </div>
                             </td>
-
-                                <td class="table-text">
+                            <td class="table-text">
                                 <div>{{$wallet->created_at}}</div>
                             </td>
                             <td>

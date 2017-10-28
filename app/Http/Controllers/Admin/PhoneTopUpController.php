@@ -5,6 +5,7 @@ use URL;
 use App\WalletTransaction;
 use Illuminate\Http\Request;
 use App\Http\Requests\PhoneNumberAddRequest;
+use App\Http\Requests\PhoneNumberEditRequest;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\Controller;
@@ -44,10 +45,11 @@ class PhoneTopUpController extends Controller
         
         $validator = Validator::make($input, 
             [
-                'tagname' => 'required|string'
+                'tagname' => 'required|string|unique:tags'
             ],
             [
-                'tagname.required' => 'Tag name is required'
+                'tagname.required' => 'Group name is required',
+                'tagname.required' => 'Group name is already taken'
             ]
          ); 
         if ($validator->fails()) {
@@ -59,7 +61,7 @@ class PhoneTopUpController extends Controller
             
             $tag->save();
             
-            return response()->json(['error' => false, 'msg' => "Tag added successfully"]);
+            return response()->json(['error' => false, 'msg' => "Group added successfully"]);
         }
     }
 
@@ -68,10 +70,11 @@ class PhoneTopUpController extends Controller
         
         $validator = Validator::make($input, 
             [
-                'tagname' => 'required|string'
+                'tagname' => 'required|string|unique:tags'
             ],
             [
-                'tagname.required' => 'Tag name is required'
+                'tagname.required' => 'Group name is required',
+                'tagname.required' => 'Group name is already taken'
             ]
          ); 
         if ($validator->fails()) {
@@ -83,7 +86,7 @@ class PhoneTopUpController extends Controller
 
             $tag->save();
             
-            return response()->json(['error' => false, 'msg' => "Tag updated successfully"]);
+            return response()->json(['error' => false, 'msg' => "Group updated successfully"]);
         }
     }
 
@@ -92,7 +95,7 @@ class PhoneTopUpController extends Controller
         $tag = Tag::find($id);
         $tag->delete();
         
-        return response()->json(['error' => false, 'msg' => "Tag deleted successfully"]);
+        return response()->json(['error' => false, 'msg' => "Group deleted successfully"]);
     }
     
     public function addPhone(PhoneNumberAddRequest $request){
@@ -386,22 +389,27 @@ class PhoneTopUpController extends Controller
         ]);
     }
 
-    public function editphone(PhoneNumberAddRequest $request) 
+    public function editphone(PhoneNumberEditRequest $request) 
     {
         $phone = TopupContact::find($request->number_id);
+
+        $phone->tags()->syncWithoutDetaching($request->tags);
+
         $phone->firstname = $request->firstname;
         $phone->lastname = $request->lastname;
         $phone->phone = $request->phone;
         $phone->title = $request->title;
         $phone->department = $request->department;
         $phone->email = $request->email;
-        $phone->network = $request->network;
+        $phone->network = 0;
         $phone->netw = $request->network;
         $phone->weekly_max = $request->max_tops;
-        $phone->tags = $request->tags;
-        $phone->save();
-        Session::flash('success', 'Contact Updated successfully.');
-        return redirect()->to('admin/phonetopup');
+        $phone->tags = NULL;
+        if ($phone->save()) {
+            return redirect()->to('admin/phonetopup')->with('success', 'Contact Updated successfully.');
+        } else {
+            return redirect()->to('admin/phonetopup')->with('error', 'Error updating contact.');
+        }
     }
 
     public function delete_phone(PhoneNumberDeleteRequest $request)
@@ -410,6 +418,7 @@ class PhoneTopUpController extends Controller
             return redirect()->back()->with('success', 'Phone Number Deleted');
         }
     }
+
 }
 
 

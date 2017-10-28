@@ -86,7 +86,7 @@ tr:nth-child(even) {
             <th><font color="#39689C"><h2>Balance</h2></font></th>
           </tr>
           <tr>
-            <td><font color="#008000"> <h2>{{ $wallet->wallet_name }}</h2></font></td>
+            <td><font color="#008000"> <h2><b>{{ $wallet->wallet_name }}</b></h2></font></td>
             <td><h2>{{ $wallet->wallet_code }}</h2></td>
             <td><h2>Nigeria Naira</h2></td>
             <td><h2>{{ $wallet->balance }}</h2></td>
@@ -211,6 +211,7 @@ tr:nth-child(even) {
                     </tr>
                   </thead>
                   <tbody>
+                    
                     @foreach ($bankTransactions as $transaction)
                     <tr>
                       <td>{{ $transaction->beneficiary == null ? 'unknown' : $transaction->beneficiary->name }}</td>
@@ -239,7 +240,7 @@ tr:nth-child(even) {
       			
             <div class="modal-body">  
                 <!-- text input -->      
-	    <form action="/fund/{{$wallet->id}}" method="POST" class="form-horizontal">
+	    <form action="/wallet/{{$wallet->id}}/fund" method="POST" class="form-horizontal">
                     {{ csrf_field() }}
                     <input type="hidden" name="wallet_name" value="{{$wallet->wallet_name}}">
                       <input type="hidden" name="wallet_code" value="{{$wallet->wallet_code}}">
