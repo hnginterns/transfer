@@ -131,7 +131,7 @@ class WalletController extends Controller
 
             $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer/charge/auth/card', $headers, $body);
             $response = json_decode($response->raw_body, true);
-            
+            dd($response);
             if($response['status'] == 'success') {
                 event(new FundWallet($cardWallet));
                 Session::flash('success',$response);
