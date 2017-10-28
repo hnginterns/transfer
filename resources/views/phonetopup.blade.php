@@ -128,13 +128,9 @@ i.can {
        
         </div>
         <div class="col-md-3">
-          <div class="input-group custom-search-form">
+          
             
-            <span class="input-group-btn">
-                <button class="btn btn-default" type="submit" id="search-users-btn">
-                    <span class="glyphicon glyphicon-search"></span>
-                </button>
-                @if (Input::has('search') && Input::get('search') != '')
+                    @if (Input::has('search') && Input::get('search') != '')
                         <a href="" class="btn btn-danger" type="button" >
                             <span class="glyphicon glyphicon-remove"></span>
                         </a>
