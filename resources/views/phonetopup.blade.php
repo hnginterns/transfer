@@ -793,7 +793,30 @@ function toggle(source) {
     } );
 } );
     </script>
-
+    <!-- script enbles checkbox to be clicked when you click on the row -->
+    <script>
+      $('#contact-table tr').click(function() {
+        ele = $(this).find('td input:checkbox')[0];
+        ele.checked = ! ele.checked;
+      });
+      $('input:checkbox').click(function(e){
+        e.stopPropagation();
+      })
+      $('#topuphistory tr').click(function() {
+        ele = $(this).find('td input:checkbox')[0];
+        ele.checked = ! ele.checked;
+      });
+      $('input:checkbox').click(function(e){
+        e.stopPropagation();
+      })
+      $('#datatable tr').click(function() {
+        ele = $(this).find('td input:checkbox')[0];
+        ele.checked = ! ele.checked;
+      });
+      $('input:checkbox').click(function(e){
+        e.stopPropagation();
+      })
+    </script>
     
 
 @endsection
