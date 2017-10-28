@@ -172,7 +172,7 @@ i.can {
             <td>Department</td>
             <td>Weekly Limit</td>
             <td>Enter Amount<br>(airtime)</td>
-            <td colspan="2">Action</td>
+            
           </tr>
         </thead>
         <tbody>
