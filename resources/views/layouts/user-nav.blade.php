@@ -3,7 +3,7 @@
         &nbsp;&nbsp;&nbsp;<a href="{{url('/')}}">  <img src="/img/HNGlogo.png" alt=""></a>
         <button type="button" class="navbar-toggle collapsed" style="color:#fff; background:#39689C;" data-toggle="collapse" data-target="#navbar">
             <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"><a href="{{route('dashboard')}}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></span>
+            <span class="icon-bar"><a href="/dashboard"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>    
