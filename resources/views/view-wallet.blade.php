@@ -68,12 +68,12 @@ tr:nth-child(even) {
    <!-- Trigger the modal with a button -->
         <center><button type="button" class="btn btn-dark" data-toggle="modal" data-target="#beneficiaryModal">Add Beneficiary</button>
 <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#myModal">Fund</button>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Fund</button>
   
-  <a href="{{ route('transfer.validation', $wallet->id)}}" class="btn btn-dark ">Transfer To Beneficiary</a>
+  <a href="{{ route('transfer.validation', $wallet->id)}}" class="btn btn-primary ">Transfer To Beneficiary</a>
     
 
-      <a href="{{ route('transfer.wallet', $wallet->id)}}" class="btn btn-dark ">Transfer to Another Wallet </a></center><br>
+      <a href="{{ route('transfer.wallet', $wallet->id)}}" class="btn btn-primary ">Transfer to Another Wallet </a></center><br>
 
      <div class="">
                   @if (!empty($permit))
