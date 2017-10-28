@@ -11,7 +11,7 @@
           </div>
          
           <div class="collapse navbar-collapse" id="navbar">
-          <form class="navbar-form navbar-right navform">
+          
           <ul>
       <li class="header">ADMIN CONTROLS</li>
       <!-- Optionally, you can add icons to the links -->
@@ -20,7 +20,6 @@
       <li><a href="{{ url('/admin/smswallet') }}"><i class="fa fa-envelope"></i> <span>SMS Wallet</span></a></a></li>
       <li><a href="{{ url('/admin/phonetopup') }}"><i class="fa fa-money"></i> <span>Phone Top-up Wallet</span></a></a></li>
       
-      <li>
         <li>
         <a href="{{ url('/logout') }}">
             <i class="fa fa-sign-out" aria-hidden="true"></i>
