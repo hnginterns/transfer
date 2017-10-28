@@ -13,8 +13,7 @@
           <div class="collapse navbar-collapse" id="navbar">
           <form class="navbar-form navbar-right navform">
           <ul>
-      <li class="header">ADMIN CONTROLS</li>
-      <!-- Optionally, you can add icons to the links -->
+         <!-- Optionally, you can add icons to the links -->
         <li><a href="{{ url('/admin/managewallet') }}"><i class="fa fa-briefcase"></i> <span>Manage Wallet</span></a></li>
       <!--<li><a href="{{ url('/admin/analytics') }}"><i class="fa fa-line-chart"></i> <span>Transaction Analytics<span></a></li>-->
       <li><a href="{{ url('/admin/smswallet') }}"><i class="fa fa-envelope"></i> <span>SMS Wallet</span></a></a></li>
