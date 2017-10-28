@@ -381,7 +381,7 @@ class pagesController extends Controller
             });
         }
 
-        $result = $query->orderBy('created_at', 'desc')
+        $result = $query->with('groups')->orderBy('created_at', 'desc')
             ->get();
 
         if ($search) {

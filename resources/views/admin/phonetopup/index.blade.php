@@ -17,7 +17,7 @@
             <button type="button" class="btn btn-info" data-toggle="modal" data-target="#mModal">
                             Add New Phone</button>
 
-              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#tModal">Tags</button>
+              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#tModal">Groups</button>
 
          </div>
 
@@ -83,7 +83,7 @@
                                 <td>Email</td>
                                 <td>Weekly Max</td>
                                 <td>Network</td>
-                                <td>Tags</td>
+                                <td>Groups</td>
                                 <td>Action</td>
                             </tr>
                         </thead>
@@ -91,20 +91,26 @@
                             @if(count($contacts) > 0)
                               @foreach($contacts as $phone)
                                 <tr>
-                                    <td>{{ $phone->firstname }} {{ $phone->lastname }}</td>
-                                    <td>@isset($phone->title){{ $phone->title }}@else Not Set @endisset</td>
-                                    <td>@isset($phone->department){{ $phone->department }}@else Not Set @endisset</td>
-                                    <td>{{ $phone->phone }}</td>
-                                    <td>@isset($phone->email){{ $phone->email }}@else Not Set @endisset</td>
-                                    <td>{{ $phone->weekly_max }}</td>
-                                    <td>{{ $phone->netw }}</td>
-                                     <td>{{ $phone->tags}}</td>
+                                    <td class="phone-name" id="{{ $phone->id }}" data-first="{{ $phone->firstname }}" data-last="{{ $phone->lastname }}">{{ $phone->firstname }} {{ $phone->lastname }}</td>
+                                    <td class="phone-title">@isset($phone->title){{ $phone->title }}@else Not Set @endisset</td>
+                                    <td class="phone-dept">@isset($phone->department){{ $phone->department }}@else Not Set @endisset</td>
+                                    <td class="phone-no">{{ $phone->phone }}</td>
+                                    <td class="phone-email">@isset($phone->email){{ $phone->email }}@else Not Set @endisset</td>
+                                    <td class="phone-max">{{ $phone->weekly_max }}</td>
+                                    <td class="phone-netw" data-netw="{{ strtoupper($phone->netw) }}">{{ $phone->netw }}</td>
+                                     <td class="phone-max">
+                                        @if(count($phone->groups) > 0)
+                                            @foreach($phone->groups as $group)
+                                                <span class="label label-success">{{ $group->name }}</span>
+                                            @endforeach
+                                        @endif
+                                    </td>
                                     <td>
-                                        <button type="button" class="btn btn-info btn-sm edit-phone-btn" style="color:#fff;" data-toggle="modal" ><span class="fa fa-edit"></span></button>
+                                        <button type="button" class="btn btn-info btn-sm edit-phone-btn" title="Edit Contact" style="color:#fff;" data-toggle="modal" ><span class="fa fa-edit"></span></button>
                                         <form action="{{ url('admin/delete-phone') }}" method="post">
                                             {{ csrf_field() }}
                                             <input type="hidden" name="delete_phone" value="{{ $phone->id }}" >
-                                            <button type="submit" class="btn btn-danger btn-sm" style="color:#fff;"><span class="fa fa-trash"></span></button>
+                                            <button type="submit" class="btn btn-danger btn-sm" title="Delete Contact" style="color:#fff;"><span class="fa fa-trash"></span></button>
                                         </form>
                                     </td> 
                                 </tr>
@@ -332,18 +338,16 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                                                           <select class="form-control" select2-multi" name="tags[]" multiple="multiple">
-
                                                             @if(count($tags) > 0)
-                                                              <option selected value="">Select Tag</option>
-                                                              @foreach($tags as $tag)
-                                                                <option value="{{ $tag->id }}">{{ $tag->name }}</option>
-
-                                                              @endforeach
+                                                                <select class="form-control select2-multi" name="tags[]" multiple="multiple">
+                                                                    <Option></Option>
+                                                                        @foreach($tags as $tag)
+                                                                            <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                                                                        @endforeach
+                                                                </select>
                                                             @else
-                                                                <option selected value="">No tags added</option>
+                                                                <p class="form-static">No tags added</p>
                                                             @endif
-                                                           </select>
                                                         </div>
                                                     </div>
                                                     <div class="row">
@@ -369,11 +373,11 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            <h4 class="modal-title">Tags</h4>
+                                            <h4 class="modal-title">Groups</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <div class="alert alert-success tagsuccess" style="display: none; font-size: 14px;"></div>
-                                            <div class="alert alert-danger tagerror" style="display: none; font-size: 14px;"></div>
+                                            <div class="alert alert-success col-md-8 col-md-offset-2 text-center tagsuccess" style="display: none; font-size: 14px;"></div>
+                                            <div class="alert alert-danger col-md-8 col-md-offset-2 text-center tagerror" style="display: none; font-size: 14px;"></div>
                                             <table class="table">
                                               <thead>
                                                   <tr>
@@ -392,7 +396,7 @@
                                                   @endforeach
                                                 @else
                                                   <tr id="tagempty">
-                                                    <td>No tags added</td>
+                                                    <td>No Groups added</td>
                                                   </tr>
                                                 @endif
                                               </tbody>
@@ -651,7 +655,8 @@
                 $(".tagerror").html(data.msg).show();
                 }
                 else{
-                var taghtml = '<tr><td>'+tagname+'</td><td>Refresh page to modify</td></tr>'
+                var taghtml = '<tr><td>'+tagname+'</td><td>Refresh page to modify ' +
+                '&nbsp;<a href="{{ url()->current() }}"><span class="fa fa-refresh" title="Refresh now"></span></a></td></tr>';
                 $('#tagempty').remove();
                 $("#tagbody").append(taghtml);
                 $(".tagsuccess").html(data.msg).show();
@@ -723,23 +728,28 @@
 
     });
 
-    $('.select2-multi').select2();
+    $('.select2-multi').select2({
+        placeholder: "Select a group",
+        width: "100%"
+    });
     // For editing the phone number
     $('.edit-phone-btn').click(function() {
         var parent = $(this).parents('tr');
         var modal = $('div.modal#mModal');
-        modal.find('.modal-title').html('Edit Phone Number');
+        modal.find('.modal-title').html('Edit Phone Contact');
         modal.find('form').attr('action', '/admin/editphone');
+        var phone_id = parent.find('td.phone-name').attr('id');
+        console.log(phone_id);
         modal.find('form input.firstname').val(parent.find('td.phone-name').data('first'));
         modal.find('form input.lastname').val(parent.find('td.phone-name').data('last'));
         modal.find('form input.title').val(parent.find('td.phone-title').html());
         modal.find('form input.dept').val(parent.find('td.phone-dept').html());
         modal.find('form input.phone').val(parent.find('td.phone-no').html());
         modal.find('form input.email').val(parent.find('td.phone-email').html());
-        modal.find('form input.tags').val(parent.find('td.phone-max').html());
         modal.find('form input.max').val(parent.find('td.phone-max').html());
-        modal.find('form input.netw').val(parent.find('td.phone-netw').html());
-        modal.find('form').append('<input type="hidden" name="number_id" value="'+ parent.find('td.phone-name').data('phoneId') +'">');
+        modal.find('form input.netw').val(parent.find('td.phone-netw').data('netw'));
+        modal.find('form input.tags').val(parent.find('td.phone-max').html());
+        modal.find('form').append('<input type="hidden" name="number_id" value="'+ phone_id +'">');
         modal.modal('show');
     });
   </script>

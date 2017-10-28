@@ -163,10 +163,15 @@ i.can {
         </thead>
         <tbody>
           <form class="send-airtime" action="{{ route('topup.phone.multiple')}}" method="POST" role="form">
-            {{ csrf_field() }} @if(count($phones) > 0) @foreach($phones as $phone)
+            {{ csrf_field() }} 
+            @if(count($phones) > 0) 
+              @foreach($phones as $phone)
             <tr class="contact-fn">
 
-              <td><input type="checkbox" name="checked[]" value="{{$phone->id}}" class="checkbox"></td>
+              <td>
+                <input type="checkbox" name="checked[]" value="{{$phone->id}}" class="checkbox 
+                @if(count($phone->groups) > 0)@foreach($phone->groups as $group) {{ $group->name }} @endforeach @endif">
+              </td>
               <td class="firstName" data-user="{{ $phone->id }}">{{ $phone->firstname }} {{ $phone->lastname }}</td>
               <td class="phone">{{ $phone->phone }}</td>
               <td class="phoneRef">{{ $phone->netw }}</td>
