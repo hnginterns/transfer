@@ -132,8 +132,7 @@ i.can {
 
        
         </div>
-        <div class="col-md-3">
-          <div class="input-group custom-search-form">
+       
             
             <span class="input-group-btn">
                 <button class="btn btn-default" type="submit" id="search-users-btn">
