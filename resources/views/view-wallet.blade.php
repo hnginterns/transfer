@@ -211,6 +211,7 @@ tr:nth-child(even) {
                     </tr>
                   </thead>
                   <tbody>
+                    
                     @foreach ($bankTransactions as $transaction)
                     <tr>
                       <td>{{ $transaction->beneficiary == null ? 'unknown' : $transaction->beneficiary->name }}</td>

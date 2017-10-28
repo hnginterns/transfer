@@ -257,6 +257,8 @@ class pagesController extends Controller
 
     public function addAccount(Request $request, Wallet $wallet)
     {
+
+        
         $beneficiary = Beneficiary::firstOrCreate([
 
             'uuid' => Auth::user()->id,
@@ -266,11 +268,8 @@ class pagesController extends Controller
             'bank_name' => $request->bank_name,
             'account_number' => $request->account_number
             ]);
-        //$beneficiary = new Beneficiary;
-//                $beneficiary->save();
-        /**$beneficiary = Beneficiary::latest()->first();
-        Beneficiary::where('id', $beneficiary->id)
-                    ->update(['name' => $request->name]);*/
+            
+
                 if($beneficiary->wasRecentlyCreated){
                 return redirect("wallet/$wallet->id")->with('success', 'Beneficiary added');
     } else {
