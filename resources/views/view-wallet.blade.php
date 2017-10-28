@@ -213,7 +213,7 @@ tr:nth-child(even) {
                   <tbody>
                     @foreach ($bankTransactions as $transaction)
                     <tr>
-                      <td>{{ $transaction->beneficiary->name }}</td>
+                      <td>{{ $transaction->beneficiary == null ? 'unknown' : $transaction->beneficiary->name }}</td>
                       <td>{{ $transaction->amount }}</td>
                       <td>{{ $transaction->wallet_id }}</td>
                       <td><i class="fa {{ $transaction->transaction_status ? 'fa-check-circle can' : 'fa-times-circle cannot' }}" aria-hidden="true"</td>
