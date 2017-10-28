@@ -63,10 +63,10 @@ tr:nth-child(even) {
 
 <center>            
  <div class="orange-box"><h2 class="title" align="center">Current Balance: <strong> &#x20A6;{{ number_format(($wallet->balance),2) }} </strong>  </h2></div>
-</center>
+</center><br>
 
    <!-- Trigger the modal with a button -->
-        <center><button type="button" class="btn btn-dark" data-toggle="modal" data-target="#beneficiaryModal">Add Beneficiary</button>
+        <center><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#beneficiaryModal">Add Beneficiary</button>
 <!-- Trigger the modal with a button -->
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Fund</button>
   
