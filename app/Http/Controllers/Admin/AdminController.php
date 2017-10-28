@@ -68,12 +68,7 @@ class AdminController extends WalletController
     public function phoneTopupView()
     {
 
-        $contacts = TopupContact::all();
-
-        //dd($contacts);
-
-        $phones = TopupContact::all();
-        
+        $contacts = TopupContact::with('groups')->get();
         $topupbalance = (integer) $this->getTopupWalletBalance();
         $bank = Bank::all();
         $tags = Tag::all();
@@ -81,12 +76,8 @@ class AdminController extends WalletController
 
          $wallet = Wallet::where('type', 'topup')->first();
          //DB::table('wallets')->where('type', '=','topup')->first();
-
-         
- 
-         $wallet_name = $wallet == null ? null : $wallet->wallet_name;
+         $wallet_name = ($wallet == null) ? null : $wallet->wallet_name;
          $history = CardWallet::where('wallet_name', $wallet_name)->paginate(10);
-
 
          $cardWallet = CardWallet::latest()->first();
         //dd($cardWallet);

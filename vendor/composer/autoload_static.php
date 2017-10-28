@@ -420,6 +420,7 @@ class ComposerStaticInitcb56c8f99153a160391720319584c667
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Http\\Requests\\PhoneNumberAddRequest' => __DIR__ . '/../..' . '/app/Http/Requests/PhoneNumberAddRequest.php',
         'App\\Http\\Requests\\PhoneNumberDeleteRequest' => __DIR__ . '/../..' . '/app/Http/Requests/PhoneNumberDeleteRequest.php',
         'App\\Http\\Utilities\\Bank' => __DIR__ . '/../..' . '/app/Http/Utilities/Bank.php',
         'App\\Http\\Utilities\\Wallet' => __DIR__ . '/../..' . '/app/Http/Utilities/Wallet.php',
