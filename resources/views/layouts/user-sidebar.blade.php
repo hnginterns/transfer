@@ -3,8 +3,7 @@
           <ul class="nav nav-sidebar">
           <br>
      <!-- Sidebar user panel (optional) -->
-    <div class="user-panel">
-      <div class="pull-left image">
+    
         <!--<img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">-->
         <i class="fa fa-user" style="font-size: 50px;color:#fff"></i>
       </div>
