@@ -2,21 +2,7 @@
   
           <ul class="nav nav-sidebar">
           <br>
-     <!-- Sidebar user panel (optional) -->
-    
-        <!--<img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">-->
-        <i class="fa fa-user" style="font-size: 50px;color:#fff"></i>
-      </div>
-      <div class="pull-left info">
-        <p></p>
-        <!-- Status -->
-        <a href="#"><i class="fa fa-circle text-success" ></i> Online</a>
-      </div>
-    </div>
-
-    <!-- Sidebar Menu -->
-    <ul class="sidebar-menu" data-widget="tree">
-<li class="header">USER CONTROLS</li>
+   
              
               <li>
                 <a href="/dashboard">
