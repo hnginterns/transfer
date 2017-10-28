@@ -14,17 +14,12 @@
           <form class="navbar-form navbar-right navform">
           <ul>
          <!-- Optionally, you can add icons to the links -->
-        <li><a href="{{ url('/admin/managewallet') }}"><i class="fa fa-briefcase"></i> <span>Manage Wallet</span></a></li>
+       <a href="{{ url('/admin/managewallet') }}"><i class="fa fa-briefcase"></i> <span>Manage Wallet</span></a>
       <!--<li><a href="{{ url('/admin/analytics') }}"><i class="fa fa-line-chart"></i> <span>Transaction Analytics<span></a></li>-->
-      <li><a href="{{ url('/admin/smswallet') }}"><i class="fa fa-envelope"></i> <span>SMS Wallet</span></a></a></li>
-      <li><a href="{{ url('/admin/phonetopup') }}"><i class="fa fa-money"></i> <span>Phone Top-up Wallet</span></a></a></li>
+      <a href="{{ url('/admin/smswallet') }}"><i class="fa fa-envelope"></i> <span>SMS Wallet</span></a></a>
+      <a href="{{ url('/admin/phonetopup') }}"><i class="fa fa-money"></i> <span>Phone Top-up Wallet</span></a></a>
       
-        <li>
-        <a href="{{ url('/logout') }}">
-            <i class="fa fa-sign-out" aria-hidden="true"></i>
-            <span> Logout</span>
-        </a>
-      </li>      
+   
        
                   </ul>
 
