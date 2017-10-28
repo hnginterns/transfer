@@ -10,8 +10,8 @@
             
           </div>
          
-          <div class="collapse navbar-collapse" id="navbar">
-          
+          <div>
+          <form class="navbar-form navbar-right navform">
           <ul>
       <li class="header">ADMIN CONTROLS</li>
       <!-- Optionally, you can add icons to the links -->
