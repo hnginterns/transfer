@@ -147,7 +147,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
 	
 	//Admin wallet operation starts
 	Route::get('/transaction-history', 'Admin\AdminController@cardTransaction');
-	Route::get('createwallet', 'Admin\AdminController@wallet');
+	Route::get('createwallet', 'Admin\AdminController@wallet')->name('wallets.add');
 	Route::post('createwallet', 'Admin\AdminController@addwallet');
 	Route::get('viewwallet/{walletId}', 'Admin\AdminController@show')->name('view-wallet');
 	Route::get('wallet-details', 'Admin\AdminController@walletdetails');
