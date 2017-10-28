@@ -131,13 +131,7 @@ i.can {
       <form method="GET" action="" accept-charset="UTF-8" id="conatcts-form">
         <div class="col-md-2">
 
-          <select class="form-control" name="department">
-            <option>All Depts</option>
-            @foreach($phones as $contact)
-              <option value="{{ $contact->department }}">{{ $contact->department }}</option>
-            @endforeach
-          </select>
-
+       
         </div>
         <div class="col-md-3">
           <div class="input-group custom-search-form">
