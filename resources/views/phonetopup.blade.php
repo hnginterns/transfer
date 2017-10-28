@@ -191,14 +191,10 @@ i.can {
                 /></td>
               <td>
 
-                <a class="airtime btn btn-success" data-id="{{ $phone->id }}" data-toggle="modal" data-target="#airtimeModal">
-                   Airtime
-                </a>
+                
               </td>
               <td>
-                <a class="btn btn-primary" data-id="{{ $phone->id }}" data-toggle="modal" data-target="#dataModal">
-                    Data
-                </a>
+               
                 </td>
 
               
