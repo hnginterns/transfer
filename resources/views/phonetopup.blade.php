@@ -136,7 +136,7 @@ i.can {
        
             
             <span class="input-group-btn">
-                <button class="btn btn-default" type="submit" id="search-users-btn">
+                
                     <span class="glyphicon glyphicon-search"></span>
                 </button>
                 @if (Input::has('search') && Input::get('search') != '')
