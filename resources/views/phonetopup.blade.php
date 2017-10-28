@@ -140,7 +140,7 @@ i.can {
         </div>
         <div class="col-md-3">
           <div class="input-group custom-search-form">
-            <input type="text" class="form-control" name="search" value="{{ Input::get('search') }}" placeholder="Search tags">
+            
             <span class="input-group-btn">
                 <button class="btn btn-default" type="submit" id="search-users-btn">
                     <span class="glyphicon glyphicon-search"></span>
