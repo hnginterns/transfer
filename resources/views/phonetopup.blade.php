@@ -173,13 +173,7 @@ i.can {
       <button class="btn btn-success topup-group-btn" type="submit">Top Up Group</button>
       <div style="margin-top: 10px;" class="alert alert-info col-md-4 col-md-offset-2 groups-topup text-center hidden"></div>
     </form>
-
- </div> 
-
-</div>
-
-
-          
+      
      
           
           <a href="#dataModal" class="btn btn-info pull-right" style="margin-left: 5px; margin-bottom: 3px;" data-toggle="modal">Top-up Data</a>
