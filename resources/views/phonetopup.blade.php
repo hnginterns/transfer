@@ -126,9 +126,6 @@ i.can {
         <div class="col-md-5"></div>
       
     </div>
-<br>
-<hr>
-
 
     <div class="table table-responsive">
       <table class="table" id="contact-table">
@@ -156,7 +153,7 @@ i.can {
     <div class="orange-box">
       
     </div>
-    <br>
+   
     <form class="form form-inline" action="{{ route('topup.phone.group')}}" method="POST" role="form">
       {{csrf_field()}} @if(count($tags) > 0)
       <select name="topup_group" class="form-control groups-list">
