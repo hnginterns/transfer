@@ -152,8 +152,6 @@ i.can {
  </div> 
 
 </div>
-<br>
-
 
 <br><br>
 <hr>
@@ -178,8 +176,35 @@ i.can {
         </thead>
         <tbody> 
           <form class="send-airtime" action="{{ route('topup.phone.multiple')}}" method="POST" role="form">
-          <a href="#dataModal" class="btn btn-info pull-right" style="margin-left: 15px; margin-bottom: 3px;" data-toggle="modal">Top-up Data</a>
-          <button type="submit" class="btn btn-success pull-right">Top up all</button>
+          
+          *
+          <div class="row">
+  <div class="col-md-12">
+          <div class="orange-box">
+      <h4 class="title" align="center">Group Airtime Top Up</h4>
+    </div>
+    <br>
+    <form class="form form-inline" action="{{ route('topup.phone.group')}}" method="POST" role="form">
+      {{csrf_field()}} @if(count($tags) > 0)
+      <select name="topup_group" class="form-control groups-list">
+                        @foreach($tags as $group) 
+                          <option value="{{ $group->id }}" data-value="{{ strtolower($group->name) }}">{{ $group->name }}</option> 
+                        @endforeach 
+                      </select> @endif
+      <input class="form-control group-amount-topup" type="number" name="amount" min="50" required placeholder="Enter Amount to be shared">
+      <button class="btn btn-success topup-group-btn" type="submit">Top Up Group</button>
+      <div style="margin-top: 10px;" class="alert alert-info col-md-8 col-md-offset-2 groups-topup text-center hidden"></div>
+    </form>
+
+ </div> 
+
+</div>
+<br>
+          
+          *
+          
+          <a href="#dataModal" class="btn btn-info pull-right" style="margin-left: 5px; margin-bottom: 3px;" data-toggle="modal">Top-up Data</a>
+          <button type="submit" class="btn btn-success pull-right" style="margin-right: 5px; margin-bottom: 3px;">Top up all</button>
             {{ csrf_field() }} @if(count($phones) > 0) @foreach($phones as $phone)
             <tr class="contact-fn">
              
