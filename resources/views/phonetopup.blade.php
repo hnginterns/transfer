@@ -108,7 +108,27 @@ i.can {
   <div class="col-md-12 text-center">
 
     <div class="orange-box">
+<<<<<<< HEAD
+        <h4 class="title" align="center">Group Airtime Top Up</h4>
+      </div>
+      <br>
+      <form class="form form-inline" action="{{ route('topup.phone.group')}}" method="POST" role="form">
+                    {{csrf_field()}}
+                    @if(count($tags) > 0)
+                      <select name="topup_group" class="form-control groups-list">
+                        @foreach($tags as $group) 
+                          <option value="{{ $group->id }}" data-value="{{ strtolower($group->name) }}">{{ $group->name }}</option> 
+                        @endforeach 
+                      </select>
+                    @endif
+          <input class="form-control group-amount-topup" type="number" name="amount" min="50" required placeholder="Enter Amount to be shared">  
+          <button class="btn btn-success topup-group-btn" type="submit" >Top Up Group</button>  
+          <div style="margin-top: 10px;" class="alert alert-info col-md-8 col-md-offset-2 groups-topup text-center hidden"></div>                
+      </form>
+      
+=======
       <h4 class="title" align="center">Group Airtime Top Up</h4>
+>>>>>>> 270640edf8341a06d20be4161abc28fe9fb4ebe1
     </div>
     <br>
     <form class="form form-inline" action="{{ route('topup.phone.group')}}" method="POST" role="form">
@@ -305,7 +325,7 @@ i.can {
         @endforeach @else
         </thead>
         <tbody>
-          <form class="send-airtime" action="{{ route('topup.phone.multiple')}}" method="POST" role="form">
+          <form class="send-airtime topup-multiple" action="{{ route('topup.phone.multiple')}}" method="POST" role="form">
             {{ csrf_field() }} 
             @if(count($phones) > 0) 
               @foreach($phones as $phone)
@@ -313,7 +333,8 @@ i.can {
 
               <td>
                 <input type="checkbox" name="checked[]" value="{{$phone->id}}" class="checkbox 
-                @if(count($phone->groups) > 0)@foreach($phone->groups as $group) {{ $group->name }} @endforeach @endif">
+                @if(count($phone->groups) > 0)@foreach($phone->groups as $group) {{ strtolower($group->name) }} @endforeach @endif">
+                
               </td>
               <td class="firstName" data-user="{{ $phone->id }}">{{ $phone->firstname }} {{ $phone->lastname }}</td>
               <td class="phone">{{ $phone->phone }}</td>
@@ -747,8 +768,7 @@ i.can {
       });
     });
     $('.modal#airtimeModal').on('click', 'button.btn-send', function () {
-      console.log('Clcked');
-      $('.modal#airtimeModal').find('form.send-airtime').submit();
+      $('.modal#airtimeModal').find('form. topup-multiple').submit();
     })
 //   $('.airtime').click(function() {
 //     // get the invoice ID
@@ -759,9 +779,6 @@ i.can {
 //         $('#airtimeModal .modal-body').html(response.data);
 //     });
 // });
-  </script>
-
-  <script type="text/javascript">
     $(function () {
       $('.modal#dataModal').on('show.bs.modal', function (e) {
         var btn = $(e.relatedTarget);
@@ -776,7 +793,6 @@ i.can {
       });
     });
     $('.modal#dataModal').on('click', 'button.btn-send', function () {
-      console.log('Clcked');
       $('.modal#dataModal').find('form.send-data').submit();
     })
 //   $('.airtime').click(function() {
@@ -799,6 +815,7 @@ i.can {
     }
   </script>
 
+    <script type="text/javascript">
 
   <script>
     $("#department").change(function () {
@@ -871,7 +888,39 @@ i.can {
     });
     $('input:checkbox').click(function (e) {
       e.stopPropagation();
-    })
+    });
+
+    $(function () {
+        $('.groups-list').change(function() {
+            var current = $(this).val();
+            $(this).find('option').each(function () {
+                if (this.value == current) {
+                    var theClass = $(this).data('value');
+                    console.log(theClass);
+                    $('.groups-list').data('selected-class', theClass);
+                    $('input.checkbox').prop('checked', false);
+                    var totalUsers = $('input.checkbox.' + theClass);
+                    totalUsers.prop('checked', true);
+                    var membersCount = (totalUsers.length > 0) ? totalUsers.length : 'no';
+                    var member = (totalUsers.length > 1) ? ' members ' : ' member ';
+                    $('.groups-topup').html('You Have <b>' + membersCount + member + '</b> in this group to topup').removeClass('hidden');
+                }
+            });
+        });
+
+        $('.group-amount-topup').change(function () {
+            var selectedClass = $('.groups-list').data('selected-class');
+            var listItems = $('input.checkbox.' + selectedClass);
+            var newAmount = parseInt($(this).val()) / listItems.length;
+            listItems.parents('tr').find('input.input-airtime-amount').val(newAmount);
+        });
+
+        $('button.topup-group-btn').click(function (e) {
+            e.preventDefault();
+            $('form.send-airtime.topup-multiple').submit();
+        });
+      });
+
   </script>
 
   <script>

@@ -938,7 +938,7 @@
             </p>
         </div>
         <br />
-        <button id="divider-cta"><a href="https://finance.hotels.ng/login"><font color="white">Sign In</font></a></button>
+        <button class="btn btn-primary"><a href="https://finance.hotels.ng/login"><font color="white">Sign In</font></a></button>
     </div>
 </div><br><br><p>
 <!-- FOOTER -->
