@@ -23,6 +23,7 @@ i.can {
   i.received {
     color: #dd4b39;
     
+    
   }
   
   hr {
