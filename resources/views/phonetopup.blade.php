@@ -764,7 +764,9 @@ i.can {
 
   <script type="text/javascript">
     $(document).ready(function () {
-        $('#contact-table').DataTable({
+        $('#contact-table tr').hasClass('hidden') {
+           
+        }.DataTable({
           initComplete: function () {
             this.api().columns([1, 3]).every(function () {
               var column = this;
