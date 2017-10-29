@@ -110,7 +110,7 @@ class AdminController extends WalletController
     public function managewallet()
     {
         //$wallets = Wallet::where('type',' ')->get();
-        $wallets = DB::table('wallets')->where('type', '=', '')->get();
+        $wallets = Wallet::all();
 
         return view('admin.managewallet', compact('wallets'));
     }
