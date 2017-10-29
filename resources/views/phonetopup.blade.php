@@ -370,7 +370,7 @@ i.can {
                 <div class="form-group">
                   <label>Phone Number</label>
                   <div class="controls">
-                    <input name="phone" class="form-control" value="{{Auth::user()->fundWalletInfo == null ? '' : Auth::user()->fundWalletInfo->phonenumber}}" autocomplete="off" maxlength="20" required="" type="text">
+                    <input name="phone" pattern="\+234\d{10}" class="form-control" value="{{Auth::user()->fundWalletInfo == null ? '' : Auth::user()->fundWalletInfo->phonenumber}}" autocomplete="off" maxlength="20" required="" type="text">
                   </div>
                 </div>
 
