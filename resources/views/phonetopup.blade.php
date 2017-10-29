@@ -3,39 +3,60 @@
 i.can {
     color: #00a65a;
   }
+
   i.cannot {
     color: #dd4b39;
   }
+
   i.sent {
     color: #00a65a;
     filter: blur(10px);
     -webkit-filter: blur(10px);
     z-index: -1
   }
+
   em.sent {
     opacity: 0.5 z-index:-1
   }
+
   i.received {
     color: #dd4b39;
   }
+
   first {
     float: right;
     margin: 0 0 10px 10px;
   }
+
   form group {
     height: 400;
   }
+
   table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 899;
   }
+
+  .starred {
+    color: #f0ad4e;
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  .not-starred {
+    color: grey;
+    font-size: 15px;
+    font-weight: bold;
+  }
+
   td,
   th {
     border: px solid #dddddd;
     text-align: center;
     padding: 5px;
   }
+
   tr:nth-child(even) {
     width: 100;
     background-color: #dddddd;
@@ -58,31 +79,36 @@ i.can {
 
 
 <div class="row">
-<div class="col-md-6">
-  <div class="panel panel-primary">
-    <div class="panel-heading"><h2>Wallet Balance &#8358; {{ number_format($wallet->balance),2}}</h2></div>
-  <div class="panel-body text-center">
-    <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#walletTopUp">Fund Wallet</button>
-  </div>
-</div>
-  
-</div>
+  <div class="col-md-6">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h2>Wallet Balance &#8358; {{ number_format($wallet->balance),2}}</h2>
+      </div>
+      <div class="panel-body text-center">
+        <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#walletTopUp">Fund Wallet</button>
+      </div>
+    </div>
 
-<div class="col-md-6">
-  <div class="panel panel-primary">
-    <div class="panel-heading"> <h2> Current Balance with provider: &#8358;{{ number_format($topupbalance),2}} </h2></div>
-  <div class="panel-body text-center">
-    <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#Purchase">Purchase</button>
   </div>
-</div>
-  
-</div>
+
+  <div class="col-md-6">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h2> Current Balance with provider: &#8358;{{ number_format($topupbalance),2}} </h2>
+      </div>
+      <div class="panel-body text-center">
+        <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#Purchase">Purchase</button>
+      </div>
+    </div>
+
+  </div>
 </div>
 
 <div class="row">
   <div class="col-md-12 text-center">
 
     <div class="orange-box">
+<<<<<<< HEAD
         <h4 class="title" align="center">Group Airtime Top Up</h4>
       </div>
       <br>
@@ -100,72 +126,203 @@ i.can {
           <div style="margin-top: 10px;" class="alert alert-info col-md-8 col-md-offset-2 groups-topup text-center hidden"></div>                
       </form>
       
+=======
+      <h4 class="title" align="center">Group Airtime Top Up</h4>
+>>>>>>> 270640edf8341a06d20be4161abc28fe9fb4ebe1
     </div>
+    <br>
+    <form class="form form-inline" action="{{ route('topup.phone.group')}}" method="POST" role="form">
+      {{csrf_field()}}
+
+      <input class="form-control" type="number" name="amount" min="50" required placeholder="Enter Amount to be shared">
+      <button class="btn btn-success" type="submit">Top Up Group</button>
+
+    </form>
 
   </div>
+
+</div>
 
 <br><br>
 
 <div class="row">
   <div class="col-md-12 text-center">
 
-        <ul class="nav nav-pills nav-justified ">
-            <li class="active"><a data-toggle="pill" href="#contactlistbox">Top Up</a></li>
-            <li><a data-toggle="pill" href="#fundhistorybox">Funding History</a></li>
-            <li><a data-toggle="pill" href="#topuphistorybox">Topup History</a></li>
-        </ul>
+    <ul class="nav nav-pills nav-justified ">
+      <li class="active"><a data-toggle="pill" href="#contactlistbox">Top Up</a></li>
+      <li><a data-toggle="pill" href="#fundhistorybox">Funding History</a></li>
+      <li><a data-toggle="pill" href="#topuphistorybox">Topup History</a></li>
+    </ul>
 
-    </div>
+  </div>
 </div>
 
 <div class="tab-content">
   <div id="contactlistbox" class="tab-pane fade in active">
-      <div class="orange-box">
-          <h4 class="title" align="center">TOP UP</h4>
-          <button type="submit" class="btn btn-success pull-right">Top up all</button>
+    <div class="orange-box">
+      <h4 class="title" align="center">TOP UP</h4>
+      <button type="submit" class="btn btn-success pull-right">Top up all</button>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-2">
       </div>
-      <br>
-      <div class="row">
-        <div class="col-md-2">
-        </div>
-        <div class="col-md-5"></div>
+      <div class="col-md-5"></div>
       <form method="GET" action="" accept-charset="UTF-8" id="conatcts-form">
         <div class="col-md-2">
 
-       
+
         </div>
         <div class="col-md-3">
-          
-            
-                    @if (Input::has('search') && Input::get('search') != '')
-                        <a href="" class="btn btn-danger" type="button" >
+
+
+          @if (Input::has('search') && Input::get('search') != '')
+          <a href="" class="btn btn-danger" type="button">
                             <span class="glyphicon glyphicon-remove"></span>
-                        </a>
-                    @endif
+                        </a> @endif
 
-            </span>
-          </div>
+          </span>
         </div>
-      </form>
     </div>
+    </form>
+  </div>
 
 
-    <br>
+  <br>
 
-    <div class="table table-responsive">
-      <table class="table" id="contact-table">
-        <thead>
-          <tr>
-            <th><input type="checkbox" onClick="toggle(this)" /> Select All Contact</th>
-            <td>Name</td>
-            <td>Phone Number</td>
-            <td>Network</td>
-            <td>Title</td>
-            <td>Department</td>
-            <td>Weekly Limit</td>
-            <td>Enter Amount<br>(airtime)</td>
-            
+  <div class="table table-responsive">
+    <table class="table contact-phone" id="contact-tale">
+      <thead>
+        <tr>
+          <th><input type="checkbox" onClick="toggle(this)" /> Select All Contact</th>
+          <td>Star</td>
+          <td>Name</td>
+          <td>Phone Number</td>
+          <td>Network</td>
+          <td>Title</td>
+          <td>Department</td>
+          <td>Weekly Limit</td>
+          <td>Enter Amount<br>(airtime)</td>
+
+        </tr>
+      </thead>
+      <tbody>
+        <form class="send-airtime" id="form-contact" action="{{ route('topup.phone.multiple')}}" method="POST" role="form">
+          {{ csrf_field() }} 
+          @if(count($phones) > 0) 
+          @foreach($phones as $phone)
+          <tr class="contact-fn">
+            <td class="phone"><i onclick="starContact('{{$phone->id}}')" class="fa {{$phone->starred ? 'fa-star starred' : 'fa-star-o not-starred'}}"></i></td>
+            <td><input type="checkbox" name="checked[]" value="{{$phone->id}}" class="checkbox"></td>
+            <td class="firstName" data-user="{{ $phone->id }}">{{ $phone->firstname }} {{ $phone->lastname }}</td>
+            <td class="phone">{{ $phone->phone }}</td>
+            <td class="phoneRef">{{ $phone->netw }}</td>
+            <td class="amount">{{ $phone->title }}</td>
+            <td class="amount">{{ $phone->department }}</td>
+            <td class="max-tops">{{ $phone->weekly_max }}</td>
+            <td><input class="form-control input-airtime-amount" type="number" min="50" name="amount[{{$phone->id}}]" placeholder="Enter Amount"/></td>
           </tr>
+          @endforeach
+          @else
+          <tr>
+            <td></td>
+            <td>No Phone Number Added</td>
+            <td></td>
+            <td></td>
+          </tr>
+          @endif
+      
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><button type="submit" class="btn btn-success">Top up all</button></td>
+        <td></td>
+      </tr>
+      </tbody>
+      </form>
+    </table>
+  </div>
+
+</div>
+<div id="fundhistorybox" class="tab-pane fade">
+
+  <div class="orange-box">
+    <h4 class="title" align="center">Fund Transfer History</h4>
+  </div>
+  <br>
+  <div class="table-responsive">
+    <table class="table table-hover table-condensed" id="topuphistory">
+      <thead>
+        <tr>
+          <th>S/N</th>
+          <th>Payer</th>
+          <th>Bank</th>
+          <th>Wallet</th>
+          <th>Amount</th>
+          <th>Status</th>
+          <th>Narration</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        @php($count = 1) @foreach($walletfundhistory as $key => $walletfundhistories)
+        <tr>
+          <td>{{$count}}</td>
+          <td>{{$walletfundhistories->user->username}}</td>
+          <td>{{$walletfundhistories->bank->bank_name}}</td>
+          <td>{{$walletfundhistories->wallet->wallet_name}}</td>
+          <td>{{$walletfundhistories->amount}}</td>
+          <td><i class="fa {{$walletfundhistories->status ? 'fa-check-circle can ' : 'fa-times-circle cannot'}}" aria-hidden="true"></i></td>
+          <td>{{$walletfundhistories->narration}}</td>
+          <td>{{$walletfundhistories->created_at}}</td>
+        </tr>
+        @php($count++) @endforeach
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<div id="topuphistorybox" class="tab-pane fade">
+
+  <div class="orange-box">
+    <h4 class="title" align="center">TOPUP HISTORY</h4>
+  </div>
+
+  <div class="table table-responsive">
+    <table id="datatable" class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>Phone</th>
+          <th>Name</th>
+          <th>Network</th>
+          <th>Amount</th>
+          <th>Ref</th>
+          <th>User</th>
+          <th>Status</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        @if(count($topuphistory) > 0) @foreach($topuphistory as $hist)
+        <tr>
+          <th>{{ $hist->phone }}</th>
+          <th>{{ $hist->firstname }} {{ $hist->lastname }}</th>
+          <th>{{ $hist->netw }}</th>
+          <td class="phone">{{ $hist->amount }}</td>
+          <td class="phoneRef">{{ $hist->ref }}</td>
+          <td class="amount">{{ $hist->username }}</td>
+          <td class="amount">{{ $hist->status }}</td>
+          <td class="amount">{{ $hist->created_at }}</td>
+
+        </tr>
+        @endforeach @else
         </thead>
         <tbody>
           <form class="send-airtime topup-multiple" action="{{ route('topup.phone.multiple')}}" method="POST" role="form">
@@ -212,111 +369,19 @@ i.can {
         </tbody>
         <tr>
           <td></td>
+          <td>No Topup Transactions yet</td>
           <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td><button type="submit" class="btn btn-success">Top up all</button></td>
           <td></td>
         </tr>
-        </form>
-      </table>
+        @endif
+
+
+      </tbody>
+    </table>
+
+
   </div>
-
-        </div>
-        <div id="fundhistorybox" class="tab-pane fade">
-
-          <div class="orange-box">
-              <h4 class="title" align="center">Fund Transfer History</h4>
-        </div>
-          <br>
-          <div class="table-responsive">
-            <table class="table table-hover table-condensed" id="topuphistory">
-             <thead>
-               <tr>
-                  <th>S/N</th>
-                  <th>Payer</th>
-                  <th>Bank</th>
-                  <th>Wallet</th>
-                  <th>Amount</th>
-                  <th>Status</th>
-                  <th>Narration</th>
-                  <th>Date</th>
-                </tr>
-              </thead>
-              <tbody>
-                @php($count = 1)
-                @foreach($walletfundhistory as $key => $walletfundhistories)
-                <tr>
-                  <td>{{$count}}</td>
-                  <td>{{$walletfundhistories->user->username}}</td>
-                  <td>{{$walletfundhistories->bank->bank_name}}</td>
-                  <td>{{$walletfundhistories->wallet->wallet_name}}</td>
-                  <td>{{$walletfundhistories->amount}}</td>
-                  <td><i class="fa {{$walletfundhistories->status ? 'fa-check-circle can ' : 'fa-times-circle cannot'}}" aria-hidden="true"></i></td>
-                  <td>{{$walletfundhistories->narration}}</td>
-                  <td>{{$walletfundhistories->created_at}}</td>
-                </tr>
-                @php($count++)
-                @endforeach
-              </tbody>
-            </table>
-          </div>
-
-        </div>
-
-        <div id="topuphistorybox" class="tab-pane fade">
-
-            <div class="orange-box">
-              <h4 class="title" align="center">TOPUP HISTORY</h4>
-            </div>
-    
-        <div class="table table-responsive">
-          <table id="datatable" class="table table-bordered table-hover">
-            <thead>
-              <tr>
-                <th>Phone</th>
-                <th>Name</th>
-                <th>Network</th>
-                <th>Amount</th>
-                <th>Ref</th>
-                <th>User</th>
-                <th>Status</th>
-                <th>Date</th>
-              </tr>
-            </thead>
-            <tbody>
-
-              @if(count($topuphistory) > 0) @foreach($topuphistory as $hist)
-              <tr>
-                <th>{{ $hist->phone }}</th>
-                <th>{{ $hist->firstname }} {{ $hist->lastname }}</th>
-                <th>{{ $hist->netw }}</th>
-                <td class="phone">{{ $hist->amount }}</td>
-                <td class="phoneRef">{{ $hist->ref }}</td>
-                <td class="amount">{{ $hist->username }}</td>
-                <td class="amount">{{ $hist->status }}</td>
-                <td class="amount">{{ $hist->created_at }}</td>
-
-              </tr>
-              @endforeach @else
-              <tr>
-                <td></td>
-                <td>No Topup Transactions yet</td>
-                <td></td>
-                <td></td>
-              </tr>
-              @endif
-
-              
-            </tbody>
-          </table> 
-    
-          
-        </div>
-      </div>
+</div>
 
 
 
@@ -326,71 +391,71 @@ i.can {
 
 
 <!---Modal for wallet top Up-->
-                    <div class="modal fade" id="walletTopUp">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    
-                                    <h4 class="modal-title text-center">Top up wallet</h4>
-            
-                                </div>
-                                <div class="modal-body">
-                                    <div class="box-header with-border">
-                                        <h3 class="box-title">Card Details</h3>
-                                    </div>
-                                    <!-- /.box-header -->
-                                    <div class="box-body">
-                                        <form action="{{config('app.url')}}/phonetopup/fund" method="POST" role="form form-horizontal">
-                                            {{csrf_field()}}
-                                            <!-- text input -->
-                                            <div class="container-fluid">
-                                                <fieldset>
-                                                    <input type="hidden" name="wallet_code" value="{{$wallet->wallet_code}}">
-                                                    <input type="hidden" name="wallet_name" value="{{$wallet->wallet_name}}">
-                                                    <div class="row">
-                                                        <div class="col-lg-6">
-                                                            <div class="form-group">
-                                                                <label for="cc_name">First Name</label>
-                                                                <div class="controls">
-                                                                    <input name="fname" class="form-control" id="cc_name" title="First Name" required type="text">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6">
-                                                            <div class="form-group">
-                                                                <label for="cc_name">Last Name</label>
-                                                                <div class="controls">
-                                                                    <input name="lname" class="form-control" id="cc_name" title="last name" required type="text">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Phone Number</label>
-                                                        <div class="controls">
-                                                            <input name="phone" class="form-control" autocomplete="off" maxlength="20" required="" type="text">
-                                                        </div>
-                                                    </div>
-						    
-                                                    <div class="form-group">
-                                                        <label>Email Address</label>
-                                                        <div class="controls">
-                                                            <input name="emailaddr" class="form-control" autocomplete="off" required="" type="text">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Card Number</label>
-                                                        <div class="controls">
-                                                            <input name="card_no" class="form-control" autocomplete="off" maxlength="20" required="" type="text">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Card Expiry Date</label>
-                                                        <div class="controls">
-                                                            <div class="row">
-                                                                <div class="col-md-9">
-                                                                    <select class="form-control" name="expiry_month">
+<div class="modal fade" id="walletTopUp">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+        <h4 class="modal-title text-center">Top up wallet</h4>
+
+      </div>
+      <div class="modal-body">
+        <div class="box-header with-border">
+          <h3 class="box-title">Card Details</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <form action="{{config('app.url')}}/phonetopup/fund" method="POST" role="form form-horizontal">
+            {{csrf_field()}}
+            <!-- text input -->
+            <div class="container-fluid">
+              <fieldset>
+                <input type="hidden" name="wallet_code" value="{{$wallet->wallet_code}}">
+                <input type="hidden" name="wallet_name" value="{{$wallet->wallet_name}}">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label for="cc_name">First Name</label>
+                      <div class="controls">
+                        <input name="fname" class="form-control" id="cc_name" title="First Name" required type="text">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label for="cc_name">Last Name</label>
+                      <div class="controls">
+                        <input name="lname" class="form-control" id="cc_name" title="last name" required type="text">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Phone Number</label>
+                  <div class="controls">
+                    <input name="phone" class="form-control" autocomplete="off" maxlength="20" required="" type="text">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label>Email Address</label>
+                  <div class="controls">
+                    <input name="emailaddr" class="form-control" autocomplete="off" required="" type="text">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Card Number</label>
+                  <div class="controls">
+                    <input name="card_no" class="form-control" autocomplete="off" maxlength="20" required="" type="text">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Card Expiry Date</label>
+                  <div class="controls">
+                    <div class="row">
+                      <div class="col-md-9">
+                        <select class="form-control" name="expiry_month">
                                                                        <option value="01">January</option>
                                                                        <option value="02">February</option>
                                                                        <option value="03">March</option>
@@ -404,190 +469,189 @@ i.can {
                                                                        <option value="11">November</option>
                                                                        <option value="12">December</option>
                                                                    </select>
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                  @php($year = date('Y'))
-                                                                  <select class="form-control" name="expiry_year">
+                      </div>
+                      <div class="col-md-3">
+                        @php($year = date('Y'))
+                        <select class="form-control" name="expiry_year">
                                                                       @for($i = $year; $i < $year + 6; $i++)
                                                                               <option value="{{$i}}">{{$i}}</option>
                                                                       @endfor
                                                                        
                                                                     
                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="row">
-                                                            <div class="col-md-3">
-                                                                <label>Card CVV</label>
-                                                                <div class="controls">
-                                                                    <input class="form-control" autocomplete="off" maxlength="3" pattern="\d{3}" title="Three digits at back of your card" required="" type="text" name="cvv">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-3">
-                                                                <label>Pin</label>
-                                                                <div class="controls">
-                                                                    <input class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="pin" required="" type="text" name="pin">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <label>Amount</label>
-                                                                <div class="input-group">
-                                                                    <div class="input-group-addon">₦</div>
-                                                                    <input name="amount" type="text" class="form-control" id="amount" placeholder="Amount">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label></label>
-                                                        <div class="controls">
-                                                            <button type="submit" class="btn btn-primary">Top up</button>
-                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                                        </div>
-                                                    </div>
-                                                </fieldset>
-                                            </div>
-                                        </form>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
+                      </div>
                     </div>
-                   
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-md-3">
+                      <label>Card CVV</label>
+                      <div class="controls">
+                        <input class="form-control" autocomplete="off" maxlength="3" pattern="\d{3}" title="Three digits at back of your card" required=""
+                          type="text" name="cvv">
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <label>Pin</label>
+                      <div class="controls">
+                        <input class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="pin" required="" type="text" name="pin">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label>Amount</label>
+                      <div class="input-group">
+                        <div class="input-group-addon">₦</div>
+                        <input name="amount" type="text" class="form-control" id="amount" placeholder="Amount">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label></label>
+                  <div class="controls">
+                    <button type="submit" class="btn btn-primary">Top up</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
 <!--row ends-->
 
 <div class="container">
-                            <!-- Trigger the modal with a button -->
-                            <!-- Modal -->
-                            <div class="modal fade" id="Purchase" role="dialog">
-                                <div class="modal-dialog">
-                                    <!-- Modal content-->
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            <h4 class="modal-title">Transfer To Service Provider</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form action="{{config('app.url')}}/topup/wallet" method="post" accept-charset="utf-8">
-                                                <div class="modal-body" style="padding: 5px;">
-                                                 
-                                                    <input name="wallet_id" value="{{$wallet->id}}" type="hidden">
-                                                 
-                                                        {{csrf_field()}}
-                                                   
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                                                            <input class="form-control" name="narration" placeholder="Narration" type="text" required />
-                                                       
-                                                        </div>
-                                                    </div>
+  <!-- Trigger the modal with a button -->
+  <!-- Modal -->
+  <div class="modal fade" id="Purchase" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Transfer To Service Provider</h4>
+        </div>
+        <div class="modal-body">
+          <form action="{{config('app.url')}}/topup/wallet" method="post" accept-charset="utf-8">
+            <div class="modal-body" style="padding: 5px;">
+
+              <input name="wallet_id" value="{{$wallet->id}}" type="hidden"> {{csrf_field()}}
+
+              <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
+                  <input class="form-control" name="narration" placeholder="Narration" type="text" required />
+
+                </div>
+              </div>
 
 
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                                                            <input class="form-control" name="amount" placeholder="Amount" type="number" required />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="panel-footer" style="margin-bottom:-14px;">
-                                                    <button type="submit" class="btn btn-success">Purchase</button>
-                                                    <button style="float: right;" type="button" class="btn btn-default btn-close" data-dismiss="modal">Close</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+              <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
+                  <input class="form-control" name="amount" placeholder="Amount" type="number" required />
+                </div>
+              </div>
+            </div>
+            <div class="panel-footer" style="margin-bottom:-14px;">
+              <button type="submit" class="btn btn-success">Purchase</button>
+              <button style="float: right;" type="button" class="btn btn-default btn-close" data-dismiss="modal">Close</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <center>
-  <br> 
-
- 
-    
+  <br>
 
 
 
-        <!-- Modal -->
-        <div class="modal fade" id="airtimeModal" tabindex="-1" role="dialog" aria-labelledby="airtimeModal" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Topup <span class="phoneToTopUp"></span> with Airtime </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="airtimeModal" tabindex="-1" role="dialog" aria-labelledby="airtimeModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Topup <span class="phoneToTopUp"></span> with Airtime </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
+        </div>
+        <div class="modal-body">
+
+          <div class="form-row">
+            <form class="send-airtime" action="{{ route('topup.phone.user')}}" method="POST" role="form">
+              {{csrf_field()}}
+              <input type="hidden" name="current_id" class="current_user">
+              <input type="hidden" name="Airtime" class="Airtime">
+
+              <div class="form-group col-md-6">
+                <label for="Firstname" class="col-form-label">Name</label>
+                <input type="text" class="form-control firstName" name="firstName">
               </div>
-              <div class="modal-body">
-
-                <div class="form-row">
-                  <form class=" topup-multiple" action="{{ route('topup.phone.user')}}" method="POST" role="form">
-                    {{csrf_field()}}
-                    <input type="hidden" name="current_id" class="current_user">
-                    <input type="hidden" name="Airtime" class="Airtime">
-
-                    <div class="form-group col-md-6">
-                      <label for="Firstname" class="col-form-label">Name</label>
-                      <input type="text" class="form-control firstName" name="firstName">
-                    </div>
-                    <div class="form-group col-md-6">
-                      <label for="Phone" class="col-form-label">Phone</label>
-                      <input type="text" class="form-control phone" name="phone">
-                    </div>
-
-                    <hr />
-                    <div class="form-group col-md-12">
-                      <label for="Lastname" class="col-form-label">Amount</label>
-                      <input type="text" name="amount" class="form-control" placeholder="Please Enter Amount" required>
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                  <button type="button" class="btn btn-primary btn-send">Send Airtime</button>
-                </div>
-
-                </form>
+              <div class="form-group col-md-6">
+                <label for="Phone" class="col-form-label">Phone</label>
+                <input type="text" class="form-control phone" name="phone">
               </div>
 
-            </div>
+              <hr />
+              <div class="form-group col-md-12">
+                <label for="Lastname" class="col-form-label">Amount</label>
+                <input type="text" name="amount" class="form-control" placeholder="Please Enter Amount" required>
+              </div>
+
           </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary btn-send">Send Airtime</button>
+          </div>
+
+          </form>
         </div>
 
+      </div>
+    </div>
+  </div>
 
-        <div class="modal fade" id="dataModal" tabindex="-1" role="dialog" aria-labelledby="dataModal" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Topup <span class="phoneToTopUp"></span> with Data </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+  <div class="modal fade" id="dataModal" tabindex="-1" role="dialog" aria-labelledby="dataModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Topup <span class="phoneToTopUp"></span> with Data </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
+        </div>
+        <div class="modal-body">
+
+          <div class="form-row">
+            <form class="send-data" action="{{ route('topup.data.user')}}" method="POST" role="form">
+              {{csrf_field()}}
+              <input type="hidden" name="current_id" class="current_user">
+              <input type="hidden" name="Data" class="Data">
+
+              <div class="form-group col-md-6">
+                <label for="Firstname" class="col-form-label">Name</label>
+                <input type="text" class="form-control firstName" name="firstName">
               </div>
-              <div class="modal-body">
+              <div class="form-group col-md-6">
+                <label for="Phone" class="col-form-label">Phone</label>
+                <input type="text" class="form-control phone" name="phone">
+              </div>
 
-                <div class="form-row">
-                  <form class="send-data" action="{{ route('topup.data.user')}}" method="POST" role="form">
-                    {{csrf_field()}}
-                    <input type="hidden" name="current_id" class="current_user">
-                    <input type="hidden" name="Data" class="Data">
-
-                    <div class="form-group col-md-6">
-                      <label for="Firstname" class="col-form-label">Name</label>
-                      <input type="text" class="form-control firstName" name="firstName">
-                    </div>
-                    <div class="form-group col-md-6">
-                      <label for="Phone" class="col-form-label">Phone</label>
-                      <input type="text" class="form-control phone" name="phone">
-                    </div>
-
-                    <hr />
+              <hr />
 
 
-                    <select name="amount" class="form-control">
+              <select name="amount" class="form-control">
 
                       <optgroup label="MTN">
                         <option value="200">250MB (#200)</option>
@@ -628,64 +692,64 @@ i.can {
                     </select>
 
 
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                  <button type="button" class="btn btn-primary btn-send">Send Data</button>
-                </div>
-
-                </form>
-              </div>
-
-            </div>
           </div>
-        </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary btn-send">Send Data</button>
+          </div>
 
+          </form>
+        </div>
 
       </div>
     </div>
   </div>
 
-  </div>
-  </div>
-    </div>
-   @if (session('otp'))
-   <script type="text/javascript">
-        $(document).ready(function() {
-            $('#myModal').modal();
-        });
-    </script>
 
-    <div class="modal fade" id="myModal" role="dialog">
+  </div>
+  </div>
+  </div>
+
+  </div>
+  </div>
+  </div>
+  @if (session('otp'))
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('#myModal').modal();
+    });
+  </script>
+
+  <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
-    
+
       <!-- Modal content-->
       <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Otp</h4>
-          </div>
-          <div class="modal-body">
-            <p>{{session('otp')}}</p>
-            <div class="row">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Otp</h4>
+        </div>
+        <div class="modal-body">
+          <p>{{session('otp')}}</p>
+          <div class="row">
             <div class="col-md-6 col-md-offset-2">
               <form action="{{config('app.url')}}/phonetopup/otp" method="POST">
                 {{csrf_field()}}
                 <input type="hidden" name="ref" value="{{$cardWallet->ref}}">
                 <div class="form-group">
-                    <input type="password" class="form-control" name="otp" placeholder="Enter OTP">
+                  <input type="password" class="form-control" name="otp" placeholder="Enter OTP">
                 </div>
                 <button type="submit" class="btn btn-default btn-block">Submit</button>
               </form>
             </div>
           </div>
-      </div>
-      
-    </div>
-  </div>
+        </div>
 
-</div>
-@endif
+      </div>
+    </div>
+
+  </div>
+  @endif
   </div>
 
   @endsection @section('add_js')
@@ -740,91 +804,93 @@ i.can {
 //         $('#airtimeModal .modal-body').html(response.data);
 //     });
 // });
-</script>
-<script type="text/javascript">
+  </script>
 
-function toggle(source) {
-  checkboxes = document.getElementsByName('checked[]');
-  for(var i=0, n=checkboxes.length;i<n;i++) {
-    checkboxes[i].checked = source.checked;
-  }
-}
-
-</script>
+  <script type="text/javascript">
+    function toggle(source) {
+      checkboxes = document.getElementsByName('checked[]');
+      for (var i = 0, n = checkboxes.length; i < n; i++) {
+        checkboxes[i].checked = source.checked;
+      }
+    }
+  </script>
 
     <script type="text/javascript">
 
-        $("#department").change(function () {
-            $("#contacts-form").submit();
+  <script>
+    $("#department").change(function () {
+      $("#contacts-form").submit();
+    });
+
+    $(".select-all").click(function () {
+      if ($(".select-all").is(':checked')) {
+        $(".checkbox").each(function () {
+          $(this).prop("checked", true);
         });
-        
-        $(".select-all").click(function (){
-          if ($(".select-all").is(':checked')){
-              $(".checkbox").each(function (){
-                $(this).prop("checked", true);
-                });
-              }else{
-                $(".checkbox").each(function (){
-                      $(this).prop("checked", false);
-                });
-                      }
+      } else {
+        $(".checkbox").each(function () {
+          $(this).prop("checked", false);
+        });
+      }
+    });
+    $(".checkbox").click(function () {
+      if ($(this).prop('checked') == false) {
+        $(".select-all").prop("checked", false);
+      }
+    });
+  </script>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('#contact-table').DataTable({
+        initComplete: function () {
+          this.api().columns([1, 3]).every(function () {
+            var column = this;
+            var select = $('<select><option value=""></option></select>')
+              .appendTo($(column.header()).empty())
+              .on('change', function () {
+                var val = $.fn.dataTable.util.escapeRegex(
+                  $(this).val()
+                );
+
+                column
+                  .search(val ? '^' + val + '$' : '', true, false)
+                  .draw();
               });
-        $(".checkbox").click(function (){
-            if ($(this).prop('checked')==false){
-              $(".select-all").prop("checked", false);
-            }
-          });
-  
-      $(document).ready(function() {
-        $('#contact-table').DataTable( {
-            initComplete: function () {
-                this.api().columns([1,3]).every( function () {
-                    var column = this;
-                    var select = $('<select><option value=""></option></select>')
-                        .appendTo( $(column.header()).empty() )
-                        .on( 'change', function () {
-                            var val = $.fn.dataTable.util.escapeRegex(
-                                $(this).val()
-                            );
-    
-                            column
-                                .search( val ? '^'+val+'$' : '', true, false )
-                                .draw();
-                        } );
-    
-                    column.data().unique().sort().each( function ( d, j ) {
-                        select.append( '<option value="'+d+'">'+d+'</option>' )
-                    } );
-                });
-            }
-        });
-      });
-    </script>
-    <!-- script enbles checkbox to be clicked when you click on the row -->
-    <script type="text/javascript">
-      $('#contact-table tr').click(function() {
-        ele = $(this).find('td input:checkbox')[0];
-        ele.checked = ! ele.checked;
-      });
-      $('input:checkbox').click(function(e){
-        e.stopPropagation();
-      })
-      $('#topuphistory tr').click(function() {
-        ele = $(this).find('td input:checkbox')[0];
-        ele.checked = ! ele.checked;
-      });
-      $('input:checkbox').click(function(e){
-        e.stopPropagation();
-      })
-      $('#datatable tr').click(function() {
-        ele = $(this).find('td input:checkbox')[0];
-        ele.checked = ! ele.checked;
-      });
-      $('input:checkbox').click(function(e){
-        e.stopPropagation();
-      });
 
-      $(function () {
+            column.data().unique().sort().each(function (d, j) {
+              select.append('<option value="' + d + '">' + d + '</option>')
+            });
+          });
+        }
+      });
+    });
+  </script>
+  <!-- script enbles checkbox to be clicked when you click on the row -->
+  <script>
+    $('#contact-table tr').click(function () {
+      ele = $(this).find('td input:checkbox')[0];
+      ele.checked = !ele.checked;
+    });
+    $('input:checkbox').click(function (e) {
+      e.stopPropagation();
+    })
+    $('#topuphistory tr').click(function () {
+      ele = $(this).find('td input:checkbox')[0];
+      ele.checked = !ele.checked;
+    });
+    $('input:checkbox').click(function (e) {
+      e.stopPropagation();
+    })
+    $('#datatable tr').click(function () {
+      ele = $(this).find('td input:checkbox')[0];
+      ele.checked = !ele.checked;
+    });
+    $('input:checkbox').click(function (e) {
+      e.stopPropagation();
+    });
+
+    $(function () {
         $('.groups-list').change(function() {
             var current = $(this).val();
             $(this).find('option').each(function () {
@@ -854,7 +920,43 @@ function toggle(source) {
             $('form.send-airtime.topup-multiple').submit();
         });
       });
-    </script>
-    
 
-@endsection
+  </script>
+
+  <script>
+    function starContact(id) {
+      var base = "{{config('app.url')}}";
+      $.ajax({
+        type: "GET",
+        url: base + "/phonetopup/star/" + id,
+        success: function (json) {
+          location.reload(true);
+          // var contact = $(".contact-fn");
+          // contact.remove();
+          // var count = 0;
+          // var final_query = '';
+          // $.each(json, function (value, key) {
+          //   var starred = key.starred == 1 ? "fa-star starred" : "fa-star-o not-starred";
+
+          //   final_query += '<tr class="contact-fn"><td class="phone" onclick="starContact(' + key.id + ')"><i class="fa ' + starred + '"></i></td>'
+          //     + '<td><input type="checkbox" name="checked[]" value="' + key.id + '" class="checkbox"></td>'
+          //     + '<td class="firstName" data-user="' + key.id + '">' + key.firstname + '  ' + key.lastname + '</td>'
+          //     + '<td class="phone">' + key.phone + '</td>'
+          //     + '<td class="phoneRef">' + key.netw + '</td>'
+          //     + '<td class="amount">' + key.title + '</td>'
+          //     + '<td class="amount">' + key.department + '</td>'
+          //     + '<td class="amount">' + key.weekly_max + '</td>'
+          //     + '<td><input class="form-control input-airtime-amount" type="number" min="50" name="amount[' + key.id + ']" placeholder="Enter Amount"/></td>'
+          //     + '</tr>';
+
+
+          // });
+          // console.log(final_query);
+          // $(".contact-phone").append(final_query);
+
+
+        }
+      });
+    }
+  </script>
+  @endsection

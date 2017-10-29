@@ -41,6 +41,13 @@ class PhoneTopUpController extends Controller
         //
     }
 
+    public function star(TopupContact $contact){
+        $contact->starred = $contact->starred == 1 ? false : true;
+        $contact->save();
+        $phone = TopupContact::orderBy('starred', 'desc')->get();
+        return response()->json($phone);
+    }
+
     //get token for new transaction
     public function getToken()
     {
@@ -281,6 +288,7 @@ class PhoneTopUpController extends Controller
 
 
     public function topuphonemultiple(Request $request){
+        // dd($request);
         if($request->checked == null ){
             Session::flash('error', 'You must select a contact and enter amount to topup');
             return back();

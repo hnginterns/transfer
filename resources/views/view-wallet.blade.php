@@ -86,7 +86,7 @@ tr:nth-child(even) {
             <th><font color="#39689C"><h2>Balance</h2></font></th>
           </tr>
           <tr>
-            <td><font color="#008000"> <h2>{{ $wallet->wallet_name }}</h2></font></td>
+            <td><font color="#008000"> <h2><b>{{ $wallet->wallet_name }}</b></h2></font></td>
             <td><h2>{{ $wallet->wallet_code }}</h2></td>
             <td><h2>Nigeria Naira</h2></td>
             <td><h2>{{ $wallet->balance }}</h2></td>
@@ -99,9 +99,9 @@ tr:nth-child(even) {
 
           <br> <div class="">
           <ul class="nav nav-pills nav-justified ">
-            <li class="active"><a data-toggle="pill" href="#home">Wallet Transfer History</a></li>
-            <li><a data-toggle="pill" href="#menu1">Beneficiaries List</a></li>
-            <li><a data-toggle="pill" href="#menu2">Beneficiaries Transaction History</a></li>
+            <li class="active"><a data-toggle="pill" href="#home">Wallet Transfer History</a></li><br>
+            <li><a data-toggle="pill" href="#menu1">Beneficiaries List</a></li><br>
+            <li><a data-toggle="pill" href="#menu2">Beneficiaries Transaction History</a></li><br>
           </ul>
         <div class="tab-content">
         <div id="home" class="tab-pane fade in active">
@@ -240,7 +240,7 @@ tr:nth-child(even) {
       			
             <div class="modal-body">  
                 <!-- text input -->      
-	    <form action="/fund/{{$wallet->id}}" method="POST" class="form-horizontal">
+	    <form action="/wallet/{{$wallet->id}}/fund" method="POST" class="form-horizontal">
                     {{ csrf_field() }}
                     <input type="hidden" name="wallet_name" value="{{$wallet->wallet_name}}">
                       <input type="hidden" name="wallet_code" value="{{$wallet->wallet_code}}">

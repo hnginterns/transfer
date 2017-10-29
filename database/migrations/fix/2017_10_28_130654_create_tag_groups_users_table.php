@@ -14,7 +14,6 @@ class CreateTagGroupsUsersTable extends Migration
     public function up()
     {
         Schema::create('tag_groups_users', function (Blueprint $table) {
-            $table->increments('id');
             $table->integer('tag_id')->unsigned();
             $table->integer('topupcontact_id')->unsigned();
             $table->foreign('tag_id')->references('id')->on('tags');

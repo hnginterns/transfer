@@ -98,6 +98,7 @@ Route::group(['middleware' => 'auth'], function () {
 	//phone top up
 	Route::get('/phonetopup', 'pagesController@phoneTopupView');
 	Route::post('/phonetopup/otp', 'User\PhoneTopUpController@otp');
+	Route::get('/phonetopup/star/{contact}', 'User\PhoneTopUpController@star');
 	Route::post('/phonetopup/fund', 'User\PhoneTopUpController@fundTopupWallet');
 	Route::post('/topup/wallet', 'User\PhoneTopUpController@phoneTopUp');
 	Route::get('topup/phone/{id}', 'User\PhoneTopUpController@phoneshow');
@@ -113,8 +114,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/balance', 'pagesController@balance');
 	Route::get('/fund/{id}', 'RavepayController@index')->name('ravepay.pay');
 	Route::post('/fund/{id}', 'RavepayController@cardWallet')->name('ravepay.pay');
-	Route::post('/otp', 'RavepayController@otp')->name('ravepay.pay');
-	Route::post('/wallet/{wallet_code}/fund', 'WalletController@cardWallet');
+	Route::post('/wallet/{wallet_code}/fund', 'WalletController@fundWalletWithCard');
+	Route::post('/otp', 'WalletController@otp');
 	Route::get('/integrity/{txRef}/{email}', 'RavepayController@checkSum');
 
 	Route::get('/ravepaysuccess/{ref}/{amount}/{currency}', 'RavepayController@success');
@@ -155,7 +156,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
   	Route::get('wallets/details/{id}', 'Admin\WalletController@details')->name('wallets.details');
   	Route::get('wallets/manualfund/{id}', 'Admin\WalletController@manualfund')->name('wallets.manualfund');
   	Route::post('wallets/manualfund/{id}', 'Admin\WalletController@manualfundstore')->name('wallets.manualfund.store');
-  	Route::post('otp', 'Admin\WalletController@manualfundstore')->name('wallets.otp.store');
+  	Route::post('otp', 'Admin\WalletController@otpForWalletFunding')->name('wallets.otp.store');
 	Route::get('wallets/manualfundint/{id}', 'Admin\WalletController@manualfundint')->name('wallets.manualfundint');
   	Route::post('wallets/manualfundint/{wallet}', 'WalletController@payWithInternetBanking')->name('wallets.manualfund.storeint');
 	Route::get('wallets/ravefund/{id}', 'Admin\WalletController@ravefund')->name('wallets.ravefund');
@@ -167,14 +168,14 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
 	//wallet fund starts
 	Route::get('/fundwallet', 'Admin\AdminController@fundwallet');
 	Route::post('/{wallet_code}/fund', 'WalletController@cardWallet');
-	// Route::post('/otp', 'WalletController@otp');
+	Route::post('/otp', 'WalletController@otp');
 	//Wallet fund ends
 
 	Route::get('logActivity', 'Admin\AdminController@logActivity');
 
 	Route::get('/fundwallet', 'Admin\AdminController@fundwallet');
 	Route::post('/{wallet_code}/fund', 'WalletController@cardWallet');
-	Route::post('/otp', 'WalletController@otp');
+	//Route::post('/otp', 'WalletController@otp');
 	//Admin wallet operations ends
 
 
