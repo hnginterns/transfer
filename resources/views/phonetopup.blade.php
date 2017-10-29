@@ -179,7 +179,7 @@ i.can {
           
           *
     <div class="row">
-  <div class="col-md-7 text-center">
+  <div class="col-md-4 text-center">
 
     <div class="orange-box">
       <h4 class="title" align="center">Group Airtime Top Up</h4>
@@ -194,7 +194,7 @@ i.can {
                       </select> @endif
       <input class="form-control group-amount-topup" type="number" name="amount" min="50" required placeholder="Enter Amount to be shared">
       <button class="btn btn-success topup-group-btn" type="submit">Top Up Group</button>
-      <div style="margin-top: 10px;" class="alert alert-info col-md-8 col-md-offset-2 groups-topup text-center hidden"></div>
+      <div style="margin-top: 10px;" class="alert alert-info col-md-4 col-md-offset-2 groups-topup text-center hidden"></div>
     </form>
 
  </div> 
