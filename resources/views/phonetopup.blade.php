@@ -180,10 +180,10 @@ i.can {
           *
     <div class="row">      
   <div class="col-md-4">
-          <div class="orange-box">
-      <h4 class="title" align="center">Group Airtime Top Up</h4>
+         
+      
     </div>
-    <br>
+    
     <form class="form form-inline" action="{{ route('topup.phone.group')}}" method="POST" role="form">
       {{csrf_field()}} @if(count($tags) > 0)
       <select name="topup_group" class="form-control groups-list">
