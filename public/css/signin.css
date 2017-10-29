@@ -198,22 +198,21 @@ li.nav-item {
     width: 70%;
     margin-top: 20px;
 }
-
 .admin-login>button {
-    background: #00AEFF;
-    padding: 10px 80px;
-    border-radius: 63px;
-    border-color: #00AEFF;
+    background: #39689C;
+    padding: 4px 12px;
+    
+    border-color: #39689C;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     cursor: pointer;
 }
 
 .admin-login>button:hover,
 .admin-login>button:focus {
-    background: rgb(252, 251, 250);
-    color: #00AEFF;
-    border-color: #00AEFF;
-    border-width: 2px;
+    background: #295b93;
+    color: #fffF;
+    border-color: #39689C;
+    border-width: 1px;
 }
 
 .forgot-holder {
