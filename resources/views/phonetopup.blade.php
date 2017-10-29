@@ -152,9 +152,9 @@ i.can {
 
 </div>
 <br>
-<button type="submit" class="btn btn-info pull-right">Top-up Data</button>
-<button type="submit" class="btn btn-success pull-right">Top up all</button>
-<br>
+<button type="submit" class="btn btn-success pull-right" style="margin-right: 5px; margin-bottom: 3px;">Top up all</button>
+<button type="submit" class="btn btn-info pull-right" style="margin-left: 5px; margin-bottom: 3px;">Top-up Data</button>
+<br><br>
 <hr>
 
 
@@ -162,15 +162,15 @@ i.can {
       <table class="table" id="contact-table">
         <thead>
           <tr>
-            <td><input type="checkbox" onClick="toggle(this)" /> Select All</td>
-            <td>Star</td>
-            <td>Name</td>
-            <td>Phone Number</td>
-            <td>Network</td>
-            <td>Title</td>
-            <td>Department</td>
-            <td>Weekly Limit</td>
-            <td>Enter Amount<br>(airtime)</td>
+            <td><input type="checkbox" onClick="toggle(this)" /> <strong>Select All</strong></td>
+            <td><strong>Star</strong></td>
+            <td><strong>Name</strong></td>
+            <td><strong>Phone Number</strong></td>
+            <td><strong>Network</strong></td>
+            <td><strong>Title</strong></td>
+            <td><strong>Department</strong></td>
+            <td><strong>Weekly Limit</strong></td>
+            <td><strong>Enter Amount</strong><br>(airtime)</td>
             
           </tr>
         </thead>
