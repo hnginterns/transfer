@@ -154,8 +154,7 @@ i.can {
 </div>
 <br>
 
-<button type="submit" class="btn btn-success">Top up all</button>
-<a href="#dataModal" class="btn btn-info pull-right" style="margin-right: 5px; margin-bottom: 3px;" data-toggle="modal">Top-up Data</a>
+
 <br><br>
 <hr>
 
@@ -177,11 +176,13 @@ i.can {
             
           </tr>
         </thead>
-        <tbody>
+        <tbody> 
           <form class="send-airtime" action="{{ route('topup.phone.multiple')}}" method="POST" role="form">
+          <a href="#dataModal" class="btn btn-info pull-right" style="margin-right: 5px; margin-bottom: 3px;" data-toggle="modal">Top-up Data</a>
+          <button type="submit" class="btn btn-success pull-right">Top up all</button>
             {{ csrf_field() }} @if(count($phones) > 0) @foreach($phones as $phone)
             <tr class="contact-fn">
-              
+             
               <td><input type="checkbox" name="checked[]" value="{{$phone->id}}" class="checkbox"></td>
               <td><i onclick="starContact({{$phone->id}})" class="fa {{$phone->starred ? 'fa-star starred': 'fa-star-o not-starred'}}"></i></td>
               <td class="firstName" data-user="{{ $phone->id }}">{{ $phone->firstname }} {{ $phone->lastname }}</td>
@@ -192,7 +193,7 @@ i.can {
               <td class="max-tops">{{ $phone->weekly_max }}</td>
               <td>{{$phone->topupTotal->sum('amount')}}</td>
               <td><input class="form-control input-airtime-amount" type="number" min="50" name="amount[{{$phone->id}}]" placeholder="Enter Amount"
-                /></td>
+                </td>
               <td>
 
                 
