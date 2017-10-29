@@ -126,12 +126,7 @@ i.can {
         <div class="col-md-5"></div>
       
     </div>
-
-
-    <br>
-    
-    
-<br><br>
+<br>
 <hr>
 
 
@@ -159,7 +154,7 @@ i.can {
   <div class="col-md-4 text-center">
 
     <div class="orange-box">
-      <h4 class="title" align="center">Group Airtime Top Up</h4>
+      
     </div>
     <br>
     <form class="form form-inline" action="{{ route('topup.phone.group')}}" method="POST" role="form">
