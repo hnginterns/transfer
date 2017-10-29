@@ -579,7 +579,9 @@ i.can {
                     <label for="data-user" class="col-form-label">Select User To Topup</label>
                     <select id="data-user" name="current_id" class="form-control data-topup-select">
                       @foreach($phones as $phone)
-                        <option data-network="{{ $phone->netw }}" value="{{ $phone->id }}">{{ $phone->firstname . ' ' . $phone->lastname }}
+                        <option data-network="{{ $phone->netw }}" value="{{ $phone->id }}">
+                          {{ $phone->firstname . ' ' . $phone->lastname .' (' . $phone->netw . ')' }}
+                        </option>
                       @endforeach
                     </select>
                   @endif
