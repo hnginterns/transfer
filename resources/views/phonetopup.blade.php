@@ -89,11 +89,11 @@ i.can {
 
 <div class="row">
   <div class="col-md-12 text-center">
-
+<hr>
         <ul class="nav nav-pills nav-justified ">
-            <li class="active"><a data-toggle="pill" href="#contactlistbox">Top Up</a></li>
-            <li><a data-toggle="pill" href="#fundhistorybox">Funding History</a></li>
-            <li><a data-toggle="pill" href="#topuphistorybox">Topup History</a></li>
+            <li class="active"><a data-toggle="pill" href="#contactlistbox"><b><h2>Top Up</h2><b></a></li>
+            <li><a data-toggle="pill" href="#fundhistorybox"><b><h2>Funding History</h2><b></a></li>
+            <li><a data-toggle="pill" href="#topuphistorybox"><b><h2>Topup History</h2><b></a></li>
         </ul>
 
     </div>
