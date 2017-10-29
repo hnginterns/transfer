@@ -80,16 +80,16 @@ tr:nth-child(even) {
     <!-- wallet types table -->
         <table>
           <tr>
-            <th><font color="#39689C"><h2>Wallet Name</h2></font></th>
-            <th><font color="#39689C"><h2>Wallet ID</h2></font></th>
-            <th><font color="#39689C"> <h2>Currency Type</h2></font></th>
-            <th><font color="#39689C"><h2>Balance</h2></font></th>
+            <th><font color="#39689C"><h3>Wallet Name</h3></font></th>
+            <th><font color="#39689C"><h3>Wallet ID</h3></font></th>
+            <th><font color="#39689C"> <h3>Currency Type</h3></font></th>
+            <th><font color="#39689C"><h3>Balance</h3></font></th>
           </tr>
           <tr>
-            <td><font color="#008000"> <h2><b>{{ $wallet->wallet_name }}</b></h2></font></td>
-            <td><h2>{{ $wallet->wallet_code }}</h2></td>
-            <td><h2>Nigeria Naira</h2></td>
-            <td><h2>{{ $wallet->balance }}</h2></td>
+            <td><font color="#008000"> <h3><b>{{ $wallet->wallet_name }}</b></h3></font></td>
+            <td><h3>{{ $wallet->wallet_code }}</h3></td>
+            <td><h3>Nigeria Naira</h3></td>
+            <td><h3>{{ $wallet->balance }}</h3></td>
           </tr>
           
         </table>
@@ -99,10 +99,12 @@ tr:nth-child(even) {
 
           <br> <div class="">
           <ul class="nav nav-pills nav-justified ">
-            <li class="active"><a data-toggle="pill" href="#home">Wallet Transfer History</a></li><br>
-            <li><a data-toggle="pill" href="#menu1">Beneficiaries List</a></li><br>
-            <li><a data-toggle="pill" href="#menu2">Beneficiaries Transaction History</a></li><br>
+            <li class="active"><a data-toggle="pill" href="#home">Wallet Transfer History</a></li>
+            <li><a data-toggle="pill" href="#menu1">Beneficiaries List</a></li>
+            <li><a data-toggle="pill" href="#menu2">Beneficiaries Transaction History</a></li>
           </ul>
+	  <br>
+	  <hr>
         <div class="tab-content">
         <div id="home" class="tab-pane fade in active">
       	<div class="orange-box"><h4 class="title text-capitalize" align="center"> {{ ucfirst($wallet->wallet_name) }} wallet transfer history</h4></div><br>
@@ -251,14 +253,14 @@ tr:nth-child(even) {
                             <div class="col-md-5">
                                 <label for="cc_name">First Name</label>
                                 <div class="controls">
-                                    <input name="fname" class="form-control" id="cc_name" title="First Name" required type="text">
+                                    <input name="fname" class="form-control" value="{{Auth::user()->fundWalletInfo == null ? '' : Auth::user()->fundWalletInfo->firstname}}" id="cc_name" title="First Name" required type="text">
                                 </div>
                             </div>
                             <div class="col-md-5">
                               <div class="form-group">
                                   <label for="cc_name">Last Name</label>
                                   <div class="controls">
-                                      <input name="lname" class="form-control" id="cc_name"  title="last name" required type="text">
+                                      <input name="lname" class="form-control" value="{{Auth::user()->fundWalletInfo == null ? '' : Auth::user()->fundWalletInfo->lastname}}" id="cc_name"  title="last name" required type="text">
                                   </div>
                               </div>
                             </div>
@@ -269,14 +271,14 @@ tr:nth-child(even) {
                             <div class="col-md-5">
                                 <label>Phone Number</label>
                                 <div class="controls">
-                                      <input name="phone" class="form-control" autocomplete="off" maxlength="20"  required="" type="text">
+                                      <input name="phone" class="form-control" value="{{Auth::user()->fundWalletInfo == null ? '' : Auth::user()->fundWalletInfo->phonenumber}}" autocomplete="off" maxlength="20"  required="" type="text">
                                 </div>
                             </div>
                             <div class="col-md-5">
                                 <div class="form-group">
                                     <label>Email Address</label>
                                     <div class="controls">
-                                          <input type="email" name="emailaddr" class="form-control" autocomplete="off" required="" type="text">
+                                          <input type="email" name="emailaddr" value="{{Auth::user()->fundWalletInfo == null ? '' : Auth::user()->fundWalletInfo->email}}" class="form-control" autocomplete="off" required="" type="text">
                                     </div>
                                 </div>
                             </div>

@@ -45,11 +45,11 @@ class PhoneTopUpController extends Controller
         
         $validator = Validator::make($input, 
             [
-                'tagname' => 'required|string|unique:tags'
+                'tagname' => 'required|string|unique:tags,name'
             ],
             [
                 'tagname.required' => 'Group name is required',
-                'tagname.required' => 'Group name is already taken'
+                'tagname.unique' => 'Group name is already taken'
             ]
          ); 
         if ($validator->fails()) {
@@ -70,11 +70,10 @@ class PhoneTopUpController extends Controller
         
         $validator = Validator::make($input, 
             [
-                'tagname' => 'required|string|unique:tags'
+                'tagname' => 'required|string'
             ],
             [
                 'tagname.required' => 'Group name is required',
-                'tagname.required' => 'Group name is already taken'
             ]
          ); 
         if ($validator->fails()) {
@@ -393,7 +392,7 @@ class PhoneTopUpController extends Controller
     {
         $phone = TopupContact::find($request->number_id);
 
-        $phone->tags()->syncWithoutDetaching($request->tags);
+        $phone->groups()->syncWithoutDetaching($request->tags);
 
         $phone->firstname = $request->firstname;
         $phone->lastname = $request->lastname;

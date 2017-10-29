@@ -10,6 +10,7 @@ use Session;
 use App\CardWallet;
 use App\Wallet;
 use App\Beneficiary;
+use App\FundWalletInfo;
 use App\Events\FundWallet;
 use DB;
 use URL;
@@ -171,9 +172,7 @@ class WalletController  extends Controller
         $wallet = Wallet::find($id);
 
         $cardWallet = CardWallet::latest()->first();
-
         $user = Auth::user();
-        
         //load form view
         return view('admin.wallets.manualfund', compact('wallet', 'cardWallet','user'));
     }
@@ -200,61 +199,86 @@ class WalletController  extends Controller
 
     public function manualfundstore(Request $request, CardWallet $cardWallet)
     {
-        $token = $this->getToken();
-        // dd($request);
-        $headers = array('content-type' => 'application/json', 'Authorization' => $token);
-        $query = array(
-            "firstname" => $request->fname,
-            "lastname" => $request->lname,
-            "email" => $request->emailaddr,
-            "phonenumber" => $request->phone,
-            "recipient" => "wallet",
-            "recipient_id" => $request->wallet_code,
-            "card_no" => $request->card_no,
-            "cvv" => $request->cvv,
-            "pin" => $request->pin, //optional required when using VERVE card
-            "expiry_year" => $request->expiry_year,
-            "expiry_month" => $request->expiry_month,
-            "charge_auth" => "PIN", //optional required where card is a local Mastercard
-            "apiKey" => env('API_KEY'),
-            "amount" => $request->amount,
-            "fee" => 0,
-            "medium" => "web",
-            //"redirecturl" => "https://google.com"
-        );
-        $body = \Unirest\Request\Body::json($query);
+        $validator = $this->validateWalletFunding($request->all());
+        if ($validator->fails()) {
+            $messages = $validator->messages()->toArray();
+            Session::flash('form-errors', $messages);
+            return redirect()->to(URL::previous());
+        }else {
+            // Store info entered for card except card details start
+            if(Auth::user()->walletFundInfo == null){
+                $wallet_fund_info = new FundWalletInfo;
+                $wallet_fund_info->firstname = $request->fname;
+                $wallet_fund_info->lastname = $request->lname;
+                $wallet_fund_info->uuid = Auth::user()->id;
+                $wallet_fund_info->email = $request->emailaddr;
+                $wallet_fund_info->phonenumber = $request->phone;
+                $wallet_fund_info->save();
+            }else{
+                $wallet_fund_info = Auth::user()->walletFundInfo;
+                $wallet_fund_info->firstname = $request->fname;
+                $wallet_fund_info->lastname = $request->lname;
+                $wallet_fund_info->uuid = Auth::user()->id;
+                $wallet_fund_info->email = $request->emailaddr;
+                $wallet_fund_info->phonenumber = $request->phone;
+                $wallet_fund_info->save();
+            }
+            // Store info entered for card except card details end
+            $token = $this->getToken();
+            $headers = array('content-type' => 'application/json', 'Authorization' => $token);
+            $query = array(
+                "firstname" => $request->fname,
+                "lastname" => $request->lname,
+                "email" => $request->emailaddr,
+                "phonenumber" => $request->phone,
+                "recipient" => "wallet",
+                "recipient_id" => $request->wallet_code,
+                "card_no" => $request->card_no,
+                "cvv" => $request->cvv,
+                "pin" => $request->pin, //optional required when using VERVE card
+                "expiry_year" => $request->expiry_year,
+                "expiry_month" => $request->expiry_month,
+                "charge_auth" => "PIN", //optional required where card is a local Mastercard
+                "apiKey" => env('API_KEY'),
+                "amount" => $request->amount,
+                "fee" => 0,
+                "medium" => "web",
+                //"redirecturl" => "https://google.com"
+            );
+            $body = \Unirest\Request\Body::json($query);
 
-        $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer', $headers, $body);
-        
-        $response = json_decode($response->raw_body, TRUE);
-        // dd($response);
-        if($response['status'] == 'success') {
-            $response = $response['data']['transfer'];
-            $transMsg = $response['flutterChargeResponseMessage'];
-            $transRef = $response['flutterChargeReference'];
+            $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer', $headers, $body);
             
-            $transaction = new CardWallet;
-            $transaction->firstName = $response['firstName'];
-            $transaction->lastName = $response['lastName'];
-            $transaction->status = $response['status'];
-            $transaction->wallet_name = $request->wallet_name;
-            $transaction->phoneNumber = $response['phoneNumber'];
-            $transaction->amount = $response['amountToSend'];
-            $transaction->ref = $transRef;
+            $response = json_decode($response->raw_body, TRUE);
+            // dd($response);
+            if($response['status'] == 'success') {
+                $response = $response['data']['transfer'];
+                $transMsg = $response['flutterChargeResponseMessage'];
+                $transRef = $response['flutterChargeReference'];
+                
+                $transaction = new CardWallet;
+                $transaction->firstName = $response['firstName'];
+                $transaction->lastName = $response['lastName'];
+                $transaction->status = $response['status'];
+                $transaction->wallet_name = $request->wallet_name;
+                $transaction->phoneNumber = $response['phoneNumber'];
+                $transaction->amount = $response['amountToSend'];
+                $transaction->ref = $transRef;
 
-            $transaction->save();
+                $transaction->save();
 
-            return back()->with('status', $transMsg);
+                return back()->with('status', $transMsg);
+            }
+        
+            return back()->with('error', $response['message']);
         }
-    
-        return back()->with('error', $response['message']);
     }
 
 
     public function otpForWalletFunding(Request $request, CardWallet $cardWallet)
     {
         \Unirest\Request::verifyPeer(false);
-
+            // dd($request);
             $headers = array('content-type' => 'application/json');
             $query = array(
                 'transactionRef'=>$request->ref,
@@ -263,12 +287,17 @@ class WalletController  extends Controller
             $body = \Unirest\Request\Body::json($query);
 
             $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer/charge/auth/card', $headers, $body);
+            
             $response = json_decode($response->raw_body, true);
+            
             if($response['status'] == 'success') {
                 event(new FundWallet($cardWallet));
-                Session::flash('success',$response);
+                Session::flash('success',$response['message']);
                 return redirect('admin/managewallet');
 
+            }else{
+                Session::flash('error',$response['message']);
+                return back();
             }
             
     }
@@ -285,35 +314,6 @@ class WalletController  extends Controller
         //load form view
         return view('admin.wallets.internetbanking', compact('wallet', 'intBanking','user'));
     }
-
-    public function manualfundstoreint($id, Request $request){
-        
-                //validate wallet data
-                /**$this->validate($request, [
-                    'name' => 'required',
-                    'amount' => 'required',
-                    'user_id' => 'required',
-                    'wallet_id' => 'required',
-                    'method' => 'required',
-                    'status' => 'required'
-                ]);
-                
-                //get wallet data
-                $fundingData = $request->all();
-                
-                //update wallet data
-                Wallet::find($id)->update($fundingData);
-        
-                return redirect()->route('admin.wallets.index')->with('success','wallet funded successfully!');
-            }
-        
-            public function ravefund($id){
-                //get wallet data by id
-                $wallet = Wallet::find($id);
-                
-                //load form view
-                return view('admin.wallets.ravefund', ['wallet' => $wallet]);*/
-            }
 
 
     public function ravefundstore($id, Request $request){
@@ -346,16 +346,20 @@ class WalletController  extends Controller
         ]);
     }
 
-    protected function validateWalletFunding(array $data) {
+ protected function validateWalletFunding(array $data)
+    {
         return Validator::make($data, [
             'fname' => 'required|string',
             'lname' => 'required|string',
-            'emailaddr' => 'required|email',
             'amount' => 'required|numeric',
-            'phone' => 'required|string'
+            'phone' => 'required|numeric',
+            'emailaddr' => 'required|email',
+            'card_no' => 'required|string',
+            'expiry_year' => 'required|numeric',
+            'cvv' => 'required|numeric',
+            'pin' => 'required|numeric',
+
         ]);
     }
-
-
     
 }

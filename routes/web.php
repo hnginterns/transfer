@@ -156,7 +156,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
   	Route::get('wallets/details/{id}', 'Admin\WalletController@details')->name('wallets.details');
   	Route::get('wallets/manualfund/{id}', 'Admin\WalletController@manualfund')->name('wallets.manualfund');
   	Route::post('wallets/manualfund/{id}', 'Admin\WalletController@manualfundstore')->name('wallets.manualfund.store');
-  	Route::post('otp', 'Admin\WalletController@otpForWalletFunding')->name('wallets.otp.store');
+  	Route::post('wallets/otp', 'Admin\WalletController@otpForWalletFunding')->name('wallets.otp.store');
 	Route::get('wallets/manualfundint/{id}', 'Admin\WalletController@manualfundint')->name('wallets.manualfundint');
   	Route::post('wallets/manualfundint/{wallet}', 'WalletController@payWithInternetBanking')->name('wallets.manualfund.storeint');
 	Route::get('wallets/ravefund/{id}', 'Admin\WalletController@ravefund')->name('wallets.ravefund');
@@ -168,7 +168,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
 	//wallet fund starts
 	Route::get('/fundwallet', 'Admin\AdminController@fundwallet');
 	Route::post('/{wallet_code}/fund', 'WalletController@cardWallet');
-	Route::post('/otp', 'WalletController@otp');
+	// Route::post('/otp', 'WalletController@otp');
 	//Wallet fund ends
 
 	Route::get('logActivity', 'Admin\AdminController@logActivity');
