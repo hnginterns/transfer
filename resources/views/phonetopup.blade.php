@@ -177,8 +177,9 @@ i.can {
             
           </tr>
         </thead>
-        <tbody> <button type="submit" class="btn btn-success">Top up all</button>
+        <tbody> 
           <form class="send-airtime" action="{{ route('topup.phone.multiple')}}" method="POST" role="form">
+          <button type="submit" class="btn btn-success">Top up all</button>
             {{ csrf_field() }} @if(count($phones) > 0) @foreach($phones as $phone)
             <tr class="contact-fn">
              
