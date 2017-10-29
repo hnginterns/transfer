@@ -123,34 +123,7 @@ i.can {
         <div class="col-md-2">
         </div>
         <div class="col-md-5"></div>
-      <form method="GET" action="" accept-charset="UTF-8" id="contacts-form">
-        <div class="col-md-2">
-
-          <select class="form-control" name="department">
-            <option>All Depts</option>
-            @foreach($phones as $contact)
-              <option value="{{ $contact->department }}">{{ $contact->department }}</option>
-            @endforeach
-          </select>
-
-        </div>
-        <div class="col-md-3">
-          <div class="input-group custom-search-form">
-            
-            <span class="input-group-btn">
-                <button class="btn btn-default" type="submit" id="search-users-btn">
-                    <span class="glyphicon glyphicon-search"></span>
-                </button>
-                @if (Input::has('search') && Input::get('search') != '')
-                        <a href="" class="btn btn-danger" type="button" >
-                            <span class="glyphicon glyphicon-remove"></span>
-                        </a>
-                    @endif
-
-            </span>
-          </div>
-        </div>
-      </form>
+      
     </div>
 
 
@@ -186,7 +159,8 @@ i.can {
       <table class="table" id="contact-table">
         <thead>
           <tr>
-            <th><input type="checkbox" onClick="toggle(this)" /> Select All Contact</th>
+            <td><input type="checkbox" onClick="toggle(this)" /> Select All</td>
+            <td>Star</td>
             <td>Name</td>
             <td>Phone Number</td>
             <td>Network</td>
@@ -203,6 +177,7 @@ i.can {
             <tr class="contact-fn">
 
               <td><input type="checkbox" name="checked[]" value="{{$phone->id}}" class="checkbox"></td>
+              <td><i onclick="starContact({{$phone->id}})" class="fa {{$phone->starred ? 'fa-star starred': 'fa-star-o not-starred'}}"></i></td>
               <td class="firstName" data-user="{{ $phone->id }}">{{ $phone->firstname }} {{ $phone->lastname }}</td>
               <td class="phone">{{ $phone->phone }}</td>
               <td class="phoneRef">{{ $phone->netw }}</td>
