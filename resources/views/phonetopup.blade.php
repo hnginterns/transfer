@@ -178,8 +178,8 @@ i.can {
           <form class="send-airtime" action="{{ route('topup.phone.multiple')}}" method="POST" role="form">
           
           *
-          <div class="row">
-  <div class="col-md-12">
+    <div class="row">      
+  <div class="col-md-4">
           <div class="orange-box">
       <h4 class="title" align="center">Group Airtime Top Up</h4>
     </div>
