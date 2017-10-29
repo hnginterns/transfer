@@ -22,6 +22,20 @@ i.can {
   }
   i.received {
     color: #dd4b39;
+    
+  }
+  
+  hr {
+    background:#39689C;
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 2px;
+}
+  
   }
   first {
     float: right;
