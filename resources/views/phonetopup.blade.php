@@ -174,7 +174,7 @@ i.can {
     <table class="table contact-phone" id="contact-tale">
       <thead>
         <tr>
-          <th><input type="checkbox" onClick="toggle(this)" /> Select All Contact</th>
+          <td class="pull-left"><input type="checkbox" onClick="toggle(this)" /> Select All</td>
           <td>Star</td>
           <td>Name</td>
           <td>Phone Number</td>
@@ -191,17 +191,17 @@ i.can {
           {{ csrf_field() }} 
           @if(count($phones) > 0) 
           @foreach($phones as $phone)
-          <tr class="contact-fn">
-            <td class="phone"><i onclick="starContact('{{$phone->id}}')" class="fa {{$phone->starred ? 'fa-star starred' : 'fa-star-o not-starred'}}"></i></td>
-            <td><input type="checkbox" name="checked[]" value="{{$phone->id}}" class="checkbox"></td>
-            <td class="firstName" data-user="{{ $phone->id }}">{{ $phone->firstname }} {{ $phone->lastname }}</td>
-            <td class="phone">{{ $phone->phone }}</td>
-            <td class="phoneRef">{{ $phone->netw }}</td>
-            <td class="amount">{{ $phone->title }}</td>
-            <td class="amount">{{ $phone->department }}</td>
-            <td class="max-tops">{{ $phone->weekly_max }}</td>
-            <td><input class="form-control input-airtime-amount" type="number" min="50" name="amount[{{$phone->id}}]" placeholder="Enter Amount"/></td>
-          </tr>
+            <tr class="contact-fn">
+              <td><input type="checkbox" name="checked[]" value="{{$phone->id}}" class="checkbox"></td>
+              <td class="phone"><i onclick="starContact('{{$phone->id}}')" class="fa {{$phone->starred ? 'fa-star starred' : 'fa-star-o not-starred'}}"></i></td>
+              <td class="firstName" data-user="{{ $phone->id }}">{{ $phone->firstname }} {{ $phone->lastname }}</td>
+              <td class="phone">{{ $phone->phone }}</td>
+              <td class="phoneRef">{{ $phone->netw }}</td>
+              <td class="amount">{{ $phone->title }}</td>
+              <td class="amount">{{ $phone->department }}</td>
+              <td class="max-tops">{{ $phone->weekly_max }}</td>
+              <td><input class="form-control input-airtime-amount" type="number" min="50" name="amount[{{$phone->id}}]" placeholder="Enter Amount"/></td>
+            </tr>
           @endforeach
           @else
           <tr>
