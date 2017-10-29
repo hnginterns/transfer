@@ -49,7 +49,7 @@ class PhoneTopUpController extends Controller
             ],
             [
                 'tagname.required' => 'Group name is required',
-                'tagname.required' => 'Group name is already taken'
+                'tagname.unique' => 'Group name is already taken'
             ]
          ); 
         if ($validator->fails()) {
