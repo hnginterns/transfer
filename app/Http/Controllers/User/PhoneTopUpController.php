@@ -281,7 +281,6 @@ class PhoneTopUpController extends Controller
 
 
     public function topuphonemultiple(Request $request){
-        
         if($request->checked == null ){
             Session::flash('error', 'You must select a contact and enter amount to topup');
             return back();

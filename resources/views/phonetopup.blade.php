@@ -88,10 +88,16 @@ i.can {
       <br>
       <form class="form form-inline" action="{{ route('topup.phone.group')}}" method="POST" role="form">
                     {{csrf_field()}}
-        
-          <input class="form-control" type="number" name="amount" min="50" required placeholder="Enter Amount to be shared">  
-          <button class="btn btn-success" type="submit" >Top Up Group</button>  
-                 
+                    @if(count($tags) > 0)
+                      <select name="topup_group" class="form-control groups-list">
+                        @foreach($tags as $group) 
+                          <option value="{{ $group->id }}" data-value="{{ strtolower($group->name) }}">{{ $group->name }}</option> 
+                        @endforeach 
+                      </select>
+                    @endif
+          <input class="form-control group-amount-topup" type="number" name="amount" min="50" required placeholder="Enter Amount to be shared">  
+          <button class="btn btn-success topup-group-btn" type="submit" >Top Up Group</button>  
+          <div style="margin-top: 10px;" class="alert alert-info col-md-8 col-md-offset-2 groups-topup text-center hidden"></div>                
       </form>
       
     </div>
@@ -162,7 +168,7 @@ i.can {
           </tr>
         </thead>
         <tbody>
-          <form class="send-airtime" action="{{ route('topup.phone.multiple')}}" method="POST" role="form">
+          <form class="send-airtime topup-multiple" action="{{ route('topup.phone.multiple')}}" method="POST" role="form">
             {{ csrf_field() }} 
             @if(count($phones) > 0) 
               @foreach($phones as $phone)
@@ -170,7 +176,8 @@ i.can {
 
               <td>
                 <input type="checkbox" name="checked[]" value="{{$phone->id}}" class="checkbox 
-                @if(count($phone->groups) > 0)@foreach($phone->groups as $group) {{ $group->name }} @endforeach @endif">
+                @if(count($phone->groups) > 0)@foreach($phone->groups as $group) {{ strtolower($group->name) }} @endforeach @endif">
+                
               </td>
               <td class="firstName" data-user="{{ $phone->id }}">{{ $phone->firstname }} {{ $phone->lastname }}</td>
               <td class="phone">{{ $phone->phone }}</td>
@@ -517,7 +524,7 @@ i.can {
               <div class="modal-body">
 
                 <div class="form-row">
-                  <form class="send-airtime" action="{{ route('topup.phone.user')}}" method="POST" role="form">
+                  <form class=" topup-multiple" action="{{ route('topup.phone.user')}}" method="POST" role="form">
                     {{csrf_field()}}
                     <input type="hidden" name="current_id" class="current_user">
                     <input type="hidden" name="Airtime" class="Airtime">
@@ -697,8 +704,7 @@ i.can {
       });
     });
     $('.modal#airtimeModal').on('click', 'button.btn-send', function () {
-      console.log('Clcked');
-      $('.modal#airtimeModal').find('form.send-airtime').submit();
+      $('.modal#airtimeModal').find('form. topup-multiple').submit();
     })
 //   $('.airtime').click(function() {
 //     // get the invoice ID
@@ -709,9 +715,6 @@ i.can {
 //         $('#airtimeModal .modal-body').html(response.data);
 //     });
 // });
-  </script>
-
-  <script type="text/javascript">
     $(function () {
       $('.modal#dataModal').on('show.bs.modal', function (e) {
         var btn = $(e.relatedTarget);
@@ -726,7 +729,6 @@ i.can {
       });
     });
     $('.modal#dataModal').on('click', 'button.btn-send', function () {
-      console.log('Clcked');
       $('.modal#dataModal').find('form.send-data').submit();
     })
 //   $('.airtime').click(function() {
@@ -738,19 +740,20 @@ i.can {
 //         $('#airtimeModal .modal-body').html(response.data);
 //     });
 // });
-  </script>
-  
-   <script type="text/javascript" >
+</script>
+<script type="text/javascript">
+
 function toggle(source) {
   checkboxes = document.getElementsByName('checked[]');
   for(var i=0, n=checkboxes.length;i<n;i++) {
     checkboxes[i].checked = source.checked;
   }
 }
+
 </script>
 
+    <script type="text/javascript">
 
-  <script>
         $("#department").change(function () {
             $("#contacts-form").submit();
         });
@@ -771,36 +774,34 @@ function toggle(source) {
               $(".select-all").prop("checked", false);
             }
           });
-    </script>
-
-    <script type="text/javascript">
+  
       $(document).ready(function() {
-    $('#contact-table').DataTable( {
-        initComplete: function () {
-            this.api().columns([1,3]).every( function () {
-                var column = this;
-                var select = $('<select><option value=""></option></select>')
-                    .appendTo( $(column.header()).empty() )
-                    .on( 'change', function () {
-                        var val = $.fn.dataTable.util.escapeRegex(
-                            $(this).val()
-                        );
- 
-                        column
-                            .search( val ? '^'+val+'$' : '', true, false )
-                            .draw();
+        $('#contact-table').DataTable( {
+            initComplete: function () {
+                this.api().columns([1,3]).every( function () {
+                    var column = this;
+                    var select = $('<select><option value=""></option></select>')
+                        .appendTo( $(column.header()).empty() )
+                        .on( 'change', function () {
+                            var val = $.fn.dataTable.util.escapeRegex(
+                                $(this).val()
+                            );
+    
+                            column
+                                .search( val ? '^'+val+'$' : '', true, false )
+                                .draw();
+                        } );
+    
+                    column.data().unique().sort().each( function ( d, j ) {
+                        select.append( '<option value="'+d+'">'+d+'</option>' )
                     } );
- 
-                column.data().unique().sort().each( function ( d, j ) {
-                    select.append( '<option value="'+d+'">'+d+'</option>' )
-                } );
-            } );
-        }
-    } );
-} );
+                });
+            }
+        });
+      });
     </script>
     <!-- script enbles checkbox to be clicked when you click on the row -->
-    <script>
+    <script type="text/javascript">
       $('#contact-table tr').click(function() {
         ele = $(this).find('td input:checkbox')[0];
         ele.checked = ! ele.checked;
@@ -821,7 +822,38 @@ function toggle(source) {
       });
       $('input:checkbox').click(function(e){
         e.stopPropagation();
-      })
+      });
+
+      $(function () {
+        $('.groups-list').change(function() {
+            var current = $(this).val();
+            $(this).find('option').each(function () {
+                if (this.value == current) {
+                    var theClass = $(this).data('value');
+                    console.log(theClass);
+                    $('.groups-list').data('selected-class', theClass);
+                    $('input.checkbox').prop('checked', false);
+                    var totalUsers = $('input.checkbox.' + theClass);
+                    totalUsers.prop('checked', true);
+                    var membersCount = (totalUsers.length > 0) ? totalUsers.length : 'no';
+                    var member = (totalUsers.length > 1) ? ' members ' : ' member ';
+                    $('.groups-topup').html('You Have <b>' + membersCount + member + '</b> in this group to topup').removeClass('hidden');
+                }
+            });
+        });
+
+        $('.group-amount-topup').change(function () {
+            var selectedClass = $('.groups-list').data('selected-class');
+            var listItems = $('input.checkbox.' + selectedClass);
+            var newAmount = parseInt($(this).val()) / listItems.length;
+            listItems.parents('tr').find('input.input-airtime-amount').val(newAmount);
+        });
+
+        $('button.topup-group-btn').click(function (e) {
+            e.preventDefault();
+            $('form.send-airtime.topup-multiple').submit();
+        });
+      });
     </script>
     
 
