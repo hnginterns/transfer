@@ -130,7 +130,7 @@ class PhoneTopUpController extends Controller
                     $transaction->bank_id = $bank->id;
                     $transaction->status = true;
                     $transaction->account_number = $bank_account;
-                    $transaction->narration = $request->narration;
+                    $transaction->narration = $phone;
                     $transaction->save();
                     //end of logic for saving transactions
                     
