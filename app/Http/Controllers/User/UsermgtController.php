@@ -60,12 +60,13 @@ class UsermgtController extends Controller
             'username' => 'bail|required',
             'first_name' => 'bail|required',
             'last_name' => 'bail|required',
-            'email' => 'bail|email|required',
+            'email' => 'bail|email|required|unique:users',
             'password' => 'bail|required',
             'confirmpassword' => 'bail|required'
             ],
             [
-                'required' => ':attribute is required'
+                'required' => ':attribute is required',
+                'unique' => ':attribute has already been taken'
             ]
         );
         if ($validator->fails()) 
