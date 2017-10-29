@@ -108,7 +108,6 @@ i.can {
   <div class="col-md-12 text-center">
 
     <div class="orange-box">
-<<<<<<< HEAD
         <h4 class="title" align="center">Group Airtime Top Up</h4>
       </div>
       <br>
@@ -126,9 +125,7 @@ i.can {
           <div style="margin-top: 10px;" class="alert alert-info col-md-8 col-md-offset-2 groups-topup text-center hidden"></div>                
       </form>
       
-=======
       <h4 class="title" align="center">Group Airtime Top Up</h4>
->>>>>>> 270640edf8341a06d20be4161abc28fe9fb4ebe1
     </div>
     <br>
     <form class="form form-inline" action="{{ route('topup.phone.group')}}" method="POST" role="form">
