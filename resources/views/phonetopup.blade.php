@@ -167,7 +167,6 @@ i.can {
         </thead>
         <tbody> 
           <form class="send-airtime topup-multiple" action="{{ route('topup.phone.multiple')}}" method="POST" role="form">   
-          
           <a href="#dataModal" class="btn btn-info pull-right" style="margin-left: 5px; margin-bottom: 3px;" data-toggle="modal">Top-up Data</a>
           <button type="submit" class="btn btn-success pull-right" style="margin-right: 5px; margin-bottom: 3px;">Top up all</button>
             {{ csrf_field() }} @if(count($phones) > 0) @foreach($phones as $phone)
@@ -180,7 +179,7 @@ i.can {
               <td class="phone">{{ $phone->phone }}</td>
               <td class="phoneRef">{{ $phone->netw }}</td>
               <td class="amount">{{ $phone->title }}</td>
-              <td class="amount">{{ $phone->department }}</td>
+              <td class="dept">{{ $phone->department }}</td>
               <td class="max-tops">{{ $phone->weekly_max }}</td>
               <td>{{$phone->topupTotal->sum('amount')}}</td>
               <td><input class="form-control input-airtime-amount" type="number" min="50" name="amount[{{$phone->id}}]" placeholder="Enter Amount"
@@ -573,64 +572,64 @@ i.can {
           <div class="form-row">
             <form class="send-data" action="{{ route('topup.data.user')}}" method="POST" role="form">
               {{csrf_field()}}
-              <input type="hidden" name="current_id" class="current_user">
-              <input type="hidden" name="Data" class="Data">
-
-              <div class="form-group col-md-6">
-                <label for="Firstname" class="col-form-label">Name</label>
-                <input type="text" class="form-control firstName" name="firstName">
-              </div>
-              <div class="form-group col-md-6">
-                <label for="Phone" class="col-form-label">Phone</label>
-                <input type="text" class="form-control phone" name="phone">
-              </div>
-
-              <hr />
-
-
-              <select name="amount" class="form-control">
-
-                      <optgroup label="MTN">
-                        <option value="200">250MB (#200)</option>
-                        <option value="300">500MB (#300)</option>
-                         <option value="550">1GB (#550) </option>
-                        <option value="850">2GB  (#850)</option>
-                         <option value="1100">3GB (#1100)</option>
-                        <option value="1650">5GB (#1650)</option>
-                      </optgroup>
-
-                      <optgroup label="9MOBILE">
-                        <option value="250">250MB (#250)</option>
-                        <option value="350">500MB (#350)</option>
-                         <option value="650">1GB (#650)</option>
-                        <option value="1000">1.5GB (#1000)</option>
-                         <option value="1900">3GB (#1900)</option>
-                        <option value="3100">5GB (#3100)</option>
-                      </optgroup>
-
-                      <optgroup label="GLO">
-                        <option value="900">1.6GB/3.2GB</option>
-                        <option value="1800">3.75GB/7.5GB</option>
-                         <option value="2250">5GB/10GB</option>
-                        <option value="2650">6GB/12GB</option>
-                         <option value="3550">8GB/16GB</option>
-                        <option value="4450">12GB/24GB </option>
-                      </optgroup>
-
-                      <optgroup label="AIRTEL">
-                        <option value="950">1.5GB</option>
-                        <option value="1900">3.5GB</option>
-                         <option value="2375">5GB</option>
-                        <option value="3325">7GB</option>
-                         <option value="1100">3GB</option>
-                        <option value="1650">5GB</option>
-                      </optgroup>
-
+              
+              <div class="row">
+                <div class="form-group col-md-6 col-md-offset-3">
+                  @if(count($phones) > 0) 
+                    <label for="data-user" class="col-form-label">Select User To Topup</label>
+                    <select id="data-user" name="current_id" class="form-control data-topup-select">
+                      @foreach($phones as $phone)
+                        <option data-network="{{ $phone->netw }}" value="{{ $phone->id }}">{{ $phone->firstname . ' ' . $phone->lastname }}
+                      @endforeach
                     </select>
+                  @endif
+                </div>
+              
+                <div class="form-group col-md-6 col-md-offset-3">
+              
+                  <label for="data-amount" class="col-form-label">Data Amount</label>
+                  <select id="data-amount" name="amount" class="form-control data-amount">
 
+                    <optgroup class="MTN" label="MTN">
+                      <option value="200">250MB (#200)</option>
+                      <option value="300">500MB (#300)</option>
+                      <option value="550">1GB (#550) </option>
+                      <option value="850">2GB  (#850)</option>
+                      <option value="1100">3GB (#1100)</option>
+                      <option value="1650">5GB (#1650)</option>
+                    </optgroup>
 
-          </div>
-          <div class="modal-footer">
+                    <optgroup class="9MOBILE" label="9MOBILE">
+                      <option value="250">250MB (#250)</option>
+                      <option value="350">500MB (#350)</option>
+                      <option value="650">1GB (#650)</option>
+                      <option value="1000">1.5GB (#1000)</option>
+                      <option value="1900">3GB (#1900)</option>
+                      <option value="3100">5GB (#3100)</option>
+                    </optgroup>
+
+                    <optgroup class="GLO" label="GLO">
+                      <option value="900">1.6GB/3.2GB</option>
+                      <option value="1800">3.75GB/7.5GB</option>
+                      <option value="2250">5GB/10GB</option>
+                      <option value="2650">6GB/12GB</option>
+                      <option value="3550">8GB/16GB</option>
+                      <option value="4450">12GB/24GB </option>
+                    </optgroup>
+
+                    <optgroup class="AIRTEL" label="AIRTEL">
+                      <option value="950">1.5GB</option>
+                      <option value="1900">3.5GB</option>
+                      <option value="2375">5GB</option>
+                      <option value="3325">7GB</option>
+                      <option value="1100">3GB</option>
+                      <option value="1650">5GB</option>
+                    </optgroup>
+
+                  </select>
+              </div>
+            </div>
+          <div class="row text-center">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
             <button type="button" class="btn btn-primary btn-send">Send Data</button>
           </div>
@@ -705,7 +704,7 @@ i.can {
       });
     });
     $('.modal#airtimeModal').on('click', 'button.btn-send', function () {
-      $('.modal#airtimeModal').find('form. topup-multiple').submit();
+      $('.modal#airtimeModal').find('form.topup-multiple').submit();
     })
     //   $('.airtime').click(function() {
     //     // get the invoice ID
@@ -716,19 +715,6 @@ i.can {
     //         $('#airtimeModal .modal-body').html(response.data);
     //     });
     // });
-    $(function () {
-      $('.modal#dataModal').on('show.bs.modal', function (e) {
-        var btn = $(e.relatedTarget);
-        var row = btn.parents('tr');
-        $(this).find('form input.phoneRef').val(row.find('td.phoneRef').html());
-        $(this).find('form input.current_user').val(row.find('td.firstName').data('user'));
-        $(this).find('form input.firstName').val(row.find('td.firstName').html());
-        $(this).find('form input.netw').val(row.find('td.netw').html());
-        // $(this).find('form input.lastName').val(row.find('td.firstName').data('lastName'));
-        $(this).find('form input.phone').val(row.find('td.phone').html());
-        $(this).find('form .phoneToTopUp').val(row.find('td.phone').html());
-      });
-    });
     $('.modal#dataModal').on('click', 'button.btn-send', function () {
       $('.modal#dataModal').find('form.send-data').submit();
     })
@@ -753,7 +739,6 @@ i.can {
   </script>
 
   <script type="text/javascript">
-    <script>
       $("#department").change(function () {
         $("#contacts-form").submit();
       });
@@ -823,31 +808,31 @@ i.can {
       e.stopPropagation();
     });
     $(function () {
-      $('.groups-list').change(function () {
-        var current = $(this).val();
-        $(this).find('option').each(function () {
-          if (this.value == current) {
-            var theClass = $(this).data('value');
-            console.log(theClass);
-            $('.groups-list').data('selected-class', theClass);
-            $('input.checkbox').prop('checked', false);
-            $('input.checkbox').each(function() {
-                if ($(this).parents('tr').hasClass('hidden')) {
-                  $(this).parents('tr').removeClass('hidden');
-                }
-                if (! $(this).hasClass(theClass)) {
-                    $(this).parents('tr').addClass('hidden');
-                }
-            });
-            var totalUsers = $('input.checkbox.' + theClass);
-            totalUsers.prop('checked', true);
-            var membersCount = (totalUsers.length > 0) ? totalUsers.length : 'no';
-            var member = (totalUsers.length > 1) ? ' members ' : ' member ';
-            $('.groups-topup').html('You Have <b>' + membersCount + member + '</b> in this group to topup').removeClass('hidden');
-          }
+        $('.groups-list').change(function () {
+          var current = $(this).val();
+          $(this).find('option').each(function () {
+            if (this.value == current) {
+              var theClass = $(this).data('value');
+              console.log(theClass);
+              $('.groups-list').data('selected-class', theClass);
+              $('input.checkbox').prop('checked', false);
+              $('input.checkbox').each(function() {
+                  if ($(this).parents('tr').hasClass('hidden')) {
+                    $(this).parents('tr').removeClass('hidden');
+                  }
+                  if (! $(this).hasClass(theClass)) {
+                      $(this).parents('tr').addClass('hidden');
+                  }
+              });
+              var totalUsers = $('input.checkbox.' + theClass);
+              totalUsers.prop('checked', true);
+              var membersCount = (totalUsers.length > 0) ? totalUsers.length : 'no';
+              var member = (totalUsers.length > 1) ? ' members ' : ' member ';
+              $('.groups-topup').html('You Have <b>' + membersCount + member + '</b> in this group to topup').removeClass('hidden');
+            }
+          });
         });
-      });
-    $('.group-amount-topup').change(function () {
+        $('.group-amount-topup').change(function () {
             var selectedClass = $('.groups-list').data('selected-class');
             var listItems = $('input.checkbox.' + selectedClass);
             var newAmount = parseInt($(this).val()) / listItems.length;
@@ -856,6 +841,24 @@ i.can {
         $('button.topup-group-btn').click(function (e) {
             e.preventDefault();
             $('form.send-airtime.topup-multiple').submit();
+        });
+
+        $('select.data-topup-select').change(function () {
+            var phone_id = $(this).val();
+            var phone_network = '';
+            $(this).find('option').each(function() {
+              if ($(this).prop('value') == phone_id) {
+                phone_network = $(this).data('network'); 
+              }
+            });
+            $('select.data-amount').find('optgroup').each(function () {
+              if ($(this).prop('disabled', true)) {
+                $(this).prop('disabled', false);
+              }
+              if (! $(this).hasClass(phone_network)) {
+                $(this).prop('disabled', true)
+              }
+            });
         });
       });
   </script>
