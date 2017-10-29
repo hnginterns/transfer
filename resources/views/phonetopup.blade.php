@@ -117,10 +117,31 @@ i.can {
 <div class="tab-content">
   <div id="contactlistbox" class="tab-pane fade in active">
       <div class="orange-box">
-          <h4 class="title" align="center">TOP UP</h4>
+          <h4 class="title" align="center">GROUP TOP UP</h4>
       </div>
-      <br>
       <div class="row">
+  <div class="col-md-12 clear text-center">
+
+    <form class="form form-inline col-md-12" action="{{ route('topup.phone.group')}}" method="POST" role="form">
+      {{csrf_field()}} 
+      @if(count($tags) > 0)
+        <select name="topup_group" class="form-control groups-list">
+          @foreach($tags as $group) 
+            <option value="{{ $group->id }}" data-value="{{ strtolower($group->name) }}">{{ $group->name }}</option> 
+          @endforeach 
+        </select>
+      @endif
+      <input class="form-control group-amount-topup" type="number" name="amount" min="50" required placeholder="Enter Amount to be shared">
+      <button class="btn btn-success topup-group-btn" type="submit">Top Up Group</button>
+      <div style="margin-top: 10px;" class="alert alert-info col-md-8 col-md-offset-2 groups-topup text-center hidden"></div>
+    </form>
+      </div></div>
+      <hr />
+      <div class="row">
+      <div class="orange-box">
+          <h4 class="title" align="center">INDIVIDUAL TOP UP</h4>
+      </div>
+
         <div class="col-md-2">
         </div>
         <div class="col-md-5"></div>
@@ -145,35 +166,15 @@ i.can {
           </tr>
         </thead>
         <tbody> 
-          <form class="send-airtime" action="{{ route('topup.phone.multiple')}}" method="POST" role="form">
-       
-    <div class="row">
-  <div class="col-md-4 text-center">
-
-    <div class="orange-box">
-      
-    </div>
-   
-    <form class="form form-inline" action="{{ route('topup.phone.group')}}" method="POST" role="form">
-      {{csrf_field()}} @if(count($tags) > 0)
-      <select name="topup_group" class="form-control groups-list">
-                        @foreach($tags as $group) 
-                          <option value="{{ $group->id }}" data-value="{{ strtolower($group->name) }}">{{ $group->name }}</option> 
-                        @endforeach 
-                      </select> @endif
-      <input class="form-control group-amount-topup" type="number" name="amount" min="50" required placeholder="Enter Amount to be shared">
-      <button class="btn btn-success topup-group-btn" type="submit">Top Up Group</button>
-      <div style="margin-top: 10px;" class="alert alert-info col-md-4 col-md-offset-2 groups-topup text-center hidden"></div>
-    </form>
-      </div></div>
-     
+          <form class="send-airtime topup-multiple" action="{{ route('topup.phone.multiple')}}" method="POST" role="form">   
           
           <a href="#dataModal" class="btn btn-info pull-right" style="margin-left: 5px; margin-bottom: 3px;" data-toggle="modal">Top-up Data</a>
           <button type="submit" class="btn btn-success pull-right" style="margin-right: 5px; margin-bottom: 3px;">Top up all</button>
             {{ csrf_field() }} @if(count($phones) > 0) @foreach($phones as $phone)
             <tr class="contact-fn">
-             
-              <td><input type="checkbox" name="checked[]" value="{{$phone->id}}" class="checkbox"></td>
+
+              <td><input type="checkbox" name="checked[]" value="{{$phone->id}}" class="checkbox
+              @if(count($phone->groups) > 0) @foreach($phone->groups as $group) {{ strtolower($group->name) }} @endforeach @endif"></td>
               <td><i onclick="starContact({{$phone->id}})" class="fa {{$phone->starred ? 'fa-star starred': 'fa-star-o not-starred'}}"></i></td>
               <td class="firstName" data-user="{{ $phone->id }}">{{ $phone->firstname }} {{ $phone->lastname }}</td>
               <td class="phone">{{ $phone->phone }}</td>
@@ -830,6 +831,14 @@ i.can {
             console.log(theClass);
             $('.groups-list').data('selected-class', theClass);
             $('input.checkbox').prop('checked', false);
+            $('input.checkbox').each(function() {
+                if ($(this).parents('tr').hasClass('hidden')) {
+                  $(this).parents('tr').removeClass('hidden');
+                }
+                if (! $(this).hasClass(theClass)) {
+                    $(this).parents('tr').addClass('hidden');
+                }
+            });
             var totalUsers = $('input.checkbox.' + theClass);
             totalUsers.prop('checked', true);
             var membersCount = (totalUsers.length > 0) ? totalUsers.length : 'no';
@@ -845,7 +854,7 @@ i.can {
             listItems.parents('tr').find('input.input-airtime-amount').val(newAmount);
         });
         $('button.topup-group-btn').click(function (e) {
-      e.preventDefault();
+            e.preventDefault();
             $('form.send-airtime.topup-multiple').submit();
         });
       });
