@@ -889,18 +889,6 @@
 
 <div class="about-content">
 
-<div class="row">
-        <div class="col-lg-12">
-        <h5 class="about-title">How it works</h5>
-        <p class="about-paragraph">
-        Our custom built Transfer Rules webapp is built with the aim of simplifying your financial
-        transactions to groups or individual accounts.
-        </p>
-        </div>
-        
-</div>
-
-
 
 <!-- DIVIDER -->
 <div id="divider-top"></div>
