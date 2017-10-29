@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 use App\Restriction;
 use App\CardWallet;
 use App\Beneficiary;
-
+use App\FundWalletInfo;
 use Carbon\Carbon;
 
 use App\SmsWalletFund;
@@ -162,6 +162,23 @@ class PhoneTopUpController extends Controller
             Session::flash('form-errors', $messages);
             return redirect()->to(URL::previous());
         } else {
+            if(Auth::user()->walletFundInfo == null){
+                $wallet_fund_info = new FundWalletInfo;
+                $wallet_fund_info->firstname = $request->fname;
+                $wallet_fund_info->lastname = $request->lname;
+                $wallet_fund_info->uuid = Auth::user()->id;
+                $wallet_fund_info->email = $request->emailaddr;
+                $wallet_fund_info->phonenumber = $request->phone;
+                $wallet_fund_info->save();
+            }else{
+                $wallet_fund_info = Auth::user()->walletFundInfo;
+                $wallet_fund_info->firstname = $request->fname;
+                $wallet_fund_info->lastname = $request->lname;
+                $wallet_fund_info->uuid = Auth::user()->id;
+                $wallet_fund_info->email = $request->emailaddr;
+                $wallet_fund_info->phonenumber = $request->phone;
+                $wallet_fund_info->save();
+            }
             $token = $this->getToken();
             $headers = array('content-type' => 'application/json', 'Authorization' => $token);
             $query = array(

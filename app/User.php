@@ -43,4 +43,8 @@ class User extends Authenticatable
         return $this->is_admin;
     }
 
+    public function fundWalletInfo(){
+        return $this->hasOne(FundWalletInfo::class,'uuid');
+    }
+
 }

@@ -22,6 +22,20 @@ i.can {
   }
   i.received {
     color: #dd4b39;
+    
+  }
+  
+  hr {
+    color: #39689C;
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+}
+  
   }
   first {
     float: right;
@@ -75,7 +89,7 @@ i.can {
   <div class="col-md-6">
     <div class="panel panel-primary">
       <div class="panel-heading">
-        <h2> Current Balance with provider: &#8358;{{ number_format($topupbalance),2}} </h2>
+        <h2> Current Bal with provider: &#8358;{{ number_format($topupbalance),2}} </h2>
       </div>
       <div class="panel-body text-center">
         <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#Purchase">Purchase</button>
@@ -85,34 +99,11 @@ i.can {
   </div>
 </div>
 
-<div class="row">
-  <div class="col-md-12 text-center">
 
-    <div class="orange-box">
-      <h4 class="title" align="center">Group Airtime Top Up</h4>
-    </div>
-    <br>
-    <form class="form form-inline" action="{{ route('topup.phone.group')}}" method="POST" role="form">
-      {{csrf_field()}} @if(count($tags) > 0)
-      <select name="topup_group" class="form-control groups-list">
-                        @foreach($tags as $group) 
-                          <option value="{{ $group->id }}" data-value="{{ strtolower($group->name) }}">{{ $group->name }}</option> 
-                        @endforeach 
-                      </select> @endif
-      <input class="form-control group-amount-topup" type="number" name="amount" min="50" required placeholder="Enter Amount to be shared">
-      <button class="btn btn-success topup-group-btn" type="submit">Top Up Group</button>
-      <div style="margin-top: 10px;" class="alert alert-info col-md-8 col-md-offset-2 groups-topup text-center hidden"></div>
-    </form>
-
- </div> 
-
-</div>
-
-<br><br>
 
 <div class="row">
   <div class="col-md-12 text-center">
-
+<hr>
         <ul class="nav nav-pills nav-justified ">
             <li class="active"><a data-toggle="pill" href="#contactlistbox">Top Up</a></li>
             <li><a data-toggle="pill" href="#fundhistorybox">Funding History</a></li>
@@ -134,34 +125,7 @@ i.can {
         <div class="col-md-2">
         </div>
         <div class="col-md-5"></div>
-      <form method="GET" action="" accept-charset="UTF-8" id="contacts-form">
-        <div class="col-md-2">
-
-          <select class="form-control" name="department">
-            <option>All Depts</option>
-            @foreach($phones as $contact)
-              <option value="{{ $contact->department }}">{{ $contact->department }}</option>
-            @endforeach
-          </select>
-
-        </div>
-        <div class="col-md-3">
-          <div class="input-group custom-search-form">
-            
-            <span class="input-group-btn">
-                <button class="btn btn-default" type="submit" id="search-users-btn">
-                    <span class="glyphicon glyphicon-search"></span>
-                </button>
-                @if (Input::has('search') && Input::get('search') != '')
-                        <a href="" class="btn btn-danger" type="button" >
-                            <span class="glyphicon glyphicon-remove"></span>
-                        </a>
-                    @endif
-
-            </span>
-          </div>
-        </div>
-      </form>
+      
     </div>
 
 
@@ -189,13 +153,16 @@ i.can {
  </div> 
 
 </div>
+<br><br>
+<hr>
 
 
     <div class="table table-responsive">
       <table class="table" id="contact-table">
         <thead>
           <tr>
-            <th><input type="checkbox" onClick="toggle(this)" /> Select All Contact</th>
+            <td><input type="checkbox" onClick="toggle(this)" /> Select All</td>
+            <td>Star</td>
             <td>Name</td>
             <td>Phone Number</td>
             <td>Network</td>
@@ -212,6 +179,7 @@ i.can {
             <tr class="contact-fn">
 
               <td><input type="checkbox" name="checked[]" value="{{$phone->id}}" class="checkbox"></td>
+              <td><i onclick="starContact({{$phone->id}})" class="fa {{$phone->starred ? 'fa-star starred': 'fa-star-o not-starred'}}"></i></td>
               <td class="firstName" data-user="{{ $phone->id }}">{{ $phone->firstname }} {{ $phone->lastname }}</td>
               <td class="phone">{{ $phone->phone }}</td>
               <td class="phoneRef">{{ $phone->netw }}</td>
@@ -388,7 +356,7 @@ i.can {
                     <div class="form-group">
                       <label for="cc_name">First Name</label>
                       <div class="controls">
-                        <input name="fname" class="form-control" id="cc_name" title="First Name" required type="text">
+                        <input name="fname" class="form-control" value="{{Auth::user()->fundWalletInfo == null ? '' : Auth::user()->fundWalletInfo->firstname}}" id="cc_name" title="First Name" required type="text">
                       </div>
                     </div>
                   </div>
@@ -396,7 +364,7 @@ i.can {
                     <div class="form-group">
                       <label for="cc_name">Last Name</label>
                       <div class="controls">
-                        <input name="lname" class="form-control" id="cc_name" title="last name" required type="text">
+                        <input name="lname" class="form-control" value="{{Auth::user()->fundWalletInfo == null ? '' : Auth::user()->fundWalletInfo->lastname}}" id="cc_name" title="last name" required type="text">
                       </div>
                     </div>
                   </div>
@@ -404,14 +372,14 @@ i.can {
                 <div class="form-group">
                   <label>Phone Number</label>
                   <div class="controls">
-                    <input name="phone" class="form-control" autocomplete="off" maxlength="20" required="" type="text">
+                    <input name="phone" pattern="\+234\d{10}" class="form-control" value="{{Auth::user()->fundWalletInfo == null ? '' : Auth::user()->fundWalletInfo->phonenumber}}" autocomplete="off" maxlength="20" required="" type="text">
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label>Email Address</label>
                   <div class="controls">
-                    <input name="emailaddr" class="form-control" autocomplete="off" required="" type="text">
+                    <input name="emailaddr" class="form-control" value="{{Auth::user()->fundWalletInfo == null ? '' : Auth::user()->fundWalletInfo->email}}" autocomplete="off" required="" type="text">
                   </div>
                 </div>
                 <div class="form-group">
@@ -893,25 +861,6 @@ i.can {
         url: base + "/phonetopup/star/" + id,
         success: function (json) {
           location.reload(true);
-          // var contact = $(".contact-fn");
-          // contact.remove();
-          // var count = 0;
-          // var final_query = '';
-          // $.each(json, function (value, key) {
-          //   var starred = key.starred == 1 ? "fa-star starred" : "fa-star-o not-starred";
-          //   final_query += '<tr class="contact-fn"><td class="phone" onclick="starContact(' + key.id + ')"><i class="fa ' + starred + '"></i></td>'
-          //     + '<td><input type="checkbox" name="checked[]" value="' + key.id + '" class="checkbox"></td>'
-          //     + '<td class="firstName" data-user="' + key.id + '">' + key.firstname + '  ' + key.lastname + '</td>'
-          //     + '<td class="phone">' + key.phone + '</td>'
-          //     + '<td class="phoneRef">' + key.netw + '</td>'
-          //     + '<td class="amount">' + key.title + '</td>'
-          //     + '<td class="amount">' + key.department + '</td>'
-          //     + '<td class="amount">' + key.weekly_max + '</td>'
-          //     + '<td><input class="form-control input-airtime-amount" type="number" min="50" name="amount[' + key.id + ']" placeholder="Enter Amount"/></td>'
-          //     + '</tr>';
-          // });
-          // console.log(final_query);
-          // $(".contact-phone").append(final_query);
         }
       });
     }
