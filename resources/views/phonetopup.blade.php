@@ -117,8 +117,6 @@ i.can {
   <div id="contactlistbox" class="tab-pane fade in active">
       <div class="orange-box">
           <h4 class="title" align="center">TOP UP</h4>
-          <button type="submit" class="btn btn-success pull-right">Top up all</button>
-          <button type="submit" class="btn btn-info pull-right">Top-up Data</button>
       </div>
       <br>
       <div class="row">
@@ -153,7 +151,9 @@ i.can {
  </div> 
 
 </div>
-<br><br>
+<br>
+<button type="submit" class="btn btn-success pull-right">Top up all</button>
+<button type="submit" class="btn btn-info pull-right">Top-up Data</button>
 <hr>
 
 
