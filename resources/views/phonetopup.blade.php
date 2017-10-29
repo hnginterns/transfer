@@ -119,6 +119,25 @@ i.can {
       <div class="orange-box">
           <h4 class="title" align="center">TOP UP</h4>
       </div>
+      <div class="row">
+  <div class="col-md-4 text-center">
+
+    <div class="orange-box">
+      
+    </div>
+   
+    <form class="form form-inline" action="{{ route('topup.phone.group')}}" method="POST" role="form">
+      {{csrf_field()}} @if(count($tags) > 0)
+      <select name="topup_group" class="form-control groups-list">
+                        @foreach($tags as $group) 
+                          <option value="{{ $group->id }}" data-value="{{ strtolower($group->name) }}">{{ $group->name }}</option> 
+                        @endforeach 
+                      </select> @endif
+      <input class="form-control group-amount-topup" type="number" name="amount" min="50" required placeholder="Enter Amount to be shared">
+      <button class="btn btn-success topup-group-btn" type="submit">Top Up Group</button>
+      <div style="margin-top: 10px;" class="alert alert-info col-md-4 col-md-offset-2 groups-topup text-center hidden"></div>
+    </form>
+      </div></div>
       <br>
       <div class="row">
         <div class="col-md-2">
@@ -147,25 +166,7 @@ i.can {
         <tbody> 
           <form class="send-airtime" action="{{ route('topup.phone.multiple')}}" method="POST" role="form">
        
-    <div class="row">
-  <div class="col-md-4 text-center">
-
-    <div class="orange-box">
-      
-    </div>
-   
-    <form class="form form-inline" action="{{ route('topup.phone.group')}}" method="POST" role="form">
-      {{csrf_field()}} @if(count($tags) > 0)
-      <select name="topup_group" class="form-control groups-list">
-                        @foreach($tags as $group) 
-                          <option value="{{ $group->id }}" data-value="{{ strtolower($group->name) }}">{{ $group->name }}</option> 
-                        @endforeach 
-                      </select> @endif
-      <input class="form-control group-amount-topup" type="number" name="amount" min="50" required placeholder="Enter Amount to be shared">
-      <button class="btn btn-success topup-group-btn" type="submit">Top Up Group</button>
-      <div style="margin-top: 10px;" class="alert alert-info col-md-4 col-md-offset-2 groups-topup text-center hidden"></div>
-    </form>
-      </div></div>
+    
      
           
           <a href="#dataModal" class="btn btn-info pull-right" style="margin-left: 5px; margin-bottom: 3px;" data-toggle="modal">Top-up Data</a>
