@@ -234,26 +234,26 @@ i.can {
              <thead>
                <tr>
                   <th>S/N</th>
-                  <th>Payer</th>
-                  <th>Bank</th>
-                  <th>Wallet</th>
+                  <th>Firstname</th>
+                  <th>Lastname</th>
+                  <th>Phone Number</th>
                   <th>Amount</th>
                   <th>Status</th>
-                  <th>Narration</th>
+                  <th>Ref</th>
                   <th>Date</th>
                 </tr>
               </thead>
               <tbody>
                 @php($count = 1)
-                @foreach($walletfundhistory as $key => $walletfundhistories)
+                @foreach($fundhistory as $key => $walletfundhistories)
                 <tr>
                   <td>{{$count}}</td>
-                  <td>{{$walletfundhistories->user->username}}</td>
-                  <td>{{$walletfundhistories->bank->bank_name}}</td>
-                  <td>{{$walletfundhistories->wallet->wallet_name}}</td>
+                  <td>{{$walletfundhistories->firstName}}</td>
+                  <td>{{$walletfundhistories->lastName}}</td>
+                  <td>{{$walletfundhistories->phoneNumber}}</td>
                   <td>{{$walletfundhistories->amount}}</td>
-                  <td><i class="fa {{$walletfundhistories->status ? 'fa-check-circle can ' : 'fa-times-circle cannot'}}" aria-hidden="true"></i></td>
-                  <td>{{$walletfundhistories->narration}}</td>
+                  <td>{{$walletfundhistories->status}}</td>
+                  <td>{{$walletfundhistories->ref}}</td>
                   <td>{{$walletfundhistories->created_at}}</td>
                 </tr>
                 @php($count++)

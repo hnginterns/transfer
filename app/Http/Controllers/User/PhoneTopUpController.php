@@ -247,6 +247,9 @@ class PhoneTopUpController extends Controller
             
             if($response['status'] == 'success') {
                 event(new FundWallet($cardWallet));
+                $card = CardWallet::latest()->first();
+                $card->status = 'completed';
+                $card->save();
                 Session::flash('success','Wallet funding successful');
                 return redirect('/phonetopup');
 

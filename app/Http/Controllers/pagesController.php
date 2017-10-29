@@ -329,6 +329,7 @@ class pagesController extends Controller
         $cardWallet = CardWallet::latest()->first();
         $user = Auth::user();
         $wallet = Wallet::where('type', 'topup')->first();
+        $fundhistory = CardWallet::where('wallet_name', $wallet->wallet_name)->get();
         $walletfundhistory = \App\PhonetopupTransaction::where('wallet_id', $wallet->id)
                             ->orderBy('created_at', 'desc')
                             ->get();
@@ -344,7 +345,7 @@ class pagesController extends Controller
                 $topupbalance = null;
                 Session::flash('error', 'Could not retrieve balance');
             }
-        return view('phonetopup', compact('cardWallet','wallet', 'phones', 'topupbalance', 'topuphistory', 'walletfundhistory', 'depts','tags'));
+        return view('phonetopup', compact('cardWallet','wallet', 'phones', 'topupbalance', 'topuphistory', 'walletfundhistory', 'depts','tags','fundhistory'));
     }
 
     //all other page functions can be added
