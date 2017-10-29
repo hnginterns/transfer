@@ -477,6 +477,19 @@ class WalletController extends Controller
         return (!is_array($data)) ? true : $data;
     }
     
+    public function balance(CardWallet $fund)
+    {
+        $token = $this->getToken();
+        $headers = array('content-type' => 'application/json','Authorization'=> $token);
+
+        $response = Unirest\Request::get('https://moneywave.herokuapp.com/v1/wallet', $headers);
+        $response = json_decode($response->raw_body, true);
+        event(new FundWallet($fund));
+
+        var_dump($response);
+        die();
+
+    }
     public function logTransaction($data){
         $transaction = new Transaction;
         $transaction->wallet_code = $data['wallet_code'];
