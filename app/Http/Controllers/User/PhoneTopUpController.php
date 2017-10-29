@@ -117,7 +117,7 @@ class PhoneTopUpController extends Controller
                     $data['receiverName'] = 'service Provider';
                     $data['beneficiaryAccount'] = $bank_account;
                     $data['amount'] = $request->amount;
-                    $data['narration'] = $request->narration;
+                    $data['narration'] = $phone;
 
                     //end of data prep
 
