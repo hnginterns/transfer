@@ -7,61 +7,64 @@ Phone Top Up
 i.can {
     color: #00a65a;
   }
-
   i.cannot {
     color: #dd4b39;
   }
-
   i.sent {
     color: #00a65a;
     filter: blur(10px);
     -webkit-filter: blur(10px);
     z-index: -1
   }
-
   em.sent {
     opacity: 0.5;
     z-index:-l;
   }
-
   i.received {
     color: #dd4b39;
+    
   }
-
+  
+  hr {
+    color: #39689C;
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+}
+  
+  }
   first {
     float: right;
     margin: 0 0 10px 10px;
   }
-
   form group {
     height: 400;
   }
-
   table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 899;
   }
-
   .starred {
     color: #f0ad4e;
     font-size: 15px;
     font-weight: bold;
   }
-
   .not-starred {
     color: grey;
     font-size: 15px;
     font-weight: bold;
   }
-
   td,
   th {
     border: px solid #dddddd;
     text-align: center;
     padding: 5px;
   }
-
   tr:nth-child(even) {
     width: 100;
     background-color: #dddddd;
@@ -86,7 +89,7 @@ i.can {
   <div class="col-md-6">
     <div class="panel panel-primary">
       <div class="panel-heading">
-        <h2> Current Balance with provider: &#8358;{{ number_format($topupbalance),2}} </h2>
+        <h2> Current Bal with provider: &#8358;{{ number_format($topupbalance),2}} </h2>
       </div>
       <div class="panel-body text-center">
         <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#Purchase">Purchase</button>
@@ -96,14 +99,11 @@ i.can {
   </div>
 </div>
 
-<div class="row">
-  <div class="col-md-12 text-center">
 
-    
 
 <div class="row">
   <div class="col-md-12 text-center">
-
+<hr>
         <ul class="nav nav-pills nav-justified ">
             <li class="active"><a data-toggle="pill" href="#contactlistbox">Top Up</a></li>
             <li><a data-toggle="pill" href="#fundhistorybox">Funding History</a></li>
@@ -112,40 +112,18 @@ i.can {
 
     </div>
 </div>
-
+<hr>
 <div class="tab-content">
   <div id="contactlistbox" class="tab-pane fade in active">
       <div class="orange-box">
           <h4 class="title" align="center">TOP UP</h4>
       </div>
-       
       <br>
-      <div class="orange-box">
-      <h4 class="title" align="center">Group Airtime Top Up</h4>
-    </div>
-    <br>
-    <form class="form form-inline" action="{{ route('topup.phone.group')}}" method="POST" role="form">
-      {{csrf_field()}} @if(count($tags) > 0)
-      <select name="topup_group" class="form-control groups-list">
-                        @foreach($tags as $group) 
-                          <option value="{{ $group->id }}" data-value="{{ strtolower($group->name) }}">{{ $group->name }}</option> 
-                        @endforeach 
-                      </select> @endif
-      <input class="form-control group-amount-topup" type="number" name="amount" min="50" required placeholder="Enter Amount to be shared">
-      <button class="btn btn-success topup-group-btn" type="submit">Top Up Group</button>
-      <div style="margin-top: 10px;" class="alert alert-info col-md-8 col-md-offset-2 groups-topup text-center hidden"></div>
-    </form>
-
- </div> 
-
-</div>
-
-<br><br>
       <div class="row">
         <div class="col-md-2">
         </div>
         <div class="col-md-5"></div>
-      <form method="GET" action="" accept-charset="UTF-8" id="conatcts-form">
+      <form method="GET" action="" accept-charset="UTF-8" id="contacts-form">
         <div class="col-md-2">
 
           <select class="form-control" name="department">
@@ -177,6 +155,32 @@ i.can {
 
 
     <br>
+    
+    <div class="row">
+  <div class="col-md-12 text-center">
+
+    <div class="orange-box">
+      <h4 class="title" align="center">Group Airtime Top Up</h4>
+    </div>
+    <br>
+    <form class="form form-inline" action="{{ route('topup.phone.group')}}" method="POST" role="form">
+      {{csrf_field()}} @if(count($tags) > 0)
+      <select name="topup_group" class="form-control groups-list">
+                        @foreach($tags as $group) 
+                          <option value="{{ $group->id }}" data-value="{{ strtolower($group->name) }}">{{ $group->name }}</option> 
+                        @endforeach 
+                      </select> @endif
+      <input class="form-control group-amount-topup" type="number" name="amount" min="50" required placeholder="Enter Amount to be shared">
+      <button class="btn btn-success topup-group-btn" type="submit">Top Up Group</button>
+      <div style="margin-top: 10px;" class="alert alert-info col-md-8 col-md-offset-2 groups-topup text-center hidden"></div>
+    </form>
+
+ </div> 
+
+</div>
+<br><br>
+<hr>
+
 
     <div class="table table-responsive">
       <table class="table" id="contact-table">
@@ -777,7 +781,6 @@ i.can {
       $("#department").change(function () {
         $("#contacts-form").submit();
       });
-
     $(".select-all").click(function () {
       if ($(".select-all").is(':checked')) {
         $(".checkbox").each(function () {
@@ -808,12 +811,10 @@ i.can {
                   var val = $.fn.dataTable.util.escapeRegex(
                     $(this).val()
                   );
-
                   column
                     .search(val ? '^' + val + '$' : '', true, false)
                     .draw();
                 });
-
               column.data().unique().sort().each(function (d, j) {
                 select.append('<option value="' + d + '">' + d + '</option>')
               });
@@ -845,7 +846,6 @@ i.can {
     $('input:checkbox').click(function (e) {
       e.stopPropagation();
     });
-
     $(function () {
       $('.groups-list').change(function () {
         var current = $(this).val();
@@ -863,14 +863,12 @@ i.can {
           }
         });
       });
-
     $('.group-amount-topup').change(function () {
             var selectedClass = $('.groups-list').data('selected-class');
             var listItems = $('input.checkbox.' + selectedClass);
             var newAmount = parseInt($(this).val()) / listItems.length;
             listItems.parents('tr').find('input.input-airtime-amount').val(newAmount);
         });
-
         $('button.topup-group-btn').click(function (e) {
       e.preventDefault();
             $('form.send-airtime.topup-multiple').submit();
@@ -890,4 +888,4 @@ i.can {
       });
     }
   </script>
-  @endsection
+@endsection
