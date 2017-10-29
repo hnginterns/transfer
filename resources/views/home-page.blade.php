@@ -877,7 +877,7 @@
                 <span id="heading-hd">
                --- making sure your booking gets to the hotel on time ---
                 </span>
-            <button id="button-hd">
+            <button class="btn btn-primary">
                 <a href="{{url('features')}}">Features</a>
             </button>
         </div>
