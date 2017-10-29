@@ -171,7 +171,7 @@ i.can {
             <td>Title</td>
             <td>Group</td>
             <td>Weekly Limit</td>
-            <td>Total recharge so far</td>
+            <td>Total recharge so far (&#8358;)</td>
             <td>Enter Amount<br>(airtime)</td>
             
           </tr>
@@ -189,7 +189,7 @@ i.can {
               <td class="amount">{{ $phone->title }}</td>
               <td class="amount">{{ $phone->department }}</td>
               <td class="max-tops">{{ $phone->weekly_max }}</td>
-              <td>&#8358;{{$phone->topupTotal->sum('amount')}}</td>
+              <td>{{$phone->topupTotal->sum('amount')}}</td>
               <td><input class="form-control input-airtime-amount" type="number" min="50" name="amount[{{$phone->id}}]" placeholder="Enter Amount"
                 /></td>
               <td>
