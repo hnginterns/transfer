@@ -478,15 +478,6 @@ i.can {
             <div class="modal-body" style="padding: 5px;">
 
               <input name="wallet_id" value="{{$wallet->id}}" type="hidden"> {{csrf_field()}}
-
-              <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                  <input class="form-control" name="narration" placeholder="Narration" type="text" required />
-
-                </div>
-              </div>
-
-
               <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
                   <input class="form-control" name="amount" placeholder="Amount" type="number" required />

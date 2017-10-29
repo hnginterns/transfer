@@ -71,6 +71,7 @@ class PhoneTopUpController extends Controller
    public function phoneTopUp(Request $request, CardWallet $cardWallet)
 
     {
+      
         $username       =     env('TOP_UP_USERNAME');
         $password       =     env('TOP_UP_PASSWORD');
         $phone          =     env('TOP_UP_PHONE');
@@ -95,7 +96,7 @@ class PhoneTopUpController extends Controller
                     "accountNumber" => $bank_account,
                     "currency" => "NGN",
                     "senderName" => $phone,
-                    "narration" => $request->narration, //Optional
+                    "narration" => $phone, //Optional
                     "ref" => $request->reference, // No Refrence from request
                     "walletUref" => $wallet->wallet_code
                 );
