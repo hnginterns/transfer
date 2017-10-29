@@ -138,7 +138,7 @@ i.can {
       <div style="margin-top: 10px;" class="alert alert-info col-md-4 col-md-offset-2 groups-topup text-center hidden"></div>
     </form>
       </div></div>
-      <br>
+      
       <div class="row">
         <div class="col-md-2">
         </div>
