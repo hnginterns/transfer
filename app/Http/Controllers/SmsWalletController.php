@@ -113,13 +113,13 @@ class SmsWalletController extends Controller
 
     public function getToken()
     {
-        $api_key = "ts_Q8PES8G6QJFI2RI1THN1";
-        $secret_key = "ts_AM2PIJ8VTPYLBK1K6EJDEXD9STLC6G";
+        $api_key =env('API_KEY');
+        $secret_key = env('API_SECRET');
         \Unirest\Request::verifyPeer(false);
         $headers = array('content-type' => 'application/json');
         $query = array('apiKey' => $api_key, 'secret' => $secret_key);
         $body = \Unirest\Request\Body::json($query);
-        $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/merchant/verify', $headers, $body);
+        $response = \Unirest\Request::post(env('API_KEY_LIVE_URL').'/v1/merchant/verify', $headers, $body);
         $response = json_decode($response->raw_body, true);
         $status = $response['status'];
         if (!$status == 'success') {
@@ -154,7 +154,7 @@ class SmsWalletController extends Controller
         );
         $body = \Unirest\Request\Body::json($query);
 
-        $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer', $headers, $body);
+        $response = \Unirest\Request::post(env('API_KEY_LIVE_URL').'/v1/transfer', $headers, $body);
         $response = json_decode($response->raw_body, TRUE);
          if($response['status'] == 'success') {
             $response = $response['data']['transfer'];
