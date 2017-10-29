@@ -117,16 +117,12 @@ i.can {
 <div class="tab-content">
   <div id="contactlistbox" class="tab-pane fade in active">
       <div class="orange-box">
-          <h4 class="title" align="center">TOP UP</h4>
+          <h4 class="title" align="center">GROUP TOP UP</h4>
       </div>
       <div class="row">
-  <div class="col-md-7 text-center">
+  <div class="col-md-12 clear text-center">
 
-    <div class="orange-box">
-      
-    </div>
-   
-    <form class="form form-inline" action="{{ route('topup.phone.group')}}" method="POST" role="form">
+    <form class="form form-inline col-md-12" action="{{ route('topup.phone.group')}}" method="POST" role="form">
       {{csrf_field()}} 
       @if(count($tags) > 0)
         <select name="topup_group" class="form-control groups-list">
@@ -137,11 +133,15 @@ i.can {
       @endif
       <input class="form-control group-amount-topup" type="number" name="amount" min="50" required placeholder="Enter Amount to be shared">
       <button class="btn btn-success topup-group-btn" type="submit">Top Up Group</button>
-      <div style="margin-top: 10px;" class="alert alert-info col-md-4 col-md-offset-2 groups-topup text-center hidden"></div>
+      <div style="margin-top: 10px;" class="alert alert-info col-md-8 col-md-offset-2 groups-topup text-center hidden"></div>
     </form>
       </div></div>
-      
+      <hr />
       <div class="row">
+      <div class="orange-box">
+          <h4 class="title" align="center">INDIVIDUAL TOP UP</h4>
+      </div>
+
         <div class="col-md-2">
         </div>
         <div class="col-md-5"></div>

@@ -374,6 +374,7 @@ class PhoneTopUpController extends Controller
             $topuphistory->user_id = $user_id;
             $topuphistory->amount = $error['amount'];
             $topuphistory->ref = $error['ref'];
+            $topuphistory->type = 'airtime';
             $topuphistory->txn_response = $error['txn_response'];
             $topuphistory->status = $error['status'];
             $topuphistory->save();
