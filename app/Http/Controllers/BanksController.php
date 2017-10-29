@@ -11,7 +11,7 @@ class BanksController extends Controller
     {
         Unirest\Request::verifyPeer(false);
         $headers = array('content-type' => 'application/json');
-        $response = Unirest\Request::post('https://moneywave.herokuapp.com/banks', $headers);
+        $response = Unirest\Request::post(env('API_KEY_LIVE_URL').'/banks', $headers);
         $data = json_decode($response->raw_body, true);
         $banks = $data['data'];
         // dd($banks);
