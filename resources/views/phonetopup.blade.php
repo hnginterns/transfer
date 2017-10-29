@@ -69,6 +69,7 @@ i.can {
 </style>
 
 
+
 <div class="row">
   <div class="col-md-6">
     <div class="panel panel-primary">
@@ -98,7 +99,28 @@ i.can {
 <div class="row">
   <div class="col-md-12 text-center">
 
-    <div class="orange-box">
+    
+
+<div class="row">
+  <div class="col-md-12 text-center">
+
+        <ul class="nav nav-pills nav-justified ">
+            <li class="active"><a data-toggle="pill" href="#contactlistbox">Top Up</a></li>
+            <li><a data-toggle="pill" href="#fundhistorybox">Funding History</a></li>
+            <li><a data-toggle="pill" href="#topuphistorybox">Topup History</a></li>
+        </ul>
+
+    </div>
+</div>
+
+<div class="tab-content">
+  <div id="contactlistbox" class="tab-pane fade in active">
+      <div class="orange-box">
+          <h4 class="title" align="center">TOP UP</h4>
+      </div>
+       
+      <br>
+      <div class="orange-box">
       <h4 class="title" align="center">Group Airtime Top Up</h4>
     </div>
     <br>
@@ -119,194 +141,64 @@ i.can {
 </div>
 
 <br><br>
-
-<div class="row">
-  <div class="col-md-12 text-center">
-
-    <ul class="nav nav-pills nav-justified ">
-      <li class="active"><a data-toggle="pill" href="#contactlistbox">Top Up</a></li>
-      <li><a data-toggle="pill" href="#fundhistorybox">Funding History</a></li>
-      <li><a data-toggle="pill" href="#topuphistorybox">Topup History</a></li>
-    </ul>
-
-  </div>
-</div>
-
-<div class="tab-content">
-  <div id="contactlistbox" class="tab-pane fade in active">
-    <div class="orange-box">
-      <h4 class="title" align="center">TOP UP</h4>
-      <button type="submit" class="btn btn-success pull-right">Top up all</button>
-    </div>
-    <br>
-    <div class="row">
-      <div class="col-md-2">
-      </div>
-      <div class="col-md-5"></div>
+      <div class="row">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-5"></div>
       <form method="GET" action="" accept-charset="UTF-8" id="conatcts-form">
         <div class="col-md-2">
 
+          <select class="form-control" name="department">
+            <option>All Depts</option>
+            @foreach($phones as $contact)
+              <option value="{{ $contact->department }}">{{ $contact->department }}</option>
+            @endforeach
+          </select>
 
         </div>
         <div class="col-md-3">
-
-
-          @if (Input::has('search') && Input::get('search') != '')
-          <a href="" class="btn btn-danger" type="button">
+          <div class="input-group custom-search-form">
+            
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="submit" id="search-users-btn">
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+                @if (Input::has('search') && Input::get('search') != '')
+                        <a href="" class="btn btn-danger" type="button" >
                             <span class="glyphicon glyphicon-remove"></span>
-                        </a> @endif
+                        </a>
+                    @endif
 
-          </span>
+            </span>
+          </div>
         </div>
-    </div>
-    </form>
-  </div>
-
-
-  <br>
-
-  <div class="table table-responsive">
-    <table class="table contact-phone" id="contact-tale">
-      <thead>
-        <tr>
-          <td class="pull-left"><input type="checkbox" onClick="toggle(this)" /> Select All</td>
-          <td>Star</td>
-          <td>Name</td>
-          <td>Phone Number</td>
-          <td>Network</td>
-          <td>Title</td>
-          <td>Department</td>
-          <td>Weekly Limit</td>
-          <td>Enter Amount<br>(airtime)</td>
-
-        </tr>
-      </thead>
-      <tbody>
-        <form class="send-airtime" id="form-contact" action="{{ route('topup.phone.multiple')}}" method="POST" role="form">
-          {{ csrf_field() }} @if(count($phones) > 0) @foreach($phones as $phone)
-          <tr class="contact-fn">
-            <td><input type="checkbox" name="checked[]" value="{{$phone->id}}" class="checkbox"></td>
-            <td class="phone"><i onclick="starContact('{{$phone->id}}')" class="fa {{$phone->starred ? 'fa-star starred' : 'fa-star-o not-starred'}}"></i></td>
-            <td class="firstName" data-user="{{ $phone->id }}">{{ $phone->firstname }} {{ $phone->lastname }}</td>
-            <td class="phone">{{ $phone->phone }}</td>
-            <td class="phoneRef">{{ $phone->netw }}</td>
-            <td class="amount">{{ $phone->title }}</td>
-            <td class="amount">{{ $phone->department }}</td>
-            <td class="max-tops">{{ $phone->weekly_max }}</td>
-            <td><input class="form-control input-airtime-amount" type="number" min="50" name="amount[{{$phone->id}}]" placeholder="Enter Amount"
-              /></td>
-          </tr>
-          @endforeach @else
-          <tr>
-            <td></td>
-            <td>No Phone Number Added</td>
-            <td></td>
-            <td></td>
-          </tr>
-          @endif
-
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><button type="submit" class="btn btn-success">Top up all</button></td>
-            <td></td>
-          </tr>
-      </tbody>
       </form>
-    </table>
-  </div>
+    </div>
 
-</div>
-<div id="fundhistorybox" class="tab-pane fade">
 
-  <div class="orange-box">
-    <h4 class="title" align="center">Fund Transfer History</h4>
-  </div>
-  <br>
-  <div class="table-responsive">
-    <table class="table table-hover table-condensed" id="topuphistory">
-      <thead>
-        <tr>
-          <th>S/N</th>
-          <th>Payer</th>
-          <th>Bank</th>
-          <th>Wallet</th>
-          <th>Amount</th>
-          <th>Status</th>
-          <th>Narration</th>
-          <th>Date</th>
-        </tr>
-      </thead>
-      <tbody>
-        @php($count = 1) @foreach($walletfundhistory as $key => $walletfundhistories)
-        <tr>
-          <td>{{$count}}</td>
-          <td>{{$walletfundhistories->user->username}}</td>
-          <td>{{$walletfundhistories->bank->bank_name}}</td>
-          <td>{{$walletfundhistories->wallet->wallet_name}}</td>
-          <td>{{$walletfundhistories->amount}}</td>
-          <td><i class="fa {{$walletfundhistories->status ? 'fa-check-circle can ' : 'fa-times-circle cannot'}}" aria-hidden="true"></i></td>
-          <td>{{$walletfundhistories->narration}}</td>
-          <td>{{$walletfundhistories->created_at}}</td>
-        </tr>
-        @php($count++) @endforeach
-      </tbody>
-    </table>
-  </div>
+    <br>
 
-</div>
-
-<div id="topuphistorybox" class="tab-pane fade">
-
-  <div class="orange-box">
-    <h4 class="title" align="center">TOPUP HISTORY</h4>
-  </div>
-
-  <div class="table table-responsive">
-    <table id="datatable" class="table table-bordered table-hover">
-      <thead>
-        <tr>
-          <th>Phone</th>
-          <th>Name</th>
-          <th>Network</th>
-          <th>Amount</th>
-          <th>Ref</th>
-          <th>User</th>
-          <th>Status</th>
-          <th>Date</th>
-        </tr>
-      </thead>
-      <tbody>
-
-        @if(count($topuphistory) > 0) @foreach($topuphistory as $hist)
-        <tr>
-          <th>{{ $hist->phone }}</th>
-          <th>{{ $hist->firstname }} {{ $hist->lastname }}</th>
-          <th>{{ $hist->netw }}</th>
-          <td class="phone">{{ $hist->amount }}</td>
-          <td class="phoneRef">{{ $hist->ref }}</td>
-          <td class="amount">{{ $hist->username }}</td>
-          <td class="amount">{{ $hist->status }}</td>
-          <td class="amount">{{ $hist->created_at }}</td>
-
-        </tr>
-        @endforeach @else
+    <div class="table table-responsive">
+      <table class="table" id="contact-table">
+        <thead>
+          <tr>
+            <th><input type="checkbox" onClick="toggle(this)" /> Select All Contact</th>
+            <td>Name</td>
+            <td>Phone Number</td>
+            <td>Network</td>
+            <td>Title</td>
+            <td>Department</td>
+            <td>Weekly Limit</td>
+            <td>Enter Amount<br>(airtime)</td>
+            
+          </tr>
         </thead>
         <tbody>
-          <form class="send-airtime topup-multiple" action="{{ route('topup.phone.multiple')}}" method="POST" role="form">
+          <form class="send-airtime" action="{{ route('topup.phone.multiple')}}" method="POST" role="form">
             {{ csrf_field() }} @if(count($phones) > 0) @foreach($phones as $phone)
             <tr class="contact-fn">
 
-              <td>
-                <input type="checkbox" name="checked[]" value="{{$phone->id}}" class="checkbox 
-                @if(count($phone->groups) > 0)@foreach($phone->groups as $group) {{ strtolower($group->name) }} @endforeach @endif">
-
-              </td>
+              <td><input type="checkbox" name="checked[]" value="{{$phone->id}}" class="checkbox"></td>
               <td class="firstName" data-user="{{ $phone->id }}">{{ $phone->firstname }} {{ $phone->lastname }}</td>
               <td class="phone">{{ $phone->phone }}</td>
               <td class="phoneRef">{{ $phone->netw }}</td>
@@ -317,13 +209,13 @@ i.can {
                 /></td>
               <td>
 
-
+                
               </td>
               <td>
+               
+                </td>
 
-              </td>
-
-
+              
             </tr>
             @endforeach @else
             <tr>
@@ -335,24 +227,118 @@ i.can {
 
             @endif
 
-
+     
 
         </tbody>
         <tr>
           <td></td>
-          <td>No Topup Transactions yet</td>
           <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><button type="submit" class="btn btn-success">Top up all</button></td>
           <td></td>
         </tr>
-        @endif
-
-
-      </tbody>
-    </table>
-
-
+        </form>
+      </table>
   </div>
-</div>
+
+        </div>
+        <div id="fundhistorybox" class="tab-pane fade">
+
+          <div class="orange-box">
+              <h4 class="title" align="center">Fund Transfer History</h4>
+        </div>
+          <br>
+          <div class="table-responsive">
+            <table class="table table-hover table-condensed" id="topuphistory">
+             <thead>
+               <tr>
+                  <th>S/N</th>
+                  <th>Payer</th>
+                  <th>Bank</th>
+                  <th>Wallet</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                  <th>Narration</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                @php($count = 1)
+                @foreach($walletfundhistory as $key => $walletfundhistories)
+                <tr>
+                  <td>{{$count}}</td>
+                  <td>{{$walletfundhistories->user->username}}</td>
+                  <td>{{$walletfundhistories->bank->bank_name}}</td>
+                  <td>{{$walletfundhistories->wallet->wallet_name}}</td>
+                  <td>{{$walletfundhistories->amount}}</td>
+                  <td><i class="fa {{$walletfundhistories->status ? 'fa-check-circle can ' : 'fa-times-circle cannot'}}" aria-hidden="true"></i></td>
+                  <td>{{$walletfundhistories->narration}}</td>
+                  <td>{{$walletfundhistories->created_at}}</td>
+                </tr>
+                @php($count++)
+                @endforeach
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+
+        <div id="topuphistorybox" class="tab-pane fade">
+
+            <div class="orange-box">
+              <h4 class="title" align="center">TOPUP HISTORY</h4>
+            </div>
+    
+        <div class="table table-responsive">
+          <table id="datatable" class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>Phone</th>
+                <th>Name</th>
+                <th>Network</th>
+                <th>Amount</th>
+                <th>Ref</th>
+                <th>User</th>
+                <th>Status</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              @if(count($topuphistory) > 0) @foreach($topuphistory as $hist)
+              <tr>
+                <th>{{ $hist->phone }}</th>
+                <th>{{ $hist->firstname }} {{ $hist->lastname }}</th>
+                <th>{{ $hist->netw }}</th>
+                <td class="phone">{{ $hist->amount }}</td>
+                <td class="phoneRef">{{ $hist->ref }}</td>
+                <td class="amount">{{ $hist->username }}</td>
+                <td class="amount">{{ $hist->status }}</td>
+                <td class="amount">{{ $hist->created_at }}</td>
+
+              </tr>
+              @endforeach @else
+              <tr>
+                <td></td>
+                <td>No Topup Transactions yet</td>
+                <td></td>
+                <td></td>
+              </tr>
+              @endif
+
+              
+            </tbody>
+          </table> 
+    
+          
+        </div>
+      </div>
+
+
 
 
 
