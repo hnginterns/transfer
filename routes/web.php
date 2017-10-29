@@ -29,6 +29,8 @@ Route::get('/logout', function () {
 	return redirect('/login');
 });
 
+Route::get('/balance', 'WalletController@balance');
+
 // Please do not remove For testing purposes
 Route::get('/adminnew', function () {
 	$users = App\User::all();
@@ -111,7 +113,7 @@ Route::group(['middleware' => 'auth'], function () {
 	//end of phone top
 
 	Route::get('/transfer', 'pagesController@transfer');
-	Route::get('/balance', 'pagesController@balance');
+	///Route::get('/balance', 'pagesController@balance');
 	Route::get('/fund/{id}', 'RavepayController@index')->name('ravepay.pay');
 	Route::post('/fund/{id}', 'RavepayController@cardWallet')->name('ravepay.pay');
 	Route::post('/wallet/{wallet_code}/fund', 'WalletController@fundWalletWithCard');

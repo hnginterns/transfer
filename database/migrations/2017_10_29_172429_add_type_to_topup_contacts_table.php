@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AlterValidationsTable extends Migration
+class AddTypeToTopupContactsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AlterValidationsTable extends Migration
      */
     public function up()
     {
-         Schema::table('validations', function (Blueprint $table) {
-            $table->integer('uuid');
+        Schema::table('topup_contacts', function (Blueprint $table) {
+            $table->string('netw');
         });
     }
 
@@ -25,6 +25,6 @@ class AlterValidationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('validations');
+        //
     }
 }

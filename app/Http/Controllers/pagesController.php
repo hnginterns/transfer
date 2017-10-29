@@ -66,7 +66,7 @@ class pagesController extends Controller
         $headers = array('content-type' => 'application/json');
         $query = array('apiKey' => $api_key, 'secret' => $secret_key);
         $body = \Unirest\Request\Body::json($query);
-        $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/merchant/verify', $headers, $body);
+        $response = \Unirest\Request::post(env('API_KEY_LIVE_URL').'/v1/merchant/verify', $headers, $body);
         $response = json_decode($response->raw_body, true);
         $status = $response['status'];
         if (!$status == 'success') {
@@ -162,7 +162,7 @@ class pagesController extends Controller
         if($permit == null) return redirect('/dashboard')->with('error', 'You do not have access to this wallet');
 
         $cardWallet = CardWallet::latest()->first();
-        $validate = Validation::latest()->first();
+        //$validate = Validation::latest()->first();
         $beneficiaries = Beneficiary::where('wallet_id', $wallet->id)->latest()->paginate(15);
 
         // get all wallet to wallet transactions, both sent and received
@@ -229,11 +229,11 @@ class pagesController extends Controller
                 'bank_code' => explode('||', request('bank_id'))
                 );
                 $body = \Unirest\Request\Body::json($query);
-                $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/resolve/account', $headers, $body);
+                $response = \Unirest\Request::post(env('API_KEY_LIVE_URL').'/v1/resolve/account', $headers, $body);
                 $response = json_decode($response->raw_body, true);
                 if($response['status'] == 'success')
                 {
-                    $beneficiary = new Validation;
+                    /**$beneficiary = new Validation;
                     //$beneficiary->name = request('name');
                     $beneficiary->account_number = request('account_number'); //->account_number;
                     $bank_detail = explode('||', request('bank_id'));
@@ -242,17 +242,18 @@ class pagesController extends Controller
                     $beneficiary->bank_name = $bank_detail[1];
                     $beneficiary->uuid = Auth::user()->id; 
                     
-                    if ($beneficiary->save()) {
-                    $response = $response['data']['account_name'];
-                    return back()->with('response', $response);
+                    if ($beneficiary->save()) {**/
+                    $bank_code = explode('||', request('bank_id'));
+                    $responses = [];
+                    $responses['name'] = $response['data']['account_name'];
+                    $responses['bank_code'] = $bank_code[0];
+                    $responses['bank_name'] = $bank_code[1];
+                    $responses['account_number'] = $request->account_number;
+                    return back()->with('responses', array($responses));
                 //return redirect("wallet/$wallet->id")->with('success', 'Beneficiary added');
-                    } else { 
-                        return redirect()->back()->with('error', 'Beneficiary could not be added');
-                    }       
-                }else {
-
+                    } 
                     return redirect()->back()->with('error', $response['msg']);
-                }
+                
 
         }
     }

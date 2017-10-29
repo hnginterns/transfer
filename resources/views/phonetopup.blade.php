@@ -127,16 +127,33 @@ i.can {
       
     </div>
 
-
-    <br>
-    
+    <div class="table table-responsive">
+      <table class="table" id="contact-table">
+        <thead>
+          <tr>
+            <td><input type="checkbox" onClick="toggle(this)" /> Select All</td>
+            <td>Star</td>
+            <td>Name</td>
+            <td>Phone Number</td>
+            <td>Network</td>
+            <td>Title</td>
+            <td>Group</td>
+            <td>Weekly Limit</td>
+            <td>Total recharge so far (&#8358;)</td>
+            <td>Enter Amount<br>(airtime)</td>
+            
+          </tr>
+        </thead>
+        <tbody> 
+          <form class="send-airtime" action="{{ route('topup.phone.multiple')}}" method="POST" role="form">
+       
     <div class="row">
-  <div class="col-md-12 text-center">
+  <div class="col-md-4 text-center">
 
     <div class="orange-box">
-      <h4 class="title" align="center">Group Airtime Top Up</h4>
+      
     </div>
-    <br>
+   
     <form class="form form-inline" action="{{ route('topup.phone.group')}}" method="POST" role="form">
       {{csrf_field()}} @if(count($tags) > 0)
       <select name="topup_group" class="form-control groups-list">
@@ -146,42 +163,23 @@ i.can {
                       </select> @endif
       <input class="form-control group-amount-topup" type="number" name="amount" min="50" required placeholder="Enter Amount to be shared">
       <button class="btn btn-success topup-group-btn" type="submit">Top Up Group</button>
-      <div style="margin-top: 10px;" class="alert alert-info col-md-8 col-md-offset-2 groups-topup text-center hidden"></div>
+      <div style="margin-top: 10px;" class="alert alert-info col-md-4 col-md-offset-2 groups-topup text-center hidden"></div>
     </form>
-
- </div> 
-
-</div>
-<br>
-<button type="submit" class="btn btn-success pull-right" style="margin-left: 5px; margin-bottom: 3px;">Top up all</button>
-<button type="submit" class="btn btn-info pull-right" style="margin-right: 5px; margin-bottom: 3px;">Top-up Data</button>
-<br><br>
-<hr>
-
-
-    <div class="table table-responsive">
-      <table class="table" id="contact-table">
-        <thead>
-          <tr>
-            <td><input type="checkbox" onClick="toggle(this)" /> <strong>Select All</strong></td>
-            <td><strong>Star</strong></td>
-            <td><strong>Name</strong></td>
-            <td><strong>Phone Number</strong></td>
-            <td><strong>Network</strong></td>
-            <td><strong>Title</strong></td>
-            <td><strong>Department</strong></td>
-            <td><strong>Weekly Limit</strong></td>
-            <td><strong>Enter Amount</strong><br>(airtime)</td>
-            
-          </tr>
-        </thead>
-        <tbody>
-          <form class="send-airtime" action="{{ route('topup.phone.multiple')}}" method="POST" role="form">
+      </div></div>
+     
+          
+          <a href="#dataModal" class="btn btn-info pull-right" style="margin-left: 5px; margin-bottom: 3px;" data-toggle="modal">Top-up Data</a>
+          <button type="submit" class="btn btn-success pull-right" style="margin-right: 5px; margin-bottom: 3px;">Top up all</button>
             {{ csrf_field() }} @if(count($phones) > 0) @foreach($phones as $phone)
             <tr class="contact-fn">
+<<<<<<< HEAD
 
               <td><input type="checkbox" name="checked[]" value="{{$phone->id}}" class="checkbox
               @if(count($tags) > 0) @foreach($tags as $group) {{ strtolower($group->name) }} @endforeach @endif"></td>
+=======
+             
+              <td><input type="checkbox" name="checked[]" value="{{$phone->id}}" class="checkbox"></td>
+>>>>>>> b1b94a7b9aff77f98eb46fb86f1d543af5277fa7
               <td><i onclick="starContact({{$phone->id}})" class="fa {{$phone->starred ? 'fa-star starred': 'fa-star-o not-starred'}}"></i></td>
               <td class="firstName" data-user="{{ $phone->id }}">{{ $phone->firstname }} {{ $phone->lastname }}</td>
               <td class="phone">{{ $phone->phone }}</td>
@@ -189,8 +187,9 @@ i.can {
               <td class="amount">{{ $phone->title }}</td>
               <td class="amount">{{ $phone->department }}</td>
               <td class="max-tops">{{ $phone->weekly_max }}</td>
+              <td>{{$phone->topupTotal->sum('amount')}}</td>
               <td><input class="form-control input-airtime-amount" type="number" min="50" name="amount[{{$phone->id}}]" placeholder="Enter Amount"
-                /></td>
+                </td>
               <td>
 
                 
@@ -222,7 +221,7 @@ i.can {
           <td></td>
           <td></td>
           <td></td>
-          <td><button type="submit" class="btn btn-success">Top up all</button></td>
+          <td></td>
           <td></td>
         </tr>
         </form>
@@ -288,6 +287,7 @@ i.can {
                 <th>Ref</th>
                 <th>User</th>
                 <th>Status</th>
+                <th>Response</th>
                 <th>Date</th>
               </tr>
             </thead>
@@ -301,7 +301,8 @@ i.can {
                 <td class="phone">{{ $hist->amount }}</td>
                 <td class="phoneRef">{{ $hist->ref }}</td>
                 <td class="amount">{{ $hist->username }}</td>
-                <td class="amount">{{ $hist->status }}</td>
+                <td class="amount"><i class="fa {{ $hist->status == 'success' ? 'fa-check-circle can' : 'fa-times-circle cannot'}}"></i></td>
+                <td class="amount">{{ $hist->txn_response}}</td>
                 <td class="amount">{{ $hist->created_at }}</td>
 
               </tr>
