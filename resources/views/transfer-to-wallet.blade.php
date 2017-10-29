@@ -45,7 +45,7 @@
             </div>
 
             <div class="form-group ">    
-              <button id="transfer" type="submit" class="btn btn-primary">Transfer</button>
+              <button id="transfer" type="submit" class="btn btn-primary pull right">Transfer</button>
             </div>
         </form>
 </div>
