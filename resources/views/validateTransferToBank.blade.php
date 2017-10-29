@@ -26,12 +26,22 @@
                   <h4 class="intro text-center">Transfer To Beneficiary </h4>
                   <form class="input-form" action="/transfer/validate/{{$wallet->id}}" method="POST">
                   {{csrf_field()}}
-                 
+                            
+
                             <div class="form-group">
                               <select class="form-control cus-input" name="wallet_id" id="wallet_id">
                                   <option value="{{ $wallet->id }}">{{ $wallet->wallet_name }}</option>
                                 
                               </select>
+                            </div>
+
+                            <div class="form-group">
+                                <select class="form-control cus-input" name="beneficiary_id">
+                                  <option>Select Beneficiary</option>
+                                    @foreach($wallet->beneficiary as $key => $beneficiaries)
+                                      <option value="{{$beneficiaries->id}}">{{$beneficiaries->name}}</option>
+                                    @endforeach
+                                </select>
                             </div>
 
                             <div class="form-group">
@@ -45,5 +55,5 @@
 
                   </form>
             </div>
-
+              
   @endsection

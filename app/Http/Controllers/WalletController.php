@@ -228,13 +228,17 @@ class WalletController extends Controller
     //validate transfer from wallet to bank
     public function validateTransferToAccount(Request $request, Wallet $wallet, BankTransaction $bank)
     {
+        $beneficiary = Beneficiary::find($request->beneficiary_id);
         $data = [];
         $data['wallet_id'] = $request->wallet_id;
         $data['validate_id'] = $request->validate_id;
+        $data['beneficiary_id'] = $beneficiary->id; 
+        $data['beneficiary_name'] = $beneficiary->name; 
+        $data['account_number'] = $beneficiary->account_number;
 
         if($data['validate_id'] == 50)
         {
-            return redirect("/transfer/beneficiary/$wallet->id");
+            return redirect("/transfer/beneficiary/$wallet->id")->with('data', array($data));
         }
         return back()->with('error', 'you entered a wrong ID');
     }
@@ -275,7 +279,7 @@ class WalletController extends Controller
                      $errors = $restrict->transferToBank();
                 if(count($errors) != 0){
                     Session::flash('errors', $errors);
-                    return back();
+                    return redirect("/transfer/beneficiary/validate/$wallet->id");
                 }
                 //end of permission checks
 
