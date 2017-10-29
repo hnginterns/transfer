@@ -58,7 +58,7 @@
 
   .form-group>button:hover,
   .form-group>button:focus {
-      background: rgb(252, 251, 250);
+      background: #295b93;
       color: #999;
       border-color: #39689C;
       border-width: 1px;
