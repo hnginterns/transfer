@@ -903,7 +903,11 @@
         <br />
         <button class="btn btn-primary"><a href="https://finance.hotels.ng/login"><font color="white">Sign In</font></a></button>
     </div>
-</div><br><br><p>
+</div>
+</div>
+
+<p>
+
 <!-- FOOTER -->
 
 <div id="footer">
@@ -912,8 +916,8 @@
     </div>
 </div>
 
-<p>
 
+<p>
 
 <div id="mobile-footer">
     
