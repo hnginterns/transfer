@@ -21,6 +21,7 @@ class CreateTopupContactsTable extends Migration
             $table->string('department');
             $table->string('phone');
             $table->string('email');
+            $table->boolean('starred')->default(false);
             $table->integer('weekly_max');
             $table->timestamps();
         });

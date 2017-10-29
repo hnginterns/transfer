@@ -872,7 +872,7 @@
         
         <div id="content-text" class="clearfix" align="center">
         <span id="heading-top-hd">
-        Hotels.ng Financial Control
+        Hotels.ng Financial Control ---
                 </span>
                 <span id="heading-hd">
                --- making sure your booking gets to the hotel on time ---
