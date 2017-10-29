@@ -99,7 +99,26 @@ i.can {
 <div class="row">
   <div class="col-md-12 text-center">
 
-    <div class="orange-box">
+    
+
+<div class="row">
+  <div class="col-md-12 text-center">
+
+        <ul class="nav nav-pills nav-justified ">
+            <li class="active"><a data-toggle="pill" href="#contactlistbox">Top Up</a></li>
+            <li><a data-toggle="pill" href="#fundhistorybox">Funding History</a></li>
+            <li><a data-toggle="pill" href="#topuphistorybox">Topup History</a></li>
+        </ul>
+
+    </div>
+</div>
+
+<div class="tab-content">
+  <div id="contactlistbox" class="tab-pane fade in active">
+      <div class="orange-box">
+          <h4 class="title" align="center">TOP UP</h4>
+      </div>
+       <div class="orange-box">
       <h4 class="title" align="center">Group Airtime Top Up</h4>
     </div>
     <br>
@@ -120,24 +139,6 @@ i.can {
 </div>
 
 <br><br>
-
-<div class="row">
-  <div class="col-md-12 text-center">
-
-        <ul class="nav nav-pills nav-justified ">
-            <li class="active"><a data-toggle="pill" href="#contactlistbox">Top Up</a></li>
-            <li><a data-toggle="pill" href="#fundhistorybox">Funding History</a></li>
-            <li><a data-toggle="pill" href="#topuphistorybox">Topup History</a></li>
-        </ul>
-
-    </div>
-</div>
-
-<div class="tab-content">
-  <div id="contactlistbox" class="tab-pane fade in active">
-      <div class="orange-box">
-          <h4 class="title" align="center">TOP UP</h4>
-      </div>
       <br>
       <div class="row">
         <div class="col-md-2">
