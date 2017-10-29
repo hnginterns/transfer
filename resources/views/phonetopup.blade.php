@@ -179,7 +179,7 @@ i.can {
           
           *
           
-  <div class="col-md-12">
+  <div class="col-md-5">
           <div class="orange-box">
       <h4 class="title" align="center">Group Airtime Top Up</h4>
     </div>
