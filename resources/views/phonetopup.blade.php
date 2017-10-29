@@ -154,7 +154,7 @@ i.can {
 </div>
 <br>
 
-<button type="submit" class="btn btn-success">Top up all</button>
+<button type="submit" class="btn btn-success pull-right" style="margin-left: 5px; margin-bottom: 3px;">Top up all</button>
 <a href="#dataModal" class="btn btn-info pull-right" style="margin-right: 5px; margin-bottom: 3px;" data-toggle="modal">Top-up Data</a>
 <br><br>
 <hr>
@@ -192,7 +192,7 @@ i.can {
               <td class="max-tops">{{ $phone->weekly_max }}</td>
               <td>{{$phone->topupTotal->sum('amount')}}</td>
               <td><input class="form-control input-airtime-amount" type="number" min="50" name="amount[{{$phone->id}}]" placeholder="Enter Amount"
-                /></td>
+                </td>
               <td>
 
                 
@@ -224,7 +224,7 @@ i.can {
           <td></td>
           <td></td>
           <td></td>
-          <td></td>
+          <td><button type="submit" class="btn btn-success">Top up all</button></td>
           <td></td>
         </tr>
         </form>
