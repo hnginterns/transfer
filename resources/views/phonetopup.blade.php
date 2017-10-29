@@ -120,7 +120,7 @@ i.can {
           <h4 class="title" align="center">TOP UP</h4>
       </div>
       <div class="row">
-  <div class="col-md-4 text-center">
+  <div class="col-md-7 text-center">
 
     <div class="orange-box">
       
