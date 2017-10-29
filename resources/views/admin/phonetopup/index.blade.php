@@ -346,7 +346,7 @@
                                                                         @endforeach
                                                                 </select>
                                                             @else
-                                                                <p class="form-static">No tags added</p>
+                                                                <p class="form-static">No Groups added yet</p>
                                                             @endif
                                                         </div>
                                                     </div>
