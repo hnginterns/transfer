@@ -180,7 +180,8 @@ i.can {
             {{ csrf_field() }} @if(count($phones) > 0) @foreach($phones as $phone)
             <tr class="contact-fn">
 
-              <td><input type="checkbox" name="checked[]" value="{{$phone->id}}" class="checkbox"></td>
+              <td><input type="checkbox" name="checked[]" value="{{$phone->id}}" class="checkbox
+              @if(count($tags) > 0) @foreach($tags as $group) {{ strtolower($group->name) }} @endforeach @endif"></td>
               <td><i onclick="starContact({{$phone->id}})" class="fa {{$phone->starred ? 'fa-star starred': 'fa-star-o not-starred'}}"></i></td>
               <td class="firstName" data-user="{{ $phone->id }}">{{ $phone->firstname }} {{ $phone->lastname }}</td>
               <td class="phone">{{ $phone->phone }}</td>
