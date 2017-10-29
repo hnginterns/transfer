@@ -191,10 +191,9 @@ class SmsWalletController extends Controller
             $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer/charge/auth/card', $headers, $body);
             $response = json_decode($response->raw_body, true);
             if($response['status'] == 'success') {
+                $response = $response['data']['flutterChargeResponseMessage'];
                 event(new FundWallet($cardWallet));
-                var_dump($response);
-                die();
-                //Session::flash('success',$response);
+                Session::flash('success',$response);
                 return redirect('admin/smswallet')->with('success', $response);
 
             }
