@@ -50,7 +50,7 @@
   .input-form>.form-group>button {
       background: #39689C;
       
-      
+      padding: 4px 12px;
       border-color: #39689C;
       box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
       cursor: pointer;
