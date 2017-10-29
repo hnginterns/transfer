@@ -253,14 +253,14 @@ tr:nth-child(even) {
                             <div class="col-md-5">
                                 <label for="cc_name">First Name</label>
                                 <div class="controls">
-                                    <input name="fname" class="form-control" id="cc_name" title="First Name" required type="text">
+                                    <input name="fname" class="form-control" value="{{Auth::user()->fundWalletInfo == null ? '' : Auth::user()->fundWalletInfo->firstname}}" id="cc_name" title="First Name" required type="text">
                                 </div>
                             </div>
                             <div class="col-md-5">
                               <div class="form-group">
                                   <label for="cc_name">Last Name</label>
                                   <div class="controls">
-                                      <input name="lname" class="form-control" id="cc_name"  title="last name" required type="text">
+                                      <input name="lname" class="form-control" value="{{Auth::user()->fundWalletInfo == null ? '' : Auth::user()->fundWalletInfo->lastname}}" id="cc_name"  title="last name" required type="text">
                                   </div>
                               </div>
                             </div>
@@ -271,14 +271,14 @@ tr:nth-child(even) {
                             <div class="col-md-5">
                                 <label>Phone Number</label>
                                 <div class="controls">
-                                      <input name="phone" class="form-control" autocomplete="off" maxlength="20"  required="" type="text">
+                                      <input name="phone" class="form-control" value="{{Auth::user()->fundWalletInfo == null ? '' : Auth::user()->fundWalletInfo->phonenumber}}" autocomplete="off" maxlength="20"  required="" type="text">
                                 </div>
                             </div>
                             <div class="col-md-5">
                                 <div class="form-group">
                                     <label>Email Address</label>
                                     <div class="controls">
-                                          <input type="email" name="emailaddr" class="form-control" autocomplete="off" required="" type="text">
+                                          <input type="email" name="emailaddr" value="{{Auth::user()->fundWalletInfo == null ? '' : Auth::user()->fundWalletInfo->email}}" class="form-control" autocomplete="off" required="" type="text">
                                     </div>
                                 </div>
                             </div>
