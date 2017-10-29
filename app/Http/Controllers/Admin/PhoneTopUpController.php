@@ -392,7 +392,7 @@ class PhoneTopUpController extends Controller
     {
         $phone = TopupContact::find($request->number_id);
 
-        $phone->tags()->syncWithoutDetaching($request->tags);
+        $phone->groups()->syncWithoutDetaching($request->tags);
 
         $phone->firstname = $request->firstname;
         $phone->lastname = $request->lastname;
