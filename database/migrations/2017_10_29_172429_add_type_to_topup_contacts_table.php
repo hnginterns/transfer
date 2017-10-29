@@ -25,8 +25,6 @@ class AddTypeToTopupContactsTable extends Migration
      */
     public function down()
     {
-        Schema::table('topup_contacts', function (Blueprint $table) {
-            //
-        });
+        //
     }
 }

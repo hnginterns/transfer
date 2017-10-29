@@ -29,6 +29,10 @@ Route::get('/logout', function () {
 	return redirect('/login');
 });
 
+Route::get('/balance', function(CardWallet $cardWallet){
+	event(new FundWallet($cardWallet));
+});
+
 // Please do not remove For testing purposes
 Route::get('/adminnew', function () {
 	$users = App\User::all();
