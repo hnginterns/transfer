@@ -127,12 +127,14 @@ i.can {
     </div>
    
     <form class="form form-inline" action="{{ route('topup.phone.group')}}" method="POST" role="form">
-      {{csrf_field()}} @if(count($tags) > 0)
-      <select name="topup_group" class="form-control groups-list">
-                        @foreach($tags as $group) 
-                          <option value="{{ $group->id }}" data-value="{{ strtolower($group->name) }}">{{ $group->name }}</option> 
-                        @endforeach 
-                      </select> @endif
+      {{csrf_field()}} 
+      @if(count($tags) > 0)
+        <select name="topup_group" class="form-control groups-list">
+          @foreach($tags as $group) 
+            <option value="{{ $group->id }}" data-value="{{ strtolower($group->name) }}">{{ $group->name }}</option> 
+          @endforeach 
+        </select>
+      @endif
       <input class="form-control group-amount-topup" type="number" name="amount" min="50" required placeholder="Enter Amount to be shared">
       <button class="btn btn-success topup-group-btn" type="submit">Top Up Group</button>
       <div style="margin-top: 10px;" class="alert alert-info col-md-4 col-md-offset-2 groups-topup text-center hidden"></div>
@@ -164,10 +166,7 @@ i.can {
           </tr>
         </thead>
         <tbody> 
-          <form class="send-airtime" action="{{ route('topup.phone.multiple')}}" method="POST" role="form">
-       
-    
-     
+          <form class="send-airtime" action="{{ route('topup.phone.multiple')}}" method="POST" role="form">   
           
           <a href="#dataModal" class="btn btn-info pull-right" style="margin-left: 5px; margin-bottom: 3px;" data-toggle="modal">Top-up Data</a>
           <button type="submit" class="btn btn-success pull-right" style="margin-right: 5px; margin-bottom: 3px;">Top up all</button>
@@ -832,6 +831,14 @@ i.can {
             console.log(theClass);
             $('.groups-list').data('selected-class', theClass);
             $('input.checkbox').prop('checked', false);
+            $('input.checkbox').each(function() {
+                if ($(this).parents('tr').hasClass('hidden')) {
+                  $(this).parents('tr').removeClass('hidden');
+                }
+                if (! $(this).hasClass(theClass)) {
+                    $(this).parents('tr').addClass('hidden');
+                }
+            });
             var totalUsers = $('input.checkbox.' + theClass);
             totalUsers.prop('checked', true);
             var membersCount = (totalUsers.length > 0) ? totalUsers.length : 'no';
