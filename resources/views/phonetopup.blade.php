@@ -168,7 +168,35 @@ i.can {
        
     
      
-          
+          <div class="row">
+  <div class="col-md-7 text-center">
+
+    <div class="orange-box">
+      
+    </div>
+    
+    **
+   
+    <form class="form form-inline" action="{{ route('topup.phone.group')}}" method="POST" role="form">
+      {{csrf_field()}} @if(count($tags) > 0)
+      <select name="topup_group" class="form-control groups-list">
+                        @foreach($tags as $group) 
+                          <option value="{{ $group->id }}" data-value="{{ strtolower($group->name) }}">{{ $group->name }}</option> 
+                        @endforeach 
+                      </select> @endif
+      <input class="form-control group-amount-topup" type="number" name="amount" min="50" required placeholder="Enter Amount to be shared">
+      <button class="btn btn-success topup-group-btn" type="submit">Top Up Group</button>
+      <div style="margin-top: 10px;" class="alert alert-info col-md-4 col-md-offset-2 groups-topup text-center hidden"></div>
+    </form>
+      </div></div>
+      
+      <div class="row">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-5"></div>
+      
+    </div>
+    **
           <a href="#dataModal" class="btn btn-info pull-right" style="margin-left: 5px; margin-bottom: 3px;" data-toggle="modal">Top-up Data</a>
           <button type="submit" class="btn btn-success pull-right" style="margin-right: 5px; margin-bottom: 3px;">Top up all</button>
             {{ csrf_field() }} @if(count($phones) > 0) @foreach($phones as $phone)
