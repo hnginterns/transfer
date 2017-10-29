@@ -85,30 +85,7 @@ i.can {
   </div>
 </div>
 
-<div class="row">
-  <div class="col-md-12 text-center">
 
-    <div class="orange-box">
-      <h4 class="title" align="center">Group Airtime Top Up</h4>
-    </div>
-    <br>
-    <form class="form form-inline" action="{{ route('topup.phone.group')}}" method="POST" role="form">
-      {{csrf_field()}} @if(count($tags) > 0)
-      <select name="topup_group" class="form-control groups-list">
-                        @foreach($tags as $group) 
-                          <option value="{{ $group->id }}" data-value="{{ strtolower($group->name) }}">{{ $group->name }}</option> 
-                        @endforeach 
-                      </select> @endif
-      <input class="form-control group-amount-topup" type="number" name="amount" min="50" required placeholder="Enter Amount to be shared">
-      <button class="btn btn-success topup-group-btn" type="submit">Top Up Group</button>
-      <div style="margin-top: 10px;" class="alert alert-info col-md-8 col-md-offset-2 groups-topup text-center hidden"></div>
-    </form>
-
- </div> 
-
-</div>
-
-<br><br>
 
 <div class="row">
   <div class="col-md-12 text-center">
@@ -187,6 +164,8 @@ i.can {
  </div> 
 
 </div>
+<br><br>
+<hr>
 
 
     <div class="table table-responsive">
