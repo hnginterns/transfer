@@ -118,7 +118,9 @@ i.can {
       <div class="orange-box">
           <h4 class="title" align="center">TOP UP</h4>
       </div>
-       <div class="orange-box">
+       
+      <br>
+      <div class="orange-box">
       <h4 class="title" align="center">Group Airtime Top Up</h4>
     </div>
     <br>
@@ -139,7 +141,6 @@ i.can {
 </div>
 
 <br><br>
-      <br>
       <div class="row">
         <div class="col-md-2">
         </div>
