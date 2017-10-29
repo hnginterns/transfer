@@ -182,7 +182,7 @@ tr:nth-child(even) {
 
                     @foreach ($beneficiaries as $beneficiary)
                       <tr>
-                        <td>{{ $beneficiary->name }}</td>
+                        <td>{{ $beneficiary->account_name }}</td>
                         <td>{{ $beneficiary->bank_name }}</td>
                         <td>{{ $beneficiary->account_number }}</td>
                         <td>{{ $beneficiary->wallet_id }}</td>
@@ -465,7 +465,7 @@ $('.modal-content').resizable({
 
 @endif
 
-@if (session('response'))
+@if (session('responses'))
    <script type="text/javascript">
         $(document).ready(function() {
             $('#validateModal').modal();
@@ -484,19 +484,30 @@ $('.modal-content').resizable({
           <div class="modal-body">
             <div class="row">
             <div class="col-md-6 col-md-offset-2">
+              
+
+              
               <form action="/updateBeneficiary/{{$wallet->id}}" method="POST">
                 {{csrf_field()}}
-                <input type="hidden" name="bank_id" value="{{$validate->bank_id}}">
+                
+               {{--<input type="hidden" name="bank_id" value="{{$response->bank_code}}">--}}
                 <div class="form-group">
-                <input type="text" name="name" value="{{session('response')}}" class="form-control" readonly>
+                 @foreach(Session::get('responses') as $response) 
+                <input type="text" name="name" value="{{$response['name']}}" class="form-control" readonly>
+                 @endforeach
               </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" name="bank_name" value="{{$validate->bank_name}}" readonly>
+                    <input type="text" class="form-control" name="bank_name" value="{{$response['bank_name']}}" readonly>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" name="account_number" value="{{$validate->account_number}}" readonly>
+                    <input type="hidden" class="form-control" name="bank_id" value="{{$response['bank_code']}}" readonly>
                 </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="account_number" value="{{$response['account_number']}}" readonly>
+                </div>
+               
                 <button type="submit" class="btn btn-default btn-block">Submit</button>
+                
               </form>
             </div>
           </div>

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AlterValidationsTable extends Migration
+class AlterBeneficiariesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AlterValidationsTable extends Migration
      */
     public function up()
     {
-         Schema::table('validations', function (Blueprint $table) {
-            $table->integer('uuid');
+        Schema::table('beneficiaries', function (Blueprint $table) {
+             $table->dropColumn(['alias']);
         });
     }
 
@@ -25,6 +25,8 @@ class AlterValidationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('validations');
+          Schema::table('beneficiaries', function (Blueprint $table) {
+            //
+        });
     }
 }

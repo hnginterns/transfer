@@ -35,7 +35,12 @@
                             @endforeach
                         </select>
                     </div>
-                      
+                          
+                          <div class="form-group">
+                            @foreach($wallet->beneficiary as $key => $beneficiaries)
+                              <input type="text" class="form-control cus-input" name="amount" id="amount" value="{{$beneficiaries->account_number" readonly>
+                            @endforeach
+                          </div>     
                  
                           <div class="form-group">
                               <input type="number" class="form-control cus-input" name="amount" id="amount" placeholder="Amount">
