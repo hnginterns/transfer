@@ -14,7 +14,7 @@ use App\CardWallet;
 use App\Beneficiary;
 use App\FundWalletInfo;
 use Carbon\Carbon;
-
+use App\Http\Requests\TopUpDataRequest;
 use App\SmsWalletFund;
 use App\Rule;
 use App\Bank;
@@ -500,10 +500,8 @@ class PhoneTopUpController extends Controller
 
     }
 
-    public function topdatasubmit(Request $request)
+    public function topdatasubmit(TopUpDataRequest $request)
     {
-        $phone = $request->phone;
-        $network = $request->netw;
         $amount = $request->amount;
 
         $txn_ref = str_random(10);
@@ -514,7 +512,7 @@ class PhoneTopUpController extends Controller
 
         if ($contacthistory >= $contact->weekly_max) {
         
-            return redirect('/phonetopup')->with('error', 'Weekly Maximum Exceede');
+            return redirect('/phonetopup')->with('error', 'Weekly Maximum Exceeded');
 
         } 
 
@@ -535,6 +533,7 @@ class PhoneTopUpController extends Controller
         $topuphistory->amount = $amount;
         $topuphistory->ref = str_random(10);
         $topuphistory->txn_response = 00;
+        $topuphistory->type = 'data';
         $topuphistory->status = 'Success';
         $topuphistory->save();
         return redirect('/phonetopup')->with('success', 'Data topped up uccessfully.');
