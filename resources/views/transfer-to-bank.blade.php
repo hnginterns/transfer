@@ -53,7 +53,7 @@
                             </div>
                             
                         <div class="form-group center-block">    
-                          <button id="" type="submit" class="btn btn-primary">Transfer</button>
+                          <button id="" type="submit" class="btn btn-primary pull-right">Transfer</button>
                         </div>
 
 
