@@ -897,13 +897,13 @@
         <div id="divider-text">
             <p align="center" id="divider-title">Already registered? </p>
             <p id="">
-                Login to your account and create wallets for your company.
+                Login to your account.
             </p>
         </div>
         <br />
         <button class="btn btn-primary"><a href="https://finance.hotels.ng/login"><font color="white">Sign In</font></a></button>
     </div>
-</div><br><br><p>
+</div><br><p>
 <!-- FOOTER -->
 
 <div id="footer">

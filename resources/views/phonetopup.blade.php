@@ -23,6 +23,7 @@ i.can {
   i.received {
     color: #dd4b39;
     
+    
   }
   
   hr {
@@ -123,34 +124,7 @@ i.can {
         <div class="col-md-2">
         </div>
         <div class="col-md-5"></div>
-      <form method="GET" action="" accept-charset="UTF-8" id="contacts-form">
-        <div class="col-md-2">
-
-          <select class="form-control" name="department">
-            <option>All Depts</option>
-            @foreach($phones as $contact)
-              <option value="{{ $contact->department }}">{{ $contact->department }}</option>
-            @endforeach
-          </select>
-
-        </div>
-        <div class="col-md-3">
-          <div class="input-group custom-search-form">
-            
-            <span class="input-group-btn">
-                <button class="btn btn-default" type="submit" id="search-users-btn">
-                    <span class="glyphicon glyphicon-search"></span>
-                </button>
-                @if (Input::has('search') && Input::get('search') != '')
-                        <a href="" class="btn btn-danger" type="button" >
-                            <span class="glyphicon glyphicon-remove"></span>
-                        </a>
-                    @endif
-
-            </span>
-          </div>
-        </div>
-      </form>
+      
     </div>
 
 
@@ -178,6 +152,9 @@ i.can {
  </div> 
 
 </div>
+<br>
+<button type="submit" class="btn btn-success pull-right" style="margin-left: 5px; margin-bottom: 3px;">Top up all</button>
+<button type="submit" class="btn btn-info pull-right" style="margin-right: 5px; margin-bottom: 3px;">Top-up Data</button>
 <br><br>
 <hr>
 
@@ -186,14 +163,15 @@ i.can {
       <table class="table" id="contact-table">
         <thead>
           <tr>
-            <th><input type="checkbox" onClick="toggle(this)" /> Select All Contact</th>
-            <td>Name</td>
-            <td>Phone Number</td>
-            <td>Network</td>
-            <td>Title</td>
-            <td>Department</td>
-            <td>Weekly Limit</td>
-            <td>Enter Amount<br>(airtime)</td>
+            <td><input type="checkbox" onClick="toggle(this)" /> <strong>Select All</strong></td>
+            <td><strong>Star</strong></td>
+            <td><strong>Name</strong></td>
+            <td><strong>Phone Number</strong></td>
+            <td><strong>Network</strong></td>
+            <td><strong>Title</strong></td>
+            <td><strong>Department</strong></td>
+            <td><strong>Weekly Limit</strong></td>
+            <td><strong>Enter Amount</strong><br>(airtime)</td>
             
           </tr>
         </thead>
@@ -203,6 +181,7 @@ i.can {
             <tr class="contact-fn">
 
               <td><input type="checkbox" name="checked[]" value="{{$phone->id}}" class="checkbox"></td>
+              <td><i onclick="starContact({{$phone->id}})" class="fa {{$phone->starred ? 'fa-star starred': 'fa-star-o not-starred'}}"></i></td>
               <td class="firstName" data-user="{{ $phone->id }}">{{ $phone->firstname }} {{ $phone->lastname }}</td>
               <td class="phone">{{ $phone->phone }}</td>
               <td class="phoneRef">{{ $phone->netw }}</td>
@@ -395,7 +374,7 @@ i.can {
                 <div class="form-group">
                   <label>Phone Number</label>
                   <div class="controls">
-                    <input name="phone" class="form-control" value="{{Auth::user()->fundWalletInfo == null ? '' : Auth::user()->fundWalletInfo->phonenumber}}" autocomplete="off" maxlength="20" required="" type="text">
+                    <input name="phone" pattern="\+234\d{10}" class="form-control" value="{{Auth::user()->fundWalletInfo == null ? '' : Auth::user()->fundWalletInfo->phonenumber}}" autocomplete="off" maxlength="20" required="" type="text">
                   </div>
                 </div>
 
