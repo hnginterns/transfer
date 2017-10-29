@@ -872,13 +872,13 @@
         
         <div id="content-text" class="clearfix" align="center">
         <span id="heading-top-hd">
-        Hotels.ng Financial Control ---
+        Hotels.ng Financial Control
                 </span>
                 <span id="heading-hd">
-               --- making sure your booking gets to the hotel on time ---
+                financial  management made easy
                 </span>
             <button id="button-hd">
-                <a href="{{url('features')}}">Features</a>
+                <a href="{{url('login')}}">Sign in</a>
             </button>
         </div>
     </div>
@@ -888,43 +888,6 @@
 <section class="about">
 
 <div class="about-content">
-
-<div class="row">
-        <div class="col-lg-12">
-        <h5 class="about-title">How it works</h5>
-        <p class="about-paragraph">
-        Our custom built Transfer Rules webapp is built with the aim of simplifying your financial
-        transactions to groups or individual accounts.
-        </p>
-        </div>
-        
-</div>
-
-<div class="row">
-        <div class="col-lg-4">
-        <div class="icon"><img src="img/multiple-shots.png" alt="icon" /> </div>
-        <h5 class="about-title">Multiple Wallet Support</h5>
-        <p class="about-paragraph">
-        Own more than one wallet for different purposes and control them from one dashboard</p>
-        </div>
-        
-        <div class="col-lg-4">
-        <div class="icon"><img src="img/Group.png" alt="icon" /></div>
-        <h5 class="about-title">Credit/Data Top Up</h5>
-        <p class="about-paragraph">
-        Credit/Data Top Up can be sent to one beneficiary or groups.
-        </p>
-        </div>
-        
-        <div class="col-lg-4">
-        <div class="icon"><img src="img/smartphone-chat.png" alt="icon" /></div>
-        <h5 class="about-title">Bulk SMS Integration</h5>
-        <p class="about-paragraph">
-        Bulk SMS Integration can be done by admin.
-        </div>
-        
-   </div>     
-</div>
 
 
 <!-- DIVIDER -->
@@ -944,23 +907,14 @@
 <!-- FOOTER -->
 
 <div id="footer">
-    <div id="footer-links">
-        <li><a href="{{url('/')}}">Home</a></li>
-        <li><a href="{{route('about')}}">About Us</a></li>
-       
-
-        <li><a href="{{route('features')}}">Features</a></li>
-        
-        
-        <li><a href="{{url('login')}}">Sign In</a></li>
-        
-    </div>
-    <p id="line"> </p>
     <div id="lower-footer">
         <p>&#169; 2017 Transferrules.com. All rights reserved</p>
     </div>
 </div>
-<br><br><p>
+
+<p>
+
+
 <div id="mobile-footer">
     
     <p id="line"> </p>

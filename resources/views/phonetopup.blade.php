@@ -22,6 +22,20 @@ i.can {
   }
   i.received {
     color: #dd4b39;
+    
+  }
+  
+  hr {
+    color: #39689C;
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+}
+  
   }
   first {
     float: right;
@@ -365,7 +379,7 @@ i.can {
                     <div class="form-group">
                       <label for="cc_name">First Name</label>
                       <div class="controls">
-                        <input name="fname" class="form-control" id="cc_name" title="First Name" required type="text">
+                        <input name="fname" class="form-control" value="{{Auth::user()->fundWalletInfo == null ? '' : Auth::user()->fundWalletInfo->firstname}}" id="cc_name" title="First Name" required type="text">
                       </div>
                     </div>
                   </div>
@@ -373,7 +387,7 @@ i.can {
                     <div class="form-group">
                       <label for="cc_name">Last Name</label>
                       <div class="controls">
-                        <input name="lname" class="form-control" id="cc_name" title="last name" required type="text">
+                        <input name="lname" class="form-control" value="{{Auth::user()->fundWalletInfo == null ? '' : Auth::user()->fundWalletInfo->lastname}}" id="cc_name" title="last name" required type="text">
                       </div>
                     </div>
                   </div>
@@ -381,14 +395,14 @@ i.can {
                 <div class="form-group">
                   <label>Phone Number</label>
                   <div class="controls">
-                    <input name="phone" class="form-control" autocomplete="off" maxlength="20" required="" type="text">
+                    <input name="phone" class="form-control" value="{{Auth::user()->fundWalletInfo == null ? '' : Auth::user()->fundWalletInfo->phonenumber}}" autocomplete="off" maxlength="20" required="" type="text">
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label>Email Address</label>
                   <div class="controls">
-                    <input name="emailaddr" class="form-control" autocomplete="off" required="" type="text">
+                    <input name="emailaddr" class="form-control" value="{{Auth::user()->fundWalletInfo == null ? '' : Auth::user()->fundWalletInfo->email}}" autocomplete="off" required="" type="text">
                   </div>
                 </div>
                 <div class="form-group">
@@ -870,25 +884,6 @@ i.can {
         url: base + "/phonetopup/star/" + id,
         success: function (json) {
           location.reload(true);
-          // var contact = $(".contact-fn");
-          // contact.remove();
-          // var count = 0;
-          // var final_query = '';
-          // $.each(json, function (value, key) {
-          //   var starred = key.starred == 1 ? "fa-star starred" : "fa-star-o not-starred";
-          //   final_query += '<tr class="contact-fn"><td class="phone" onclick="starContact(' + key.id + ')"><i class="fa ' + starred + '"></i></td>'
-          //     + '<td><input type="checkbox" name="checked[]" value="' + key.id + '" class="checkbox"></td>'
-          //     + '<td class="firstName" data-user="' + key.id + '">' + key.firstname + '  ' + key.lastname + '</td>'
-          //     + '<td class="phone">' + key.phone + '</td>'
-          //     + '<td class="phoneRef">' + key.netw + '</td>'
-          //     + '<td class="amount">' + key.title + '</td>'
-          //     + '<td class="amount">' + key.department + '</td>'
-          //     + '<td class="amount">' + key.weekly_max + '</td>'
-          //     + '<td><input class="form-control input-airtime-amount" type="number" min="50" name="amount[' + key.id + ']" placeholder="Enter Amount"/></td>'
-          //     + '</tr>';
-          // });
-          // console.log(final_query);
-          // $(".contact-phone").append(final_query);
         }
       });
     }

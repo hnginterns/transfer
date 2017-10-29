@@ -15,6 +15,7 @@ return array(
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Facades\\Trs' => $baseDir . '/app/Facades/Trs.php',
     'App\\FundPhoneWallet' => $baseDir . '/app/FundPhoneWallet.php',
+    'App\\FundWalletInfo' => $baseDir . '/app/FundWalletInfo.php',
     'App\\GroupTagsUsers' => $baseDir . '/app/GroupTagsUsers.php',
     'App\\Helpers\\LogUserActivity' => $baseDir . '/app/Helpers/LogUserActivity.php',
     'App\\Http\\Controllers\\Admin\\AdminController' => $baseDir . '/app/Http/Controllers/Admin/AdminController.php',
