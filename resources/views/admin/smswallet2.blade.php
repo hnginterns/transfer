@@ -353,7 +353,7 @@
                                         <p>{{session('status')}}</p>
                                         <div class="row">
                                         <div class="col-md-6 col-md-offset-2">
-                                          <form action="sms/otp" method="POST">
+                                          <form action="/sms/otp" method="POST">
                                             {{csrf_field()}}
                                             <input type="hidden" name="ref" value="{{$smswallet->ref}}">
                                             <div class="form-group">
