@@ -962,27 +962,7 @@
 </div>
 <br><br><p>
 <div id="mobile-footer">
-    <table>
-        <tr>
-            <td style="font-size: 17px; font-weight: bold;">Company</td>
-            <td style="font-size: 17px; font-weight: bold;">Support</td>
-            <td style="font-size: 17px; font-weight: bold;">Terms</td>
-        </tr>
-        <tr>
-            <td><a href="{{url('/')}}">Home</a></td>
-            <td><a href="{{route('about')}}">About Us</a></td>
-        </tr>
-        <tr>
-            <td><a href="{{route('how')}}">Features</a></td>
-            <td><a href="{{route('contact')}}">Contact Us</a></td>
-            <td><a href="{{route('help')}}">Help & Support</a></td>
-        </tr>
-        <tr>
-           
-            
-            
-        </tr>
-    </table>
+    
     <p id="line"> </p>
     <div id="lower-footer">
         <p>&#169; 2017 Transferrules.com. All rights reserved</p>
