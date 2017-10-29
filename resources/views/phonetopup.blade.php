@@ -181,7 +181,7 @@ i.can {
           <form class="send-airtime" action="{{ route('topup.phone.multiple')}}" method="POST" role="form">
             {{ csrf_field() }} @if(count($phones) > 0) @foreach($phones as $phone)
             <tr class="contact-fn">
-              
+              <button type="submit" class="btn btn-success">Top up all</button>
               <td><input type="checkbox" name="checked[]" value="{{$phone->id}}" class="checkbox"></td>
               <td><i onclick="starContact({{$phone->id}})" class="fa {{$phone->starred ? 'fa-star starred': 'fa-star-o not-starred'}}"></i></td>
               <td class="firstName" data-user="{{ $phone->id }}">{{ $phone->firstname }} {{ $phone->lastname }}</td>
@@ -224,7 +224,7 @@ i.can {
           <td></td>
           <td></td>
           <td></td>
-          <td><button type="submit" class="btn btn-success">Top up all</button></td>
+          <td></td>
           <td></td>
         </tr>
         </form>
