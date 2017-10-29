@@ -80,16 +80,16 @@ tr:nth-child(even) {
     <!-- wallet types table -->
         <table>
           <tr>
-            <th><font color="#39689C"><h2>Wallet Name</h2></font></th>
-            <th><font color="#39689C"><h2>Wallet ID</h2></font></th>
-            <th><font color="#39689C"> <h2>Currency Type</h2></font></th>
-            <th><font color="#39689C"><h2>Balance</h2></font></th>
+            <th><font color="#39689C"><h3>Wallet Name</h3></font></th>
+            <th><font color="#39689C"><h3>Wallet ID</h3></font></th>
+            <th><font color="#39689C"> <h3>Currency Type</h3></font></th>
+            <th><font color="#39689C"><h3>Balance</h3></font></th>
           </tr>
           <tr>
-            <td><font color="#008000"> <h2><b>{{ $wallet->wallet_name }}</b></h2></font></td>
-            <td><h2>{{ $wallet->wallet_code }}</h2></td>
-            <td><h2>Nigeria Naira</h2></td>
-            <td><h2>{{ $wallet->balance }}</h2></td>
+            <td><font color="#008000"> <h3><b>{{ $wallet->wallet_name }}</b></h3></font></td>
+            <td><h3>{{ $wallet->wallet_code }}</h3></td>
+            <td><h3>Nigeria Naira</h3></td>
+            <td><h3>{{ $wallet->balance }}</h3></td>
           </tr>
           
         </table>
