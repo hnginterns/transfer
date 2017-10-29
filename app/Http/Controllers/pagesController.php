@@ -79,7 +79,7 @@ class pagesController extends Controller
     {
         //$wallet = Wallet::all();
         // $permission = Restriction::where('uuid',Auth::user()->id)->get();
-        $wallet = DB::table('wallets')->where('type', '=', '')->get();
+        $wallet = DB::table('wallets')->where('type', '=', 'regular')->get();
         
         return view('dashboard', compact('wallet'));
     }
