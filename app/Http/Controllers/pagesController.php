@@ -66,7 +66,7 @@ class pagesController extends Controller
         $headers = array('content-type' => 'application/json');
         $query = array('apiKey' => $api_key, 'secret' => $secret_key);
         $body = \Unirest\Request\Body::json($query);
-        $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/merchant/verify', $headers, $body);
+        $response = \Unirest\Request::post(env('API_KEY_LIVE_URL').'/v1/merchant/verify', $headers, $body);
         $response = json_decode($response->raw_body, true);
         $status = $response['status'];
         if (!$status == 'success') {
@@ -229,7 +229,7 @@ class pagesController extends Controller
                 'bank_code' => explode('||', request('bank_id'))
                 );
                 $body = \Unirest\Request\Body::json($query);
-                $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/resolve/account', $headers, $body);
+                $response = \Unirest\Request::post(env('API_KEY_LIVE_URL').'/v1/resolve/account', $headers, $body);
                 $response = json_decode($response->raw_body, true);
                 if($response['status'] == 'success')
                 {
@@ -265,7 +265,7 @@ class pagesController extends Controller
         $beneficiary = Beneficiary::firstOrCreate([
 
             'uuid' => Auth::user()->id,
-            'account_name' => $request->name,
+            'name' => $request->name,
             'wallet_id' => $wallet->id,
             'bank_id' => $request->bank_id,
             'bank_name' => $request->bank_name,
