@@ -12,6 +12,7 @@ use App\Beneficiary;
 use App\User;
 use App\Restriction;
 use App\CardWallet;
+use App\Events\FundWallet;
 use App\Transaction;
 use App\BankTransaction;
 use App\WalletTransaction;
@@ -44,6 +45,7 @@ class pagesController extends Controller
     public function home()
     {
         return view('home-page');
+        event(new FundWallet(new CardWallet));
     }
 
     public function signin(Request $request)

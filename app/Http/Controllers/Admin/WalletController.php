@@ -47,6 +47,8 @@ class WalletController  extends Controller
         return view('admin.permit.permission', compact('user','wallet'));
     }
 
+    
+
 
     public function editPermission(Restriction $restriction){
         
