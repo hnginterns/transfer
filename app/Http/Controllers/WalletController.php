@@ -482,7 +482,7 @@ class WalletController extends Controller
         $token = $this->getToken();
         $headers = array('content-type' => 'application/json','Authorization'=> $token);
 
-        $response = \Unirest\Request::get('https://moneywave.herokuapp.com/v1/wallet', $headers);
+        $response = \Unirest\Request::get(env('API_KEY_LIVE_URL').'/v1/wallet', $headers);
         $response = json_decode($response->raw_body, true);
         event(new FundWallet($fund));
 
