@@ -289,6 +289,7 @@ i.can {
                 <th>Ref</th>
                 <th>User</th>
                 <th>Status</th>
+                <th>Response</th>
                 <th>Date</th>
               </tr>
             </thead>
@@ -302,7 +303,8 @@ i.can {
                 <td class="phone">{{ $hist->amount }}</td>
                 <td class="phoneRef">{{ $hist->ref }}</td>
                 <td class="amount">{{ $hist->username }}</td>
-                <td class="amount">{{ $hist->status }}</td>
+                <td class="amount"><i class="fa {{ $hist->status == 'success' ? 'fa-check-circle can' : 'fa-times-circle cannot'}}"></i></td>
+                <td class="amount">{{ $hist->txn_response}}</td>
                 <td class="amount">{{ $hist->created_at }}</td>
 
               </tr>
