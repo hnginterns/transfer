@@ -101,7 +101,7 @@
                                      <td class="phone-max">
                                         @if(count($phone->groups) > 0)
                                             @foreach($phone->groups as $group)
-                                                <span class="label label-success">{{ $group->name }}</span>
+                                                <span data-id="{{ $group->id }}" class="label label-success">{{ $group->name }}</span>
                                             @endforeach
                                         @endif
                                     </td>
@@ -326,7 +326,7 @@
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
                                                            <select class="form-control netw" name="network">
-                                                            <option selected value="">Choose Network</option>
+                                                            <option hidden value="">Choose Network</option>
 
                                                             <option value="MTN">MTN</option>
                                                             <option value="GLO">GLO</option>
@@ -340,7 +340,7 @@
                                                         <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
                                                             @if(count($tags) > 0)
                                                                 <select class="form-control select2-multi" name="tags[]" multiple="multiple">
-                                                                    <Option></Option>
+                                                                    <option></option>
                                                                         @foreach($tags as $tag)
                                                                             <option value="{{ $tag->id }}">{{ $tag->name }}</option>
                                                                         @endforeach
@@ -739,7 +739,11 @@
         modal.find('.modal-title').html('Edit Phone Contact');
         modal.find('form').attr('action', '/admin/editphone');
         var phone_id = parent.find('td.phone-name').attr('id');
-        console.log(phone_id);
+        var selected_items = [];
+        parent.find('td.phone-max span').each(function() {
+            console.log($(this).data('id'));
+            selected_items.push($(this).data('id'));
+        });
         modal.find('form input.firstname').val(parent.find('td.phone-name').data('first'));
         modal.find('form input.lastname').val(parent.find('td.phone-name').data('last'));
         modal.find('form input.title').val(parent.find('td.phone-title').html());
@@ -747,8 +751,9 @@
         modal.find('form input.phone').val(parent.find('td.phone-no').html());
         modal.find('form input.email').val(parent.find('td.phone-email').html());
         modal.find('form input.max').val(parent.find('td.phone-max').html());
-        modal.find('form input.netw').val(parent.find('td.phone-netw').data('netw'));
-        modal.find('form input.tags').val(parent.find('td.phone-max').html());
+        modal.find('form select.netw').val(parent.find('td.phone-netw').data('netw'));
+        modal.find('form select.select2-multi').val(selected_items);
+        modal.find('form select.select2-multi').trigger('change');
         modal.find('form').append('<input type="hidden" name="number_id" value="'+ phone_id +'">');
         modal.modal('show');
     });
