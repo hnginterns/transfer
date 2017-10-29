@@ -70,11 +70,10 @@ class PhoneTopUpController extends Controller
         
         $validator = Validator::make($input, 
             [
-                'tagname' => 'required|string|unique:tags'
+                'tagname' => 'required|string'
             ],
             [
                 'tagname.required' => 'Group name is required',
-                'tagname.required' => 'Group name is already taken'
             ]
          ); 
         if ($validator->fails()) {
