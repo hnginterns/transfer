@@ -36,7 +36,7 @@
         @yield('content')
         </div>
 
-       </div>
+      </div>
     </div>
         @include('layouts.user-footer')
 

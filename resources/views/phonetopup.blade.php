@@ -1,4 +1,8 @@
-@extends('layouts.user') @section('title') Phone Top Up @endsection @section('content')
+@extends('layouts.user') 
+@section('title') 
+Phone Top Up 
+@endsection 
+@section('content')
 <style>
 i.can {
     color: #00a65a;
@@ -16,7 +20,8 @@ i.can {
   }
 
   em.sent {
-    opacity: 0.5 z-index:-1
+    opacity: 0.5;
+    z-index:-l;
   }
 
   i.received {
@@ -61,20 +66,6 @@ i.can {
     width: 100;
     background-color: #dddddd;
   }
-  /* 
-	#container {
-		width:200;
-	}
-	#box1	{
-		background:#fff; border:0px solid #000;
-        { box-shadow: 1px 1px 1px #999; }
-		float:left; min-height:230px; margin-right:10px;
-	}
-	#box2 	{
-		background:#fff; border:0px solid #000;
-		float:right; min-height:230px; width:30px;
-	} */
-}
 </style>
 
 
@@ -108,35 +99,22 @@ i.can {
   <div class="col-md-12 text-center">
 
     <div class="orange-box">
-        <h4 class="title" align="center">Group Airtime Top Up</h4>
-      </div>
-      <br>
-      <form class="form form-inline" action="{{ route('topup.phone.group')}}" method="POST" role="form">
-                    {{csrf_field()}}
-                    @if(count($tags) > 0)
-                      <select name="topup_group" class="form-control groups-list">
-                        @foreach($tags as $group) 
-                          <option value="{{ $group->id }}" data-value="{{ strtolower($group->name) }}">{{ $group->name }}</option> 
-                        @endforeach 
-                      </select>
-                    @endif
-          <input class="form-control group-amount-topup" type="number" name="amount" min="50" required placeholder="Enter Amount to be shared">  
-          <button class="btn btn-success topup-group-btn" type="submit" >Top Up Group</button>  
-          <div style="margin-top: 10px;" class="alert alert-info col-md-8 col-md-offset-2 groups-topup text-center hidden"></div>                
-      </form>
-      
       <h4 class="title" align="center">Group Airtime Top Up</h4>
     </div>
     <br>
     <form class="form form-inline" action="{{ route('topup.phone.group')}}" method="POST" role="form">
-      {{csrf_field()}}
-
-      <input class="form-control" type="number" name="amount" min="50" required placeholder="Enter Amount to be shared">
-      <button class="btn btn-success" type="submit">Top Up Group</button>
-
+      {{csrf_field()}} @if(count($tags) > 0)
+      <select name="topup_group" class="form-control groups-list">
+                        @foreach($tags as $group) 
+                          <option value="{{ $group->id }}" data-value="{{ strtolower($group->name) }}">{{ $group->name }}</option> 
+                        @endforeach 
+                      </select> @endif
+      <input class="form-control group-amount-topup" type="number" name="amount" min="50" required placeholder="Enter Amount to be shared">
+      <button class="btn btn-success topup-group-btn" type="submit">Top Up Group</button>
+      <div style="margin-top: 10px;" class="alert alert-info col-md-8 col-md-offset-2 groups-topup text-center hidden"></div>
     </form>
 
-  </div>
+ </div> 
 
 </div>
 
@@ -205,22 +183,20 @@ i.can {
       </thead>
       <tbody>
         <form class="send-airtime" id="form-contact" action="{{ route('topup.phone.multiple')}}" method="POST" role="form">
-          {{ csrf_field() }} 
-          @if(count($phones) > 0) 
-          @foreach($phones as $phone)
-            <tr class="contact-fn">
-              <td><input type="checkbox" name="checked[]" value="{{$phone->id}}" class="checkbox"></td>
-              <td class="phone"><i onclick="starContact('{{$phone->id}}')" class="fa {{$phone->starred ? 'fa-star starred' : 'fa-star-o not-starred'}}"></i></td>
-              <td class="firstName" data-user="{{ $phone->id }}">{{ $phone->firstname }} {{ $phone->lastname }}</td>
-              <td class="phone">{{ $phone->phone }}</td>
-              <td class="phoneRef">{{ $phone->netw }}</td>
-              <td class="amount">{{ $phone->title }}</td>
-              <td class="amount">{{ $phone->department }}</td>
-              <td class="max-tops">{{ $phone->weekly_max }}</td>
-              <td><input class="form-control input-airtime-amount" type="number" min="50" name="amount[{{$phone->id}}]" placeholder="Enter Amount"/></td>
-            </tr>
-          @endforeach
-          @else
+          {{ csrf_field() }} @if(count($phones) > 0) @foreach($phones as $phone)
+          <tr class="contact-fn">
+            <td><input type="checkbox" name="checked[]" value="{{$phone->id}}" class="checkbox"></td>
+            <td class="phone"><i onclick="starContact('{{$phone->id}}')" class="fa {{$phone->starred ? 'fa-star starred' : 'fa-star-o not-starred'}}"></i></td>
+            <td class="firstName" data-user="{{ $phone->id }}">{{ $phone->firstname }} {{ $phone->lastname }}</td>
+            <td class="phone">{{ $phone->phone }}</td>
+            <td class="phoneRef">{{ $phone->netw }}</td>
+            <td class="amount">{{ $phone->title }}</td>
+            <td class="amount">{{ $phone->department }}</td>
+            <td class="max-tops">{{ $phone->weekly_max }}</td>
+            <td><input class="form-control input-airtime-amount" type="number" min="50" name="amount[{{$phone->id}}]" placeholder="Enter Amount"
+              /></td>
+          </tr>
+          @endforeach @else
           <tr>
             <td></td>
             <td>No Phone Number Added</td>
@@ -228,18 +204,18 @@ i.can {
             <td></td>
           </tr>
           @endif
-      
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td><button type="submit" class="btn btn-success">Top up all</button></td>
-        <td></td>
-      </tr>
+
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><button type="submit" class="btn btn-success">Top up all</button></td>
+            <td></td>
+          </tr>
       </tbody>
       </form>
     </table>
@@ -323,15 +299,13 @@ i.can {
         </thead>
         <tbody>
           <form class="send-airtime topup-multiple" action="{{ route('topup.phone.multiple')}}" method="POST" role="form">
-            {{ csrf_field() }} 
-            @if(count($phones) > 0) 
-              @foreach($phones as $phone)
+            {{ csrf_field() }} @if(count($phones) > 0) @foreach($phones as $phone)
             <tr class="contact-fn">
 
               <td>
                 <input type="checkbox" name="checked[]" value="{{$phone->id}}" class="checkbox 
                 @if(count($phone->groups) > 0)@foreach($phone->groups as $group) {{ strtolower($group->name) }} @endforeach @endif">
-                
+
               </td>
               <td class="firstName" data-user="{{ $phone->id }}">{{ $phone->firstname }} {{ $phone->lastname }}</td>
               <td class="phone">{{ $phone->phone }}</td>
@@ -343,13 +317,13 @@ i.can {
                 /></td>
               <td>
 
-                
+
               </td>
               <td>
-               
-                </td>
 
-              
+              </td>
+
+
             </tr>
             @endforeach @else
             <tr>
@@ -361,7 +335,7 @@ i.can {
 
             @endif
 
-     
+
 
         </tbody>
         <tr>
@@ -564,7 +538,7 @@ i.can {
     </div>
   </div>
 </div>
-<center>
+
   <br>
 
 
@@ -767,15 +741,15 @@ i.can {
     $('.modal#airtimeModal').on('click', 'button.btn-send', function () {
       $('.modal#airtimeModal').find('form. topup-multiple').submit();
     })
-//   $('.airtime').click(function() {
-//     // get the invoice ID
-//     var id = $(this).data('id');
-//     // set up a GET route using the invoice ID and retrieve the result for that invoice
-//     $.get('/topup/phone/' + id, function(response, status) {
-//         // display the results in the modal
-//         $('#airtimeModal .modal-body').html(response.data);
-//     });
-// });
+    //   $('.airtime').click(function() {
+    //     // get the invoice ID
+    //     var id = $(this).data('id');
+    //     // set up a GET route using the invoice ID and retrieve the result for that invoice
+    //     $.get('/topup/phone/' + id, function(response, status) {
+    //         // display the results in the modal
+    //         $('#airtimeModal .modal-body').html(response.data);
+    //     });
+    // });
     $(function () {
       $('.modal#dataModal').on('show.bs.modal', function (e) {
         var btn = $(e.relatedTarget);
@@ -812,12 +786,11 @@ i.can {
     }
   </script>
 
-    <script type="text/javascript">
-
-  <script>
-    $("#department").change(function () {
-      $("#contacts-form").submit();
-    });
+  <script type="text/javascript">
+    <script>
+      $("#department").change(function () {
+        $("#contacts-form").submit();
+      });
 
     $(".select-all").click(function () {
       if ($(".select-all").is(':checked')) {
@@ -839,73 +812,73 @@ i.can {
 
   <script type="text/javascript">
     $(document).ready(function () {
-      $('#contact-table').DataTable({
-        initComplete: function () {
-          this.api().columns([1, 3]).every(function () {
-            var column = this;
-            var select = $('<select><option value=""></option></select>')
-              .appendTo($(column.header()).empty())
-              .on('change', function () {
-                var val = $.fn.dataTable.util.escapeRegex(
-                  $(this).val()
-                );
+        $('#contact-table').DataTable({
+          initComplete: function () {
+            this.api().columns([1, 3]).every(function () {
+              var column = this;
+              var select = $('<select><option value=""></option></select>')
+                .appendTo($(column.header()).empty())
+                .on('change', function () {
+                  var val = $.fn.dataTable.util.escapeRegex(
+                    $(this).val()
+                  );
 
-                column
-                  .search(val ? '^' + val + '$' : '', true, false)
-                  .draw();
+                  column
+                    .search(val ? '^' + val + '$' : '', true, false)
+                    .draw();
+                });
+
+              column.data().unique().sort().each(function (d, j) {
+                select.append('<option value="' + d + '">' + d + '</option>')
               });
-
-            column.data().unique().sort().each(function (d, j) {
-              select.append('<option value="' + d + '">' + d + '</option>')
             });
-          });
-        }
-      });
+          }
+        });
     });
   </script>
   <!-- script enbles checkbox to be clicked when you click on the row -->
   <script>
     $('#contact-table tr').click(function () {
       ele = $(this).find('td input:checkbox')[0];
-      ele.checked = !ele.checked;
+    ele.checked = !ele.checked;
     });
     $('input:checkbox').click(function (e) {
       e.stopPropagation();
     })
     $('#topuphistory tr').click(function () {
       ele = $(this).find('td input:checkbox')[0];
-      ele.checked = !ele.checked;
+    ele.checked = !ele.checked;
     });
     $('input:checkbox').click(function (e) {
       e.stopPropagation();
     })
     $('#datatable tr').click(function () {
       ele = $(this).find('td input:checkbox')[0];
-      ele.checked = !ele.checked;
+    ele.checked = !ele.checked;
     });
     $('input:checkbox').click(function (e) {
       e.stopPropagation();
     });
 
     $(function () {
-        $('.groups-list').change(function() {
-            var current = $(this).val();
-            $(this).find('option').each(function () {
-                if (this.value == current) {
-                    var theClass = $(this).data('value');
-                    console.log(theClass);
-                    $('.groups-list').data('selected-class', theClass);
-                    $('input.checkbox').prop('checked', false);
-                    var totalUsers = $('input.checkbox.' + theClass);
-                    totalUsers.prop('checked', true);
-                    var membersCount = (totalUsers.length > 0) ? totalUsers.length : 'no';
-                    var member = (totalUsers.length > 1) ? ' members ' : ' member ';
-                    $('.groups-topup').html('You Have <b>' + membersCount + member + '</b> in this group to topup').removeClass('hidden');
-                }
-            });
+      $('.groups-list').change(function () {
+        var current = $(this).val();
+        $(this).find('option').each(function () {
+          if (this.value == current) {
+            var theClass = $(this).data('value');
+            console.log(theClass);
+            $('.groups-list').data('selected-class', theClass);
+            $('input.checkbox').prop('checked', false);
+            var totalUsers = $('input.checkbox.' + theClass);
+            totalUsers.prop('checked', true);
+            var membersCount = (totalUsers.length > 0) ? totalUsers.length : 'no';
+            var member = (totalUsers.length > 1) ? ' members ' : ' member ';
+            $('.groups-topup').html('You Have <b>' + membersCount + member + '</b> in this group to topup').removeClass('hidden');
+          }
         });
+      });
 
-        $('.group-amount-topup').change(function () {
+    $('.group-amount-topup').change(function () {
             var selectedClass = $('.groups-list').data('selected-class');
             var listItems = $('input.checkbox.' + selectedClass);
             var newAmount = parseInt($(this).val()) / listItems.length;
@@ -913,18 +886,17 @@ i.can {
         });
 
         $('button.topup-group-btn').click(function (e) {
-            e.preventDefault();
+      e.preventDefault();
             $('form.send-airtime.topup-multiple').submit();
         });
       });
-
   </script>
 
   <script>
     function starContact(id) {
-      var base = "{{config('app.url')}}";
+      var base = "{{ config('app.url')}}";
       $.ajax({
-        type: "GET",
+          type: "GET",
         url: base + "/phonetopup/star/" + id,
         success: function (json) {
           location.reload(true);
