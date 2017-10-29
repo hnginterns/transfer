@@ -171,7 +171,7 @@ class WalletController  extends Controller
         $wallet = Wallet::find($id);
 
         $cardWallet = CardWallet::latest()->first();
-
+        // dd($cardWallet);
         $user = Auth::user();
         
         //load form view
@@ -254,7 +254,7 @@ class WalletController  extends Controller
     public function otpForWalletFunding(Request $request, CardWallet $cardWallet)
     {
         \Unirest\Request::verifyPeer(false);
-
+            // dd($request);
             $headers = array('content-type' => 'application/json');
             $query = array(
                 'transactionRef'=>$request->ref,
@@ -263,12 +263,17 @@ class WalletController  extends Controller
             $body = \Unirest\Request\Body::json($query);
 
             $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer/charge/auth/card', $headers, $body);
+            
             $response = json_decode($response->raw_body, true);
+            
             if($response['status'] == 'success') {
                 event(new FundWallet($cardWallet));
-                Session::flash('success',$response);
+                Session::flash('success',$response['message']);
                 return redirect('admin/managewallet');
 
+            }else{
+                Session::flash('error',$response['message']);
+                return back();
             }
             
     }
