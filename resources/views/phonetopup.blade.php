@@ -153,7 +153,7 @@ i.can {
 
 </div>
 <br>
-<button type="submit" class="btn btn-success">Top up all</button>
+
 <button type="submit" class="btn btn-success pull-right" style="margin-left: 5px; margin-bottom: 3px;">Top up all</button>
 <button type="submit" class="btn btn-info pull-right" style="margin-right: 5px; margin-bottom: 3px;">Top-up Data</button>
 <br><br>
