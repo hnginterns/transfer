@@ -153,12 +153,10 @@ i.can {
 
 </div>
 <br>
-
-<a href="#airtimeModal" class="btn btn-success pull-right" style="margin-left: 5px; margin-bottom: 3px;" data-toggle="modal">Top up all</a>
+<button type="submit" class="btn btn-success pull-right" style="margin-left: 5px; margin-bottom: 3px;">Top up all</button>
 <a href="#dataModal" class="btn btn-info pull-right" style="margin-right: 5px; margin-bottom: 3px;" data-toggle="modal">Top-up Data</a>
 <br><br>
 <hr>
-
 
     <div class="table table-responsive">
       <table class="table" id="contact-table">
@@ -224,7 +222,7 @@ i.can {
           <td></td>
           <td></td>
           <td></td>
-          <td><button type="submit" class="btn btn-success">Top up all</button></td>
+          <td></td>
           <td></td>
         </tr>
         </form>
