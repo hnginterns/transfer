@@ -886,7 +886,7 @@
 </div>
 
 
-<div id="mobile-footer">
+<div id="footer">
     
     <p id="line"> </p>
     <div id="lower-footer">
