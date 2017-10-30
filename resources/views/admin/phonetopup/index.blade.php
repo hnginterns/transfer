@@ -185,7 +185,7 @@
                             <td class="phoneRef">{{ $hist->ref }}</td>
                             <td class="amount">{{ $hist->username }}</td>
                             <td class="amount">{{ $hist->status }}</td>
-                            <td class="amount">{{ $hist->created_at->toDateTimeString() }}</td>
+                            <td class="amount">{{ $hist->created_at->diffForHumans() }}</td>
 
                           </tr>
                           @endforeach @else
