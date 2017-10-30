@@ -77,7 +77,7 @@
 
         .navbar-brand {
             margin-top: -13px;
-            font-size: 19px;
+            font-size: 17px;
             font-weight: bold;
             letter-spacing: 0.04em;
         }
@@ -121,7 +121,7 @@
             left: 5%;
             top: 30%;
             color: white;
-            font-size: 300px;
+            font-size: 240px;
             font-weight: bold;
             color: rgba(255, 255, 255, 0.04);
             z-index: 1;
@@ -168,20 +168,21 @@
             /* color: #E57679; */
             color: white;
             border: none;
-            background: #39689C;
+            border-radius: 21px;
+            background: #eff2f4;
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
             padding: 4px 12px;
             
             transition: background 1s, color 2s;
             z-index: 100;
-            font-size: 25px;
+            font-size: 22px;
         }
 
         #button-hd:hover {
             /* background: #2CACF0;
             color: #FFFFFF; */
             color: #FF6200;
-            background: white;
+            background: #2CACF0;
         }
 
         #mobile-app {
