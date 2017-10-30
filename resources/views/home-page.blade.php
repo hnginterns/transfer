@@ -895,7 +895,22 @@
     <div id="lower-footer">
         <p>&#169; 2017 Transferrules.com. All rights reserved</p>
     </div>
+</div>
 
+
+<div id="mobile-footer">
+    
+    <p id="line"> </p>
+    <div id="lower-footer">
+        <p>&#169; 2017 Transferrules.com. All rights reserved</p>
+    </div>
+</div>  
+</section>
+<!-- DIVIDER ENDS-->
+
+
+
+<!-- FOOTER ENDS -->
 <!--<script
     src="https://code.jquery.com/jquery-3.2.1.min.js"
     integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
