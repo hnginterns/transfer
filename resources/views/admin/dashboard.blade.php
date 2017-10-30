@@ -106,19 +106,6 @@ $totalbeneficiaries = count($beneficiaries);
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-md-6">
-        <div class="panel panel-default">
-            <div class="panel-heading">Topup Transaction History</div>
-            <div class="panel-body">
-                <div>
-                    <canvas id="myChart" height="403"></canvas>
-                </div>
-            </div>
-        </div>
-    </div>
-  </div>
-
 
 
   </section>
