@@ -883,6 +883,22 @@
         </div>
     </div>
 </div>
+</div>
+
+
+<div id="mobile-footer">
+    
+    <p id="line"> </p>
+    <div id="lower-footer">
+        <p>&#169; 2017 Transferrules.com. All rights reserved</p>
+    </div>
+</div>  
+</section>
+<!-- DIVIDER ENDS-->
+
+
+
+<!-- FOOTER ENDS -->
 
 
 <!--<script
