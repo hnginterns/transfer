@@ -621,7 +621,7 @@
             }
 
             #heading-hd {
-                font-size: 15px;
+                font-size: 10px;
                 letter-spacing: 0.07em;
                 padding-right: 0px;
                 margin-bottom: 15px;
