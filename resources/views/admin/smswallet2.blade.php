@@ -82,7 +82,7 @@
             </div>
 
           @endforeach
-        </div>
+        </div>   
     </section>
 
           
@@ -230,21 +230,23 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            <h4 class="modal-title">Add New Ebulk SMS Details</h4>
-                                        </div>
+                                            <h4 class="modal-title centered">Add New Ebulk SMS Details
+                                            <hr>
+                                            <p>Before Adding Account, Get Your API Key From  <a href="https://www.ebulksms.com/users/api" data-toggle="tooltip" title="Login to your account navigate to the developer tap and generate your API key !">Ebulksms</a></p>
+                                       </h4> </div>
                                         <div class="modal-body">
                                             <form action="addSmsAccount" method="post" accept-charset="utf-8">
                                                 {{csrf_field()}}
                                                 <div class="modal-body" style="padding: 5px;">
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                                                            <input class="form-control" name="username" placeholder="Ebulk Username" type="text" required />
+                                                            <input class="form-control" name="username" placeholder="Your Ebulksms Account Email" type="text" required />
                                                         </div>
                                                     </div>
                                                    
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                                                            <input class="form-control" name="api_key" placeholder="Ebulk API Key" type="text" required />
+                                                            <input class="form-control " name="api_key" placeholder="Your Ebulksms Account API Key" type="text" required />
                                                         </div>
                                                     </div>
 
