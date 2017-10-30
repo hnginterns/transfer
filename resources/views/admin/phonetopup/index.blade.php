@@ -246,7 +246,7 @@
                                                             </select>
                                                         </div>
                                                     </div>
-                                                        {{csrf_field()}}
+                                                      
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
                                                             <input class="form-control" name="account_name" placeholder="Account name" type="text" required />
