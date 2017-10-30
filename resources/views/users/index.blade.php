@@ -30,7 +30,7 @@
             <tbody>
               @foreach($users as $user)
               <tr>
-                <td>{{$user->count()}}</td>
+                <td>{{$loop->iteration }}</td>
                 <td>{{$user['username']}}</td>
                 <td>{{$user['email']}}</td>
                 <td>{{$user['first_name']}}</td>
