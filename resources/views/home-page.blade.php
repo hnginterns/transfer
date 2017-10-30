@@ -71,13 +71,13 @@
         .navbar-brand,
         .navbar-nav a {
             color: #000 !important;
-            font-size: 14px;
+            font-size: 17px;
             margin-right: 10px;
         }
 
         .navbar-brand {
             margin-top: -13px;
-            font-size: 15px;
+            font-size: 19px;
             font-weight: bold;
             letter-spacing: 0.04em;
         }
@@ -121,7 +121,7 @@
             left: 5%;
             top: 30%;
             color: white;
-            font-size: 260px;
+            font-size: 300px;
             font-weight: bold;
             color: rgba(255, 255, 255, 0.04);
             z-index: 1;
@@ -143,12 +143,12 @@
         }
 
         #heading-hd {
-            font-size: 19px;
+            font-size: 23px;
             letter-spacing: 0.07em;
             padding-right: 100px;
         }
         #heading-top-hd{
-                font-size: 59px;
+                font-size: 64px;
                 letter-spacing: 0.07em;
                 padding-right: 0px;
                 text-align:0;
@@ -159,19 +159,19 @@
           word-spacing: 0.09em;
           letter-spacing: 0.05em;
           z-index: 100;
-          font-size: 12px;
+          font-size: 16px;
           line-height: 25px;
         }
 
         #button-hd {
             width: fit-content;
             /* color: #E57679; */
-            color: #39689C;
+            color: #fff;
             border: none;
-            background: #fff;
+            background: #39689C;
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-            padding: 10px 15px;
-            border-radius: 63px;
+            padding: 4px 12px;
+            
             transition: background 1s, color 2s;
             z-index: 100;
             font-size: 25px;
@@ -201,13 +201,13 @@
         }
 
         .section-header {
-            font-size: 30px;
+            font-size: 36px;
             /* color: #3D8BA8; */
             color: #2CACF0;
         }
 
         .section-sub {
-            font-size: 12px;
+            font-size: 16px;
             letter-spacing: 0.06em;
         }
 
@@ -363,13 +363,13 @@
         #divider-text {
            text-align:center;
            color:#404040;
-           font-size: 14px
+           font-size: 18px
         }
 
         #divider-title {
             color: #39689C;
             text-align:center;
-            font-size: 36px;
+            font-size: 40px;
             font-weight: bold;
             letter-spacing: 0.04em;
             margin: 0px;
@@ -377,18 +377,18 @@
         }
         .icon{
             color:#39689C;
-            font-size:65px;
+            font-size:70px;
             text-align:center;
         }
         .about-title{
             color:#39689C;
-            font-size:20px;
+            font-size:24px;
             text-align:center;
             font-family: 'Nunito Sans', sans-serif;
         }
         .about-paragraph{
             color:#404040;
-            font-size:12px;
+            font-size:16px;
             text-align:center;
             font-family: Lato-Regular,sans-serif!important;
         }
@@ -472,7 +472,7 @@
             }
 
             #heading-hd {
-                font-size: 22px;
+                font-size: 26px;
                 padding-right: 80px;
             }
 
@@ -485,11 +485,11 @@
             /* SECTION ONE STYLE */
 
             .section-header {
-                font-size: 25px;
+                font-size: 30px;
             }
 
             .section-sub {
-                font-size: 12px;
+                font-size: 14px;
                 letter-spacing: 0.06em;
             }
 
@@ -542,12 +542,12 @@
             }
 
             #heading-hd {
-                font-size: 16px;
+                font-size: 20px;
                 padding-right: 50px;
             }
 
             #text-hd {
-                font-size: 12px;
+                font-size: 16px;
                 padding-right: 50px;
             }
 
@@ -556,11 +556,11 @@
             /* SECTION ONE STYLE */
 
             .section-header {
-                font-size: 23px;
+                font-size: 26px;
             }
 
             .section-sub {
-                font-size: 11px;
+                font-size: 13px;
                 letter-spacing: 0.06em;
             }
 
@@ -629,7 +629,7 @@
             }
             #heading-top-hd{
                 margin-top:25px;
-                font-size: 35px;
+                font-size: 40px;
                 letter-spacing: 0.07em;
                 padding-right: 0px;
                 margin-bottom: 15px;
@@ -638,7 +638,7 @@
                 padding-right: 0px;
                 word-spacing: 0.09em;
                 letter-spacing: 0.05em;
-                font-size: 10px;
+                font-size: 12px;
                 margin-bottom: 15px;
             }
 
@@ -778,7 +778,7 @@
             #divider-title {
                 color: #fff;
                 background-color: #39689C;
-                font-size: 12px;
+                font-size: 16px;
                 font-weight: bold;
                 letter-spacing: 0.04em;
                 margin: 0px;
@@ -843,15 +843,15 @@
                   
 
                     @if(Auth::guest())          
-                    <li id="sign-in"><a href="{{url('login')}}">Sign In</a></li> 
+                    <li id=""><a href="{{url('login')}}">Sign In</a></li> 
                     @else
-                        <li id="sign-in">
+                        <li id="">
                         <a style="color:black" href="{{ url('/dashboard') }}">
                             Dasboard
                         </a>
                       </li>
 
-                      <li id="sign-in">
+                      <li id="">
                         <a href="{{ url('/logout') }}">
                             Logout
                         </a>
@@ -879,7 +879,7 @@
                 <span id="heading-hd" style="margin-left:6%">
                    Financial Management Made Easy
                 </span>
-            <button id="button-hd">
+            <button id="button hd">
                 <a href="{{url('login')}}">Sign in</a>
             </button>
         </div>
