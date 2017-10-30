@@ -223,10 +223,11 @@ class pagesController extends Controller
             }
 
             $token = $this->getToken();
+                $bank_code = explode('||', request('bank_id'));
                 $headers = array('content-type' => 'application/json','Authorization'=> $token);
                 $query = array(
                 'account_number'=> $request->account_number,
-                'bank_code' => explode('||', request('bank_id'))
+                'bank_code' => $bank_code[0]
                 );
                 $body = \Unirest\Request\Body::json($query);
                 $response = \Unirest\Request::post(env('API_KEY_LIVE_URL').'/v1/resolve/account', $headers, $body);
