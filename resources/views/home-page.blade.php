@@ -897,8 +897,6 @@
     </div>
 </div>
 
-<p>
-
 
 <div id="mobile-footer">
     
