@@ -878,8 +878,8 @@
                 <span id="heading-hd">
                 Financial  Management Made Easy
                 </span>
-            <button id="button-hd">
-                <a href="{{url('login')}}">Sign in</a>
+            <button class="btn btn-primary">
+                <font color="white"><a href="{{url('login')}}">Sign in</a></font>
             </button>
         </div>
     </div>
