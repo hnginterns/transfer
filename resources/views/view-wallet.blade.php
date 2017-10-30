@@ -89,7 +89,7 @@ tr:nth-child(even) {
             <td><font color="#008000"> <b>{{ $wallet->wallet_name }}</b></font></td>
             <td>{{ $wallet->wallet_code }}</td>
             <td>Nigeria Naira</td>
-            <td>{ $wallet->balance }}</td>
+            <td>{{ $wallet->balance }}</td>
           </tr>
           
         </table>
