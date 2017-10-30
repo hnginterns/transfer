@@ -475,7 +475,7 @@ i.can {
         </div>
         <div class="modal-body">
             <div class="modal-body" style="padding: 5px;">
-              <form action="{{config('app.url')}}/topup/wallet" method="post" accept-charset="utf-8">
+              <form action="{{config('app.url')}}/topup/wallet" method="post">
               {{ csrf_field() }}
               <input name="wallet_id" value="{{$wallet->id}}" type="hidden"> 
               <div class="row">
