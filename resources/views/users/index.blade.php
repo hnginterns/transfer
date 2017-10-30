@@ -16,7 +16,7 @@
         <table class="table table-condensed table-striped" id="datatable">
             <thead>
               <tr>
-                <th>ID</th>
+                <th>S/N</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Firstname</th>
@@ -30,7 +30,7 @@
             <tbody>
               @foreach($users as $user)
               <tr>
-                <td>{{$user['id']}}</td>
+                <td>{{$user->count()}}</td>
                 <td>{{$user['username']}}</td>
                 <td>{{$user['email']}}</td>
                 <td>{{$user['first_name']}}</td>
