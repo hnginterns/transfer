@@ -483,7 +483,6 @@ i.can {
                   <input class="form-control" name="amount" placeholder="Amount" type="number" required />
                 </div>
               </div>
-            </div>
             <div class="panel-footer" style="margin-bottom:-14px;">
               <button type="submit" class="btn btn-success">Purchase</button>
               <button style="float: right;" type="button" class="btn btn-default btn-close" data-dismiss="modal">Close</button>
