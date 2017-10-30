@@ -621,7 +621,7 @@
             }
 
             #heading-hd {
-                font-size: 18px;
+                font-size: 15px;
                 letter-spacing: 0.07em;
                 padding-right: 0px;
                 margin-bottom: 15px;
@@ -781,7 +781,7 @@
                 font-weight: bold;
                 letter-spacing: 0.04em;
                 margin: 0px;
-                margin-bottom: 10px;
+                margin-bottom: 0px;
                 padding: 0px;
             }
             /* DIVIDER STYLE ENDS */
@@ -841,18 +841,18 @@
                    
                   
 
-                    @if(Auth::guest())
+                    @if(Auth::guest())          
                     <li id="sign-in"><a href="{{url('login')}}">Sign In</a></li> 
                     @else
                         <li id="sign-in">
-                        <a style="color:black" href="{{ url('/logout') }}">
-                            Logout
+                        <a style="color:black" href="{{ url('/dashboard') }}">
+                            Dasboard
                         </a>
                       </li>
 
                       <li id="sign-in">
-                        <a href="{{ url('/dashboard') }}">
-                            Dashboard
+                        <a href="{{ url('/logout') }}">
+                            Logout
                         </a>
                       </li>
                     @endif
@@ -875,7 +875,7 @@
         Hotels.ng Financial Control
                 </span>
                 <span id="heading-hd">
-                financial  management made easy
+                Financial  Management Made Easy
                 </span>
             <button id="button-hd">
                 <a href="{{url('login')}}">Sign in</a>
@@ -884,33 +884,7 @@
     </div>
 </div>
 
-<!--HEADER ENDS -->
-<section class="about">
 
-<div class="about-content">
-
-
-
-<div id="footer">
-    <div id="lower-footer">
-        <p>&#169; 2017 Transferrules.com. All rights reserved</p>
-    </div>
-</div>
-
-
-<div id="mobile-footer">
-    
-    <p id="line"> </p>
-    <div id="lower-footer">
-        <p>&#169; 2017 Transferrules.com. All rights reserved</p>
-    </div>
-</div>  
-</section>
-<!-- DIVIDER ENDS-->
-
-
-
-<!-- FOOTER ENDS -->
 <!--<script
     src="https://code.jquery.com/jquery-3.2.1.min.js"
     integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
