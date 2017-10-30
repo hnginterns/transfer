@@ -878,7 +878,7 @@
                 <span id="heading-hd">
                 Financial  Management Made Easy
                 </span>
-            <button id="button-hd">
+            <button class="btn btn-primary">
                 <a href="{{url('login')}}">Sign in</a>
             </button>
         </div>
