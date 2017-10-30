@@ -168,7 +168,7 @@
             /* color: #E57679; */
             color: white;
             border: none;
-            background: #39689C;
+            background: #eff2f4;
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
             padding: 4px 12px;
             
@@ -181,7 +181,7 @@
             /* background: #2CACF0;
             color: #FFFFFF; */
             color: #FF6200;
-            background: white;
+            background: #2CACF0;
         }
 
         #mobile-app {

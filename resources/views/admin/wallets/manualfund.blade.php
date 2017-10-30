@@ -9,7 +9,7 @@
                     class="label label-primary pull-right">Back</a>
             </div>
 
-            <div class="panel-body">
+            <div class="panel-body"> 
 
                 <form action="{{$wallet->id}}" method="POST" class="form-horizontal">
                     {{ csrf_field() }}

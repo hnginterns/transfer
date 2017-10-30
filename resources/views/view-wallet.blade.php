@@ -235,15 +235,16 @@ tr:nth-child(even) {
               <!-- Modal content-->
                 <div class="panel panel-default">
                   <div class="panel-heading">
-                      Fund <strong>{{ $wallet->wallet_name }} </strong>  Wallet with Card <a href="{{ route('wallets.details', $wallet->id) }}" class="label label-primary pull-right">Back</a>
+                      Fund <strong>{{ $wallet->wallet_name }} </strong>  Wallet with Card <button type="button" class="close pull-right" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
                   </div>
       			
             <div class="modal-body">  
                 <!-- text input -->      
-	    <form action="/wallet/{{$wallet->id}}/fund" method="POST" class="form-horizontal">
+	    <form action="/wallet/{{$wallet->id}}/fund" method="POST" class="form-horizontal">   
                     {{ csrf_field() }}
                     <input type="hidden" name="wallet_name" value="{{$wallet->wallet_name}}">
-                      <input type="hidden" name="wallet_code" value="{{$wallet->wallet_code}}">
+                      <input type="hidden" name="wallet_code" value="{{$wallet->wallet_code}}"> 
                     <div class="container-fluid">
                   <fieldset>  
                     <div class="row">
