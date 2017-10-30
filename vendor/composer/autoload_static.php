@@ -425,6 +425,7 @@ class ComposerStaticInitcb56c8f99153a160391720319584c667
         'App\\Http\\Requests\\PhoneNumberAddRequest' => __DIR__ . '/../..' . '/app/Http/Requests/PhoneNumberAddRequest.php',
         'App\\Http\\Requests\\PhoneNumberDeleteRequest' => __DIR__ . '/../..' . '/app/Http/Requests/PhoneNumberDeleteRequest.php',
         'App\\Http\\Requests\\PhoneNumberEditRequest' => __DIR__ . '/../..' . '/app/Http/Requests/PhoneNumberEditRequest.php',
+        'App\\Http\\Requests\\TopUpDataRequest' => __DIR__ . '/../..' . '/app/Http/Requests/TopUpDataRequest.php',
         'App\\Http\\Utilities\\Bank' => __DIR__ . '/../..' . '/app/Http/Utilities/Bank.php',
         'App\\Http\\Utilities\\Wallet' => __DIR__ . '/../..' . '/app/Http/Utilities/Wallet.php',
         'App\\InternetBanking' => __DIR__ . '/../..' . '/app/InternetBanking.php',

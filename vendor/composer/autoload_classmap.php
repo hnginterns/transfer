@@ -59,6 +59,7 @@ return array(
     'App\\Http\\Requests\\PhoneNumberAddRequest' => $baseDir . '/app/Http/Requests/PhoneNumberAddRequest.php',
     'App\\Http\\Requests\\PhoneNumberDeleteRequest' => $baseDir . '/app/Http/Requests/PhoneNumberDeleteRequest.php',
     'App\\Http\\Requests\\PhoneNumberEditRequest' => $baseDir . '/app/Http/Requests/PhoneNumberEditRequest.php',
+    'App\\Http\\Requests\\TopUpDataRequest' => $baseDir . '/app/Http/Requests/TopUpDataRequest.php',
     'App\\Http\\Utilities\\Bank' => $baseDir . '/app/Http/Utilities/Bank.php',
     'App\\Http\\Utilities\\Wallet' => $baseDir . '/app/Http/Utilities/Wallet.php',
     'App\\InternetBanking' => $baseDir . '/app/InternetBanking.php',
