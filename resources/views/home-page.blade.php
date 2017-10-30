@@ -890,21 +890,6 @@
 <div class="about-content">
 
 
-<!-- DIVIDER -->
-<div id="divider-top"></div>
-<div id="divider">
-    <div id="divider-content" align="center">
-        <div id="divider-text">
-            <p align="center" id="divider-title">Already registered? </p>
-            <p id="">
-                Login to your account.
-            </p>
-        </div>
-        <br />
-        <button class="btn btn-primary"><a href="https://finance.hotels.ng/login"><font color="white">Sign In</font></a></button>
-    </div>
-</div><br><p>
-<!-- FOOTER -->
 
 <div id="footer">
     <div id="lower-footer">
