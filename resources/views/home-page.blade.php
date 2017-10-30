@@ -168,6 +168,7 @@
             /* color: #E57679; */
             color: white;
             border: none;
+            border-radius: 10px;
             background: #eff2f4;
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
             padding: 4px 12px;
