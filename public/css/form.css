@@ -22,13 +22,13 @@
 
 
   .form-holder {
-      margin-top: 20px;
+      margin-top: 10px;
   }
 
  .intro {
       color: #25313F;
       margin-bottom: 30px;
-      margin-top: 20px;
+      margin-top: 10px;
       font-weight: bold;
       font-size: 25px;
   }
@@ -44,7 +44,7 @@
 
   .input-form {
       text-align: left;
-      margin-top: 20px;
+      margin-top: 10px;
   }
 
   .input-form>.form-group>button {
