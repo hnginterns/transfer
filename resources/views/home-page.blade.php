@@ -875,8 +875,8 @@
         Hotels.ng Financial Control
         
                 </span>
-                <span id="heading-hd">
-                Financial  Management Made Easy
+                <span id="heading-hd" style="margin-left:6%">
+                   Financial Management Made Easy
                 </span>
             <button id="button-hd">
                 <a href="{{url('login')}}">Sign in</a>
