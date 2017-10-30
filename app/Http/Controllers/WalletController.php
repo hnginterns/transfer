@@ -133,9 +133,8 @@ class WalletController extends Controller
             $response = json_decode($response->raw_body, true);
             if($response['status'] == 'success') {
                 event(new FundWallet($cardWallet));
-                Session::flash('success',$response);
-                return redirect('admin/managewallet');
-
+                Session::flash('success','Wallet funding successful');
+                return back();
             }
 
             return back()->with('error', $response['message']);
