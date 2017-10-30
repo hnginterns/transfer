@@ -166,12 +166,12 @@
         #button-hd {
             width: fit-content;
             /* color: #E57679; */
-            color: #39689C;
+            color: #fff;
             border: none;
-            background: #fff;
+            background: #39689C;
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-            padding: 10px 15px;
-            border-radius: 63px;
+            padding: 4px 12px;
+            
             transition: background 1s, color 2s;
             z-index: 100;
         }
@@ -878,8 +878,8 @@
                 <span id="heading-hd">
                 Financial  Management Made Easy
                 </span>
-            <button class="btn btn-primary">
-                <font color="white"><a href="{{url('login')}}">Sign in</a></font>
+            <button id="button hd">
+                <a href="{{url('login')}}">Sign in</a>
             </button>
         </div>
     </div>
