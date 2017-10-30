@@ -474,9 +474,9 @@ i.can {
           <h4 class="modal-title">Transfer To Service Provider</h4>
         </div>
         <div class="modal-body">
-          <form action="{{config('app.url')}}/topup/wallet" method="post" accept-charset="utf-8">
             <div class="modal-body" style="padding: 5px;">
-              {{csrf_field()}}
+              <form action="{{config('app.url')}}/topup/wallet" method="post" accept-charset="utf-8">
+              {{ csrf_field() }}
               <input name="wallet_id" value="{{$wallet->id}}" type="hidden"> 
               <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
