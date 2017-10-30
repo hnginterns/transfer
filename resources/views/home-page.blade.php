@@ -166,7 +166,7 @@
         #button-hd {
             width: fit-content;
             /* color: #E57679; */
-            color: #fff;
+            color: white;
             border: none;
             background: #39689C;
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
