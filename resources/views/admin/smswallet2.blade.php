@@ -233,7 +233,7 @@
                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                                             <h4 class="modal-title centered">Add New Ebulk SMS Details
                                             <hr>
-                                            <p>Before Adding Account, Get Your API Key From  <a href="https://www.ebulksms.com/users/api" data-toggle="tooltip" title="Login to your account navigate to the developer tap and generate your API key !">Ebulksms</a></p>
+                                            <p>Before Adding Account, Get Your API Key From  <a href="https://www.ebulksms.com/users/api" target="_blank"" data-toggle="tooltip" title="Login to your account navigate to the developer tap and generate your API key !">Ebulksms</a></p>
                                        </h4> </div>
                                         <div class="modal-body">
                                             <form action="addSmsAccount" method="post" accept-charset="utf-8">
