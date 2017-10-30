@@ -96,7 +96,9 @@ class AdminController extends WalletController
     {
         $wallets = Wallet::all();
         $users = User::all();
-        return view('admin.dashboard', compact('wallets', 'users'));
+        $beneficiaries = Beneficiary::all();
+        $contacts = TopupContact::all();
+        return view('admin.dashboard', compact('wallets', 'users', 'contacts', 'beneficiaries'));
     }
 
 

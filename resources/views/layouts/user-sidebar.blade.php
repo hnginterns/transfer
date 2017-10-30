@@ -5,14 +5,14 @@
    
              
               <li>
-                <a href="/dashboard">
+                <a href="{{route('user.dashboard')}}">
                 <i class="fa fa-dashboard fa-1x"></i> Dashboard
                 </a>
               </li> <br>
 
 
               <li>
-                <a href="/phonetopup">
+                <a href="{{route('user.phonetopup')}}">
                 <i class="fa fa-mobile fa-2x"></i> Phone TopUp
                 </a>
               </li> <br>

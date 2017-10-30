@@ -9,7 +9,7 @@
   .input-form>.form-group>.form-control,
   .cus-input {
       border-radius: 0;
-      height: 40px;
+      height: 20px;
       /* background: #999; */
       border: 1;
   }
@@ -22,13 +22,14 @@
 
 
   .form-holder {
-      margin-top: 20px;
+      margin-top: 30px;
   }
+
 
  .intro {
       color: #25313F;
       margin-bottom: 30px;
-      margin-top: 20px;
+      margin-top: 30px;
       font-weight: bold;
       font-size: 25px;
   }
@@ -44,7 +45,7 @@
 
   .input-form {
       text-align: left;
-      margin-top: 20px;
+      margin-top: 5px;
   }
 
   .input-form>.form-group>button {
