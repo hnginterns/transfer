@@ -174,6 +174,7 @@
             border-radius: 63px;
             transition: background 1s, color 2s;
             z-index: 100;
+            font-size: 25px;
         }
 
         #button-hd:hover {
