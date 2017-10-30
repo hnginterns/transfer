@@ -168,7 +168,7 @@ i.can {
         <tbody> 
           <form class="send-airtime topup-multiple" action="{{ route('topup.phone.multiple')}}" method="POST" role="form">   
           <a href="#dataModal" class="btn btn-info pull-right" style="margin-left: 5px; margin-bottom: 3px;" data-toggle="modal">Top-up Data</a>
-          <button type="submit" class="btn btn-success pull-right" style="margin-right: 5px; margin-bottom: 3px;" onclick="confirmTopup()">Top up all</button>
+          <button class="btn btn-success pull-right" style="margin-right: 5px; margin-bottom: 3px;">Top up all</button>
             {{ csrf_field() }} @if(count($phones) > 0) @foreach($phones as $phone)
             <tr class="contact-fn">
 
@@ -871,8 +871,26 @@ i.can {
   </script>
 
   <script>
-function confirmTopup() {
-    confirm("Do you want to proceed?");
-}
+      function dialog(message, yesCallback, noCallback) {
+      $('.title').html(message);
+      var dialog = $('#modal_dialog').dialog();
+
+      $('#btnYes').click(function() {
+          dialog.dialog('close');
+          yesCallback();
+      });
+      $('#btnNo').click(function() {
+          dialog.dialog('close');
+          noCallback();
+      });
+  }
+    dialog('Are you sure you want to do this?',
+    function() {
+        console.log('yes');
+    },
+    function() {
+        console.log('no');
+    }
+  );
 </script>
 @endsection
