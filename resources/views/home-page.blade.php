@@ -873,6 +873,7 @@
         <div id="content-text" class="clearfix" align="center">
         <span id="heading-top-hd">
         Hotels.ng Financial Control
+        
                 </span>
                 <span id="heading-hd">
                 Financial  Management Made Easy
