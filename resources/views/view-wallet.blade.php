@@ -102,7 +102,7 @@ tr:nth-child(even) {
             <li class="active"><a data-toggle="pill" href="#home">Wallet Transfer History</a></li>
             <li><a data-toggle="pill" href="#menu1">Beneficiaries List</a></li>
             <li><a data-toggle="pill" href="#menu2">Beneficiaries Transaction History</a></li>
-          </ul>
+          </ul><br>
         <div class="tab-content">
         <div id="home" class="tab-pane fade in active">
       	<div class="orange-box"><h4 class="title text-capitalize" align="center"> {{ ucfirst($wallet->wallet_name) }} wallet transfer history</h4></div><br>
