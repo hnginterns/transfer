@@ -276,7 +276,7 @@ tr:nth-child(even) {
                                 <div class="form-group">
                                     <label>Email Address</label>
                                     <div class="controls">
-                                          <input type="email" pattern="" name="emailaddr" value="{{Auth::user()->fundWalletInfo == null ? '' : Auth::user()->fundWalletInfo->email}}" class="form-control" autocomplete="off" required="" type="text">
+                                          <input type="email" name="emailaddr" value="{{Auth::user()->fundWalletInfo == null ? '' : Auth::user()->fundWalletInfo->email}}" class="form-control" autocomplete="off" required="" type="text">
                                     </div>
                                 </div>
                             </div>
