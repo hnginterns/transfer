@@ -80,16 +80,16 @@ tr:nth-child(even) {
     <!-- wallet types table -->
         <table>
           <tr>
-            <th><font color="#39689C"><h2>Wallet Name</h2></font></th>
-            <th><font color="#39689C"><h2>Wallet ID</h2></font></th>
-            <th><font color="#39689C"> <h2>Currency Type</h2></font></th>
-            <th><font color="#39689C"><h2>Balance</h2></font></th>
+            <th><font color="#39689C">Wallet Name</font></th>
+            <th><font color="#39689C">Wallet ID</font></th>
+            <th><font color="#39689C"> Currency Type</font></th>
+            <th><font color="#39689C">Balance</font></th>
           </tr>
           <tr>
-            <td><font color="#008000"> <h2><b>{{ $wallet->wallet_name }}</b></h2></font></td>
-            <td><h2>{{ $wallet->wallet_code }}</h2></td>
-            <td><h2>Nigeria Naira</h2></td>
-            <td><h2>{{ $wallet->balance }}</h2></td>
+            <td><font color="#008000"> <b>{{ $wallet->wallet_name }}</b></font></td>
+            <td>{{ $wallet->wallet_code }}</td>
+            <td>Nigeria Naira</td>
+            <td>{{ $wallet->balance }}</td>
           </tr>
           
         </table>
@@ -99,10 +99,10 @@ tr:nth-child(even) {
 
           <br> <div class="">
           <ul class="nav nav-pills nav-justified ">
-            <li class="active"><a data-toggle="pill" href="#home">Wallet Transfer History</a></li><br>
-            <li><a data-toggle="pill" href="#menu1">Beneficiaries List</a></li><br>
-            <li><a data-toggle="pill" href="#menu2">Beneficiaries Transaction History</a></li><br>
-          </ul>
+            <li class="active"><a data-toggle="pill" href="#home">Wallet Transfer History</a></li>
+            <li><a data-toggle="pill" href="#menu1">Beneficiaries List</a></li>
+            <li><a data-toggle="pill" href="#menu2">Beneficiaries Transaction History</a></li>
+          </ul><br>
         <div class="tab-content">
         <div id="home" class="tab-pane fade in active">
       	<div class="orange-box"><h4 class="title text-capitalize" align="center"> {{ ucfirst($wallet->wallet_name) }} wallet transfer history</h4></div><br>

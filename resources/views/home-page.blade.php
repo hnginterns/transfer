@@ -621,7 +621,7 @@
             }
 
             #heading-hd {
-                font-size: 13px;
+                font-size: 10px;
                 letter-spacing: 0.07em;
                 padding-right: 0px;
                 margin-bottom: 15px;
@@ -873,6 +873,7 @@
         <div id="content-text" class="clearfix" align="center">
         <span id="heading-top-hd">
         Hotels.ng Financial Control
+        
                 </span>
                 <span id="heading-hd">
                 Financial  Management Made Easy
