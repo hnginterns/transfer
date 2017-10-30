@@ -879,7 +879,7 @@
                 Financial  Management Made Easy
                 </span>
             <button class="btn btn-primary">
-                <a href="{{url('login')}}">Sign in</a>
+                <font color="white"><a href="{{url('login')}}">Sign in</a></font>
             </button>
         </div>
     </div>
