@@ -76,6 +76,7 @@
 <div class="container-fluid">
 
   <a type="button" class="btn btn-info" href="{{ route('permission.create')}}" name="button"> Add Permission</i></a>
+  <a type="button" class="btn btn-link" href="{{ route('admin.dashboard')}}" name="button">back</i></a>
 
   <div class="wallet-container">
 
