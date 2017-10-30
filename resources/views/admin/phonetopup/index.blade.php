@@ -389,7 +389,7 @@
                                               <tbody id="tagbody">
                                                 @if(count($tags) > 0)
                                                   @foreach($tags as $tag)
-                                                    <tr id="{{ $tag->id }}">
+                                                    <tr id="{{ $tag->id }}" data-id="{{ $tag->id }}">
                                                       <td class="name">{{ $tag->name }}</td>
                                                       <td><button type="button" class="btn btn-info btn-xs tagedit" style="margin-right: 10px;" data-name="{{ $tag->name }}" data-tag="{{ $tag->id }}">Edit</button><button type="button" class="btn btn-danger btn-xs tagdelete" data-name="{{ $tag->name }}" data-tag="{{ $tag->id }}">Delete</button></td>
                                                     </tr>
@@ -715,14 +715,15 @@
         $('.tagdelete').on('click', function(){
             var tagid = $(this).attr('data-tag');
             var _token = $('input[name=_token]').val();
+            var toRemove = $(this).parents('tr');
             $.ajax({
-            url: "{{url('admin/deletetag')}}/"+tagid,
-            type: "GET",
-            dataType: "json",
-            success: function(data){
-                $("#"+tagid).remove();
-                $(".tagsuccess").html(data.msg).show();
-            }
+                url: "{{url('admin/deletetag')}}/"+tagid,
+                type: "GET",
+                dataType: "json",
+                success: function(data){
+                    $(".tagsuccess").html(data.msg).show();
+                    toRemove.remove();
+                }
             });
         });
 
