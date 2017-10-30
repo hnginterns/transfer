@@ -71,13 +71,13 @@
         .navbar-brand,
         .navbar-nav a {
             color: #000 !important;
-            font-size: 17px;
+            font-size: 14px;
             margin-right: 10px;
         }
 
         .navbar-brand {
             margin-top: -13px;
-            font-size: 19px;
+            font-size: 15px;
             font-weight: bold;
             letter-spacing: 0.04em;
         }
@@ -121,7 +121,7 @@
             left: 5%;
             top: 30%;
             color: white;
-            font-size: 300px;
+            font-size: 260px;
             font-weight: bold;
             color: rgba(255, 255, 255, 0.04);
             z-index: 1;
@@ -143,12 +143,12 @@
         }
 
         #heading-hd {
-            font-size: 23px;
+            font-size: 19px;
             letter-spacing: 0.07em;
             padding-right: 100px;
         }
         #heading-top-hd{
-                font-size: 64px;
+                font-size: 59px;
                 letter-spacing: 0.07em;
                 padding-right: 0px;
                 text-align:0;
@@ -159,7 +159,7 @@
           word-spacing: 0.09em;
           letter-spacing: 0.05em;
           z-index: 100;
-          font-size: 16px;
+          font-size: 12px;
           line-height: 25px;
         }
 
@@ -200,13 +200,13 @@
         }
 
         .section-header {
-            font-size: 36px;
+            font-size: 30px;
             /* color: #3D8BA8; */
             color: #2CACF0;
         }
 
         .section-sub {
-            font-size: 16px;
+            font-size: 12px;
             letter-spacing: 0.06em;
         }
 
@@ -362,13 +362,13 @@
         #divider-text {
            text-align:center;
            color:#404040;
-           font-size: 18px
+           font-size: 14px
         }
 
         #divider-title {
             color: #39689C;
             text-align:center;
-            font-size: 40px;
+            font-size: 36px;
             font-weight: bold;
             letter-spacing: 0.04em;
             margin: 0px;
@@ -376,18 +376,18 @@
         }
         .icon{
             color:#39689C;
-            font-size:70px;
+            font-size:65px;
             text-align:center;
         }
         .about-title{
             color:#39689C;
-            font-size:24px;
+            font-size:20px;
             text-align:center;
             font-family: 'Nunito Sans', sans-serif;
         }
         .about-paragraph{
             color:#404040;
-            font-size:16px;
+            font-size:12px;
             text-align:center;
             font-family: Lato-Regular,sans-serif!important;
         }
@@ -471,7 +471,7 @@
             }
 
             #heading-hd {
-                font-size: 26px;
+                font-size: 22px;
                 padding-right: 80px;
             }
 
@@ -484,11 +484,11 @@
             /* SECTION ONE STYLE */
 
             .section-header {
-                font-size: 30px;
+                font-size: 25px;
             }
 
             .section-sub {
-                font-size: 14px;
+                font-size: 12px;
                 letter-spacing: 0.06em;
             }
 
@@ -541,12 +541,12 @@
             }
 
             #heading-hd {
-                font-size: 20px;
+                font-size: 16px;
                 padding-right: 50px;
             }
 
             #text-hd {
-                font-size: 16px;
+                font-size: 12px;
                 padding-right: 50px;
             }
 
@@ -555,11 +555,11 @@
             /* SECTION ONE STYLE */
 
             .section-header {
-                font-size: 26px;
+                font-size: 23px;
             }
 
             .section-sub {
-                font-size: 13px;
+                font-size: 11px;
                 letter-spacing: 0.06em;
             }
 
@@ -621,14 +621,14 @@
             }
 
             #heading-hd {
-                font-size: 15px;
+                font-size: 13px;
                 letter-spacing: 0.07em;
                 padding-right: 0px;
                 margin-bottom: 15px;
             }
             #heading-top-hd{
                 margin-top:25px;
-                font-size: 40px;
+                font-size: 35px;
                 letter-spacing: 0.07em;
                 padding-right: 0px;
                 margin-bottom: 15px;
@@ -637,7 +637,7 @@
                 padding-right: 0px;
                 word-spacing: 0.09em;
                 letter-spacing: 0.05em;
-                font-size: 12px;
+                font-size: 10px;
                 margin-bottom: 15px;
             }
 
@@ -777,7 +777,7 @@
             #divider-title {
                 color: #fff;
                 background-color: #39689C;
-                font-size: 16px;
+                font-size: 12px;
                 font-weight: bold;
                 letter-spacing: 0.04em;
                 margin: 0px;
