@@ -263,8 +263,9 @@ class pagesController extends Controller
         $beneficiary = Beneficiary::where('name', $request->name)
                                     ->where('wallet_id', $wallet->id)
                                     ->first();
-        if(!$beneficiary->account_number) {
-            $beneficiary = Beneficiary::firstOrNew([
+    
+        if(is_null($beneficiary)) {
+            $beneficiary = Beneficiary::firstOrCreate([
 
             'name' => $request->name,
             'wallet_id' => $wallet->id,
