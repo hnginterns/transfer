@@ -269,7 +269,7 @@ tr:nth-child(even) {
                             <div class="col-md-5">
                                 <label>Phone Number</label>
                                 <div class="controls">
-                                      <input name="phone" pattern="\+234\d{10}" class="form-control" value="{{Auth::user()->fundWalletInfo == null ? '' : Auth::user()->fundWalletInfo->phone}}" autocomplete="off" maxlength="20"  required="" type="text">
+                                      <input name="phone" pattern="\+234\d{10}" class="form-control" value="{{Auth::user()->fundWalletInfo == null ? '' : Auth::user()->fundWalletInfo->phonenumber}}" autocomplete="off" maxlength="20"  required="" type="text">
                                 </div>
                             </div>
                             <div class="col-md-5">
