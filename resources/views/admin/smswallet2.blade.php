@@ -305,12 +305,12 @@
                 
                 <div class="form-group">
                   <label>Bank Name</label>
-                  <input class="form-control bank" value="GTBank Plc" placeholder='' type="text" disabled>
+                  <input class="form-control bank" value="058" placeholder='' type="hidden">
                 </div>
 
                 <div class="form-group">
                   <label>Account Number</label>
-                  <input class="form-control account-no" value="0013093302" name="account" type="text" disabled>
+                  <input class="form-control account-no" value="0119448512" name="account" type="hidden">
                 </div>
                  <div class="form-group">
                   <label>Top-Up Amount</label>
