@@ -130,8 +130,10 @@ class SmsWalletController extends Controller
         }
     }
 
-    public function smsWallet(Request $request)
+    public function smsWallet(Request $request, Wallet $wallet)
     {
+
+        $smsWallet = Wallet::where('type', 'sms')->first();
         $token = $this->getToken();
         $headers = array('content-type' => 'application/json', 'Authorization' => $token);
         $query = array(
@@ -140,13 +142,14 @@ class SmsWalletController extends Controller
             "email" => $request->emailaddr,
             "phonenumber" => $request->phone,
             "recipient" => "wallet",
+            "recipient_id" => $smsWallet->wallet_code,
             "card_no" => $request->card_no,
             "cvv" => $request->cvv,
             "pin" => $request->pin, //optional required when using VERVE card
             "expiry_year" => $request->expiry_year,
             "expiry_month" => $request->expiry_month,
             "charge_auth" => "PIN", //optional required where card is a local Mastercard
-            "apiKey" => "ts_Q8PES8G6QJFI2RI1THN1",
+            "apiKey" => env('API_KEY'),
             "amount" => $request->amount,
             "fee" => 0,
             "medium" => "web",
@@ -195,10 +198,11 @@ class SmsWalletController extends Controller
             $response = json_decode($response->raw_body, true);
             if($response['status'] == 'success') {
                 event(new FundWallet($cardWallet));
-                Session::flash('success','Wallet funding successful');
-                return redirect('admin/smswallet2');
+                $response = $response['data']['flutterChargeResponseMessage'];
+                Session::flash('success', 'Wallet funding successful');
+                return redirect('admin.smswallet2');
             }
-            return back()->with('error', $response['message']);
+            return redirect('admin.smswallet2')->with('error', $response['message']);
 
     }
 
@@ -218,43 +222,21 @@ class SmsWalletController extends Controller
     //transfer from wallet to bank
     public function transferAccount(Request $request, Wallet $wallet, BankTransaction $bank)
     {
-        $validator = $this->validateBeneficiary($request->all());
-        if ($validator->fails()) {
-            $messages = $validator->messages()->toArray();
-            Session::flash('form-errors', $messages);
-            return redirect()->to(URL::previous());
-        } else {
+                $smsWallet = Wallet::where('type', 'sms')->first();
                 $token = $this->getToken();
                 $headers = array('content-type' => 'application/json', 'Authorization' => $token);
-                $beneficiary = Beneficiary::find($request->beneficiary_id);
+                //$beneficiary = Beneficiary::find($request->beneficiary_id);
                 $query = array(
-                    "lock" => $wallet->lock_code,
+                    "lock" => $smsWallet->lock_code,
                     "amount" => $request->amount,
-                    "bankcode" => $beneficiary->bank->bank_code,
-                    "accountNumber" => $beneficiary->account_number,
+                    "bankcode" => "058",
+                    "accountNumber" => $request->account_number,
                     "currency" => "NGN",
                     "senderName" => Auth::user()->username,
-                    "narration" => $request->narration, //Optional
-                    "ref" => $request->reference, // No Refrence from request
-                    "walletUref" => $wallet->wallet_code
+                    "narration" => "ebulksms", //Optional
+                    "ref" => "self", // No Refrence from request
+                    "walletUref" => $smsWallet->wallet_code
                 );
-
-                //checks for permissions
-                $permit = Restriction::where('wallet_id', $wallet->id)
-                        ->where('uuid', Auth::user()->id)
-                        ->first();
-                
-                if($permit == null){
-                    Session::flash('error', 'You do not have access to this wallet');
-                    return redirect('/dashboard');
-                }    
-                 $restrict = new Restrict($permit, $request);
-                     $errors = $restrict->transferToBank();
-                if(count($errors) != 0){
-                    Session::flash('errors', $errors);
-                    return back();
-                }
-                //end of permission checks
 
                 //Api call to moneywave for transaction
                 $body = \Unirest\Request\Body::json($query);
@@ -268,29 +250,14 @@ class SmsWalletController extends Controller
                     //data to be parsed to display transaction details
                     $data = $response['data']['data'];
                     $data['senderName'] = Auth::user()->username;
-                    $data['walletCodeSender'] = $wallet->wallet_code;
-                    $data['receiverName'] = $beneficiary->name;
-                    $data['beneficiaryAccount'] = $beneficiary->account_number;
                     $data['amount'] = $request->amount;
-                    $data['narration'] = $request->narration;
                     //end of data prep
 
                     //logic to persist transaction details
-                    $transaction = new BankTransaction;
-                    $transaction->wallet_id = $wallet->id;
-                    $transaction->amount = $request->amount;
-                    $transaction->uuid =  Auth::user()->id;
-                    $transaction->beneficiary_id = $beneficiary->id;
-                    $transaction->transaction_reference = $data['uniquereference'];
-                    $transaction->transaction_status = true;
-                    $transaction->narration = $request->narration;
-                    $transaction->save();
                     //end of logic for saving transactions
 
 
                     event(new FundWallet($bank));
-                    $this->sendBankTransactionNotifications($transaction);
-                    $transactions = BankTransaction::latest()->first();
                     //\LogUserActivity::addToLog(auth()->user()->name.'transferred '.$transactions->amount.' from '. $transactions->source->wallet_name.' to '.$transactions->beneficiary->name);
                     
                     return redirect('success')->with('status',$data);
@@ -299,8 +266,5 @@ class SmsWalletController extends Controller
                     return back();
                 }
         }
-    }
-    
-
 
 }
