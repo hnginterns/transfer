@@ -145,13 +145,12 @@ box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.25);
 </head>
 <body>
 	<div class="main">
-    <h2>WHOOPS!</h2>
+    <h2>Ahhhhh, You missed the road too? </h2>
 
     <img src="https://fixmynigeria.com/img/icons/404-2.jpg" >
     <!--<div class="error">4 <span class="ghost"> </span>4</div>
     -->
-    <h2>Ahhhhh, You missed the road too? </h2>
-
+    
 		<p> Sorry, We all do sometimes. The requested page could not be found.
     <br> Check the options below or feel free to</p>
 
@@ -166,38 +165,3 @@ box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.25);
 </html>
 
 
-@extends('layout.frontend.vendroid.main')
-@section('pageTitle','Page Not Found')
-@section('breadcrumb')
-<li class="active">404-Page Not Found</li>
-@stop
-
-<!-- Quotes -->
-@section('subtitle')
-  {{ AppHelper::getQuote() }} 
-@stop
-
-@section('contentarea')
-
-<!-- Middle Content Start -->
-<div class="row">
-    <div class="col-sm-12">
-    <div class="panel widget" style=" margin: 10px auto;">
-      <div class="panel-body">
-          <div class="login-icon">  </div>
-                  <h2 class="font-semibold text-center" style="font-size:52px">Ahhhhh, You missed the road too? </h2>
-                  <h1 class="font-semibold text-center" style="font-size:52px">
-                      <img src="{{ asset('img/icons/404-'. rand(1,3) .'.jpg')}}"></i>
-                  </h1>
-                    <div class="form-group">
-                      <div class="col-md-12">
-                        <h4 class="text-center mgbt-xs-20">Sorry, We all do sometimes. The requested page could not be found.</h4>
-                        <p class="text-center">All hope is not lost. You can still 
-                          <a href="/">CLICK HERE</a> to go back to our homepage</p>
-                      </div>
-                    </div>
-        </div>
-    </div>
-  </div>
-</div>
-@stop
