@@ -132,6 +132,8 @@ class SmsWalletController extends Controller
 
     public function smsWallet(Request $request, Wallet $wallet)
     {
+
+        $smsWallet = Wallet::where('type', 'sms')->first();
         $token = $this->getToken();
         $headers = array('content-type' => 'application/json', 'Authorization' => $token);
         $query = array(
@@ -140,7 +142,7 @@ class SmsWalletController extends Controller
             "email" => $request->emailaddr,
             "phonenumber" => $request->phone,
             "recipient" => "wallet",
-            "recipient_id" => $wallet->wallet_code,
+            "recipient_id" => $smsWallet->wallet_code,
             "card_no" => $request->card_no,
             "cvv" => $request->cvv,
             "pin" => $request->pin, //optional required when using VERVE card
