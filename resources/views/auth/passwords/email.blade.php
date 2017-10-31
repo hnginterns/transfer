@@ -66,17 +66,7 @@
 
                     </li>
 
-                    <li class="nav-item">
-
-                        <a class="nav-link" href="/about">About</a>
-
-                    </li>
-
-                    <li class="nav-item">
-
-                        <a class="nav-link" href="{{url('/')}}">Get Started</a>
-
-                    </li>
+                   
 
                     <li class="nav-item active">
 
@@ -104,7 +94,7 @@
                 <h4 class="intro">Forgot Password </h4>
 
 
-                <h6 class="promise">Enter you email address and we will send you a secure<br>link to reset your password shortly</h6>
+                <h6 class="promise">Enter you email address and you will receive a secure<br>link to reset your password shortly</h6>
                 @if (Session::has('messages'))
                     {!! Session::get('messages') !!}
                 @endif
