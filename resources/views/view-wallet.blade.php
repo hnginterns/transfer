@@ -386,7 +386,7 @@ tr:nth-child(even) {
                             <input type="text" required name="name" class="form-control input-defaulted" placeholder="Name">
                           </div>--}}
 
-                           <div class="form-group">                   
+                          {{-- <div class="form-group">                   
                             <label>Bank</label>
                             <select name="bank_id" required class="form-control input-defaulted" >
                               <option>Select Bank</option>
@@ -395,7 +395,7 @@ tr:nth-child(even) {
                             <option value="{{$bankcode->bank_code}}||{{$bankcode->bank_name}}">{{ $bankcode->bank_name }}</option>
                             @endforeach
                             </select>
-                          </div>
+                          </div>--}}
 
                            <div class="form-group">
                               <label>Account Number</label>
