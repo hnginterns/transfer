@@ -49,7 +49,7 @@ $bank = App\Http\Controllers\BanksController::getAllBanks();
                     <option>Select Bank</option>
 
                   @foreach(App\Http\Controllers\BanksController::getAllBanks() as $key => $bankcode)
-                  <option value="{{$bankcode->id}}||{{$bankcode->bank_name}}">{{ $bankcode->bank_name }}</option>
+                  <option value="{{$bankcode->bank_code}}||{{$bankcode->bank_name}}">{{ $bankcode->bank_name }}</option>
                   @endforeach
                   </select>
                 </div>
