@@ -200,14 +200,13 @@ class pagesController extends Controller
 
     public function insertBeneficiary(Request $request, Wallet $wallet)
     {    
-         //$validator = $this->validateBeneficiary($request->all());
+         $validator = $this->validateBeneficiary($request->all());
         //  dd($validator);
-       // if ($validator->fails()) {
-        //    $messages = $validator->messages()->toArray();
-       //      Session::flash('form-errors', $messages);
-       //     return redirect()->to(URL::previous())->withInput();
-       // } else { 
-            $token = $this->getToken();
+        if ($validator->fails()) {
+            $messages = $validator->messages()->toArray();
+             Session::flash('form-errors', $messages);
+            return redirect()->to(URL::previous())->withInput();
+        } else { 
             
             $permit = Restriction::where('wallet_id', $wallet->id)
             ->where('uuid', Auth::user()->id)
@@ -225,18 +224,13 @@ class pagesController extends Controller
 
             
                 $bank_code = explode('||', request('bank_id'));
-                $headers = array('content-type' => 'application/json', 'Authorization'=>$token);
+                $headers = array('content-type' => 'application/json');
                 
                 $account_number = $request->account_number;
-                //$bank_code = $bank_code[0];
-                //$url = "https://api.paystack.co/bank/resolve?account_number=$account_number&bank_code=$bank_code";
-                //$response = \Unirest\Request::get($url, $headers);
-                $query = array('account_number'=> $account_number,'bank_code' => $request->bank_id);
-                $body = \Unirest\Request\Body::json($query);
-                $response = Unirest\Request::post(env('API_KEY_LIVE_URL').'/v1/resolve/account', $headers, $body);
+                $bank_code = $bank_code[0];
+                $url = "https://api.paystack.co/bank/resolve?account_number=$account_number&bank_code=$bank_code";
+                $response = \Unirest\Request::get($url, $headers);
                 $response = json_decode($response->raw_body, true);
-                var_dump($response);
-                die();
                 if($response['status'] == 'true')
                 {
                     /**$beneficiary = new Validation;
@@ -261,7 +255,7 @@ class pagesController extends Controller
                     return redirect()->back()->with('error', $response['message']);
                 
 
-        
+        }
     }
 
     public function addAccount(Request $request, Wallet $wallet)
