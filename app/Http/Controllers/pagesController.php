@@ -207,6 +207,7 @@ class pagesController extends Controller
        //      Session::flash('form-errors', $messages);
        //     return redirect()->to(URL::previous())->withInput();
        // } else { 
+            $token = $this->getToken();
             
             $permit = Restriction::where('wallet_id', $wallet->id)
             ->where('uuid', Auth::user()->id)
@@ -224,12 +225,15 @@ class pagesController extends Controller
 
             
                 $bank_code = explode('||', request('bank_id'));
-                $headers = array('content-type' => 'application/json');
+                $headers = array('content-type' => 'application/json', 'Authorization'=>$token);
                 
                 $account_number = $request->account_number;
-                $bank_code = $bank_code[0];
-                $url = "https://api.paystack.co/bank/resolve?account_number=$account_number&bank_code=$bank_code";
-                $response = \Unirest\Request::get($url, $headers);
+                //$bank_code = $bank_code[0];
+                //$url = "https://api.paystack.co/bank/resolve?account_number=$account_number&bank_code=$bank_code";
+                //$response = \Unirest\Request::get($url, $headers);
+                $query = array('account_number'=> $account_number,'bank_code' => $request->bank_id);
+                $body = \Unirest\Request\Body::json($query);
+                $response = Unirest\Request::post('https://moneywave.herokuapp.com/v1/resolve/account', $headers, $body);
                 $response = json_decode($response->raw_body, true);
                 if($response['status'] == 'true')
                 {
