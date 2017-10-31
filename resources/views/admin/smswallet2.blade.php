@@ -59,10 +59,7 @@
 
                                                    
                     <hr>
-              Account Name: <span class="username">{{ $smswalletdetail['username'] }}</span>
-<p>Sms Unit Balance: <span class="unit-balance">{{ $smswalletdetail['balance'] }}</span>
-
-         @if($smswalletdetail['balance'] < 50) 
+                     @if($smswalletdetail['balance'] < 50) 
             
   
     <strong class="label label-danger">SMS Unit is Low!</strong> 
@@ -71,6 +68,10 @@
           <p></p>
         @endif
           </p>
+              Account Name: <span class="username">{{ $smswalletdetail['username'] }}</span>
+<p>Sms Unit Balance: <span class="unit-balance">{{ $smswalletdetail['balance'] }}</span>
+
+        
       </div>
       
       <div class="icon">
