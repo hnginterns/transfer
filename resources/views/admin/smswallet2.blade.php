@@ -134,7 +134,7 @@
                                                     <div class="form-group">
                                                         <label>Phone Number</label>
                                                         <div class="controls">
-                                                            <input name="phone" class="form-control" autocomplete="off" maxlength="20" required="" type="text">
+                                                            <input name="phone" class="form-control" placeholder="+2348066222222" autocomplete="off" maxlength="20" required="" type="text">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
