@@ -158,8 +158,9 @@ class SmsWalletController extends Controller
         $response = json_decode($response->raw_body, TRUE);
          if($response['status'] == 'success') {
             $response = $response['data']['transfer'];
-            $transMsg = $response['flutterChargeResponseMessage'];
-            $transRef = $response['flutterChargeReference'];
+            $data = [];
+            $data['message'] = $response['flutterChargeResponseMessage'];
+            $data['reference'] = $response['flutterChargeReference'];
             
             $transaction = new CardWallet;
             $transaction->firstName = $response['firstName'];
@@ -170,9 +171,9 @@ class SmsWalletController extends Controller
             $transaction->status = $response['status'];
             $transaction->ref = $transRef;
 
-            $transaction->save();
-
-            return back()->with('status', $transMsg);
+           if($transaction->save()){
+                return back()->with('status', array($data));
+           }
         }else{
             return back()->with('error', $response['message']);
         }

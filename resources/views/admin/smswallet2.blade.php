@@ -358,7 +358,8 @@
                                         <div class="col-md-6 col-md-offset-2">
                                           <form action="sms/otp" method="POST">
                                             {{csrf_field()}}
-                                            <input type="hidden" name="ref" value="{{$smswallet->ref}}">
+                                            @foreach(Session::get('status') as $data)
+                                            <input type="hidden" name="ref" value="{{$data['reference']}}">
                                             <div class="form-group">
                                                 <input type="password" class="form-control" name="otp" placeholder="Enter OTP">
                                             </div>
