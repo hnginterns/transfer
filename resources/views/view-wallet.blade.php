@@ -500,7 +500,7 @@ $('.modal-content').resizable({
                     <input type="text" class="form-control" name="bank_name" value="{{$response['bank_name']}}" readonly>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" name="bank_id" value="{{$response['bank_code']}}" readonly>
+                    <input type="hidden" class="form-control" name="bank_id" value="{{$response['bank_code']}}">
                 </div>
                 <div class="form-group">
                     <input type="text" class="form-control" name="account_number" value="{{$response['account_number']}}" readonly>
