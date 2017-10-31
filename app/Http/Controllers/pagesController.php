@@ -200,13 +200,13 @@ class pagesController extends Controller
 
     public function insertBeneficiary(Request $request, Wallet $wallet)
     {    
-         $validator = $this->validateBeneficiary($request->all());
+         //$validator = $this->validateBeneficiary($request->all());
         //  dd($validator);
-        if ($validator->fails()) {
-            $messages = $validator->messages()->toArray();
-             Session::flash('form-errors', $messages);
-            return redirect()->to(URL::previous())->withInput();
-        } else { 
+       // if ($validator->fails()) {
+        //    $messages = $validator->messages()->toArray();
+       //      Session::flash('form-errors', $messages);
+       //     return redirect()->to(URL::previous())->withInput();
+       // } else { 
             
             $permit = Restriction::where('wallet_id', $wallet->id)
             ->where('uuid', Auth::user()->id)
@@ -221,21 +221,17 @@ class pagesController extends Controller
                 return redirect('/dashboard')
                 ->with('error', 'You do not have the permission to add beneficiary');
             }
-                $tokne = $this->getToken();
-                
+
+            
                 $bank_code = explode('||', request('bank_id'));
-                $headers = array('content-type' => 'application/json', 'Authorization' => $token);
+                $headers = array('content-type' => 'application/json');
                 
                 $account_number = $request->account_number;
-                $bank_code = $request->bank_id;
-                //$url = "https://api.paystack.co/bank/resolve?account_number=$account_number&bank_code=$bank_code";
-                $query = array('account_number'=> $account_number,'bank_code' => $bank_code);
-                $body = \Unirest\Request\Body::json($query);
-                $response = \Unirest\Request::post(env('API_KEY_LIVE_URL').'/v1/resolve/account', $headers, $body);
+                $bank_code = $bank_code[0];
+                $url = "https://api.paystack.co/bank/resolve?account_number=$account_number&bank_code=$bank_code";
+                $response = \Unirest\Request::get($url, $headers);
                 $response = json_decode($response->raw_body, true);
-                var_dump($response);
-                die();
-                if($response['status'] == 'success')
+                if($response['status'] == 'true')
                 {
                     /**$beneficiary = new Validation;
                     //$beneficiary->name = request('name');
@@ -256,10 +252,10 @@ class pagesController extends Controller
                     return back()->with('responses', array($responses));
                 //return redirect("wallet/$wallet->id")->with('success', 'Beneficiary added');
                     } 
-                    return redirect()->back()->with('error', $response['msg']);
+                    return redirect()->back()->with('error', $response['message']);
                 
 
-        }
+        
     }
 
     public function addAccount(Request $request, Wallet $wallet)
@@ -371,7 +367,7 @@ class pagesController extends Controller
     protected function validateBeneficiary(array $data) {
         return Validator::make($data, [
             //'name' => 'required|string',
-            'bank_id' => 'required|string|min:2',
+            'bank_id' => 'required|string|min:4',
             'account_number' => 'required|numeric',
         ]);
     }
