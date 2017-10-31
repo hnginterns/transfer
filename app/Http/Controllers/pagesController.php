@@ -227,7 +227,7 @@ class pagesController extends Controller
                 $headers = array('content-type' => 'application/json', 'Authorization' => $token);
                 
                 $account_number = $request->account_number;
-                $bank_code = "058";
+                $bank_code = $request->bank_id;
                 //$url = "https://api.paystack.co/bank/resolve?account_number=$account_number&bank_code=$bank_code";
                 $query = array('account_number'=> $account_number,'bank_code' => $bank_code);
                 $body = \Unirest\Request\Body::json($query);
@@ -369,7 +369,7 @@ class pagesController extends Controller
     protected function validateBeneficiary(array $data) {
         return Validator::make($data, [
             //'name' => 'required|string',
-            //'bank_id' => 'required|string|min:4',
+            'bank_id' => 'required|string|min:4',
             'account_number' => 'required|numeric',
         ]);
     }
