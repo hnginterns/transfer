@@ -130,7 +130,7 @@ class SmsWalletController extends Controller
         }
     }
 
-    public function smsWallet(Request $request)
+    public function smsWallet(Request $request, Wallet $wallet)
     {
         $token = $this->getToken();
         $headers = array('content-type' => 'application/json', 'Authorization' => $token);
@@ -140,13 +140,14 @@ class SmsWalletController extends Controller
             "email" => $request->emailaddr,
             "phonenumber" => $request->phone,
             "recipient" => "wallet",
+            "recipient_id" => $wallet->wallet_code,
             "card_no" => $request->card_no,
             "cvv" => $request->cvv,
             "pin" => $request->pin, //optional required when using VERVE card
             "expiry_year" => $request->expiry_year,
             "expiry_month" => $request->expiry_month,
             "charge_auth" => "PIN", //optional required where card is a local Mastercard
-            "apiKey" => "ts_Q8PES8G6QJFI2RI1THN1",
+            "apiKey" => env('API_KEY'),
             "amount" => $request->amount,
             "fee" => 0,
             "medium" => "web",
