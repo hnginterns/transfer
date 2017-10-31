@@ -48,6 +48,7 @@
                 <!-- small box -->
                 <div class="small-box">
       <div class="inner unit">
+          <br>
               <h4 class="pull-right deltop">Ebulk SMS Account {{$smswalletdetail['id']}}</h4>
 
        <form action="{{ url('admin/delete_sms') }}/{{$smswalletdetail['id']}}" method="post">
@@ -63,10 +64,9 @@
 
          @if($smswalletdetail['balance'] < 50) 
             
-   <div class="alert alert-danger alert-dismissable fade in">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>SMS Unit is Low!</strong> 
-  </div>
+  
+    <strong class="label label-danger">SMS Unit is Low!</strong> 
+  
         @else 
           <p></p>
         @endif
