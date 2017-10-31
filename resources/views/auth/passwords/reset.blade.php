@@ -66,17 +66,7 @@
 
                     </li>
 
-                    <li class="nav-item">
-
-                        <a class="nav-link" href="/about">About</a>
-
-                    </li>
-
-                    <li class="nav-item">
-
-                        <a class="nav-link" href="{{url('/')}}">Get Started</a>
-
-                    </li>
+                    
 
                     <li class="nav-item active">
 
@@ -99,7 +89,7 @@
         <div class="container">
 
            <div class="login-box">
-                <h4 class="intro-sub">Enter Email and Eew Password</h4>
+                <h4 class="intro-sub">Enter Email and New Password</h4>
                 <p class="writeup"></p>
                 <form class="admin-login"  method="POST"  method="POST" action="{{ route('password.request') }}">
                 {{ csrf_field() }}
