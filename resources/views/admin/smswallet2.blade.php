@@ -353,12 +353,12 @@
                                         <h4 class="modal-title">Otp</h4>
                                       </div>
                                       <div class="modal-body">
-                                        <p>{{session('status')}}</p>
+                                        @foreach(Session::get('status') as $data)
+                                        <p>{{$data['message']}}</p>
                                         <div class="row">
                                         <div class="col-md-6 col-md-offset-2">
                                           <form action="sms/otp" method="POST">
                                             {{csrf_field()}}
-                                            @foreach(Session::get('status') as $data)
                                             <input type="hidden" name="ref" value="{{$data['reference']}}">
                                             <div class="form-group">
                                                 <input type="password" class="form-control" name="otp" placeholder="Enter OTP">
