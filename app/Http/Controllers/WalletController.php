@@ -265,6 +265,8 @@ class WalletController extends Controller
         }
         return back()->with('error', 'you entered a wrong ID');
     }
+
+    
     //transfer from wallet to bank
     public function transferAccount(Request $request, Wallet $wallet, BankTransaction $bank)
     {
