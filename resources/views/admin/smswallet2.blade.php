@@ -363,11 +363,11 @@
                                             <div class="form-group">
                                                 <input type="password" class="form-control" name="otp" placeholder="Enter OTP">
                                             </div>
-                                            @endforeach
                                             <button type="submit" class="btn btn-default btn-block">Submit</button>
                                           </form>
                                         </div>
                                       </div>
+                                      @endforeach
                                   </div>
                                 </div>
                               </div>
