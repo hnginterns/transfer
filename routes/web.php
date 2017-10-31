@@ -72,7 +72,7 @@ Route::get('/404', 'pagesController@pagenotfound');
 
 // authentications
 Route::group(['middleware' => 'auth'], function () {
-	Route::get('/dashboard', 'pagesController@userdashboard');
+	Route::get('/dashboard', 'pagesController@userdashboard')->name('user.dashboard');
 
 	
 
@@ -98,7 +98,7 @@ Route::group(['middleware' => 'auth'], function () {
 	//bank fetch and data persist ends
 
 	//phone top up
-	Route::get('/phonetopup', 'pagesController@phoneTopupView');
+	Route::get('/phonetopup', 'pagesController@phoneTopupView')->name('user.phonetopup');
 	Route::post('/phonetopup/otp', 'User\PhoneTopUpController@otp');
 	Route::get('/phonetopup/star/{contact}', 'User\PhoneTopUpController@star');
 	Route::post('/phonetopup/fund', 'User\PhoneTopUpController@fundTopupWallet');

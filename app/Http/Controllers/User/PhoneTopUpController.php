@@ -71,6 +71,7 @@ class PhoneTopUpController extends Controller
    public function phoneTopUp(Request $request, CardWallet $cardWallet)
 
     {
+      
         $username       =     env('TOP_UP_USERNAME');
         $password       =     env('TOP_UP_PASSWORD');
         $phone          =     env('TOP_UP_PHONE');
@@ -95,7 +96,7 @@ class PhoneTopUpController extends Controller
                     "accountNumber" => $bank_account,
                     "currency" => "NGN",
                     "senderName" => $phone,
-                    "narration" => $request->narration, //Optional
+                    "narration" => $phone, //Optional
                     "ref" => $request->reference, // No Refrence from request
                     "walletUref" => $wallet->wallet_code
                 );
@@ -116,7 +117,7 @@ class PhoneTopUpController extends Controller
                     $data['receiverName'] = 'service Provider';
                     $data['beneficiaryAccount'] = $bank_account;
                     $data['amount'] = $request->amount;
-                    $data['narration'] = $request->narration;
+                    $data['narration'] = $phone;
 
                     //end of data prep
 
@@ -129,7 +130,7 @@ class PhoneTopUpController extends Controller
                     $transaction->bank_id = $bank->id;
                     $transaction->status = true;
                     $transaction->account_number = $bank_account;
-                    $transaction->narration = $request->narration;
+                    $transaction->narration = $phone;
                     $transaction->save();
                     //end of logic for saving transactions
                     
@@ -247,6 +248,9 @@ class PhoneTopUpController extends Controller
             
             if($response['status'] == 'success') {
                 event(new FundWallet($cardWallet));
+                $card = CardWallet::latest()->first();
+                $card->status = 'completed';
+                $card->save();
                 Session::flash('success','Wallet funding successful');
                 return redirect('/phonetopup');
 

@@ -168,7 +168,7 @@ i.can {
         <tbody> 
           <form class="send-airtime topup-multiple" action="{{ route('topup.phone.multiple')}}" method="POST" role="form">   
           <a href="#dataModal" class="btn btn-info pull-right" style="margin-left: 5px; margin-bottom: 3px;" data-toggle="modal">Top-up Data</a>
-          <button type="submit" class="btn btn-success pull-right" style="margin-right: 5px; margin-bottom: 3px;">Top up all</button>
+          <button type="submit" class="btn btn-success pull-right" style="margin-right: 5px; margin-bottom: 3px;" onclick="confirmTopup()">Top up all</button>
             {{ csrf_field() }} @if(count($phones) > 0) @foreach($phones as $phone)
             <tr class="contact-fn">
 
@@ -234,26 +234,26 @@ i.can {
              <thead>
                <tr>
                   <th>S/N</th>
-                  <th>Payer</th>
-                  <th>Bank</th>
-                  <th>Wallet</th>
+                  <th>Firstname</th>
+                  <th>Lastname</th>
+                  <th>Phone Number</th>
                   <th>Amount</th>
                   <th>Status</th>
-                  <th>Narration</th>
+                  <th>Ref</th>
                   <th>Date</th>
                 </tr>
               </thead>
               <tbody>
                 @php($count = 1)
-                @foreach($walletfundhistory as $key => $walletfundhistories)
+                @foreach($fundhistory as $key => $walletfundhistories)
                 <tr>
                   <td>{{$count}}</td>
-                  <td>{{$walletfundhistories->user->username}}</td>
-                  <td>{{$walletfundhistories->bank->bank_name}}</td>
-                  <td>{{$walletfundhistories->wallet->wallet_name}}</td>
+                  <td>{{$walletfundhistories->firstName}}</td>
+                  <td>{{$walletfundhistories->lastName}}</td>
+                  <td>{{$walletfundhistories->phoneNumber}}</td>
                   <td>{{$walletfundhistories->amount}}</td>
-                  <td><i class="fa {{$walletfundhistories->status ? 'fa-check-circle can ' : 'fa-times-circle cannot'}}" aria-hidden="true"></i></td>
-                  <td>{{$walletfundhistories->narration}}</td>
+                  <td>{{$walletfundhistories->status}}</td>
+                  <td>{{$walletfundhistories->ref}}</td>
                   <td>{{$walletfundhistories->created_at}}</td>
                 </tr>
                 @php($count++)
@@ -474,25 +474,15 @@ i.can {
           <h4 class="modal-title">Transfer To Service Provider</h4>
         </div>
         <div class="modal-body">
-          <form action="{{config('app.url')}}/topup/wallet" method="post" accept-charset="utf-8">
             <div class="modal-body" style="padding: 5px;">
-
-              <input name="wallet_id" value="{{$wallet->id}}" type="hidden"> {{csrf_field()}}
-
-              <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                  <input class="form-control" name="narration" placeholder="Narration" type="text" required />
-
-                </div>
-              </div>
-
-
+              <form action="{{config('app.url')}}/topup/wallet" method="post">
+              {{ csrf_field() }}
+              <input name="wallet_id" value="{{$wallet->id}}" type="hidden"> 
               <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
                   <input class="form-control" name="amount" placeholder="Amount" type="number" required />
                 </div>
               </div>
-            </div>
             <div class="panel-footer" style="margin-bottom:-14px;">
               <button type="submit" class="btn btn-success">Purchase</button>
               <button style="float: right;" type="button" class="btn btn-default btn-close" data-dismiss="modal">Close</button>
@@ -879,4 +869,10 @@ i.can {
       });
     }
   </script>
+
+  <script>
+function confirmTopup() {
+    confirm("Do you want to proceed?");
+}
+</script>
 @endsection

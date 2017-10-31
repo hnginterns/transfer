@@ -313,9 +313,20 @@ class ComposerStaticInitcb56c8f99153a160391720319584c667
             array (
                 0 => __DIR__ . '/..' . '/phenx/php-svg-lib/src',
             ),
+            'Sentry\\SentryLaravel\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/sentry/sentry-laravel/src',
+            ),
             'Sabberworm\\CSS' => 
             array (
                 0 => __DIR__ . '/..' . '/sabberworm/php-css-parser/lib',
+            ),
+        ),
+        'R' => 
+        array (
+            'Raven_' => 
+            array (
+                0 => __DIR__ . '/..' . '/sentry/sentry/lib',
             ),
         ),
         'P' => 
@@ -425,6 +436,7 @@ class ComposerStaticInitcb56c8f99153a160391720319584c667
         'App\\Http\\Requests\\PhoneNumberAddRequest' => __DIR__ . '/../..' . '/app/Http/Requests/PhoneNumberAddRequest.php',
         'App\\Http\\Requests\\PhoneNumberDeleteRequest' => __DIR__ . '/../..' . '/app/Http/Requests/PhoneNumberDeleteRequest.php',
         'App\\Http\\Requests\\PhoneNumberEditRequest' => __DIR__ . '/../..' . '/app/Http/Requests/PhoneNumberEditRequest.php',
+        'App\\Http\\Requests\\TopUpDataRequest' => __DIR__ . '/../..' . '/app/Http/Requests/TopUpDataRequest.php',
         'App\\Http\\Utilities\\Bank' => __DIR__ . '/../..' . '/app/Http/Utilities/Bank.php',
         'App\\Http\\Utilities\\Wallet' => __DIR__ . '/../..' . '/app/Http/Utilities/Wallet.php',
         'App\\InternetBanking' => __DIR__ . '/../..' . '/app/InternetBanking.php',
@@ -3440,6 +3452,28 @@ class ComposerStaticInitcb56c8f99153a160391720319584c667
         'Ramsey\\Uuid\\UuidFactory' => __DIR__ . '/..' . '/ramsey/uuid/src/UuidFactory.php',
         'Ramsey\\Uuid\\UuidFactoryInterface' => __DIR__ . '/..' . '/ramsey/uuid/src/UuidFactoryInterface.php',
         'Ramsey\\Uuid\\UuidInterface' => __DIR__ . '/..' . '/ramsey/uuid/src/UuidInterface.php',
+        'Raven_Autoloader' => __DIR__ . '/..' . '/sentry/sentry/lib/Raven/Autoloader.php',
+        'Raven_Breadcrumbs' => __DIR__ . '/..' . '/sentry/sentry/lib/Raven/Breadcrumbs.php',
+        'Raven_Breadcrumbs_ErrorHandler' => __DIR__ . '/..' . '/sentry/sentry/lib/Raven/Breadcrumbs/ErrorHandler.php',
+        'Raven_Breadcrumbs_MonologHandler' => __DIR__ . '/..' . '/sentry/sentry/lib/Raven/Breadcrumbs/MonologHandler.php',
+        'Raven_Client' => __DIR__ . '/..' . '/sentry/sentry/lib/Raven/Client.php',
+        'Raven_Compat' => __DIR__ . '/..' . '/sentry/sentry/lib/Raven/Compat.php',
+        'Raven_Context' => __DIR__ . '/..' . '/sentry/sentry/lib/Raven/Context.php',
+        'Raven_CurlHandler' => __DIR__ . '/..' . '/sentry/sentry/lib/Raven/CurlHandler.php',
+        'Raven_ErrorHandler' => __DIR__ . '/..' . '/sentry/sentry/lib/Raven/ErrorHandler.php',
+        'Raven_Exception' => __DIR__ . '/..' . '/sentry/sentry/lib/Raven/Exception.php',
+        'Raven_Processor' => __DIR__ . '/..' . '/sentry/sentry/lib/Raven/Processor.php',
+        'Raven_Processor_RemoveCookiesProcessor' => __DIR__ . '/..' . '/sentry/sentry/lib/Raven/Processor/RemoveCookiesProcessor.php',
+        'Raven_Processor_RemoveHttpBodyProcessor' => __DIR__ . '/..' . '/sentry/sentry/lib/Raven/Processor/RemoveHttpBodyProcessor.php',
+        'Raven_Processor_SanitizeDataProcessor' => __DIR__ . '/..' . '/sentry/sentry/lib/Raven/Processor/SanitizeDataProcessor.php',
+        'Raven_Processor_SanitizeHttpHeadersProcessor' => __DIR__ . '/..' . '/sentry/sentry/lib/Raven/Processor/SanitizeHttpHeadersProcessor.php',
+        'Raven_Processor_SanitizeStacktraceProcessor' => __DIR__ . '/..' . '/sentry/sentry/lib/Raven/Processor/SanitizeStacktraceProcessor.php',
+        'Raven_ReprSerializer' => __DIR__ . '/..' . '/sentry/sentry/lib/Raven/ReprSerializer.php',
+        'Raven_SanitizeDataProcessor' => __DIR__ . '/..' . '/sentry/sentry/lib/Raven/SanitizeDataProcessor.php',
+        'Raven_Serializer' => __DIR__ . '/..' . '/sentry/sentry/lib/Raven/Serializer.php',
+        'Raven_Stacktrace' => __DIR__ . '/..' . '/sentry/sentry/lib/Raven/Stacktrace.php',
+        'Raven_TransactionStack' => __DIR__ . '/..' . '/sentry/sentry/lib/Raven/TransactionStack.php',
+        'Raven_Util' => __DIR__ . '/..' . '/sentry/sentry/lib/Raven/Util.php',
         'RestrictionTableSeeder' => __DIR__ . '/../..' . '/database/seeds/RestrictionTableSeeder.php',
         'RuleTableSeeder' => __DIR__ . '/../..' . '/database/seeds/RuleTableSeeder.php',
         'Sabberworm\\CSS\\CSSList\\AtRuleBlockList' => __DIR__ . '/..' . '/sabberworm/php-css-parser/lib/Sabberworm/CSS/CSSList/AtRuleBlockList.php',
@@ -3576,6 +3610,12 @@ class ComposerStaticInitcb56c8f99153a160391720319584c667
         'SebastianBergmann\\RecursionContext\\InvalidArgumentException' => __DIR__ . '/..' . '/sebastian/recursion-context/src/InvalidArgumentException.php',
         'SebastianBergmann\\ResourceOperations\\ResourceOperations' => __DIR__ . '/..' . '/sebastian/resource-operations/src/ResourceOperations.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
+        'Sentry\\SentryLaravel\\SentryFacade' => __DIR__ . '/..' . '/sentry/sentry-laravel/src/Sentry/SentryLaravel/SentryFacade.php',
+        'Sentry\\SentryLaravel\\SentryLaravel' => __DIR__ . '/..' . '/sentry/sentry-laravel/src/Sentry/SentryLaravel/SentryLaravel.php',
+        'Sentry\\SentryLaravel\\SentryLaravelEventHandler' => __DIR__ . '/..' . '/sentry/sentry-laravel/src/Sentry/SentryLaravel/SentryLaravelEventHandler.php',
+        'Sentry\\SentryLaravel\\SentryLaravelServiceProvider' => __DIR__ . '/..' . '/sentry/sentry-laravel/src/Sentry/SentryLaravel/SentryLaravelServiceProvider.php',
+        'Sentry\\SentryLaravel\\SentryLumenServiceProvider' => __DIR__ . '/..' . '/sentry/sentry-laravel/src/Sentry/SentryLaravel/SentryLumenServiceProvider.php',
+        'Sentry\\SentryLaravel\\SentryTestCommand' => __DIR__ . '/..' . '/sentry/sentry-laravel/src/Sentry/SentryLaravel/SentryTestCommand.php',
         'Svg\\DefaultStyle' => __DIR__ . '/..' . '/phenx/php-svg-lib/src/Svg/DefaultStyle.php',
         'Svg\\Document' => __DIR__ . '/..' . '/phenx/php-svg-lib/src/Svg/Document.php',
         'Svg\\Gradient\\Stop' => __DIR__ . '/..' . '/phenx/php-svg-lib/src/Svg/Gradient/Stop.php',

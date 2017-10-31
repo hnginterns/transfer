@@ -222,16 +222,16 @@ class pagesController extends Controller
                 ->with('error', 'You do not have the permission to add beneficiary');
             }
 
-            $token = $this->getToken();
-                $headers = array('content-type' => 'application/json','Authorization'=> $token);
-                $query = array(
-                'account_number'=> $request->account_number,
-                'bank_code' => explode('||', request('bank_id'))
-                );
-                $body = \Unirest\Request\Body::json($query);
-                $response = \Unirest\Request::post(env('API_KEY_LIVE_URL').'/v1/resolve/account', $headers, $body);
+            
+                $bank_code = explode('||', request('bank_id'));
+                $headers = array('content-type' => 'application/json');
+                
+                $account_number = $request->account_number;
+                $bank_code = $bank_code[0];
+                $url = "https://api.paystack.co/bank/resolve?account_number=$account_number&bank_code=$bank_code";
+                $response = \Unirest\Request::get($url, $headers);
                 $response = json_decode($response->raw_body, true);
-                if($response['status'] == 'success')
+                if($response['status'] == 'true')
                 {
                     /**$beneficiary = new Validation;
                     //$beneficiary->name = request('name');
@@ -252,7 +252,7 @@ class pagesController extends Controller
                     return back()->with('responses', array($responses));
                 //return redirect("wallet/$wallet->id")->with('success', 'Beneficiary added');
                     } 
-                    return redirect()->back()->with('error', $response['msg']);
+                    return redirect()->back()->with('error', $response['message']);
                 
 
         }
@@ -260,26 +260,30 @@ class pagesController extends Controller
 
     public function addAccount(Request $request, Wallet $wallet)
     {
+        $beneficiary = Beneficiary::where('name', $request->name)
+                                    ->where('wallet_id', $wallet->id)
+                                    ->first();
+    
+        if(is_null($beneficiary)) {
+            $beneficiary = Beneficiary::firstOrCreate([
 
-        
-        $beneficiary = Beneficiary::firstOrCreate([
-
-            'uuid' => Auth::user()->id,
             'name' => $request->name,
             'wallet_id' => $wallet->id,
             'bank_id' => $request->bank_id,
             'bank_name' => $request->bank_name,
-            'account_number' => $request->account_number
+            'account_number' => $request->account_number,
+            'uuid' => Auth::user()->id,
             ]);
             
-
-                if($beneficiary->wasRecentlyCreated){
+            
+            if($beneficiary->wasRecentlyCreated){
                 return redirect("wallet/$wallet->id")->with('success', 'Beneficiary added');
-    } else {
+            }    
+        }
+         
             return redirect("wallet/$wallet->id")->with('error', 'Beneficiary already exists');
         }
         
-    }
 
 
 
@@ -329,6 +333,7 @@ class pagesController extends Controller
         $cardWallet = CardWallet::latest()->first();
         $user = Auth::user();
         $wallet = Wallet::where('type', 'topup')->first();
+        $fundhistory = CardWallet::where('wallet_name', $wallet->wallet_name)->get();
         $walletfundhistory = \App\PhonetopupTransaction::where('wallet_id', $wallet->id)
                             ->orderBy('created_at', 'desc')
                             ->get();
@@ -344,7 +349,7 @@ class pagesController extends Controller
                 $topupbalance = null;
                 Session::flash('error', 'Could not retrieve balance');
             }
-        return view('phonetopup', compact('cardWallet','wallet', 'phones', 'topupbalance', 'topuphistory', 'walletfundhistory', 'depts','tags'));
+        return view('phonetopup', compact('cardWallet','wallet', 'phones', 'topupbalance', 'topuphistory', 'walletfundhistory', 'depts','tags','fundhistory'));
     }
 
     //all other page functions can be added

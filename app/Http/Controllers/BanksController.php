@@ -38,7 +38,7 @@ class BanksController extends Controller
 
     public static function getAllBanks()
     {
-        $banks = Bank::all();
+        $banks = Bank::orderBy('bank_name', 'asc')->get();
 
         return $banks;
     }

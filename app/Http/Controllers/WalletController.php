@@ -14,6 +14,7 @@ use App\Beneficiary;
 use App\Rule;
 use App\Transaction;
 use URL;
+use App\FundWalletInfo;
 use App\User;
 use App\InternetBanking;
 use App\BankTransaction;
@@ -66,8 +67,30 @@ class WalletController extends Controller
 
     public function fundWalletWithCard(Request $request, CardWallet $cardWallet)
     {
+        $validator = $this->validateWalletFunding($request->all());
+        if ($validator->fails()) {
+            $messages = $validator->messages()->toArray();
+            Session::flash('form-errors', $messages);
+            return redirect()->to(URL::previous());
+        } else {
+            if(Auth::user()->walletFundInfo == null){
+                $wallet_fund_info = new FundWalletInfo;
+                $wallet_fund_info->firstname = $request->fname;
+                $wallet_fund_info->lastname = $request->lname;
+                $wallet_fund_info->uuid = Auth::user()->id;
+                $wallet_fund_info->email = $request->emailaddr;
+                $wallet_fund_info->phonenumber = $request->phone;
+                $wallet_fund_info->save();
+            }else{
+                $wallet_fund_info = Auth::user()->walletFundInfo;
+                $wallet_fund_info->firstname = $request->fname;
+                $wallet_fund_info->lastname = $request->lname;
+                $wallet_fund_info->uuid = Auth::user()->id;
+                $wallet_fund_info->email = $request->emailaddr;
+                $wallet_fund_info->phonenumber = $request->phone;
+                $wallet_fund_info->save();
+            }
         $token = $this->getToken();
-        // dd($request);
         $headers = array('content-type' => 'application/json', 'Authorization' => $token);
         $query = array(
             "firstname" => $request->fname,
@@ -115,6 +138,7 @@ class WalletController extends Controller
         else{
             return back()->with('error', $response['message']);
         }
+        }
     }
 
 
@@ -133,9 +157,8 @@ class WalletController extends Controller
             $response = json_decode($response->raw_body, true);
             if($response['status'] == 'success') {
                 event(new FundWallet($cardWallet));
-                Session::flash('success',$response);
-                return redirect('admin/managewallet');
-
+                Session::flash('success','Wallet funding successful');
+                return back();
             }
 
             return back()->with('error', $response['message']);
@@ -242,6 +265,8 @@ class WalletController extends Controller
         }
         return back()->with('error', 'you entered a wrong ID');
     }
+
+    
     //transfer from wallet to bank
     public function transferAccount(Request $request, Wallet $wallet, BankTransaction $bank)
     {
@@ -598,6 +623,22 @@ class WalletController extends Controller
             'bank_id' => 'required|string',
             //'bank_name' => 'required|string',
             //'account_number' => 'required|string',
+
+        ]);
+    }
+
+    protected function validateWalletFunding(array $data)
+    {
+        return Validator::make($data, [
+            'fname' => 'required|string',
+            'lname' => 'required|string',
+            'amount' => 'required|numeric',
+            'phone' => 'required|numeric',
+            'emailaddr' => 'required|email',
+            'card_no' => 'required|string',
+            'expiry_year' => 'required|numeric',
+            'cvv' => 'required|numeric',
+            'pin' => 'required|numeric',
 
         ]);
     }

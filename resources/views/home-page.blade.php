@@ -77,7 +77,7 @@
 
         .navbar-brand {
             margin-top: -13px;
-            font-size: 19px;
+            font-size: 17px;
             font-weight: bold;
             letter-spacing: 0.04em;
         }
@@ -121,7 +121,7 @@
             left: 5%;
             top: 30%;
             color: white;
-            font-size: 300px;
+            font-size: 240px;
             font-weight: bold;
             color: rgba(255, 255, 255, 0.04);
             z-index: 1;
@@ -166,21 +166,23 @@
         #button-hd {
             width: fit-content;
             /* color: #E57679; */
-            color: #39689C;
+            color: white;
             border: none;
-            background: #fff;
+            border-radius: 21px;
+            background: #eff2f4;
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-            padding: 10px 15px;
-            border-radius: 63px;
+            padding: 4px 12px;
+            
             transition: background 1s, color 2s;
             z-index: 100;
+            font-size: 22px;
         }
 
         #button-hd:hover {
             /* background: #2CACF0;
             color: #FFFFFF; */
             color: #FF6200;
-            background: white;
+            background: #2CACF0;
         }
 
         #mobile-app {
@@ -621,7 +623,7 @@
             }
 
             #heading-hd {
-                font-size: 18px;
+                font-size: 10px;
                 letter-spacing: 0.07em;
                 padding-right: 0px;
                 margin-bottom: 15px;
@@ -781,7 +783,7 @@
                 font-weight: bold;
                 letter-spacing: 0.04em;
                 margin: 0px;
-                margin-bottom: 10px;
+                margin-bottom: 0px;
                 padding: 0px;
             }
             /* DIVIDER STYLE ENDS */
@@ -837,22 +839,22 @@
                 <ul class="nav navbar-nav navbar-right">
 
                      <li class="{{ Request::segment(1) === '/' ? 'active' : null }}" ><a href="{{url('/')}}">Home</a></li>
-                     <li class="{{ Request::segment(1) === 'about' ? 'active' : null }}"><a href="{{route('about')}}">About<span class="sr-only">(current)</span></a></li>
+                     
                    
                   
 
-                    @if(Auth::guest())
-                    <li id="sign-in"><a href="{{url('login')}}">Sign In</a></li> 
+                    @if(Auth::guest())          
+                    <li id=""><a href="{{url('login')}}">Sign In</a></li> 
                     @else
-                        <li id="sign-in">
-                        <a style="color:black" href="{{ url('/logout') }}">
-                            Logout
+                        <li id="">
+                        <a style="color:black" href="{{ url('/dashboard') }}">
+                            Dasboard
                         </a>
                       </li>
 
-                      <li id="sign-in">
-                        <a href="{{ url('/dashboard') }}">
-                            Dashboard
+                      <li id="">
+                        <a href="{{ url('/logout') }}">
+                            Logout
                         </a>
                       </li>
                     @endif
@@ -873,9 +875,10 @@
         <div id="content-text" class="clearfix" align="center">
         <span id="heading-top-hd">
         Hotels.ng Financial Control
+        
                 </span>
-                <span id="heading-hd">
-                financial  management made easy
+                <span id="heading-hd" style="margin-left:6%">
+                   Financial Management Made Easy
                 </span>
             <button id="button-hd">
                 <a href="{{url('login')}}">Sign in</a>
@@ -883,39 +886,10 @@
         </div>
     </div>
 </div>
-
-<!--HEADER ENDS -->
-<section class="about">
-
-<div class="about-content">
-
-
-<!-- DIVIDER -->
-<div id="divider-top"></div>
-<div id="divider">
-    <div id="divider-content" align="center">
-        <div id="divider-text">
-            <p align="center" id="divider-title">Already registered? </p>
-            <p id="">
-                Login to your account.
-            </p>
-        </div>
-        <br />
-        <button class="btn btn-primary"><a href="https://finance.hotels.ng/login"><font color="white">Sign In</font></a></button>
-    </div>
-</div><br><p>
-<!-- FOOTER -->
-
-<div id="footer">
-    <div id="lower-footer">
-        <p>&#169; 2017 Transferrules.com. All rights reserved</p>
-    </div>
 </div>
 
-<p>
 
-
-<div id="mobile-footer">
+<div id="footer">
     
     <p id="line"> </p>
     <div id="lower-footer">
@@ -928,6 +902,8 @@
 
 
 <!-- FOOTER ENDS -->
+
+
 <!--<script
     src="https://code.jquery.com/jquery-3.2.1.min.js"
     integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="

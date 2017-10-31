@@ -1,0 +1,52 @@
+{
+    "name": "sentry/sentry-laravel",
+    "type": "library",
+    "description": "Laravel integration for Sentry (https://sentry.io)",
+    "keywords": ["logging", "errors", "laravel", "sentry"],
+    "homepage": "https://sentry.io",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "David Cramer",
+            "email": "dcramer@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "4.*|5.*",
+        "sentry/sentry": ">=1.7.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^1.8.0",
+        "phpunit/phpunit": "^4.6.6",
+        "orchestra/testbench": "3.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Sentry\\SentryLaravel\\": "src/"
+        }
+    },
+    "scripts": {
+        "tests": ["vendor/bin/phpunit --verbose"],
+        "tests-travis": [
+            "vendor/bin/phpunit --verbose --configuration phpunit.xml --coverage-clover test/clover.xml"
+        ],
+        "tests-report": [
+            "vendor/bin/phpunit --verbose --configuration phpunit.xml --coverage-html test/html-report"
+        ],
+        "phpcs": [
+            "vendor/bin/php-cs-fixer fix --config-file=.php_cs --verbose --diff --dry-run"
+        ]
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.8.x-dev"
+        },
+        "laravel": {
+            "providers": ["Sentry\\SentryLaravel\\SentryLaravelServiceProvider"],
+            "aliases": {
+                "Sentry": "Sentry\\SentryLaravel\\SentryFacade"
+            }
+        }
+    }
+}

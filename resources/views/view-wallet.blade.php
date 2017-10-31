@@ -80,16 +80,16 @@ tr:nth-child(even) {
     <!-- wallet types table -->
         <table>
           <tr>
-            <th><font color="#39689C"><h2>Wallet Name</h2></font></th>
-            <th><font color="#39689C"><h2>Wallet ID</h2></font></th>
-            <th><font color="#39689C"> <h2>Currency Type</h2></font></th>
-            <th><font color="#39689C"><h2>Balance</h2></font></th>
+            <th><font color="#39689C">Wallet Name</font></th>
+            <th><font color="#39689C">Wallet ID</font></th>
+            <th><font color="#39689C"> Currency Type</font></th>
+            <th><font color="#39689C">Balance</font></th>
           </tr>
           <tr>
-            <td><font color="#008000"> <h2><b>{{ $wallet->wallet_name }}</b></h2></font></td>
-            <td><h2>{{ $wallet->wallet_code }}</h2></td>
-            <td><h2>Nigeria Naira</h2></td>
-            <td><h2>{{ $wallet->balance }}</h2></td>
+            <td><font color="#008000"> <b>{{ $wallet->wallet_name }}</b></font></td>
+            <td>{{ $wallet->wallet_code }}</td>
+            <td>Nigeria Naira</td>
+            <td>{{ $wallet->balance }}</td>
           </tr>
           
         </table>
@@ -99,10 +99,10 @@ tr:nth-child(even) {
 
           <br> <div class="">
           <ul class="nav nav-pills nav-justified ">
-            <li class="active"><a data-toggle="pill" href="#home">Wallet Transfer History</a></li><br>
-            <li><a data-toggle="pill" href="#menu1">Beneficiaries List</a></li><br>
-            <li><a data-toggle="pill" href="#menu2">Beneficiaries Transaction History</a></li><br>
-          </ul>
+            <li class="active"><a data-toggle="pill" href="#home">Wallet Transfer History</a></li>
+            <li><a data-toggle="pill" href="#menu1">Beneficiaries List</a></li>
+            <li><a data-toggle="pill" href="#menu2">Beneficiaries Transaction History</a></li>
+          </ul><br>
         <div class="tab-content">
         <div id="home" class="tab-pane fade in active">
       	<div class="orange-box"><h4 class="title text-capitalize" align="center"> {{ ucfirst($wallet->wallet_name) }} wallet transfer history</h4></div><br>
@@ -186,7 +186,7 @@ tr:nth-child(even) {
                         <td>{{ $beneficiary->bank_name }}</td>
                         <td>{{ $beneficiary->account_number }}</td>
                         <td>{{ $beneficiary->wallet_id }}</td>
-                        <td>{{ $beneficiary->created_at->toFormattedDateString() }}</td>
+                        <td>{{ $beneficiary->created_at->toDateTimeString() }}</td>
                       </tr>
                     @endforeach              
                     </tbody>
@@ -218,7 +218,7 @@ tr:nth-child(even) {
                       <td>{{ $transaction->amount }}</td>
                       <td>{{ $transaction->wallet_id }}</td>
                       <td><i class="fa {{ $transaction->transaction_status ? 'fa-check-circle can' : 'fa-times-circle cannot' }}" aria-hidden="true"</td>
-                      <td>{{ $transaction->created_at->toFormattedDateString() }}</td>
+                      <td>{{ $transaction->created_at->toDateTimeString() }}</td>
                     @endforeach
                   </tbody> 
                   </table>         
@@ -235,15 +235,16 @@ tr:nth-child(even) {
               <!-- Modal content-->
                 <div class="panel panel-default">
                   <div class="panel-heading">
-                      Fund <strong>{{ $wallet->wallet_name }} </strong>  Wallet with Card <a href="{{ route('wallets.details', $wallet->id) }}" class="label label-primary pull-right">Back</a>
+                      Fund <strong>{{ $wallet->wallet_name }} </strong>  Wallet with Card <button type="button" class="close pull-right" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
                   </div>
       			
             <div class="modal-body">  
                 <!-- text input -->      
-	    <form action="/wallet/{{$wallet->id}}/fund" method="POST" class="form-horizontal">
+	    <form action="/wallet/{{$wallet->id}}/fund" method="POST" class="form-horizontal">   
                     {{ csrf_field() }}
                     <input type="hidden" name="wallet_name" value="{{$wallet->wallet_name}}">
-                      <input type="hidden" name="wallet_code" value="{{$wallet->wallet_code}}">
+                      <input type="hidden" name="wallet_code" value="{{$wallet->wallet_code}}"> 
                     <div class="container-fluid">
                   <fieldset>  
                     <div class="row">
@@ -251,14 +252,14 @@ tr:nth-child(even) {
                             <div class="col-md-5">
                                 <label for="cc_name">First Name</label>
                                 <div class="controls">
-                                    <input name="fname" class="form-control" id="cc_name" title="First Name" required type="text">
+                                    <input name="fname" class="form-control" value="{{Auth::user()->fundWalletInfo == null ? '' : Auth::user()->fundWalletInfo->firstname}}" id="cc_name" title="First Name" required type="text">
                                 </div>
                             </div>
                             <div class="col-md-5">
                               <div class="form-group">
                                   <label for="cc_name">Last Name</label>
                                   <div class="controls">
-                                      <input name="lname" class="form-control" id="cc_name"  title="last name" required type="text">
+                                      <input name="lname" class="form-control" value="{{Auth::user()->fundWalletInfo == null ? '' : Auth::user()->fundWalletInfo->lastname}}" id="cc_name"  title="last name" required type="text">
                                   </div>
                               </div>
                             </div>
@@ -269,14 +270,14 @@ tr:nth-child(even) {
                             <div class="col-md-5">
                                 <label>Phone Number</label>
                                 <div class="controls">
-                                      <input name="phone" class="form-control" autocomplete="off" maxlength="20"  required="" type="text">
+                                      <input name="phone" pattern="\+234\d{10}" class="form-control" value="{{Auth::user()->fundWalletInfo == null ? '' : Auth::user()->fundWalletInfo->phonenumber}}" autocomplete="off" maxlength="20"  required="" type="text">
                                 </div>
                             </div>
                             <div class="col-md-5">
                                 <div class="form-group">
                                     <label>Email Address</label>
                                     <div class="controls">
-                                          <input type="email" name="emailaddr" class="form-control" autocomplete="off" required="" type="text">
+                                          <input type="email" name="emailaddr" value="{{Auth::user()->fundWalletInfo == null ? '' : Auth::user()->fundWalletInfo->email}}" class="form-control" autocomplete="off" required="" type="text">
                                     </div>
                                 </div>
                             </div>

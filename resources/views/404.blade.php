@@ -145,14 +145,13 @@ box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.25);
 </head>
 <body>
 	<div class="main">
-    <h2>WHOOPS!</h2>
+    <h2>Ahhhhh, You missed the road too? </h2>
 
-    <img src="http://res.cloudinary.com/plushdeveloper/image/upload/v1506065231/4040_okxzn8.png" height="150px">
+    <img src="https://fixmynigeria.com/img/icons/404-2.jpg" >
     <!--<div class="error">4 <span class="ghost"> </span>4</div>
     -->
-    <h2>ERROR</h2>
-
-		<p> Sorry the page you are looking for cannot be accessed.
+    
+		<p> Sorry, We all do sometimes. The requested page could not be found.
     <br> Check the options below or feel free to</p>
 
     <h4><a class="blue" href="#">REPORT THIS ISSUE</a></h4>
@@ -164,3 +163,5 @@ box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.25);
 	</div>
 </body>
 </html>
+
+
