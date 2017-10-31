@@ -194,11 +194,11 @@ class SmsWalletController extends Controller
             $response = \Unirest\Request::post(env('API_KEY_LIVE_URL').'/v1/transfer/charge/auth/card', $headers, $body);
             $response = json_decode($response->raw_body, true);
             if($response['status'] == 'success') {
-                event(new FundWallet($cardWallet));
-                Session::flash('success','Wallet funding successful');
-                return redirect('admin/smswallet2');
+                $response = $response['data']['flutterChargeResponseMessage'];
+                Session::flash('success',$response);
+                return redirect('admin/smswallet2')->with('success', $response);
             }
-            return back()->with('error', $response['message']);
+            return redirect('admin/smswallet2')->with('error', $response['message']);
 
     }
 

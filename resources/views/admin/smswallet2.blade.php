@@ -333,7 +333,7 @@
     <!-- /.content -->
   </div>
   @endforeach
-  <!-- /
+  <!-- -->
 
 
            <!--Modal for Otp -->
