@@ -282,7 +282,7 @@ class WalletController extends Controller
                 $query = array(
                     "lock" => $wallet->lock_code,
                     "amount" => $request->amount,
-                    "bankcode" => $beneficiary->bank->bank_code,
+                    "bankcode" => "058",
                     "accountNumber" => $beneficiary->account_number,
                     "currency" => "NGN",
                     "senderName" => Auth::user()->username,
