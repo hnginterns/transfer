@@ -233,6 +233,8 @@ class pagesController extends Controller
                 $body = \Unirest\Request\Body::json($query);
                 $response = \Unirest\Request::post(env('API_KEY_LIVE_URL').'/v1/resolve/account', $headers, $body);
                 $response = json_decode($response->raw_body, true);
+                var_dump($response);
+                die();
                 if($response['status'] == 'success')
                 {
                     /**$beneficiary = new Validation;
@@ -369,7 +371,7 @@ class pagesController extends Controller
     protected function validateBeneficiary(array $data) {
         return Validator::make($data, [
             //'name' => 'required|string',
-            'bank_id' => 'required|string|min:1',
+            'bank_id' => 'required|string|min:2',
             'account_number' => 'required|numeric',
         ]);
     }
