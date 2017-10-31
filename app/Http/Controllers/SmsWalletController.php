@@ -171,9 +171,10 @@ class SmsWalletController extends Controller
             $transaction->status = $response['status'];
             $transaction->ref = $transRef;
 
-           if($transaction->save()){
+           $transaction->save();
+           
                 return back()->with('status', array($data));
-           }
+           
         }else{
             return back()->with('error', $response['message']);
         }
