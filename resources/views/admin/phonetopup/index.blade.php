@@ -85,6 +85,7 @@
                                 <td>Network</td>
                                 <td>Groups</td>
                                 <td>Action</td>
+                                <td></td>
                             </tr>
                         </thead>
                         <tbody>
@@ -110,9 +111,12 @@
                                         <form action="{{ url('admin/delete-phone') }}" method="post">
                                             {{ csrf_field() }}
                                             <input type="hidden" name="delete_phone" value="{{ $phone->id }}" >
-                                            <button type="submit" class="btn btn-danger btn-sm" title="Delete Contact" style="color:#fff;"><span class="fa fa-trash"></span></button>
-                                        </form>
+                                            
                                     </td> 
+                                    <td>
+                                        <button type="submit" class="btn btn-danger btn-sm" title="Delete Contact" style="color:#fff;"><span class="fa fa-trash"></span></button>
+                                        </form>
+                                    </td>
                                 </tr>
                               @endforeach
                             @else
