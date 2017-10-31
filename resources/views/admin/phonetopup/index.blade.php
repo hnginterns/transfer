@@ -99,7 +99,7 @@
                                     <td class="phone-email">@isset($phone->email){{ $phone->email }}@else Not Set @endisset</td>
                                     <td class="phone-max">{{ $phone->weekly_max }}</td>
                                     <td class="phone-netw" data-netw="{{ strtoupper($phone->netw) }}">{{ $phone->netw }}</td>
-                                     <td class="phone-max">
+                                     <td class="phone-max text-center">
                                         @if(count($phone->groups) > 0)
                                             @foreach($phone->groups as $group)
                                                 <span data-id="{{ $group->id }}" class="label label-success">{{ $group->name }}</span>
