@@ -273,7 +273,7 @@ class pagesController extends Controller
 
             'name' => $request->name,
             'wallet_id' => $wallet->id,
-            'bank_id' => $request->bank_id,
+            'bank_code' => $request->bank_id, 
             'bank_name' => $request->bank_name,
             'account_number' => $request->account_number,
             'uuid' => Auth::user()->id,
