@@ -65,9 +65,9 @@
     <strong class="label label-danger">SMS Unit is Low!</strong> 
   
         @else 
-          <p></p>
+          <strong class="label label-success">SMS Unit is ok!</strong> 
         @endif
-          </p>
+          
               Account Name: <span class="username">{{ $smswalletdetail['username'] }}</span>
 <p>Sms Unit Balance: <span class="unit-balance">{{ $smswalletdetail['balance'] }}</span>
 
