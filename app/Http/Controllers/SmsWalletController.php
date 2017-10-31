@@ -158,8 +158,9 @@ class SmsWalletController extends Controller
         $response = json_decode($response->raw_body, TRUE);
          if($response['status'] == 'success') {
             $response = $response['data']['transfer'];
-            $transMsg = $response['flutterChargeResponseMessage'];
-            $transRef = $response['flutterChargeReference'];
+            $data = [];
+            $data['message'] = $response['flutterChargeResponseMessage'];
+            $data['reference'] = $response['flutterChargeReference'];
             
             $transaction = new CardWallet;
             $transaction->firstName = $response['firstName'];
@@ -170,9 +171,10 @@ class SmsWalletController extends Controller
             $transaction->status = $response['status'];
             $transaction->ref = $transRef;
 
-            $transaction->save();
-
-            return back()->with('status', $transMsg);
+           $transaction->save();
+           
+                return back()->with('status', array($data));
+           
         }else{
             return back()->with('error', $response['message']);
         }
@@ -190,11 +192,13 @@ class SmsWalletController extends Controller
             $body = \Unirest\Request\Body::json($query);
             $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer/charge/auth/card', $headers, $body);
             $response = json_decode($response->raw_body, true);
+            var_dump($response);
+            die();
             if($response['status'] == 'success') {
                 $response = $response['data']['flutterChargeResponseMessage'];
                 event(new FundWallet($cardWallet));
                 Session::flash('success',$response);
-                return redirect('admin/smswallet')->with('success', $response);
+                return redirect('admin/smswallet2')->with('success', $response);
 
             }
 
