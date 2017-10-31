@@ -158,6 +158,7 @@ class SmsWalletController extends Controller
         $response = json_decode($response->raw_body, TRUE);
          if($response['status'] == 'success') {
             $response = $response['data']['transfer'];
+            $transRef = $response['flutterChargeReference'];
             $data = [];
             $data['message'] = $response['flutterChargeResponseMessage'];
             $data['reference'] = $response['flutterChargeReference'];
@@ -172,7 +173,7 @@ class SmsWalletController extends Controller
             $transaction->ref = $transRef;
 
            $transaction->save();
-           
+
                 return back()->with('status', array($data));
            
         }else{
