@@ -235,7 +235,7 @@ class pagesController extends Controller
                 $body = \Unirest\Request\Body::json($query);
                 $response = \Unirest\Request::post(env('API_KEY_LIVE_URL').'/v1/resolve/account', $headers, $body);
                 $response = json_decode($response->raw_body, true);
-                if($response['status'] == 'status')
+                if($response['status'] == 'success')
                 {
                     /**$beneficiary = new Validation;
                     //$beneficiary->name = request('name');
