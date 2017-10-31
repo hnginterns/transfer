@@ -491,7 +491,6 @@ $('.modal-content').resizable({
               <form action="/updateBeneficiary/{{$wallet->id}}" method="POST">
                 {{csrf_field()}}
                 
-               <input type="hidden" name="bank_id" value="{{$response['bank_code']}}">
                 <div class="form-group">
                  @foreach(Session::get('responses') as $response) 
                 <input type="text" name="name" value="{{$response['name']}}" class="form-control" readonly>
@@ -501,7 +500,7 @@ $('.modal-content').resizable({
                     <input type="text" class="form-control" name="bank_name" value="{{$response['bank_name']}}" readonly>
                 </div>
                 <div class="form-group">
-                    <input type="hidden" class="form-control" name="bank_id" value="{{$response['bank_code']}}" readonly>
+                    <input type="hidden" class="form-control" name="bank_id" value="{{$response['bank_code']}}">
                 </div>
                 <div class="form-group">
                     <input type="text" class="form-control" name="account_number" value="{{$response['account_number']}}" readonly>
