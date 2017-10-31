@@ -62,6 +62,9 @@
     $('#datatable-transfer').DataTable({
         "order": [[ 4, "desc" ]]
     });
+    $('#topuphistory').DataTable({
+        "order": [[ 7, "desc" ]]
+    });
     $('#example2').DataTable({
       'paging'      : true,
       'lengthChange': false,

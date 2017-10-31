@@ -26,7 +26,7 @@ use App\Beneficiary;
 use App\Transaction;
 use Carbon\Carbon;
 use Trs;
-
+use Illuminate\Database\SQLiteConnection;
 
 class AdminController extends WalletController
 {
@@ -98,7 +98,14 @@ class AdminController extends WalletController
         $users = User::all();
         $beneficiaries = Beneficiary::all();
         $contacts = TopupContact::all();
-        return view('admin.dashboard', compact('wallets', 'users', 'contacts', 'beneficiaries'));
+
+        $topupPerMonth = $this->countOfNewPerMonth(
+            Carbon::now()->startOfYear(),
+            Carbon::now()
+        );
+
+
+        return view('admin.dashboard', compact('wallets', 'users', 'contacts', 'beneficiaries', 'topupPerMonth'));
     }
 
 
@@ -289,9 +296,47 @@ class AdminController extends WalletController
         return view('admin/logActivity', compact('logs'));
     }
 
+
+    public function countOfNewPerMonth($from, $to)
+    {
+        $perMonthQuery = $this->getPerMonthQuery();
+
+        $result = TopupHistory::select([
+            DB::raw("{$perMonthQuery} as month"),
+            DB::raw('count(id) as count')
+        ])
+            ->whereBetween('created_at', [$from, $to])
+            ->groupBy('month')
+            ->orderBy('month', 'ASC')
+            ->pluck('count', 'month');
+
+        $counts = [];
+
+        foreach(range(1, 12) as $m) {
+            $month = date('F', mktime(0, 0, 0, $m, 1));
+
+            $month = trans("app.months.{$month}");
+
+            $counts[$month] = isset($result[$m])
+                ? $result[$m]
+                : 0;
+        }
+
+        return $counts;
+    }
+
+
+    private function getPerMonthQuery()
+    {
+        $connection = DB::connection();
+
+        if ($connection instanceof SQLiteConnection) {
+            return 'CAST(strftime(\'%m\', created_at) AS INTEGER)';
+        }
+
+        return 'MONTH(created_at)';
+    }
     
-
-
 
 
 }

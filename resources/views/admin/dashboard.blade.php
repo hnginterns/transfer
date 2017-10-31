@@ -38,7 +38,7 @@ $totalbeneficiaries = count($beneficiaries);
 
 
       <!-- Small boxes (Stat box) -->
-      <div class="row">
+     
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
           <div class="small-box bg-green">
@@ -56,7 +56,7 @@ $totalbeneficiaries = count($beneficiaries);
         <!-- ./col -->
 
         <!-- Small boxes (Stat box) -->
-      <div class="row">
+      
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
           <div class="small-box bg-orange">
@@ -75,7 +75,7 @@ $totalbeneficiaries = count($beneficiaries);
 
 
         <!-- Small boxes (Stat box) -->
-      <div class="row">
+      
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
           <div class="small-box bg-red">
@@ -91,11 +91,54 @@ $totalbeneficiaries = count($beneficiaries);
           </div>
         </div>
         <!-- ./col -->
+      </div>
+
+  <div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">Topup Transaction History</div>
+            <div class="panel-body">
+                <div>
+                    <canvas id="myChart" height="403"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">Topup Transaction History</div>
+            <div class="panel-body">
+                <div>
+                    <canvas id="topups" height="403"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+  </div>
 
 
 
   </section>
 
-
-
 @endsection
+
+@section('added_js')
+    
+    <script>
+        var topups = {!! json_encode(array_values($topupPerMonth)) !!};
+        var months = {!! json_encode(array_keys($topupPerMonth)) !!};
+        var trans = {
+            chartLabel: "Topup History",
+            new: "new",
+            topup: "topup",
+            topup: "topups"
+        };
+    </script>
+
+    <script type="text/javascript" src="{{ URL::asset('js/chart.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::asset('js/dashboard.js') }}"></script>
+@stop

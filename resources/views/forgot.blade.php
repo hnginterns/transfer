@@ -32,12 +32,8 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/home">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/about">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/home">Get Started</a>
-                    </li>
+                    
+                    
                     <li class="nav-item active">
                         <a class="nav-link sign-up" data-toggle="modal" href="/signin">Sign In</a>
                     </li>
@@ -50,7 +46,7 @@
         <div class="container">
             <div class="login-box">
                 <h4 class="intro-sub">Forgot Password</h4>
-                <p class="writeup">Enter you email address and we will send you a link to reset your password shortly</p>
+                <p class="writeup">Enter you email address and you will receive a link to reset your password shortly</p>
                 <form class="admin-login"  method="POST" action="{{ route('password.email') }}">
                 {{ csrf_field() }}
                     <div class="form-group">

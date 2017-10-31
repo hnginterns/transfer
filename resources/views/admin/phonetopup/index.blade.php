@@ -85,6 +85,7 @@
                                 <td>Network</td>
                                 <td>Groups</td>
                                 <td>Action</td>
+                                <td></td>
                             </tr>
                         </thead>
                         <tbody>
@@ -98,7 +99,7 @@
                                     <td class="phone-email">@isset($phone->email){{ $phone->email }}@else Not Set @endisset</td>
                                     <td class="phone-max">{{ $phone->weekly_max }}</td>
                                     <td class="phone-netw" data-netw="{{ strtoupper($phone->netw) }}">{{ $phone->netw }}</td>
-                                     <td class="phone-max">
+                                     <td class="phone-max text-center">
                                         @if(count($phone->groups) > 0)
                                             @foreach($phone->groups as $group)
                                                 <span data-id="{{ $group->id }}" class="label label-success">{{ $group->name }}</span>
@@ -110,9 +111,12 @@
                                         <form action="{{ url('admin/delete-phone') }}" method="post">
                                             {{ csrf_field() }}
                                             <input type="hidden" name="delete_phone" value="{{ $phone->id }}" >
-                                            <button type="submit" class="btn btn-danger btn-sm" title="Delete Contact" style="color:#fff;"><span class="fa fa-trash"></span></button>
-                                        </form>
+                                            
                                     </td> 
+                                    <td>
+                                        <button type="submit" class="btn btn-danger btn-sm" title="Delete Contact" style="color:#fff;"><span class="fa fa-trash"></span></button>
+                                        </form>
+                                    </td>
                                 </tr>
                               @endforeach
                             @else

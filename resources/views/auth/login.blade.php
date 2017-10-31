@@ -66,17 +66,7 @@
 
                     </li>
 
-                    <li class="nav-item">
-
-                        <a class="nav-link" href="/about">About</a>
-
-                    </li>
-
-                    <li class="nav-item">
-
-                        <a class="nav-link" href="{{url('/')}}">Get Started</a>
-
-                    </li>
+                    
 
                     <li class="nav-item active">
 

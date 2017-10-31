@@ -265,6 +265,8 @@ class WalletController extends Controller
         }
         return back()->with('error', 'you entered a wrong ID');
     }
+
+    
     //transfer from wallet to bank
     public function transferAccount(Request $request, Wallet $wallet, BankTransaction $bank)
     {
@@ -280,7 +282,7 @@ class WalletController extends Controller
                 $query = array(
                     "lock" => $wallet->lock_code,
                     "amount" => $request->amount,
-                    "bankcode" => $beneficiary->bank_id,
+                    "bankcode" => $beneficiary->bank->bank_code,
                     "accountNumber" => $beneficiary->account_number,
                     "currency" => "NGN",
                     "senderName" => Auth::user()->username,
