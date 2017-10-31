@@ -104,6 +104,20 @@ $totalbeneficiaries = count($beneficiaries);
             </div>
         </div>
     </div>
+
+     <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">Topup Transaction History</div>
+            <div class="panel-body">
+                <div>
+                    <canvas id="topups" height="403"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
   </div>
 
 
@@ -113,6 +127,7 @@ $totalbeneficiaries = count($beneficiaries);
 @endsection
 
 @section('added_js')
+    
     <script>
         var topups = {!! json_encode(array_values($topupPerMonth)) !!};
         var months = {!! json_encode(array_keys($topupPerMonth)) !!};

@@ -245,8 +245,6 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
 	//Test page for @jonesky
 	Route::get('/getTopupWalletBalance', 'Admin\AdminController@getTopupWalletBalance')->name('topupwallet.balance');
 	
-
-	Route::get('/topup/chart', 'Admin\AdminController@topupChart');
 	
 
 });

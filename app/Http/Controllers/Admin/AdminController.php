@@ -296,15 +296,6 @@ class AdminController extends WalletController
         return view('admin/logActivity', compact('logs'));
     }
 
-    public function topupChart()
-    {
-        $topuplist = DB::table('topup_histories')
-            ->select(DB::raw('MONTHNAME(updated_at) as month'), DB::raw("DATE_FORMAT(updated_at,'%Y-%m') as monthNum"), DB::raw('count(*) as topups'))
-            ->groupBy('monthNum')
-            ->get();
-
-        return $topuplist;
-    }
 
     public function countOfNewPerMonth($from, $to)
     {
