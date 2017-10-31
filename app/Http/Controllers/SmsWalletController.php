@@ -196,7 +196,7 @@ class SmsWalletController extends Controller
             if($response['status'] == 'success') {
                 event(new FundWallet($cardWallet));
                 Session::flash('success','Wallet funding successful');
-                return back();
+                return redirect('admin/smswallet2');
             }
             return back()->with('error', $response['message']);
 
