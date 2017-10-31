@@ -51,7 +51,7 @@
           <br>
               <h4 class="pull-right deltop">Ebulk SMS Account {{$smswalletdetail['id']}}</h4>
 
-       <form action="{{ url('admin/delete_sms') }}/{{$smswalletdetail['id']}}" method="post">
+       <form action="{{ url('admin/delete_sms') }}/{{$smswalletdetail['id']}}" onsubmit="return confirm('Are you sure you want to delete this sms wallet?')" method="post">
 		 {{ csrf_field() }}   {{method_field("DELETE")}}
    <input type="hidden" name="delete_sms" value="{{$smswalletdetail['id']}}" >
          <button type="submit" class="btn btn-danger  deltop " style="color:#fff;"><span class="fa fa-trash"></span></button>
