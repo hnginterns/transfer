@@ -233,7 +233,7 @@ class pagesController extends Controller
                 //$response = \Unirest\Request::get($url, $headers);
                 $query = array('account_number'=> $account_number,'bank_code' => $request->bank_id);
                 $body = \Unirest\Request\Body::json($query);
-                $response = Unirest\Request::post('https://moneywave.herokuapp.com/v1/resolve/account', $headers, $body);
+                $response = Unirest\Request::post(env('API_KEY_LIVE_URL').'/v1/resolve/account', $headers, $body);
                 $response = json_decode($response->raw_body, true);
                 var_dump($response);
                 die();
