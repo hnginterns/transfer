@@ -369,7 +369,7 @@ class pagesController extends Controller
     protected function validateBeneficiary(array $data) {
         return Validator::make($data, [
             //'name' => 'required|string',
-            'bank_id' => 'required|string|min:4',
+            'bank_id' => 'required|string|min:1',
             'account_number' => 'required|numeric',
         ]);
     }
