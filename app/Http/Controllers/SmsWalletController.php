@@ -195,8 +195,8 @@ class SmsWalletController extends Controller
             $response = json_decode($response->raw_body, true);
             if($response['status'] == 'success') {
                 $response = $response['data']['flutterChargeResponseMessage'];
-                Session::flash('success',$response);
-                return redirect('admin/smswallet2')->with('success', $response);
+                Session::flash('success', $response);
+                return redirect('admin/smswallet2');
             }
             return redirect('admin/smswallet2')->with('error', $response['message']);
 
