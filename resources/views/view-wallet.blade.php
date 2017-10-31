@@ -218,11 +218,11 @@ tr:nth-child(even) {
                     <tr>
                       <td>{{ $transaction->beneficiary == null ? 'unknown' : $transaction->beneficiary->name }}</td>
                       <td>{{ $transaction->amount }}</td>
-                      <td>{{ $transaction->wallet->id }}</td>
+                      <td>{{ $transaction->wallet_id }}</td>
                       <td>{{ $transaction->transaction_reference }}</td>
                       <td>{{ $transaction->narration }}</td>
                       <td><i class="fa {{ $transaction->transaction_status ? 'fa-check-circle can' : 'fa-times-circle cannot' }}" aria-hidden="true"</td>
-                      <td>{{ $transaction->created_at}}</td>
+                      <td>{{ $transaction->created_at->toDateTimeString() }}</td>
                     @endforeach
                   </tbody> 
                   </table>         
