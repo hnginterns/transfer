@@ -331,7 +331,7 @@ class pagesController extends Controller
     {
         //phones = TopupContact::all();
 
-        $phones = $this->paginate(Input::get('search'), Input::get('department'));
+        $phones = TopupContact::all(); //$this->paginate(Input::get('search'), Input::get('department'));
         $tags = Tag::all();
         $topupbalance = $this->getTopupWalletBalance();
         $cardWallet = CardWallet::latest()->first();

@@ -74,7 +74,14 @@
       'ordering'    : true,
       'info'        : true,
       'autoWidth'   : false
-    })
+    });
+
+    $('#contact-table').dataTable( {
+      "pageLength": 50
+    } );
+
+
+
   })
 </script>
 
