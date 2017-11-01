@@ -191,6 +191,7 @@ class SmsWalletController extends Controller
     //transfer from wallet to bank
     public function transferAccount(Request $request, Wallet $wallet, SmsWalletTransaction $sms)
     {
+                dd($request);
                 $smsWallet = Wallet::where('type', 'sms')->first();
                 $token = $this->getToken();
                 $headers = array('content-type' => 'application/json', 'Authorization' => $token);
