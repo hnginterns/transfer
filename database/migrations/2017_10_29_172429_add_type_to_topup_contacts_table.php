@@ -14,7 +14,7 @@ class AddTypeToTopupContactsTable extends Migration
     public function up()
     {
         Schema::table('topup_contacts', function (Blueprint $table) {
-            $table->string('netw');
+            // $table->string('netw');
         });
     }
 
