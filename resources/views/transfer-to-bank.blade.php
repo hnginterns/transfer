@@ -18,7 +18,7 @@
                   {{csrf_field()}}
                   @foreach(Session::get('data') as $data)
                     <div class="form-group">
-                        <input type="hidden" class="form-control cus-input" name="beneficiary_id" value="{{$data['beneficiary_id']}}">
+                        <input type="text" class="form-control cus-input" name="beneficiary_id" value="{{$data['beneficiary_id']}}">
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control cus-input" name="beneficiary_name" value="{{$data['beneficiary_name']}}" readonly>

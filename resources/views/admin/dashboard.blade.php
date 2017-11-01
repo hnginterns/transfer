@@ -94,7 +94,7 @@ $totalbeneficiaries = count($beneficiaries);
       </div>
 
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">Topup Transaction History</div>
             <div class="panel-body">
@@ -104,19 +104,6 @@ $totalbeneficiaries = count($beneficiaries);
             </div>
         </div>
     </div>
-
-     <div class="col-md-6">
-        <div class="panel panel-default">
-            <div class="panel-heading">Topup Transaction History</div>
-            <div class="panel-body">
-                <div>
-                    <canvas id="topups" height="403"></canvas>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
 
   </div>
 
@@ -135,7 +122,7 @@ $totalbeneficiaries = count($beneficiaries);
             chartLabel: "Topup History",
             new: "new",
             topup: "topup",
-            topup: "topups"
+            topups: "Phone Topups"
         };
     </script>
 

@@ -145,7 +145,7 @@ box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.25);
 </head>
 <body>
 	<div class="main">
-    <h2>Ahhhhh, You missed the road too? </h2>
+    <h1>AHHH, YOU DON MISS ROAD OOO </h1>
 
     <img src="https://fixmynigeria.com/img/icons/404-2.jpg" >
     <!--<div class="error">4 <span class="ghost"> </span>4</div>

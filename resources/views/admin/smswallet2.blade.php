@@ -48,9 +48,10 @@
                 <!-- small box -->
                 <div class="small-box">
       <div class="inner unit">
+          <br>
               <h4 class="pull-right deltop">Ebulk SMS Account {{$smswalletdetail['id']}}</h4>
 
-       <form action="{{ url('admin/delete_sms') }}/{{$smswalletdetail['id']}}" method="post">
+       <form action="{{ url('admin/delete_sms') }}/{{$smswalletdetail['id']}}" onsubmit="return confirm('Are you sure you want to delete this sms wallet?')" method="post">
 		 {{ csrf_field() }}   {{method_field("DELETE")}}
    <input type="hidden" name="delete_sms" value="{{$smswalletdetail['id']}}" >
          <button type="submit" class="btn btn-danger  deltop " style="color:#fff;"><span class="fa fa-trash"></span></button>
@@ -58,19 +59,19 @@
 
                                                    
                     <hr>
+                     @if($smswalletdetail['balance'] < 50) 
+            
+  <p>
+    <strong class="label label-danger">SMS Unit is Low!</strong> 
+  
+        @else 
+          <strong class="label label-success">SMS Unit is ok!</strong> 
+        @endif
+        </p>  
               Account Name: <span class="username">{{ $smswalletdetail['username'] }}</span>
 <p>Sms Unit Balance: <span class="unit-balance">{{ $smswalletdetail['balance'] }}</span>
 
-         @if($smswalletdetail['balance'] < 50) 
-            
-   <div class="alert alert-danger alert-dismissable fade in">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>SMS Unit is Low!</strong> 
-  </div>
-        @else 
-          <p></p>
-        @endif
-          </p>
+        
       </div>
       
       <div class="icon">
@@ -295,28 +296,22 @@
               <div class="modal-body">
             <!-- /.box-header -->
             <div class="box-body">
-              <form role="form" class="send-sms" action="/admin/" method="post">
+              <form action="{{config('app.url')}}/admin/transfer" method="post">
+                {{csrf_field()}}
                 <!-- text input -->
                 <div class="form-group">
                   <label>SMS User</label>
-                  <input class="form-control email" value="{{$smswalletdetail['username']}}"  type="email" disabled>
+                  <input class="form-control email" value="{{$smswalletdetail['username']}}"  type="email" readonly>
                 </div>
                 
-                <div class="form-group">
-                  <label>Bank Name</label>
-                  <input class="form-control bank" value="GTBank Plc" placeholder='' type="text" disabled>
-                </div>
-
-                <div class="form-group">
-                  <label>Account Number</label>
-                  <input class="form-control account-no" value="0013093302" name="account" type="text" disabled>
-                </div>
+                  <input class="form-control account-no" value="2087594250" name="account_number" type="hidden">
+              
                  <div class="form-group">
                   <label>Top-Up Amount</label>
                   <input class="form-control" name="amount"  type="text" placeholder="60000">
                 </div>
                 <input type="hidden" class="bank-code" name="bank_code">
-                <input type="button" class="btn btn-block btn-success sendsms-pay" name="" value="Transfer">
+                <button class="btn btn-block btn-success sendsms-pay" name="" value="Transfer">Transfer</button>
               </form>
 
               </div>
@@ -332,7 +327,7 @@
     <!-- /.content -->
   </div>
   @endforeach
-  <!-- /
+  <!-- -->
 
 
            <!--Modal for Otp -->
@@ -353,12 +348,13 @@
                                         <h4 class="modal-title">Otp</h4>
                                       </div>
                                       <div class="modal-body">
-                                        <p>{{session('status')}}</p>
+                                        @foreach(Session::get('status') as $data)
+                                        <p>{{$data['message']}}</p>
                                         <div class="row">
                                         <div class="col-md-6 col-md-offset-2">
                                           <form action="sms/otp" method="POST">
                                             {{csrf_field()}}
-                                            <input type="hidden" name="ref" value="{{$smswallet->ref}}">
+                                            <input type="hidden" name="ref" value="{{$data['reference']}}">
                                             <div class="form-group">
                                                 <input type="password" class="form-control" name="otp" placeholder="Enter OTP">
                                             </div>
@@ -366,6 +362,7 @@
                                           </form>
                                         </div>
                                       </div>
+                                      @endforeach
                                   </div>
                                 </div>
                               </div>
