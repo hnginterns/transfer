@@ -126,6 +126,7 @@ i.can {
       {{csrf_field()}} 
       @if(count($tags) > 0)
         <select name="topup_group" class="form-control groups-list">
+          <option data-value="all" value="all">Show All</option>
           @foreach($tags as $group) 
             <option value="{{ $group->id }}" data-value="{{ strtolower($group->name) }}">{{ $group->name }}</option> 
           @endforeach 
@@ -168,7 +169,7 @@ i.can {
         <tbody> 
           <form class="send-airtime topup-multiple" action="{{ route('topup.phone.multiple')}}" method="POST" role="form">   
           <a href="#dataModal" class="btn btn-info pull-right" style="margin-left: 5px; margin-bottom: 3px;" data-toggle="modal">Top-up Data</a>
-          <button type="submit" class="btn btn-success pull-right" style="margin-right: 5px; margin-bottom: 3px;" onclick="confirmTopup()">Top up all</button>
+          <button type="submit" class="btn btn-success pull-right btn-topup-all" style="margin-right: 5px; margin-bottom: 3px;">Top up all</button>
             {{ csrf_field() }} @if(count($phones) > 0) @foreach($phones as $phone)
             <tr class="contact-fn">
 
@@ -680,7 +681,9 @@ i.can {
   @endif
   </div>
 
-  @endsection @section('add_js')
+  @endsection 
+  
+  @section('add_js')
   <script type="text/javascript">
     $(function () {
       $('.modal#airtimeModal').on('show.bs.modal', function (e) {
@@ -807,12 +810,14 @@ i.can {
           $(this).find('option').each(function () {
             if (this.value == current) {
               var theClass = $(this).data('value');
-              console.log(theClass);
               $('.groups-list').data('selected-class', theClass);
               $('input.checkbox').prop('checked', false);
               $('input.checkbox').each(function() {
                   if ($(this).parents('tr').hasClass('hidden')) {
                     $(this).parents('tr').removeClass('hidden');
+                  }
+                  if (current == 'all') {
+                    return false;
                   }
                   if (! $(this).hasClass(theClass)) {
                       $(this).parents('tr').addClass('hidden');
@@ -874,5 +879,23 @@ i.can {
 function confirmTopup() {
     confirm("Do you want to proceed?");
 }
+$('.btn-topup-all').click(function(e) {
+    e.preventDefault();
+    var btnSubmit = $(this);
+    var totalContacts = $('input.checkbox').is(':checked').length;
+    swal({
+      title: '<i>Are You Sure</u>',
+      type: 'info',
+      html: 'You are sending airtime to ' + totalContacts + ' contacts',
+      showCloseButton: true,
+      showCancelButton: true,
+      confirmButtonText: 'Go Ahead',
+      cancelButtonText: 'Not Anymore',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33'
+    }).then(function() {
+        $('form.send-airtime.topup-multiple').submit();
+    }).catch(swal.noop);
+});
 </script>
 @endsection
