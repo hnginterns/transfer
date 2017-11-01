@@ -65,18 +65,7 @@
 
                     </li>
 
-                    <li class="nav-item">
-
-                        <a class="nav-link" href="/about">About</a>
-
-                    </li>
-
-                    <li class="nav-item">
-
-                        <a class="nav-link" href="/home">Get Started</a>
-
-                    </li>
-
+                    
                     <li class="nav-item active">
 
                         <a class="nav-link" data-toggle="modal" href="/login">Sign In</a>
