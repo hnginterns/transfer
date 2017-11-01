@@ -817,7 +817,7 @@ i.can {
                     $(this).parents('tr').removeClass('hidden');
                   }
                   if (current == 'all') {
-                    return false;
+                    return;
                   }
                   if (! $(this).hasClass(theClass)) {
                       $(this).parents('tr').addClass('hidden');
