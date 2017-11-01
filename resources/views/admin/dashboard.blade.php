@@ -122,7 +122,7 @@ $totalbeneficiaries = count($beneficiaries);
             chartLabel: "Topup History",
             new: "new",
             topup: "topup",
-            topups: "topups"
+            topups: "Phone Topups"
         };
     </script>
 
