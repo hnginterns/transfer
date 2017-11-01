@@ -296,7 +296,7 @@
               <div class="modal-body">
             <!-- /.box-header -->
             <div class="box-body">
-              <form action="transfer" method="post">
+              <form action="{{config('app.url')}}/admin/transfer" method="post">
                 {{csrf_field()}}
                 <!-- text input -->
                 <div class="form-group">
