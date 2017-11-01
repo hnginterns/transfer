@@ -220,7 +220,7 @@ class SmsWalletController extends Controller
                     $response = $response['uniquereference'];
                     $transaction = new SmsWalletTransaction;
                     $transaction->uuid = Auth::user()->id;
-                    $transaction->bank_name = "GTBank Plc";
+                    $transaction->bank_name = "Zenith Bank";
                     $transaction->account_number = $request->account_number;
                     $transaction->reference = $response;
                     $transaction->save();
