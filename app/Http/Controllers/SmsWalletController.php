@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use URL;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\Controller;
 use App\SmsWallet;
 use App\SmsWalletFund;
@@ -11,6 +13,7 @@ use App\CardWallet;
 use Unirest;
 use App\Wallet;
 use App\Events\FundWallet;
+use App\SmsWalletTransaction;
 
 class SmsWalletController extends Controller
 {
@@ -220,7 +223,7 @@ class SmsWalletController extends Controller
     }
 
     //transfer from wallet to bank
-    public function transferAccount(Request $request, Wallet $wallet, BankTransaction $bank)
+    public function transferAccount(Request $request, Wallet $wallet, SmsWalletTransaction $sms)
     {
                 $smsWallet = Wallet::where('type', 'sms')->first();
                 $token = $this->getToken();
@@ -229,12 +232,12 @@ class SmsWalletController extends Controller
                 $query = array(
                     "lock" => $smsWallet->lock_code,
                     "amount" => $request->amount,
-                    "bankcode" => "058",
+                    "bankcode" => "057",
                     "accountNumber" => $request->account_number,
                     "currency" => "NGN",
                     "senderName" => Auth::user()->username,
                     "narration" => "ebulksms", //Optional
-                    "ref" => "self", // No Refrence from request
+                    "ref" => $this->generate_ref(), // No Refrence from request
                     "walletUref" => $smsWallet->wallet_code
                 );
 
@@ -245,22 +248,23 @@ class SmsWalletController extends Controller
                 $status = $response['status'];
                 //end of Api call
 
-                if ($status == 'success') {
-
-                    //data to be parsed to display transaction details
-                    $data = $response['data']['data'];
-                    $data['senderName'] = Auth::user()->username;
-                    $data['amount'] = $request->amount;
-                    //end of data prep
-
+                if ($status == 'success'){
                     //logic to persist transaction details
+                    $response = $response['data']['data'];
+                    $response = $response['uniquereference'];
+                    $transaction = new SmsWalletTransaction;
+                    $transaction->uuid = Auth::user()->id;
+                    $transaction->bank_name = "GTBank Plc";
+                    $transaction->account_number = $request->account_number;
+                    $transaction->reference = $response;
+                    $transaction->save();
                     //end of logic for saving transactions
 
 
-                    event(new FundWallet($bank));
+                    event(new FundWallet($sms));
                     //\LogUserActivity::addToLog(auth()->user()->name.'transferred '.$transactions->amount.' from '. $transactions->source->wallet_name.' to '.$transactions->beneficiary->name);
                     
-                    return redirect('success')->with('status',$data);
+                    return redirect('admin/smswallet')->with('success', 'Transfer successful');
                 } else {
                     Session::flash('error',$response['message']);
                     return back();

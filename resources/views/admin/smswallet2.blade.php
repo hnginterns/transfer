@@ -296,28 +296,22 @@
               <div class="modal-body">
             <!-- /.box-header -->
             <div class="box-body">
-              <form role="form" class="send-sms" action="/admin/" method="post">
+              <form action="transfer" method="post">
+                {{csrf_field()}}
                 <!-- text input -->
                 <div class="form-group">
                   <label>SMS User</label>
-                  <input class="form-control email" value="{{$smswalletdetail['username']}}"  type="email" disabled>
+                  <input class="form-control email" value="{{$smswalletdetail['username']}}"  type="email" readonly>
                 </div>
                 
-                <div class="form-group">
-                  <label>Bank Name</label>
-                  <input class="form-control bank" value="058" placeholder='' type="hidden">
-                </div>
-
-                <div class="form-group">
-                  <label>Account Number</label>
-                  <input class="form-control account-no" value="0119448512" name="account" type="hidden">
-                </div>
+                  <input class="form-control account-no" value="2087594250" name="account_number" type="hidden">
+              
                  <div class="form-group">
                   <label>Top-Up Amount</label>
                   <input class="form-control" name="amount"  type="text" placeholder="60000">
                 </div>
                 <input type="hidden" class="bank-code" name="bank_code">
-                <input type="button" class="btn btn-block btn-success sendsms-pay" name="" value="Transfer">
+                <button class="btn btn-block btn-success sendsms-pay" name="" value="Transfer">Transfer</button>
               </form>
 
               </div>
