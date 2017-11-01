@@ -51,7 +51,7 @@
           <br>
               <h4 class="pull-right deltop">Ebulk SMS Account {{$smswalletdetail['id']}}</h4>
 
-       <form action="{{ url('admin/delete_sms') }}/{{$smswalletdetail['id']}}" method="post">
+       <form action="{{ url('admin/delete_sms') }}/{{$smswalletdetail['id']}}" onsubmit="return confirm('Are you sure you want to delete this sms wallet?')" method="post">
 		 {{ csrf_field() }}   {{method_field("DELETE")}}
    <input type="hidden" name="delete_sms" value="{{$smswalletdetail['id']}}" >
          <button type="submit" class="btn btn-danger  deltop " style="color:#fff;"><span class="fa fa-trash"></span></button>
@@ -61,13 +61,13 @@
                     <hr>
                      @if($smswalletdetail['balance'] < 50) 
             
-  
+  <p>
     <strong class="label label-danger">SMS Unit is Low!</strong> 
   
         @else 
-          <p></p>
+          <strong class="label label-success">SMS Unit is ok!</strong> 
         @endif
-          </p>
+        </p>  
               Account Name: <span class="username">{{ $smswalletdetail['username'] }}</span>
 <p>Sms Unit Balance: <span class="unit-balance">{{ $smswalletdetail['balance'] }}</span>
 
