@@ -73,41 +73,7 @@ class SmsWalletController extends Controller
         echo json_encode($user->toArray());
     }
 
-    public function smsWalletTopup(Request $request)
-    {
-        // var token = getToken("ts_Q8PES8G6QJFI2RI1THN1","ts_AM2PIJ8VTPYLBK1K6EJDEXD9STLC6G");
-
-        $header = array('content-type' => 'application/json');
-        $query = array(
-            'apiKey' => 'ts_Q8PES8G6QJFI2RI1THN1',
-            'secret' => 'ts_AM2PIJ8VTPYLBK1K6EJDEXD9STLC6G'
-        );
-        $response = Unirest\Request::post('https://moneywave.herokuapp.com/v1/merchant/verify', $header, $query);
-        
-        // $user = SmsWallet::where('username', $request->email)->first();
-        $url = "https://moneywave.herokuapp.com/v1/disburse";
-        $headers = array(
-            'content-type' => 'application/json',
-            'Authorization' => $request->request_token,
-        );
-        $data = [
-            "lock" => "abc12345",
-            "amount" => $request->amount,
-            "bankcode" => $request->bank_code,
-            "accountNumber" => $request->account,
-            "currency" => "NGN",
-            "senderName" => "TransferRule",
-            "narration" => 'Transfer for data', //Optional
-            "ref" => $this->generate_ref(),
-        ];
-        $body = Unirest\Request\Body::form($data);
-        $response = Unirest\Request::post($url, $headers, $data);
-        
-        return redirect()->to(URL::previous())->with('response', $response->body);
-    }
     
-
-
 
     public function generate_ref()
     {
@@ -243,7 +209,7 @@ class SmsWalletController extends Controller
 
                 //Api call to moneywave for transaction
                 $body = \Unirest\Request\Body::json($query);
-                $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/disburse', $headers, $body);
+                $response = \Unirest\Request::post(env('API_KEY_LIVE_URL').'/v1/disburse', $headers, $body);
                 $response = json_decode($response->raw_body, true);
                 $status = $response['status'];
                 //end of Api call
