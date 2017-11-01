@@ -169,9 +169,9 @@ class SmsWalletController extends Controller
                 event(new FundWallet($cardWallet));
                 $response = $response['data']['flutterChargeResponseMessage'];
                 Session::flash('success', 'Wallet funding successful');
-                return redirect('admin.smswallet2');
+                return redirect('admin/smswallet');
             }
-            return redirect('admin.smswallet2')->with('error', $response['message']);
+            return redirect('admin/smswallet')->with('error', $response['message']);
 
     }
 
@@ -229,8 +229,8 @@ class SmsWalletController extends Controller
 
                     event(new FundWallet($sms));
                     //\LogUserActivity::addToLog(auth()->user()->name.'transferred '.$transactions->amount.' from '. $transactions->source->wallet_name.' to '.$transactions->beneficiary->name);
-                    
-                    return redirect('admin/smswallet')->with('success', 'Transfer successful');
+                    Session::flash('success', 'Transfer successful');
+                    return redirect('admin/smswallet');
                 } else {
                     Session::flash('error',$response['message']);
                     return back();

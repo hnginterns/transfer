@@ -174,7 +174,7 @@ class pagesController extends Controller
 
         $history = Trans::getTransactionsHistory($walletTransfer, $walletTransactions, $bankTransactions, $wallet->wallet_code, $wallet->id);
 
-        return view('view-wallet', compact('wallet','permit','rules','beneficiaries', 'history', 'cardWallet', 'validate', 'bankTransactions'));
+        return view('view-wallet', compact('wallet','permit','rules','beneficiaries', 'history', 'cardWallet', 'validate', 'bankTransactions', 'walletTransactions', 'walletTransfer'));
     }
 
     public function createBeneficiary()

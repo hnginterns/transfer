@@ -108,49 +108,29 @@ tr:nth-child(even) {
       	<div class="orange-box"><h4 class="title text-capitalize" align="center"> {{ ucfirst($wallet->wallet_name) }} wallet transfer history</h4></div><br>
               <!-- transaction history table tab -->
                 <div class="table-responsive">
+                  <p>Wallet Funding History
                     @if(count($history)) 
                   <table id="datatable-history" class="table table-bordered table-hover">
       							<thead>
       								<tr>
-      									<th>Transaction Type</th>
-                        <th>State</th>
+      									<th>Destination</th>
+                        <th>Name of Depositor</th>
       									<th>Transaction Amount</th>
       									<th>Transaction Date</th>
       									<th>Status</th>
       								</tr>
       							</thead>
       							<tbody>
-                    @foreach($history as $key => $hist)
+                    @foreach($walletTransactions as $key => $transaction)
                       <tr id="transaction" onclick="$('#modal-id{{$key}}').modal('toggle')">
-      									<td id="transction_type">{{ $hist['transaction_type'] }} </td>
-                        <td id="transaction_state">{{ $hist['transaction_state'] }}</td>
-      									<td id="transaction_amount">{{ $hist['transaction_amount'] }} </td>
-      									<td id="transaction_date">{{ $hist['transaction_date'] }}</td>
-      									<td id="transaction_status"><i class="fa {{ $hist['transaction_status'] ? 'fa-check-circle can' : 'fa-times-circle cannot' }}" aria-hidden="true"></i></td>
+      									<td id="Destination">{{ $transaction->wallet_name }} </td>
+                        <td id="Name_of_depositor">{{ $transaction->firstName }} {{$transaction->lastName}}</td>
+      									<td id="transaction_amount">{{ $transaction->amount }} </td>
+      									<td id="transaction_date">{{ $transaction->created_at->toDateTimeString() }}</td>
+      									<td id="transaction_status"><i class="fa {{ $transaction->status ? 'fa-check-circle can' : 'fa-times-circle cannot' }}" aria-hidden="true"></i></td>
       								</tr>
                       
-                      <div class="modal fade" id="modal-id{{$key}}">
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                              <h4 class="modal-title">{{ ucfirst($wallet->wallet_name) }}'s Transaction History</h4>
-                            </div>
-                            <div class="modal-body">
-                              <p>Transaction Type : <b>Wallet To {{ $hist['transaction_type'] }} Transaction</b> </p>
-                              <p>Transaction State : <b>{{ $hist['transaction_state'] }}</b>  </p>
-                              <p>Transaction Amount : <b>{{ $hist['transaction_amount'] }}</b> </p>
-                              <p>Transaction Date : <b>{{ $hist['transaction_date'] }} </b></p>
-                              <p>Transaction Status : <b>{{ $hist['transaction_status'] ? 'Successful' : 'Unsuccessful' }}</b></p>
-                              <p><button type="button" class="btn pull-right orange-box" style="padding-left:25px;padding-right:25px;" data-dismiss="modal">Ok</button></p><br><br>
-                            </div>
-                            {{--  <div class="modal-footer">  --}}
-                              {{--  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>  --}}
-                               {{--  <button type="button" class="btn btn-primary">Save changes</button>   --}}
-                            {{--  </div>  --}}
-                          </div>
-                        </div>
-                      </div>
+                      
                       
                       @endforeach
                       
@@ -163,6 +143,9 @@ tr:nth-child(even) {
                       @endif
       					</div>
                 <!-- end transction history table tab -->
+
+
+
       </div>
       <div id="menu1" class="tab-pane fade">
                 <div class="orange-box"><h4 class="title text-capitalize" align="center"> {{ $wallet->wallet_name }}'s Beneficiaries</h4></div>
