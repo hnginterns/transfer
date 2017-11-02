@@ -821,6 +821,12 @@ i.can {
                   if ($(this).parents('tr').hasClass('hidden')) {
                     $(this).parents('tr').removeClass('hidden');
                   }
+<<<<<<< HEAD
+=======
+                  if (current == 'all') {
+                    return false;
+                  }
+>>>>>>> parent of 36cccbbf... Slight changes to phonetopup.blade.php to allow Show All show all phone contact
                   if (! $(this).hasClass(theClass)) {
                       $(this).parents('tr').addClass('hidden');
                   }
