@@ -53,7 +53,7 @@
 <script>
   $(function () {
     $('#datatable').DataTable({
-        "order": [[ 7, "desc" ]]
+        "order": [[ 8, "desc" ]]
     });
     $('#datatable-history').DataTable({
         "order": [[ 3, "desc" ]]
