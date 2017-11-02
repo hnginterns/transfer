@@ -807,6 +807,11 @@ i.can {
     $(function () {
         $('.groups-list').change(function () {
           var current = $(this).val();
+          if (current == all) {
+            $('#contact-table tr').hasClass('hidden') {
+              $('#contact-table tr').removeClass('hidden');
+            }           
+          }
           $(this).find('option').each(function () {
             if (this.value == current) {
               var theClass = $(this).data('value');
@@ -816,11 +821,6 @@ i.can {
                   if ($(this).parents('tr').hasClass('hidden')) {
                     $(this).parents('tr').removeClass('hidden');
                   }
-
-                  if (current == 'all') {
-                    return false;
-                  }
-
                   if (! $(this).hasClass(theClass)) {
                       $(this).parents('tr').addClass('hidden');
                   }
