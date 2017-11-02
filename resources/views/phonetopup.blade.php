@@ -288,14 +288,14 @@ i.can {
             </thead>
             <tbody>
 
-              @if(count($topuphistory) > 0) @foreach($topuphistory as $hist)
+              @if(count($topuphistory) > 0) @foreach($topuphistory as $key=> $hist)
               <tr>
-                <th>{{ $hist->phone }}</th>
-                <th>{{ $hist->firstname }} {{ $hist->lastname }}</th>
-                <th>{{ $hist->netw }}</th>
+                <th>{{ $hist->contact != null ? $hist->contact->phone : 'XXXX'}}</th>
+                <th>{{ $hist->contact != null ? $hist->contact->lastname : 'XXXX'}}</th>
+                <th>{{ $hist->contact != null ? $hist->contact->netw : 'XXXX' }}</th>
                 <td class="phone">{{ $hist->amount }}</td>
                 <td class="phoneRef">{{ $hist->ref }}</td>
-                <td class="amount">{{ $hist->username }}</td>
+                <td class="amount">{{ $hist->user != null ? $hist->user->username: 'XXXX' }}</td>
                 <td class="amount"><i class="fa {{ $hist->status == 'success' ? 'fa-check-circle can' : 'fa-times-circle cannot'}}"></i></td>
                 <td class="amount">{{ $hist->txn_response}}</td>
                 <td class="amount">{{ $hist->created_at }}</td>
@@ -825,6 +825,9 @@ i.can {
                   if ($(this).parents('tr').hasClass('hidden')) {
                     $(this).parents('tr').removeClass('hidden');
                   }
+                  if (current == 'all') {
+                    return;
+                  }
                   if (! $(this).hasClass(theClass)) {
                       $(this).parents('tr').addClass('hidden');
                   }
@@ -847,7 +850,6 @@ i.can {
             e.preventDefault();
             $('form.send-airtime.topup-multiple').submit();
         });
-
         $('select.data-topup-select').change(function () {
             var phone_id = $(this).val();
             var phone_network = '';

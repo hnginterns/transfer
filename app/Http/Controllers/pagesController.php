@@ -331,7 +331,7 @@ class pagesController extends Controller
     {
         //phones = TopupContact::all();
 
-        $phones = $this->paginate(Input::get('search'), Input::get('department'));
+        $phones = TopupContact::orderBy('starred','desc')->get(); //$this->paginate(Input::get('search'), Input::get('department'));
         $tags = Tag::all();
         $topupbalance = $this->getTopupWalletBalance();
         $cardWallet = CardWallet::latest()->first();
@@ -342,13 +342,15 @@ class pagesController extends Controller
                             ->orderBy('created_at', 'desc')
                             ->get();
 
-        $topuphistory = DB::table('topup_histories')
-            ->join('topup_contacts', 'topup_histories.contact_id', '=', 'topup_contacts.id')
-            ->join('users', 'topup_histories.user_id', '=', 'users.id')
-            ->select('topup_histories.*', 'topup_contacts.phone', 'topup_contacts.firstname', 'users.username', 'topup_contacts.lastname', 'topup_contacts.netw')
-            ->orderBy('created_at', 'desc')
-            ->get();
-            
+        // $topuphistory = DB::table('topup_histories')
+        //     ->join('topup_contacts', 'topup_histories.contact_id', '=', 'topup_contacts.id')
+        //     ->join('users', 'topup_histories.user_id', '=', 'users.id')
+        //     ->select('topup_histories.*', 'topup_contacts.phone', 'topup_contacts.firstname', 'users.username', 'topup_contacts.lastname', 'topup_contacts.netw')
+        //     ->orderBy('created_at', 'desc')
+        //     ->get();
+
+        $topuphistory = TopupHistory::orderBy('created_at', 'desc')->get();
+            // dd($topuphistory);
             if(strlen($topupbalance) > 16){
                 $topupbalance = null;
                 Session::flash('error', 'Could not retrieve balance');
