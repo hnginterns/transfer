@@ -805,7 +805,7 @@ i.can {
     $(function () {
         $('.groups-list').change(function () {
           var current = $(this).val();
-          if (current == all) {
+          if (current == 'all') {
             if ($('#contact-table tr').hasClass('hidden')) {
               $('#contact-table tr').removeClass('hidden');              
             }
