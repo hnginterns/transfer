@@ -265,7 +265,8 @@ class PhoneTopUpController extends Controller
             return $response;
     }
     public function hasReachedLimit($id, $amount, $max_limit){
-        $sum = TopupHistory::where('contact_id', $id)->get();
+        $sum = TopupHistory::where('contact_id', $id)
+                             ->where('status','success')->get();
                 $weekly_max = 0;
                 foreach($sum as $key => $sums){
                     if($sums->created_at->diffInDays(Carbon::now()) < 7){
