@@ -291,7 +291,7 @@ i.can {
               @if(count($topuphistory) > 0) @foreach($topuphistory as $key=> $hist)
               <tr>
                 <th>{{ $hist->contact != null ? $hist->contact->phone : 'XXXX'}}</th>
-                <th>{{ $hist->contact != null ? $hist->lastname : 'XXXX'}}</th>
+                <th>{{ $hist->contact != null ? $hist->contact->lastname : 'XXXX'}}</th>
                 <th>{{ $hist->contact != null ? $hist->contact->netw : 'XXXX' }}</th>
                 <td class="phone">{{ $hist->amount }}</td>
                 <td class="phoneRef">{{ $hist->ref }}</td>
