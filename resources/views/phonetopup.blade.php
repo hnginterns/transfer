@@ -757,7 +757,7 @@ i.can {
 
   <script type="text/javascript">
     $(document).ready(function () {
-        $('#contact-table tr').DataTable({
+        $('#contact-table').DataTable({
           initComplete: function () {
             this.api().columns([1, 3]).every(function () {
               var column = this;
