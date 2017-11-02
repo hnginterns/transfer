@@ -812,6 +812,7 @@ i.can {
             if (! $('.groups-topup').hasClass('hidden')) {
               $('.groups-topup').html('').addClass('hidden');
             }
+            $('input.checkbox').prop('checked', false);
             return;
           }
           $(this).find('option').each(function () {
