@@ -757,9 +757,7 @@ i.can {
 
   <script type="text/javascript">
     $(document).ready(function () {
-        $('#contact-table tr').hasClass('hidden') {
-           
-        }.DataTable({
+        $('#contact-table tr').DataTable({
           initComplete: function () {
             this.api().columns([1, 3]).every(function () {
               var column = this;
@@ -808,7 +806,7 @@ i.can {
         $('.groups-list').change(function () {
           var current = $(this).val();
           if (current == all) {
-            $('#contact-table tr').hasClass('hidden') {
+            if ($('#contact-table tr').hasClass('hidden')) {
               $('#contact-table tr').removeClass('hidden');              
             }
             if (! $('.groups-topup').hasClass('hidden')) {
