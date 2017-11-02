@@ -40,14 +40,12 @@ class PhoneTopUpController extends Controller
     {
         //
     }
-
     public function star(TopupContact $contact){
         $contact->starred = $contact->starred == 1 ? false : true;
         $contact->save();
         $phone = TopupContact::orderBy('starred', 'desc')->get();
         return response()->json($phone);
     }
-
     //get token for new transaction
     public function getToken()
     {
@@ -67,9 +65,7 @@ class PhoneTopUpController extends Controller
             return $token;
         }
     }
-
    public function phoneTopUp(Request $request, CardWallet $cardWallet)
-
     {
       
         $username       =     env('TOP_UP_USERNAME');
@@ -100,7 +96,6 @@ class PhoneTopUpController extends Controller
                     "ref" => $request->reference, // No Refrence from request
                     "walletUref" => $wallet->wallet_code
                 );
-
                 //Api call to moneywave for transaction
                 $body = \Unirest\Request\Body::json($query);
                 $response = \Unirest\Request::post(env('API_KEY_LIVE_URL').'/v1/disburse', $headers, $body);
@@ -109,7 +104,6 @@ class PhoneTopUpController extends Controller
                 //end of Api call
                 
                 if ($status == 'success') {
-
                     //data to be parsed to display transaction details
                     $data = $response['data']['data'];
                     $data['senderName'] = Auth::user()->username;
@@ -118,9 +112,7 @@ class PhoneTopUpController extends Controller
                     $data['beneficiaryAccount'] = $bank_account;
                     $data['amount'] = $request->amount;
                     $data['narration'] = $phone;
-
                     //end of data prep
-
                     //logic to persist transaction details
                     $transaction = new PhonetopupTransaction;
                     $transaction->wallet_id = $wallet->id;
@@ -136,7 +128,6 @@ class PhoneTopUpController extends Controller
                     
                     //fire off an sms notification
                     $this->sendPhoneTopupTransactionNotifications($transaction);
-
                      event(new FundWallet($cardWallet));
                     Session::flash('status',$data);
                     return redirect('success');
@@ -146,7 +137,6 @@ class PhoneTopUpController extends Controller
                 }
         }
     }
-
     public function sendPhoneTopupTransactionNotifications($transaction){
         Auth::user()->notify(new PhonetopupTransactionNotify($transaction));
         $admins = User::where('is_admin', true)->get();
@@ -154,7 +144,6 @@ class PhoneTopUpController extends Controller
             $admin->notify(new PhonetopupTransactionNotify($transaction));
         }
     }
-
     public function fundTopupWallet(Request $request, CardWallet $cardWallet)
     {   
         $validator = $this->validateWalletFunding($request->all());
@@ -202,7 +191,6 @@ class PhoneTopUpController extends Controller
                 //"redirecturl" => "https://google.com"
             );
             $body = \Unirest\Request\Body::json($query);
-
             $response = \Unirest\Request::post(env('API_KEY_LIVE_URL').'/v1/transfer', $headers, $body);
             
             $response = json_decode($response->raw_body, TRUE);
@@ -219,9 +207,7 @@ class PhoneTopUpController extends Controller
                 $transaction->phoneNumber = $response['phoneNumber'];
                 $transaction->amount = $response['amountToSend'];
                 $transaction->ref = $transRef;
-
                 $transaction->save();
-
                 return back()->with('otp', $transMsg);
             }
             else{
@@ -229,20 +215,16 @@ class PhoneTopUpController extends Controller
             }
         }
     }
-
-
     public function otp(Request $request, CardWallet $cardWallet)
     {
         // dd($request);
         \Unirest\Request::verifyPeer(false);
-
             $headers = array('content-type' => 'application/json');
             $query = array(
                 'transactionRef'=>$request->ref,
                 'otp' => $request->otp
             );
             $body = \Unirest\Request\Body::json($query);
-
             $response = \Unirest\Request::post(env('API_KEY_LIVE_URL').'/v1/transfer/charge/auth/card', $headers, $body);
             $response = json_decode($response->raw_body, true);
             
@@ -253,38 +235,26 @@ class PhoneTopUpController extends Controller
                 $card->save();
                 Session::flash('success','Wallet funding successful');
                 return redirect('/phonetopup');
-
             }else{
                 Session::flash('error',$response['message']);
                 return redirect('/phonetopup');
             }
             
     }
-
-
-
-
-
-
     public function phoneshow($id)
     { 
         $phone = SmsWalletFund::find($id);
-
         return response()->json([
             'type' => 'success',
             'data' => $phone,
         ]);
-
     }
-
     public function ptopuphonesubmit(Request $request)
     { 
         $phone = SmsWalletFund::find($request->get('id'));
-
         return \Redirect::route('home')->with('success', 'Book favorited!');
             
     }
-
         public function getTopupWalletBalance() {
             $username = env('TOP_UP_USERNAME');
             $password = env('TOP_UP_PASSWORD');
@@ -294,8 +264,6 @@ class PhoneTopUpController extends Controller
             $response = json_decode($response->raw_body, true);
             return $response;
     }
-
-
     public function hasReachedLimit($id, $amount, $max_limit){
         $sum = TopupHistory::where('contact_id', $id)->get();
                 $weekly_max = 0;
@@ -306,15 +274,12 @@ class PhoneTopUpController extends Controller
                 }
         return  ($max_limit - $weekly_max + $amount) < 0 ? true : false;
     }
-
-
     public function topuphonemultiple(Request $request){
         // dd($request);
         if($request->checked == null ){
             Session::flash('error', 'You must select a contact and enter amount to topup');
             return back();
         }
-
         $phones = $request->checked;
         $amount = $request->amount;
         $final_phones = [];
@@ -322,7 +287,6 @@ class PhoneTopUpController extends Controller
         $final_id = [];
         $errors = [];
         $total = 0;
-
         foreach($phones as $key => $phone){
             if($amount["$phone"] == null){               
                 $contact = TopupContact::find($phone);
@@ -332,7 +296,6 @@ class PhoneTopUpController extends Controller
                 
                 $contact = TopupContact::find($phone);
                 if($this->hasReachedLimit($phone, $amount["$phone"], $contact->weekly_max)){ 
-
                     //logs details of contacts who have exceeded weekly limits
                     $message = ['contact_id' => $phone, 
                                 'ref'=>str_random(10), 
@@ -342,7 +305,6 @@ class PhoneTopUpController extends Controller
                                 ];
                     $errors [] = $message;                  
                     //end of log detail of contacts who have exceeded weekly limits
-
                 }else{
                     $total += $amount["$phone"];
                     $final_phones [] = $contact->phone;
@@ -351,7 +313,6 @@ class PhoneTopUpController extends Controller
                 }  
             }     
         }
-
         $this->batchRechargeFailed($errors);
         
         if($total > $this->getTopupWalletBalance()){
@@ -369,7 +330,6 @@ class PhoneTopUpController extends Controller
         }
         
     }
-
     public function batchRechargeFailed($errors){
         $user_id = Auth::user()->id;
         foreach($errors as $key => $error){
@@ -384,7 +344,6 @@ class PhoneTopUpController extends Controller
             $topuphistory->save();
         }
     }
-
     public function batchRecharge($id, $phone, $amount){
         $username = env('TOP_UP_USERNAME');
         $password = env('TOP_UP_PASSWORD');
@@ -405,7 +364,6 @@ class PhoneTopUpController extends Controller
             $topuphistory->save();
         }
     }
-
     public function topuphonegroup(Request $request){
         $validator = $this->validateTag($request->all());
         if ($validator->fails()) {
@@ -420,16 +378,13 @@ class PhoneTopUpController extends Controller
         }
         $total = $request->amount;
 		$amount = $total/count($contacts->toArray());
-
         $final_phones = [];
         $final_amount = [];
         $final_id = [];
         $total = 0;
         $errors = [];
-
         foreach($contacts as $key => $contact){
             if($this->hasReachedLimit($contact->id, $amount, $contact->weekly_max)){ 
-
                 //logs details of contacts who have exceeded weekly limits
                 $message = ['contact_id' => $contact->id, 
                             'ref'=>str_random(10), 
@@ -439,16 +394,13 @@ class PhoneTopUpController extends Controller
                             ];
                 $errors [] = $message;                  
                 //end of log detail of contacts who have exceeded weekly limits
-
             }else{
                     $final_phones [] = $contact->phone;
                     $final_amount [] = $amount;
                     $final_id [] = $contact->id;
             }
         }
-
         $this->batchRechargeFailed($errors);
-
         if($total > $this->getTopupWalletBalance()){
             Session::flash('error', 'You do not have enough fund in your wallet for this topup');
             return back();
@@ -464,21 +416,17 @@ class PhoneTopUpController extends Controller
         }
         
     }
-
     public function topuphonesubmit(Request $request)
     {
         $phone = $request->phone;
         $network = $request->netw;
         $amount = $request->amount;
         $contact = TopupContact::find($request->current_id);
-
         $contacthistory = TopupHistory::where('user_id', $contact->id)->sum('amount');
         if ($contacthistory >= $contact->weekly_max) {
         
             return redirect('/phonetopup')->with('error', 'Weekly Maximum Exceeded');
-
         } 
-
         $url = 'https://mobilenig.com/api/airtime.php/?username=' .
             'jekayode&password=transfer' .
             '&network='. $contact->netw .'&phoneNumber='. $contact->phone .'&amount='. $amount;
@@ -487,39 +435,28 @@ class PhoneTopUpController extends Controller
         $response = \Unirest\Request::get($url, $headers);
         
         $response = json_decode($response->raw_body, true);
-
         $user_id = Auth::user()->id;
-
         $topuphistory = new TopupHistory;
-
         $topuphistory->contact_id = $contact->id;
         $topuphistory->user_id = $user_id;
         $topuphistory->amount = $amount;
         $topuphistory->ref = str_random(10);
         $topuphistory->txn_response = 00;
         $topuphistory->status = 'Success';
-
         $topuphistory->save();
         return redirect('/phonetopup')->with('success', 'Phone topped up uccessfully.');
-
     }
-
     public function topdatasubmit(TopUpDataRequest $request)
     {
         $amount = $request->amount;
-
         $txn_ref = str_random(10);
-
         $return_url = 'https://finance.hotels.ng/phonetopup';
         $contact = TopupContact::find($request->current_id);
         $contacthistory = TopupHistory::where('user_id', $contact->id)->sum('amount');
-
         if ($contacthistory >= $contact->weekly_max) {
         
             return redirect('/phonetopup')->with('error', 'Weekly Maximum Exceeded');
-
         } 
-
         $url = 'https://mobilenig.com/api/data.php/?username=' .
             'jekayode&password=transfer' .
             '&network='. $contact->netw .'&phoneNumber='. $contact->phone .'&amount='. $amount.'&ref='. $txn_ref .'&return_url='. $return_url;
@@ -527,11 +464,8 @@ class PhoneTopUpController extends Controller
         $headers = array('content-type' => 'application/json');
         $response = \Unirest\Request::get($url, $headers);
         $response = json_decode($response->raw_body, true);
-
         $user_id = Auth::user()->id;
-
         $topuphistory = new TopupHistory;
-
         $topuphistory->contact_id = $contact->id;
         $topuphistory->user_id = $user_id;
         $topuphistory->amount = $amount;
@@ -541,21 +475,17 @@ class PhoneTopUpController extends Controller
         $topuphistory->status = 'Success';
         $topuphistory->save();
         return redirect('/phonetopup')->with('success', 'Data topped up uccessfully.');
-
     }
-
     protected function validateRequest(array $data) {
         return Validator::make($data, [
             'amount' => 'required|numeric',
         ]);
     }
-
     protected function validateTag(array $data) {
         return Validator::make($data, [
             'department' => 'required|string',
         ]);
     }
-
     protected function validateWalletFunding(array $data)
     {
         return Validator::make($data, [
@@ -568,10 +498,6 @@ class PhoneTopUpController extends Controller
             'expiry_year' => 'required|numeric',
             'cvv' => 'required|numeric',
             'pin' => 'required|numeric',
-
         ]);
     }
-
-
-
 }
