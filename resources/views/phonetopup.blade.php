@@ -807,11 +807,6 @@ i.can {
     $(function () {
         $('.groups-list').change(function () {
           var current = $(this).val();
-          if (current == all) {
-            $('#contact-table tr').hasClass('hidden') {
-              $('#contact-table tr').removeClass('hidden');
-            }           
-          }
           $(this).find('option').each(function () {
             if (this.value == current) {
               var theClass = $(this).data('value');
@@ -821,12 +816,11 @@ i.can {
                   if ($(this).parents('tr').hasClass('hidden')) {
                     $(this).parents('tr').removeClass('hidden');
                   }
-<<<<<<< HEAD
-=======
+
                   if (current == 'all') {
                     return false;
                   }
->>>>>>> parent of 36cccbbf... Slight changes to phonetopup.blade.php to allow Show All show all phone contact
+
                   if (! $(this).hasClass(theClass)) {
                       $(this).parents('tr').addClass('hidden');
                   }
@@ -849,7 +843,6 @@ i.can {
             e.preventDefault();
             $('form.send-airtime.topup-multiple').submit();
         });
-
         $('select.data-topup-select').change(function () {
             var phone_id = $(this).val();
             var phone_network = '';
