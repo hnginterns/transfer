@@ -304,7 +304,7 @@ class PhoneTopUpController extends Controller
                         $weekly_max += $sums->amount;
                     }
                 }
-        return  ($max_limit - $weekly_max + $amount) <= 0 ? true : false;
+        return  ($max_limit - $weekly_max + $amount) < 0 ? true : false;
     }
 
 
