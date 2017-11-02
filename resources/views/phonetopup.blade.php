@@ -295,7 +295,7 @@ i.can {
                 <th>{{ $hist->contact != null ? $hist->contact->netw : 'XXXX' }}</th>
                 <td class="phone">{{ $hist->amount }}</td>
                 <td class="phoneRef">{{ $hist->ref }}</td>
-                <td class="amount">{{ $hist->user->username }}</td>
+                <td class="amount">{{ $hist->user != null $hist->user->username: 'XXXX' }}</td>
                 <td class="amount"><i class="fa {{ $hist->status == 'success' ? 'fa-check-circle can' : 'fa-times-circle cannot'}}"></i></td>
                 <td class="amount">{{ $hist->txn_response}}</td>
                 <td class="amount">{{ $hist->created_at }}</td>
