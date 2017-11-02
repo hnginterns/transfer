@@ -809,8 +809,12 @@ i.can {
           var current = $(this).val();
           if (current == all) {
             $('#contact-table tr').hasClass('hidden') {
-              $('#contact-table tr').removeClass('hidden');
-            }           
+              $('#contact-table tr').removeClass('hidden');              
+            }
+            if (! $('.groups-topup').hasClass('hidden')) {
+              $('.groups-topup').html('').addClass('hidden');
+            }
+            return;
           }
           $(this).find('option').each(function () {
             if (this.value == current) {
