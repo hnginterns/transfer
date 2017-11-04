@@ -214,7 +214,7 @@ class PhoneTopUpController extends Controller
                 $transaction->status = "pending OTP";
                 $transaction->save();
 
-                return back()->with('status', $transMsg);
+                return back()->with('otp', $transMsg);
             }
             else{
                 $transaction->status = $response['message'];
@@ -224,7 +224,7 @@ class PhoneTopUpController extends Controller
         }catch(\Exception $e){
             $transaction->status = "";
             $transaction->save();
-            return back()->with('status', $response['flutterChargeResponseMessage']);
+            return back()->with('error', 'Encountered error');
         }
         }
     }

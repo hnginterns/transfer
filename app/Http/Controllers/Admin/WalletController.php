@@ -270,7 +270,7 @@ class WalletController  extends Controller
                 $transaction->status = "pending OTP";
                 $transaction->save();
 
-                return back()->with('status', $transMsg);
+                return back()->with('otp', $transMsg);
             }
             else{
                 $transaction->status = $response['message'];
