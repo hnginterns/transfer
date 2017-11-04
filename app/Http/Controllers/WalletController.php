@@ -117,6 +117,8 @@ class WalletController extends Controller
         
         $response = json_decode($response->raw_body, TRUE);
         // dd($response);
+        //var_dump($response);
+        //die();
         if($response['status'] == 'success') {
             $response = $response['data']['transfer'];
             $transMsg = $response['flutterChargeResponseMessage'];

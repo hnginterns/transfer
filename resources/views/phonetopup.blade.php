@@ -748,9 +748,7 @@ i.can {
 
   <script type="text/javascript">
     $(document).ready(function () {
-        $('#contact-table tr').hasClass('hidden') {
-           
-        }.DataTable({
+        $('#contact-table').DataTable({
           initComplete: function () {
             this.api().columns([1, 3]).every(function () {
               var column = this;
@@ -798,6 +796,16 @@ i.can {
     $(function () {
         $('.groups-list').change(function () {
           var current = $(this).val();
+          if (current == 'all') {
+            if ($('#contact-table tr').hasClass('hidden')) {
+              $('#contact-table tr').removeClass('hidden');              
+            }
+            if (! $('.groups-topup').hasClass('hidden')) {
+              $('.groups-topup').html('').addClass('hidden');
+            }
+            $('input.checkbox').prop('checked', false);
+            return;
+          }
           $(this).find('option').each(function () {
             if (this.value == current) {
               var theClass = $(this).data('value');
