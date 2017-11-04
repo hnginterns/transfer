@@ -318,15 +318,6 @@ i.can {
         </div>
       </div>
 
-
-
-
-
-
-
-
-
-
 <!---Modal for wallet top Up-->
 <div class="modal fade" id="walletTopUp">
   <div class="modal-dialog">
