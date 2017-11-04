@@ -194,25 +194,38 @@ class PhoneTopUpController extends Controller
             $response = \Unirest\Request::post(env('API_KEY_LIVE_URL').'/v1/transfer', $headers, $body);
             
             $response = json_decode($response->raw_body, TRUE);
+            $transaction = new CardWallet;
+        $transaction->firstName = $request->fname;
+        $transaction->lastName = $request->lname;
+        $transaction->status = "started";
+        $transaction->wallet_name = $request->wallet_name;
+        $transaction->phoneNumber = $request->phone;
+        $transaction->amount = $request->amount;
+        $body = \Unirest\Request\Body::json($query);
+        $response = \Unirest\Request::post(env('API_KEY_LIVE_URL').'/v1/transfer', $headers, $body);      
+        $response = json_decode($response->raw_body, TRUE);
+        try{
             if($response['status'] == 'success') {
                 $response = $response['data']['transfer'];
                 $transMsg = $response['flutterChargeResponseMessage'];
                 $transRef = $response['flutterChargeReference'];
-                
-                $transaction = new CardWallet;
-                $transaction->firstName = $response['firstName'];
-                $transaction->lastName = $response['lastName'];
-                $transaction->status = $response['status'];
-                $transaction->wallet_name = $request->wallet_name;
-                $transaction->phoneNumber = $response['phoneNumber'];
-                $transaction->amount = $response['amountToSend'];
+            
                 $transaction->ref = $transRef;
+                $transaction->status = "pending OTP";
                 $transaction->save();
-                return back()->with('otp', $transMsg);
+
+                return back()->with('status', $transMsg);
             }
             else{
+                $transaction->status = $response['message'];
+                $transaction->save();
                 return back()->with('error', $response['message']);
             }
+        }catch(\Exception $e){
+            $transaction->status = "";
+            $transaction->save();
+            return back()->with('status', $response['flutterChargeResponseMessage']);
+        }
         }
     }
     public function otp(Request $request, CardWallet $cardWallet)
