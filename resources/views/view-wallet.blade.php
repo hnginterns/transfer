@@ -399,7 +399,7 @@ tr:nth-child(even) {
           </div>
 		</div>
 
-     @if (session('status'))
+     @if (session('otp'))
    <script type="text/javascript">
         $(document).ready(function() {
             $('#otpModal').modal();
