@@ -280,7 +280,7 @@ class WalletController  extends Controller
         }catch(\Exception $e){
             $transaction->status = "";
             $transaction->save();
-            return back()->with('status', $response['flutterChargeResponseMessage']);
+            return back()->with('error', "Error occured");
         }
         }
     }

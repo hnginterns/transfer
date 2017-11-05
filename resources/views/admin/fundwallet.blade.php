@@ -105,7 +105,7 @@
 
 
     </div>
-   @if (session('status'))
+   @if (session('otp'))
    <script type="text/javascript">
         $(document).ready(function() {
             $('#myModal').modal();
@@ -122,7 +122,7 @@
             <h4 class="modal-title">Otp</h4>
           </div>
           <div class="modal-body">
-            <p>{{session('status')}}</p>
+            <p>{{session('otp')}}</p>
             <div class="row">
             <div class="col-md-6 col-md-offset-2">
               <form action="otp" method="POST">
