@@ -459,7 +459,7 @@
                                                             <div class="form-group">
                                                                 <label for="cc_name">First Name</label>
                                                                 <div class="controls">
-                                                                    <input name="fname" class="form-control" id="cc_name" title="First Name" required type="text">
+                                                                    <input name="fname" value="{{Auth::user()->fundWalletInfo == null ? '' : Auth::user()->fundWalletInfo->firstname}}" class="form-control" id="cc_name" title="First Name" required type="text">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -467,7 +467,7 @@
                                                             <div class="form-group">
                                                                 <label for="cc_name">Last Name</label>
                                                                 <div class="controls">
-                                                                    <input name="lname" class="form-control" id="cc_name" title="last name" required type="text">
+                                                                    <input name="lname" value="{{Auth::user()->fundWalletInfo == null ? '' : Auth::user()->fundWalletInfo->lastname}}" class="form-control" id="cc_name" title="last name" required type="text">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -475,13 +475,13 @@
                                                     <div class="form-group">
                                                         <label>Phone Number</label>
                                                         <div class="controls">
-                                                            <input name="phone" class="form-control" autocomplete="off" maxlength="20" required="" type="text">
+                                                            <input name="phone" pattern="\+234\d{10}" value="{{Auth::user()->fundWalletInfo == null ? '' : Auth::user()->fundWalletInfo->phonenumber}}" class="form-control" autocomplete="off" maxlength="20" required="" type="text">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Email Address</label>
                                                         <div class="controls">
-                                                            <input name="emailaddr" class="form-control" autocomplete="off" required="" type="text">
+                                                            <input name="emailaddr" value="{{Auth::user()->fundWalletInfo == null ? '' : Auth::user()->fundWalletInfo->email}}" class="form-control" autocomplete="off" required="" type="email">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
@@ -602,7 +602,7 @@
                         <!-- /.modal -->
 
                              <!--Modal for Otp -->
-                    @if (session('status'))
+                    @if (session('otp'))
                        <script type="text/javascript">
                             $(document).ready(function() {
                                 $('#myModal').modal();
@@ -619,7 +619,7 @@
                                 <h4 class="modal-title">Otp</h4>
                               </div>
                               <div class="modal-body">
-                                <p>{{session('status')}}</p>
+                                <p>{{session('otp')}}</p>
                                 <div class="row">
                                 <div class="col-md-6 col-md-offset-2">
                                   <form action="{{ route('fund.otp.submit')}}" method="POST">
