@@ -389,7 +389,7 @@ class PhoneTopUpController extends Controller
             $topuphistory->type = 'airtime';
             $topuphistory->txn_response = 00;
             $topuphistory->status = $response->body == '00' ? 'success' : 'failure';
-            $number_topped_up = $response->body == '00'? $number_topped_up++ : $number_topped_up;
+            $number_topped_up = $response->body == '00'? $number_topped_up+1 : $number_topped_up;
             $topuphistory->save();
         }
 
