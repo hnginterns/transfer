@@ -253,6 +253,7 @@ class WalletController  extends Controller
             $transaction->firstName = $request->fname;
             $transaction->lastName = $request->lname;
             $transaction->status = "started";
+            $transaction->ref = "no ref";
             $transaction->wallet_name = $request->wallet_name;
             $transaction->phoneNumber = $request->phone;
             $transaction->amount = $request->amount;
