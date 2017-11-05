@@ -347,6 +347,10 @@ class PhoneTopUpController extends Controller
             }
             else{
                 $transaction->status = $response['message'];
+                $transaction->uuid = Auth::user()->id;
+                $transaction->charge_response = $transMsg;
+                $transaction->disburse_response = "pending";
+                $transaction->pendingValidation = true;
                 $transaction->save();
                 return back()->with('error', $response['message']);
             }
