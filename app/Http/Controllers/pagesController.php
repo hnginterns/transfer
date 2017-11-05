@@ -174,6 +174,7 @@ class pagesController extends Controller
 
         $history = Trans::getTransactionsHistory($walletTransfer, $walletTransactions, $bankTransactions, $wallet->wallet_code, $wallet->id);
 
+        event(new FundWallet($wallet));
         return view('view-wallet', compact('wallet','permit','rules','beneficiaries', 'history', 'cardWallet', 'validate', 'bankTransactions', 'walletTransactions', 'walletTransfer'));
     }
 

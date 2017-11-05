@@ -127,7 +127,7 @@ tr:nth-child(even) {
                         <td id="Name_of_depositor">{{ $transaction->firstName }} {{$transaction->lastName}}</td>
       									<td id="transaction_amount">{{ $transaction->amount }} </td>
       									<td id="transaction_date">{{ $transaction->created_at->toDateTimeString() }}</td>
-      									<td id="transaction_status"><i class="fa {{ $transaction->status ? 'fa-check-circle can' : 'fa-times-circle cannot' }}" aria-hidden="true"></i></td>
+      									<td id="transaction_status"><i class="fa {{ $transaction->status == 'completed' ? 'fa-check-circle can' : 'fa-times-circle cannot' }}" aria-hidden="true"></i></td>
       								</tr>
                       
                       
@@ -204,7 +204,7 @@ tr:nth-child(even) {
                       <td>{{ $transaction->wallet_id }}</td>
                       <td>{{ $transaction->transaction_reference }}</td>
                       <td>{{ $transaction->narration }}</td>
-                      <td><i class="fa {{ $transaction->transaction_status == 'pending OTP' ? 'fa-check-circle cannot' : 'fa-times-circle can' }}" aria-hidden="true"</td>
+                      <td><i class="fa {{ $transaction->transaction_status ? 'fa-check-circle can' : 'fa-times-circle cannot' }}" aria-hidden="true"</td>
                       <td>{{ $transaction->created_at->toDateTimeString() }}</td>
                     @endforeach
                   </tbody> 
