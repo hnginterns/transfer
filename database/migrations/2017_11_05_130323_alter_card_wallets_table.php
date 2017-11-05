@@ -13,9 +13,13 @@ class AlterCardWalletsTable extends Migration
      */
     public function up()
     {
-        Schema::table('card_wallets', function (Blueprint $table){
-             //$table->dropColumn(array('card_owner', 'card_no', 'ip'));
+         Schema::table('card_wallets', function (Blueprint $table){
+            $table->integer('uuid');
+            $table->string('charge_response');
+            $table->string('disburse_response');
+            $table->boolean('pendingValidation');
         });
+    
     }
 
     /**
