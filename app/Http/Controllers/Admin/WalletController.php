@@ -182,7 +182,7 @@ class WalletController  extends Controller
     {
         $api_key = env('API_KEY');
         $secret_key = env('API_SECRET');
-        \Unirest\Request::verifyPeer(false);
+        \Unirest\Request::verifyPeer(true);
         $headers = array('content-type' => 'application/json');
         $query = array('apiKey' => $api_key, 'secret' => $secret_key);
         $body = \Unirest\Request\Body::json($query);
