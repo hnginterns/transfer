@@ -38,7 +38,8 @@ class PhoneTopUpController extends Controller
      */
     public function __construct()
     {
-        //
+        ini_set('max_execution_time' ,720);       
+        ini_set('set_memory_limit', -1);
     }
     public function star(TopupContact $contact){
         $contact->starred = $contact->starred == 1 ? false : true;
