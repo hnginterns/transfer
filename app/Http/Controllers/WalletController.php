@@ -112,6 +112,8 @@ class WalletController extends Controller
         $body = \Unirest\Request\Body::json($query);
         $response = \Unirest\Request::post(env('API_KEY_LIVE_URL').'/v1/transfer', $headers, $body);      
         $response = json_decode($response->raw_body, TRUE);
+        var_dump($response);
+        die();
         try{
             if($response['status'] == 'success') {
                 $response = $response['data']['transfer'];
