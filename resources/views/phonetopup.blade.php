@@ -334,7 +334,7 @@ i.can {
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-          <form action="{{config('app.url')}}/fund/topup" method="POST" role="form form-horizontal">
+          <form action="{{config('app.url')}}/phonetopup/fund" method="POST" role="form form-horizontal">
             {{csrf_field()}}
             <!-- text input -->
             <div class="container-fluid">

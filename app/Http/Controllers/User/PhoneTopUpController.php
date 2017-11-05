@@ -214,17 +214,29 @@ class PhoneTopUpController extends Controller
             
                 $transaction->ref = $transRef;
                 $transaction->status = "pending OTP";
+                $transaction->uuid = Auth::user()->id;
+                $transaction->charge_response = $transMsg;
+                $transaction->disburse_response = "pending";
+                $transaction->pendingValidation = true;
                 $transaction->save();
 
                 return back()->with('otp', $transMsg);
             }
             else{
                 $transaction->status = $response['message'];
+                $transaction->uuid = Auth::user()->id;
+                $transaction->charge_response = "failed";
+                $transaction->disburse_response = "pending";
+                $transaction->pendingValidation = false;
                 $transaction->save();
                 return back()->with('error', $response['message']);
             }
         }catch(\Exception $e){
             $transaction->status = "";
+            $transaction->uuid = Auth::user()->id;
+                $transaction->charge_response = "failed";
+                $transaction->disburse_response = "pending";
+                $transaction->pendingValidation = false;
             $transaction->save();
             return back()->with('error', 'Encountered error');
         }
