@@ -232,7 +232,6 @@ class PhoneTopUpController extends Controller
     }
     public function otp(Request $request, CardWallet $cardWallet)
     {
-        // dd($request);
         \Unirest\Request::verifyPeer(false);
             $headers = array('content-type' => 'application/json');
             $query = array(
@@ -337,8 +336,8 @@ class PhoneTopUpController extends Controller
         }
         
         if(count($final_phones) > 0){
-            $this->batchRecharge($final_id, $final_phones, $final_amount);
-            return redirect('/phonetopup')->with('success', 'Contacts topped up successfully. Check history');
+            $counter = $this->batchRecharge($final_id, $final_phones, $final_amount);
+            return redirect('/phonetopup')->with('info', "$counter Contact(s) were topped up successfully. Check history");
    
         }else{
             Session::flash('error', 'No due Contact(s) to recharge');
@@ -361,6 +360,7 @@ class PhoneTopUpController extends Controller
         }
     }
     public function batchRecharge($id, $phone, $amount){
+        $number_topped_up = 0;
         $username = env('TOP_UP_USERNAME');
         $password = env('TOP_UP_PASSWORD');
         for($i = 0; $i < count($phone); $i++){
@@ -377,8 +377,11 @@ class PhoneTopUpController extends Controller
             $topuphistory->type = 'airtime';
             $topuphistory->txn_response = 00;
             $topuphistory->status = $response->body == '00' ? 'success' : 'failure';
+            $number_topped_up = $response->body == '00'? $number_topped_up++ : $number_topped_up;
             $topuphistory->save();
         }
+
+        return $number_topped_up;
     }
     public function topuphonegroup(Request $request){
         $validator = $this->validateTag($request->all());
