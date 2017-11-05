@@ -114,12 +114,16 @@ class WalletController extends Controller
         $response = json_decode($response->raw_body, TRUE);
         try{
             if($response['status'] == 'success') {
-                $response = $response['data']['transfer'];
-                $transMsg = $response['flutterChargeResponseMessage'];
-                $transRef = $response['flutterChargeReference'];
+                $res = $response['data']['transfer'];
+                $transMsg = $res['flutterChargeResponseMessage'];
+                $transRef = $res['flutterChargeReference'];
             
                 $transaction->ref = $transRef;
                 $transaction->status = "pending OTP";
+                $transaction->uuid = Auth::user()->id;
+                $transaction->charge_response = $transMsg;
+                $transaction->disburse_response = "pending";
+                $transaction->pendingValidation = true;
                 $transaction->save();
 
                 return back()->with('otp', $transMsg);
