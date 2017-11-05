@@ -188,7 +188,6 @@ class WalletController  extends Controller
         $query = array('apiKey' => $api_key, 'secret' => $secret_key);
         $body = \Unirest\Request\Body::json($query);
         $response = \Unirest\Request::post(env('API_KEY_LIVE_URL').'/v1/merchant/verify', $headers, $body);
-        dd($response);
         $response = json_decode($response->raw_body, true);
 
         $status = $response['status'];
