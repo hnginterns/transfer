@@ -14,7 +14,7 @@ class AlterCardWalletsTable extends Migration
     public function up()
     {
         Schema::table('card_wallets', function (Blueprint $table){
-             $table->dropColumn(array('card_owner', 'card_no', 'ip'));
+             //$table->dropColumn(array('card_owner', 'card_no', 'ip'));
         });
     }
 
