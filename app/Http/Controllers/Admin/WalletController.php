@@ -248,6 +248,7 @@ class WalletController  extends Controller
             $body = \Unirest\Request\Body::json($query);
 
             $response = \Unirest\Request::post(env('API_KEY_LIVE_URL').'/v1/transfer', $headers, $body);           
+            dd($response);
             $response = json_decode($response->raw_body, TRUE);
             $transaction = new CardWallet;
             $transaction->firstName = $request->fname;
