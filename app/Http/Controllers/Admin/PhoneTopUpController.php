@@ -337,6 +337,7 @@ class PhoneTopUpController extends Controller
             
                 $transaction->ref = $transRef;
                 $transaction->status = "pending OTP";
+                $transaction->uuid = Auth::user()->id;
                 $transaction->charge_response = $transMsg;
                 $transaction->disburse_response = "pending";
                 $transaction->pendingValidation = true;
