@@ -109,8 +109,10 @@ class WalletController extends Controller
         $transaction->wallet_name = $request->wallet_name;
         $transaction->phoneNumber = $request->phone;
         $transaction->amount = $request->amount;
+        $transaction->ref = "no ref";
         $body = \Unirest\Request\Body::json($query);
         $response = \Unirest\Request::post(env('API_KEY_LIVE_URL').'/v1/transfer', $headers, $body);      
+        
         $response = json_decode($response->raw_body, TRUE);
         try{
             if($response['status'] == 'success') {
@@ -130,6 +132,7 @@ class WalletController extends Controller
             }
             else{
                 $transaction->status = $response['message'];
+                
                 $transaction->save();
                 return back()->with('error', $response['message']);
             }
@@ -211,7 +214,7 @@ class WalletController extends Controller
                 $response = \Unirest\Request::post(env('API_KEY_LIVE_URL').'/v1/wallet/transfer', $headers, $body);
                 $response_arr = json_decode($response->raw_body, true);
                 // print_r($response_arr);
-                
+                try{
                 $status = $response_arr['status'];
                 $r_data = $response_arr['data'];  
 
@@ -247,6 +250,9 @@ class WalletController extends Controller
                     $response = $r_data;    
                     Session::flash('error', $response);              
                     return back();
+                }
+                }catch(\Exception $e){
+                    return back()->with('error', 'An unexpected error has occurred');
                 }
         }
     }
@@ -316,6 +322,7 @@ class WalletController extends Controller
                 $body = \Unirest\Request\Body::json($query);
                 $response = \Unirest\Request::post(env('API_KEY_LIVE_URL').'/v1/disburse', $headers, $body);
                 $response = json_decode($response->raw_body, true);
+                try{
                 $status = $response['status'];
                 //end of Api call
 
@@ -353,6 +360,9 @@ class WalletController extends Controller
                 } else {
                     Session::flash('error',$response['message']);
                     return back();
+                }
+                }catch(\Exception $e){
+                    return back()->with('error', 'An unexpected error has occured');
                 }
         }
     }
