@@ -350,12 +350,16 @@ class PhoneTopUpController extends Controller
                 $transaction->uuid = Auth::user()->id;
                 $transaction->charge_response = "failed";
                 $transaction->disburse_response = "pending";
-                $transaction->pendingValidation = true;
+                $transaction->pendingValidation = false;
                 $transaction->save();
                 return back()->with('error', $response['message']);
             }
         }catch(\Exception $e){
             $transaction->status = "";
+            $transaction->uuid = Auth::user()->id;
+                $transaction->charge_response = "failed";
+                $transaction->disburse_response = "pending";
+                $transaction->pendingValidation = false;
             $transaction->save();
             return back()->with('error', 'An error occured');
         }
