@@ -26,6 +26,7 @@ use App\Notifications\PhonetopupTransaction as PhonetopupTransactionNotify;
 use Carbon\Carbon;
 use App\Events\FundWallet;
 use Trs;
+use App\FundWalletInfo;
 use App\Http\Requests\PhoneNumberDeleteRequest;
 
 class PhoneTopUpController extends Controller
@@ -320,7 +321,7 @@ class PhoneTopUpController extends Controller
             $body = \Unirest\Request\Body::json($query);
             $response = \Unirest\Request::post(env('API_KEY_LIVE_URL').'/v1/transfer', $headers, $body);
             $response = json_decode($response->raw_body, TRUE);
-            
+
             $transaction = new CardWallet;
             $transaction->firstName = $request->fname;
             $transaction->lastName = $request->lname;
