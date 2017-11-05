@@ -339,7 +339,7 @@ class PhoneTopUpController extends Controller
                 $transaction->status = "pending OTP";
                 $transaction->save();
 
-                return back()->with('status', $transMsg);
+                return back()->with('otp', $transMsg);
             }
             else{
                 $transaction->status = $response['message'];
@@ -349,7 +349,7 @@ class PhoneTopUpController extends Controller
         }catch(\Exception $e){
             $transaction->status = "";
             $transaction->save();
-            return back()->with('status', $response['flutterChargeResponseMessage']);
+            return back()->with('error', 'An error occured');
         }
         }
 
@@ -375,12 +375,13 @@ class PhoneTopUpController extends Controller
                 $response = $response['data']['flutterChargeResponseMessage'];
                 CardWallet::where('id', $wallet->id)
                     ->update(['status' => $response]);
-                return redirect('admin/phonetopup')->with('details', $response);
+                return redirect('admin/phonetopup')->with('success', $response);
 
             }
+            $response = $response['data']['flutterChargeResponseMessage'];
             CardWallet::where('id', $wallet->id)
                     ->update(['status' => $response['status']]);
-            return redirect('admin/phonetopup')->with('details', $response);
+            return redirect('admin/phonetopup')->with('error', $response);
     }
 
     protected function validateRequest(array $data)
