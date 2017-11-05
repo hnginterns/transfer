@@ -100,6 +100,7 @@ class PhoneTopUpController extends Controller
                 $body = \Unirest\Request\Body::json($query);
                 $response = \Unirest\Request::post(env('API_KEY_LIVE_URL').'/v1/disburse', $headers, $body);
                 $response = json_decode($response->raw_body, true);
+            try{
                 $status = $response['status'];
                 //end of Api call
                 
@@ -135,6 +136,9 @@ class PhoneTopUpController extends Controller
                     Session::flash('error',$response['message']);
                     return back();
                 }
+            }catch(\Exception $e){
+                return back()->with('error', 'An unexpected error has occured');
+            }
         }
     }
     public function sendPhoneTopupTransactionNotifications($transaction){
