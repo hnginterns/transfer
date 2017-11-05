@@ -182,7 +182,6 @@ class WalletController  extends Controller
     {
         $api_key = env('API_KEY');
         $secret_key = env('API_SECRET');
-        dump($api_key);
         \Unirest\Request::verifyPeer(false);
         $headers = array('content-type' => 'application/json');
         $query = array('apiKey' => $api_key, 'secret' => $secret_key);
@@ -191,7 +190,7 @@ class WalletController  extends Controller
         $response = json_decode($response->raw_body, true);
 
         $status = $response['status'];
-        if (!$status == 'success') {
+        if ($status != 'success') {
             echo 'INVALID TOKEN';
         } else {
             $token = $response['token'];
