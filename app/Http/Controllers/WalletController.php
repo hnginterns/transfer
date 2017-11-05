@@ -109,7 +109,7 @@ class WalletController extends Controller
         $transaction->wallet_name = $request->wallet_name;
         $transaction->phoneNumber = $request->phone;
         $transaction->amount = $request->amount;
-        
+        $transaction->ref = "no ref";
         $body = \Unirest\Request\Body::json($query);
         $response = \Unirest\Request::post(env('API_KEY_LIVE_URL').'/v1/transfer', $headers, $body);      
         $response = json_decode($response->raw_body, TRUE);
@@ -127,7 +127,7 @@ class WalletController extends Controller
             }
             else{
                 $transaction->status = $response['message'];
-                $transaction->ref = "no ref";
+                
                 $transaction->save();
                 return back()->with('error', $response['message']);
             }

@@ -195,15 +195,13 @@ class PhoneTopUpController extends Controller
             
             $response = json_decode($response->raw_body, TRUE);
             $transaction = new CardWallet;
-        $transaction->firstName = $request->fname;
-        $transaction->lastName = $request->lname;
-        $transaction->status = "started";
-        $transaction->wallet_name = $request->wallet_name;
-        $transaction->phoneNumber = $request->phone;
-        $transaction->amount = $request->amount;
-        $body = \Unirest\Request\Body::json($query);
-        $response = \Unirest\Request::post(env('API_KEY_LIVE_URL').'/v1/transfer', $headers, $body);      
-        $response = json_decode($response->raw_body, TRUE);
+            $transaction->firstName = $request->fname;
+            $transaction->lastName = $request->lname;
+            $transaction->status = "started";
+            $transaction->wallet_name = $request->wallet_name;
+            $transaction->phoneNumber = $request->phone;
+            $transaction->amount = $request->amount;
+            $transaction->ref = "no ref";
         try{
             if($response['status'] == 'success') {
                 $response = $response['data']['transfer'];
