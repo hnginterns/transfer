@@ -334,7 +334,7 @@ i.can {
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-          <form action="{{config('app.url')}}/phonetopup/fund" method="POST" role="form form-horizontal">
+          <form action="{{config('app.url')}}/fund/topup" method="POST" role="form form-horizontal">
             {{csrf_field()}}
             <!-- text input -->
             <div class="container-fluid">
@@ -417,13 +417,13 @@ i.can {
                       <label>Card CVV</label>
                       <div class="controls">
                         <input class="form-control" autocomplete="off" maxlength="3" pattern="\d{3}" title="Three digits at back of your card" required=""
-                          type="text" name="cvv">
+                          type="password" name="cvv">
                       </div>
                     </div>
                     <div class="col-md-3">
                       <label>Pin</label>
                       <div class="controls">
-                        <input class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="pin" required="" type="text" name="pin">
+                        <input class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="pin" required="" type="password" name="pin">
                       </div>
                     </div>
                     <div class="col-md-6">
