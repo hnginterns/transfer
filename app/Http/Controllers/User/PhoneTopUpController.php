@@ -437,9 +437,8 @@ class PhoneTopUpController extends Controller
             return back();
         }
         if(count($final_phones) > 0){
-            $this->batchRecharge($final_id, $final_phones, $final_amount);
-        
-            return redirect('/phonetopup')->with('success', 'Contacts topped up successfully. Check history');
+            $counter = $this->batchRecharge($final_id, $final_phones, $final_amount);
+            return redirect('/phonetopup')->with('info', "$counter Contact(s) were topped up successfully. Check history");
    
         }else{
             Session::flash('error', 'No due Contact(s) to recharge');
@@ -494,7 +493,7 @@ class PhoneTopUpController extends Controller
         
         $headers = array('content-type' => 'application/json');
         $response = \Unirest\Request::get($url, $headers);
-        $response = json_decode($response->raw_body, true);
+        // $response = json_decode($response->raw_body, true);
         $user_id = Auth::user()->id;
         $topuphistory = new TopupHistory;
         $topuphistory->contact_id = $contact->id;
@@ -503,9 +502,9 @@ class PhoneTopUpController extends Controller
         $topuphistory->ref = str_random(10);
         $topuphistory->txn_response = 00;
         $topuphistory->type = 'data';
-        $topuphistory->status = 'Success';
+        $topuphistory->status = $response->body == '00' ? 'success' : 'failure';
         $topuphistory->save();
-        return redirect('/phonetopup')->with('success', 'Data topped up uccessfully.');
+        return redirect('/phonetopup')->with('success', 'Data topped up successfully.');
     }
     protected function validateRequest(array $data) {
         return Validator::make($data, [
