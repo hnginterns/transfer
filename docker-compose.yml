@@ -5,9 +5,9 @@ services:
     restart: always
     build:
       context: ./
-      dockerfile: web.docker
+      dockerfile: web.dockerfile
     volumes:
-      - ./:/var/www
+      - /var/www
     ports:
       - "8081:80"
     links:
@@ -23,9 +23,9 @@ services:
   app:
     build:
       context: ./
-      dockerfile: app.docker
+      dockerfile: app.dockerfile
     volumes:
-      - ./:/var/www
+      - /var/www
     links:
       - db
     environment:
