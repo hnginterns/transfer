@@ -1,41 +1,64 @@
 version: '2'
-services:
 
-  # The Application
+services:
+  web: 
+    restart: always
+    build:
+      context: ./
+      dockerfile: web.docker
+    volumes:
+      - ./:/var/www
+    ports:
+      - "8081:80"
+    links:
+      - app
+    depends_on:
+      - app
+      - db
+      - cache
+    networks: 
+      base:
+        ipv4_address: 173.30.0.2
+
   app:
     build:
       context: ./
-      dockerfile: app.dockerfile
-    working_dir: /var/www
+      dockerfile: app.docker
     volumes:
       - ./:/var/www
+    links:
+      - db
     environment:
-      - "DB_PORT=3306"
-      - "DB_HOST=database"
-
-  # The Web Server
-  web:
-    build:
-      context: ./
-      dockerfile: web.dockerfile
-    working_dir: /var/www
-    volumes_from:
-      - app
-    ports:
-      - 9000:90
-
-  # The Database
-  database:
-    image: mysql:5.6
+      - "DB_HOST=3306"
+      - "DB_HOST=db"
+    networks: 
+      base:
+        ipv4_address: 173.30.0.3
+  db:
+    image: mysql:5.7
     volumes:
-      - dbdata:/var/lib/mysql
+      - ./../mysql_data:/var/lib/mysql
+      - ./:/var/www
     environment:
-      - "MYSQL_DATABASE=homestead"
-      - "MYSQL_USER=homestead"
-      - "MYSQL_PASSWORD=secret"
-      - "MYSQL_ROOT_PASSWORD=secret"
+      - "MYSQL_ROOT_PASSWORD=password"
+      - "MYSQL_DATABASE=namedb"
     ports:
-        - "33061:3306"
+      - "33071:3306"
+    networks: 
+      base:
+        ipv4_address: 173.30.0.4 
 
-volumes:
-  dbdata:
+  cache:
+    image: redis:latest
+    networks: 
+      base:
+        ipv4_address: 173.30.0.5 
+
+networks:
+    base:
+        driver: bridge
+        ipam:
+            driver: default
+            config:
+            - subnet: 173.30.0.0/16
+              gateway: 173.30.0.1
