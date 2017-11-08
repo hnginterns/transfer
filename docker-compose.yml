@@ -61,4 +61,4 @@ networks:
             driver: default
             config:
             - subnet: 173.30.0.0/16
-              gateway: 173.30.0.1
+              gateway: 173.30.0.100
