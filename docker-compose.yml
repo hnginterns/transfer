@@ -60,5 +60,5 @@ networks:
         ipam:
             driver: default
             config:
-            - subnet: 173.30.0.0/16
-              gateway: 173.30.0.100
+           # - subnet: 173.30.0.0/16
+            #  gateway: 173.30.0.100
