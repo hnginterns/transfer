@@ -1,5 +1,4 @@
 version: '2'
-
 services:
   web: 
     restart: always
@@ -16,9 +15,6 @@ services:
       - app
       - db
       - cache
-    networks: 
-      base:
-        ipv4_address: 173.30.0.2
 
   app:
     build:
@@ -31,9 +27,7 @@ services:
     environment:
       - "DB_HOST=3306"
       - "DB_HOST=db"
-    networks: 
-      base:
-        ipv4_address: 173.30.0.3
+
   db:
     image: mysql:5.7
     volumes:
@@ -44,21 +38,6 @@ services:
       - "MYSQL_DATABASE=namedb"
     ports:
       - "33071:3306"
-    networks: 
-      base:
-        ipv4_address: 173.30.0.4 
 
   cache:
     image: redis:latest
-    networks: 
-      base:
-        ipv4_address: 173.30.0.5 
-
-networks:
-    base:
-        driver: bridge
-        ipam:
-            driver: default
-            config:
-           # - subnet: 173.30.0.0/16
-            #  gateway: 173.30.0.100
