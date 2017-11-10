@@ -38,7 +38,7 @@ services:
       - "MYSQL_ROOT_PASSWORD=password"
       - "MYSQL_DATABASE=namedb"
     ports:
-      - "33071:3306"
+      - "33072:3306"
 
   cache:
     image: redis:latest
