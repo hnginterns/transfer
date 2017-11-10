@@ -18,7 +18,7 @@ services:
       - cache
     networks: 
       base:
-        ipv4_address: 173.30.0.2
+        ipv4_address: 175.30.0.2
 
   app:
     build:
@@ -33,7 +33,7 @@ services:
       - "DB_HOST=db"
     networks: 
       base:
-        ipv4_address: 173.30.0.3
+        ipv4_address: 175.30.0.3
   db:
     image: mysql:5.7
     volumes:
@@ -46,13 +46,13 @@ services:
       - "33072:3306"
     networks: 
       base:
-        ipv4_address: 173.30.0.4 
+        ipv4_address: 175.30.0.4 
 
   cache:
     image: redis:latest
     networks: 
       base:
-        ipv4_address: 173.30.0.5 
+        ipv4_address: 175.30.0.5 
 
 networks:
     base:
@@ -60,5 +60,5 @@ networks:
         ipam:
             driver: default
             config:
-            - subnet: 173.30.0.0/16
-              gateway: 173.30.0.1
+            - subnet: 175.30.0.0/16
+              gateway: 175.30.0.1
