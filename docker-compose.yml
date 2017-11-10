@@ -9,7 +9,7 @@ services:
     volumes:
       - /var/www
     ports:
-      - "8084:80"
+      - "8086:80"
     links:
       - app
     depends_on:
