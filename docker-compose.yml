@@ -7,8 +7,8 @@ services:
       context: ./
       dockerfile: web.dockerfile
     volumes:
-      - /var/www
-    ports:
+      - ./:/var/www
+    ports: 
       - "8086:80"
     links:
       - app
@@ -16,29 +16,49 @@ services:
       - app
       - db
       - cache
+    networks: 
+      base:
+        ipv4_address: 173.30.0.2
 
   app:
     build:
       context: ./
       dockerfile: app.dockerfile
     volumes:
-      - /var/www
+      - ./:/var/www
     links:
       - db
     environment:
       - "DB_HOST=3306"
       - "DB_HOST=db"
-
+    networks: 
+      base:
+        ipv4_address: 173.30.0.3
   db:
     image: mysql:5.7
     volumes:
       - ./../mysql_data:/var/lib/mysql
       - ./:/var/www
     environment:
-      - "MYSQL_ROOT_PASSWORD=password"
-      - "MYSQL_DATABASE=namedb"
+      - "MYSQL_ROOT_PASSWORD=t3n6]DmC"
+      - "MYSQL_DATABASE=transfer"
     ports:
       - "33072:3306"
+    networks: 
+      base:
+        ipv4_address: 173.30.0.4 
 
   cache:
     image: redis:latest
+    networks: 
+      base:
+        ipv4_address: 173.30.0.5 
+
+networks:
+    base:
+        driver: bridge
+        ipam:
+            driver: default
+            config:
+            - subnet: 173.30.0.0/16
+              gateway: 173.30.0.1
