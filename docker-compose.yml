@@ -1,5 +1,4 @@
 version: '2'
-
 services:
   web: 
     restart: always
@@ -16,7 +15,6 @@ services:
       - app
       - db
       - cache
-    
 
   app:
     build:
@@ -29,7 +27,7 @@ services:
     environment:
       - "DB_HOST=3306"
       - "DB_HOST=db"
-    
+
   db:
     image: mysql:5.7
     volumes:
@@ -54,3 +52,7 @@ networks:
             config:
             - subnet: 173.30.0.0/16
               gateway: 173.30.0.100
+
+  cache:
+    image: redis:latest
+

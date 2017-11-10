@@ -1,4 +1,7 @@
-FROM nginx:1.10
-ADD ./ /VM_share
-ADD vhost.conf /etc/nginx/conf.d/default.conf
-EXPOSE 8080
+FROM nginx:latest
+
+ADD ./vhost.conf /etc/nginx/conf.d/default.conf
+
+WORKDIR /var/www
+
+EXPOSE 8086
