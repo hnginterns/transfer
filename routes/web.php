@@ -21,6 +21,9 @@ Route::get('freq',function(){
 Route::get('/internet', 'WalletController@otpForInternetBanking');
 // get default home pages
 Route::get('/', 'pagesController@home')->name('home');
+Route::get('/hometest', function () {
+	return "Welcome";
+});
 
 Route::get('/logout', function () {
 	//\LogUserActivity::addToLog(Auth::user()->username.' logged out successfully');
