@@ -34,8 +34,10 @@ services:
       - ./../mysql_data:/var/lib/mysql
       - ./:/var/www
     environment:
-      - "MYSQL_ROOT_PASSWORD=Dbadmin@hng1!"
       - "MYSQL_DATABASE=transfer"
+      - "MYSQL_USER=root"
+      - "MYSQL_PASSWORD=Dbadmin@hng1!"
+      - "MYSQL_ROOT_PASSWORD=Dbadmin@hng1!"
     ports:
       - "33072:3306"
 
