@@ -31,7 +31,7 @@
 
             <a class="navbar-brand" href="#">
 
-        <a href="{{url('/')}}">  <img src="/img/HNGlogo.png" width="120" height="40"alt=""></a>
+        <a href="{{url('/')}}">  <img src="{{   URL::asset('img/HNGlogo.png')  }}" width="120" height="40"alt=""></a>
                
 
             </a>
@@ -156,9 +156,9 @@
 
     </footer>
 
-    <script src="js/jquery.js"></script>
+    <script src="{{   URL::asset('js/jquery.js')  }}"></script>
 
-    <script src="js/bootstrap.js"></script>
+    <script src="{{   URL::asset('js/bootstrap.js')  }}"></script>
 
 </body>
 

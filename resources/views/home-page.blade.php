@@ -833,7 +833,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{url('/')}}"><img id="logo" src="img/HNGlogo.png" alt="Company logo" style="display: inline;"> </a>
+                <a class="navbar-brand" href="{{url('/')}}"><img id="logo" src="{{   URL::asset('img/HNGlogo.png')  }}" alt="Company logo" style="display: inline;"> </a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
@@ -865,7 +865,7 @@
     </nav>
 </div>
 <!-- HEADER BEGINS -->
-<div id="header" style="background: url('img/Group2.png');">
+<div id="header" style="background: url("{{   URL::asset('img/Group2.png')  }}");">
   <!--  <p id="background-text">FUNDS</p> -->
 
     
@@ -914,6 +914,6 @@
 <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
         integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
         crossorigin="anonymous"></script> -->
-<script src="js/script.js"></script>
+<script src="{{   URL::asset('js/script.js')  }}"></script>
 </body>
 </html>
