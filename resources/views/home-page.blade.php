@@ -865,7 +865,7 @@
     </nav>
 </div>
 <!-- HEADER BEGINS -->
-<div id="header" style="background: url("{{   URL::asset('img/Group2.png')  }}");">
+<div id="header" style="background: url('{{   URL::asset('img/Group2.png')  }}');">
   <!--  <p id="background-text">FUNDS</p> -->
 
     
