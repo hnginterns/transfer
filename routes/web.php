@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 Auth::routes();
 Route::get('notify','WalletController@notifyme');
 Route::get('freq',function(){
-	return "Moved to bluebecks";
+	return "Moved to finance.hotels.ng";
 });
 
 Route::get('/internet', 'WalletController@otpForInternetBanking');

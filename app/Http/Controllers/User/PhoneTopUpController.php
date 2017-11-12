@@ -276,6 +276,7 @@ class PhoneTopUpController extends Controller
             'data' => $phone,
         ]);
     }
+
     public function ptopuphonesubmit(Request $request)
     { 
         $phone = SmsWalletFund::find($request->get('id'));
@@ -291,6 +292,7 @@ class PhoneTopUpController extends Controller
             $response = json_decode($response->raw_body, true);
             return $response;
     }
+    
     public function hasReachedLimit($id, $amount, $max_limit){
         $sum = TopupHistory::where('contact_id', $id)
                              ->where('status','success')->get();
