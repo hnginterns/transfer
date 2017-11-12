@@ -1,46 +1,42 @@
 version: '2'
 services:
-  web: 
-    restart: always
-    build:
-      context: ./
-      dockerfile: web.dockerfile
-    volumes:
-      - /var/www
-    ports:
-      - "8086:80"
-    links:
-      - app
-    depends_on:
-      - app
-      - db
-      - cache
 
+  # The Application
   app:
     build:
       context: ./
       dockerfile: app.dockerfile
+    working_dir: /var/www
     volumes:
-      - /var/www
-    links:
-      - db
-    environment:
-      - "DB_HOST=3306"
-      - "DB_HOST=db"
-
-  db:
-    image: mysql:5.7
-    volumes:
-      - ./../mysql_data:/var/lib/mysql
       - ./:/var/www
     environment:
-      - "MYSQL_DATABASE=transfer"
-      - "MYSQL_USER=root"
-      - "MYSQL_PASSWORD=Dbadmin@hng1!"
-      - "MYSQL_ROOT_PASSWORD=Dbadmin@hng1!"
+      - "DB_PORT=3306"
+      - "DB_HOST=database"
+
+  # The Web Server
+  web:
+    build:
+      context: ./
+      dockerfile: web.dockerfile
+    working_dir: /var/www
+    volumes_from:
+      - app
     ports:
-      - "33072:3306"
+      - 8086:80
 
-  cache:
-    image: redis:latest
+  # The Database
+  database:
+    image: mysql:5.7
+    volumes:
+      - dbdata:/var/lib/mysql
 
+    environment:
+      - "MYSQL_DATABASE=homestead"
+      - "MYSQL_USER=homestead"
+      - "MYSQL_PASSWORD=secret"
+      - "MYSQL_ROOT_PASSWORD=secret"
+    ports:
+        - "33061:3306"
+
+volumes:
+  dbdata:

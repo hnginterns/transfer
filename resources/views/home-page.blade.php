@@ -840,8 +840,6 @@
 
                      <li class="{{ Request::segment(1) === '/' ? 'active' : null }}" ><a href="{{url('/')}}">Home</a></li>
                      
-                   
-                  
 
                     @if(Auth::guest())          
                     <li id=""><a href="{{url('login')}}">Sign In</a></li> 
@@ -865,7 +863,7 @@
     </nav>
 </div>
 <!-- HEADER BEGINS -->
-<div id="header" style="background: url('{{   URL::asset('img/Group2.png')  }}');">
+<div id="header" style="background: url({{   URL::asset('img/Group2.png')  }});">
   <!--  <p id="background-text">FUNDS</p> -->
 
     
