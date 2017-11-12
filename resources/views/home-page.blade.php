@@ -876,7 +876,7 @@
         
                 </span>
                 <span id="heading-hd" style="margin-left:6%">
-                   Financial Management Made Easy
+                   Financial Management Made Easy as pie
                 </span>
             <button id="button-hd">
                 <a href="{{url('login')}}">Sign in</a>
