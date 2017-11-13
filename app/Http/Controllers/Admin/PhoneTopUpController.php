@@ -123,14 +123,6 @@ class PhoneTopUpController extends Controller
             $messages = $validator->messages()->toArray();
             return redirect()->to(URL::previous())->with('form-errors', $messages);
         } else {
-            if ($request->has('tags') && count($request->has('tags'))) {
-                foreach ($request->tags as $tag) {
-                    $all_tags = $tag . ';';
-                }
-                $tags = rtrim($all_tags, ';');
-            } else {
-                $tags = NULL;
-            }
             $phone = new TopupContact();
             $phone->firstname = $input['firstname'];
             $phone->lastname = $input['lastname'];
@@ -141,13 +133,13 @@ class PhoneTopUpController extends Controller
             $phone->network = 0;
             $phone->netw = $input['network'];
             $phone->weekly_max = $input['max_tops'];
-            $phone->tags = $tags;
-
-            $phone->save();
-
-            Session::flash('success', 'Contact Added successfully.');
-            
-            return redirect()->to('admin/phonetopup');
+            if ($phone->save()) {
+                if ($request->has('tags') && count($request->has('tags'))) {
+                    $phone->groups()->syncWithoutDetaching($request->tags);
+                }
+                return redirect()->to('admin/phonetopup')->with('success', 'Contact Added successfully.');
+            }
+            return redirect()->to('admin/phonetopup')->with('error', 'Error Adding Contact');
         }
     }
 
@@ -403,7 +395,6 @@ class PhoneTopUpController extends Controller
         $phone->network = 0;
         $phone->netw = $request->network;
         $phone->weekly_max = $request->max_tops;
-        $phone->tags = NULL;
         if ($phone->save()) {
             return redirect()->to('admin/phonetopup')->with('success', 'Contact Updated successfully.');
         } else {
