@@ -77,8 +77,16 @@ class pagesController extends Controller
         }
     }
 
+    
     public function userdashboard()
     {
+
+       var_dump(function_exists('curl_version'));
+        die();
+        
+
+
+        
         //$wallet = Wallet::all();
         // $permission = Restriction::where('uuid',Auth::user()->id)->get();
         $wallet = DB::table('wallets')->where('type', '=', 'regular')->get();
