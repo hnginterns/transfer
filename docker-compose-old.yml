@@ -1,0 +1,46 @@
+version: '2'
+services:
+  web: 
+    restart: always
+    build:
+      context: ./
+      dockerfile: web.dockerfile
+    volumes:
+      - /var/www
+    ports:
+      - "8086:80"
+    links:
+      - app
+    depends_on:
+      - app
+      - db
+      - cache
+
+  app:
+    build:
+      context: ./
+      dockerfile: app.dockerfile
+    volumes:
+      - /var/www
+    links:
+      - db
+    environment:
+      - "DB_HOST=3306"
+      - "DB_HOST=db"
+
+  db:
+    image: mysql:5.7
+    volumes:
+      - ./../mysql_data:/var/lib/mysql
+      - ./:/var/www
+    environment:
+      - "MYSQL_DATABASE=homestead"
+      - "MYSQL_USER=homestead"
+      - "MYSQL_PASSWORD=secret"
+      - "MYSQL_ROOT_PASSWORD=secret"
+    ports:
+      - "33072:3306"
+
+  cache:
+    image: redis:latest
+

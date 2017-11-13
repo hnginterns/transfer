@@ -15,12 +15,15 @@ use Illuminate\Http\Request;
 Auth::routes();
 Route::get('notify','WalletController@notifyme');
 Route::get('freq',function(){
-	return "Moved to bluebecks";
+	return "Moved to finance.hotels.ng";
 });
 
 Route::get('/internet', 'WalletController@otpForInternetBanking');
 // get default home pages
 Route::get('/', 'pagesController@home')->name('home');
+Route::get('/hometest', function () {
+	return "Welcome";
+});
 
 Route::get('/logout', function () {
 	//\LogUserActivity::addToLog(Auth::user()->username.' logged out successfully');

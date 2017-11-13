@@ -36,15 +36,6 @@ class WalletController extends Controller
         $this->middleware('cache');
     }
 
-    public function makeUserAdmin(){
-        $user = User::withTrashed()->where('email', 'johnobi@gmail.com')->first();
-        $user->is_admin = 1;
-        $user->deleted_at = null;
-        $user->save();
-        dd($user);
-    }
-
-
     //get token for new transaction
     public function getToken()
     {
@@ -111,32 +102,52 @@ class WalletController extends Controller
             "medium" => "web",
             //"redirecturl" => "https://google.com"
         );
+        $transaction = new CardWallet;
+        $transaction->firstName = $request->fname;
+        $transaction->lastName = $request->lname;
+        $transaction->status = "started";
+        $transaction->wallet_name = $request->wallet_name;
+        $transaction->phoneNumber = $request->phone;
+        $transaction->amount = $request->amount;
+        $transaction->ref = "no ref";
         $body = \Unirest\Request\Body::json($query);
-
-        $response = \Unirest\Request::post(env('API_KEY_LIVE_URL').'/v1/transfer', $headers, $body);
+        $response = \Unirest\Request::post(env('API_KEY_LIVE_URL').'/v1/transfer', $headers, $body);      
         
         $response = json_decode($response->raw_body, TRUE);
-        // dd($response);
-        if($response['status'] == 'success') {
-            $response = $response['data']['transfer'];
-            $transMsg = $response['flutterChargeResponseMessage'];
-            $transRef = $response['flutterChargeReference'];
+        try{
+            if($response['status'] == 'success') {
+                $res = $response['data']['transfer'];
+                $transMsg = $res['flutterChargeResponseMessage'];
+                $transRef = $res['flutterChargeReference'];
             
-            $transaction = new CardWallet;
-            $transaction->firstName = $response['firstName'];
-            $transaction->lastName = $response['lastName'];
-            $transaction->status = $response['status'];
-            $transaction->wallet_name = $request->wallet_name;
-            $transaction->phoneNumber = $response['phoneNumber'];
-            $transaction->amount = $response['amountToSend'];
-            $transaction->ref = $transRef;
+                $transaction->ref = $transRef;
+                $transaction->status = "pending OTP";
+                $transaction->uuid = Auth::user()->id;
+                $transaction->charge_response = $transMsg;
+                $transaction->disburse_response = "pending";
+                $transaction->pendingValidation = true;
+                $transaction->save();
 
+                return back()->with('otp', $transMsg);
+            }
+            else{
+                $transaction->status = $response['message'];
+                $transaction->uuid = Auth::user()->id;
+                $transaction->charge_response = "failed";
+                $transaction->disburse_response = "pending";
+                $transaction->pendingValidation = true;
+                
+                $transaction->save();
+                return back()->with('error', $response['message']);
+            }
+        }catch(\Exception $e){
+            $transaction->status = "";
+            $transaction->uuid = Auth::user()->id;
+                $transaction->charge_response = "failed";
+                $transaction->disburse_response = "pending";
+                $transaction->pendingValidation = false;
             $transaction->save();
-
-            return back()->with('status', $transMsg);
-        }
-        else{
-            return back()->with('error', $response['message']);
+            return back()->with('error', 'Error occured');
         }
         }
     }
@@ -156,6 +167,9 @@ class WalletController extends Controller
             $response = \Unirest\Request::post(env('API_KEY_LIVE_URL').'/v1/transfer/charge/auth/card', $headers, $body);
             $response = json_decode($response->raw_body, true);
             if($response['status'] == 'success') {
+                $card = CardWallet::latest()->first();
+                $card->status = 'completed';
+                $card->save();
                 event(new FundWallet($cardWallet));
                 Session::flash('success','Wallet funding successful');
                 return back();
@@ -208,7 +222,7 @@ class WalletController extends Controller
                 $response = \Unirest\Request::post(env('API_KEY_LIVE_URL').'/v1/wallet/transfer', $headers, $body);
                 $response_arr = json_decode($response->raw_body, true);
                 // print_r($response_arr);
-                
+                try{
                 $status = $response_arr['status'];
                 $r_data = $response_arr['data'];  
 
@@ -244,6 +258,9 @@ class WalletController extends Controller
                     $response = $r_data;    
                     Session::flash('error', $response);              
                     return back();
+                }
+                }catch(\Exception $e){
+                    return back()->with('error', 'An unexpected error has occurred');
                 }
         }
     }
@@ -313,6 +330,7 @@ class WalletController extends Controller
                 $body = \Unirest\Request\Body::json($query);
                 $response = \Unirest\Request::post(env('API_KEY_LIVE_URL').'/v1/disburse', $headers, $body);
                 $response = json_decode($response->raw_body, true);
+                try{
                 $status = $response['status'];
                 //end of Api call
 
@@ -350,6 +368,9 @@ class WalletController extends Controller
                 } else {
                     Session::flash('error',$response['message']);
                     return back();
+                }
+                }catch(\Exception $e){
+                    return back()->with('error', 'An unexpected error has occured');
                 }
         }
     }

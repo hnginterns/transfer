@@ -14,7 +14,7 @@ class AddTypeToWalletsTable extends Migration
     public function up()
     {
         Schema::table('wallets', function (Blueprint $table) {
-            //$table->string('type');
+            $table->string('type');
         });
     }
 

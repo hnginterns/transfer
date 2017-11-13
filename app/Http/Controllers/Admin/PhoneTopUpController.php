@@ -26,6 +26,7 @@ use App\Notifications\PhonetopupTransaction as PhonetopupTransactionNotify;
 use Carbon\Carbon;
 use App\Events\FundWallet;
 use Trs;
+use App\FundWalletInfo;
 use App\Http\Requests\PhoneNumberDeleteRequest;
 
 class PhoneTopUpController extends Controller
@@ -263,16 +264,32 @@ class PhoneTopUpController extends Controller
 
     public function fundTopup(Request $request, CardWallet $topup)
     {
-        
-        //$validator = $this->validateFund($request->all());
-        /**if ($validator->fails()) {
-            $messages = $validator->messages()->toArray();
-            Session::flash('error', $this->formatMessages($messages, 'error'));
-            return back();
-        } else {**/
 
+            $validator = $this->validateWalletFunding($request->all());
+
+        if ($validator->fails()) {
+            $messages = $validator->messages()->toArray();
+            Session::flash('form-errors', $messages);
+            return redirect()->to(URL::previous());
+        } else {
+            if(Auth::user()->walletFundInfo == null){
+                $wallet_fund_info = new FundWalletInfo;
+                $wallet_fund_info->firstname = $request->fname;
+                $wallet_fund_info->lastname = $request->lname;
+                $wallet_fund_info->uuid = Auth::user()->id;
+                $wallet_fund_info->email = $request->emailaddr;
+                $wallet_fund_info->phonenumber = $request->phone;
+                $wallet_fund_info->save();
+            }else{
+                $wallet_fund_info = Auth::user()->walletFundInfo;
+                $wallet_fund_info->firstname = $request->fname;
+                $wallet_fund_info->lastname = $request->lname;
+                $wallet_fund_info->uuid = Auth::user()->id;
+                $wallet_fund_info->email = $request->emailaddr;
+                $wallet_fund_info->phonenumber = $request->phone;
+                $wallet_fund_info->save();
+            }
             $token = $this->getToken();
-            
             $headers = array('content-type' => 'application/json', 'Authorization' => $token);
             $query = array(
                 "firstname" => $request->fname,
@@ -294,32 +311,51 @@ class PhoneTopUpController extends Controller
                 //"redirecturl" => "https://google.com"
             );
             $body = \Unirest\Request\Body::json($query);
-
             $response = \Unirest\Request::post(env('API_KEY_LIVE_URL').'/v1/transfer', $headers, $body);
             $response = json_decode($response->raw_body, TRUE);
+
+            $transaction = new CardWallet;
+            $transaction->firstName = $request->fname;
+            $transaction->lastName = $request->lname;
+            $transaction->status = "started";
+            $transaction->wallet_name = $request->wallet_name;
+            $transaction->phoneNumber = $request->phone;
+            $transaction->amount = $request->amount;
+        try{
             if($response['status'] == 'success') {
                 $response = $response['data']['transfer'];
-                //$meta = $response['meta'];
-                //$meta = json_decode($meta, TRUE);
                 $transMsg = $response['flutterChargeResponseMessage'];
                 $transRef = $response['flutterChargeReference'];
-                
-                $transaction = new CardWallet;
-                $transaction->firstName = $response['firstName'];
-                $transaction->lastName = $response['lastName'];
-                $transaction->status = $response['status'];
-                $transaction->wallet_name = $request->wallet_name;
-                $transaction->phoneNumber = $response['phoneNumber'];
-                $transaction->amount = $response['amountToSend'];
+            
                 $transaction->ref = $transRef;
-
+                $transaction->status = "pending OTP";
+                $transaction->uuid = Auth::user()->id;
+                $transaction->charge_response = $transMsg;
+                $transaction->disburse_response = "pending";
+                $transaction->pendingValidation = true;
                 $transaction->save();
 
-                return back()->with('status', $transMsg);
+                return back()->with('otp', $transMsg);
             }
             else{
+                $transaction->status = $response['message'];
+                $transaction->uuid = Auth::user()->id;
+                $transaction->charge_response = "failed";
+                $transaction->disburse_response = "pending";
+                $transaction->pendingValidation = false;
+                $transaction->save();
                 return back()->with('error', $response['message']);
             }
+        }catch(\Exception $e){
+            $transaction->status = "";
+            $transaction->uuid = Auth::user()->id;
+                $transaction->charge_response = "failed";
+                $transaction->disburse_response = "pending";
+                $transaction->pendingValidation = false;
+            $transaction->save();
+            return back()->with('error', 'An error occured');
+        }
+        }
 
             
         }
@@ -341,15 +377,15 @@ class PhoneTopUpController extends Controller
             if($response['status'] == 'success') {
                 event(new FundWallet($topup));
                 $response = $response['data']['flutterChargeResponseMessage'];
-                //return redirect('dashboard')->with('status', $response);
                 CardWallet::where('id', $wallet->id)
                     ->update(['status' => $response]);
-                return redirect('admin/phonetopup')->with('details', $response);
+                return redirect('admin/phonetopup')->with('success', $response);
 
             }
+            $response = $response['data']['flutterChargeResponseMessage'];
             CardWallet::where('id', $wallet->id)
                     ->update(['status' => $response['status']]);
-            return redirect('admin/phonetopup')->with('details', $response);
+            return redirect('admin/phonetopup')->with('error', $response);
     }
 
     protected function validateRequest(array $data)
@@ -407,6 +443,21 @@ class PhoneTopUpController extends Controller
         if (TopupContact::destroy($request->delete_phone)) {
             return redirect()->back()->with('success', 'Phone Number Deleted');
         }
+    }
+
+    protected function validateWalletFunding(array $data)
+    {
+        return Validator::make($data, [
+            'fname' => 'required|string',
+            'lname' => 'required|string',
+            'amount' => 'required|numeric',
+            'phone' => 'required|numeric',
+            'emailaddr' => 'required|email',
+            'card_no' => 'required|string',
+            'expiry_year' => 'required|numeric',
+            'cvv' => 'required|numeric',
+            'pin' => 'required|numeric',
+        ]);
     }
 
 }

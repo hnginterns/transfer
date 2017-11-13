@@ -14,7 +14,7 @@ class AddMaxtopToSmsWalletFundsTable extends Migration
     public function up()
     {
         Schema::table('sms_wallet_funds', function (Blueprint $table) {
-           $table->string('max_tops');
+           //$table->string('max_tops');
         });
     }
 
@@ -26,7 +26,7 @@ class AddMaxtopToSmsWalletFundsTable extends Migration
     public function down()
     {
         Schema::table('sms_wallet_funds', function (Blueprint $table) {
-           $table->string('max_tops');
+           //$table->string('max_tops');
         });
     }
 }

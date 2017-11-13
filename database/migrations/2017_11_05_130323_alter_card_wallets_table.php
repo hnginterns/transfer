@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddTypeToTopupContactsTable extends Migration
+class AlterCardWalletsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,13 @@ class AddTypeToTopupContactsTable extends Migration
      */
     public function up()
     {
-        Schema::table('topup_contacts', function (Blueprint $table) {
-            // $table->string('netw');
+         Schema::table('card_wallets', function (Blueprint $table){
+            $table->integer('uuid');
+            $table->string('charge_response');
+            $table->string('disburse_response');
+            $table->boolean('pendingValidation');
         });
+    
     }
 
     /**

@@ -22,13 +22,14 @@ services:
     volumes_from:
       - app
     ports:
-      - 9000:90
+      - 8086:80
 
   # The Database
   database:
-    image: mysql:5.6
+    image: mysql:5.7
     volumes:
       - dbdata:/var/lib/mysql
+
     environment:
       - "MYSQL_DATABASE=homestead"
       - "MYSQL_USER=homestead"

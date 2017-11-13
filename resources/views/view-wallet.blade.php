@@ -127,7 +127,7 @@ tr:nth-child(even) {
                         <td id="Name_of_depositor">{{ $transaction->firstName }} {{$transaction->lastName}}</td>
       									<td id="transaction_amount">{{ $transaction->amount }} </td>
       									<td id="transaction_date">{{ $transaction->created_at->toDateTimeString() }}</td>
-      									<td id="transaction_status"><i class="fa {{ $transaction->status ? 'fa-check-circle can' : 'fa-times-circle cannot' }}" aria-hidden="true"></i></td>
+      									<td id="transaction_status"><i class="fa {{ $transaction->status == 'completed' ? 'fa-check-circle can' : 'fa-times-circle cannot' }}" aria-hidden="true"></i></td>
       								</tr>
                       
                       
@@ -399,7 +399,7 @@ tr:nth-child(even) {
           </div>
 		</div>
 
-     @if (session('status'))
+     @if (session('otp'))
    <script type="text/javascript">
         $(document).ready(function() {
             $('#otpModal').modal();
@@ -416,7 +416,7 @@ tr:nth-child(even) {
             <h4 class="modal-title">Otp</h4>
           </div>
           <div class="modal-body">
-            <p>{{session('status')}}</p>
+            <p>{{session('otp')}}</p>
             <div class="row">
             <div class="col-md-6 col-md-offset-2">
               <form action="/otp" method="POST">

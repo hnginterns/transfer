@@ -29,12 +29,12 @@ class DatabaseSeeder extends Seeder
 
 
     User::create([
-                'username' => 'johnobi',
-                'email' => 'johnobi@gmail.com',
+                'username' => 'jekayode',
+                'email' => 'jekayode@live.com',
                 'password' => Hash::make('transfer'),
                  'is_admin' => true,
-                 'bank_id' => "021",
-                 'account_number' => '2018263627',
+                 'bank_id' => "058",
+                 'account_number' => '0034492913',
                  'created_by' => 1000,
                  'updated_by' => 0,
 	           'created_at' => $dateNow

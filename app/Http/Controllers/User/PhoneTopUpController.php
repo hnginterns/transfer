@@ -38,7 +38,8 @@ class PhoneTopUpController extends Controller
      */
     public function __construct()
     {
-        //
+        ini_set('max_execution_time' ,720);       
+        ini_set('set_memory_limit', -1);
     }
     public function star(TopupContact $contact){
         $contact->starred = $contact->starred == 1 ? false : true;
@@ -100,6 +101,7 @@ class PhoneTopUpController extends Controller
                 $body = \Unirest\Request\Body::json($query);
                 $response = \Unirest\Request::post(env('API_KEY_LIVE_URL').'/v1/disburse', $headers, $body);
                 $response = json_decode($response->raw_body, true);
+            try{
                 $status = $response['status'];
                 //end of Api call
                 
@@ -135,6 +137,9 @@ class PhoneTopUpController extends Controller
                     Session::flash('error',$response['message']);
                     return back();
                 }
+            }catch(\Exception $e){
+                return back()->with('error', 'An unexpected error has occured');
+            }
         }
     }
     public function sendPhoneTopupTransactionNotifications($transaction){
@@ -194,30 +199,52 @@ class PhoneTopUpController extends Controller
             $response = \Unirest\Request::post(env('API_KEY_LIVE_URL').'/v1/transfer', $headers, $body);
             
             $response = json_decode($response->raw_body, TRUE);
+            $transaction = new CardWallet;
+            $transaction->firstName = $request->fname;
+            $transaction->lastName = $request->lname;
+            $transaction->status = "started";
+            $transaction->wallet_name = $request->wallet_name;
+            $transaction->phoneNumber = $request->phone;
+            $transaction->amount = $request->amount;
+            $transaction->ref = "no ref";
+        try{
             if($response['status'] == 'success') {
                 $response = $response['data']['transfer'];
                 $transMsg = $response['flutterChargeResponseMessage'];
                 $transRef = $response['flutterChargeReference'];
-                
-                $transaction = new CardWallet;
-                $transaction->firstName = $response['firstName'];
-                $transaction->lastName = $response['lastName'];
-                $transaction->status = $response['status'];
-                $transaction->wallet_name = $request->wallet_name;
-                $transaction->phoneNumber = $response['phoneNumber'];
-                $transaction->amount = $response['amountToSend'];
+            
                 $transaction->ref = $transRef;
+                $transaction->status = "pending OTP";
+                $transaction->uuid = Auth::user()->id;
+                $transaction->charge_response = $transMsg;
+                $transaction->disburse_response = "pending";
+                $transaction->pendingValidation = true;
                 $transaction->save();
+
                 return back()->with('otp', $transMsg);
             }
             else{
+                $transaction->status = $response['message'];
+                $transaction->uuid = Auth::user()->id;
+                $transaction->charge_response = "failed";
+                $transaction->disburse_response = "pending";
+                $transaction->pendingValidation = false;
+                $transaction->save();
                 return back()->with('error', $response['message']);
             }
+        }catch(\Exception $e){
+            $transaction->status = "";
+            $transaction->uuid = Auth::user()->id;
+                $transaction->charge_response = "failed";
+                $transaction->disburse_response = "pending";
+                $transaction->pendingValidation = false;
+            $transaction->save();
+            return back()->with('error', 'Encountered error');
+        }
         }
     }
     public function otp(Request $request, CardWallet $cardWallet)
     {
-        // dd($request);
         \Unirest\Request::verifyPeer(false);
             $headers = array('content-type' => 'application/json');
             $query = array(
@@ -249,6 +276,7 @@ class PhoneTopUpController extends Controller
             'data' => $phone,
         ]);
     }
+
     public function ptopuphonesubmit(Request $request)
     { 
         $phone = SmsWalletFund::find($request->get('id'));
@@ -264,6 +292,7 @@ class PhoneTopUpController extends Controller
             $response = json_decode($response->raw_body, true);
             return $response;
     }
+    
     public function hasReachedLimit($id, $amount, $max_limit){
         $sum = TopupHistory::where('contact_id', $id)
                              ->where('status','success')->get();
@@ -322,8 +351,8 @@ class PhoneTopUpController extends Controller
         }
         
         if(count($final_phones) > 0){
-            $this->batchRecharge($final_id, $final_phones, $final_amount);
-            return redirect('/phonetopup')->with('success', 'Contacts topped up successfully. Check history');
+            $counter = $this->batchRecharge($final_id, $final_phones, $final_amount);
+            return redirect('/phonetopup')->with('info', "$counter Contact(s) were topped up successfully. Check history");
    
         }else{
             Session::flash('error', 'No due Contact(s) to recharge');
@@ -346,6 +375,7 @@ class PhoneTopUpController extends Controller
         }
     }
     public function batchRecharge($id, $phone, $amount){
+        $number_topped_up = 0;
         $username = env('TOP_UP_USERNAME');
         $password = env('TOP_UP_PASSWORD');
         for($i = 0; $i < count($phone); $i++){
@@ -362,8 +392,11 @@ class PhoneTopUpController extends Controller
             $topuphistory->type = 'airtime';
             $topuphistory->txn_response = 00;
             $topuphistory->status = $response->body == '00' ? 'success' : 'failure';
+            $number_topped_up = $response->body == '00'? $number_topped_up+1 : $number_topped_up;
             $topuphistory->save();
         }
+
+        return $number_topped_up;
     }
     public function topuphonegroup(Request $request){
         $validator = $this->validateTag($request->all());
@@ -407,9 +440,8 @@ class PhoneTopUpController extends Controller
             return back();
         }
         if(count($final_phones) > 0){
-            $this->batchRecharge($final_id, $final_phones, $final_amount);
-        
-            return redirect('/phonetopup')->with('success', 'Contacts topped up successfully. Check history');
+            $counter = $this->batchRecharge($final_id, $final_phones, $final_amount);
+            return redirect('/phonetopup')->with('info', "$counter Contact(s) were topped up successfully. Check history");
    
         }else{
             Session::flash('error', 'No due Contact(s) to recharge');
@@ -464,7 +496,7 @@ class PhoneTopUpController extends Controller
         
         $headers = array('content-type' => 'application/json');
         $response = \Unirest\Request::get($url, $headers);
-        $response = json_decode($response->raw_body, true);
+        // $response = json_decode($response->raw_body, true);
         $user_id = Auth::user()->id;
         $topuphistory = new TopupHistory;
         $topuphistory->contact_id = $contact->id;
@@ -473,9 +505,9 @@ class PhoneTopUpController extends Controller
         $topuphistory->ref = str_random(10);
         $topuphistory->txn_response = 00;
         $topuphistory->type = 'data';
-        $topuphistory->status = 'Success';
+        $topuphistory->status = $response->body == '00' ? 'success' : 'failure';
         $topuphistory->save();
-        return redirect('/phonetopup')->with('success', 'Data topped up uccessfully.');
+        return redirect('/phonetopup')->with('success', 'Data topped up successfully.');
     }
     protected function validateRequest(array $data) {
         return Validator::make($data, [

@@ -182,14 +182,15 @@ class WalletController  extends Controller
     {
         $api_key = env('API_KEY');
         $secret_key = env('API_SECRET');
-        \Unirest\Request::verifyPeer(false);
+        \Unirest\Request::verifyPeer(true);
         $headers = array('content-type' => 'application/json');
         $query = array('apiKey' => $api_key, 'secret' => $secret_key);
         $body = \Unirest\Request\Body::json($query);
         $response = \Unirest\Request::post(env('API_KEY_LIVE_URL').'/v1/merchant/verify', $headers, $body);
         $response = json_decode($response->raw_body, true);
+
         $status = $response['status'];
-        if (!$status == 'success') {
+        if ($status != 'success') {
             echo 'INVALID TOKEN';
         } else {
             $token = $response['token'];
@@ -247,30 +248,51 @@ class WalletController  extends Controller
             );
             $body = \Unirest\Request\Body::json($query);
 
-            $response = \Unirest\Request::post(env('API_KEY_LIVE_URL').'/v1/transfer', $headers, $body);
-            
+            $response = \Unirest\Request::post(env('API_KEY_LIVE_URL').'/v1/transfer', $headers, $body);           
+
             $response = json_decode($response->raw_body, TRUE);
-            // dd($response);
+            $transaction = new CardWallet;
+            $transaction->firstName = $request->fname;
+            $transaction->lastName = $request->lname;
+            $transaction->status = "started";
+            $transaction->ref = "no ref";
+            $transaction->wallet_name = $request->wallet_name;
+            $transaction->phoneNumber = $request->phone;
+            $transaction->amount = $request->amount;
+        try{
             if($response['status'] == 'success') {
                 $response = $response['data']['transfer'];
                 $transMsg = $response['flutterChargeResponseMessage'];
                 $transRef = $response['flutterChargeReference'];
-                
-                $transaction = new CardWallet;
-                $transaction->firstName = $response['firstName'];
-                $transaction->lastName = $response['lastName'];
-                $transaction->status = $response['status'];
-                $transaction->wallet_name = $request->wallet_name;
-                $transaction->phoneNumber = $response['phoneNumber'];
-                $transaction->amount = $response['amountToSend'];
+            
                 $transaction->ref = $transRef;
-
+                $transaction->status = "pending OTP";
+                $transaction->uuid = Auth::user()->id;
+                $transaction->charge_response = $transMsg;
+                $transaction->disburse_response = "pending";
+                $transaction->pendingValidation = true;
                 $transaction->save();
 
-                return back()->with('status', $transMsg);
+                return back()->with('otp', $transMsg);
             }
-        
-            return back()->with('error', $response['message']);
+            else{
+                $transaction->status = $response['message'];
+                $transaction->uuid = Auth::user()->id;
+                $transaction->charge_response = "failed";
+                $transaction->disburse_response = "pending";
+                $transaction->pendingValidation = true;
+                $transaction->save();
+                return back()->with('error', $response['message']);
+            }
+        }catch(\Exception $e){
+            $transaction->status = "";
+            $transaction->uuid = Auth::user()->id;
+                $transaction->charge_response = "failed";
+                $transaction->disburse_response = "pending";
+                $transaction->pendingValidation = false;
+            $transaction->save();
+            return back()->with('error', "Error occured");
+        }
         }
     }
 
@@ -291,9 +313,11 @@ class WalletController  extends Controller
             $response = json_decode($response->raw_body, true);
             
             if($response['status'] == 'success') {
+                $card = CardWallet::latest()->first();
+                $card->status = 'completed';
+                $card->save();
                 event(new FundWallet($cardWallet));
-                $response = $response['data']['flutterChargeResponseMessage'];
-                Session::flash('success',$response);
+                Session::flash('success','Wallet Funding Successful');
                 return redirect('admin/managewallet');
 
             }else{

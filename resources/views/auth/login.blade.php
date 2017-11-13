@@ -11,11 +11,11 @@
 
     <title>Sign In</title>
 
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="{{   URL::asset('css/bootstrap.css')  }}" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
 
-    <link href="css/signin.css" rel="stylesheet">
+    <link href="{{   URL::asset('css/signin.css')  }}" rel="stylesheet">
 
 </head>
 
@@ -31,7 +31,7 @@
 
             <a class="navbar-brand" href="#">
 
-        <a href="{{url('/')}}">  <img src="/img/HNGlogo.png" width="120" height="40"alt=""></a>
+        <a href="{{url('/')}}">  <img src="{{   URL::asset('img/HNGlogo.png')  }}" width="120" height="40"alt=""></a>
                
 
             </a>
@@ -156,9 +156,9 @@
 
     </footer>
 
-    <script src="js/jquery.js"></script>
+    <script src="{{   URL::asset('js/jquery.js')  }}"></script>
 
-    <script src="js/bootstrap.js"></script>
+    <script src="{{   URL::asset('js/bootstrap.js')  }}"></script>
 
 </body>
 
