@@ -45,7 +45,7 @@ class pagesController extends Controller
     public function home()
     {
         return view('home-page');
-        event(new FundWallet(new CardWallet));
+        //event(new FundWallet(new CardWallet));
     }
 
     public function signin(Request $request)
