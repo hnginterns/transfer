@@ -27,8 +27,10 @@ class FundWalletBalance
         $headers = array('content-type' => 'application/json');
         $query = array('apiKey' => $api_key, 'secret' => $secret_key);
         $body = \Unirest\Request\Body::json($query);
-        $response = \Unirest\Request::post(env('API_KEY_LIVE_URL').'/v1/merchant/verify', $headers, $body);
+        $response = \Unirest\Request::post('https://live.moneywaveapi.co/v1/merchant/verify', $headers, $body);
         $response = json_decode($response->raw_body, true);
+        var_dump($response);
+        die();
         $status = $response['status'];
         if (!$status == 'success') {
             echo 'INVALID TOKEN';
