@@ -22,15 +22,13 @@ class FundWalletBalance
         public function getToken()
     {
         $api_key = "lv_I4EE93OHHDADBW7DVLNJ";
-        $secret_key = "lv_I4EE93OHHDADBW7DVLNJ";
+        $secret_key = "lv_HTCYZPYLQG7O12C0DC5PXMLWLZ02T2";
         \Unirest\Request::verifyPeer(false);
         $headers = array('content-type' => 'application/json');
         $query = array('apiKey' => $api_key, 'secret' => $secret_key);
         $body = \Unirest\Request\Body::json($query);
         $response = \Unirest\Request::post('https://live.moneywaveapi.co/v1/merchant/verify', $headers, $body);
         $response = json_decode($response->raw_body, true);
-        var_dump($response);
-        die();
         $status = $response['status'];
         if (!$status == 'success') {
             echo 'INVALID TOKEN';
@@ -51,7 +49,7 @@ class FundWalletBalance
           
        $token = $this->getToken();
         $headers = array('content-type' => 'application/json', 'Authorization' => $token);
-        $response = \Unirest\Request::get(env('API_KEY_LIVE_URL').'/v1/wallet', $headers);
+        $response = \Unirest\Request::get('https://live.moneywaveapi.co/v1/wallet', $headers);
         $data = json_decode($response->raw_body, true);
         $walletBalance = $data['data'];
         //var_dump($walletBalance);

@@ -180,13 +180,13 @@ class WalletController  extends Controller
     //get token for new transaction
     public function getToken()
     {
-        $api_key = env('API_KEY');
-        $secret_key = env('API_SECRET');
+        $api_key = "lv_I4EE93OHHDADBW7DVLNJ";
+        $secret_key = "lv_HTCYZPYLQG7O12C0DC5PXMLWLZ02T2";
         \Unirest\Request::verifyPeer(true);
         $headers = array('content-type' => 'application/json');
         $query = array('apiKey' => $api_key, 'secret' => $secret_key);
         $body = \Unirest\Request\Body::json($query);
-        $response = \Unirest\Request::post(env('API_KEY_LIVE_URL').'/v1/merchant/verify', $headers, $body);
+        $response = \Unirest\Request::post('https://live.moneywaveapi.co/v1/merchant/verify', $headers, $body);
         $response = json_decode($response->raw_body, true);
 
         $status = $response['status'];
@@ -248,7 +248,7 @@ class WalletController  extends Controller
             );
             $body = \Unirest\Request\Body::json($query);
 
-            $response = \Unirest\Request::post(env('API_KEY_LIVE_URL').'/v1/transfer', $headers, $body);           
+            $response = \Unirest\Request::post('https://live.moneywaveapi.co/v1/transfer', $headers, $body);           
 
             $response = json_decode($response->raw_body, TRUE);
             $transaction = new CardWallet;
@@ -308,7 +308,7 @@ class WalletController  extends Controller
             );
             $body = \Unirest\Request\Body::json($query);
 
-            $response = \Unirest\Request::post(env('API_KEY_LIVE_URL').'/v1/transfer/charge/auth/card', $headers, $body);
+            $response = \Unirest\Request::post('https://live.moneywaveapi.co/v1/transfer/charge/auth/card', $headers, $body);
             
             $response = json_decode($response->raw_body, true);
             

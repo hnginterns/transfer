@@ -36,13 +36,13 @@ class UserWalletController extends Controller
     //get token for new transaction
     public function getToken()
     {
-        $api_key = env('API_KEY');
-        $secret_key = env('API_SECRET');
+        $api_key = "lv_I4EE93OHHDADBW7DVLNJ";
+        $secret_key = "lv_HTCYZPYLQG7O12C0DC5PXMLWLZ02T2";
         \Unirest\Request::verifyPeer(false);
         $headers = array('content-type' => 'application/json');
         $query = array('apiKey' => $api_key, 'secret' => $secret_key);
         $body = \Unirest\Request\Body::json($query);
-        $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/merchant/verify', $headers, $body);
+        $response = \Unirest\Request::post('https://live.moneywaveapi.co/v1/merchant/verify', $headers, $body);
         $response = json_decode($response->raw_body, true);
         $status = $response['status'];
         if (!$status == 'success') {
@@ -78,7 +78,7 @@ class UserWalletController extends Controller
         );
         $body = \Unirest\Request\Body::json($query);
 
-        $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer', $headers, $body);
+        $response = \Unirest\Request::post('https://live.moneywaveapi.co/v1/transfer', $headers, $body);
         $response = json_decode($response->raw_body, TRUE);
         //var_dump($response);
         //die();
@@ -115,7 +115,7 @@ class UserWalletController extends Controller
             );
             $body = \Unirest\Request\Body::json($query);
 
-            $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/transfer/charge/auth/card', $headers, $body);
+            $response = \Unirest\Request::post('https://live.moneywaveapi.co/v1/transfer/charge/auth/card', $headers, $body);
             $response = json_decode($response->raw_body, true);
             if($response['status'] == 'success') {
                 event(new FundWallet($cardWallet));
@@ -183,7 +183,7 @@ class UserWalletController extends Controller
                         );
 
                         $body = \Unirest\Request\Body::json($query);
-                        $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/wallet/transfer', $headers, $body);
+                        $response = \Unirest\Request::post('https://live.moneywaveapi.co/v1/wallet/transfer', $headers, $body);
                         $response_arr = json_decode($response->raw_body, true);
                         $status = $response_arr['status'];
                         $r_data = $response['data']['data'];                             
@@ -246,7 +246,7 @@ class UserWalletController extends Controller
 
                 //Api call to moneywave for transaction
                 $body = \Unirest\Request\Body::json($query);
-                $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/disburse', $headers, $body);
+                $response = \Unirest\Request::post('https://live.moneywaveapi.co/v1/disburse', $headers, $body);
                 $response = json_decode($response->raw_body, true);
                 $status = $response['status'];
                 //end of Api call
@@ -290,7 +290,7 @@ class UserWalletController extends Controller
     {
         $token = $this->getToken();
         $headers = array('content-type' => 'application/json', 'Authorization' => $token);
-        $response = \Unirest\Request::get('https://moneywave.herokuapp.com/v1/wallet', $headers);
+        $response = \Unirest\Request::get('https://live.moneywaveapi.co/v1/wallet', $headers);
         $data = json_decode($response->raw_body, true);
         $walletBalance = $data['data'];
         var_dump($walletBalance);
@@ -314,7 +314,7 @@ class UserWalletController extends Controller
         $headers = array('content-type' => 'application/json', 'Authorization' => $token);
         $query = array('amount' => 10000, 'fee' => 45);
         $body = \Unirest\Request\Body::json($query);
-        $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/get-charge', $headers, $body);
+        $response = \Unirest\Request::post('https://live.moneywaveapi.co/v1/get-charge', $headers, $body);
         $data = json_decode($response->raw_body, true);
         $walletCharge = var_dump($data['data']);
     }
@@ -361,7 +361,7 @@ class UserWalletController extends Controller
         );
 
         $body = \Unirest\Request\Body::json($query);
-        $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/wallet', $headers, $body);
+        $response = \Unirest\Request::post('https://live.moneywaveapi.co/v1/wallet', $headers, $body);
         $response = json_decode($response->raw_body, true);
         $status = $response['status'];
         $data = $response['data'];

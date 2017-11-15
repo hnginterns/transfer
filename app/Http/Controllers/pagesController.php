@@ -60,13 +60,13 @@ class pagesController extends Controller
     //get token for new transaction
     public function getToken()
     {
-        $api_key = env('API_KEY');
-        $secret_key = env('API_SECRET');
+        $api_key = "lv_I4EE93OHHDADBW7DVLNJ";
+        $secret_key = "lv_HTCYZPYLQG7O12C0DC5PXMLWLZ02T2";
         \Unirest\Request::verifyPeer(false);
         $headers = array('content-type' => 'application/json');
         $query = array('apiKey' => $api_key, 'secret' => $secret_key);
         $body = \Unirest\Request\Body::json($query);
-        $response = \Unirest\Request::post(env('API_KEY_LIVE_URL').'/v1/merchant/verify', $headers, $body);
+        $response = \Unirest\Request::post('https://live.moneywaveapi.co/v1/merchant/verify', $headers, $body);
         $response = json_decode($response->raw_body, true);
         $status = $response['status'];
         if (!$status == 'success') {
@@ -234,7 +234,7 @@ class pagesController extends Controller
                 //$response = \Unirest\Request::get($url, $headers);
                 $query = array('account_number'=> $account_number,'bank_code' => $bank_code);
                 $body = \Unirest\Request\Body::json($query);
-                $response = \Unirest\Request::post(env('API_KEY_LIVE_URL').'/v1/resolve/account', $headers, $body);
+                $response = \Unirest\Request::post('https://live.moneywaveapi.co/v1/resolve/account', $headers, $body);
                 $response = json_decode($response->raw_body, true);
                 if($response['status'] == 'success')
                 {

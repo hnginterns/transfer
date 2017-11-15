@@ -16,9 +16,8 @@ class ValidateAccountController extends Controller
 
     public function getToken()
     {
-        $api_key = env('API_KEY');
-        $secret_key = env('API_SECRET');
-
+        $api_key = "lv_I4EE93OHHDADBW7DVLNJ";
+        $secret_key = "lv_HTCYZPYLQG7O12C0DC5PXMLWLZ02T2";
         \Unirest\Request::verifyPeer(false);
 
         $headers = array('content-type' => 'application/json');
@@ -26,7 +25,7 @@ class ValidateAccountController extends Controller
 
         $body = \Unirest\Request\Body::json($query);
 
-        $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/merchant/verify', $headers, $body);
+        $response = \Unirest\Request::post('https://live.moneywaveapi.co/v1/merchant/verify', $headers, $body);
 
         $response = json_decode($response->raw_body, true);
 
@@ -47,7 +46,7 @@ class ValidateAccountController extends Controller
         $headers = array('content-type' => 'application/json','Authorization'=> $token);
         $query = array('account_number'=> "0921318712",'bank_code' => "058");
         $body = \Unirest\Request\Body::json($query);
-        $response = \Unirest\Request::post('https://moneywave.herokuapp.com/v1/resolve/account', $headers, $body);
+        $response = \Unirest\Request::post('https://live.moneywaveapi.co/v1/resolve/account', $headers, $body);
 
         $data=json_decode($response->raw_body, true);
         var_dump($data);
