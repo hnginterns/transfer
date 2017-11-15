@@ -252,7 +252,7 @@ class PhoneTopUpController extends Controller
                 'otp' => $request->otp
             );
             $body = \Unirest\Request\Body::json($query);
-            $response = \Unirest\Request::post(env('https://live.moneywaveapi.co/v1/transfer/charge/auth/card', $headers, $body);
+            $response = \Unirest\Request::post('https://live.moneywaveapi.co/v1/transfer/charge/auth/card', $headers, $body);
             $response = json_decode($response->raw_body, true);
             
             if($response['status'] == 'success') {
