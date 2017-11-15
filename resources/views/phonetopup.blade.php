@@ -246,7 +246,7 @@ i.can {
               </thead>
               <tbody>
                 @php($count = 1)
-                @foreach($fundhistory as $key => $walletfundhistories)
+                @forelse($fundhistory as $key => $walletfundhistories)
                 <tr>
                   <td>{{$count}}</td>
                   <td>{{$walletfundhistories->firstName}}</td>
@@ -258,7 +258,9 @@ i.can {
                   <td>{{$walletfundhistories->created_at}}</td>
                 </tr>
                 @php($count++)
-                @endforeach
+                @empty
+                <p>No record found</p>
+                @endforelse
               </tbody>
             </table>
           </div>
