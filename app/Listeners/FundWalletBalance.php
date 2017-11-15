@@ -21,8 +21,8 @@ class FundWalletBalance
 
         public function getToken()
     {
-        $api_key = env('API_KEY');
-        $secret_key = env('API_SECRET');
+        $api_key = "lv_I4EE93OHHDADBW7DVLNJ";
+        $secret_key = "lv_I4EE93OHHDADBW7DVLNJ";
         \Unirest\Request::verifyPeer(false);
         $headers = array('content-type' => 'application/json');
         $query = array('apiKey' => $api_key, 'secret' => $secret_key);
