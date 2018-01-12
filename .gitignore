@@ -1,4 +1,4 @@
-
+vendor
 config/database.php
 .gitignore
 .phpintel
